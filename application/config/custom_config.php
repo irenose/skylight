@@ -1,6 +1,6 @@
 <?php
 
-$config['db_table_prefix'] = 'boilerplate_';  //Prefix for table names for multiple installations in same database
+$config['db_table_prefix'] = 'ss_';  //Prefix for table names for multiple installations in same database
 $config['use_cms'] = TRUE;
 $config['static_site'] = FALSE;
 $config['template_type'] = ''; //This defines whether to use the wireframe template ('wireframe') or the regular template ('template') as the view
@@ -24,15 +24,49 @@ $config['contact_form_from'] = '';
 $config['global_email_from'] = '';
 $config['global_email_name'] = '';
 
-$config['admin_client_logo'] = '';
-$config['admin_client_name'] = 'BOILERPLATE';
+$config['admin_client_logo'] = '/src/admin/assets/images/velux_logo.png';
+$config['admin_client_name'] = 'VELUX';
 
 $config['protected_file_dir'] = str_replace('public_html','',$_SERVER['DOCUMENT_ROOT']);
+$config['folder_chmod'] = 0777;
+$config['file_chmod'] = 0777;
 
 $config['content_images_dir'] = '/content-uploads/content-images/';
 $config['content_images_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/content-images/';
 
 $config['content_documents_dir'] = '/content-uploads/content-documents/';
 $config['content_documents_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/content-documents/';
+
+$config['gallery_images_dir'] = '/content-uploads/gallery-images/';
+$config['gallery_images_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/gallery-images/';
+
+$config['product_images_dir'] = '/content-uploads/product-images/';
+$config['product_images_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/product-images/';
+
+$config['promotion_files_dir'] = '/content-uploads/promotion-files/';
+$config['promotion_files_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/promotion-files/';
+
+$config['resources_dir'] = '/content-uploads/resources/';
+$config['resources_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/resources/';
+
+$config['dealer_assets_dir'] = '/content-uploads/dealer-assets/';
+$config['dealer_assets_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/dealer_assets/';
+
+/*-----------------------
+  @Upload Paths
+------------------------*/
+$config['gallery_images_upload_path'] = './content-uploads/gallery-images/';
+$config['content_images_upload_path'] = './content-uploads/content-images/';
+$config['content_documents_upload_path'] = './content-uploads/content-documents/';
+$config['product_images_upload_path'] = './content-uploads/product-images/';
+$config['promotion_files_upload_path'] = './content-uploads/promotion-files/';
+$config['resources_upload_path'] = './content-uploads/resources/';
+$config['dealer_assets_upload_path'] = './content-uploads/resources/';
+
+/*-----------------------
+  @Mandrill
+  https://mandrillapp.com/settings/index/
+------------------------*/
+$config['mandrill_api_key'] = 'a2VX1IxxdKP5Ku5cGa0KsA';
 
 ?>

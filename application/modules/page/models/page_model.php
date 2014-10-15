@@ -7,6 +7,24 @@ class Page_model extends CI_Model {
 		parent::__construct();
 	}
 
+	function get_page_by_url($page_url) {
+		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
+		$where = array('page_url' => $page_url, 'page_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table,1);
+		return $query->result();
+	}
+
+	function get_coordinates($zip_code) {
+		$db_table = $this->config->item('db_table_prefix') . 'zip_codes';
+		//Strip Leading 00s from zip
+		$zip_code = intval($zip_code);
+		$this->db->where('zip',$zip_code);
+		$this->db->order_by('zip_id ASC');
+		$query = $this->db->get($db_table,1);
+		return $query->result();
+	}
+
 	function add_contact($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'contact';
 		
@@ -26,14 +44,6 @@ class Page_model extends CI_Model {
 			return FALSE;
 		}
 
-	}
-
-	function get_page_by_url($page_url) {
-		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		$where = array('page_url' => $page_url, 'page_status' => 'active');
-		$this->db->where($where);
-		$query = $this->db->get($db_table,1);
-		return $query->result();
 	}
 	
 

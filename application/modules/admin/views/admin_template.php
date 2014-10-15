@@ -92,32 +92,16 @@
             ?>
                 <ul id="menu">
                 	<li class="main<?php if($current_section == 'home') { echo ' selected'; } ?>"><a href="/admin/home" class="section">Home</a></li>
-
+                	<li class="main<?php if($current_section == 'updates') { echo ' selected'; } ?>"><a href="/admin/updates" class="section">Updates</a></li>
                 	<li class="main<?php if($current_section == 'pages') { echo ' selected'; } ?>"><a href="/admin/pages" class="section">Pages</a></li>
-
-                	<li class="main<?php if($current_section == 'images') { echo ' selected'; } ?>"><a href="/admin/images" class="section">Images</a>
-					<?php
-						if($current_section == 'images') {
-							echo '<a href="/admin/images/add" class="nav_action">Add Images</a>';
-						}
-					?>	
-                	</li>
-
-                	<li class="main<?php if($current_section == 'documents') { echo ' selected'; } ?>"><a href="/admin/documents" class="section">Documents</a>
-					<?php
-						if($current_section == 'documents') {
-							echo '<a href="/admin/documents/add" class="nav_action">Add Documents</a>';
-						}
-					?>	
-                	</li>
-
-                    <li class="main<?php if($current_section == 'users') { echo ' selected'; } ?>"><a href="/admin/users" class="section">Admin Users</a>
-                    <?php
-						if($current_section == 'users') {
-							echo '<a href="/admin/users/add" class="nav_action">Add User</a>';
-						}
-					?>	
-                    </li>
+					<li class="main<?php if($current_section == 'installers') { echo ' selected'; } ?>"><a href="/admin/installers" class="section">Installers</a></li>
+					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/admin/products" class="section">Products</a></li>
+					<li class="main<?php if($current_section == 'promotions') { echo ' selected'; } ?>"><a href="/admin/promotions" class="section">Promotions</a></li>
+					<li class="main<?php if($current_section == 'galleries') { echo ' selected'; } ?>"><a href="/admin/galleries" class="section">Galleries</a></li>
+					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/admin/testimonials" class="section">Testimonials</a></li>
+					<li class="main<?php if($current_section == 'literature') { echo ' selected'; } ?>"><a href="/admin/literature" class="section">Literature</a></li>
+					<li class="main<?php if($current_section == 'contact') { echo ' selected'; } ?>"><a href="/admin/contact" class="section">Contact</a></li>
+                    <li class="main<?php if($current_section == 'users') { echo ' selected'; } ?>"><a href="/admin/users" class="section">Users</a>
                     
                 </ul>
             

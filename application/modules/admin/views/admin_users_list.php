@@ -1,5 +1,5 @@
 <h1 class="clearfix">
-	<div class="header_label">Admin Users</div>
+	<div class="header_label">Users</div>
     <div class="header_actions"><a href="/admin/users/add" class="header_action">Add User</a></div>
 </h1>
 

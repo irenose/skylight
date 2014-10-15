@@ -48,6 +48,8 @@ $route['404_override'] = '';
 $route['default_controller'] = "page";
 $route['admin'] = "admin";
 $route['admin/(:any)'] = "admin/$1";
+$route['dealer-admin'] = "dealer_admin";
+$route['dealer-admin/(:any)'] = "dealer_admin/$1";
 $route['ajax/(:any)'] = "ajax/$1";
 $route[':any'] = "page";
 

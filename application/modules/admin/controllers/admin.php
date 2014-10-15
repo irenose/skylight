@@ -133,6 +133,7 @@ class Admin extends CI_Controller {
 		$this->auth->restrict(FALSE, '1');
 		$data['page_title'] = 'Administration Home';
 		$data['page_content'] = 'admin_home';
+		$data['dealer_list_array'] = $this->admin_model->get_dealer_site_list();
 		$data['current_section'] = 'home';
 		$this->load->view('admin_template', $data);
 	}
@@ -1033,6 +1034,254 @@ class Admin extends CI_Controller {
 									BEGIN CUSTOM MODULES
 																
 ***********************************************************************************************************************************************************/
+
+	function updates($action = NULL, $update_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'updates';
+		if($action == NULL) {
+			$data['page_title'] = 'Updates';
+			$data['update_array'] = $this->admin_model->get_site_updates();
+			$data['page_content'] = 'admin_updates_list';
+		} else {
+			switch($action) {
+				case 'add':
+					$this->form_validation->set_rules('update_text', 'Update Text', 'trim|required|xss_clean');
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_updates_add';
+					} else {
+						$insert_id = $this->admin_model->add_site_update($_POST);
+						if($insert_id != FALSE) {
+							$this->session->set_flashdata('status_message','<div class="success">Site Update has been added successfully</div>');
+							redirect('admin/updates');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this site update. Please try again.</p></div>');
+							redirect('admin/updates');
+						}
+					}
+					break;
+				case 'delete':
+					$data_array = array('update_id' => $update_id);
+					$delete = $this->admin_model->delete_site_update($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your update has been deleted successfully.</div>');
+						redirect('admin/updates/');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this update. Please try again.</p></div>');
+						redirect('admin/updates/');
+					}
+					break;
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+	function installers($action = NULL, $dealer_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'installers';
+		if($action == NULL) {
+			$data['page_title'] = 'Installers';
+			if($this->input->post('dealer_status') != '') {
+				$data['dealer_listing_array'] = $this->admin_model->get_dealer_list(0,$this->config->item('per_page'),$this->input->post('dealer_status'));
+				$data['dealer_status'] = $this->input->post('dealer_status');
+			} else {
+				$data['dealer_listing_array'] = $this->admin_model->get_dealer_list(0,$this->config->item('per_page'));	
+				$data['dealer_status'] = '';
+			}
+			$data['page_content'] = 'admin_installers_list';
+		} else {
+			$data['site_default_array'] = $this->admin_model->get_site_defaults();
+			switch($action) {				
+				case 'add':
+					$this->form_validation->set_rules('name', 'Dealer Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('dealer_url', 'Dealer URL', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('contact_first_name', 'Contact First Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('contact_last_name', 'Contact Last Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('address2', '', '');
+					$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('state', 'State', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('zip', 'ZIP', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('region', 'Region', 'trim|xss_clean');
+					$this->form_validation->set_rules('phone1', 'Phone', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('fax', '', '');
+					$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|trim|xss_clean');
+					$this->form_validation->set_rules('website', '', '');
+					$this->form_validation->set_rules('microsite_url', '', '');
+					$this->form_validation->set_rules('about_dealer_headline', '', '');
+					$this->form_validation->set_rules('about_dealer_text', '', '');
+					$this->form_validation->set_rules('dealer_homepage_headline', '', '');
+					$this->form_validation->set_rules('dealer_homepage_copy', '', '');
+					$this->form_validation->set_rules('credentials', '', '');
+					$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_installer_add';
+					} else {
+						$insert_id = $this->admin_model->add_dealer_site($_POST);
+						if($insert_id != FALSE) {
+							
+							/************************ UPDATE SITEMAP ******************************/
+							$this->admin_model->generate_sitemap();
+							
+							$this->session->set_flashdata('status_message','<div class="success">Installer Site has been added successfully</div>');
+							redirect('admin/installers');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this installer site. Please try again.</p></div>');
+							redirect('admin/installers');
+						}
+						
+					}
+					break;
+				case 'update':
+					$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'dealer-logos/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size']	= '500';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+					
+					//Load Upload and Image libraries
+					$this->load->library('upload');
+					$this->load->library('image_lib');
+					$data['default_info_array'] = $this->admin_model->get_site_defaults();
+					$data['dealer_array'] = $this->admin_model->get_dealer_by_id($dealer_id);
+					$data['dealer_id'] = $dealer_id;
+					$this->form_validation->set_rules('name', 'Dealer Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('dealer_url', 'Dealer URL', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('contact_first_name', 'Contact First Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('contact_last_name', 'Contact Last Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('address2', '', '');
+					$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('state', 'State', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('zip', 'ZIP', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('region', 'Region', 'trim|xss_clean');
+					$this->form_validation->set_rules('phone1', 'Phone', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('fax', '', '');
+					$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|trim|xss_clean');
+					$this->form_validation->set_rules('paid_search_extension','','trim|xss_clean');
+					$this->form_validation->set_rules('website', '', '');
+					$this->form_validation->set_rules('microsite_url', '', '');
+					$this->form_validation->set_rules('about_dealer_headline', '', '');
+					$this->form_validation->set_rules('about_dealer_text', '', '');
+					$this->form_validation->set_rules('dealer_homepage_headline', '', '');
+					$this->form_validation->set_rules('dealer_homepage_copy', '', '');
+					$this->form_validation->set_rules('credentials', '', '');
+					$this->form_validation->set_rules('dealer_status', 'Dealer Status', 'required|trim|xss_clean');
+					$this->form_validation->set_rules('site_status', 'Site Status', 'required|trim|xss_clean');
+					$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_installers_update';
+					} else {
+						if( ! empty($_FILES['userfile']['name'])) {
+							//Has previously uploaded image, so include overwrite settings
+							if($this->input->post('current_filename_base') != '') {
+								$config['file_name'] = $this->input->post('current_filename');
+								$config['overwrite'] = TRUE;
+							}
+							$error = '';
+							//Initialize
+							$this->upload->initialize($config);
+							
+							if ( ! $this->upload->do_upload()) {
+								$error = $this->upload->display_errors('','');
+								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+								$data['page_content'] = 'admin_dealer_update';
+								break;
+							} else {
+								$file_path = '';
+								$image_name = '';
+								
+								$data = array('upload_data' => $this->upload->data());
+								$file_path = $data['upload_data']['file_path'];
+								$image_name = $data['upload_data']['file_name'];
+								
+								//Use raw name to insert into DB
+								$raw_name = $data['upload_data']['raw_name'];
+								$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+								
+								//Create re-sized thumbnail, then delete original image
+								//create_image($file_path, $image_name, 63, 43, TRUE, '_th');
+								//unlink($file_path . $image_name);
+								
+								//rename post array so we can add values to it for image
+								$data_array = $_POST;
+								
+								//Add RSS Image data to post array
+								$data_array['dealer_logo'] = $raw_name;
+								$data_array['extension'] = $ext;
+								
+								$update = $this->admin_model->update_dealer($data_array, TRUE);
+								if($update) {
+									/************************ UPDATE SITEMAP ******************************/
+									$this->admin_model->generate_sitemap();
+									
+									$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
+									redirect('admin/installers/update/' . $dealer_id);
+								} else {
+									$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this dealer. Please try again.</p></div>');
+									redirect('admin/installers/update/' . $dealer_id);
+								}
+							}
+						} else {
+							// Dealer is not trying to update or add a logo
+							$update = $this->admin_model->update_dealer($_POST);
+							if($update) {
+								
+								/************************ UPDATE SITEMAP ******************************/
+								$this->admin_model->generate_sitemap();
+							
+								$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
+								redirect('admin/installers/update/' . $dealer_id);
+							} else {
+								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this dealer. Please try again.</p></div>');
+								redirect('admin/installers/update/' . $dealer_id);
+							}
+							
+						}
+					}
+					break;
+					
+				case 'delete':
+					if($dealer_id != NULL) {
+						$deleted = $this->admin_model->delete_dealer($dealer_id);
+						if($deleted) {
+							$this->session->set_flashdata('status_message','<div class="success">Installer has been deleted successfully</div>');
+							redirect('admin/installers');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this installer. Please try again.</p></div>');
+							redirect('admin/installers');
+						}
+					} else {
+						redirect('admin/installers');	
+					}
+					break;
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+	function product() {
+
+	}
+
+	function promotions() {
+
+	}
+
+	function galleries() {
+
+	}
+
+	function testimonials() {
+
+	}
+
+	function literature() {
+
+	}
 
 
 	

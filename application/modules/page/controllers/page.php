@@ -8,6 +8,7 @@ class Page extends CI_Controller {
         session_start();
         ob_start();
         $this->load->model('page_model');
+        parse_str($_SERVER['QUERY_STRING'],$_GET);
     }
 
     function index()
@@ -31,7 +32,7 @@ class Page extends CI_Controller {
         $data['additional_css'] = array();
 
         // Enter url_page_names into array if they require a different view file or custom functionality
-        $custom_page_array = array('styleguide');
+        $custom_page_array = array();
 
         if (count($vars_array) > 0) {
             $category_url = $vars_array[1];
@@ -40,9 +41,7 @@ class Page extends CI_Controller {
 
             if (in_array($category_url, $custom_page_array)) {
                 switch ($category_url) {
-                    case 'styleguide':
-                        $data['page_view'] = 'styleguide/index';
-                        break;
+
                 }
             } else {
                 /*-----------------------
@@ -77,7 +76,7 @@ class Page extends CI_Controller {
             $data['meta_array']['title'] = 'Homepage';
             $data['meta_array']['description'] = 'Homepage description.';
             $data['meta_array']['keywords'] = '';
-            $data['page_view'] = 'homepage';
+            $data['page_view'] = 'home';
         }
 
         //LOAD TEMPLATE
