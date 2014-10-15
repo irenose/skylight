@@ -1,0 +1,105 @@
+.baseline {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.baseline__rules {
+    height: #{$line-height-default + 'em'};
+    line-height: 1em;
+    opacity: .4;
+
+    &:after {
+        border-bottom: 1px solid pink;
+        bottom: -1px;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
+}
+
+.styleguide__block {
+    overflow: hidden;
+    padding: 5% 0;
+}
+
+.styleguide__heading {
+    @extend %h6;
+    border-bottom: 1px solid black;
+    color: black;
+    font-weight: bold;
+    text-align: right;
+
+    a {
+        color: black;
+    }
+}
+
+.styleguide__subheading {
+    @extend %h6;
+    border-bottom: 1px solid #ccc;
+    color: #ccc;
+    font-weight: bold;
+    margin-top: 5%;
+    text-align: right;
+
+    &:first-child {
+        margin-top: 1em;
+    }
+}
+
+.styleguide__back {
+    border-top: 1px solid #ccc;
+    margin-top: 5em;
+    text-align: right;
+}
+
+.styleguide__color-chip {
+    display: inline-block;
+    height: 100px;
+    width: 10%;
+}
+
+%color-chip {
+    height: 100%;
+    width: 100%;
+
+    + .color-chip__heading:after {
+        display: block;
+        text-align: center;
+    }
+}
+
+.color-chip--default {
+    @extend %color-chip;
+    background: $color-default;
+
+    + .color-chip__heading:after {
+        content: 'default';
+    }
+}
+
+.color-chip--primary {
+    @extend %color-chip;
+    background: $color-primary;
+
+    + .color-chip__heading:after {
+        content: 'primary';
+    }
+}
+
+.color-chip--secondary {
+    @extend %color-chip;
+    background: $color-secondary;
+
+    + .color-chip__heading:after {
+        content: 'secondary';
+    }
+}

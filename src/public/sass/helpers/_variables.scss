@@ -1,0 +1,27 @@
+// layout
+
+// dimensions
+$page-max-width: 80%;
+
+// breakpoints
+$small: 27.777777778em; // 500 / 18
+$medium: 38.888888889em; // 700 / 18
+$switch-nav: 56.888888889em; // 1024 / 18
+$large: 66.666666667em; // 1200 / 18
+$max: $page-max-width;
+$foundation-small: 0px !default; // foundation
+$foundation-med: 641px !default; // foundation
+$foundation-large: 1025px !default; // foundation
+
+// colors
+$color-default: #333;
+$color-primary: #ccc;
+$color-secondary: #eee;
+
+// typography
+$font-family-default: sans-serif;
+
+$font-unit-default: 1em;
+$font-size-default: $font-unit-default;
+
+$line-height-default: 1.5;

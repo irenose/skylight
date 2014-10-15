@@ -1,0 +1,3 @@
+<h1>Homepage</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, placeat atque velit sequi tempora deleniti quasi, similique praesentium repellendus dignissimos rerum. Repudiandae facere omnis suscipit eius explicabo vel libero, fuga ab at quasi reprehenderit, ipsum magni autem, ullam! Assumenda iste aliquam quisquam, modi incidunt quo culpa ratione. Quasi, repellendus, nemo? </p>
+<img src=<?=asset_url('images/ww.png')?>>

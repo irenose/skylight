@@ -1,0 +1,82 @@
+@mixin bp($min-width: 0em, $max-width: false) {
+    @if ($max-width) {
+        @media only screen and (min-width: $min-width) and (max-width: $max-width) {
+            @content;
+        }
+    } @else {
+        @media only screen and (min-width: $min-width) {
+            @content;
+        }
+    }
+}
+
+@mixin circle($width, $max-width: none, $bg: none) {
+    background: $bg;
+    border-radius: 50%;
+    height: auto;
+    max-width: $max-width;
+    width: $width;
+
+    .lt-ie9 & {
+        width: auto !important;
+    }
+}
+
+@mixin semicircle($dir, $width: 20px, $bg: #f00) {
+     background: $bg;
+     height: $width / 2;
+     width: $width;
+
+    @if ($dir == "up") {
+        border-radius: $width $width 0 0;
+    }
+    @else if ($dir == "right") {
+        border-radius: 0 $width $width 0;
+    }
+    @else if ($dir == "down") {
+        border-radius: 0 0 $width $width;
+    }
+    @else if ($dir == "left") {
+        border-radius: $width 0 0 $width;
+    }
+}
+
+// http://apps.eky.hk/css-triangle-generator/
+@mixin triangle($dir, $width: 20px, $bg: #f00) {
+    border-style: solid;
+    height: 0;
+    width: 0;
+
+    @if ($dir == "north") {
+        border-width: 0 $width ($width / .6) $width;
+        border-color: transparent transparent $bg transparent;
+    }
+    @else if ($dir == "north-east") {
+        border-width: 0 $width $width 0;
+        border-color: transparent $bg transparent transparent;
+    }
+    @else if ($dir == "east") {
+        border-width: $width 0 $width ($width / .6);
+        border-color: transparent transparent transparent $bg;
+    }
+    @else if ($dir == "south-east") {
+        border-width: 0 0 $width $width;
+        border-color: transparent transparent $bg transparent;
+    }
+    @else if ($dir == "south") {
+        border-width: ($width / .6) $width 0 $width;
+        border-color: $bg transparent transparent transparent;
+    }
+    @else if ($dir == "south-west") {
+        border-width: $width 0 0 $width;
+        border-color: transparent transparent transparent $bg;
+    }
+    @else if ($dir == "west") {
+        border-width: $width ($width / .6) $width 0;
+        border-color: transparent $bg transparent transparent;
+    }
+    @else if ($dir == "north-west") {
+        border-width: $width $width 0 0;
+        border-color: $bg transparent transparent transparent;
+    }
+}

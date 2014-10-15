@@ -1,0 +1,45 @@
+$d: 100px;
+
+.icon {
+    display: inline-block;
+    height: $d;
+    overflow: hidden;
+    width: $d;
+}
+
+.icon-facebook {
+    background: tomato;
+}
+
+.icon-twitter {
+    background: cornflowerblue;
+}
+
+.icon-pinterest {
+    background: fuchsia;
+}
+
+.icon-linkedin {
+    background: bisque;
+}
+
+.icon-youtube {
+    background: yellow;
+}
+
+.icon__svg {
+    display: block;
+    fill: #000;
+    height: 100%;
+    transition: fill 0.5s ease;
+    width: 100%;
+
+    .btn--icon:hover & {
+        fill: #f00;
+    }
+    // svg4everybody fallback
+    img {
+        display: block;
+        margin: auto;
+    }
+}

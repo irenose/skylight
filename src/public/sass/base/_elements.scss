@@ -1,0 +1,290 @@
+div, section, article, header, footer, h1, h2, h3, h4, h5, h6, p, ol, ul, li, a, span {
+    position: relative;
+}
+
+/*-----------------------
+  @HTML
+------------------------*/
+html {
+
+}
+
+/*-----------------------
+  @BODY
+------------------------*/
+body {
+    color: $color-default;
+    font-family: $font-family-default;
+    font-size: $font-size-default * .875; // set to 14px
+    line-height: $line-height-default;
+
+    @include bp($small) {
+        font-size: $font-size-default; // allow 16px
+    }
+}
+
+/*-----------------------
+  @HEADING
+
+  http://joshnh.com/2011/08/03/how-to-set-up-a-baseline-grid/
+------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin-top: 0;
+}
+
+%h1 {
+    font-size: 3em; /* 48 / 16 */
+    line-height: 1em; /* (24 * 2) / 48  (double) */
+    margin-bottom: .5em; /* 24 / 48 */
+}
+h1 {
+    @extend %h1;
+}
+
+%h2 {
+    font-size: 2.25em; /* 36 / 16 */
+    line-height: 1.333333333333333em; /* (24 * 2) / 36 (double) */
+    margin-bottom: .6666666666666667em; /* 24 / 36 */
+}
+h2 {
+    @extend %h2;
+}
+
+%h3 {
+    font-size: 1.5em; /* 24 / 16 */
+    line-height: 1em; /* 24 / 24 */
+    margin-bottom: 1em; /* 24 / 24 */
+}
+h3 {
+    @extend %h3;
+}
+
+%h4 {
+    font-size: 1.3125em; /* 21 / 16 */
+    line-height: 1.142857142857143em; /* 24 / 21 */
+    margin-bottom: 1.142857142857143em; /* 24 / 21 */
+}
+h4 {
+    @extend %h4;
+}
+
+%h5 {
+    font-size: 1.125em; /* 18 / 16 */
+    line-height: 1.333333333333333em; /* 24 / 18 */
+    margin-bottom: 1.333333333333333em; /* 24 / 18 */
+}
+h5 {
+    @extend %h5;
+}
+
+%h6 {
+    font-size: 1em; /* 16 / 16 */
+    line-height: 1.5em; /* 24 / 16 */
+    margin-bottom: 1.5em; /* 24 / 16 */
+}
+h6 {
+    @extend %h6;
+}
+
+/*-----------------------
+  @PARAGRAPH
+------------------------*/
+p {
+    font-size: 1em; /* 16 / 16 */
+    line-height: 1.5em; /* 24 / 16 */
+    margin-bottom: 1.5em; /* 24 / 16 */
+}
+
+/*-----------------------
+  @LIST
+------------------------*/
+ol {
+
+}
+
+ul {
+
+}
+
+li {
+
+    ol & {
+
+    }
+    ul & {
+
+    }
+}
+
+/*-----------------------
+  @LINK
+------------------------*/
+%a {
+    color: dodgerblue;
+    font-family: $font-family-default;
+    text-decoration: none;
+}
+%a-hover {
+    @extend %underlined;
+}
+a {
+    @extend %a;
+
+    &:hover,
+    &.link--hover {
+        @extend %a-hover;
+    }
+    &:active,
+    &.link--active {
+        @extend %a-active;
+    }
+    &:focus,
+    &.link--focus {
+        @extend %a-focus;
+    }
+    &:visited,
+    &.link--visited {
+        @extend %a-visited;
+    }
+}
+
+/*-----------------------
+  @EM
+------------------------*/
+em {
+    @extend %italic;
+}
+
+/*-----------------------
+  @U
+------------------------*/
+u {
+    @extend %underlined;
+}
+
+/*-----------------------
+  @I
+------------------------*/
+i {
+    font-style: normal;
+}
+
+/*-----------------------
+  @NAV
+------------------------*/
+nav {
+    ul {
+        @extend %unstyled;
+    }
+}
+
+/*-----------------------
+  @BLOCKQUOTE
+------------------------*/
+blockquote {
+
+}
+
+/*-----------------------
+  @FIELDSET
+------------------------*/
+fieldset {
+
+}
+
+/*-----------------------
+  @LEGEND
+------------------------*/
+legend {
+
+}
+
+/*-----------------------
+  @BUTTON
+------------------------*/
+%button {
+    @extend %centered;
+    @extend %a;
+    background: #ccc;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    outline: none;
+    padding: .85em 2em .8em;
+}
+button {
+    @extend %button;
+}
+
+/*-----------------------
+  @INPUT
+------------------------*/
+
+input[type="text"] {
+
+}
+
+input[type="tel"] {
+
+}
+
+input[type="email"] {
+
+}
+
+input[type="url"] {
+
+}
+
+input[type="password"] {
+
+}
+
+input[type="file"] {
+
+}
+
+input[type="radio"] {
+
+    &:checked {
+
+    }
+}
+
+input[type="checkbox"] {
+
+    &:checked {
+
+    }
+}
+
+input[type="button"] {
+    @extend %button;
+}
+
+input[type="submit"],
+button[type="submit"] {
+    @extend %button;
+}
+
+/*-----------------------
+  @LABEL
+------------------------*/
+label {
+
+}
+
+/*-----------------------
+  @SELECT
+------------------------*/
+select {
+
+}
+
+/*-----------------------
+  @TEXTAREA
+------------------------*/
+textarea {
+
+}

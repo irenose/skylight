@@ -1,0 +1,14 @@
+.field__checkbox--horizontal,
+.field__radio--horizontal {
+    display: inline-block;
+}
+
+.asterisk {
+    color: red;
+    padding-left: 2px;
+    vertical-align: sup;
+
+    &[title="Required"] {
+        border-bottom: none;
+    }
+}

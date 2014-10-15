@@ -1,0 +1,22 @@
+%btn {
+    @extend %button;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+.btn {
+    @extend %btn;
+}
+
+.btn--text {
+    @extend %btn;
+    background: transparent;
+    color: $color-default;
+}
+
+.btn--icon {
+    @extend %btn;
+    background: transparent;
+    padding: 0;
+}
