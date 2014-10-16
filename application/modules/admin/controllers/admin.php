@@ -1074,6 +1074,9 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('admin_template', $data);
 	}
+/****************************************************************************************************************************************
+/*	INSTALLERS
+/****************************************************************************************************************************************/
 
 	function installers($action = NULL, $dealer_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
@@ -1116,7 +1119,7 @@ class Admin extends CI_Controller {
 					$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
 					
 					if ($this->form_validation->run() == FALSE) {
-						$data['page_content'] = 'admin_installer_add';
+						$data['page_content'] = 'admin_installers_add';
 					} else {
 						$insert_id = $this->admin_model->add_dealer_site($_POST);
 						if($insert_id != FALSE) {
@@ -1262,25 +1265,881 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('admin_template', $data);
 	}
-
-	function product() {
-
+/****************************************************************************************************************************************
+/*	PRODUCTS
+/****************************************************************************************************************************************/
+	function products($action = NULL, $product_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'products';
+		if($action == NULL) {
+			$data['page_title'] = 'Products';
+			if($this->input->post('product_status') != '') {
+				$data['product_category_array'] = $this->admin_model->get_product_categories($this->input->post('product_status'));
+				$data['product_status'] = $this->input->post('product_status');
+			} else {
+				$data['product_category_array'] = $this->admin_model->get_product_categories();	
+				$data['product_status'] = '';
+			}
+			$data['page_content'] = 'admin_product_list';
+		} else {
+			
+			$data['product_category_array'] = $this->admin_model->get_product_categories();	
+			switch($action) {
+				case 'add':
+					$data['show_openwysiwyg'] = TRUE;
+					$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|required|xss_clean');
+					//$this->form_validation->set_rules('product_teaser', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('product_description', 'Product Description', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('product_category_id', 'Product Category', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('primary_category_id', 'Product Sub-Category', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('green_friendly_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('no_leak_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('tax_credit', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('energy_star', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('remote_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_product_add';
+					} else {
+						$insert_id = $this->admin_model->add_product($_POST);
+						if($insert_id != FALSE) {
+							$this->session->set_flashdata('status_message','<div class="success">Product has been added successfully</div>');
+							redirect('admin/products');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this product. Please try again.</p></div>');
+							redirect('admin/products');
+						}
+					}
+					break;
+				case 'update':
+					$data['show_openwysiwyg'] = TRUE;
+					$config['upload_path'] = './product_images/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size']	= '500';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+					$config['overwrite'] = TRUE;
+					
+					//Load Upload and Image libraries
+					$this->load->library('upload');
+					$this->load->library('image_lib');
+					
+					$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|required|xss_clean');
+					//$this->form_validation->set_rules('product_teaser', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('product_description', 'Product Description', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('product_category_id', 'Product Category', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('primary_category_id', 'Product Sub-Category', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('green_friendly_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('no_leak_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('tax_credit', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('energy_star', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('remote_flag', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('product_status', 'Product Status', 'required|trim|xss_clean');
+					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
+					$data['product_array'] = $this->admin_model->get_product_by_id($product_id);
+					$data['product_id'] = $product_id;
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_product_update';
+					} else {
+						
+						//rename post array so we can add values to it for image
+						$data_array = $_POST;
+						$has_product_image = FALSE;
+						$has_lifestyle_image = FALSE;
+						
+						if( ! empty($_FILES['product_image']['name']) || ! empty($_FILES['lifestyle_image']['name'])) {
+							
+							// Upload Product Image
+							if( ! empty($_FILES['product_image']['name'])) {
+								
+								$has_product_image = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('product_image')) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_product_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$image_name = $data['upload_data']['file_name'];
+									
+									//Create re-sized thumbnail, then delete original image
+									//create_product_image($file_path, $image_name, 376, '', TRUE, '_lg', 'product_' . $product_id);
+									create_product_image($file_path, $image_name, 100, 120, TRUE, '_th', 'product_' . $product_id);
+									unlink($file_path . $image_name);
+									
+									//Use raw name to insert into DB
+									$raw_name = 'product_' . $product_id;
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+									
+									
+									//Add RSS Image data to post array
+									$data_array['product_image'] = $raw_name;
+									$data_array['extension'] = $ext;
+								}
+							}
+							
+							// Upload Product Image
+							if( ! empty($_FILES['lifestyle_image']['name'])) {
+								
+								$has_lifestyle_image = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('lifestyle_image')) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_product_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$image_name = $data['upload_data']['file_name'];
+									
+									//Create re-sized thumbnail, then delete original image
+									create_product_image($file_path, $image_name, 376, 440, TRUE, '_lg', 'lifestyle_' . $product_id);
+									create_product_image($file_path, $image_name, 180, 211, TRUE, '_th', 'lifestyle_' . $product_id);
+									unlink($file_path . $image_name);
+									
+									//Use raw name to insert into DB
+									$raw_name = 'lifestyle_' . $product_id;
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+									
+									
+									//Add RSS Image data to post array
+									$data_array['lifestyle_image'] = $raw_name;
+									$data_array['lifestyle_extension'] = $ext;
+								}
+							}
+						}
+								
+						$update = $this->admin_model->update_product($data_array, $has_product_image, $has_lifestyle_image);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Product has been updated successfully</div>');
+							redirect('admin/products/update/' . $product_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this product. Please try again.</p></div>');
+							redirect('admin/products/update/' . $product_id);
+						}
+					}
+					break;
+					
+				case 'delete':
+					$data_array = array('product_id' => $product_id);
+					$delete = $this->admin_model->delete_product($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your product has been deleted successfully.</div>');
+						redirect('admin/products');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this product. Please try again.</p></div>');
+						redirect('admin/products');
+					}
+					break;
+				
+			}
+		}
+		
+		$this->load->view('admin_template', $data);
 	}
 
-	function promotions() {
+	function galleries($action = NULL, $gallery_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'galleries';
+		if($action == NULL) {
+			$data['page_title'] = 'Galleries';
+			$data['galleries_array'] = $this->admin_model->get_galleries();
+			$data['page_content'] = 'admin_galleries_list';
+		} else {
+			
+			$data['product_category_array'] = $this->admin_model->get_product_categories();
+			switch($action) {
+				case 'add':
+					$this->load->library('upload');
+					$this->load->library('image_lib');
+					
+					$config['upload_path'] = './gallery_images/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size']	= '500';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+					$config['overwrite'] = FALSE;
+					
+					$this->upload->initialize($config);
+					
+					$this->form_validation->set_rules('userfile1', '', '');
+					$this->form_validation->set_rules('image_title1', 'Image Title 1', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('image_description1', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('image_title2', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('image_description2', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('image_title3', '', 'trim|rxss_clean');
+					$this->form_validation->set_rules('image_description3', '', 'trim|xss_clean');
+					
+					$errors = FALSE;
+					$data['gallery_id'] = $gallery_id;
+					if($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_galleries_add';
+					} else {
+						$images_array = array();
 
+						//Make sure photos upload correctly before doing anything else
+						foreach($_FILES as $key => $value) {
+							if( ! empty($value['name'])) {
+								if( ! $this->upload->do_upload($key)) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$errors = TRUE;
+									break;
+								} else {
+									$images_array[] = $this->upload->data();
+								}
+							}
+						}
+						
+						
+						if($errors) {
+							foreach($images_array as $key => $file) {
+								@unlink($file['full_path']);    
+							} 
+							$data['page_content'] = 'admin_galleries_add';
+							break;
+						} else {
+							$count = 0;
+							$db_error = FALSE;
+
+							foreach($images_array as $key => $image) {
+					
+								$count++;
+								
+								$file_path = '';
+								$image_name = '';
+								$prefix = '';
+								$rand = '';
+								
+								$file_path = $image['file_path'];
+								$image_name = $image['file_name'];
+								
+								//Add random number to string otherwise it will just overwrite
+								$prefix = time();
+								$rand = rand(100,2500);
+								$prefix = $prefix . $rand;
+								
+								//Create re-sized thumbnail, then delete original image
+								create_gallery_image($file_path, $image_name, 620, 465, TRUE, '_lg', $prefix);
+								create_gallery_thumbnail($file_path, $image_name, 135, 135, TRUE, '_th', $prefix);
+								@unlink($file_path . $image_name);
+								
+								//Use raw name to insert into DB
+								$raw_name = $prefix;
+								$ext = substr($image['file_ext'], strrpos($image['file_ext'],'.')+1);
+								
+								$image_title = 'image_title' . $count;
+								$image_description = 'image_description' . $count;
+								$data_array['image_title'] = $this->input->post($image_title);
+								$data_array['image_description'] = $this->input->post($image_description);
+								$data_array['gallery_id'] = $this->input->post('gallery_id');
+								
+								//Add RSS Image data to post array
+								$data_array['image_name'] = $raw_name;
+								$data_array['extension'] = $ext;
+								
+								$insert_id = $this->admin_model->add_gallery_image($data_array);
+								if(! $insert_id) {
+									$db_error = TRUE;
+									break;
+								}
+								
+								
+								
+							}
+							
+							if($db_error == FALSE) {
+								$this->session->set_flashdata('status_message','<div class="success">Gallery Images have been added successfully</div>');
+								redirect('admin/galleries');
+							} else {
+								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding these gallery images. Please try again.</p></div>');
+								redirect('admin/galleries');
+							}
+						}
+					}
+					break;
+					
+				case 'update':
+					$data['gallery_id'] = $gallery_id;
+					$data['gallery_array'] = $this->admin_model->get_gallery_by_id($gallery_id);
+					
+					$this->form_validation->set_rules('gallery_status', 'Gallery Status', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('gallery_name', 'Gallery Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('gallery_description', 'Gallery Description', 'trim|required|xss_clean');
+					
+					if($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_galleries_update';
+					} else {
+						$update = $this->admin_model->update_gallery_info($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Gallery information has been updated successfully</div>');
+							redirect('admin/galleries/update/' . $gallery_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this gallery information. Please try again.</p></div>');
+							redirect('admin/galleries/update/' . $gallery_id);
+						}
+					}
+					break;
+					
+				case 'reorder':
+					$data['gallery_id'] = $gallery_id;
+					$data['image_array'] = $this->admin_model->get_images_by_gallery($gallery_id);
+					if($this->input->post('form_submitted') == 'yes') {
+						$update = $this->admin_model->update_gallery_images($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Your images have been re-ordered successfully</div>');
+							$this->sitemap->generate();
+							redirect('admin/galleries/reorder/' . $gallery_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating the image order. Please try again.</p></div>');
+							redirect('admin/galleries/reorder/' . $gallery_id);
+						}
+					}
+					$data['page_content'] = 'admin_galleries_reorder';
+					break;
+				
+			}
+		}
+		
+		$this->load->view('admin_template', $data);
 	}
-
-	function galleries() {
-
+	
+/****************************************************************************************************************************************
+/*	TESTIMONIALS
+/****************************************************************************************************************************************/
+	function testimonials($action = NULL, $testimonial_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'testimonials';
+		if($action == NULL) {
+			$data['page_title'] = 'Testimonials';
+			$data['testimonials_array'] = $this->admin_model->get_testimonials();
+			$data['page_content'] = 'admin_testimonials_list';
+		} else {
+			$this->form_validation->set_rules('testimonial_copy', 'Testimonial Copy', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('testimonial_name', 'Name', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('testimonial_source', '', 'trim|xss_clean');
+			switch($action) {
+				
+				case 'add':
+				
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_testimonials_add';
+					} else {
+						$insert_id = $this->admin_model->add_testimonial($_POST);
+						if($insert_id != FALSE) {
+							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been added successfully</div>');
+							redirect('admin/testimonials');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this testimonial. Please try again.</p></div>');
+							redirect('admin/testimonials');
+						}
+					}
+					break;
+				case 'update':
+					if ($this->form_validation->run() == FALSE) {
+						$data['testimonial_id'] = $testimonial_id;
+						$data['testimonial_array'] = $this->admin_model->get_testimonial_by_id($testimonial_id);
+						$data['page_content'] = 'admin_testimonials_update';
+					} else {
+						$update = $this->admin_model->update_testimonial($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been updated successfully</div>');
+							redirect('admin/testimonials/update/' . $testimonial_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this testimonial. Please try again.</p></div>');
+							redirect('admin/testimonials/update/' . $testimonial_id);
+						}
+					}
+					break;
+					
+				case 'delete':
+					$data_array = array('testimonial_id' => $testimonial_id);
+					$delete = $this->admin_model->delete_testimonial($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your testimonial has been deleted successfully.</div>');
+						redirect('admin/testimonials/');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this testimonial. Please try again.</p></div>');
+						redirect('admin/testimonials/');
+					}
+					break;
+				
+			}
+		}
+		
+		$this->load->view('admin_template', $data);
 	}
+	
+/****************************************************************************************************************************************
+/*	PROMOTIONS
+/****************************************************************************************************************************************/
+	function promotions($action = NULL, $promotion_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'promotions';
+		if($action == NULL) {
+			$data['page_title'] = 'Promotions';
+			$data['promotions_array'] = $this->admin_model->get_promotions();
+			$data['page_content'] = 'admin_promotions_list';
+		} else {
+			switch($action) {
+				case 'add':
+					$this->load->library('upload');
+					
+					$config['upload_path'] = './promotion_files/';
+					$config['max_size']	= '800';
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+					$config['overwrite'] = FALSE;
+					
+					$this->upload->initialize($config);
+					
+					$this->form_validation->set_rules('promotion_file', '', '');
+					$this->form_validation->set_rules('promotion_title', 'Promotion Title', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('default_option', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('top_coordinate', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('left_coordinate', '', 'trim|xss_clean');
 
-	function testimonials() {
+					if($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_promotions_add';
+					} else {
+						
+						$config['allowed_types'] = 'gif|jpg|png';
+						$this->upload->initialize($config);
+						
+						if ( ! $this->upload->do_upload('promotion_file')) {
+							$error = $this->upload->display_errors('','');
+							$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+							$data['page_content'] = 'admin_promotions_add';
+							break;
+						} else {
+							$file_path = '';
+							
+							$data = array('upload_data' => $this->upload->data());
+							$file_path = $data['upload_data']['file_path'];
+							$file_name = $data['upload_data']['file_name'];
+							$raw_name = $data['upload_data']['raw_name'];
+							$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+							$full_extension = $data['upload_data']['file_ext'];
+							
+							$file_prefix = url_title($this->input->post('promotion_title'),'underscore', TRUE);
+							rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+							
+							$data_array = $_POST;
 
+							$data_array['promotion_file'] = $file_prefix;
+							$data_array['extension'] = $ext;
+							$data_array['has_flash'] = 'no';
+							$data_array['promotion_banner'] = '';
+							$data_array['banner_extension'] = '';
+							
+							// Upload Flash file if present
+							if( ! empty($_FILES['promotion_flash']['name'])) {
+								$config['allowed_types'] = 'swf';
+								$this->upload->initialize($config);
+								if ( ! $this->upload->do_upload('promotion_flash')) {
+									@unlink($file_path . $file_prefix . $full_extension);
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_promotions_add';
+									break;
+									
+								} else {
+									$data = array('flash_data' => $this->upload->data());
+									$flash_file_name = $data['flash_data']['file_name'];
+									rename($file_path . $flash_file_name, $file_path . $file_prefix . '.swf');
+									$data_array['has_flash'] = 'yes';
+								}
+								
+							}
+							
+							$insert_id = $this->admin_model->add_promotion($data_array);
+							if($insert_id != FALSE) {
+								$this->session->set_flashdata('status_message','<div class="success">Promotion has been added successfully</div>');
+								redirect('admin/promotions');
+							} else {
+								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this promotion. Please try again.</p></div>');
+								redirect('admin/promotions');
+							}
+						}
+					}
+					break;
+					
+				case 'update':
+					$this->load->library('upload');
+					$data['promotion_id'] = $promotion_id;
+					$data['promotion_array'] = $this->admin_model->get_promotion_by_id($promotion_id);
+					
+					$this->form_validation->set_rules('promotion_title', 'Promotion Title', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('promotion_status', 'Promotion Status', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('default_option', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('top_coordinate', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('left_coordinate', '', 'trim|xss_clean');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_promotions_update';
+					} else {
+						
+						//rename post array so we can add values to it for image
+						$data_array = $_POST;
+						$file_prefix = $this->input->post('file_prefix');
+						$has_image = FALSE;
+						$has_swf = FALSE;
+						$has_banner = FALSE;
+						
+						if( ! empty($_FILES['promotion_file']['name']) || ! empty($_FILES['promotion_flash']['name']) || ! empty($_FILES['promotion_banner']['name'])) {
+							
+							// Upload Image File
+							if( ! empty($_FILES['promotion_file']['name'])) {
+								$config['overwrite'] = TRUE;
+								$config['max_size']	= '800';
+								$config['upload_path'] = './promotion_files/';
+								$config['allowed_types'] = 'gif|jpg|png';
+								
+								$has_image = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('promotion_file')) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_promotions_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$file_name = $data['upload_data']['file_name'];
+									$full_extension = $data['upload_data']['file_ext'];
+									rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+
+									$data_array['promotion_file'] = $file_prefix;
+									$data_array['extension'] = $ext;
+								}
+								
+							}
+							
+							// Upload Promotion SWF
+							if( ! empty($_FILES['promotion_flash']['name'])) {
+								$config['overwrite'] = TRUE;
+								$config['allowed_types'] = 'swf';
+								$config['upload_path'] = './promotion_files/';
+								
+								$has_swf = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('promotion_flash')) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['promotion_id'] = $promotion_id;
+									$data['promotion_array'] = $this->admin_model->get_promotion_by_id($promotion_id);
+									$data['page_content'] = 'admin_promotions_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$file_name = $data['upload_data']['file_name'];
+									$full_extension = $data['upload_data']['file_ext'];
+									rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+
+									$data_array['has_flash'] = 'yes';
+								}
+								
+							}
+						}
+						$update = $this->admin_model->update_promotion($data_array, $has_image, $has_swf, $has_banner);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Promotion has been updated successfully</div>');
+							redirect('admin/promotions/update/' . $promotion_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this promotion. Please try again.</p></div>');
+							redirect('admin/promotions/update/' . $promotion_id);
+						}
+					}
+					break;
+					
+				case 'delete':
+					$data['promotion_id'] = $promotion_id;
+					$data['promotion_array'] = $this->admin_model->get_promotion_by_id($data['promotion_id']);
+					$delete = $this->admin_model->delete_promotion($data['promotion_id'], $data['promotion_array']);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your promotion has been deleted successfully.</div>');
+						redirect('admin/promotions/');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this promotion. Please try again.</p></div>');
+						redirect('admin/promotions/');
+					}
+					break;
+			}
+		}
+		
+		$this->load->view('admin_template', $data);
 	}
+	
+/****************************************************************************************************************************************
+/*	LITERATURE
+/****************************************************************************************************************************************/
+	function literature($action = NULL, $literature_id = NULL) {
+		$this->auth->restrict(FALSE, '1');
+		$data['current_section'] = 'literature';
+		if($action == NULL) {
+			$data['page_title'] = 'Literature';
+			$data['literature_array'] = $this->admin_model->get_literature();
+			$data['page_content'] = 'admin_literature_list';
+		} else {
+			switch($action) {
+				
+				case 'add':
+					$this->load->library('upload');
+					
+					$config['upload_path'] = './downloads/';
+					$config['max_size']	= '20000';
+					$config['overwrite'] = FALSE;
+					
+					$this->upload->initialize($config);
+					
+					$this->form_validation->set_rules('filename', '', '');
+					$this->form_validation->set_rules('name', 'Brochure Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('description', 'Brochure Description', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('analytics_url', 'Analytics URL', 'trim|required|xss_clean');
 
-	function literature() {
+					if($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_literature_add';
+					} else {
+						$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
+						$this->upload->initialize($config);
+						
+						if ( ! $this->upload->do_upload('filename')) {
+							$error = $this->upload->display_errors('','');
+							$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+							$data['page_content'] = 'admin_literature_add';
+							break;
+						} else {
+							$file_path = '';
+							
+							$data = array('upload_data' => $this->upload->data());
+							$file_path = $data['upload_data']['file_path'];
+							$file_name = $data['upload_data']['file_name'];
+							$raw_name = $data['upload_data']['raw_name'];
+							$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+							$full_extension = $data['upload_data']['file_ext'];
+							
+							$file_prefix = url_title($this->input->post('name'),'underscore', TRUE);
+							rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+							
+							$data_array = $_POST;
 
+							$data_array['filename'] = $file_prefix;
+							$data_array['extension'] = $ext;
+							$data_array['thumbnail'] = '';
+							$data_array['thumbnail_extension'] = '';
+							
+							// Upload Flash file if present
+							if( ! empty($_FILES['thumbnail']['name'])) {
+								$config['allowed_types'] = 'gif|jpg|jpeg|png';
+								$config['upload_path'] = './downloads/thumbs/';
+								$this->upload->initialize($config);
+								if ( ! $this->upload->do_upload('thumbnail')) {
+									@unlink($file_path . $file_prefix . $full_extension);
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_literature_add';
+									break;
+									
+								} else {
+									$data = array('thumb_data' => $this->upload->data());
+									$thumb_file_name = $data['thumb_data']['file_name'];
+									$file_path = $data['thumb_data']['file_path'];
+									$raw_name = $data['thumb_data']['raw_name'];
+									$ext = substr($data['thumb_data']['file_ext'], strrpos($data['thumb_data']['file_ext'],'.')+1);
+									$full_extension = $data['thumb_data']['file_ext'];
+									rename($file_path . $thumb_file_name, $file_path . $file_prefix . $full_extension);
+									$data_array['thumbnail'] = $file_prefix;
+									$data_array['thumbnail_extension'] = $ext;
+								}
+								
+							}
+							
+							$insert_id = $this->admin_model->add_literature($data_array);
+							if($insert_id != FALSE) {
+								$this->session->set_flashdata('status_message','<div class="success">Brochure has been added successfully</div>');
+								redirect('admin/literature');
+							} else {
+								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this brochure. Please try again.</p></div>');
+								redirect('admin/literature');
+							}
+						}
+					}
+					break;
+					
+				case 'update':
+					$this->load->library('upload');
+					$data['literature_id'] = $literature_id;
+					$data['literature_array'] = $this->admin_model->get_literature_by_id($literature_id);
+					
+					$this->form_validation->set_rules('name', 'Brochure Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('description', 'Brochure Description', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('literature_status', 'Brochure Status', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('analytics_url', 'Analytics URL', 'trim|required|xss_clean');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['error'] = '';
+						$data['page_content'] = 'admin_literature_update';
+					} else {
+						
+						//rename post array so we can add values to it for image
+						$data_array = $_POST;
+						$file_prefix = $this->input->post('file_prefix');
+						$has_thumbnail = FALSE;
+						$has_brochure = FALSE;
+						
+						if( ! empty($_FILES['filename']['name']) || ! empty($_FILES['thumbnail']['name'])) {
+
+							// Upload Large File
+							if( ! empty($_FILES['filename']['name'])) {
+								$config['overwrite'] = TRUE;
+								$config['upload_path'] = './downloads/';
+								$config['max_size']	= '20000';
+								$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
+								
+								$has_brochure = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('filename')) {
+
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_literature_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$file_name = $data['upload_data']['file_name'];
+									$full_extension = $data['upload_data']['file_ext'];
+									rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+
+									//Add image data to post array
+									$data_array['filename'] = $file_prefix;
+									$data_array['extension'] = $ext;
+								}
+								
+							}
+							
+							// Upload Product Image
+							if( ! empty($_FILES['thumbnail']['name'])) {
+								$config['overwrite'] = TRUE;
+								$config['upload_path'] = './downloads/thumbs/';
+								$config['max_size']	= '2000';
+								$config['allowed_types'] = 'gif|jpg|jpeg|png';
+								
+								$has_thumbnail = TRUE;
+								
+								$error = '';
+								//Initialize
+								$this->upload->initialize($config);
+							
+								if ( ! $this->upload->do_upload('thumbnail')) {
+									$error = $this->upload->display_errors('','');
+									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+									$data['page_content'] = 'admin_literature_update';
+									break;
+								} else {
+									$file_path = '';
+									$image_name = '';
+									
+									$data = array('upload_data' => $this->upload->data());
+									$file_path = $data['upload_data']['file_path'];
+									$file_name = $data['upload_data']['file_name'];
+									$full_extension = $data['upload_data']['file_ext'];
+									rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
+									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+
+									//Add image data to post array
+									$data_array['thumbnail'] = $file_prefix;
+									$data_array['thumbnail_extension'] = $ext;
+								}
+								
+							}
+						}
+
+						$update = $this->admin_model->update_literature($data_array, $has_brochure, $has_thumbnail);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Brochure has been updated successfully</div>');
+							redirect('admin/literature/update/' . $literature_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this brochure. Please try again.</p></div>');
+							redirect('admin/literature/update/' . $literature_id);
+						}
+					}
+
+					
+					break;
+					
+				case 'delete':
+					$data_array = array('literature_id' => $literature_id);
+					$delete = $this->admin_model->delete_literature($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your brochure has been deleted successfully.</div>');
+						redirect('admin/literature/');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this brochure. Please try again.</p></div>');
+						redirect('admin/literature/');
+					}
+					break;
+				
+			}
+			
+		}
+		
+		$this->load->view('admin_template', $data);
 	}
 
 

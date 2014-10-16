@@ -956,7 +956,11 @@ a.manual_upload_file_selected
 	background:#ccc;
 	width:50%;
 }
-
+.col-50 {
+	float:left;
+	width:48%;
+	padding-right:2%;
+}
 
 
 /****************************************   MOBILE  *****************************************************/
