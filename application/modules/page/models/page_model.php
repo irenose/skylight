@@ -15,6 +15,9 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+/**********************************************************************************************************************************
+		SEARCH FUNCTIONS
+***********************************************************************************************************************************/
 	function get_coordinates($zip_code) {
 		$db_table = $this->config->item('db_table_prefix') . 'zip_codes';
 		//Strip Leading 00s from zip
@@ -25,6 +28,56 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_closest_installers($zip_code) {
+		$coordinates_array = $this->get_coordinates($zip_code);
+		if(count($coordinates_array) > 0) {
+			$db_table = $this->config->item('db_table_prefix') . 'dealers';
+			$distance = '5000';
+			$latitude = $coordinates_array[0]->latitude;
+			$longitude = $coordinates_array[0]->longitude;
+			$this->db->select('dealer_id, name, address, city, state, zip, email, phone1, website, dealer_url, dealer_status, site_status, ( 3959 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) *  sin( radians( latitude ) ) ) ) AS distance', FALSE);
+			$where = "distance <= '$distance' AND dealer_status = 'active' AND site_status = 'active' AND dealer_id <> '6' AND dealer_id <> '166'";
+			$this->db->having($where, NULL, FALSE);
+			$this->db->order_by('distance ASC');
+			$query = $this->db->get($db_table,10);
+			return $query->result();
+		} else {
+			return array();
+		}	
+		
+	}
+
+/**********************************************************************************************************************************
+		DEALER FUNCTIONS
+***********************************************************************************************************************************/
+
+	function get_installer_array($dealer_url, $dealer_status = 'active') {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$where = array('dealer_url' => $dealer_url, 'dealer_status' => $dealer_status, 'site_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+
+	function get_dealer_by_id($dealer_id, $dealer_status = 'active') {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$where = array('dealer_id' => $dealer_id, 'dealer_status' => $dealer_status, 'site_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+	
+	function get_dealer_options($dealer_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
+		$where = array('dealer_id' => $dealer_id);
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+
+/**********************************************************************************************************************************
+		CONTACT FUNCTIONS
+***********************************************************************************************************************************/
 	function add_contact($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'contact';
 		

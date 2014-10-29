@@ -34,49 +34,44 @@ class Page extends CI_Controller {
         // Enter url_page_names into array if they require a different view file or custom functionality
         $custom_page_array = array();
 
+
+        $data['show_installer_header_footer'] = TRUE;
+
         if (count($vars_array) > 0) {
-            $category_url = $vars_array[1];
-            $data['category_url'] = $category_url;
+            $installer_url = $vars_array[1];
+            $data['installer_url'] = $installer_url;
             $data['current_section'] = ''; // set default
-
-            if (in_array($category_url, $custom_page_array)) {
-                switch ($category_url) {
-
-                }
-            } else {
-                /*-----------------------
-                  $data['page_array']
-                  contains all CMS-powered content for the page
-                ------------------------*/
-                $data['page_array'] = $this->page_model->get_page_by_url($url_page_name);
-
-                if (count($data['page_array']) > 0) {
-                    $data['page_headline'] = $data['page_array'][0]->page_headline;
-                    $data['page_content'] = ascii_to_entities($data['page_array'][0]->page_content);
-                    if ($data['page_array'][0]->page_template != '') {
-                        $data['page_view'] = $data['page_array'][0]->page_template;
-                    } else {
-                        $data['page_view'] = 'page_view';
-                    }
-                    $data['meta_array'] = array(
-                        'title' => $data['page_array'][0]->meta_title,
-                        'description' => ascii_to_entities($data['page_array'][0]->meta_description),
-                        'keywords' => $data['page_array'][0]->meta_keywords
-                    );
+            $data['installer_array'] = $this->page_model->get_installer_array($installer_url);
+            if(count($data['installer_array']) > 0) {
+                if($vars_size == 1) {
+                    //INSTALLER HOMEPAGE
+                    $data['page_view'] = 'home/installer';
                 } else {
-                    $data['page_title'] = 'Error';
-                    $data['page_view'] = 'error';
+
                 }
+
+            } else {
+                //INSTALLER DOESN'T EXIST
             }
         } else {
             /*-----------------------
-              Homepage
+                Global Landing Page
+                Search for Installer
             ------------------------*/
             $data['category_url'] = 'home';
-            $data['meta_array']['title'] = 'Homepage';
-            $data['meta_array']['description'] = 'Homepage description.';
-            $data['meta_array']['keywords'] = '';
-            $data['page_view'] = 'home';
+            $data['meta_array'] = array(
+                'title' => 'Homepage',
+                'description' => 'Homepage Description',
+                'keywords' => ''
+            );
+            $data['show_installer_header_footer'] = FALSE;
+            if($this->input->post('installer_search') == 'yes') {
+                $zip_code = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
+                $data['installer_search_array'] = $this->page_model->get_closest_installers($zip_code);
+                $data['page_view'] = 'home/results';
+            } else {
+                $data['page_view'] = 'home/search';
+            }
         }
 
         //LOAD TEMPLATE

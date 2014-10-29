@@ -68,6 +68,8 @@
         
         <label for="dealer_url">Installer URL<?php echo required_text('dealer_url'); ?></label>
         <input type="text" name="dealer_url" id="dealer_url" class="input_text" value="<?php echo set_value('dealer_url', $dealer_array[0]->dealer_url); ?>" />
+        
+        <?php /* get validation working */ ?>
         <div id="url_validation"> </div>
         
         <label for="email" class="form_float_left">Account E-mail Address<?php echo required_text('email'); ?></label>

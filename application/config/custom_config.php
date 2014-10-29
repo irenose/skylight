@@ -17,9 +17,14 @@ SALT IS ADDED TO PASSWORDS FOR THE HASH ON THE ADMIN INSTALLATION. YOU CAN CHANG
 $config['404_header'] = 'We\'re sorry, but the page you\'re looking for can\'t be found.';
 $config['404_message'] = 'Below is the site map for our website. When you find what you\'re looking for, simply click on the link.';
 
+$config['default_meta_array'] = array(
+	'title' => 'Welcome',
+	'description' => '',
+	'keywords' => ''
+);
+
 $config['contact_form_recipient'] = '';
 $config['contact_form_from'] = '';
-
 
 $config['global_email_from'] = '';
 $config['global_email_name'] = '';
