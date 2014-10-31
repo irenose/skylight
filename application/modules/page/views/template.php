@@ -79,6 +79,14 @@
         <?php
             if($show_installer_header_footer) {
                 //SHOW INSTALLER SPECIFIC CONTENT
+                echo '<a href="' . $installer_base_url . '">Home</a>&nbsp;';
+                echo '<a href="' . $installer_base_url . '/products">Products</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/installing">Installing</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/about">About</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>&nbsp;&nbsp;';
+                echo '<a href="' . $installer_base_url . '/contact">Contact</a>&nbsp;&nbsp;';
                 echo 'Phone: ' . $installer_array[0]->phone1;
             }
         ?>
@@ -91,11 +99,21 @@
         </main>
     </div>
     <!-- FOOTER -->
-    <section>
+    <section style="background:#000;color:#fff;">
         <?php
             if($show_installer_header_footer) {
                 //SHOW INSTALLER SPECIFIC CONTENT
-                echo 'Address: ' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip;
+                echo '<a href="' . $installer_base_url . '/products">Products</a><br>';
+                echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a><br>';
+                echo '<a href="' . $installer_base_url . '/installing">Installing</a><br>';
+                echo '<a href="' . $installer_base_url . '/about">About</a><br>';
+                echo '<a href="' . $installer_base_url . '/warranty">Warranty</a><br>';
+                echo '<a href="' . $installer_base_url . '/brochures">Brochures</a><br>';
+                echo '<a href="' . $installer_base_url . '/contact">Contact</a><br>';
+                echo $installer_array[0]->name . '<br>Address: ' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
+                if($installer_array[0]->dealer_hours != '') {
+                    echo 'Hours:<br>' . nl2br($installer_array[0]->dealer_hours);
+                }
             }
         ?>
     </section>
