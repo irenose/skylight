@@ -52,12 +52,22 @@ class Page extends CI_Controller {
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                     $data['promotion_array'] = $this->page_model->get_homepage_promotion($data['installer_array'][0]->dealer_id);
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
+                    $data['meta_array'] = array(
+                        'title' => 'Home',
+                        'description' => 'Homepage Description',
+                        'keywords' => ''
+                    );
                     $data['page_view'] = 'home/installer';
                 } else {
                     switch($vars_array[2]) {
                         case 'products':
                             if($vars_size == 2) {
                                 $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+                                $data['meta_array'] = array(
+                                    'title' => 'Products',
+                                    'description' => 'Homepage Description',
+                                    'keywords' => ''
+                                );
                                 $data['page_view'] = 'products/index';
                             } else {
                                 switch($vars_array[3]) {
@@ -65,6 +75,11 @@ class Page extends CI_Controller {
                                         if($vars_size == 4) {
                                             $data['product_category_array'] = $this->page_model->get_category_products($data['installer_array'][0]->dealer_id, $vars_array[4], 'active');
                                             if( count($data['product_category_array']) > 0) {
+                                                $data['meta_array'] = array(
+                                                    'title' => $data['product_category_array']['category']->product_category_name,
+                                                    'description' => 'Homepage Description',
+                                                    'keywords' => ''
+                                                );
                                                 $data['page_view'] = 'products/category';
                                             } else {
                                                 redirect('/' . $data['installer_array'][0]->dealer_url . '/products');
@@ -73,28 +88,72 @@ class Page extends CI_Controller {
                                             redirect('/' . $data['installer_array'][0]->dealer_url . '/products');
                                         }
                                         break;
+                                    default:
+                                        $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
+                                        if(count($data['product_info_array']) > 0) {
+                                            $data['meta_array'] = array(
+                                                'title' => $data['product_info_array'][0]->product_name,
+                                                'description' => 'Homepage Description',
+                                                'keywords' => ''
+                                            );
+                                            $data['page_view'] = 'products/product';
+                                        } else {
+                                            redirect('products');
+                                        }
+                                        break;
                                 }
                             }
                             break;
                         case 'why-skylights':
+                            $data['meta_array'] = array(
+                                'title' => 'Why Skylights?',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'why_skylights';
                             break;
                         case 'installing':
+                            $data['meta_array'] = array(
+                                'title' => 'Installing',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'installing';
                             break;
                         case 'about':
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
+                            $data['meta_array'] = array(
+                                'title' => 'About',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'about';
                             break;
                         case 'warranty':
                             $data['warranty_array'] = $this->page_model->get_warranty($data['installer_array'][0]->dealer_id);
+                            $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+                            $data['meta_array'] = array(
+                                'title' => 'Warranty',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'warranty';
                             break;
                         case 'brochures':
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
+                            $data['meta_array'] = array(
+                                'title' => 'Brochures',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'brochures';
                             break;
                         case 'contact':
+                            $data['meta_array'] = array(
+                                'title' => 'Contact',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'contact';
                             break;
                         case 'promotions':
@@ -102,7 +161,40 @@ class Page extends CI_Controller {
                             if(count($data['dealer_promotion_array']) == 0) {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
+                            $data['meta_array'] = array(
+                                'title' => 'Promotions',
+                                'description' => 'Homepage Description',
+                                'keywords' => ''
+                            );
                             $data['page_view'] = 'promotions';
+                            break;
+                        case 'ps':
+                            switch($vars_array[3]) {
+                                case 'no-leak-skylight':
+                                    $data['page_view'] = 'paidsearch/no_leak';
+                                    break;
+                                case 'energy-efficiency':
+                                    $data['page_view'] = 'paidsearch/efficiency';
+                                    break;
+                                case 'skylight-repair':
+                                    $data['page_view'] = 'paidsearch/repair';
+                                    break;
+                                case 'sun-tunnel-skylight':
+                                    $data['page_view'] = 'paidsearch/sun_tunnel';
+                                    break;
+                                case 'commercial-sun-tunnel':
+                                    $data['page_view'] = 'paidsearch/commercial_sun_tunnel';
+                                    break;
+                                case 'skylight-replacement':
+                                    $data['page_view'] = 'paidsearch/replacement';
+                                    break;
+                                case 'skylight-blinds':
+                                    $data['page_view'] = 'paidsearch/blinds';
+                                    break;
+                                default:
+                                    redirect($data['installer_base_url']);
+                                    break;
+                            }
                             break;
                         default:
                             redirect('');

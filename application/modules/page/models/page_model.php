@@ -92,6 +92,28 @@ class Page_model extends CI_Model {
 /**********************************************************************************************************************************
 		PRODUCT FUNCTIONS
 ***********************************************************************************************************************************/
+	
+	/*
+		FUNCTIONS TO ADD URLS TO PRODUCTS - USE ON LIVE DB DURING LAUNCH 
+		function add_product_urls() {
+			$db_table = $this->config->item('db_table_prefix') . 'products';
+			$products_array = $this->get_products();
+			
+			foreach($products_array as $product) {
+				$data = array(
+					'product_url' => url_title($product->product_name, 'dash',TRUE)
+				);
+				$this->db->where('product_id', $product->product_id);
+				$result = $this->db->update($db_table, $data); 
+
+			}
+		}
+		function get_products() {
+			$db_table = $this->config->item('db_table_prefix') . 'products';
+			$query = $this->db->get($db_table);
+			return $query->result();
+		}
+	*/
 
 	function get_product_categories($dealer_id, $status = 'active') {
 		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
@@ -171,6 +193,14 @@ class Page_model extends CI_Model {
 		}
 		$this->db->order_by('sort_order ASC');
 		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function get_product_by_url($product_url) {
+		$db_table = $this->config->item('db_table_prefix') . 'products';
+		$where = array('product_url' => $product_url, 'product_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
 
