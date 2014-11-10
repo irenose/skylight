@@ -1,5 +1,5 @@
 <?php
-	//Set Values for Meta Data - Provide default data if not set
+    //Set Values for Meta Data - Provide default data if not set
     $meta_title = isset($meta_array) && $meta_array['title'] != '' ? $meta_array['title']  : $this->config->item('title', 'default_meta_array');
     $meta_description = isset($meta_array) && $meta_array['description'] != '' ? $meta_array['description']  : $this->config->item('description', 'default_meta_array');
     $meta_keywords = isset($meta_array) && $meta_array['keywords'] != '' ? $meta_array['keywords']  : $this->config->item('keywords', 'default_meta_array');
@@ -17,6 +17,7 @@
     <meta name="description" content="<?php echo $meta_description; ?>">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="<?php echo $canonical_url; ?>" />
 
     <?php
         /*-------------------------------
@@ -87,7 +88,7 @@
                 echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>&nbsp;&nbsp;';
                 echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>&nbsp;&nbsp;';
                 echo '<a href="' . $installer_base_url . '/contact">Contact</a>&nbsp;&nbsp;';
-                echo 'Phone: ' . $installer_array[0]->phone1;
+                echo 'Phone: <a href="tel:' . $installer_array[0]->phone1 . '">' . $installer_array[0]->phone1 . '</a>';
             }
         ?>
     </section>

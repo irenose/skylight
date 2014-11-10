@@ -45,6 +45,7 @@ class Page extends CI_Controller {
             $data['installer_array'] = $this->page_model->get_installer_array($installer_url);
             //UPDATE WITH INSTALLER URL ADDED
             $data['installer_base_url'] = base_url() . $installer_url;
+            $data['canonical_url'] = base_url() . $installer_url;
 
             if(count($data['installer_array']) > 0) {
                 if($vars_size == 1) {
@@ -220,8 +221,8 @@ class Page extends CI_Controller {
             );
             $data['show_installer_header_footer'] = FALSE;
             if($this->input->post('installer_search') == 'yes') {
-                $zip_code = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
-                $data['installer_search_array'] = $this->page_model->get_closest_installers($zip_code);
+                $data['search_zip_code'] = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
+                $data['installer_search_array'] = $this->page_model->get_closest_installers($data['search_zip_code']);
                 $data['page_view'] = 'home/results';
             } else {
                 $data['page_view'] = 'home/search';
