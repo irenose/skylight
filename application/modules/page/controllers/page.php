@@ -54,7 +54,7 @@ class Page extends CI_Controller {
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
                     $data['meta_array'] = array(
                         'title' => 'Home',
-                        'description' => 'Homepage Description',
+                        'description' => '',
                         'keywords' => ''
                     );
                     $data['page_view'] = 'home/installer';
@@ -65,7 +65,7 @@ class Page extends CI_Controller {
                                 $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                                 $data['meta_array'] = array(
                                     'title' => 'Products',
-                                    'description' => 'Homepage Description',
+                                    'description' => '',
                                     'keywords' => ''
                                 );
                                 $data['page_view'] = 'products/index';
@@ -77,7 +77,7 @@ class Page extends CI_Controller {
                                             if( count($data['product_category_array']) > 0) {
                                                 $data['meta_array'] = array(
                                                     'title' => $data['product_category_array']['category']->product_category_name,
-                                                    'description' => 'Homepage Description',
+                                                    'description' => '',
                                                     'keywords' => ''
                                                 );
                                                 $data['page_view'] = 'products/category';
@@ -93,7 +93,7 @@ class Page extends CI_Controller {
                                         if(count($data['product_info_array']) > 0) {
                                             $data['meta_array'] = array(
                                                 'title' => $data['product_info_array'][0]->product_name,
-                                                'description' => 'Homepage Description',
+                                                'description' => '',
                                                 'keywords' => ''
                                             );
                                             $data['page_view'] = 'products/product';
@@ -107,7 +107,7 @@ class Page extends CI_Controller {
                         case 'why-skylights':
                             $data['meta_array'] = array(
                                 'title' => 'Why Skylights?',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'why_skylights';
@@ -115,7 +115,7 @@ class Page extends CI_Controller {
                         case 'installing':
                             $data['meta_array'] = array(
                                 'title' => 'Installing',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'installing';
@@ -124,7 +124,7 @@ class Page extends CI_Controller {
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = array(
                                 'title' => 'About',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'about';
@@ -134,7 +134,7 @@ class Page extends CI_Controller {
                             $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                             $data['meta_array'] = array(
                                 'title' => 'Warranty',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'warranty';
@@ -143,7 +143,7 @@ class Page extends CI_Controller {
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = array(
                                 'title' => 'Brochures',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'brochures';
@@ -151,7 +151,7 @@ class Page extends CI_Controller {
                         case 'contact':
                             $data['meta_array'] = array(
                                 'title' => 'Contact',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'contact';
@@ -163,7 +163,7 @@ class Page extends CI_Controller {
                             }
                             $data['meta_array'] = array(
                                 'title' => 'Promotions',
-                                'description' => 'Homepage Description',
+                                'description' => '',
                                 'keywords' => ''
                             );
                             $data['page_view'] = 'promotions';
@@ -215,7 +215,7 @@ class Page extends CI_Controller {
             $data['category_url'] = 'home';
             $data['meta_array'] = array(
                 'title' => 'Homepage',
-                'description' => 'Homepage Description',
+                'description' => '',
                 'keywords' => ''
             );
             $data['show_installer_header_footer'] = FALSE;
