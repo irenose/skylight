@@ -34,7 +34,6 @@ class Page extends CI_Controller {
         // Enter url_page_names into array if they require a different view file or custom functionality
         $custom_page_array = array();
 
-
         $data['show_installer_header_footer'] = TRUE;
         $data['installer_base_url'] = base_url();
 
@@ -213,6 +212,7 @@ class Page extends CI_Controller {
                 Global Landing Page
                 Search for Installer
             ------------------------*/
+            $data['canonical_url'] = base_url();
             $data['category_url'] = 'home';
             $data['meta_array'] = array(
                 'title' => 'Homepage',
