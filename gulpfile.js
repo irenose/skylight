@@ -15,12 +15,12 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer'),
     cache     = require('gulp-cache'),
     concat    = require('gulp-concat'),
+    del       = require('del'),
     imagemin  = require('gulp-imagemin'),
     jshint    = require('gulp-jshint'),
     minifycss = require('gulp-minify-css'),
     notify    = require('gulp-notify'),
     rename    = require('gulp-rename'),
-    rimraf    = require('gulp-rimraf'),
     sass      = require('gulp-sass'),
     svg2png   = require('gulp-svg2png'),
     svgstore  = require("gulp-svgstore"),
@@ -65,15 +65,12 @@ var displayError = function(error) {
 /*-----------------------
   @CLEAN
 ------------------------*/
-gulp.task('clean', function() {
-    return gulp.src(
-        [
-            config.path_dist_css,
-            config.path_dist_js,
-            config.path_dist_img
-        ], { read: false })
-        .pipe(rimraf())
-        .pipe(notify({ message: 'Clean task complete' }));
+gulp.task('clean', function(cb) {
+    del([
+        config.path_dist_css,
+        config.path_dist_js,
+        config.path_dist_img
+    ], cb);
 });
 
 /*-----------------------
@@ -85,7 +82,7 @@ gulp.task('styles:ours', function() {
     return gulp.src(
         [
             config.path_normalize,
-            // 'bower_components/path/to/module.css',
+            'bower_components/slick-carousel/slick/slick.css',
             config.path_src_css + '/' + config.main_css,
             '!' + config.path_src_css + '/vendor/*'
         ])
@@ -152,7 +149,7 @@ gulp.task('lint', function() {
 gulp.task('scripts:ours', function() {
     return gulp.src(
         [
-            'bower_components/svg4everybody/svg4everybody.min.js', // IE9-11. <= IE8 included in template.php
+            'bower_components/slick-carousel/slick/slick.min.js',
             config.path_src_js + '/*.js',
             '!' + config.path_src_js + '/vendor/*'
         ])
@@ -189,6 +186,7 @@ gulp.task('scripts:vendor', function() {
   @IMAGES:RASTER
 
   Compress raster images
+  @TODO figure out how to actually use gulp-cache: https://github.com/jgable/gulp-cache
 ------------------------*/
 gulp.task('images:raster', function() {
     return gulp.src(
@@ -197,15 +195,15 @@ gulp.task('images:raster', function() {
             config.path_src_img + '/**/*.jpg',
             config.path_src_img + '/**/*.png',
         ])
-        .pipe(cache(imagemin(
+        .pipe(imagemin(
             {
                 optimizationLevel: 3,
                 progressive: true,
                 interlaced: true,
             }
-        )))
+        ))
         .pipe(gulp.dest(config.path_dist_img))
-        .pipe(notify({ message: 'Finished: images' }));
+        .pipe(notify({ message: 'Finished: images:raster' }));
 });
 
 
@@ -220,7 +218,7 @@ gulp.task('images:vector', function() {
             config.path_src_img + '/**/*.svg',
         ])
         .pipe(gulp.dest(config.path_dist_img))
-        .pipe(notify({ message: 'Finished: images' }));
+        .pipe(notify({ message: 'Finished: images:vector' }));
 });
 
 /*-----------------------
@@ -237,7 +235,8 @@ gulp.task('images:vector:png', function () {
         .on('error', function(err){
             displayError(err);
         })
-        .pipe(gulp.dest(config.path_dist_img + '/sprites/'));
+        .pipe(gulp.dest(config.path_dist_img + '/sprites/'))
+        .pipe(notify({ message: 'Finished: images:vector:png' }));
 });
 
 /*-----------------------
@@ -250,18 +249,17 @@ gulp.task('images:vector:sprites', function () {
         .pipe(svgstore({
             fileName: 'sprite.svg',
             inlineSvg: true,
-            transformSvg: function(svg, cb) {
-                svg.attr({style: 'display:none'}) // make sure the spritemap doesn't show
-                svg.find('//*[@fill]').forEach(function (child) {
-                    child.attr('fill').remove() // remove all 'fill' attributes in order to control via CSS
-                })
-                cb(null)
+            transformSvg: function($svg, done) {
+                $svg.attr({style: 'display:none'}) // make sure the spritemap doesn't show
+                $svg.find('[fill]').removeAttr('fill') // remove all 'fill' attributes in order to control via CSS
+                done(null, $svg)
             },
         }))
         .on('error', function(err){
             displayError(err);
         })
-        .pipe(gulp.dest(config.path_dist_img + '/sprites/'));
+        .pipe(gulp.dest(config.path_dist_img + '/sprites/'))
+        .pipe(notify({ message: 'Finished: images:vector:sprites' }));
 });
 
 /*-----------------------
