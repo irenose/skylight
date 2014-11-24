@@ -4,6 +4,7 @@
 	if( isset($product_category_array) && count($product_category_array) > 0) {
 		foreach($product_category_array as $category) {
 			echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br>';
+			echo filter_page_content($category->product_category_teaser) . '<br><br>';
 		}
 	}
 ?>
