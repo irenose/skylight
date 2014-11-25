@@ -1,0 +1,17 @@
+.nav-arrow {
+    background: url(../images/nav-arrow.png);
+    display: inline-block;
+    height: 5px;
+    width: 18px;
+    vertical-align: middle;
+
+    &.selected {
+        background-position: -16px 0;
+    }
+
+    @include bp($switch-nav-medium) {
+        &.hovered {
+            background-position: -16px 0;
+        }
+    }
+}

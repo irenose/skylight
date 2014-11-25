@@ -29,13 +29,17 @@
     font-weight: bold;
 }
 
+%font-display {
+    font-family: 'Montserrat';
+}
+
 /*-----------------------
   @LINKS
 ------------------------*/
 .breadcrumbs {
     padding: 5% 0;
 
-    @media screen and (min-width: $medium) {
+    @media screen and (min-width: $tablet) {
         padding: 2em 0;
     }
 }
@@ -103,6 +107,22 @@
 }
 
 /*-----------------------
+  @POSITIONING
+------------------------*/
+%push-left {
+    float: left;
+}
+.push-left {
+    @extend %push-left;
+}
+%push-right {
+    float: right;
+}
+.push-right {
+    @extend %push-right;
+}
+
+/*-----------------------
   @PADDING
 ------------------------*/
 %snug-top {
@@ -122,15 +142,22 @@
 }
 
 /*-----------------------
-  @VISIBILITY
+  @BORDERS
 ------------------------*/
-.is-hidden {
-    display: none;
+.center-border {
+    background: 1px solid $color-secondary;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    width: 1px;
 }
 
-// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-.hide-text {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+/*-----------------------
+  @IMAGES
+------------------------*/
+.polaroid--round {
+    img {
+        @include circle(100%, 292px);
+    }
 }

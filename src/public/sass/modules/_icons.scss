@@ -1,10 +1,9 @@
-$d: 100px;
-
 .icon {
+    background: transparent;
     display: inline-block;
-    height: $d;
+    height: $icon;
     overflow: hidden;
-    width: $d;
+    width: $icon;
 }
 
 .icon-facebook {
@@ -27,19 +26,119 @@ $d: 100px;
     background: yellow;
 }
 
-.icon__svg {
+.icon .icon__svg {
     display: block;
-    fill: #000;
     height: 100%;
     transition: fill 0.5s ease;
     width: 100%;
 
-    .btn--icon:hover & {
-        fill: #f00;
-    }
     // svg4everybody fallback
     img {
         display: block;
+        height: 100%;
         margin: auto;
+        width: 100%;
+    }
+}
+
+/*-----------------------
+  @MENU
+------------------------*/
+.icon-hamburger {
+    background: $color-grey-light;
+    display: inline-block;
+    height: 3px;
+    overflow: visible;
+    position: relative;
+    width: 25px;
+    vertical-align: middle;
+
+    &:before,
+    &:after {
+        background: $color-grey-light;
+        content: '';
+        display: inline-block;
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 25px;
+    }
+    &:before {
+        top: -7px;
+    }
+    &:after {
+        bottom: -7px;
+    }
+}
+
+.icon-x {
+    height: 18px;
+    vertical-align: middle;
+    width: 24px;
+
+    .icon__svg {
+        fill: $color-grey-light;
+    }
+}
+
+/*-----------------------
+  @COMPASS
+------------------------*/
+.icon-compass {
+    $d-compass: 98px;
+    $d-pointer: 16px;
+    $letter-padding-top: 18px;
+
+    height: $d-compass;
+    position: relative;
+    width: $d-compass;
+
+    &:before {
+        @extend %bold;
+        @extend %centered;
+        @extend %font-display;
+        display: block;
+        font-size: 2em;
+        height: $d-compass;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: $d-compass;
+    }
+    &.icon-compass--north {
+        margin: 0 0 46px;
+
+        .icon__svg {
+            fill: $color-green;
+        }
+        &:before {
+            color: $color-green;
+            content: 'N';
+            padding-top: $letter-padding-top + $d-pointer;
+        }
+    }
+    &.icon-compass--south {
+        margin: $d-pointer 0 30px;
+
+        .icon__svg {
+            fill: $color-blue;
+            transform: rotateX(180deg);
+        }
+        &:before {
+            color: $color-blue;
+            content: 'S';
+            padding-top: $letter-padding-top;
+        }
+    }
+}
+
+/*-----------------------
+  @SOCIAL
+------------------------*/
+.icon-facebook--reversed,
+.icon-twitter--reversed,
+.icon-pinterest--reversed {
+    .icon__svg {
+        fill: $color-grey-light;
     }
 }

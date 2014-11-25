@@ -1,27 +1,51 @@
 // layout
 
 // dimensions
-$page-max-width: 80%;
+$page-max-width: 1800px;
+$row-padding-horizontal: 10%;
+$row-padding-vertical: 5%;
+$masthead-height: 78px;
+$masthead-border: 1px;
+$icon: 44px;
 
 // breakpoints
-$small: 27.777777778em; // 500 / 18
-$medium: 38.888888889em; // 700 / 18
-$switch-nav: 56.888888889em; // 1024 / 18
-$large: 66.666666667em; // 1200 / 18
+$mobile-portrait: 320px;
+$mobile-landscape: 480px;
+$my-small: 500px;
+$tablet: 768px;
+$switch-nav-medium: 1024px;
+$switch-nav-large: 1300px;
+$my-large: 1300px;
 $max: $page-max-width;
 $foundation-small: 0px !default; // foundation
 $foundation-med: 641px !default; // foundation
 $foundation-large: 1025px !default; // foundation
 
 // colors
-$color-default: #333;
-$color-primary: #ccc;
-$color-secondary: #eee;
+$color-default: #383d3f;
+$color-default-light: #606567;
+$color-primary: #ec1d25;
+$color-secondary: #e5e5e5;
+$color-grey-light: #9ba0a2;
+$color-grey-light-bg: #f5f5f5;
+$color-grey: #f3f4f4;
+$color-grey-dark: #383d3f;
+$color-blue: #24b9f1;
+$color-blue-dark: #186d8d;
+$color-footer-bg: #242728;
+$color-green: #43bea9;
+$color-green-dark: #268f7c;
+$color-grey-border: #dfdfdf;
+$color-grey-dark-border: #4a4f50;
+$color-nav-header-open: #363a3c;
+$color-reverse-heading: #fff;
+$color-reverse: #dfdfdf;
+$color-text-light: #f2f1e9;
+$overlay: #fff;
 
 // typography
-$font-family-default: sans-serif;
+$font-family-default: 'Helvetica', sans-serif;
+$font-family-display: 'Montserrat', sans-serif;
 
-$font-unit-default: 1em;
-$font-size-default: $font-unit-default;
-
+$font-size-default: 1em;
 $line-height-default: 1.5;

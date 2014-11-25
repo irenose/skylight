@@ -1,0 +1,34 @@
+/*-----------------------
+  @VISIBILITY
+------------------------*/
+.is-hidden {
+    display: none;
+}
+
+// http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+%hide-text {
+    display: block;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+.hide-text {
+    @extend %hide-text;
+}
+
+/*-----------------------
+  @DECORATION
+------------------------*/
+%no-border {
+    border: none;
+}
+.no-border {
+    @extend %no-border;
+}
+
+%no-underline {
+    text-decoration: none;
+}
+.no-underline {
+    @extend %no-underline;
+}

@@ -1,0 +1,166 @@
+.nav-header {
+    background: #fff;
+    display: none;
+    font-size: 0.875em;
+    left: 0;
+    position: fixed;
+    top: $masthead-height + $masthead-border;
+    width: 100%;
+
+    @include bp($tablet) {
+        background: transparent;
+        display: block;
+        float: left;
+        margin-left: 2%;
+        position: relative;
+        top: 0;
+        width: auto;
+    }
+    @include bp($switch-nav-large) {
+        width: 75.705%;
+    }
+
+    .nav-header--is-open & {
+        display: block;
+    }
+
+    .nav-major {
+
+        @include bp($switch-nav-medium) {
+            float: left;
+
+            .subnav-products--is-hovered & .nav-major__subnav {
+                display: block;
+            }
+        }
+
+        .nav-header__link {
+            display: block;
+            line-height: 4em;
+
+            @include bp($tablet) {
+                display: inline-block;
+                line-height: $masthead-height;
+            }
+
+            &:hover:after {
+                background: $color-blue;
+                bottom: 0;
+                content: '';
+                display: block;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                right: 0;
+            }
+        }
+        .nav-major__subnav {
+            display: none;
+            z-index: 20;
+
+            @include bp($tablet) {
+                background: $color-grey-dark;
+                border-top: $masthead-border solid $color-secondary;
+                display: none;
+                left: 50%;
+                line-height: 70px;;
+                max-width: $page-max-width;
+                position: fixed;
+                width: 100%;
+                text-align: center;
+                top: $masthead-height;
+                transform: translate(-50%, 0);
+            }
+
+            a {
+                color: $color-grey-light;
+                display: block;
+
+                @include bp($tablet) {
+                    display: inline-block;
+                }
+
+                &:hover {
+                    @extend %no-underline;
+                }
+            }
+
+            .subnav-products--is-open & {
+                display: block;
+            }
+        }
+        .products-dropdown {
+            display: inline-block;
+        }
+
+        a {
+            font-weight: normal;
+            margin: {
+                left: 5px;
+                right: 5px;
+            }
+            text-transform: none;
+
+            @include bp($switch-nav-medium) {
+                font-weight: bold;
+                margin: {
+                    left: 15px;
+                    right: 15px;
+                }
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .nav-minor {
+        display: none;
+        z-index: 10;
+
+        @include bp($tablet, $switch-nav-large) {
+            background: #fff;
+            left: 0;
+            position: fixed;
+            top: $masthead-height + $masthead-border;
+            width: 100%;
+        }
+        @include bp($switch-nav-large) {
+            display: block;
+            float: right;
+        }
+
+        .nav-header__link {
+            color: $color-grey-light;
+            display: block;
+            line-height: 3em;
+
+            @include bp($tablet, $switch-nav-large) {
+                margin: 0 auto;
+                width: 20%;
+            }
+            @include bp($switch-nav-large) {
+                display: inline-block;
+                line-height: $masthead-height;
+                margin: {
+                    left: 8px;
+                    right: 8px;
+                }
+                width: auto;
+            }
+
+            &:hover:after {
+                background: $color-blue;
+                bottom: 0;
+                content: '';
+                display: block;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                right: 0;
+            }
+        }
+
+        .nav-header--is-open & {
+            display: block;
+        }
+    }
+}

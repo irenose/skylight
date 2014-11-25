@@ -1,5 +1,158 @@
+.bg-grey {
+    background: $color-grey-light-bg;
+}
+
+%border-top-grey {
+    border-top: 1px solid $color-secondary;
+}
+.border-top-grey {
+    @extend %border-top-grey;
+}
+
 .page {
-    margin-right: auto;
-    margin-left: auto;
+    background: #fff;
+    margin: {
+        left: auto;
+        right: auto;
+    }
     max-width: $page-max-width;
+    padding-top: $masthead-height;
+}
+
+%page-row {
+    padding: $row-padding-vertical $row-padding-horizontal;
+}
+.page-row {
+    @extend %page-row;
+}
+
+.page-row--squeezed {
+    padding: {
+        left: 20%;
+        right: 20%;
+    }
+}
+.page-row--snug {
+    padding: {
+        left: 5%;
+        right: 5%;
+    }
+}
+.page-row--tall {
+    padding: {
+        bottom: 10%;
+        top: 10%;
+    }
+}
+.page-row--extra-tall {
+    padding: {
+        bottom: 13%;
+        top: 13%;
+    }
+}
+
+/*-----------------------
+  @INSTALLING
+------------------------*/
+.centered-half {
+    @extend %centered;
+    padding: $row-padding-vertical $row-padding-horizontal;
+
+    p {
+        color: $color-default-light;
+        font-size: $font-size-default * 0.875;
+    }
+}
+
+.centered-half--squeezed {
+
+    &.first {
+        padding: {
+            left: 30%;
+            right: 20%;
+        }
+    }
+    &.last {
+        padding: {
+            left: 20%;
+            right: 30%;
+        }
+    }
+}
+
+.statement-images--installing {
+    margin-bottom: 40px;
+    max-width: 660px;
+    width: 100%;
+
+    .statement-image {
+        border: 5px solid $color-reverse-heading;
+        box-shadow: 0 1px 7px 0 rgba(50,50,50,.25);
+        height: 300px;
+        margin: 0 10px;
+        position: relative;
+        
+        &.old:after {
+            background: $color-grey-light;
+            content: '';
+            display: block;
+            height: 60px;
+            left: 0;
+            position: absolute;
+            top: 100px;
+            width: 60px;
+            z-index: 30;
+        }
+    }
+}
+
+.installation {
+    padding-bottom: 20%;
+    
+    .first {
+        padding-right: 27%;
+    }
+
+    .last {
+
+        .incentive {
+            @include circle(100%, 130px);
+            background: $color-blue;
+            color: $color-reverse-heading;
+            float: left;
+            font-size: .875em;
+            line-height: 1.25em;
+            height: 130px;
+            margin: 0 10px;
+            padding-top: 22px;
+
+            .big {
+                font-size: 3em;
+                font-weight: bold;
+                line-height: 1.15em;
+            }
+        }
+    }
+}
+
+.after-installation {
+
+    .brochure {
+        bottom: -320px;
+        position: absolute;
+        right: 0;
+        z-index: 20;
+    }
+    .first {
+        padding-right: 20%;
+    }
+}
+
+.discover-more {
+
+    .discover-card {
+        display: inline-block;
+        padding: 0 1%;
+    }
+
 }

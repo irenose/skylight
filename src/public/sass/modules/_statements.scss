@@ -1,0 +1,60 @@
+.intro-statement {
+    @extend %centered;
+    padding: {
+        left: 20%;
+        right: 20%;
+    }
+}
+
+.intro-statement--squeezed {
+    @include bp($tablet) {
+        padding: {
+            left: 32%;
+            right: 32%;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+    p {
+        color: $color-default-light;
+        font-family: $font-family-display;
+    }
+}
+
+.header-statement {
+    @extend %centered;
+    padding: {
+        left: 20%;
+        right: 20%;
+    }
+
+    h3 {
+        padding: {
+            left: 14%;
+            right: 14%;
+        }
+    }
+    p {
+        color: $color-default-light;
+    }
+}
+
+.header-statement--squeezed {
+    @include bp($tablet) {
+        padding: {
+            left: 32%;
+            right: 32%;
+        }
+    }
+}
+
+.statement-images {
+    display: inline-block;
+    width: 100%;
+
+    .statement-image-container {
+        float: left;
+    }
+}

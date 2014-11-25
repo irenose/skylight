@@ -1,0 +1,16 @@
+.thin-strip {
+    @extend %centered;
+    background: $color-grey-dark;
+}
+
+.nav-secondary {
+    
+}
+
+.nav-secondary__link {
+    color: $color-grey-light;
+    font-size: 0.75em;
+    line-height: 70px;
+    margin: 0 1em;
+    text-transform: uppercase;
+}

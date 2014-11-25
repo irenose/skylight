@@ -1,6 +1,6 @@
 @mixin bp($min-width: 0em, $max-width: false) {
     @if ($max-width) {
-        @media only screen and (min-width: $min-width) and (max-width: $max-width) {
+        @media only screen and (min-width: $min-width) and (max-width: $max-width - 1px) {
             @content;
         }
     } @else {

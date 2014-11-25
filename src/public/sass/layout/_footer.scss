@@ -1,0 +1,109 @@
+.footer {
+    background: $color-footer-bg;
+    font-size: 14px;
+    margin: 0 auto;
+    max-width: $page-max-width;
+
+    @include bp($tablet) {
+        height: 255px;
+        padding-bottom: 55px;
+    }
+
+    .accreditations {
+        right: 5%;
+        position: absolute;
+        top: 55px;
+    }
+    .center-border {
+        background: $color-default;
+    }
+    .dealer-info {
+        left: 55%;
+        line-height: 1.8;
+        width: 350px;
+        position: absolute;
+        top: 55px;
+
+        .address {
+            float: left;
+            width: 50%;
+        }
+        .dealer-info__header {
+            color: $color-text-light;
+        }
+        .hours {
+            float: left;
+            width: 50%;
+        }
+    }
+    .logo {
+        left: 5%;
+        position: absolute;
+        top: 55px;
+    }
+    .copyright {
+        @extend %centered;
+        color: $color-grey-light;
+        left: 5%;
+        top: 150px;
+        font-size: 0.857em;
+        position: absolute;
+        width: 165px;
+    }
+    .nav-footer {
+        left: 28%;
+        line-height: 1.8;
+        width: 320px;
+        position: absolute;
+        top: 55px;
+
+        .nav-major {
+            float: left;
+            width: 50%;
+            text-transform: uppercase;
+
+            a {
+                color: $color-text-light;
+            }
+        }
+        .nav-minor {
+            float: left;
+            width: 50%;
+
+            a {
+                color: $color-default;
+            }
+        }
+
+        a {
+            float: left;
+            clear: left;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    .social {
+        @extend %centered;
+        left: 5%;
+        position: absolute;
+        top: 175px;
+        width: 165px;
+
+        .icon {
+            height: 25px;
+            margin: 0 .25em;
+            width: 25px;
+
+            @include bp($my-large) {
+                height: 14px;
+                width: 14px;
+            }
+        }
+    }
+}
+
+.footer-wrapper {
+    width: 100%;
+}

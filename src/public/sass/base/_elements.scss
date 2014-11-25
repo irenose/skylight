@@ -13,14 +13,27 @@ html {
   @BODY
 ------------------------*/
 body {
+    background: #272b2c;
     color: $color-default;
     font-family: $font-family-default;
     font-size: $font-size-default * .875; // set to 14px
     line-height: $line-height-default;
 
-    @include bp($small) {
+    @include bp($mobile-landscape) {
         font-size: $font-size-default; // allow 16px
     }
+}
+
+::selection {
+    background: #000;
+    color: #fff;
+    }
+
+/*-----------------------
+  @LIST
+------------------------*/
+section {
+    @extend %clearfix;
 }
 
 /*-----------------------
@@ -29,8 +42,10 @@ body {
   http://joshnh.com/2011/08/03/how-to-set-up-a-baseline-grid/
 ------------------------*/
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
+    @extend %font-display;
+    font-family: $font-family-display;
     margin-top: 0;
+    text-transform: uppercase;
 }
 
 %h1 {
@@ -43,7 +58,7 @@ h1 {
 }
 
 %h2 {
-    font-size: 2.25em; /* 36 / 16 */
+    font-size: 2em; /* 32 / 16 */
     line-height: 1.333333333333333em; /* (24 * 2) / 36 (double) */
     margin-bottom: .6666666666666667em; /* 24 / 36 */
 }
@@ -53,7 +68,7 @@ h2 {
 
 %h3 {
     font-size: 1.5em; /* 24 / 16 */
-    line-height: 1em; /* 24 / 24 */
+    line-height: 1.5em; /* 24 / 24 */
     margin-bottom: 1em; /* 24 / 24 */
 }
 h3 {
@@ -121,8 +136,8 @@ li {
   @LINK
 ------------------------*/
 %a {
-    color: dodgerblue;
-    font-family: $font-family-default;
+    color: $color-primary;
+    font-family: $font-family-display;
     text-decoration: none;
 }
 %a-hover {
@@ -206,12 +221,14 @@ legend {
 %button {
     @extend %centered;
     @extend %a;
-    background: #ccc;
+    background: $color-primary;
     border: none;
     color: #fff;
     display: inline-block;
+    font-size: 0.8125em;
     outline: none;
     padding: .85em 2em .8em;
+    text-transform: uppercase;
 }
 button {
     @extend %button;
