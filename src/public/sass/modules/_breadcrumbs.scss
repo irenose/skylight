@@ -1,0 +1,34 @@
+.breadcrumb {
+    color: $color-grey-light;
+    font-size: .875em;
+    height: $breadcrumb-height;
+    padding: {
+        left: 3%;
+        right: 2%;
+    }
+
+    .nav-breadcrumb {
+        float: left;
+    }
+    .breadcrumb-links {
+        float: right;
+        font-size: .75em;
+        top: 4px;
+
+        a:nth-child(2) {
+            margin-left: 15px;
+        }
+
+        .dotted {
+            border-bottom: 1px dotted;
+        }
+    }
+
+    a {
+        font-family: $font-family-default;
+        line-height: $breadcrumb-height;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}

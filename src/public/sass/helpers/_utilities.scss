@@ -192,3 +192,23 @@
         @include circle(100%, 292px);
     }
 }
+
+.product-image {
+    display: block;
+}
+
+/*-----------------------
+  @V-CARD
+------------------------*/
+.vcard {
+    background: $color-reverse-heading;
+    color: $color-default-light;
+    text-align: center;
+    padding: 2em;
+
+    h3 {
+        color: $color-default;
+        text-transform: none;
+        margin-bottom: 0;
+    }
+}

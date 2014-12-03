@@ -134,7 +134,7 @@
         width: 60px;
     }
     @include bp($switch-nav-large) {
-        display: none;
+        display: none !important;
     }
 
     .navbar-icon-open {
