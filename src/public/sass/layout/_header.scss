@@ -37,7 +37,6 @@
     max-width: $page-max-width;
     text-align: center;
     width: 100%;
-    z-index: 10;
 }
 
 .masthead__section {
@@ -109,7 +108,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
 }
 
 .nav-header-trigger {

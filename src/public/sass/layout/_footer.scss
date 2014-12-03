@@ -3,26 +3,22 @@
     font-size: 14px;
     margin: 0 auto;
     max-width: $page-max-width;
+    text-align: center;
 
     @include bp($tablet) {
         height: 255px;
-        padding-bottom: 55px;
+        padding: {
+            bottom: 55px;
+            top: 60px;
+        }
     }
 
     .accreditations {
-        right: 5%;
-        position: absolute;
-        top: 55px;
-    }
-    .center-border {
-        background: $color-default;
+
     }
     .dealer-info {
-        left: 55%;
         line-height: 1.8;
-        width: 350px;
-        position: absolute;
-        top: 55px;
+        text-align: left;
 
         .address {
             float: left;
@@ -37,25 +33,16 @@
         }
     }
     .logo {
-        left: 5%;
-        position: absolute;
-        top: 55px;
+        
     }
     .copyright {
         @extend %centered;
         color: $color-grey-light;
-        left: 5%;
-        top: 150px;
         font-size: 0.857em;
-        position: absolute;
-        width: 165px;
     }
     .nav-footer {
-        left: 28%;
         line-height: 1.8;
-        width: 320px;
-        position: absolute;
-        top: 55px;
+        text-align: left;
 
         .nav-major {
             float: left;
@@ -86,10 +73,6 @@
     }
     .social {
         @extend %centered;
-        left: 5%;
-        position: absolute;
-        top: 175px;
-        width: 165px;
 
         .icon {
             height: 25px;
