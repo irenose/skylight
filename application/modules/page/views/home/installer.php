@@ -28,14 +28,14 @@
 	Carousel with Teasers - Static
 </section>-->
 
-<section class="bg-grey page-row page-row--snug installer-welcome-wrapper">
+<section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
 	<header class="intro-statement intro-statement--squeezed">
 		<h2>A brief installer welcome message can go in this space</h2>
 	</header>
 	<div class="row installer-welcome">
 		<div class="small-12 medium-8 columns welcome-hero">
 			<h1 class="reversed">Upgrade Your Home With An Upward View.</h1>
-			<button>Learn More</button>
+			<a class="btn">Learn More</a>
 		</div>
 		<div class="small-12 medium-4 columns featured-images">
 			<div class="promotion-large">
@@ -49,7 +49,7 @@
 			</div>
 		</div>
 </section>
-<section class="page-row homepage-products">
+<section class="page-row products--short">
 	<div class="product-category-wrapper">
         <!-- <?php
         	if( isset($product_category_array) && count($product_category_array) > 0) {
@@ -71,7 +71,7 @@
             </a>
             <h5>Residential Skylights</h5>
             <p>VELUX residential skylights are a great way to add natural light and fresh air to your home. They not only improve your living space, but they also help improve energy efficiency.</p>
-            <button>Learn More</button>
+            <a class="btn">Learn More</a>
         </div>
         <div class="product-category">
             <a href="">
@@ -81,7 +81,7 @@
             </a>
             <h5>SUN TUNNEL Skylights</h5>
             <p>If you don't want a sky view or have a small space that needs natural light, choose a fixed skylight or a SUN TUNNEL™ skylight.</p>
-            <button>Learn More</button>
+            <a class="btn">Learn More</a>
         </div>
         <div class="product-category">
             <a href="">
@@ -91,11 +91,23 @@
             </a>
             <h5>Commercial Skylights</h5>
             <p>VELUX commercial skylights not only improve energy efficiency, but they also provide optimal lighting and fresh air to enhance your buildings architectural design and performance.</p>
-            <button>Learn More</button>
+            <a class="btn">Learn More</a>
         </div>
     </div>
 </section>
-<section class="page-row border-top-grey header-statement header-statement--squeezed">
+<section class="page-row border-top-grey">
+	<div class="testimonial-carousel header-statement">
+		<div class="slick">
+			<div class="slick-list">
+				<div class="testimonial">
+					<p>The transformation has been magical. It totally exceeded my expectations. I'm thrilled. Its amazing with the how much light the skylights bring in.</p>
+				</div>
+			</div>
+			<div class="testimonial-link">
+				<a href="">View All Testimonials</a>
+			</div>
+		</div>
+	</div>
 </section>
 <section class="page-row bg-grey centered">
     <h3>Discover More</h3>

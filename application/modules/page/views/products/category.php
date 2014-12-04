@@ -45,9 +45,9 @@
 </section>
 <?=$this->load->view('partials/_navigation-secondary')?>
 <section class="page-row page-row--squeezed">
-	<div class="header-statement">
+	<header class="header-statement">
 		<h3>Solar Powered "Fresh Air" Skylights</h3>
-	</div>
+	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
 			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
@@ -63,10 +63,10 @@
 		</div>
 	</div>
 </section>
-<section class="border-top-grey page-row page-row--squeezed">
-	<div class="header-statement">
+<section class="page-row page-row--squeezed border-top-grey">
+	<header class="header-statement">
 		<h3>Solar Powered "Fresh Air" Skylights</h3>
-	</div>
+	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
 			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
@@ -82,10 +82,10 @@
 		</div>
 	</div>
 </section>
-<section class="border-top-grey page-row page-row--squeezed">
-	<div class="header-statement">
+<section class="page-row page-row--squeezed border-top-grey">
+	<header class="header-statement">
 		<h3>Solar Powered "Fresh Air" Skylights</h3>
-	</div>
+	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
 			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
@@ -101,10 +101,10 @@
 		</div>
 	</div>
 </section>
-<section class="border-top-grey page-row page-row--squeezed">
-	<div class="header-statement">
+<section class="page-row page-row--squeezed border-top-grey">
+	<header class="header-statement">
 		<h3>Solar Powered "Fresh Air" Skylights</h3>
-	</div>
+	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
 			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
@@ -121,9 +121,9 @@
 	</div>
 </section>
 <section class="page-row page-row--snug">
-    <div class="header-statement">
+    <header class="header-statement">
         <h3>Accessories</h3>
-    </div>
+    </header>
     <div class="row accessories">
         <div class="small-12 medium-6 large-3 columns">
             <a href=""><img src="<?=asset_url('images/blinds.png')?>" alt></a>

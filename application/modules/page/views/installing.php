@@ -6,7 +6,7 @@
         <a>Schedule A Consultation</a>
     </header>
 </section>
-<section class="border-top-grey page-row page-row--extra-tall page-row--squeezed installing">
+<section class="page-row page-row--extra-tall page-row--squeezed border-top-grey installing">
     <div class="row">
         <div class="small-12 medium-6 columns centered">
             <img src="<?=asset_url('images/video.jpg')?>" alt>
@@ -17,7 +17,7 @@
         </div>
     </div>
 </section>
-<section class="border-top-grey page-row bg-grey">
+<section class="page-row bg-grey border-top-grey">
     <header class="header-statement header-statement--squeezed">
         <h3>Skylight Orientation and Utility Savings</h3>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
@@ -50,7 +50,7 @@
         </div>
     </div>
 </section>
-<section class="border-top-grey page-row centered">
+<section class="page-row border-top-grey centered">
     <div class="statement-images statement-images--installing">
         <div class="statement-image-container polaroid--round old">
             <img src="<?=asset_url('images/old.jpg')?>" class="statement-image" alt>
@@ -62,7 +62,7 @@
     <header class="header-statement header-statement--squeezed">
         <h3>Improve Home Efficiency</h3>
         <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat&reg; glass technology.</p>
-        <button>Learn More</button>
+        <a class="btn">Learn More</a>
     </header>
 </section>
 <section class="page-row page-row--tall replacing">
@@ -85,7 +85,7 @@
         <div class="small-12 medium-6 columns first reversed">
             <h3>After Installation</h3>
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
-            <button>Download</button>
+            <a class="btn">Download</a>
         </div>
         <div class="small-12 medium-6 columns last">
             <div class="brochure">
@@ -93,7 +93,7 @@
             </div>
         </div>
 </section>
-<section class="page-row bg-grey page-row--snug centered">
+<section class="page-row page-row--snug bg-grey centered">
     <h3>Discover More</h3>
     <div class="row discover-more">
         <div class="small-12 medium-4 columns">

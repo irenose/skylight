@@ -50,6 +50,15 @@
     }
 }
 
+.header-statement--more-squeezed {
+    @include bp($tablet) {
+        padding: {
+            left: 40%;
+            right: 40%;
+        }
+    }
+}
+
 .statement-images {
     display: inline-block;
     width: 100%;

@@ -1,6 +1,6 @@
 .brand {
     float: left;
-    height: $masthead-height;
+    /*height: $masthead-height;*/
     line-height: $masthead-height;
     text-align: center;
     vertical-align: middle;
@@ -16,7 +16,7 @@
     }
 
     img {
-        max-height: 70px;
+        /*max-height: 70px;*/
         max-width: 250px;
         width: 100%;
     }
@@ -40,7 +40,7 @@
 }
 
 .masthead__section {
-    height: $masthead-height;
+    /*height: $masthead-height;*/
 
     &--large {
         padding: {

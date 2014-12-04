@@ -1,6 +1,9 @@
 .bg-grey {
     background: $color-grey-light-bg;
 }
+.bg-grey-dark {
+    background: $color-grey-dark;
+}
 
 %border-top-grey {
     border-top: 1px solid $color-secondary;
@@ -25,11 +28,10 @@
 .page-row {
     @extend %page-row;
 }
-
-.page-row--squeezed {
+.page-row--extra-tall {
     padding: {
-        left: 20%;
-        right: 20%;
+        bottom: 13%;
+        top: 13%;
     }
 }
 .page-row--snug {
@@ -38,28 +40,65 @@
         right: 5%;
     }
 }
+.page-row--squeezed {
+    padding: {
+        left: 20%;
+        right: 20%;
+    }
+}
 .page-row--tall {
     padding: {
         bottom: 10%;
         top: 10%;
     }
 }
-.page-row--extra-tall {
+
+
+.product-category-wrapper {
+    overflow: hidden;
+    padding: 4% 0;
+    text-align: center;
+
+    h5 {
+        text-transform: none;
+    }
+}
+.product-category {
+    float: left;
     padding: {
-        bottom: 13%;
-        top: 13%;
+        left: 2%;
+        right: 2%;
+    }
+    width: 33%;
+
+    h5 {
+        margin: {
+            bottom: 1%;
+            top: 10%;
+        }
+    }
+    p {
+        margin-top: 5px;
+    }
+}
+.products--short {
+
+    .product-category-wrapper {
+        padding: 0;
+    }
+}
+
+.text-columns {
+
+    @include bp($tablet) {
+        columns: 2;
+        column-gap: 3em;
     }
 }
 
 /*-----------------------
   @HOMEPAGE
 ------------------------*/
-.homepage-products {
-
-    .product-category-wrapper {
-        padding: 0;
-    }
-}
 
 /*-----------------------
   @INSTALLING
@@ -197,34 +236,6 @@
     background-size: cover;
 }
 
-.product-category-wrapper {
-    overflow: hidden;
-    padding: 4% 0;
-    text-align: center;
-
-    h5 {
-        text-transform: none;
-    }
-}
-.product-category {
-    float: left;
-    padding: {
-        left: 2%;
-        right: 2%;
-    }
-    width: 33%;
-
-    h5 {
-        margin: {
-            bottom: 1%;
-            top: 10%;
-        }
-    }
-    p {
-        margin-top: 5px;
-    }
-}
-
 .accessories {
     padding: 5% 0;
     text-align: center;
@@ -262,3 +273,35 @@
         }
     }
 }
+
+/*-----------------------
+  @BROCHURES
+------------------------*/
+.brochures {
+    text-align: center;
+
+    .brochure {
+        margin-bottom: 3.5em;
+
+        .brochure__image {
+            margin-bottom: 1em;
+        }
+        a {
+            text-transform: uppercase;
+        }
+        h5 {
+            margin-bottom: 0;
+            text-transform: none;
+        }
+        p {
+            margin: {
+                bottom: 1.25em;
+                top: .3em;
+            }
+        }
+    }
+}
+
+/*-----------------------
+  @WARRANTY
+------------------------*/

@@ -1,0 +1,31 @@
+.testimonial {
+    padding: 0 10%;
+    @include bp($switch-nav-large) {
+        padding: 0 15%;
+    }
+
+    &:before {
+        content: url('../images/testimonial-quotes.png');
+        display: inline-block;
+    }
+    p {
+        font-family: $font-family-display;
+        line-height: 2;
+        margin-bottom: 2.25em;
+    }
+}
+
+.testimonial-link {
+
+    &:before {
+        background: $color-primary;
+        content: '';
+        display: inline-block;
+        height: 4px;
+        left: 50%;
+        position: absolute;
+        top: -15px;
+        transform: translateX(-50%);
+        width: 30px;
+    }
+}
