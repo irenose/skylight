@@ -7,4 +7,9 @@
         <a href="#" class="nav-secondary__link">Federal Tax Credits</a>
         <a href="#" class="nav-secondary__link">Discover More</a>
     </nav>
+    <select class="nav-secondary--select">
+        <option>Overview</option>
+        <option>What to Expect</option>
+        <option>Skylight Orientation</option>
+    </select>
 </div>

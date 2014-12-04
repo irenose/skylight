@@ -168,8 +168,8 @@
         @include bp($tablet) {
             content: '';
             border-radius: 100%;
-            bottom: 3%;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+            bottom: 2%;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
             height: 30%;
             left: 10%;
             position: absolute;

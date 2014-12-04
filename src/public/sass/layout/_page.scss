@@ -52,6 +52,16 @@
 }
 
 /*-----------------------
+  @HOMEPAGE
+------------------------*/
+.homepage-products {
+
+    .product-category-wrapper {
+        padding: 0;
+    }
+}
+
+/*-----------------------
   @INSTALLING
 ------------------------*/
 .installing {
@@ -176,15 +186,6 @@
     .first {
         padding-right: 20%;
     }
-}
-
-.discover-more {
-
-    .discover-card {
-        display: inline-block;
-        padding: 0 1%;
-    }
-
 }
 
 /*-----------------------

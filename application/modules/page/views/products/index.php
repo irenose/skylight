@@ -14,19 +14,31 @@
         ?> -->
 
         <div class="product-category">
-            <a href=""><div class="polaroid"><img src="<?=asset_url('images/residential-skylights.jpg')?>" alt></div></a>
+            <a href="">
+                <div class="polaroid">
+                    <img src="<?=asset_url('images/residential-skylights.jpg')?>" alt>
+                </div>
+            </a>
             <h5>Residential Skylights</h5>
             <p>VELUX residential skylights are a great way to add natural light and fresh air to your home. They not only improve your living space, but they also help improve energy efficiency.</p>
             <button>Learn More</button>
         </div>
         <div class="product-category">
-            <a href=""><div class="polaroid"><img src="<?=asset_url('images/sun-tunnel-skylights.jpg')?>" alt></div></a>
+            <a href="">
+                <div class="polaroid">
+                    <img src="<?=asset_url('images/sun-tunnel-skylights.jpg')?>" alt>
+                </div>
+            </a>
             <h5>SUN TUNNEL Skylights</h5>
             <p>If you don't want a sky view or have a small space that needs natural light, choose a fixed skylight or a SUN TUNNEL™ skylight.</p>
             <button>Learn More</button>
         </div>
         <div class="product-category">
-            <a href=""><div class="polaroid"><img src="<?=asset_url('images/commercial-skylights.jpg')?>" alt></div></a>
+            <a href="">
+                <div class="polaroid">
+                    <img src="<?=asset_url('images/commercial-skylights.jpg')?>" alt>
+                </div>
+            </a>
             <h5>Commercial Skylights</h5>
             <p>VELUX commercial skylights not only improve energy efficiency, but they also provide optimal lighting and fresh air to enhance your buildings architectural design and performance.</p>
             <button>Learn More</button>

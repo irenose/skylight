@@ -1,0 +1,52 @@
+.installer-welcome-wrapper {
+    @include bp($foundation-small, $foundation-med) {
+        padding: 5% 0 0;
+    }
+
+    .intro-statement {
+        padding-bottom: 3%;
+
+        h2 {
+            text-transform: none;
+        }
+    }
+}
+
+.installer-welcome {
+
+}
+
+.welcome-hero {
+    @extend %centered;
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    padding: 24% 15%;
+
+    /*@include bp($foundation-small, $tablet) {
+        width: 100%;
+    }*/
+}
+
+.featured-images {
+    
+    /*@include bp($foundation-small, $tablet) {
+        float: left !important;
+        width: 100%;
+    }*/
+}
+
+.promotion-large {
+    background-image: url('../images/promotion.jpg');
+    background-size: cover;
+    float: left;
+    padding: 50% 0;
+    width: 100%;
+}
+
+.promotions-small {
+    float: left;
+
+    .promotion-small {
+        float: left;
+    }
+}

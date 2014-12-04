@@ -93,17 +93,23 @@
             </div>
         </div>
 </section>
-<section class="page-row bg-grey page-row--snug centered discover-more">
+<section class="page-row bg-grey page-row--snug centered">
     <h3>Discover More</h3>
-    <div class="v-cards">
-        <a href="" class="discover-card">
-            <img src="<?=asset_url('images/dealer-locator.jpg')?>" class="" alt>
-        </a>
-        <a href="" class="discover-card">
-            <img src="<?=asset_url('images/skylight-planner.jpg')?>" class="" alt>
-        </a>
-        <a href="" class="discover-card">
-            <img src="<?=asset_url('images/articles.jpg')?>" class="" alt>
-        </a>
+    <div class="row discover-more">
+        <div class="small-12 medium-4 columns">
+            <a href="" class="discover-card">
+                <img src="<?=asset_url('images/dealer-locator.jpg')?>" class="" alt>
+            </a>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <a href="" class="discover-card">
+                <img src="<?=asset_url('images/skylight-planner.jpg')?>" class="" alt>
+            </a>
+        </div>
+        <div class="small-12 medium-4 columns">
+            <a href="" class="discover-card">
+                <img src="<?=asset_url('images/articles.jpg')?>" class="" alt>
+            </a>
+        </div>
     </div>
 </section>

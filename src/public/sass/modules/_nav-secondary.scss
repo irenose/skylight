@@ -1,10 +1,19 @@
 .thin-strip {
     @extend %centered;
     background: $color-grey-dark;
+    padding: 20px 0;
+
+    @include bp($tablet) {
+        padding: 0;
+    }
 }
 
 .nav-secondary {
-    
+    display: none;
+
+    @include bp($tablet) {
+        display: block !important;
+    }
 }
 
 .nav-secondary__link {
@@ -13,4 +22,17 @@
     line-height: 70px;
     margin: 0 1em;
     text-transform: uppercase;
+}
+
+.nav-secondary--select {
+    background: transparent;
+    border: none;
+    color: $color-reverse-heading;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+
+    @include bp($tablet) {
+        display: none !important;
+    }
 }
