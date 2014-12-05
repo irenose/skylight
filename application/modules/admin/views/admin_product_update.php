@@ -187,7 +187,7 @@
                 ?>
             </select>
 
-	       <div class="action_form_submit_cancel clearfix">
+	        <div class="action_form_submit_cancel clearfix">
                 <input type="submit" name="action" id="update_product" rel="update_product" value="Update Product" class="submit" /><a href="/admin/products" class="cancel_button">Cancel</a>
             </div>
 
