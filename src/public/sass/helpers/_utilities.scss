@@ -32,6 +32,9 @@
 %font-display {
     font-family: 'Montserrat';
 }
+.font-display {
+    @extend %font-display;
+}
 %reversed {
     color: $color-reverse-heading;
 }
@@ -110,6 +113,24 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+/*-----------------------
+  @COLUMNS
+------------------------*/
+.text-columns-2 {
+
+    @include bp($tablet) {
+        columns: 2;
+        column-gap: 3em;
+    }
+}
+.text-columns-3 {
+
+    @include bp($tablet) {
+        columns: 3;
+        column-gap: 3em;
+    }
 }
 
 /*-----------------------

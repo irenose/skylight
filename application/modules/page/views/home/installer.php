@@ -33,21 +33,27 @@
 		<h2>A brief installer welcome message can go in this space</h2>
 	</header>
 	<div class="row installer-welcome">
-		<div class="small-12 medium-8 columns welcome-hero">
+		<div class="small-12 large-6 columns welcome-hero upgrade">
 			<h1 class="reversed">Upgrade Your Home With An Upward View.</h1>
-			<a class="btn">Learn More</a>
+			<a href="" class="btn">Learn More</a>
 		</div>
-		<div class="small-12 medium-4 columns featured-images">
-			<div class="promotion-large">
-			</div>
-			<div class="promotions-small">
-				<div class="promotion-small">
-				</div>
-				<div class="promotion-small">
-					<a href=""><img src="<?=asset_url('images/cta.jpg')?>" alt></a>
-				</div>
+		<div class="small-12 large-6 columns featured-images">
+			<div class="promotion-large fresh-air">
+                <h5>Solar Powered “Fresh Air” Skylight</h5>
+                <a href="">Learn More</a>
 			</div>
 		</div>
+        <div class="promotions-small">
+            <div class="promotion-small reversed dealer-promo">
+                <h3>Save 20%</h3>
+                <p>Dealer Managed Promo goes here</p>
+                <a href="">Learn More</a>
+            </div>
+            <div class="promotion-small cta">
+                <p class="reversed">Schedule A Consultation</p>
+                <a href="">Learn More</a>
+            </div>
+        </div>
 </section>
 <section class="page-row products--short">
 	<div class="product-category-wrapper">

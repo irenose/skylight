@@ -1,8 +1,9 @@
-<!-- <?php 
+<?php 
     /******************************* INTRO COPY *************************/ 
 ?>
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
+        <img src="<?=asset_url('images/installer-logo-large.png')?>" alt>
         <h2><?= $installer_array[0]->about_dealer_headline; ?></h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
         <a href="<?= $installer_base_url; ?>/contact">Schedule A Consulation</a>
@@ -12,16 +13,23 @@
 <?php 
     /******************************* ABOUT INSTALLER COPY *************************/ 
 ?>
-<section class="page-row">
-    <h2 class="about-dealer-title">About Our Company</h2>
-    <p class="text-columns about-dealer-text"><?= $installer_array[0]->about_dealer_text; ?></p>
+<section class="page-row about-dealer">
+    <h2 class="about-dealer-title">Our Company</h2>
+    <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
+    <p class="text-columns-2 about-dealer-text"><?= $installer_array[0]->about_dealer_text; ?></p>
 </section>
 
-<?php 
+<?php
     /******************************* IF INSTALLER HAS PHOTO GALLERY *************************/ 
 ?>
-<section>
-
+<section class="page-row page-row--snug bg-grey">
+    <div class="slick">
+        <div class="slick-list">
+            <div class="gallery-item centered">
+                <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php 
@@ -30,28 +38,31 @@
 <section>
     <?php
         if( isset($testimonials_array) && count($testimonials_array) > 0) {
-            echo '<h2>Testimonials</h2>';
+            echo '<section class="page-row border-top-grey"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
             foreach($testimonials_array as $testimonial) {
                 echo '<p>"' . $testimonial->testimonial_copy . '"</p>';
             }
+            echo '</div></div><div class="testimonial-link"><a href="">View All Testimonials</a></div></div></div></section>';
         }
     ?>
 </section>
 
 <?php 
     /******************************* STATIC ABOUT VELUX *************************/ 
-?> -->
-<section class="page-row">
-    <h2>About VELUX</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est debitis natus at laboriosam molestiae recusandae architecto porro magni itaque esse necessitatibus molestias earum vel ipsam, ex explicabo nostrum dicta, facere culpa quos, dolores sed enim veniam aspernatur aliquam. Quibusdam eligendi quidem dignissimos, tempora fugit exercitationem ullam doloremque iure iste laboriosam modi vitae et, dolores sapiente ipsam quod, suscipit, nobis ipsum eveniet deserunt officia pariatur perspiciatis at ut? Doloribus nulla nam accusantium repellat, dolorem quibusdam porro aspernatur perferendis? Unde modi iusto autem nam tenetur! Blanditiis consectetur, perferendis asperiores est hic, tempora provident consequatur libero similique, saepe natus, cumque! Accusamus ut, dolorem?</p>
+?>
+<section class="page-row bg-grey about-velux">
+    <div class="centered">
+        <a href=""><img src="<?=asset_url('images/velux-logo.jpg')?>" alt></a>
+    </div>
+    <p class="text-columns-3 font-display">Founded on a vision of daylight, fresh air and quality of life, for over 60 years, we have created energy-efficient daylighting solutions for commercial and residential clients across the globe.<br><br>And today, we lead the industry in our commitment to developing and manufacturing architectural-grade products that provide and control daylight and fresh air. This, of course, is no coincidence. It is a result of our intense focus on offering the highest quality and most energy-efficient daylighting products on the market.<br><br>We're as equally dedicated to upholding our tradition of quality and craftsmanship as we are to reducing the environmental impact of the manufacture, use and disposal of our products. Because our activities use some natural resources, this gives us a direct obligation towards the environment we rely on.</p>
 </section>
 
 <?php 
     /******************************* STATIC OUR PRINCIPLES *************************/ 
 ?>
-<section class="page-row">
+<section class="page-row our-principles">
     <header class="header-statement header-statement--squeezed">
         <h2>Our Principles</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est debitis natus at laboriosam molestiae recusandae architecto porro magni itaque esse necessitatibus molestias earum vel ipsam, ex explicabo nostrum dicta, facere culpa quos, dolores sed enim veniam aspernatur aliquam.</p>
+        <p class="font-display">To do our part in helping take care of the world we all share, we're committed to the following principles:</p>
     </header>
 </section>

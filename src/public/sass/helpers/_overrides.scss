@@ -32,3 +32,32 @@
 .no-underline {
     @extend %no-underline;
 }
+
+/*-----------------------
+  @DEVICES
+------------------------*/
+.mobile {  
+    @include bp($mobile-landscape) {
+        display: none;
+    }
+}
+
+.tablet-only {
+    @include bp($foundation-small, $tablet) {
+        display: none;
+    }
+    @include bp($switch-nav-medium) {
+        display: none;
+    }
+}
+.tablet-up {
+    @include bp($switch-nav-medium) {
+        display: none;
+    }
+}
+
+.desktop {
+    @include bp($foundation-small, $switch-nav-medium) {
+        display: none;
+    }
+}

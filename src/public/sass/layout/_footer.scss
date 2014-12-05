@@ -3,18 +3,35 @@
     font-size: 14px;
     margin: 0 auto;
     max-width: $page-max-width;
+    padding: {
+        bottom: 55px;
+        top: 60px;
+    }
     text-align: center;
 
-    @include bp($tablet) {
-        height: 255px;
-        padding: {
-            bottom: 55px;
-            top: 60px;
+    @include bp($foundation-small, $foundation-med) {
+        padding: 40px 0 80px;
+
+        .columns:nth-child(1n + 2) {
+            margin-top: 2.25em;
         }
     }
 
-    .accreditations {
+    .columns:nth-child(3) {
 
+        @include bp($foundation-med, $foundation-large) {
+            clear: left;
+        }
+    }
+    .accreditations {
+        @include bp($foundation-small, $foundation-med) {
+            img {
+                display: none;
+            }
+        }
+        @include bp($foundation-large, $switch-nav-large) {
+            width: 15%;
+        }
     }
     .dealer-info {
         line-height: 1.8;
@@ -31,19 +48,66 @@
             float: left;
             width: 50%;
         }
+
+        @include bp($foundation-small, $foundation-med) {
+            background-image: url('../images/5-star.png');
+            background-position: 50% 85%;
+            background-repeat: no-repeat;
+            border-bottom: 1px solid $color-grey-border; 
+            padding: {
+                bottom: 160px;
+            }
+
+            .address, .hours {
+                float: none;
+                margin: {
+                    left: auto;
+                    right: auto;
+                }
+                text-align: center;
+            }
+            .hours {
+                margin-top: 20px;
+            }
+        }
+        @include bp($foundation-med, $foundation-large) {
+            float: right;
+        }
+        @include bp($foundation-large, $switch-nav-large) {
+            padding-left: 5%;
+            width: 35%;
+
+            .address, .hours {
+                width: 47%;
+            }
+        }
     }
     .logo {
-        
+        position: static;
     }
     .copyright {
         @extend %centered;
         color: $color-grey-light;
         font-size: 0.857em;
+
+        @include bp($foundation-small, $foundation-med) {
+            bottom: 35px;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
     }
     .nav-footer {
         line-height: 1.8;
         text-align: left;
 
+        .nav-footer__container {
+            @include bp($foundation-small, $foundation-med) {
+                margin: 0 auto;
+                max-width: 260px;
+                overflow: hidden;
+            }
+        }
         .nav-major {
             float: left;
             width: 50%;
@@ -70,6 +134,30 @@
                 text-decoration: none;
             }
         }
+
+        @include bp($foundation-small, $foundation-med) {
+            border-bottom: 1px solid $color-grey-border;
+            padding-bottom: 2.25em;
+
+            .nav-major {
+                width: 70% !important;
+            }
+            .nav-minor {
+                width: 30% !important;
+            }
+
+            nav {
+                text-align: center;
+            }
+        }
+        @include bp($foundation-large, $switch-nav-large) {
+            .nav-major {
+                width: 70% !important;
+            }
+            .nav-minor {
+                width: 30% !important;
+            }
+        }
     }
     .social {
         @extend %centered;
@@ -79,10 +167,17 @@
             margin: 0 .25em;
             width: 25px;
 
-            @include bp($my-large) {
+            @include bp($switch-nav-large) {
                 height: 14px;
                 width: 14px;
             }
+        }
+
+        @include bp($foundation-small, $foundation-med) {
+            bottom: 50px;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
         }
     }
 }

@@ -1,5 +1,5 @@
 .installer-welcome-wrapper {
-    @include bp($foundation-small, $foundation-med) {
+    @include bp($foundation-small, $foundation-large) {
         padding: 5% 0 0;
     }
 
@@ -13,40 +13,116 @@
 }
 
 .installer-welcome {
-
+    @extend %centered;
 }
 
 .welcome-hero {
-    @extend %centered;
-    background-image: url('../images/hero.jpg');
     background-size: cover;
-    padding: 22% 15%;
-
-    /*@include bp($foundation-small, $tablet) {
-        width: 100%;
-    }*/
+    background-position: center;
 }
 
 .featured-images {
-    
-    /*@include bp($foundation-small, $tablet) {
-        float: left !important;
-        width: 100%;
-    }*/
+
+    @include bp($foundation-small, $foundation-large) {
+        padding: 0;
+    }
+    @include bp($switch-nav-large) {
+        width: 33%;
+    }
 }
 
 .promotion-large {
-    background-image: url('../images/promotion.jpg');
     background-size: cover;
+    background-position: center;
+    border-top: 8px solid $color-reverse-heading;
     float: left;
-    padding: 50% 0;
     width: 100%;
+
+    h5 {
+        margin-bottom: 5px;
+    }
+
+    @include bp($switch-nav-medium) {
+        border-top: 0;
+    }
 }
 
 .promotions-small {
-    float: left;
+    width: 100%;
 
+    .cta {
+        background-image: url('../images/cta.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .dealer-promo {
+        background-color: $color-blue;
+        padding: 5%;
+    }
     .promotion-small {
+        border-top: 8px solid $color-reverse-heading;
         float: left;
+        width: 100%;
+
+        @include bp($foundation-large) {
+            border-top: 0;
+            height: 220px;
+            width: 47%;
+        }
+    }
+
+    @include bp($foundation-large) {
+        bottom: 0;
+        margin-top: 10%;
+        padding: 0 .9375rem;
+        position: absolute;
+        right: 0;
+        width: 50%;
+
+        .cta {
+            margin-left: 6%;
+        }
+    }
+    @include bp($switch-nav-large) {
+        right: 1%;
+        width: 33%;
+    }
+}
+
+/*-----------------------
+  @INDIVIDUAL PROMOTIONS
+------------------------*/
+.upgrade {
+    background-image: url('../images/hero.jpg');
+    padding: 22% 10%;
+
+    @include bp($foundation-large, $switch-nav-large) {
+        h1 {
+            width: 330px;
+        }
+    }
+    @include bp($switch-nav-large) {
+        padding: 18% 15%;
+        width: 66%;
+    }
+}
+
+.fresh-air {
+    background-image: url('../images/promotion.jpg');
+    padding: 8% 10% 40%;
+
+    @include bp($switch-nav-medium) {
+        padding: 15% 0 78%;
+
+        h5 {
+            margin: 0 auto;
+            width: 360px;
+        }
+    }
+    @include bp($switch-nav-large) {
+        padding-bottom: 76%;
+    }
+    @include bp($my-large) {
+        padding-bottom: 80%;
     }
 }

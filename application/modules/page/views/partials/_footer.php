@@ -25,14 +25,14 @@
         <?php
             if($show_installer_header_footer) {
                 //SHOW INSTALLER SPECIFIC CONTENT
-                echo '<div class="small-12 medium-6 large-3 columns nav-footer"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
+                echo '<div class="small-12 medium-6 large-3 columns nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
                 echo '<a href="' . $installer_base_url . '/gallery">Gallery</a>';
                 echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>';
                 echo '<a href="' . $installer_base_url . '/installing">Installing</a></nav>';
                 echo '<nav class="nav-minor"><a href="' . $installer_base_url . '/about">About</a>';
                 echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>';
                 echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>';
-                echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div>';
+                echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div></div>';
             }
         ?>
         <div class="small-12 medium-6 large-3 columns dealer-info">
