@@ -85,13 +85,13 @@
         </table>
         
         <div id="meta_stuff">
-            <label for="meta_title">META Page Title</label><br />
+            <label for="meta_title">META Page Title</label>
             <input type="text" name="meta_title" id="meta_title" class="input_text" value="<?php echo set_value('meta_title'); ?>" /><br /><br />
             
-            <label for="meta_description">META Description</label><br />
+            <label for="meta_description">META Description</label>
             <textarea name="meta_description" id="meta_description" class="textarea_text"  /><?php echo set_value('meta_description'); ?></textarea><br /><br />
             
-            <label for="meta_keywords">META Keywords <span class="label_small">(separate with commas)</span></label><br />
+            <label for="meta_keywords">META Keywords <span class="label_small">(separate with commas)</span></label>
             <textarea name="meta_keywords" id="meta_keywords" class="textarea_text" /><?php echo set_value('meta_keywords'); ?></textarea>
         </div>
 

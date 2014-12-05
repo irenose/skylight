@@ -96,8 +96,6 @@
                 	<li class="main<?php if($current_section == 'pages') { echo ' selected'; } ?>"><a href="/admin/pages" class="section">Pages</a></li>
 					<li class="main<?php if($current_section == 'installers') { echo ' selected'; } ?>"><a href="/admin/installers" class="section">Installers</a></li>
 					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/admin/products" class="section">Products</a></li>
-					<li class="main<?php if($current_section == 'promotions') { echo ' selected'; } ?>"><a href="/admin/promotions" class="section">Promotions</a></li>
-					<li class="main<?php if($current_section == 'galleries') { echo ' selected'; } ?>"><a href="/admin/galleries" class="section">Galleries</a></li>
 					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/admin/testimonials" class="section">Testimonials</a></li>
 					<li class="main<?php if($current_section == 'literature') { echo ' selected'; } ?>"><a href="/admin/literature" class="section">Literature</a></li>
 					<li class="main<?php if($current_section == 'contact') { echo ' selected'; } ?>"><a href="/admin/contact" class="section">Contact</a></li>

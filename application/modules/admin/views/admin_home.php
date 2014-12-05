@@ -1,7 +1,8 @@
 <h1><?php echo $this->config->item('admin_client_name'); ?> Administration</h1>
-<div id="instruction_copy">
+<p>
 	Welcome to the <?php echo $this->config->item('admin_client_name'); ?> administration dashboard. Below, you will find a list of your current dealer microsites. You can click on the links below to jump to make changes to a particular dealer site, or you can use the links on the left to make changes to the microsite options.
-</div>
+</p>
+<div class="form_spacer"></div>
 <?php
 	if( isset($dealer_list_array) && count($dealer_list_array) > 0) {
 		$count = 0;
