@@ -19,8 +19,16 @@
 
     .columns:nth-child(3) {
 
-        @include bp($foundation-med, $foundation-large) {
+        @include bp($foundation-small, $foundation-large) {
             clear: left;
+        }
+    }
+    .columns:nth-child(1n + 3) {
+
+        @include bp($foundation-med, $foundation-large) {
+            border-top: 1px solid $color-grey-border;
+            margin-top: 20px;
+            padding-top: 30px;
         }
     }
     .accreditations {
@@ -178,6 +186,16 @@
             left: 50%;
             position: absolute;
             transform: translateX(-50%);
+        }
+    }
+    .tablet-border {
+        background: $color-grey-border;
+        display: none;
+        height: 1px;
+        width: 100%;
+
+        @include bp($foundation-med, $foundation-large) {
+            display: block;
         }
     }
 }

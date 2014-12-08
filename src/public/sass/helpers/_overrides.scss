@@ -26,6 +26,13 @@
     @extend %no-border;
 }
 
+%no-transform {
+    text-transform: none;
+}
+.no-transform {
+    @extend %no-transform;
+}
+
 %no-underline {
     text-decoration: none;
 }
@@ -50,14 +57,24 @@
         display: none;
     }
 }
+.tablet-down {
+    @include bp($tablet) {
+        display: none;
+    }
+}
 .tablet-up {
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-small, $tablet) {
         display: none;
     }
 }
 
 .desktop {
     @include bp($foundation-small, $switch-nav-medium) {
+        display: none;
+    }
+}
+.desktop-down {
+    @include bp($switch-nav-medium) {
         display: none;
     }
 }

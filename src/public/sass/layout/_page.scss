@@ -40,6 +40,12 @@
         right: 20%;
     }
 }
+.page-row--short {
+    padding: {
+        bottom: 3%;
+        top: 3%;
+    }
+}
 .page-row--tall {
     padding: {
         bottom: 10%;
@@ -64,12 +70,6 @@
     }
 }
 .product-category {
-    float: left;
-    padding: {
-        left: 2%;
-        right: 2%;
-    }
-    width: 33%;
 
     h5 {
         margin: {
@@ -79,6 +79,11 @@
     }
     p {
         margin-top: 5px;
+    }
+
+    @include bp($foundation-small, $tablet) {
+        padding-bottom: 44px;
+        width: 100%;
     }
 }
 .products--short {
@@ -122,11 +127,67 @@
         float: right;
     }
 }
+
 .our-principles {
     header {
         p {
             font-size: 1.15em;
         }
+    }
+
+    @include bp($foundation-small, $tablet) {
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+    @include bp($switch-nav-large) {
+        padding: {
+            left: 13%;
+            right: 13%;
+        }
+    }
+}
+.principles {
+
+    .row {
+        @include bp($tablet) {
+            display: table;
+            height: 100%;
+        }
+    }
+
+    .principle-container {
+        border-top: 1px solid $color-grey-border;
+        font-family: $font-family-display;
+        padding: 12% 18%;
+        text-align: center;
+
+        .principle {
+
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+
+        @include bp($tablet) {
+            display: table-cell;
+            float: none !important;
+            padding: 6% 5%;
+            width: 33%;
+
+            .row-2 & {
+                border-top: 1px solid $color-grey-border;
+            }
+            &:nth-child(1n + 2) {
+                border-left: 1px solid $color-grey-border;
+            }
+        }
+    }
+
+    @include bp($tablet) {
+        border: 1px solid $color-grey-border;
     }
 }
 
@@ -335,3 +396,43 @@
 /*-----------------------
   @WARRANTY
 ------------------------*/
+
+/*-----------------------
+  @CONTACT
+------------------------*/
+.contact-form {
+    margin-top: 30px;
+
+    .full-width {
+        width: 100%;
+    }
+    .updates {
+        display: inline-block;
+    }
+
+    label, input, textarea, select {
+        display: block;
+    }
+    select {
+        -webkit-appearance: none;
+        background: #fff;
+        border: 0;
+        outline: 1px solid #b1b1b1;
+    }
+
+    @include bp($foundation-large) {
+        margin-top: 0;
+    }
+}
+.contact-info {
+
+    .hours {
+        @include bp($foundation-med) {
+            margin-top: 20px;
+        }
+        /*@include bp($foundation-med, $tablet) {
+            margin-left: 0 !important;
+            width: 50%;
+        }*/
+    }
+}

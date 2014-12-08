@@ -37,6 +37,12 @@
     max-width: $page-max-width;
     text-align: center;
     width: 100%;
+
+    &.nav-header--is-open {
+        @include bp($foundation-small, $tablet) {
+            background: $color-grey-dark;
+        }
+    }
 }
 
 .masthead__section {
@@ -83,6 +89,12 @@
         position: absolute;
         right: 60px;
         top: 0;
+
+        .nav-header--is-open & {
+            @include bp($foundation-small, $tablet) {
+                display: none;
+            }
+        }
 
         @include bp($mobile-landscape) {
             right: 80px;

@@ -46,7 +46,7 @@
                 }
             ?>
         </div>
-        <div class=" small-12 medium-6 large-3 columns accreditations">
+        <div class="small-12 medium-6 large-3 columns accreditations">
             <img src="<?=asset_url('images/5-star.png')?>" alt>
         </div>
     </div>

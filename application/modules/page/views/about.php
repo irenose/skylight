@@ -65,4 +65,46 @@
         <h2>Our Principles</h2>
         <p class="font-display">To do our part in helping take care of the world we all share, we're committed to the following principles:</p>
     </header>
+    <div class="principles">
+        <div class="row">
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/environment.png')?>" alt>
+                    <p>We will design our products so that their environmental impact during manufacture, use and disposal is diminished.</p>
+                </div>
+            </div>
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/checklist.png')?>" alt>
+                    <p>We will use raw materials, water and energy more efficiently in order to diminish our effect on the environment.</p>
+                </div>
+            </div>
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/trees.png')?>" alt>
+                    <p>We will reduce emissions and waste in all our activities.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-2">
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/people.png')?>" alt>
+                    <p>We will maintain high standards of safety at work for our employees and partners.</p>
+                </div>
+            </div>
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/graph.png')?>" alt>
+                    <p>We will cooperate with our suppliers, customers and business partners to achieve higher environmental standards at every step.</p>
+                </div>
+            </div>
+            <div class="small-12 large-4 columns principle-container">
+                <div class="principle">
+                    <img src="<?=asset_url('images/atom.png')?>" alt>
+                    <p>We will seek out new ways to improve the environmental sustainability of our products and manufacturing methods.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

@@ -54,6 +54,17 @@
         background-image: url('../images/cta.jpg');
         background-size: cover;
         background-position: center;
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        @include bp($foundation-small, $foundation-large) {
+            padding: {
+                bottom: 15%;
+                top: 10%;
+            }
+        }
     }
     .dealer-promo {
         background-color: $color-blue;

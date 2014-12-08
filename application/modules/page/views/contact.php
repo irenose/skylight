@@ -1,19 +1,26 @@
 <?php 
     /******************************* INTRO COPY AND OPTIONAL HOURS *************************/ 
 ?>
-<section>
-    <h1>Contact <?= $installer_array[0]->name; ?></h1>
-    <?php
-        if($installer_array[0]->dealer_hours != '') {
-            echo 'Hours:<br>' . nl2br($installer_array[0]->dealer_hours);
-        }
-    ?>
+<section class="page-row page-row--short bg-grey contact-intro">
+    <div class="row">
+        <div class="small-12 large-6 columns">
+            <h2 class="no-transform">Contact <?= $installer_array[0]->name; ?></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="small-12 large-4 medium-large-2 columns hours">
+            <?php
+                if($installer_array[0]->dealer_hours != '') {
+                    echo 'Hours:<br>' . nl2br($installer_array[0]->dealer_hours);
+                }
+            ?>
+        </div>
+    </div>
 </section>
 
 <?php 
-    /******************************* CONTACT FORM *************************/ 
+    /******************************* CONTACT FORM AND DEALER ADDRESS *************************/ 
 ?>
-<section>
+<section class="page-row">
     <?php
     	if (validation_errors()) {
     		echo '<div class="error-alert">' . "\n";
@@ -21,31 +28,75 @@
     		echo '</div>' . "\n";
     	}
     ?>
-    <form action="/contact" method="post">
-        <label>Name<?php echo required_text('name'); ?></label>
-        <input type="text" name="name" class="<?php echo error_class('name'); ?>" value="<?php echo set_value('name');?>" />
+    <div class="row">
+        <div class="small-12 large-4 large-push-7 large-offset-1 columns">
+            <?php 
+                echo $installer_array[0]->name . '<br>Address: ' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
+            ?>
+        </div>
+        <div class="small-12 large-7 large-pull-5 columns contact-form">
+            <form action="/contact" method="post">
+                <!-- <label>Name<?php echo required_text('name'); ?></label>
+                <input type="text" name="name" class="<?php echo error_class('name'); ?>" value="<?php echo set_value('name');?>" />
 
-        <label>Company<?php echo required_text('company'); ?></label>
-        <input type="text" name="company" class="<?php echo error_class('company'); ?>" value="<?php echo set_value('company');?>" />
+                <label>Company<?php echo required_text('company'); ?></label>
+                <input type="text" name="company" class="<?php echo error_class('company'); ?>" value="<?php echo set_value('company');?>" />
 
-        <label>Email Address<?php echo required_text('email'); ?></label>
-        <input type="text" name="email" class="<?php echo error_class('email'); ?>" value="<?php echo set_value('email');?>" />
+                <label>Email Address<?php echo required_text('email'); ?></label>
+                <input type="text" name="email" class="<?php echo error_class('email'); ?>" value="<?php echo set_value('email');?>" />
 
-        <label>Phone<?php echo required_text('phone'); ?></label>
-        <input type="text" name="phone" class="<?php echo error_class('phone'); ?>" value="<?php echo set_value('phone');?>" />
+                <label>Phone<?php echo required_text('phone'); ?></label>
+                <input type="text" name="phone" class="<?php echo error_class('phone'); ?>" value="<?php echo set_value('phone');?>" />
 
-        <label>How can we help?<?php echo required_text('comments'); ?></label>
-        <textarea name="comments" class="<?php echo form_textarea_error('comments'); ?>"><?php echo set_value('comments');?></textarea><br />
+                <label>How can we help?<?php echo required_text('comments'); ?></label>
+                <textarea name="comments" class="<?php echo form_textarea_error('comments'); ?>"><?php echo set_value('comments');?></textarea> -->
 
-        <input type="submit" value="Contact Us" />
-    </form>
+                <div class="row">
+                    <div class="small-12 medium-6 columns">
+                        <label>Name<?php echo required_text('name'); ?></label>
+                        <input type="text" name="name" class="<?php echo error_class('name'); ?> full-width" value="<?php echo set_value('name');?>" />
+
+                        <label>Phone<?php echo required_text('phone'); ?></label>
+                        <input type="text" name="phone" class="<?php echo error_class('phone'); ?> full-width" value="<?php echo set_value('phone');?>" />
+
+                        <label>Email Address<?php echo required_text('email'); ?></label>
+                        <input type="text" name="email" class="<?php echo error_class('email'); ?> full-width" value="<?php echo set_value('email');?>" />
+
+                        <label>City</label>
+                        <input type="text" name="city" class="full-width" />
+
+                        <div class="row">
+                            <div class="small-12 medium-6 columns">
+                                <label>Zip Code</label>
+                                <input type="text" name="zip" class="full-width" />
+                            </div>
+                            <div class="small-12 medium-6 columns">
+                                <label>State</label>
+                                <select name="state" class="full-width" />
+                                    <option>AK</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Submit Form" />
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <label>What Can We Help You With?</label>
+                        <select name="help" class="full-width" />
+                            <option>General inquiry</option>
+                        </select>
+
+                        <label>Message<?php echo required_text('comments'); ?></label>
+                        <textarea name="comments" class="<?php echo form_textarea_error('comments'); ?> full-width"><?php echo set_value('comments');?></textarea>
+
+                        <label><input type="checkbox" name="updates" value="" class="updates" /> Yes, I would like to receive updates</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 
  <?php 
     /******************************* DEALER ADDRESS *************************/ 
 ?>
-<section>
-    <?php 
-        echo $installer_array[0]->name . '<br>Address: ' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
-    ?>
-</section>
