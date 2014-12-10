@@ -82,6 +82,8 @@ gulp.task('styles:ours', function() {
     return gulp.src(
         [
             config.path_normalize,
+            'bower_components/jquery-icheck/skins/flat/flat.css',
+            'bower_components/jquery-selectric/dist/selectric.css',
             'bower_components/slick-carousel/slick/slick.css',
             config.path_src_css + '/' + config.main_css,
             '!' + config.path_src_css + '/vendor/*'
@@ -149,6 +151,8 @@ gulp.task('lint', function() {
 gulp.task('scripts:ours', function() {
     return gulp.src(
         [
+            'bower_components/jquery-icheck/icheck.min.js',
+            'bower_components/jquery-selectric/dist/jquery.selectric.min.js',
             'bower_components/slick-carousel/slick/slick.min.js',
             config.path_src_js + '/*.js',
             '!' + config.path_src_js + '/vendor/*'

@@ -16,10 +16,10 @@ body {
     background: #272b2c;
     color: $color-default;
     font-family: $font-family-default;
-    font-size: $font-size-default * .875; // set to 14px
+    /*font-size: $font-size-default * .875; // set to 14px*/
     line-height: $line-height-default;
 
-    @include bp($mobile-landscape) {
+    @include bp($foundation-small) {
         font-size: $font-size-default; // allow 16px
     }
 }
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
     @extend %font-display;
     font-family: $font-family-display;
     margin-top: 0;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 %h1 {

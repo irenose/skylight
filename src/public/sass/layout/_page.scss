@@ -39,6 +39,13 @@
         left: 20%;
         right: 20%;
     }
+
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: {
+            left: 10%;
+            right: 10%;
+        }
+    }
 }
 .page-row--short {
     padding: {
@@ -198,6 +205,23 @@
     background-image: url('../images/installing-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include bp($foundation-small, $tablet) {
+        padding: 0;
+
+        .video {
+            padding: 0;
+            postion: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .what-to-expect {
+            margin: 0;
+            padding: 60px 13% 0;
+            width: 100%;
+        }
+    }
 }
 
 .centered-half {
@@ -212,59 +236,59 @@
 
 .centered-half--squeezed {
 
-    &.first {
-        padding: {
-            left: 30%;
-            right: 20%;
+    @include bp($foundation-med) {
+        &.first {
+            padding: {
+                left: 30%;
+                right: 20%;
+            }
         }
-    }
-    &.last {
-        padding: {
-            left: 20%;
-            right: 30%;
+        &.last {
+            border-left: 1px solid $color-secondary;
+            padding: {
+                left: 20%;
+                right: 30%;
+            }
         }
     }
 }
 
 .statement-images--installing {
     margin-bottom: 40px;
-    max-width: 660px;
-    width: 100%;
 
     .new:after {
-        @include circle(100%, 60px);
-        background: $color-grey-light-bg;
-        border: 3px solid $color-reverse-heading;
-        box-shadow: 0 1px 5px 0 rgba(50,50,50,.25);
         content: 'NEW';
-        display: block;
-        height: 60px;
-        left: 3%;
-        line-height: 3.5;
-        position: absolute;
-        top: 15%;
-        width: 60px;
-        z-index: 30;
+        left: 5%;
+        top: 5%;
     }
     .old:after {
+        content: 'OLD';
+        right: 5%;
+        bottom: 5%;
+    }
+    .statement-image-container {
+        display: inline-block;
+    }
+    .statement-image-container:after {
         @include circle(100%, 60px);
-        background: $color-grey-light-bg;
+        @extend %bold;
+        @extend %centered;
+        background: linear-gradient(#FCFCFC 0px, #F0F0F0 100%);
         border: 3px solid $color-reverse-heading;
         box-shadow: 0 1px 5px 0 rgba(50,50,50,.25);
-        content: 'OLD';
+        color: $color-default-light;
         display: block;
+        font-size: 13px;
         height: 60px;
-        line-height: 3.5;
-        right: 5%;
+        line-height: 4.5;
         position: absolute;
-        top: 67%;
         width: 60px;
         z-index: 30;
     }
     .statement-image {
         border: 5px solid $color-reverse-heading;
         box-shadow: 0 1px 7px 0 rgba(50,50,50,.25);
-        height: 300px;
+        height: 100%;
         margin: 0 10px;
         position: relative;
     }
@@ -277,7 +301,7 @@
     padding-bottom: 20%;
     
     .first {
-        padding-right: 27%;
+        padding-right: 20%;
     }
 
     .last {
@@ -298,6 +322,15 @@
                 font-weight: bold;
                 line-height: 1.15em;
             }
+            @include bp($foundation-small, $foundation-large) {
+                display: block;
+                float: none;
+                margin: 0 auto;
+            }
+        }
+
+        @include bp($foundation-small, $tablet) {
+            padding: 0;
         }
     }
 }
@@ -312,9 +345,20 @@
         position: absolute;
         right: 0;
         z-index: 20;
+
+        @include bp($foundation-small, $foundation-med) {
+            bottom: 0;
+            position: relative;
+            text-align: center;
+        }
     }
     .first {
         padding-right: 20%;
+
+        @include bp($foundation-small, $foundation-med) {
+            padding: 0;
+            text-align: center;
+        }
     }
 }
 
@@ -325,6 +369,30 @@
     background-image: url('../images/products-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include bp($foundation-small, $tablet) {
+        background-image: none;
+
+        .product-category-wrapper {
+            margin-top: 180px; 
+        }
+        header {
+            background: $color-grey-light-bg;
+            margin-left: -10%;
+            padding: {
+                bottom: 20px;
+                top: 40px;
+            }
+            position: absolute;
+            top: 0;
+            width: 110%;
+
+            h2 {
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+    }
 }
 
 .accessories {
@@ -338,10 +406,25 @@
 .hero--residential {
     background-image: url('../images/residential-hero.jpg');
     background-size: cover;
-    height: 900px;
+    /*height: 900px;*/
 
-    .vcard {
-        width: 275px;
+    .card {
+        width: 300px;
+
+        @include bp($foundation-small, $mobile-landscape) {
+            background: $color-grey-light-bg;
+            padding: 10% 10% 8%;
+            width: 100%;
+        }
+    }
+
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: 0;
+
+        .row, .columns {
+            float: none;
+            padding: 0;
+        }
     }
 }
 
@@ -400,39 +483,33 @@
 /*-----------------------
   @CONTACT
 ------------------------*/
-.contact-form {
-    margin-top: 30px;
-
-    .full-width {
-        width: 100%;
-    }
-    .updates {
-        display: inline-block;
-    }
-
-    label, input, textarea, select {
-        display: block;
-    }
-    select {
-        -webkit-appearance: none;
-        background: #fff;
-        border: 0;
-        outline: 1px solid #b1b1b1;
-    }
-
-    @include bp($foundation-large) {
-        margin-top: 0;
-    }
-}
 .contact-info {
 
     .hours {
         @include bp($foundation-med) {
-            margin-top: 20px;
+            margin-top: 15px;
         }
         /*@include bp($foundation-med, $tablet) {
             margin-left: 0 !important;
             width: 50%;
         }*/
+    }
+}
+
+.dealer-info--contact {
+    margin-top: 1em;
+}
+
+/*-----------------------
+  @WHY SKYLIGHTS
+------------------------*/
+.reason {
+
+    h3 {
+        margin-top: 10%;
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        text-align: center;
     }
 }

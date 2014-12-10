@@ -13,7 +13,7 @@
     .breadcrumb-links {
         float: right;
         font-size: .75em;
-        top: 4px;
+        /*top: 4px;*/
 
         a:nth-child(2) {
             margin-left: 15px;
@@ -21,6 +21,10 @@
 
         .dotted {
             border-bottom: 1px dotted;
+        }
+
+        @include bp($foundation-small, $tablet) {
+            display: none;
         }
     }
 

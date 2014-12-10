@@ -84,7 +84,6 @@
 
     @include bp($foundation-large) {
         bottom: 0;
-        margin-top: 10%;
         padding: 0 .9375rem;
         position: absolute;
         right: 0;
@@ -115,6 +114,10 @@
     @include bp($switch-nav-large) {
         padding: 18% 15%;
         width: 66%;
+
+        h1 {
+            max-width: 560px;
+        }
     }
 }
 
@@ -123,7 +126,7 @@
     padding: 8% 10% 40%;
 
     @include bp($switch-nav-medium) {
-        padding: 15% 0 78%;
+        padding: 15% 0 80%;
 
         h5 {
             margin: 0 auto;
@@ -131,9 +134,9 @@
         }
     }
     @include bp($switch-nav-large) {
-        padding-bottom: 76%;
+        padding-bottom: 82%;
     }
     @include bp($my-large) {
-        padding-bottom: 80%;
+        padding-bottom: 84%;
     }
 }

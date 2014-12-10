@@ -9,7 +9,7 @@
 <section class="page-row bg-grey">
     <header class="intro-statement">
         <h2>Brochures</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam consectetur incidunt debitis porro voluptatibus quasi asperiores voluptas, accusantium nemo, quibusdam omnis neque! Quo odio iste voluptas deserunt perspiciatis ipsum quod.</p>
+        <p class="font-display">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam consectetur incidunt debitis porro voluptatibus quasi asperiores voluptas, accusantium nemo, quibusdam omnis neque! Quo odio iste voluptas deserunt perspiciatis ipsum quod.</p>
     </header>
 </section>
 <section class="page-row border-top-grey brochures">

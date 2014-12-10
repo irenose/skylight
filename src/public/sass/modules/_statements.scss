@@ -4,10 +4,17 @@
         left: 20%;
         right: 20%;
     }
+
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: {
+            left: 10%;
+            right: 10%;
+        }
+    }
 }
 
 .intro-statement--squeezed {
-    @include bp($tablet) {
+    @include bp($foundation-large) {
         padding: {
             left: 32%;
             right: 32%;
@@ -30,10 +37,21 @@
         right: 20%;
     }
 
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: {
+            left: 10%;
+            right: 10%;
+        }
+    }
+
     h3 {
         padding: {
             left: 14%;
             right: 14%;
+        }
+
+        @include bp($foundation-small, $mobile-landscape) {
+            padding: 0;
         }
     }
     p {
@@ -56,14 +74,5 @@
             left: 40%;
             right: 40%;
         }
-    }
-}
-
-.statement-images {
-    display: inline-block;
-    width: 100%;
-
-    .statement-image-container {
-        float: left;
     }
 }

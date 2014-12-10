@@ -108,6 +108,20 @@
     @extend %centered;
 }
 
+%text-left {
+    text-align: left;
+}
+.text-left {
+    @extend %text-left;
+}
+
+%text-right {
+    text-align: right;
+}
+.text-right {
+    @extend %text-right;
+}
+
 // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
 %vc {
     position: relative;
@@ -172,7 +186,7 @@
   @BORDERS
 ------------------------*/
 .center-border {
-    background: 1px solid $color-secondary;
+    background: $color-secondary;
     height: 100%;
     left: 50%;
     position: absolute;
@@ -219,9 +233,9 @@
 }
 
 /*-----------------------
-  @V-CARD
+  @CARD
 ------------------------*/
-.vcard {
+.card {
     background: $color-reverse-heading;
     color: $color-default-light;
     text-align: center;

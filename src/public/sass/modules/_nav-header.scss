@@ -40,7 +40,7 @@
                 line-height: $masthead-height;
 
                 &:hover:after {
-                    background: $color-blue;
+                    background: $color-primary;
                     bottom: 0;
                     content: '';
                     display: block;
@@ -138,7 +138,7 @@
                 }
                 width: auto;
                 &:hover:after {
-                    background: $color-blue;
+                    background: $color-primary;
                     bottom: 0;
                     content: '';
                     display: block;

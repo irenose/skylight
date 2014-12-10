@@ -36,9 +36,9 @@
 <section class="page-row page-row--tall hero hero--residential">
 	<div class="row">
 		<div class="small-12 large-6 columns">
-			<div class="vcard">
+			<div class="card">
 				<h3>Residential Skylights</h3>
-				<p>VELUX residential skylights are a great way to add natural light and fresh air to your home. They not only improve your living space, but they also help improve energy efficiency.</p>
+				<p class="font-display">VELUX residential skylights are a great way to add natural light and fresh air to your home. They not only improve your living space, but they also help improve energy efficiency.</p>
 			</div>
 		</div>
 	</div>

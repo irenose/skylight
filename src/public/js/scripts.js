@@ -34,6 +34,8 @@ ww.main = (function() {
 
         register_events: function() {
             ww.navigation.init();
+            ww.embed_video.init();
+            ww.custom_forms.init();
         },
     };
 })();
@@ -136,6 +138,73 @@ ww.navigation = (function(){
                 }
             });
         }
+    };
+})();
+
+/*-----------------------
+  @EMBED VIDEO
+------------------------*/
+ww.embed_video = (function() {
+    var settings = {
+        autoplay: 1,
+        video_width: 462,
+        video_height: 260,
+        current_height: 0,
+        $icon: $(".footer .icon-brand").clone(),
+    };
+
+    return {
+        init: function() {
+            $(".video-embed-trigger").on("click", function(e) {
+                e.preventDefault();
+
+                var $el = $(this),
+                    video_id = $el.attr("href").split('/').pop(),
+                    $wrapper = $el.closest(".video");
+                settings.current_height = $wrapper.outerHeight();
+
+                $wrapper
+                    .css({"height":settings.current_height})
+                    .contents()
+                    .fadeOut(300, function() {
+                        $wrapper
+                            .css({"padding-top":settings.current_height / 2})
+                            .html(settings.$icon);
+                        settings.$icon
+                            .delay(500)
+                            .fadeIn(300, function() {
+                                settings.$icon.delay(1500).fadeOut(300, function() {
+                                    $wrapper
+                                        .css({"padding-top":0})
+                                        .html('<iframe src="//player.vimeo.com/video/'+video_id+'?title=0&amp;byline=0&amp;portrait=0&amp;autoplay='+settings.autoplay+'" width="'+settings.video_width+'" height="'+settings.video_height+'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+                                        .fitVids();
+                                });
+                            });
+                    });
+            });
+        },
+    };
+})();
+
+/*-----------------------
+  @CUSTOM FORMS
+------------------------*/
+ww.custom_forms = (function() {
+    return {
+        init: function() {
+            this.selects();
+            this.checks();
+        },
+
+        selects: function() {
+            $('select').selectric();
+        },
+        checks: function() {
+            $('input[type="checkbox"]').iCheck({
+                checkboxClass: 'icheckbox_flat',
+                radioClass: 'iradio_flat'
+            });
+        },
     };
 })();
 

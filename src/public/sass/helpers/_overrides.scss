@@ -40,6 +40,13 @@
     @extend %no-underline;
 }
 
+%normal-weight {
+    font-weight: normal;
+}
+.normal-weight {
+    @extend %normal-weight;
+}
+
 /*-----------------------
   @DEVICES
 ------------------------*/

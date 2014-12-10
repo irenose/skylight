@@ -733,3 +733,26 @@ if ( ! function_exists('remove_emoji')) {
 	    return $clean_text;
 	}
 }
+
+if ( ! function_exists('curl_get')) {
+    function curl_get($url) {
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        $return = curl_exec($curl);
+        curl_close($curl);
+        return $return;
+    }
+}
+
+/* https://developer.vimeo.com/apis/oembed */
+if ( ! function_exists('oembed_vimeo')) {
+    function oembed_vimeo($video_id, $video_width = 640) {
+        $oembed_endpoint = 'http://vimeo.com/api/oembed';
+        $video_url = 'https://vimeo.com/' . $video_id;
+        $json_url = $oembed_endpoint . '.json?url=' . rawurlencode($video_url) . '&width=' . $video_width;
+
+        return json_decode(curl_get($json_url));
+    }
+}

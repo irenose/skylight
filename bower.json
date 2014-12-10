@@ -2,7 +2,7 @@
   "name": "__boilerplate",
   "version": "0.0.0",
   "authors": [
-    "John Manning <jmanning@wrayward.com>"
+    "Jack Sharkey <jsharkey@wrayward.com>"
   ],
   "license": "MIT",
   "private": true,
@@ -15,7 +15,9 @@
   ],
   "devDependencies": {
     "jquery": "1.11.1",
-    "foundation": "~5.3.3"
+    "foundation": "~5.3.3",
+    "jquery-selectric": "~1.8.4",
+    "jquery-icheck": "~1.0.2"
   },
   "resolutions": {
     "jquery": "1.11.1"
