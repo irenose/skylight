@@ -1,0 +1,48 @@
+.product-row {
+    color: $color-default-light;
+
+    .product-title {
+        color: $color-default;
+        display: inline-block;
+        margin-top: 1em;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    p {
+        margin: {
+            bottom: 10px; 
+            top: 0;
+        }
+    }
+}
+
+
+/*-----------------------
+  @RESIDENTIAL SKYLIGHTS
+------------------------*/
+.hero--residential {
+    background-image: url('../images/residential-hero.jpg');
+    background-size: cover;
+    /*height: 900px;*/
+
+    .card {
+        width: 300px;
+
+        @include bp($foundation-small, $mobile-landscape) {
+            background: $color-grey-light-bg;
+            padding: 10% 10% 8%;
+            width: 100%;
+        }
+    }
+
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: 0;
+
+        .row, .columns {
+            float: none;
+            padding: 0;
+        }
+    }
+}

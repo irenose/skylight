@@ -23,10 +23,23 @@
 }
 
 %page-row {
-    padding: $row-padding-vertical $row-padding-horizontal;
+    padding: 10% 5%;
 }
 .page-row {
     @extend %page-row;
+
+    @include bp($foundation-large) {
+        padding: {
+            bottom: 5%;
+            top: 5%;
+        }
+    }
+    @include bp($my-large) {
+        padding: {
+            left: 10%;
+            right: 10%;
+        }
+    }
 }
 .page-row--snug {
     padding: {
@@ -55,8 +68,15 @@
 }
 .page-row--tall {
     padding: {
-        bottom: 10%;
-        top: 10%;
+        bottom: 15%;
+        top: 15%;
+    }
+
+    @include bp($mobile-landscape) {
+        padding: {
+            bottom: 10%;
+            top: 10%;
+        }
     }
 }
 .page-row--extra-tall {
@@ -91,7 +111,15 @@
     @include bp($foundation-small, $tablet) {
         padding-bottom: 44px;
         width: 100%;
+
+        &:first-child {
+            left: 0;
+        }
+        &:nth-child(2) {
+            right: 0;
+        }
     }
+
 }
 .products--short {
 
@@ -100,416 +128,9 @@
     }
 }
 
-/*-----------------------
-  @HOMEPAGE
-------------------------*/
-
-/*-----------------------
-  @ABOUT
-------------------------*/
-.about-velux {
-    div {
-        padding: 5% 0;
-    }
+%snug-bottom {
+    padding-bottom: 0;
 }
-.about-dealer {
-    overflow: hidden;
-
-    @include bp($foundation-small, $foundation-med) {
-        padding-bottom: 260px;
-
-        .about-dealer-title {
-            text-align: center;
-        }
-
-        img {
-            bottom: 18px;
-            float: none;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-        }
-    }
-    img {
-        float: right;
-    }
-}
-
-.our-principles {
-    header {
-        p {
-            font-size: 1.15em;
-        }
-    }
-
-    @include bp($foundation-small, $tablet) {
-        padding: {
-            left: 0;
-            right: 0;
-        }
-    }
-    @include bp($switch-nav-large) {
-        padding: {
-            left: 13%;
-            right: 13%;
-        }
-    }
-}
-.principles {
-
-    .row {
-        @include bp($tablet) {
-            display: table;
-            height: 100%;
-        }
-    }
-
-    .principle-container {
-        border-top: 1px solid $color-grey-border;
-        font-family: $font-family-display;
-        padding: 12% 18%;
-        text-align: center;
-
-        .principle {
-
-        }
-
-        p {
-            margin-bottom: 0;
-        }
-
-        @include bp($tablet) {
-            display: table-cell;
-            float: none !important;
-            padding: 6% 5%;
-            width: 33%;
-
-            .row-2 & {
-                border-top: 1px solid $color-grey-border;
-            }
-            &:nth-child(1n + 2) {
-                border-left: 1px solid $color-grey-border;
-            }
-        }
-    }
-
-    @include bp($tablet) {
-        border: 1px solid $color-grey-border;
-    }
-}
-
-/*-----------------------
-  @INSTALLING
-------------------------*/
-.installing {
-    background-image: url('../images/installing-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    @include bp($foundation-small, $tablet) {
-        padding: 0;
-
-        .video {
-            padding: 0;
-            postion: absolute;
-            top: 0;
-            width: 100%;
-        }
-
-        .what-to-expect {
-            margin: 0;
-            padding: 60px 13% 0;
-            width: 100%;
-        }
-    }
-}
-
-.centered-half {
-    @extend %centered;
-    padding: $row-padding-vertical $row-padding-horizontal;
-
-    p {
-        color: $color-default-light;
-        font-size: $font-size-default * 0.875;
-    }
-}
-
-.centered-half--squeezed {
-
-    @include bp($foundation-med) {
-        &.first {
-            padding: {
-                left: 30%;
-                right: 20%;
-            }
-        }
-        &.last {
-            border-left: 1px solid $color-secondary;
-            padding: {
-                left: 20%;
-                right: 30%;
-            }
-        }
-    }
-}
-
-.statement-images--installing {
-    margin-bottom: 40px;
-
-    .new:after {
-        content: 'NEW';
-        left: 5%;
-        top: 5%;
-    }
-    .old:after {
-        content: 'OLD';
-        right: 5%;
-        bottom: 5%;
-    }
-    .statement-image-container {
-        display: inline-block;
-    }
-    .statement-image-container:after {
-        @include circle(100%, 60px);
-        @extend %bold;
-        @extend %centered;
-        background: linear-gradient(#FCFCFC 0px, #F0F0F0 100%);
-        border: 3px solid $color-reverse-heading;
-        box-shadow: 0 1px 5px 0 rgba(50,50,50,.25);
-        color: $color-default-light;
-        display: block;
-        font-size: 13px;
-        height: 60px;
-        line-height: 4.5;
-        position: absolute;
-        width: 60px;
-        z-index: 30;
-    }
-    .statement-image {
-        border: 5px solid $color-reverse-heading;
-        box-shadow: 0 1px 7px 0 rgba(50,50,50,.25);
-        height: 100%;
-        margin: 0 10px;
-        position: relative;
-    }
-}
-
-.replacing {
-    background-image: url('../images/replacing-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 20%;
-    
-    .first {
-        padding-right: 20%;
-    }
-
-    .last {
-
-        .incentive {
-            @include circle(100%, 130px);
-            background: $color-blue;
-            color: $color-reverse-heading;
-            float: left;
-            font-size: .875em;
-            line-height: 1.25em;
-            height: 130px;
-            margin: 0 10px;
-            padding-top: 22px;
-
-            .big {
-                font-size: 3em;
-                font-weight: bold;
-                line-height: 1.15em;
-            }
-            @include bp($foundation-small, $foundation-large) {
-                display: block;
-                float: none;
-                margin: 0 auto;
-            }
-        }
-
-        @include bp($foundation-small, $tablet) {
-            padding: 0;
-        }
-    }
-}
-
-.after-installation {
-    background-image: url('../images/after-installing-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    .brochure {
-        bottom: -420px;
-        position: absolute;
-        right: 0;
-        z-index: 20;
-
-        @include bp($foundation-small, $foundation-med) {
-            bottom: 0;
-            position: relative;
-            text-align: center;
-        }
-    }
-    .first {
-        padding-right: 20%;
-
-        @include bp($foundation-small, $foundation-med) {
-            padding: 0;
-            text-align: center;
-        }
-    }
-}
-
-/*-----------------------
-  @PRODUCTS
-------------------------*/
-.products {
-    background-image: url('../images/products-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    @include bp($foundation-small, $tablet) {
-        background-image: none;
-
-        .product-category-wrapper {
-            margin-top: 180px; 
-        }
-        header {
-            background: $color-grey-light-bg;
-            margin-left: -10%;
-            padding: {
-                bottom: 20px;
-                top: 40px;
-            }
-            position: absolute;
-            top: 0;
-            width: 110%;
-
-            h2 {
-                font-weight: normal;
-                text-transform: none;
-            }
-        }
-    }
-}
-
-.accessories {
-    padding: 5% 0;
-    text-align: center;
-}
-
-/*-----------------------
-  @RESIDENTIAL SKYLIGHTS
-------------------------*/
-.hero--residential {
-    background-image: url('../images/residential-hero.jpg');
-    background-size: cover;
-    /*height: 900px;*/
-
-    .card {
-        width: 300px;
-
-        @include bp($foundation-small, $mobile-landscape) {
-            background: $color-grey-light-bg;
-            padding: 10% 10% 8%;
-            width: 100%;
-        }
-    }
-
-    @include bp($foundation-small, $mobile-landscape) {
-        padding: 0;
-
-        .row, .columns {
-            float: none;
-            padding: 0;
-        }
-    }
-}
-
-.product-row {
-    color: $color-default-light;
-
-    .product-title {
-        color: $color-default;
-        display: inline-block;
-        margin-top: 1em;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-    p {
-        margin: {
-            bottom: 10px; 
-            top: 0;
-        }
-    }
-}
-
-/*-----------------------
-  @BROCHURES
-------------------------*/
-.brochures {
-    text-align: center;
-
-    .brochure {
-        margin-bottom: 3.5em;
-
-        .brochure__image {
-            margin-bottom: 1em;
-        }
-        a {
-            text-transform: uppercase;
-        }
-        h5 {
-            margin-bottom: 0;
-            text-transform: none;
-        }
-        p {
-            margin: {
-                bottom: 1.25em;
-                top: .3em;
-            }
-        }
-    }
-}
-
-/*-----------------------
-  @WARRANTY
-------------------------*/
-
-/*-----------------------
-  @CONTACT
-------------------------*/
-.contact-info {
-
-    .hours {
-        @include bp($foundation-med) {
-            margin-top: 15px;
-        }
-        /*@include bp($foundation-med, $tablet) {
-            margin-left: 0 !important;
-            width: 50%;
-        }*/
-    }
-}
-
-.dealer-info--contact {
-    margin-top: 1em;
-}
-
-/*-----------------------
-  @WHY SKYLIGHTS
-------------------------*/
-.reason {
-
-    h3 {
-        margin-top: 10%;
-    }
-
-    @include bp($foundation-small, $foundation-med) {
-        text-align: center;
-    }
+.snug-bottom {
+    @extend %snug-bottom;
 }

@@ -1,23 +1,29 @@
 .intro-statement {
     @extend %centered;
     padding: {
-        left: 20%;
-        right: 20%;
+        left: 10%;
+        right: 10%;
     }
 
     @include bp($foundation-small, $mobile-landscape) {
         padding: {
-            left: 10%;
-            right: 10%;
+            left: 5%;
+            right: 5%;
+        }
+    }
+    @include bp($foundation-large) {
+        padding: {
+            left: 20%;
+            right: 20%;
         }
     }
 }
 
 .intro-statement--squeezed {
-    @include bp($foundation-large) {
+    @include bp($switch-nav-large) {
         padding: {
-            left: 32%;
-            right: 32%;
+            left: 30%;
+            right: 30%;
         }
     }
 
@@ -33,8 +39,8 @@
 .header-statement {
     @extend %centered;
     padding: {
-        left: 20%;
-        right: 20%;
+        left: 15%;
+        right: 15%;
     }
 
     @include bp($foundation-small, $mobile-landscape) {
@@ -46,8 +52,8 @@
 
     h3 {
         padding: {
-            left: 14%;
-            right: 14%;
+            left: 18%;
+            right: 18%;
         }
 
         @include bp($foundation-small, $mobile-landscape) {
@@ -62,8 +68,8 @@
 .header-statement--squeezed {
     @include bp($tablet) {
         padding: {
-            left: 32%;
-            right: 32%;
+            left: 25%;
+            right: 25%;
         }
     }
 }

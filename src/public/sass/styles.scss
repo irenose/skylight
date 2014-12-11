@@ -16,8 +16,17 @@
 @import "layout/header";
 @import "layout/footer";
 
+@import "pages/about";
+@import "pages/brochures";
+@import "pages/category";
+@import "pages/contact";
+@import "pages/homepage";
+@import "pages/installing";
+@import "pages/products";
+@import "pages/why-skylights";
 @import "pages/styleguide";
 
+@import "modules/accessories";
 @import "modules/arrows";
 @import "modules/hero";
 @import "modules/breadcrumbs";
@@ -31,3 +40,4 @@
 @import "modules/discover-more";
 @import "modules/testimonials";
 @import "modules/gallery";
+@import "modules/slick";

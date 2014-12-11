@@ -1,0 +1,235 @@
+.installing {
+    background-image: url('../images/installing-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include bp($foundation-small, $tablet) {
+        padding: 0;
+
+        .video {
+            padding: 0;
+            postion: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .what-to-expect {
+            margin: 0;
+            padding: 60px 13% 0;
+            width: 100%;
+        }
+    }
+}
+
+.skylight-orientation {
+
+    .columns {
+        padding: 0;
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        border-top: none;
+        padding: 0 0 10%;
+    }
+}
+.centered-half {
+    @extend %centered;
+    padding: 10% 5%;
+
+    p {
+        color: $color-default-light;
+        font-size: $font-size-default * 0.875;
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: 0 5%;
+    }
+}
+.centered-half--squeezed {
+
+        &.first {
+
+            @include bp($foundation-med) {
+                padding: {
+                    left: 20%;
+                    right: 10%;
+                }
+            }
+            @include bp($tablet) {
+                padding: {
+                    left: 30%;
+                    right: 20%;
+                }
+            }
+        }
+        &.last {
+
+            @include bp($foundation-med) {
+                border-left: 1px solid $color-secondary;
+                padding: {
+                    left: 10%;
+                    right: 20%;
+                }
+            }
+            @include bp($tablet) {
+                padding: {
+                    left: 20%;
+                    right: 30%;
+                }
+            }
+        }
+}
+
+.statement-images--installing {
+    margin-bottom: 40px;
+
+    .new:after {
+        content: 'NEW';
+        left: 5%;
+        top: 5%;
+    }
+    .old:after {
+        content: 'OLD';
+        bottom: 5%;
+        right: 5%;
+    }
+    .statement-image-container {
+        display: inline-block;
+
+        @include bp($foundation-small, $foundation-med) {
+            text-align: center;
+
+            &.old {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .statement-image-container:after {
+        @include circle(100%, 60px);
+        @extend %bold;
+        @extend %centered;
+        background: linear-gradient(#FCFCFC 0px, #F0F0F0 100%);
+        border: 3px solid $color-reverse-heading;
+        box-shadow: 0 1px 5px 0 rgba(50,50,50,.25);
+        color: $color-default-light;
+        display: block;
+        font-size: 13px;
+        height: 60px;
+        line-height: 4.5;
+        position: absolute;
+        width: 60px;
+        z-index: 30;
+    }
+    .statement-image {
+        border: 5px solid $color-reverse-heading;
+        box-shadow: 0 1px 7px 0 rgba(50,50,50,.25);
+        height: 100%;
+        position: relative;
+    }
+    .text-right, .text-left {
+
+        @include bp($foundation-small, $foundation-med) {
+            text-align: center;
+        }
+    }
+}
+
+.replacing {
+    background-image: url('../images/replacing-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 20%;
+    
+    .first {
+        @include bp($foundation-large) {
+            padding-right: 20%;
+        }
+    }
+
+    .last {
+
+        .incentives {
+
+            @include bp($switch-nav-medium) {
+                margin: 0 auto;
+                width: 450px;
+            }
+        }
+        .incentive {
+            @include circle(100%, 130px);
+            background: $color-blue;
+            color: $color-reverse-heading;
+            float: left;
+            font-size: .875em;
+            line-height: 1.25em;
+            height: 130px;
+            margin: 0 10px;
+            padding-top: 22px;
+
+            .big {
+                font-size: 3em;
+                font-weight: bold;
+                line-height: 1.15em;
+            }
+            @include bp($foundation-small, $foundation-large) {
+                display: block;
+                float: none;
+                margin: 0 auto 15px;
+            }
+        }
+
+        @include bp($foundation-small, $tablet) {
+            padding: 0;
+        }
+    }
+}
+
+.after-installation {
+    background-image: url('../images/after-installing-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .brochure {
+        text-align: right;
+
+        img {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 20;
+
+            @include bp($foundation-med) {
+                bottom: -40px;
+            }
+        }
+
+        @include bp($foundation-small, $foundation-med) {
+            margin: 0 auto;
+            text-align: center;
+            width: 30%;
+        }
+    }
+    .first {
+
+        @include bp($foundation-small, $foundation-med) {
+            text-align: center;
+            padding-right: 0;
+        }
+        @include bp($foundation-large) {
+            padding-right: 10%;
+        }
+    }
+
+    .last {
+        @include bp($foundation-small, $foundation-med) {
+            padding: 0;
+        }
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: {
+            bottom: 10% !important;
+            left: 10%;
+            right: 10%;
+        }
+    }
+}

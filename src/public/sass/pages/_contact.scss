@@ -1,0 +1,56 @@
+.contact-form {
+    margin-top: 30px;
+
+    .full-width {
+        width: 100%;
+    }
+    .updates {
+        @include bp($foundation-med) {
+            margin-top: 50px;
+        }
+    }
+
+    input, textarea, select {
+        border: 1px solid $color-default-light;
+        display: block;
+        padding: .75em;
+
+        &[type="submit"] {
+            border: none;
+            margin-top: 25px;
+            padding: .875em 2em .85em;
+        }
+    }
+    label {
+        display: block;
+        line-height: 1.75em;
+        margin-top: 15px;
+    }
+    select {
+        padding: .55em
+    }
+    textarea {
+        min-height: 218px;
+    }
+
+    @include bp($foundation-large) {
+        margin-top: 0;
+    }
+}
+
+.contact-info {
+
+    .hours {
+        @include bp($foundation-med) {
+            margin-top: 15px;
+        }
+        /*@include bp($foundation-med, $tablet) {
+            margin-left: 0 !important;
+            width: 50%;
+        }*/
+    }
+}
+
+.dealer-info--contact {
+    margin-top: 1em;
+}

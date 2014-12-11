@@ -22,12 +22,19 @@
 <?php
     /******************************* IF INSTALLER HAS PHOTO GALLERY *************************/ 
 ?>
-<section class="page-row page-row--snug bg-grey">
-    <div class="slick">
-        <div class="slick-list">
-            <div class="gallery-item centered">
-                <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-            </div>
+<section class="page-row bg-grey">
+    <div class="slick-carousel">
+        <div class="centered">
+            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+        </div>
+        <div class="centered">
+            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+        </div>
+        <div class="centered">
+            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+        </div>
+        <div class="centered">
+            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
         </div>
     </div>
 </section>

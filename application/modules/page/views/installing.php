@@ -23,7 +23,7 @@
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
     </header>
 </section>
-<section class="border-top-grey bg-grey">
+<section class="border-top-grey bg-grey skylight-orientation">
     <div class="row">
         <div class="small-12 medium-6 columns centered">
             <div class="centered-half centered-half--squeezed first">
@@ -51,12 +51,12 @@
 </section>
 <section class="page-row border-top-grey centered">
     <div class="row statement-images--installing">
-            <div class="small-6 large-5 large-push-1 columns text-right">
+            <div class="small-12 medium-5 medium-push-1 columns text-right">
                 <div class="statement-image-container polaroid--round old">
                     <img src="<?=asset_url('images/old.jpg')?>" class="statement-image" alt>
                 </div>
             </div>
-            <div class="small-6 large-5 large-pull-1 columns text-left">
+            <div class="small-12 medium-5 medium-pull-1 columns text-left">
                 <div class="statement-image-container polaroid--round new">
                     <img src="<?=asset_url('images/new.jpg')?>" class="statement-image" alt>
                 </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 </section>
-<section class="page-row page-row--tall after-installation">
+<section class="page-row page-row--tall snug-bottom after-installation">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns last">
             <div class="brochure">
@@ -95,24 +95,6 @@
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
             <a class="btn">Download</a>
         </div>
-</section>
-<section class="page-row page-row--snug bg-grey centered">
-    <h3>Discover More</h3>
-    <div class="row discover-more">
-        <div class="small-12 medium-4 columns">
-            <a href="" class="discover-card">
-                <img src="<?=asset_url('images/dealer-locator.jpg')?>" class="" alt>
-            </a>
-        </div>
-        <div class="small-12 medium-4 columns">
-            <a href="" class="discover-card">
-                <img src="<?=asset_url('images/skylight-planner.jpg')?>" class="" alt>
-            </a>
-        </div>
-        <div class="small-12 medium-4 columns">
-            <a href="" class="discover-card">
-                <img src="<?=asset_url('images/articles.jpg')?>" class="" alt>
-            </a>
-        </div>
     </div>
 </section>
+<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>

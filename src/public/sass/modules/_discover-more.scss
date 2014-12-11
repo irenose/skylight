@@ -1,3 +1,11 @@
 .discover-more {
     max-width: 1000px;
 }
+
+.discover-card {
+    display: block;
+
+    @include bp($foundation-small, $foundation-med) {
+        margin-top: 50px;
+    }
+}

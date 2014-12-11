@@ -1,0 +1,90 @@
+.about-velux {
+    div {
+        padding: 5% 0;
+    }
+}
+.about-dealer {
+    overflow: hidden;
+
+    @include bp($foundation-small, $foundation-med) {
+        padding-bottom: 260px;
+
+        .about-dealer-title {
+            text-align: center;
+        }
+
+        img {
+            bottom: 18px;
+            float: none;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+    }
+    img {
+        float: right;
+    }
+}
+
+.our-principles {
+    header {
+        p {
+            font-size: 1.15em;
+        }
+    }
+
+    @include bp($foundation-small, $tablet) {
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+    @include bp($switch-nav-large) {
+        padding: {
+            left: 13%;
+            right: 13%;
+        }
+    }
+}
+.principles {
+
+    .row {
+        @include bp($tablet) {
+            display: table;
+            height: 100%;
+        }
+    }
+
+    .principle-container {
+        border-top: 1px solid $color-grey-border;
+        font-family: $font-family-display;
+        padding: 12% 18%;
+        text-align: center;
+
+        .principle {
+
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+
+        @include bp($tablet) {
+            display: table-cell;
+            float: none !important;
+            padding: 6% 5%;
+            width: 33%;
+
+            .row-2 & {
+                border-top: 1px solid $color-grey-border;
+            }
+            &:nth-child(1n + 2) {
+                border-left: 1px solid $color-grey-border;
+            }
+        }
+    }
+
+    @include bp($tablet) {
+        border: 1px solid $color-grey-border;
+    }
+}

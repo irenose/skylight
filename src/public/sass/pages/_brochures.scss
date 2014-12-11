@@ -1,0 +1,24 @@
+.brochures {
+    text-align: center;
+
+    .brochure {
+        margin-bottom: 3.5em;
+
+        .brochure__image {
+            margin-bottom: 1em;
+        }
+        a {
+            text-transform: uppercase;
+        }
+        h5 {
+            margin-bottom: 0;
+            text-transform: none;
+        }
+        p {
+            margin: {
+                bottom: 1.25em;
+                top: .3em;
+            }
+        }
+    }
+}

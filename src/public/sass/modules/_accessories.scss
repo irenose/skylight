@@ -1,0 +1,8 @@
+.accessories {
+    div {
+
+        @include bp($foundation-small, $foundation-large) {
+            margin-bottom: 40px;
+        }
+    }
+}

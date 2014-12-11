@@ -1,0 +1,10 @@
+.reason {
+
+    h3 {
+        margin-top: 10%;
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        text-align: center;
+    }
+}
