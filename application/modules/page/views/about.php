@@ -35,12 +35,12 @@
 <?php 
     /******************************* IF INSTALLER HAS TESTIMONIALS *************************/ 
 ?>
-<section>
+<section id="testimonials">
     <?php
         if( isset($testimonials_array) && count($testimonials_array) > 0) {
             echo '<section class="page-row border-top-grey"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
             foreach($testimonials_array as $testimonial) {
-                echo '<p>"' . $testimonial->testimonial_copy . '"</p>';
+                echo '<p>"' . filter_page_content($testimonial->testimonial_copy) . '"</p>';
             }
             echo '</div></div><div class="testimonial-link"><a href="">View All Testimonials</a></div></div></div></section>';
         }

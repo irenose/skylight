@@ -30,7 +30,7 @@
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
 	<header class="intro-statement intro-statement--squeezed">
-		<h2>A brief installer welcome message can go in this space</h2>
+		<h2><?=$installer_array[0]->about_dealer_headline?></h2>
 	</header>
 	<div class="row installer-welcome">
 		<div class="small-12 large-6 columns welcome-hero upgrade">
@@ -103,20 +103,32 @@
         </div>
     </div>
 </section>
-<section class="page-row border-top-grey">
-	<div class="testimonial-carousel header-statement">
-		<div class="slick">
-			<div class="slick-list">
-				<div class="testimonial">
-					<p>The transformation has been magical. It totally exceeded my expectations. I'm thrilled. Its amazing with the how much light the skylights bring in.</p>
-				</div>
-			</div>
-			<div class="testimonial-link">
-				<a href="">View All Testimonials</a>
-			</div>
-		</div>
-	</div>
-</section>
+<?php
+    /*---------------------------------------------
+        Show Testimonial if installer has any
+    ----------------------------------------------*/
+    if( isset($testimonials_array) && count($testimonials_array) > 0) {
+?>
+        <section class="page-row border-top-grey">
+        	<div class="testimonial-carousel header-statement">
+        		<div class="slick">
+        			<div class="slick-list">
+        				<div class="testimonial">
+        					<p><?=filter_page_content($testimonials_array[0]->testimonial_copy)?></p>
+        				</div>
+        			</div>
+        			<div class="testimonial-link">
+        				<a href="<?=$installer_base_url?>/about#testimonials">View All Testimonials</a>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+<?php
+    }
+    /*---------------------------------------------
+        End Optional Testimonial
+    ----------------------------------------------*/
+?>
 <section class="page-row bg-grey centered">
     <h3>Discover More</h3>
     <div class="row discover-more">

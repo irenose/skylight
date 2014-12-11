@@ -1,7 +1,7 @@
 <section class="masthead-wrapper">
     <div class="masthead">
         <div class="masthead__section masthead__section--large push-left">
-            <a href="<?=site_url()?>" class="brand" title="Home">
+            <a href="<?=$installer_base_url?>" class="brand" title="Home">
                 <img src="<?=asset_url('images/installer-logo.png')?>" alt>
                 <!--<div>Joe's Plubming, Heating, A/C, and Ventilation Services</div>-->
             </a>
