@@ -9,18 +9,6 @@
         .product-category-wrapper {
             margin-top: 180px;
 
-            .product-category {
-
-                @include bp($foundation-med, $tablet) {
-                    &:first-child {
-                        left: 0;
-                    }
-                    &:nth-child(2) {
-                        right: 0;
-                    }
-                }
-            }
-
             @include bp($foundation-med) {
                 margin-top: 120px;
             }

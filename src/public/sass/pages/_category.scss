@@ -16,6 +16,12 @@
             top: 0;
         }
     }
+
+    @include bp($foundation-small, $foundation-med) {
+        .columns {
+            margin-bottom: 25px;
+        }
+    }
 }
 
 

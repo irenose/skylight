@@ -17,7 +17,8 @@
     "jquery": "1.11.1",
     "foundation": "~5.3.3",
     "jquery-selectric": "~1.8.4",
-    "jquery-icheck": "~1.0.2"
+    "jquery-icheck": "~1.0.2",
+    "jquery.scrollTo": "~1.4.14"
   },
   "resolutions": {
     "jquery": "1.11.1"

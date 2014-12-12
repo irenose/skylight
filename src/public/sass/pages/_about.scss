@@ -39,7 +39,7 @@
             right: 0;
         }
     }
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         padding: {
             left: 13%;
             right: 13%;

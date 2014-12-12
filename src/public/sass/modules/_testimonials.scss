@@ -1,6 +1,6 @@
 .testimonial {
     padding: 0 10%;
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         padding: 0 15%;
     }
 

@@ -10,7 +10,7 @@
             echo '<a href="' . $installer_base_url . '/about" class="nav-header__link first">About</a>';
             echo '<a href="' . $installer_base_url . '/warranty" class="nav-header__link">Warranty</a>';
             echo '<a href="' . $installer_base_url . '/brochures" class="nav-header__link">Brochures</a>';
-            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last">Contact</a></nav>';
+            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last">Contact</a><a href="" class="hav-header__link popout-velux-logo"><img src="' . asset_url('images/velux-logo.jpg') . '" alt></a></nav>';
         }
     ?>
 </div>

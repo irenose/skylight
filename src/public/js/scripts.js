@@ -37,6 +37,7 @@ ww.main = (function() {
             ww.embed_video.init();
             ww.custom_forms.init();
             ww.carousels.init();
+            ww.fixed_nav.init();
         },
     };
 })();
@@ -224,6 +225,73 @@ ww.carousels = (function(){
                 slide: 'div',
                 cssEase: 'linear'
             });
+        },
+    };
+})();
+
+/*-----------------------
+  @FIXED NAV
+------------------------*/
+ww.fixed_nav = (function() {
+    var s = {
+        $win: $(window),
+        $body: $('body'),
+        $page: $('.page'),
+        $fixed_el: $('[data-fixie]'),
+        $offset_el: $('.branding'),
+        eloffset: null,
+    };
+
+    return {
+        init: function() {
+            s.$win.scroll(function() {
+                // wait until the first scroll to calculate offset
+                // otherwise font loading throws off caluclation
+                if (s.eloffset === null) {
+                    s.eloffset = s.$offset_el.outerHeight();
+                }
+
+                if (s.eloffset < s.$win.scrollTop()) {
+                    // enter fixed mode
+                    s.$fixed_el.addClass('is-fixed');
+                    // push body contents down equal to the height of the fixed bar
+                    s.$body.css({"padding-top":s.$fixed_el.outerHeight()});
+                } else {
+                    // exit fixed mode
+                    s.$fixed_el.removeClass('is-fixed');
+                    // reset body padding to 0
+                    s.$body.css({"padding-top":0});
+                }
+            });
+        },
+
+        // recalculate offset after window resize
+        window_resize: function() {
+            var doit;
+            window.onresize = function() {
+                clearTimeout(doit);
+                doit = setTimeout(ww.fixed_nav.reset_offset, 100);
+            };
+        },
+
+        reset_offset: function() {
+            s.eloffset = s.$fixed_el.offset().top;
+        },
+    };
+})();
+
+/*-----------------------
+  @HERO
+------------------------*/
+ww.hero = (function() {
+    var s = {
+        $hero: $('hero'),
+        
+    };
+
+    return {
+        init: function() {
+
         },
     };
 })();

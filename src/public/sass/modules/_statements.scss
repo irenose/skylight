@@ -20,7 +20,7 @@
 }
 
 .intro-statement--squeezed {
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         padding: {
             left: 30%;
             right: 30%;
@@ -52,8 +52,8 @@
 
     h3 {
         padding: {
-            left: 18%;
-            right: 18%;
+            left: 10%;
+            right: 10%;
         }
 
         @include bp($foundation-small, $mobile-landscape) {

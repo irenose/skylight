@@ -37,7 +37,7 @@
                 display: none;
             }
         }
-        @include bp($foundation-large, $switch-nav-large) {
+        @include bp($foundation-large, $my-large) {
             width: 15%;
         }
     }
@@ -81,7 +81,7 @@
         @include bp($foundation-med, $foundation-large) {
             float: right;
         }
-        @include bp($foundation-large, $switch-nav-large) {
+        @include bp($foundation-large, $my-large) {
             padding-left: 5%;
             width: 35%;
 
@@ -158,7 +158,7 @@
                 text-align: center;
             }
         }
-        @include bp($foundation-large, $switch-nav-large) {
+        @include bp($foundation-large, $my-large) {
             .nav-major {
                 width: 70% !important;
             }
@@ -175,7 +175,7 @@
             margin: 0 .25em;
             width: 25px;
 
-            @include bp($switch-nav-large) {
+            @include bp($my-large) {
                 height: 14px;
                 width: 14px;
             }

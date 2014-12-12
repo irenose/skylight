@@ -76,8 +76,8 @@
 </head>
 <body>
     <!-- HEADER -->
-    <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_masthead') : null );?>
     <div class="page">
+        <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_masthead2') : null );?>
         <main role="main">
         <?php
             echo $this->load->view($page_view);

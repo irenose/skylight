@@ -33,7 +33,7 @@
 ?> -->
 
 <?=$this->load->view('partials/_breadcrumb')?>
-<section class="page-row page-row--tall hero hero--residential">
+<section class="page-row page-row--extra-tall hero hero--residential">
 	<div class="row">
 		<div class="small-12 large-6 columns">
 			<div class="card">
@@ -120,4 +120,5 @@
 		</div>
 	</div>
 </section>
+<div class="border-top-grey"></div>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_accessories') : null );?>

@@ -1,0 +1,40 @@
+.product-category-wrapper {
+    overflow: hidden;
+    padding: 4% 0;
+    text-align: center;
+
+    h5 {
+        text-transform: none;
+    }
+}
+.product-category {
+
+    h5 {
+        margin: {
+            bottom: 1%;
+            top: 10%;
+        }
+    }
+    p {
+        margin-top: 5px;
+    }
+
+    @include bp($foundation-small, $tablet) {
+        padding-bottom: 44px;
+        width: 100%;
+
+        &:first-child {
+            left: 0;
+        }
+        &:nth-child(2) {
+            right: 0;
+        }
+    }
+
+}
+.products--short {
+
+    .product-category-wrapper {
+        padding: 0;
+    }
+}

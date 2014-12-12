@@ -1,19 +1,24 @@
 <section class="masthead-wrapper">
-    <div class="masthead">
-        <div class="branding">
+    <div class="branding">
+        <a href="<?=$installer_base_url?>" class="brand" title="Home">
+            <img src="<?=asset_url('images/installer-logo.png')?>" alt>
+            <!--<div>Joe's Plubming, Heating, A/C, and Ventilation Services</div>-->
+        </a>
+    </div>
+    <div class="masthead" data-fixie>
+        <div class="mobile-branding">
             <a href="<?=$installer_base_url?>" class="brand" title="Home">
                 <img src="<?=asset_url('images/installer-logo.png')?>" alt>
                 <!--<div>Joe's Plubming, Heating, A/C, and Ventilation Services</div>-->
             </a>
         </div>
-        <div class="masthead__section masthead__section--large push-left">
-            <a href="<?=$installer_base_url?>" class="brand" title="Home">
-            <?=$this->load->view('partials/_navigation-header');?>
-        </div>
         <div class="masthead__section masthead__section--small masthead__section--velux">
             <a class="velux-logo">
                 <img src="<?=asset_url('images/velux-logo.jpg')?>" alt>
             </a>
+        </div>
+        <div class="masthead__section masthead__section--large push-left">
+            <?=$this->load->view('partials/_navigation-header');?>
         </div>
         <div class="masthead__section masthead__section--small masthead__section--phone">
             <?php

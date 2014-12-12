@@ -3,7 +3,7 @@
     display: none;
     font-size: 0.875em;
     left: 0;
-    position: fixed;
+    position: absolute;
     top: $masthead-height + $masthead-border;
     width: 100%;
 
@@ -78,8 +78,8 @@
                 display: none;
                 left: 50%;
                 line-height: 70px;;
-                max-width: $page-max-width;
-                position: fixed;
+                /*max-width: $page-max-width;*/
+                position: absolute;
                 width: 100%;
                 text-align: center;
                 top: $masthead-height;
@@ -88,30 +88,26 @@
         }
         .products-dropdown {
             display: inline-block;
+            position: static;
         }
 
         a {
-            font-weight: normal;
+            font-weight: bold;
             margin: 0 auto;
-            text-transform: none;
+            text-transform: uppercase;
 
-            @include bp($foundation-small, $tablet) {
-                text-transform: uppercase;
-            }
             @include bp($tablet) {
                 margin: {
-                    left: 5px;
-                    right: 5px;
+                    left: 18px;
+                    right: 18px;
                 }
             }
 
             @include bp($switch-nav-medium) {
-                font-weight: bold;
                 margin: {
-                    left: 15px;
-                    right: 15px;
+                    left: 20px;
+                    right: 20px;
                 }
-                text-transform: uppercase;
             }
         }
     }
@@ -133,8 +129,8 @@
                 display: inline-block;
                 line-height: $masthead-height;
                 margin: {
-                    left: 8px;
-                    right: 8px;
+                    left: 18px;
+                    right: 18px;
                 }
                 width: auto;
                 &:hover:after {
@@ -153,17 +149,24 @@
         .nav-header--is-open & {
             display: block;
         }
+        .popout-velux-logo {
+
+            @include bp($switch-nav-medium) {
+                display: none;
+            }
+        }
 
         @include bp($tablet, $switch-nav-large) {
             background: #fff;
             left: 0;
-            position: fixed;
+            position: absolute;
             top: $masthead-height + $masthead-border;
             width: 100%;
         }
         @include bp($switch-nav-large) {
             display: block;
-            float: right;
+            float: left;
+            margin-left: 15px;
         }
     }
 
@@ -171,12 +174,11 @@
         background: transparent;
         display: block;
         float: left;
-        margin-left: 2%;
-        position: relative;
+        position: static;
         top: 0;
         width: auto;
     }
     @include bp($switch-nav-large) {
-        width: 75.705%;
+        /*width: 75.705%;*/
     }
 }

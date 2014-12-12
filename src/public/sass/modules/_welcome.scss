@@ -26,7 +26,7 @@
     @include bp($foundation-small, $foundation-large) {
         padding: 0;
     }
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         width: 33%;
     }
 }
@@ -93,7 +93,7 @@
             margin-left: 6%;
         }
     }
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         right: 1%;
         width: 33%;
     }
@@ -106,12 +106,12 @@
     background-image: url('../images/hero.jpg');
     padding: 22% 10%;
 
-    @include bp($foundation-large, $switch-nav-large) {
+    @include bp($foundation-large, $my-large) {
         h1 {
             width: 330px;
         }
     }
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         padding: 18% 15%;
         width: 66%;
 
@@ -133,10 +133,10 @@
             width: 360px;
         }
     }
-    @include bp($switch-nav-large) {
+    @include bp($my-large) {
         padding-bottom: 82%;
     }
-    @include bp($my-large) {
+    @include bp($my-very-large) {
         padding-bottom: 84%;
     }
 }
