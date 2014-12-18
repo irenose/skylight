@@ -45,6 +45,7 @@ class Page extends CI_Controller {
             //UPDATE WITH INSTALLER URL ADDED
             $data['installer_base_url'] = base_url() . $installer_url;
             $data['canonical_url'] = base_url() . $installer_url;
+            $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
 
             if(count($data['installer_array']) > 0) {
                 if($vars_size == 1) {
