@@ -4,7 +4,17 @@
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
         <img src="<?=asset_url('images/installer-logo-large.png')?>" alt>
+<?php
+    /*---------------------------------------------
+        Dealer Headline
+    ----------------------------------------------*/
+?>
         <h2 class="normal-weight"><?= $installer_array[0]->about_dealer_headline; ?></h2>
+<?php
+    /*---------------------------------------------
+        End Dealer Headline
+    ----------------------------------------------*/
+?>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
         <a href="<?= $installer_base_url; ?>/contact">Schedule A Consulation</a>
     </header>
@@ -18,11 +28,21 @@
     <div class="dealer-image polaroid--round">
         <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
     </div>
+<?php
+    /*---------------------------------------------
+        About Dealer Text
+    ----------------------------------------------*/
+?>
     <p class="text-columns-2 about-dealer-text"><?= $installer_array[0]->about_dealer_text; ?></p>
+<?php
+    /*---------------------------------------------
+        End About Dealer Text
+    ----------------------------------------------*/
+?>
 </section>
 
 <?php
-    /******************************* IF INSTALLER HAS PHOTO GALLERY *************************/ 
+    /******************************* OPTIONAL PHOTO GALLERY *************************/ 
 ?>
 <section class="page-row bg-grey gallery">
     <div class="slick-carousel">
@@ -42,9 +62,14 @@
 </section>
 
 <?php 
-    /******************************* IF INSTALLER HAS TESTIMONIALS *************************/ 
+    /******************************* OPTIONAL TESTIMONIALS *************************/ 
 ?>
 <section id="testimonials">
+<?php
+    /*---------------------------------------------
+        Testimonails
+    ----------------------------------------------*/
+?>
     <?php
         if( isset($testimonials_array) && count($testimonials_array) > 0) {
             echo '<section class="page-row border-top-grey"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
@@ -54,6 +79,11 @@
             echo '</div></div><div class="testimonial-link"><a href="">View All Testimonials</a></div></div></div></section>';
         }
     ?>
+<?php
+    /*---------------------------------------------
+        End Testimonails
+    ----------------------------------------------*/
+?>
 </section>
 
 <?php 

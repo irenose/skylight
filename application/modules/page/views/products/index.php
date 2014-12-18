@@ -1,11 +1,20 @@
 <?php 
-    /******************************* OUR PRODUCTS *************************/ 
+    /******************************* INTRO COPY *************************/ 
 ?>
 <section class="page-row products">
     <header class="intro-statement intro-statement--squeezed">
         <h2 class="normal-weight">Our Products</h2>
         <p>Want to let more light and fresh air into your home? You’re in the right place.</p>
     </header>
+
+<?php 
+    /******************************* OUR PRODUCTS *************************/ 
+?>
+<?php
+    /*---------------------------------------------
+        Product Categories
+    ----------------------------------------------*/
+?>
     <div class="product-category-wrapper">
         <!-- <?php
         	if( isset($product_category_array) && count($product_category_array) > 0) {
@@ -75,6 +84,11 @@
         </div>
     </div>
 </section>
+<?php
+    /*---------------------------------------------
+        End Product Categories
+    ----------------------------------------------*/
+?>
 
 <?php 
     /******************************* ACCESSORIES *************************/ 

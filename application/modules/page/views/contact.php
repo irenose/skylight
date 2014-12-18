@@ -3,6 +3,11 @@
 ?>
 <section class="page-row page-row--short bg-grey contact-info">
     <div class="row">
+<?php
+    /*---------------------------------------------
+        Installer Name & Hours
+    ----------------------------------------------*/
+?>
         <div class="small-12 large-6 columns">
             <h2 class="normal-weight">Contact <?= $installer_array[0]->name; ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -14,6 +19,11 @@
                 }
             ?>
         </div>
+<?php
+    /*---------------------------------------------
+        End Installer Name & Hours
+    ----------------------------------------------*/
+?>
     </div>
 </section>
 
@@ -21,6 +31,12 @@
     /******************************* DEALER ADDRESS AND CONTACT FORM *************************/ 
 ?>
 <section class="page-row">
+
+<?php
+    /*---------------------------------------------
+        Validation & Address
+    ----------------------------------------------*/
+?>
     <?php
     	if (validation_errors()) {
     		echo '<div class="error-alert">' . "\n";
@@ -34,6 +50,11 @@
                 echo '<span class="font-display dealer-title">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
             ?>
         </div>
+<?php
+    /*---------------------------------------------
+        End Validation & Address
+    ----------------------------------------------*/
+?>
         <div class="small-12 large-7 large-pull-5 columns contact-form">
             <form action="/contact" method="post">
                 <!-- <label>Name<?php echo required_text('name'); ?></label>
