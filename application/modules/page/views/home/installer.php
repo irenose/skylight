@@ -56,13 +56,13 @@
 </section>
 
 <?php
-    /******************************* OUR PRODUCTS SECTION *************************/ 
+    /******************************* OUR PRODUCTS *************************/ 
 ?>
 
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>
 
 <?php
-    /******************************* OPTIONAL TESTIMONIALS SECTION *************************/ 
+    /******************************* OPTIONAL TESTIMONIALS *************************/ 
 ?>
 <?php
     /*---------------------------------------------
@@ -92,6 +92,6 @@
 ?>
 
 <?php
-    /******************************* DISCOVER MORE SECTION *************************/ 
+    /******************************* DISCOVER MORE *************************/ 
 ?>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>

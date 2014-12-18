@@ -1,5 +1,5 @@
 <?php 
-    /******************************* OUR PRODUCTS SECTION *************************/ 
+    /******************************* OUR PRODUCTS *************************/ 
 ?>
 <section class="page-row products">
     <header class="intro-statement intro-statement--squeezed">
@@ -77,6 +77,6 @@
 </section>
 
 <?php 
-    /******************************* ACCESSORIES SECTION *************************/ 
+    /******************************* ACCESSORIES *************************/ 
 ?>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_accessories') : null );?>

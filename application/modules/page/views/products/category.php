@@ -55,6 +55,10 @@
     /******************************* SECONDARY NAV *************************/ 
 ?>
 <?=$this->load->view('partials/_navigation-secondary')?>
+
+<?php 
+    /******************************* PRODUCT ROWS *************************/ 
+?>
 <section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
 		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
@@ -132,4 +136,8 @@
 	</div>
 </section>
 <div class="border-top-grey"></div>
+
+<?php 
+    /******************************* ACCESSORIES *************************/ 
+?>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_accessories') : null );?>

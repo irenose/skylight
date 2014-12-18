@@ -16,13 +16,23 @@
 </section>
 
 <?php
-	/******************************* IF INSTALLER HAS SEPARATE WARRANTY INFO *************************/ 
+	/******************************* OPTIONAL INSTALLER WARRANTY *************************/ 
 	if( isset($warranty_array) && count($warranty_array) > 0) {
+?>
+<?php
+    /*---------------------------------------------
+        Installer Warranty
+    ----------------------------------------------*/
 ?>
 	<section class="page-row">
 		<h2 class="normal-weight"><?= $installer_array[0]->name; ?> Warranty</h2>
 		<p class="text-columns-2 installer-warranty"><?= filter_page_content($warranty_array[0]->dealer_warranty); ?></p>
 	</section>
+<?php
+    /*---------------------------------------------
+        End Installer Warranty
+    ----------------------------------------------*/
+?>
 <?php
 	}
 ?>
@@ -38,7 +48,7 @@
 </section> -->
 
 <?php 
-	/******************************* OUR PRODUCTS SECTION *************************/ 
+	/******************************* OUR PRODUCTS *************************/ 
 ?>
 <div class="border-top-grey"></div>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>
