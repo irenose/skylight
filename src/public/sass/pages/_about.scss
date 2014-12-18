@@ -7,26 +7,53 @@
     overflow: hidden;
 
     @include bp($foundation-small, $foundation-med) {
-        padding-bottom: 260px;
+        padding-bottom: 270px;
 
         .about-dealer-title {
             text-align: center;
         }
 
-        img {
-            bottom: 18px;
+        .dealer-image {
+            bottom: 5%;
             float: none;
             left: 50%;
+            margin-left: 0;
             position: absolute;
             transform: translateX(-50%);
         }
     }
-    img {
+    .dealer-image {
         float: right;
+
+        img {
+            box-shadow: 0 0 6px rgba(0,0,0,.3);
+            height: 250px;
+            width: 250px;
+        }
+
+        @include bp($foundation-med) {
+            margin-left: 20px;
+        }
+    }
+}
+
+.gallery {
+
+    @include bp($foundation-small, $tablet) {
+        padding: 0;
+    }
+
+    @include bp($tablet, $foundation-large) {
+        padding: 60px;
     }
 }
 
 .our-principles {
+
+    h2 {
+        margin-bottom: 5%;
+    }
+
     header {
         p {
             font-size: 1.15em;
@@ -73,7 +100,7 @@
             display: table-cell;
             float: none !important;
             padding: 6% 5%;
-            width: 33%;
+            width: 33.33333%;
 
             .row-2 & {
                 border-top: 1px solid $color-grey-border;

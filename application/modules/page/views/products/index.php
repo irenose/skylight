@@ -1,6 +1,9 @@
+<?php 
+    /******************************* OUR PRODUCTS SECTION *************************/ 
+?>
 <section class="page-row products">
     <header class="intro-statement intro-statement--squeezed">
-        <h2>Our Products</h2>
+        <h2 class="normal-weight">Our Products</h2>
         <p>Want to let more light and fresh air into your home? You’re in the right place.</p>
     </header>
     <div class="product-category-wrapper">
@@ -72,4 +75,8 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* ACCESSORIES SECTION *************************/ 
+?>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_accessories') : null );?>

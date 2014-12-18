@@ -4,8 +4,10 @@
 $page-max-width: 1800px;
 $masthead-height: 78px;
 $masthead-border: 1px;
+$masthead-mobile: 70px;
 $breadcrumb-height: 55px;
 $icon: 44px;
+$icon-play: 66px;
 
 // breakpoints
 $mobile-portrait: 320px;
@@ -20,15 +22,16 @@ $max: $page-max-width;
 $foundation-small: 0px !default; // foundation
 $foundation-med: 641px !default; // foundation
 $foundation-large: 1025px !default; // foundation
+$modal-is-enabled: $foundation-large;
 
 // colors
 $color-default: #383d3f;
 $color-default-light: #606567;
 $color-primary: #ec1d25;
 $color-secondary: #e5e5e5;
+$color-grey: #7f7f7f;
 $color-grey-light: #9ba0a2;
 $color-grey-light-bg: #f5f5f5;
-$color-grey: #f3f4f4;
 $color-grey-dark: #383d3f;
 $color-blue: #24b9f1;
 $color-blue-dark: #186d8d;
@@ -40,8 +43,8 @@ $color-grey-dark-border: #4a4f50;
 $color-nav-header-open: #363a3c;
 $color-reverse-heading: #fff;
 $color-reverse: #dfdfdf;
-$color-text-light: #f2f1e9;
-$overlay: #fff;
+$color-text-light: #f0f0f0;
+$overlay: $color-footer-bg;
 
 // typography
 $font-family-default: 'Helvetica', sans-serif;

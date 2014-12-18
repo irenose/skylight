@@ -42,6 +42,7 @@
         }
     }
     .dealer-info {
+        color: $color-grey;
         line-height: 1.8;
         text-align: left;
 
@@ -97,6 +98,7 @@
         @extend %centered;
         color: $color-grey-light;
         font-size: 0.857em;
+        margin-top: 8px;
 
         @include bp($foundation-small, $foundation-med) {
             bottom: 35px;
@@ -130,7 +132,7 @@
             width: 50%;
 
             a {
-                color: $color-default;
+                color: $color-grey;
             }
         }
 

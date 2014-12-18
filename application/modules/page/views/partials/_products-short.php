@@ -10,7 +10,7 @@
         ?> -->
 
         <header class="header-statement">
-            <h2>Our Products</h2>
+            <h3 class="upper">Our Products</h2>
         </header>
         <!-- <div class="row">
             <div class="small-12 medium-4 columns product-category">

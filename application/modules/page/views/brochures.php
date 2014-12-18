@@ -8,7 +8,7 @@
 
 <section class="page-row bg-grey">
     <header class="intro-statement">
-        <h2>Brochures</h2>
+        <h2 class="normal-weight">Brochures</h2>
         <p class="font-display">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam consectetur incidunt debitis porro voluptatibus quasi asperiores voluptas, accusantium nemo, quibusdam omnis neque! Quo odio iste voluptas deserunt perspiciatis ipsum quod.</p>
     </header>
 </section>

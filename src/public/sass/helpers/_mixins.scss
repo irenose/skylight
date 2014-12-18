@@ -42,13 +42,19 @@
 }
 
 // http://apps.eky.hk/css-triangle-generator/
-@mixin triangle($dir, $width: 20px, $bg: #f00) {
+@mixin triangle($dir, $width: 20px, $bg: #f00, $equalateral: true) {
     border-style: solid;
     height: 0;
     width: 0;
 
+    @if ($equalateral) {
+        $dir-width: $width / .6;
+    } @else {
+        $dir-width: $width;
+    }
+
     @if ($dir == "north") {
-        border-width: 0 $width ($width / .6) $width;
+        border-width: 0 $width $dir-width $width;
         border-color: transparent transparent $bg transparent;
     }
     @else if ($dir == "north-east") {
@@ -56,7 +62,7 @@
         border-color: transparent $bg transparent transparent;
     }
     @else if ($dir == "east") {
-        border-width: $width 0 $width ($width / .6);
+        border-width: $width 0 $width $dir-width;
         border-color: transparent transparent transparent $bg;
     }
     @else if ($dir == "south-east") {
@@ -64,7 +70,7 @@
         border-color: transparent transparent $bg transparent;
     }
     @else if ($dir == "south") {
-        border-width: ($width / .6) $width 0 $width;
+        border-width: $dir-width $width 0 $width;
         border-color: $bg transparent transparent transparent;
     }
     @else if ($dir == "south-west") {
@@ -72,11 +78,26 @@
         border-color: transparent transparent transparent $bg;
     }
     @else if ($dir == "west") {
-        border-width: $width ($width / .6) $width 0;
+        border-width: $width $dir-width $width 0;
         border-color: transparent $bg transparent transparent;
     }
     @else if ($dir == "north-west") {
         border-width: $width $width 0 0;
         border-color: $bg transparent transparent transparent;
+    }
+}
+
+@mixin squeezed($factor: 1) {
+    @include bp($my-medium) {
+        padding-right: $row-padding-horizontal * ($factor * 1.5);
+        padding-left: $row-padding-horizontal * ($factor * 1.5);
+    }
+    @include bp($my-large) {
+        padding-right: $row-padding-horizontal * ($factor * 2);
+        padding-left: $row-padding-horizontal * ($factor * 2);
+    }
+    @include bp($my-max) {
+        // padding-right: $row-padding-horizontal * ($factor * 2.5);
+        // padding-left: $row-padding-horizontal * ($factor * 2.5);
     }
 }

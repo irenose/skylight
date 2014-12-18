@@ -16,6 +16,7 @@
         }
     }
     p {
+        color: $color-default-light;
         margin-top: 5px;
     }
 
@@ -36,5 +37,9 @@
 
     .product-category-wrapper {
         padding: 0;
+    }
+
+    h3 {
+        margin-bottom: 5%;
     }
 }

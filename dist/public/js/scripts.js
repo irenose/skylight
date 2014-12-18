@@ -77,6 +77,7 @@ ww.main = (function() {
             ww.custom_forms.init();
             ww.carousels.init();
             ww.fixed_nav.init();
+            ww.conditional_modals.init();
         },
     };
 })();
@@ -103,6 +104,12 @@ ww.common = (function(){
             $(document).on("click", "a[href='#']", function(e) {
                 e.preventDefault();
             });
+        },
+
+        // tests min-width based on _utilities.scss HOOKS
+        check_breakpoint: function(str) {
+            var result = window.getComputedStyle(document.body,':after').getPropertyValue('content').indexOf(str) > -1 ? true : false;
+            return result;
         },
 
         // http://stackoverflow.com/a/3855394
@@ -191,7 +198,7 @@ ww.embed_video = (function() {
         video_width: 462,
         video_height: 260,
         current_height: 0,
-        $icon: $(".footer .icon-brand").clone(),
+        $icon: $(".footer .logo").clone(),
     };
 
     return {
@@ -315,6 +322,66 @@ ww.fixed_nav = (function() {
 
         reset_offset: function() {
             s.eloffset = s.$fixed_el.offset().top;
+        },
+    };
+})();
+
+/*-----------------------
+  @CONDITIONAL MODALS
+
+  http://codepen.io/bradfrost/pen/tfCAp
+  http://adactio.com/journal/5429/
+------------------------*/
+ww.conditional_modals = (function() {
+    var s = {
+        $modal: $(".modal"),
+        $modal_body: $(".modal__body"),
+        $modal_screen: $(".modal-screen"),
+    };
+
+    return {
+        init: function() {
+            this.register_events();
+        },
+
+        register_events: function() {
+            // open
+            $("[data-modal-open]").on("click", function(e) {
+                if (ww.common.check_breakpoint('modal-is-enabled')) {
+                    e.preventDefault();
+                    ww.conditional_modals.inject_modal_content($(this));
+                }
+            });
+
+            // close
+            s.$modal.on("click", "[data-modal-close]", function(e) {
+                e.preventDefault();
+                ww.conditional_modals.close_modal();
+            });
+        },
+
+        inject_modal_content: function($trigger) {
+            $.get("/ajax/get_view", {
+                view: $trigger.data("ajax-vars").view,
+                vars: $trigger.data("ajax-vars"),
+            }, function(data) {
+                s.$modal_body.html(data);
+                ww.conditional_modals.open_modal();
+            });
+        },
+
+        open_modal: function() {
+            if ( ! $(".modal--is-open").length) {
+                s.$modal.add(s.$modal_screen).addClass('modal--is-open');
+                ww.custom_forms.init();
+            }
+        },
+
+        close_modal: function() {
+            s.$modal.add(s.$modal_screen).removeClass('modal--is-open');
+
+            // prepare for next opening
+            s.$modal_body.empty();
         },
     };
 })();

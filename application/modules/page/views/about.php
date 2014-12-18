@@ -4,7 +4,7 @@
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
         <img src="<?=asset_url('images/installer-logo-large.png')?>" alt>
-        <h2><?= $installer_array[0]->about_dealer_headline; ?></h2>
+        <h2 class="normal-weight"><?= $installer_array[0]->about_dealer_headline; ?></h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
         <a href="<?= $installer_base_url; ?>/contact">Schedule A Consulation</a>
     </header>
@@ -14,15 +14,17 @@
     /******************************* ABOUT INSTALLER COPY *************************/ 
 ?>
 <section class="page-row about-dealer">
-    <h2 class="about-dealer-title">Our Company</h2>
-    <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
+    <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
+    <div class="dealer-image polaroid--round">
+        <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
+    </div>
     <p class="text-columns-2 about-dealer-text"><?= $installer_array[0]->about_dealer_text; ?></p>
 </section>
 
 <?php
     /******************************* IF INSTALLER HAS PHOTO GALLERY *************************/ 
 ?>
-<section class="page-row bg-grey">
+<section class="page-row bg-grey gallery">
     <div class="slick-carousel">
         <div class="centered">
             <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
@@ -59,7 +61,7 @@
 ?>
 <section class="page-row bg-grey about-velux">
     <div class="centered">
-        <a href=""><img src="<?=asset_url('images/velux-logo.jpg')?>" alt></a>
+        <a href=""><img src="<?=asset_url('images/velux-logo.png')?>" alt></a>
     </div>
     <p class="text-columns-3 font-display">Founded on a vision of daylight, fresh air and quality of life, for over 60 years, we have created energy-efficient daylighting solutions for commercial and residential clients across the globe.<br><br>And today, we lead the industry in our commitment to developing and manufacturing architectural-grade products that provide and control daylight and fresh air. This, of course, is no coincidence. It is a result of our intense focus on offering the highest quality and most energy-efficient daylighting products on the market.<br><br>We're as equally dedicated to upholding our tradition of quality and craftsmanship as we are to reducing the environmental impact of the manufacture, use and disposal of our products. Because our activities use some natural resources, this gives us a direct obligation towards the environment we rely on.</p>
 </section>
@@ -69,7 +71,7 @@
 ?>
 <section class="page-row our-principles">
     <header class="header-statement header-statement--squeezed">
-        <h2>Our Principles</h2>
+        <h2 class="upper">Our Principles</h2>
         <p class="font-display">To do our part in helping take care of the world we all share, we're committed to the following principles:</p>
     </header>
     <div class="principles">

@@ -32,7 +32,14 @@
 	}
 ?> -->
 
+<?php 
+    /******************************* BREADCRUMB *************************/ 
+?>
 <?=$this->load->view('partials/_breadcrumb')?>
+
+<?php 
+    /******************************* STATIC CATEGORY HERO WITH CARD *************************/ 
+?>
 <section class="page-row page-row--extra-tall hero hero--residential">
 	<div class="row">
 		<div class="small-12 large-6 columns">
@@ -43,10 +50,14 @@
 		</div>
 	</div>
 </section>
+
+<?php 
+    /******************************* SECONDARY NAV *************************/ 
+?>
 <?=$this->load->view('partials/_navigation-secondary')?>
-<section class="page-row page-row--squeezed">
+<section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
-		<h3>Solar Powered "Fresh Air" Skylights</h3>
+		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
 	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
@@ -63,9 +74,9 @@
 		</div>
 	</div>
 </section>
-<section class="page-row page-row--squeezed border-top-grey">
+<section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
-		<h3>Solar Powered "Fresh Air" Skylights</h3>
+		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
 	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
@@ -82,9 +93,9 @@
 		</div>
 	</div>
 </section>
-<section class="page-row page-row--squeezed border-top-grey">
+<section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
-		<h3>Solar Powered "Fresh Air" Skylights</h3>
+		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
 	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">
@@ -101,9 +112,9 @@
 		</div>
 	</div>
 </section>
-<section class="page-row page-row--squeezed border-top-grey">
+<section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
-		<h3>Solar Powered "Fresh Air" Skylights</h3>
+		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
 	</header>
 	<div class="row product-row">
 		<div class="small-12 medium-6 columns centered">

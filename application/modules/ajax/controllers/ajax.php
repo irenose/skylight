@@ -17,7 +17,8 @@ class Ajax extends CI_Controller {
 ************************************************************************************/
 
     function get_view() {
-        $this->load->view('page/'.$this->input->get('view'));
+        $this->data['vars'] = $this->input->get('vars');
+        $this->load->view('page/' . $this->input->get('view'), $this->data);        
     }
 
 	function check_email() {

@@ -77,15 +77,17 @@
 <body>
     <!-- HEADER -->
     <div class="page">
-        <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_masthead2') : null );?>
+        <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_masthead') : null );?>
+
         <main role="main">
         <?php
             echo $this->load->view($page_view);
         ?>
         </main>
+        <?=$this->load->view('partials/_footer');?>
     </div>
     <!-- FOOTER -->
-    <?=$this->load->view('partials/_footer');?>
+    <?=$this->load->view('partials/_modal');?>
 
 
     <!-- jQuery -->

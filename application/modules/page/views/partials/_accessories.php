@@ -1,6 +1,6 @@
 <section class="page-row page-row--snug">
     <div class="header-statement">
-        <h3>Accessories</h3>
+        <h3 class="upper">Accessories</h3>
     </div>
     <div class="row accessories">
         <div class="small-12 medium-6 large-3 columns">

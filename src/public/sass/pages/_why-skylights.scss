@@ -1,10 +1,33 @@
-.reason {
+.why-skylights .intro-statement p {
+    color: $color-grey-light;
+}
 
-    h3 {
-        margin-top: 10%;
+.reason {
+    p {
+        color: $color-default-light;
     }
 
     @include bp($foundation-small, $foundation-med) {
         text-align: center;
+    }
+}
+
+.reason__number {
+    @extend %centered;
+    @extend %font-display;
+    @include circle(50px, 50px, transparent);
+    border: 3px solid #fff;
+    color: $color-primary;
+    display: block;
+    font-size: 1.25em;
+    line-height: 46px;
+    margin: 1.5em auto;
+
+    @include bp($foundation-med) {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    @include bp($foundation-med, $foundation-large) {
+        margin-top: 0;
     }
 }

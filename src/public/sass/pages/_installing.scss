@@ -1,21 +1,18 @@
 .installing {
     background-image: url('../images/installing-bg.jpg');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
     @include bp($foundation-small, $tablet) {
-        padding: 0;
 
         .video {
             padding: 0;
-            postion: absolute;
-            top: 0;
             width: 100%;
         }
 
         .what-to-expect {
-            margin: 0;
-            padding: 60px 13% 0;
+            margin-top: 30px;
             width: 100%;
         }
     }
@@ -38,7 +35,6 @@
 
     p {
         color: $color-default-light;
-        font-size: $font-size-default * 0.875;
     }
 
     @include bp($foundation-small, $foundation-med) {
@@ -136,6 +132,7 @@
 
 .replacing {
     background-image: url('../images/replacing-bg.jpg');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 20%;
@@ -152,28 +149,16 @@
 
             @include bp($switch-nav-medium) {
                 margin: 0 auto;
-                width: 450px;
+                width: 500px;
             }
         }
         .incentive {
-            @include circle(100%, 130px);
-            background: $color-blue;
-            color: $color-reverse-heading;
-            float: left;
-            font-size: .875em;
-            line-height: 1.25em;
-            height: 130px;
+            display: inline-block;
             margin: 0 10px;
-            padding-top: 22px;
+            vertical-align: top;
 
-            .big {
-                font-size: 3em;
-                font-weight: bold;
-                line-height: 1.15em;
-            }
-            @include bp($foundation-small, $foundation-large) {
+            @include bp($foundation-small, $tablet) {
                 display: block;
-                float: none;
                 margin: 0 auto 15px;
             }
         }
@@ -182,10 +167,18 @@
             padding: 0;
         }
     }
+
+    @include bp($foundation-small, $foundation-med) {
+        background-position-x: -460px;
+        background-position-y: top;
+        background-size: 1160px;
+        background-color: #000;
+    }
 }
 
 .after-installation {
     background-image: url('../images/after-installing-bg.jpg');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -199,6 +192,9 @@
 
             @include bp($foundation-med) {
                 bottom: -40px;
+            }
+            @include bp($foundation-large) {
+                right: 100px;
             }
         }
 

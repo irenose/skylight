@@ -42,6 +42,27 @@
     @extend %reversed;
 }
 
+%no-transform {
+    text-transform: none;
+}
+.no-transform {
+    @extend %no-transform;
+}
+
+%no-underline {
+    text-decoration: none;
+}
+.no-underline {
+    @extend %no-underline;
+}
+
+%normal-weight {
+    font-weight: normal;
+}
+.normal-weight {
+    @extend %normal-weight;
+}
+
 /*-----------------------
   @LINKS
 ------------------------*/
@@ -195,6 +216,14 @@
 /*-----------------------
   @BORDERS
 ------------------------*/
+
+%no-border {
+    border: none;
+}
+.no-border {
+    @extend %no-border;
+}
+
 .center-border {
     background: $color-secondary;
     height: 100%;
@@ -255,5 +284,32 @@
         color: $color-default;
         text-transform: none;
         margin-bottom: 0;
+    }
+}
+
+/*-----------------------
+  @HOOKS
+
+  adds ability to check a breakpoint in JS
+  see ww.common.check_breakpoint() in scripts.js
+------------------------*/
+@include bp($foundation-med) {
+    body:after {
+        content: 'foundation-med';
+        display: none;
+    }
+}
+
+@include bp($tablet) {
+    body:after {
+        content: 'foundation-med tablet';
+        display: none;
+    }
+}
+
+@include bp($modal-is-enabled) {
+    body:after {
+        content: 'foundation-med tablet modal-is-enabled';
+        display: none;
     }
 }

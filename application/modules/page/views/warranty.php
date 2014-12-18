@@ -2,12 +2,15 @@
 	/******************************* INTRO COPY *************************/ 
 ?>
 <section class="page-row intro-statement intro-statement--squeezed">
-	<h2>Warranty</h2>
+	<h2 class="normal-weight">Warranty</h2>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
 </section>
 
+<?php 
+	/******************************* 10 YEAR WARRANTY *************************/ 
+?>
 <section class="bg-grey-dark page-row reversed">
-	<h2>The 10 Year Warranty</h2>
+	<h2 class="normal-weight">The 10 Year Warranty</h2>
 	<p class="text-columns-2 ten-year-warranty">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. <br><br>Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
 	<a class="btn">Download PDF</a>
 </section>
@@ -17,7 +20,7 @@
 	if( isset($warranty_array) && count($warranty_array) > 0) {
 ?>
 	<section class="page-row">
-		<h2><?= $installer_array[0]->name; ?> Warranty</h2>
+		<h2 class="normal-weight"><?= $installer_array[0]->name; ?> Warranty</h2>
 		<p class="text-columns-2 installer-warranty"><?= filter_page_content($warranty_array[0]->dealer_warranty); ?></p>
 	</section>
 <?php
@@ -33,5 +36,9 @@
 		}
 	?>
 </section> -->
+
+<?php 
+	/******************************* OUR PRODUCTS SECTION *************************/ 
+?>
 <div class="border-top-grey"></div>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>

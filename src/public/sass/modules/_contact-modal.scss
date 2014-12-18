@@ -1,0 +1,106 @@
+.modal,
+.modal-screen {
+    bottom: -100%;
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+
+    &.modal--is-open {
+        bottom: 0;
+        display: block;
+        height: 100%;
+    }
+}
+
+.modal-screen {
+    background: $overlay;
+    z-index: 100;
+
+    &.modal--is-open {
+        display: block;
+        opacity: .9;
+    }
+}
+
+.modal {
+    overflow-y: scroll;
+    z-index: 101;
+
+    &.modal--is-open {
+        opacity: 1;
+    }
+}
+
+.modal__page {
+    margin: 5% auto 0;
+    padding: 0;
+    width: 800px; // width of an img in placeholders/inspiration
+}
+
+.modal__header {
+    text-align: right;
+}
+
+.modal__body {
+    background: #fff;
+    padding: 5% 10%;
+}
+
+/*[data-modal-open] {
+    @include bp(0, $foundation-large) {
+        display: none;
+    }
+}*/
+
+[data-modal-close] {
+
+    .icon__svg {
+        fill: $color-reverse-heading !important;
+    }
+}
+
+.modal__body {
+    margin-top: 30px;
+
+    .full-width {
+        width: 100%;
+    }
+    .updates {
+        @include bp($foundation-med) {
+            margin-top: 50px;
+        }
+    }
+
+    input, textarea, select {
+        border: 1px solid $color-default-light;
+        display: block;
+        padding: .75em;
+
+        &[type="submit"] {
+            border: none;
+            margin-top: 25px;
+            padding: .875em 2em .85em;
+        }
+    }
+    input[type="submit"] {
+        margin-left: 15px;
+    }
+    label {
+        display: block;
+        line-height: 1.75em;
+        margin-top: 15px;
+    }
+    select {
+        padding: .55em
+    }
+    textarea {
+        min-height: 218px;
+    }
+
+    @include bp($foundation-large) {
+        margin-top: 0;
+    }
+}

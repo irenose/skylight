@@ -20,3 +20,30 @@
     background: transparent;
     padding: 0;
 }
+
+
+/*-----------------------
+  @BUTTON PLAY
+------------------------*/
+.btn-play {
+    @extend %block;
+    @extend %centered;
+    height: $icon-play;
+    width: $icon-play;
+
+    .icon-play {
+        // display: inline-block;
+        left: 50%;
+        margin-top: -($icon-play / 2);
+        margin-left: -($icon-play / 2);
+        position: absolute;
+        top: 50%;
+    }
+}
+.btn-play--centered {
+    left: 50%;
+    margin-top: -$icon-play / 2;
+    margin-left: -$icon-play / 2;
+    position: absolute;
+    top: 50%;
+}

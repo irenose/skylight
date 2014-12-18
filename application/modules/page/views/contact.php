@@ -4,7 +4,7 @@
 <section class="page-row page-row--short bg-grey contact-info">
     <div class="row">
         <div class="small-12 large-6 columns">
-            <h2>Contact <?= $installer_array[0]->name; ?></h2>
+            <h2 class="normal-weight">Contact <?= $installer_array[0]->name; ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
         <div class="small-12 large-4 large-offset-2 columns hours">
@@ -18,7 +18,7 @@
 </section>
 
 <?php 
-    /******************************* CONTACT FORM AND DEALER ADDRESS *************************/ 
+    /******************************* DEALER ADDRESS AND CONTACT FORM *************************/ 
 ?>
 <section class="page-row">
     <?php
@@ -73,7 +73,7 @@
                             <div class="small-12 medium-6 columns">
                                 <label>State</label>
                                 <div class="styled-select">
-                                    <select name="state" class="selectric" />
+                                    <select name="state" class="selectric">
                                         <option>AK</option>
                                     </select>
                                 </div>
@@ -101,7 +101,3 @@
         </div>
     </div>
 </section>
-
- <?php 
-    /******************************* DEALER ADDRESS *************************/ 
-?>

@@ -1,9 +1,4 @@
-<!--<?php 
-	/******************************* INTRO COPY HEADLINE *************************/ 
-?>
-<h1><?= $installer_array[0]->about_dealer_headline; ?></h1>
-
-<?php 
+<!-- <?php 
 	/******************************* OUR PRODUCTS SECTION *************************/ 
 ?>
 <section>
@@ -13,49 +8,62 @@
 		foreach($product_category_array as $category) {
 			echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br>';
 		}
+?> -->
 
-		//SHOW TESTIMONIALS IF DEALER HAS ANY
-		if( isset($testimonials_array) && count($testimonials_array) > 0) {
-			echo '<p>"' . $testimonials_array[0]->testimonial_copy . '"<br><a href="' . $installer_base_url . '/about#testimonials">View All Testimonials</a></p>';
-		}
-	?>
-</section>
 
-<?php 
-	/******************************* STATIC CAROUSEL FOR OTHER SECTIONS *************************/ 
+<?php
+	/******************************* STATIC WELCOME AREA *************************/ 
 ?>
-<section>
-	Carousel with Teasers - Static
-</section>-->
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
-	<header class="intro-statement intro-statement--squeezed">
-		<h2><?=$installer_array[0]->about_dealer_headline?></h2>
+<?php
+    /*---------------------------------------------
+        Intro Copy Headline
+    ----------------------------------------------*/
+?>
+    <header class="intro-statement intro-statement--squeezed">
+        <h2 class="normal-weight"><?=$installer_array[0]->about_dealer_headline?></h2>
 	</header>
+<?php
+    /*---------------------------------------------
+        End Intro Copy Headline
+    ----------------------------------------------*/
+?>
 	<div class="row installer-welcome">
 		<div class="small-12 large-6 columns welcome-hero upgrade">
-			<h1 class="reversed">Upgrade Your Home With An Upward View.</h1>
+			<h1 class="reversed upper">Upgrade Your Home With An Upward View.</h1>
 			<a href="" class="btn">Learn More</a>
 		</div>
 		<div class="small-12 large-6 columns featured-images">
 			<div class="promotion-large fresh-air">
-                <h5>Solar Powered “Fresh Air” Skylight</h5>
+                <h5 class="normal-weight">Solar Powered “Fresh Air” Skylight</h5>
                 <a href="">Learn More</a>
+                <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
 			</div>
 		</div>
         <div class="promotions-small">
             <div class="promotion-small reversed dealer-promo">
-                <h3>Save 20%</h3>
+                <h3 class="normal-weight">Save 20%</h3>
                 <p>Dealer Managed Promo goes here</p>
                 <a href="">Learn More</a>
             </div>
             <div class="promotion-small cta">
-                <p class="reversed">Schedule A Consultation</p>
-                <a href="">Learn More</a>
+                <p class="reversed font-display">Schedule A Consultation</p>
+                <a href="" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
             </div>
         </div>
+    </div>
 </section>
+
+<?php
+    /******************************* OUR PRODUCTS SECTION *************************/ 
+?>
+
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>
+
+<?php
+    /******************************* OPTIONAL TESTIMONIALS SECTION *************************/ 
+?>
 <?php
     /*---------------------------------------------
         Show Testimonial if installer has any
@@ -81,5 +89,9 @@
     /*---------------------------------------------
         End Optional Testimonial
     ----------------------------------------------*/
+?>
+
+<?php
+    /******************************* DISCOVER MORE SECTION *************************/ 
 ?>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>

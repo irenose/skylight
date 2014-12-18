@@ -17,8 +17,9 @@
 }
 
 .welcome-hero {
+    background-position: center top;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
 }
 
 .featured-images {
@@ -32,17 +33,34 @@
 }
 
 .promotion-large {
+    background-position: center top;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
     border-top: 8px solid $color-reverse-heading;
     float: left;
     width: 100%;
+
+    .incentive {
+        position: absolute;
+        left: 8%;
+        top: 33%;
+
+        @include bp($foundation-small, $foundation-med) {
+            font-size: .75em;
+            height: 100px;
+            width: 100px;
+
+            .big {
+                font-size: 2em;
+            }
+        }
+    }
 
     h5 {
         margin-bottom: 5px;
     }
 
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-large) {
         border-top: 0;
     }
 }
@@ -52,18 +70,18 @@
 
     .cta {
         background-image: url('../images/cta.jpg');
-        background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: {
+            bottom: 15%;
+            left: 10%;
+            right: 10%;
+            top: 10%;
+        }
 
         p {
             margin-bottom: 10px;
-        }
-
-        @include bp($foundation-small, $foundation-large) {
-            padding: {
-                bottom: 15%;
-                top: 10%;
-            }
         }
     }
     .dealer-promo {
@@ -106,6 +124,17 @@
     background-image: url('../images/hero.jpg');
     padding: 22% 10%;
 
+    h1 {
+        text-shadow: 1px 1px 3px rgba(50,50,50,1);
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: 25% 10% 55%;
+
+        h1 {
+            font-size: 1.75em;
+        }
+    }
     @include bp($foundation-large, $my-large) {
         h1 {
             width: 330px;
@@ -123,13 +152,22 @@
 
 .fresh-air {
     background-image: url('../images/promotion.jpg');
-    padding: 8% 10% 40%;
+    padding: 8% 10% 20%;
+    margin-bottom: 10px;
 
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: 10% 0 50%;
+
+        h5 {
+            font-size: 1em;
+        }
+
+    }
+    @include bp($foundation-large) {
         padding: 15% 0 80%;
 
         h5 {
-            margin: 0 auto;
+            margin: 0 auto 10px;
             width: 360px;
         }
     }

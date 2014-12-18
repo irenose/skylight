@@ -4,7 +4,7 @@
     font-size: 0.875em;
     left: 0;
     position: absolute;
-    top: $masthead-height + $masthead-border;
+    top: $masthead-mobile;
     width: 100%;
 
     .nav-header--is-open & {
@@ -76,14 +76,14 @@
                 background: $color-grey-dark;
                 border-top: $masthead-border solid $color-secondary;
                 display: none;
-                left: 50%;
-                line-height: 70px;;
+                left: 0;
+                line-height: 70px;
                 /*max-width: $page-max-width;*/
                 position: absolute;
                 width: 100%;
                 text-align: center;
                 top: $masthead-height;
-                transform: translate(-50%, 0);
+                /*transform: translate(-50%, 0);*/
             }
         }
         .products-dropdown {
@@ -114,6 +114,7 @@
 
     .nav-minor {
         display: none;
+        padding: 0 0 20px;
         z-index: 10;
 
         .nav-header__link {
@@ -150,12 +151,17 @@
             display: block;
         }
         .popout-velux-logo {
+            display: block;
+            margin-top: 15px;
 
             @include bp($switch-nav-medium) {
                 display: none;
             }
         }
 
+        @include bp($tablet) {
+            padding-top: 20px;
+        }
         @include bp($tablet, $switch-nav-large) {
             background: #fff;
             left: 0;
@@ -167,9 +173,13 @@
             display: block;
             float: left;
             margin-left: 15px;
+            padding: 0;
         }
     }
 
+    @include bp($foundation-med) {
+        top: $masthead-height + $masthead-border;
+    }
     @include bp($tablet) {
         background: transparent;
         display: block;

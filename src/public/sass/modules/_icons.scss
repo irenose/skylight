@@ -133,6 +133,44 @@
 }
 
 /*-----------------------
+  @VIDEO
+------------------------*/
+.icon-play {
+    $d-border: 4px;
+
+    @include circle($icon-play, $icon-play);
+    border: $d-border solid #fff;
+    display: block;
+    height: $icon-play;
+    margin: auto;
+    position: relative;
+    transition: all, .2s, ease;
+
+    &:before {
+        @include circle($icon-play, $icon-play, #fff);
+        content: '';
+        display: block;
+        left: 0;
+        margin: (-$d-border) 0 0 (-$d-border);
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+    }
+    &:after {
+        @include triangle('east', 12px, #fff, false);
+        content: '';
+        display: block;
+        left: 50%;
+        margin: -10px 0 0 -3px;
+        position: absolute;
+        top: 50%;
+        transition: all, .2s, ease;
+        z-index: 2;
+    }
+}
+
+/*-----------------------
   @SOCIAL
 ------------------------*/
 .icon-facebook--reversed,

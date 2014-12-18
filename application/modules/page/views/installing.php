@@ -19,7 +19,7 @@
 </section>
 <section class="page-row bg-grey border-top-grey">
     <header class="header-statement header-statement--squeezed">
-        <h3>Skylight Orientation and Utility Savings</h3>
+        <h3 class="upper">Skylight Orientation and Utility Savings</h3>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
     </header>
 </section>
@@ -63,19 +63,19 @@
             </div>
     </div>
     <header class="header-statement header-statement--squeezed">
-        <h3>Improve Home Efficiency</h3>
+        <h3 class="upper">Improve Home Efficiency</h3>
         <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat&reg; glass technology.</p>
         <a class="btn">Learn More</a>
     </header>
 </section>
 <section class="page-row page-row--tall replacing">
     <div class="row">
-        <div class="small-12 medium-6 medium-push-1 columns first">
-            <h3 class="reversed">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
+        <div class="small-12 medium-6 columns first">
+            <h3 class="reversed upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
             <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
         </div>
         <div class="small-12 medium-6 columns centered last">
-            <div class="row incentives">
+            <div class="incentives">
                 <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
                 <div class="incentive"><span class="big">$100</span><br>average savings<br>to solar from<br>fixed</div>
                 <div class="incentive"><span class="big">$340</span><br>savings with<br>solar over<br>manual</div>
@@ -83,15 +83,15 @@
         </div>
     </div>
 </section>
-<section class="page-row page-row--tall snug-bottom after-installation">
+<section class="page-row snug-bottom after-installation">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns last">
             <div class="brochure">
                 <img src="<?=asset_url('images/brochure.png')?>" class="" alt>
             </div>
         </div>
-        <div class="small-12 medium-6 medium-pull-5 columns first reversed">
-            <h3>After Installation</h3>
+        <div class="small-12 medium-6 medium-pull-6 columns first reversed">
+            <h3 class="upper">After Installation</h3>
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
             <a class="btn">Download</a>
         </div>

@@ -1,0 +1,17 @@
+.incentive {
+    @include circle(100%, 140px);
+    background: $color-blue;
+    color: $color-reverse-heading;
+    font-size: .875em;
+    font-family: $font-family-display;
+    line-height: 1.25em;
+    height: 140px;
+    padding-top: 22px;
+    width: 140px;
+
+    .big {
+        font-size: 3em;
+        font-weight: bold;
+        line-height: 1.15em;
+    }
+}

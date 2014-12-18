@@ -17,37 +17,6 @@
 }
 
 /*-----------------------
-  @DECORATION
-------------------------*/
-%no-border {
-    border: none;
-}
-.no-border {
-    @extend %no-border;
-}
-
-%no-transform {
-    text-transform: none;
-}
-.no-transform {
-    @extend %no-transform;
-}
-
-%no-underline {
-    text-decoration: none;
-}
-.no-underline {
-    @extend %no-underline;
-}
-
-%normal-weight {
-    font-weight: normal;
-}
-.normal-weight {
-    @extend %normal-weight;
-}
-
-/*-----------------------
   @DEVICES
 ------------------------*/
 .mobile {  
