@@ -16,6 +16,9 @@
                             case 3:
                                 $class = 'small-12 medium-4 columns product-category';
                                 break;
+                            default:
+                                $class = 'small-12 medium-4 columns product-category centered';
+                                break;
 
                         }
                         echo '<div class="' . $class . '">' . "\n";
