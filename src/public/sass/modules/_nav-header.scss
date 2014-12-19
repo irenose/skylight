@@ -164,6 +164,7 @@
         }
         @include bp($tablet, $switch-nav-large) {
             background: #fff;
+            box-shadow: 0 1px 7px 0 rgba(50,50,50,.25);
             left: 0;
             position: absolute;
             top: $masthead-height + $masthead-border;

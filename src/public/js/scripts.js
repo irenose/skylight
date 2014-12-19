@@ -39,6 +39,7 @@ ww.main = (function() {
             ww.carousels.init();
             ww.fixed_nav.init();
             ww.conditional_modals.init();
+            ww.maps.init();
         },
     };
 })();
@@ -348,17 +349,134 @@ ww.conditional_modals = (function() {
 })();
 
 /*-----------------------
-  @HERO
-------------------------*/
-ww.hero = (function() {
-    var s = {
-        $hero: $('hero'),
-        
-    };
+  @MAPS
 
+  Google Maps API v3
+  https://developers.google.com/maps/documentation/javascript/examples/map-simple
+  https://developers.google.com/maps/documentation/javascript/examples/place-details
+
+  "placeId" comes from this json call:
+  https://maps.googleapis.com/maps/api/place/radarsearch/json?location=35.21411,-80.843075&radius=5000&name=Wray+Ward&key=AIzaSyCp0DvWYnLCOKlItxqOCtPTkhd2vn7R0_g
+  Note that the API key used here is connected to my personal gmail account. I just needed a way to ping the URL to find the "placeId".
+------------------------*/
+/*ww.maps = (function() {
     return {
         init: function() {
+            google.maps.event.addDomListener(window, 'load', this.draw_map());
+        },
 
+        draw_map: function() {
+            var coordinates = {
+                lat: 35.21411,
+                lng: -80.843075,
+            };
+
+            // pushes map down to make sure infowindow is always visible
+            var offset_vertical = 0.002;
+
+            var settings = {
+                $el: $('#map'),
+                map_options: {
+                    center: new google.maps.LatLng((coordinates.lat + offset_vertical), coordinates.lng),
+                    zoom: 14,
+
+                    // UI options
+                    mapTypeControl: false,
+                    panControl: false,
+                    scrollwheel: false,
+                    streetViewControl: false, // pegman
+                },
+                request: {
+                    placeId: 'ChIJuaHPp4ifVogR-xsoeCf-IN4',
+                },
+            };
+
+            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options),
+                ww_service = new google.maps.places.PlacesService(ww_map),
+                ww_infowindow = new google.maps.InfoWindow();
+
+            ww_service.getDetails(settings.request, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    // create custom marker
+                    var ww_pin = {
+                        path: "M9.9,0C9.9,0,0,0.1,0,11.9C0,17.9,9.9,32,9.9,32S20,18.1,20,11.9C20,0.1,9.9,0,9.9,0z M12.6,17.2L10,10.4 l-2.6,6.8H6.2L2.6,8.8H4l2.8,6.9l2.6-6.9h1.2l2.6,6.9L16,8.8h1.4l-3.6,8.4H12.6z",
+                        fillColor: "#d05133",
+                        fillOpacity: 1,
+                        scale: 2,
+                        strokeColor: "red",
+                        strokeWeight: 0,
+                        rotation: 0
+                    };
+
+                    // set marker
+                    var ww_marker = new google.maps.Marker({
+                        map: ww_map,
+                        position: place.geometry.location,
+                        // icon: ww_pin,
+                    });
+
+                    // build infowindow contents
+                    var directions_link = $(".vcard .adr").attr("href");
+                    var ww_infowindow_content = '<a href="' + directions_link + '" style="display: block;">' + place.name + '<br>' + place.formatted_address.replace(", United States", "") + '</a>';
+
+                    // tell the infowindow to open on marker click
+                    google.maps.event.addListener(ww_marker, 'click', function() {
+                        ww_infowindow.setContent(ww_infowindow_content);
+                        ww_infowindow.open(ww_map, this);
+                    });
+                    // trigger a marker click to auto-open infowindow
+                    google.maps.event.trigger(ww_marker, 'click');
+
+                    // make sure the pin stays centered
+                    google.maps.event.addDomListener(window, 'resize', function() {
+                        ww_map.setCenter(settings.map_options.center);
+                    });
+
+                    // traffic layer!
+                    // var trafficLayer = new google.maps.TrafficLayer();
+                    // trafficLayer.setMap(ww_map);
+                }
+            });
+        },
+    };
+})();*/
+
+ww.maps = (function() {
+    return {
+        init: function() {
+            google.maps.event.addDomListener(window, 'load', this.draw_map());
+        },
+
+        draw_map: function() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: new google.maps.LatLng(-33.8665433, 151.1956316),
+                zoom: 15,
+                // UI options
+                mapTypeControl: false,
+                panControl: false,
+                scrollwheel: false,
+                streetViewControl: false, // pegman
+            });
+
+            var request = {
+                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+            };
+
+            var infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+
+            service.getDetails(request, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.setContent(place.name);
+                        infowindow.open(map, this);
+                    });
+                }
+            });
         },
     };
 })();

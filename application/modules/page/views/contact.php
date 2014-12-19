@@ -122,3 +122,7 @@
         </div>
     </div>
 </section>
+<section>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    <div id="map"></div>
+</section>

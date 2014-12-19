@@ -69,20 +69,10 @@
     width: 100%;
 
     .cta {
-        background-image: url('../images/cta.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        padding: {
-            bottom: 15%;
-            left: 10%;
-            right: 10%;
-            top: 10%;
-        }
 
-        p {
-            margin-bottom: 10px;
-        }
     }
     .dealer-promo {
         background-color: $color-blue;
@@ -129,7 +119,7 @@
     }
 
     @include bp($foundation-small, $foundation-med) {
-        padding: 25% 10% 55%;
+        padding: 18% 10% 64%;
 
         h1 {
             font-size: 1.75em;
@@ -151,9 +141,8 @@
 }
 
 .fresh-air {
-    background-image: url('../images/promotion.jpg');
+    background-image: url('../images/promotion-wide.jpg');
     padding: 8% 10% 20%;
-    margin-bottom: 10px;
 
     @include bp($foundation-small, $mobile-landscape) {
         padding: 10% 0 50%;
@@ -164,6 +153,8 @@
 
     }
     @include bp($foundation-large) {
+        background-image: url('../images/promotion.jpg');
+        margin-bottom: 10px;
         padding: 15% 0 80%;
 
         h5 {
@@ -176,5 +167,23 @@
     }
     @include bp($my-very-large) {
         padding-bottom: 84%;
+    }
+}
+
+.schedule-consult {
+    background-image: url('../images/cta-wide.jpg');
+    padding: {
+        bottom: 15%;
+        left: 10%;
+        right: 10%;
+        top: 10%;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    @include bp($foundation-large) {
+        background-image: url('../images/cta.jpg');
     }
 }

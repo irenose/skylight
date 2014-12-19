@@ -17,7 +17,7 @@
                                 $class = 'small-12 medium-4 columns product-category';
                                 break;
                             default:
-                                $class = 'small-12 medium-4 columns product-category centered';
+                                $class = 'small-12 medium-6 medium-push-3 columns product-category centered';
                                 break;
 
                         }

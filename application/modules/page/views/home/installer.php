@@ -47,7 +47,7 @@
                 <p>Dealer Managed Promo goes here</p>
                 <a href="">Learn More</a>
             </div>
-            <div class="promotion-small cta">
+            <div class="promotion-small cta schedule-consult">
                 <p class="reversed font-display">Schedule A Consultation</p>
                 <a href="" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
             </div>
