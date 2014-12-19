@@ -63,6 +63,7 @@ class Page extends CI_Controller {
                 } else {
                     switch($vars_array[2]) {
                         case 'products':
+                            $data['current_section'] = 'products';
                             if($vars_size == 2) {
                                 $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                                 /*------------------------------------------------------------------
@@ -119,6 +120,7 @@ class Page extends CI_Controller {
                             }
                             break;
                         case 'why-skylights':
+                            $data['current_section'] = 'why-skylights';
                             $data['meta_array'] = array(
                                 'title' => 'Why Skylights?',
                                 'description' => '',
@@ -127,6 +129,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'why_skylights';
                             break;
                         case 'installing':
+                            $data['current_section'] = 'installing';
                             $data['meta_array'] = array(
                                 'title' => 'Installing',
                                 'description' => '',
@@ -135,6 +138,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'installing';
                             break;
                         case 'about':
+                            $data['current_section'] = 'about';
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = array(
                                 'title' => 'About',
@@ -144,6 +148,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'about';
                             break;
                         case 'warranty':
+                            $data['current_section'] = 'warranty';
                             $data['warranty_array'] = $this->page_model->get_warranty($data['installer_array'][0]->dealer_id);
                             $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                             $data['meta_array'] = array(
@@ -154,6 +159,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'warranty';
                             break;
                         case 'brochures':
+                            $data['current_section'] = 'brochures';
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = array(
                                 'title' => 'Brochures',
@@ -163,6 +169,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'brochures';
                             break;
                         case 'contact':
+                            $data['current_section'] = 'contact';
                             $data['meta_array'] = array(
                                 'title' => 'Contact',
                                 'description' => '',
@@ -171,6 +178,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'contact';
                             break;
                         case 'promotions':
+                            $data['current_section'] = 'promotions';
                             $data['dealer_promotion_array'] = $this->page_model->get_dealer_promotion_page($data['installer_array'][0]->dealer_id);
                             if(count($data['dealer_promotion_array']) == 0) {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
