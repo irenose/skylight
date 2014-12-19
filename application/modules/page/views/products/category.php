@@ -1,37 +1,3 @@
-<!-- <?php 
-	/******************************* CAROUSEL AND INTRO COPY *************************/ 
-?>
-<section>
-	MANUALLY CREATED CAROUSEL OF <?= $product_category_array['category']->product_category_name; ?> PHOTOS
-	<h1><?= $product_category_array['category']->product_category_name; ?></h1>
-	<p><?= $product_category_array['category']->product_category_description; ?></p>
-</section>
-
-<?php 
-	/******************************* PRODUCT AND SUBCATEGORY LISTING *************************/ 
-	if( count( $product_category_array['subcategory_array']) > 0) {
-		$subnav = '';
-		$listing_content = '';
-
-		foreach($product_category_array['subcategory_array'] as $subcategory) {
-			//Add Subcategory to subnav
-			$subnav .= '<a href="#' . $subcategory->subcategory_url . '">' . $subcategory->subcategory_name . '</a>&nbsp;&nbsp;';
-
-			//Add Headline for Subcategory
-			$listing_content .= '<h2 id="' . $subcategory->subcategory_url . '">' . $subcategory->subcategory_name . '</h2>';
-			foreach($subcategory->subcategory_products as $product) {
-				//Create a product listing
-				$listing_content .= '<a href="' . $installer_base_url . '/products/' . $product->product_url . '">' . $product->product_name . '</a><br>';
-			}
-		}
-
-		//Display Subnav
-		echo $subnav; 
-		//Display Product Listing
-		echo $listing_content;
-	}
-?> -->
-
 <?php 
     /******************************* BREADCRUMB *************************/ 
 ?>
@@ -49,8 +15,8 @@
 	<div class="row">
 		<div class="small-12 large-6 columns">
 			<div class="card">
-				<h3>Residential Skylights</h3>
-				<p class="font-display">VELUX residential skylights are a great way to add natural light and fresh air to your home. They not only improve your living space, but they also help improve energy efficiency.</p>
+				<h3><?= $product_category_array['category']->product_category_name; ?></h3>
+				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
 			</div>
 		</div>
 	</div>
@@ -73,7 +39,34 @@
     /*---------------------------------------------
         Generate Product Rows for Category
     ----------------------------------------------*/
+    if( count( $product_category_array['subcategory_array']) > 0) {
+    	foreach($product_category_array['subcategory_array'] as $subcategory) {
+    		echo '<section class="page-row page-row--squeezed border-top-grey product-row-container">' . "\n";
+	    		echo '<header class="header-statement">' . "\n";
+					echo '<h3 class="upper">' . $subcategory->subcategory_name . '</h3>' . "\n";
+				echo '</header>' . "\n";
+				echo '<div class="row product-row">' . "\n";
+					$count = 0;
+					foreach($subcategory->subcategory_products as $product) {
+						if($count % 2 == 0) {
+							echo '</div>' . "\n";
+							echo '<div class="row product-row">' . "\n";
+						}
+						$count++;
+						echo '<div class="small-12 medium-6 columns centered">' . "\n";
+							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . asset_url('images/solar-powered-1.jpg') . '" alt></a>' . "\n";
+							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
+							//echo '<p>Curb mounted skylight</p>' . "\n";
+							//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";
+						echo '</div>' . "\n";
+					}
+				echo '</div>' . "\n";
+			echo '</section>' . "\n";
+    	}
+    }
 ?>
+
+<!--
 <section class="page-row page-row--squeezed border-top-grey product-row-container">
 	<header class="header-statement">
 		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
@@ -155,6 +148,7 @@
 		</div>
 	</div>
 </section>
+-->
 
 <?php 
     /******************************* ACCESSORIES *************************/ 

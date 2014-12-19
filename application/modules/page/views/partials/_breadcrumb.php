@@ -1,6 +1,16 @@
 <div class="breadcrumb">
     <nav class="nav-breadcrumb">
-        <a>Installer Name</a> / <a>Our Products</a> / Product Category
+    	<?php
+    		if( isset($breadcrumbs_array) && count($breadcrumbs_array) > 0) {
+    			$count = 0;
+    			foreach($breadcrumbs_array as $key => $breadcrumb) {
+    				$count++;
+    				$link = ($count == 1) ? '' : ' / ';
+    				$link .= ($breadcrumb['url'] != '') ? '<a href="' . $breadcrumb['url'] . '">' . $breadcrumb['label'] . '</a>' : $breadcrumb['label'];
+    				echo $link;
+    			}
+    		}
+    	?>
     </nav>
     <div class="breadcrumb-links">
         <a>Schedule a Consultation</a>

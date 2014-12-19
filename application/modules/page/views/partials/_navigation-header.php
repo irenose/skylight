@@ -12,7 +12,7 @@
                     }
                     echo '</nav></div>';
                 } else {
-                    echo '<a href="' . $installer_base_url . '/products/category/' . $product_categories_nav_array[0]->product_category_url . '" class="nav-header__link first subnav-trigger">Products<span class="nav-arrow nav-arrow--products"></span></a>';
+                    echo '<a href="' . $installer_base_url . '/products/category/' . $product_categories_nav_array[0]->product_category_url . '" class="nav-header__link first subnav-trigger">Products</a>';
                 }
             }
             echo '<a href="' . $installer_base_url . '/why-skylights" class="nav-header__link">Why Skylights</a>';

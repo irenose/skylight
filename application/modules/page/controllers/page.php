@@ -46,6 +46,7 @@ class Page extends CI_Controller {
             $data['installer_base_url'] = base_url() . $installer_url;
             $data['canonical_url'] = base_url() . $installer_url;
             $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+            $data['breadcrumbs_array'][] = array('label' => 'Home', 'url' => $data['installer_base_url']);
 
             if(count($data['installer_array']) > 0) {
                 if($vars_size == 1) {
@@ -64,6 +65,7 @@ class Page extends CI_Controller {
                         case 'products':
                             if($vars_size == 2) {
                                 $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+                                $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . 'products');
                                 $data['meta_array'] = array(
                                     'title' => 'Products',
                                     'description' => '',
@@ -81,6 +83,8 @@ class Page extends CI_Controller {
                                                     'description' => '',
                                                     'keywords' => ''
                                                 );
+                                                $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
+                                                $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
                                                 $data['page_view'] = 'products/category';
                                             } else {
                                                 redirect('/' . $data['installer_array'][0]->dealer_url . '/products');
