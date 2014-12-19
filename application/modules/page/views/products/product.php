@@ -1,3 +1,7 @@
+<?php 
+    /******************************* BREADCRUMB *************************/ 
+?>
+<?=$this->load->view('partials/_breadcrumb')?>
 <section>
 	LIFESTYLE IMAGE
 	<?php 

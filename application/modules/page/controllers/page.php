@@ -65,6 +65,12 @@ class Page extends CI_Controller {
                         case 'products':
                             if($vars_size == 2) {
                                 $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+                                /*------------------------------------------------------------------
+                                    If installer only sells one category, redirect to category page
+                                ------------------------------------------------------------------*/
+                                if( count($data['product_category_array']) == 1) {
+                                    redirect($data['installer_base_url'] . '/products/category/' . $data['product_category_array'][0]->product_category_url);
+                                }
                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . 'products');
                                 $data['meta_array'] = array(
                                     'title' => 'Products',
@@ -101,9 +107,12 @@ class Page extends CI_Controller {
                                                 'description' => '',
                                                 'keywords' => ''
                                             );
+                                            $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
+                                            $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_category_name, 'url' => $data['installer_base_url'] . '/products/category/' . $data['product_info_array'][0]->product_category_url);
+                                            $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_name, 'url' => '');
                                             $data['page_view'] = 'products/product';
                                         } else {
-                                            redirect('products');
+                                            redirect($data['installer_base_url'] . '/products');
                                         }
                                         break;
                                 }

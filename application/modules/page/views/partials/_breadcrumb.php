@@ -1,6 +1,9 @@
 <div class="breadcrumb">
     <nav class="nav-breadcrumb">
     	<?php
+            /*-------------------------------------------------------
+                If Breadcrumb array exists, loop through and format
+            -------------------------------------------------------*/
     		if( isset($breadcrumbs_array) && count($breadcrumbs_array) > 0) {
     			$count = 0;
     			foreach($breadcrumbs_array as $key => $breadcrumb) {
