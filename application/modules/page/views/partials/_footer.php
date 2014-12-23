@@ -4,16 +4,16 @@
             <a>
                 <img src="<?=asset_url('images/installer-logo-footer.png')?>" alt>
             </a>
-            <div class="copyright">&copy;2014 Installer Name</div>
+            <div class="copyright">&copy; 2014 Installer Name</div>
             <div class="social">
-                <a href="#" class="social__link">
+                <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/icon-twitter--reversed.svg')?>#icon-twitter--reversed"></use>
                         </svg>
                     </i>
                 </a>
-                <a href="#" class="social__link">
+                <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/icon-facebook--reversed.svg')?>#icon-facebook--reversed"></use>

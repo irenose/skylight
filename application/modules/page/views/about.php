@@ -16,7 +16,7 @@
     ----------------------------------------------*/
 ?>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
-        <a href="<?= $installer_base_url; ?>/contact">Schedule A Consulation</a>
+        <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consulation</a>
     </header>
 </section>
 

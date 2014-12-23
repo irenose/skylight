@@ -138,6 +138,9 @@
     padding-bottom: 20%;
     
     .first {
+        @include bp($foundation-small, $foundation-med) {
+            padding: 0;
+        }
         @include bp($foundation-large) {
             padding-right: 20%;
         }
@@ -150,6 +153,9 @@
             @include bp($switch-nav-medium) {
                 margin: 0 auto;
                 width: 500px;
+            }
+            @include bp($foundation-small, $foundation-med) {
+                margin-top: 150px;
             }
         }
         .incentive {
@@ -201,7 +207,7 @@
         @include bp($foundation-small, $foundation-med) {
             margin: 0 auto;
             text-align: center;
-            width: 30%;
+            width: 50%;
         }
     }
     .first {

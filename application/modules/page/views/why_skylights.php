@@ -1,10 +1,17 @@
+<?php 
+    /******************************* INTRO COPY *************************/ 
+?>
 <section class="page-row bg-grey-dark why-skylights">
     <header class="intro-statement intro-statement--squeezed reversed">
         <h2 class="normal-weight">So Really, Why Skylights?</h2>
         <p>There are seemingly limitless reasons why VELUX skylights can help you create a living space that will not only impress you and your family, but that will also lower your energy costs.</p>
-        <a href="" class="upper reversed">Schedule A Consultation</a>
+        <a href=<?php echo '"' . $installer_base_url . '/contact"'?> class="upper reversed" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>
+
+<?php 
+    /******************************* REASON 1 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
@@ -19,6 +26,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 2 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
@@ -33,6 +44,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 3 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
@@ -47,6 +62,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 4 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
@@ -61,6 +80,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 5 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
@@ -75,6 +98,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 6 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
@@ -89,6 +116,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 7 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
@@ -103,6 +134,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 8 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
@@ -117,6 +152,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 9 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
@@ -131,6 +170,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* REASON 10 *************************/ 
+?>
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">

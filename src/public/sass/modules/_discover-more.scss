@@ -2,15 +2,78 @@
     h3 {
         margin-bottom: 5%;
     }
+
+    @include bp($foundation-med, $tablet) {
+        padding: {
+            left: 1%;
+            right: 1%;
+        }
+
+        .columns {
+            padding: {
+                left: .5rem;
+                right: .5rem;
+            }
+        }
+    }
 }
 .discover-more {
     max-width: 1000px;
 }
-
-.discover-card {
-    display: block;
+.discover-card-container {
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    padding: 15%;
 
     @include bp($foundation-small, $foundation-med) {
-        margin-top: 50px;
+        background-position: center;
+        height: 350px;
+        margin-top: 40px;
+    }
+    @include bp($foundation-med, $tablet) {
+        padding: 5%;
+    }
+    @include bp($tablet) {
+        height: 345px;
+    }
+}
+.discover-card {
+
+    h5 {
+        margin-bottom: 4%;
+        margin-top: 10%;
+    }
+}
+
+/*-----------------------
+  @INDIVIDUAL PROMOTIONS
+------------------------*/
+.about-teaser {
+    background-image: url('../images/about-us-teaser.jpg');
+
+    .discover-card {
+        @extend %vc;
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        background-image: url('../images/about-us-teaser-wide.jpg');
+    }
+}
+
+.skylight-planner {
+    background-image: url('../images/skylight-planner.jpg');
+
+    @include bp($foundation-small, $foundation-med) {
+        background-image: url('../images/skylight-planner-wide.jpg');
+    }
+}
+
+.tax-credit {
+    background-image: url('../images/tax-credit.jpg');
+
+    @include bp($foundation-small, $foundation-med) {
+        background-image: url('../images/tax-credit-wide.jpg');
     }
 }

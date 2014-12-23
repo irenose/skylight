@@ -1,3 +1,12 @@
+.hero {
+    .card {
+        p {
+            @include bp($foundation-med, $switch-nav-large) {
+                font-size: .9em;
+            }
+        }
+    }
+}
 .product-row-container {
     h3 {
         margin-bottom: 5%;

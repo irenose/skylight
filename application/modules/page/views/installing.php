@@ -1,11 +1,13 @@
 <?=$this->load->view('partials/_navigation-secondary')?>
+<a name="overview"></a>
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
         <h2 class="normal-weight">Installing Skylights</h2>
         <p>Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.</p>
-        <a>Schedule A Consultation</a>
+        <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>
+<a name="what-to-expect"></a>
 <section class="page-row page-row--extra-tall border-top-grey installing">
     <div class="row">
         <div class="small-12 medium-6 columns centered video">
@@ -17,6 +19,7 @@
         </div>
     </div>
 </section>
+<a name="skylight-orientation"></a>
 <section class="page-row bg-grey border-top-grey">
     <header class="header-statement header-statement--squeezed">
         <h3 class="upper">Skylight Orientation and Utility Savings</h3>
@@ -49,6 +52,7 @@
         </div>
     </div>
 </section>
+<a name="energy-efficiency"></a>
 <section class="page-row border-top-grey centered">
     <div class="row statement-images--installing">
             <div class="small-12 medium-5 medium-push-1 columns text-right">
@@ -68,11 +72,13 @@
         <a class="btn">Learn More</a>
     </header>
 </section>
+<a name="tax-credits"></a>
 <section class="page-row page-row--tall replacing">
     <div class="row">
         <div class="small-12 medium-6 columns first">
             <h3 class="reversed upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
             <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
+            <a class="btn">Learn More</a>
         </div>
         <div class="small-12 medium-6 columns centered last">
             <div class="incentives">
@@ -97,4 +103,5 @@
         </div>
     </div>
 </section>
+<a name="discover-more"></a>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>
