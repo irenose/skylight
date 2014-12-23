@@ -17,14 +17,6 @@
 
     .nav-major {
 
-        @include bp($switch-nav-medium) {
-            float: left;
-
-            .subnav-products--is-hovered & .nav-major__subnav {
-                display: block;
-            }
-        }
-
         .nav-header__link {
             display: block;
             line-height: 4em;
@@ -55,6 +47,10 @@
             display: none;
             z-index: 20;
 
+            .subnav-products--is-open & {
+                display: block;
+            }
+
             a {
                 color: $color-grey-light;
                 display: block;
@@ -69,10 +65,6 @@
                     @extend %no-underline;
                 }
             }
-
-            .subnav-products--is-open & {
-                display: block;
-            }
             
             @include bp($tablet) {
                 background: $color-grey-dark;
@@ -81,12 +73,10 @@
                 display: none;
                 left: 0;
                 line-height: 70px;
-                /*max-width: $page-max-width;*/
                 position: absolute;
                 width: 100%;
                 text-align: center;
                 top: $masthead-height;
-                /*transform: translate(-50%, 0);*/
             }
         }
         .products-dropdown {
@@ -111,6 +101,14 @@
                     left: 20px;
                     right: 20px;
                 }
+            }
+        }
+
+        @include bp($switch-nav-medium) {
+            float: left;
+
+            .subnav-products--is-hovered & .nav-major__subnav {
+                display: block;
             }
         }
     }

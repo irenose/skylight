@@ -3,14 +3,12 @@
     border-bottom: $masthead-border solid $color-secondary;
     margin-left: auto;
     margin-right: auto;
-    /*max-width: $page-max-width;*/
     padding: 10px 0;
     text-align: center;
     width: 100%;
 
     .brand {
         display: inline-block;
-        /*height: $masthead-height;*/
 
         img {
             max-width: 250px;
@@ -53,23 +51,12 @@
 }
 
 .masthead__section {
-    /*height: $masthead-height;*/
 
     &--large {
         padding: {
-            left: 8px;
-            right: 188px;
+            left: 3.5%;
         }
         position: static;
-
-        @include bp($mobile-landscape) {
-            padding-left: 3.5%;
-            padding-right: 220px;
-        }
-
-        @include bp($switch-nav-medium) {
-            padding-right: 0;
-        }
     }
     &--small {
         float: right;
@@ -119,36 +106,8 @@
 }
 
 .masthead-wrapper {
-    /*height: $masthead-height + $masthead-border;
-    position: fixed;
-    top: 0;*/
     width: 100%;
     z-index: 100;
-}
-
-.mobile-branding {
-    min-height: 78px;
-    padding: {
-        left: 8px;
-        right: 188px;
-    }
-    text-align: left;
-    width: 100%;
-
-    .brand {
-
-        img {
-            max-width: 240px;
-            width: 100%
-        }
-    }
-
-    @include bp($mobile-landscape) {
-        padding-right: 228px
-    }
-    @include bp($tablet) {
-        display: none;
-    }
 }
 
 .nav-header-trigger {
@@ -224,7 +183,6 @@
 
 .phone {
     display: inline-block;
-    /*height: $masthead-height;*/
     margin: 0 auto;
     width: 100%;
 

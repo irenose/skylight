@@ -1,10 +1,12 @@
 .breadcrumb {
     color: $color-grey-light;
     font-size: .875em;
-    height: $breadcrumb-height;
+    overflow: hidden;
     padding: {
+        bottom: 15px;
         left: 3%;
         right: 2%;
+        top: 15px;
     }
 
     .nav-breadcrumb {
@@ -12,8 +14,8 @@
     }
     .breadcrumb-links {
         float: right;
-        font-size: .75em;
-        /*top: 4px;*/
+        font-size: .875em;
+        top: 4px;
 
         a:nth-child(2) {
             margin-left: 15px;
@@ -30,7 +32,7 @@
 
     a {
         font-family: $font-family-default;
-        line-height: $breadcrumb-height;
+        line-height: 2;
     }
     a:hover {
         text-decoration: none;
