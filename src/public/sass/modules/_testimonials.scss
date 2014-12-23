@@ -1,17 +1,19 @@
 .testimonial {
     padding: 0 10%;
-    @include bp($my-large) {
-        padding: 0 15%;
-    }
 
     &:before {
         content: url('../images/testimonial-quotes.png');
         display: inline-block;
     }
+    
     p {
         font-family: $font-family-display;
         line-height: 2;
         margin-bottom: 2.25em;
+    }
+
+    @include bp($my-large) {
+        padding: 0 15%;
     }
 }
 

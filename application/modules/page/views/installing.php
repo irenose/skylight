@@ -1,4 +1,11 @@
+<?php 
+    /******************************* SECONDARY NAV *************************/ 
+?>
 <?=$this->load->view('partials/_navigation-secondary')?>
+
+<?php 
+    /******************************* INTRO COPY *************************/ 
+?>
 <a name="overview"></a>
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
@@ -7,6 +14,10 @@
         <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>
+
+<?php 
+    /******************************* WHAT TO EXPECT *************************/ 
+?>
 <a name="what-to-expect"></a>
 <section class="page-row page-row--extra-tall border-top-grey installing">
     <div class="row">
@@ -19,6 +30,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* SKYLIGHT ORIENTATION *************************/ 
+?>
 <a name="skylight-orientation"></a>
 <section class="page-row bg-grey border-top-grey">
     <header class="header-statement header-statement--squeezed">
@@ -52,6 +67,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* ENERGY EFFICIENCY *************************/ 
+?>
 <a name="energy-efficiency"></a>
 <section class="page-row border-top-grey centered">
     <div class="row statement-images--installing">
@@ -72,6 +91,10 @@
         <a class="btn">Learn More</a>
     </header>
 </section>
+
+<?php 
+    /******************************* TAX CREDITS *************************/ 
+?>
 <a name="tax-credits"></a>
 <section class="page-row page-row--tall replacing">
     <div class="row">
@@ -89,6 +112,10 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* AFTER INSTALLATION *************************/ 
+?>
 <section class="page-row snug-bottom after-installation">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns last">
@@ -103,5 +130,9 @@
         </div>
     </div>
 </section>
+
+<?php 
+    /******************************* DISCOVER MORE *************************/ 
+?>
 <a name="discover-more"></a>
 <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>

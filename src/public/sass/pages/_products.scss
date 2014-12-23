@@ -3,16 +3,18 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    .product-category-wrapper {
+
+        @include bp($foundation-small, $foundation-med) {
+            margin-top: 180px;
+        }
+        @include bp($foundation-med, $tablet) {
+            margin-top: 130px;
+        }
+    }
+
     @include bp($foundation-small, $tablet) {
         background-image: none;
-
-        .product-category-wrapper {
-            margin-top: 180px;
-
-            @include bp($foundation-med) {
-                margin-top: 120px;
-            }
-        }
 
         header {
             background: $color-grey-light-bg;

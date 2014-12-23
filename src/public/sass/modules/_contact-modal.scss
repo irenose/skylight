@@ -37,7 +37,7 @@
 .modal__page {
     margin: 5% auto 0;
     padding: 0;
-    width: 800px; // width of an img in placeholders/inspiration
+    width: 800px;
 }
 
 .modal__header {
@@ -70,7 +70,7 @@
     }
     .updates {
         @include bp($foundation-med) {
-            margin-top: 50px;
+            margin-top: 51px;
         }
     }
 

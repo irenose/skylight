@@ -44,10 +44,6 @@
         @include bp($foundation-med) {
             margin-top: 15px;
         }
-        /*@include bp($foundation-med, $tablet) {
-            margin-left: 0 !important;
-            width: 50%;
-        }*/
     }
 }
 

@@ -123,6 +123,20 @@
     top: 0;
     width: 80px;
 
+    .navbar-icon-open {
+        .nav-header--is-open & {
+            display: none;
+        }
+    }
+    .navbar-icon-close {
+        display: none;
+
+        .nav-header--is-open & {
+            display: inline-block;
+            position: relative;
+        }
+    }
+
     @include bp($foundation-med) {
         height: $masthead-height;
     }
@@ -137,20 +151,6 @@
     }
     @include bp($switch-nav-large) {
         display: none !important;
-    }
-
-    .navbar-icon-open {
-        .nav-header--is-open & {
-            display: none;
-        }
-    }
-    .navbar-icon-close {
-        display: none;
-
-        .nav-header--is-open & {
-            display: inline-block;
-            position: relative;
-        }
     }
 }
 
