@@ -210,6 +210,13 @@
         padding-right: 0;
     }
 
+    @include bp($foundation-small, $tablet) {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        max-width: 220px;
+    }
     @include bp($foundation-med) {
         line-height: $masthead-height;
     }

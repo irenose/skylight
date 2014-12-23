@@ -58,9 +58,11 @@
             a {
                 color: $color-grey-light;
                 display: block;
+                margin-bottom: 15px;
 
                 @include bp($tablet) {
                     display: inline-block;
+                    margin-bottom: 0;
                 }
 
                 &:hover {
@@ -178,7 +180,9 @@
             padding: 0;
         }
     }
-
+    @include bp($foundation-small, $tablet) {
+        box-shadow: 0 3px 6px 0 rgba(50,50,50,.25);
+    }
     @include bp($foundation-med) {
         top: $masthead-height + $masthead-border;
     }
@@ -189,8 +193,5 @@
         position: static;
         top: 0;
         width: auto;
-    }
-    @include bp($switch-nav-large) {
-        /*width: 75.705%;*/
     }
 }
