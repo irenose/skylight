@@ -41,6 +41,7 @@ ww.main = (function() {
             ww.conditional_modals.init();
             ww.scrollto.init();
             ww.maps.init();
+            ww.anchors_to_options.init();
         },
     };
 })();
@@ -439,6 +440,55 @@ ww.scrollto = (function() {
                 s.my_offset = s.$masthead;
 
                 $.scrollTo($scroll_target, s.scroll_rate, {
+                    offset: -s.my_offset,
+                });
+            });
+        },
+    };
+})();
+
+/*-----------------------
+  @ANCHORS TO OPTIONS
+
+  Take a bunch of links and turn them into a <select> menu
+  http://css-tricks.com/convert-menu-to-dropdown/
+------------------------*/
+ww.anchors_to_options = (function(){
+    var s = {
+        $menu: $("[data-anchors-to-options]"),
+        $new_select: $("<select class='nav-secondary--select' />"),
+    };
+
+    return {
+        init: function() {
+            // Create the dropdown base
+            s.$new_select.insertAfter(s.$menu);
+
+            // Populate dropdown with menu items
+            s.$menu.find("a").each(function() {
+                var $el = $(this);
+
+                $("<option />", {
+                    "value": $el.attr("href").replace("#", ""),
+                    "text": $el.hasClass("btn-icon") ? $el.attr("title") : $el.text(),
+                }).appendTo(s.$new_select);
+            });
+
+            this.register_handlers();
+        },
+
+        register_handlers: function() {
+            s.$new_select.change(function(e) {
+                e.preventDefault();
+                var $el = $(this),
+                    tag = $el.find("option:selected").val();
+                var s = {
+                    scroll_rate: 400,
+                    $masthead: $(".masthead").outerHeight(),
+                    my_offset: 0,
+                };
+                s.my_offset = s.$masthead;
+                $.scrollTo($('[name="' + tag + '"]'), s.scroll_rate, {
                     offset: -s.my_offset,
                 });
             });

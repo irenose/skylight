@@ -31,7 +31,7 @@
 ?>
 	<div class="row installer-welcome">
 		<div class="small-12 large-6 columns welcome-hero upgrade">
-			<h1 class="reversed upper">Upgrade Your Home With An Upward View.</h1>
+			<h1 class="reversed upper">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
 			<a href="" class="btn">Learn More</a>
 		</div>
 		<div class="small-12 large-6 columns featured-images">

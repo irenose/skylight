@@ -112,33 +112,21 @@
 ------------------------*/
 .upgrade {
     background-image: url('../images/hero.jpg');
-    padding: 22% 10%;
+    padding: 18% 10% 24%;
 
     h1 {
         text-shadow: 1px 1px 3px rgba(50,50,50,1);
     }
 
-    @include bp($foundation-small, $mobile-landscape) {
-        padding: 18% 10% 64%;
+    @include bp($foundation-small, $foundation-med) {
+        padding: 18% 4% 64%;
 
         h1 {
-            font-size: 1.75em;
-        }
-    }
-    @include bp($mobile-landscape, $foundation-med) {
-        padding: 28% 10% 55%;
-
-        h1 {
-            font-size: 2.5em;
-        }
-    }
-    @include bp($foundation-large, $my-large) {
-        h1 {
-            width: 330px;
+            font-size: 2.25em;
         }
     }
     @include bp($my-large) {
-        padding: 18% 15%;
+        padding: 14% 15% 22%;
         width: 66%;
 
         h1 {
