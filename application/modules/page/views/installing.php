@@ -87,7 +87,7 @@
     </div>
     <header class="header-statement header-statement--squeezed">
         <h3 class="upper">Improve Home Efficiency</h3>
-        <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat&reg; glass technology.</p>
+        <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat<sup>&reg;</sup> glass technology.</p>
         <a class="btn">Learn More</a>
     </header>
 </section>
@@ -96,7 +96,7 @@
     /******************************* TAX CREDITS *************************/ 
 ?>
 <a name="tax-credits"></a>
-<section class="page-row page-row--tall replacing">
+<section class="page-row page-row--extra-tall replacing">
     <div class="row">
         <div class="small-12 medium-6 columns reversed first">
             <h3 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>

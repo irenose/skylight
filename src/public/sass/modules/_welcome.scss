@@ -44,6 +44,11 @@
         position: absolute;
         left: 8%;
         top: 33%;
+
+        @include bp($foundation-small, $mobile-landscape) {
+            height: 100px;
+            width: 100px;
+        }
     }
 
     h5 {
@@ -140,7 +145,7 @@
     @include bp($foundation-large) {
         background-image: url('../images/promotion.jpg');
         margin-bottom: 10px;
-        padding: 15% 0 80%;
+        padding: 15% 0 85%;
 
         h5 {
             margin: 0 auto 10px;

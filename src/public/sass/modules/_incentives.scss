@@ -15,16 +15,22 @@
         line-height: 1.15em;
     }
 
-    @include bp($foundation-small, $foundation-med) {
+    @include bp($foundation-small, $mobile-landscape) {
         font-size: .875em;
         height: 110px;
         width: 110px;
 
         .big {
-            font-size: 2em;
+            font-size: 2.25em;
         }
     }
     @include bp($mobile-landscape, $foundation-med) {
         font-size: .75em;
+        height: 130px;
+        width: 130px;
+
+        .big {
+            font-size: 3.25em;
+        }
     }
 }

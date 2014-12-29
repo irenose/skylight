@@ -31,7 +31,7 @@
 }
 .centered-half {
     @extend %centered;
-    padding: 10% 5%;
+    padding: 8% 5%;
 
     p {
         color: $color-default-light;
@@ -104,6 +104,7 @@
         @include circle(100%, 60px);
         @extend %bold;
         @extend %centered;
+        background: #fcfcfc;
         background: linear-gradient(#FCFCFC 0px, #F0F0F0 100%);
         border: 3px solid $color-reverse-heading;
         box-shadow: 0 1px 5px 0 rgba(50,50,50,.25);
@@ -131,8 +132,9 @@
 }
 
 .replacing {
+    background-color: #000;
     background-image: url('../images/replacing-bg.jpg');
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 20%;
@@ -155,10 +157,13 @@
                 width: 500px;
             }
             @include bp($foundation-small, $mobile-landscape) {
-                margin-top: 240px;
+                margin-top: 230px;
             }
             @include bp($mobile-landscape, $foundation-med) {
                 margin-top: 250px;
+            }
+            @include bp($foundation-large) {
+                margin-top: 40px;
             }
         }
         .incentive {
@@ -179,9 +184,8 @@
 
     @include bp($foundation-small, $foundation-med) {
         background-position-x: -460px;
-        background-position-y: top;
+        background-position-y: -10px;
         background-size: 1160px;
-        background-color: #000;
         padding-bottom: 5%;
     }
 }
