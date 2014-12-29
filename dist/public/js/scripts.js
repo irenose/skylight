@@ -146,7 +146,7 @@ ww.common = (function(){
 ww.navigation = (function(){
     var settings = {
         $menu_trigger: $('.nav-header-trigger'),
-        $masthead: $('.masthead'),
+        $masthead: $('.masthead-wrapper'),
         $products_dropdown: $('.products-dropdown'),
         $subnav_trigger_mobile: $('.subnav-trigger'),
         $nav_arrow_products: $('.nav-arrow--products'),
