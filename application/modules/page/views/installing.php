@@ -19,7 +19,7 @@
     /******************************* WHAT TO EXPECT *************************/ 
 ?>
 <a name="what-to-expect"></a>
-<section class="page-row page-row--extra-tall border-top-grey installing">
+<section class="page-row page-row--tall border-top-grey installing">
     <div class="row">
         <div class="small-12 medium-6 columns centered video">
             <?=$this->load->view('partials/_video')?>
@@ -98,8 +98,8 @@
 <a name="tax-credits"></a>
 <section class="page-row page-row--tall replacing">
     <div class="row">
-        <div class="small-12 medium-6 columns first">
-            <h3 class="reversed upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
+        <div class="small-12 medium-6 columns reversed first">
+            <h3 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
             <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
             <a class="btn">Learn More</a>
         </div>

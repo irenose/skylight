@@ -194,10 +194,6 @@
     .phone-number {
         font-size: .875em;
         width: 100%;
-
-        @include bp($foundation-small, $mobile-landscape) {
-            font-size: .75em;
-        }
     }
 }
 

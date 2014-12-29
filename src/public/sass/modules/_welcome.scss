@@ -44,16 +44,6 @@
         position: absolute;
         left: 8%;
         top: 33%;
-
-        @include bp($foundation-small, $foundation-med) {
-            font-size: .75em;
-            height: 100px;
-            width: 100px;
-
-            .big {
-                font-size: 2em;
-            }
-        }
     }
 
     h5 {
@@ -137,7 +127,7 @@
 
 .fresh-air {
     background-image: url('../images/promotion-wide.jpg');
-    padding: 8% 10% 20%;
+    padding: 8% 10% 33%;
 
     @include bp($foundation-small, $mobile-landscape) {
         padding: 10% 0 50%;

@@ -14,4 +14,17 @@
         font-weight: bold;
         line-height: 1.15em;
     }
+
+    @include bp($foundation-small, $foundation-med) {
+        font-size: .875em;
+        height: 110px;
+        width: 110px;
+
+        .big {
+            font-size: 2em;
+        }
+    }
+    @include bp($mobile-landscape, $foundation-med) {
+        font-size: .75em;
+    }
 }

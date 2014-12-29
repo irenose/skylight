@@ -154,8 +154,11 @@
                 margin: 0 auto;
                 width: 500px;
             }
-            @include bp($foundation-small, $foundation-med) {
-                margin-top: 150px;
+            @include bp($foundation-small, $mobile-landscape) {
+                margin-top: 240px;
+            }
+            @include bp($mobile-landscape, $foundation-med) {
+                margin-top: 250px;
             }
         }
         .incentive {
@@ -179,6 +182,7 @@
         background-position-y: top;
         background-size: 1160px;
         background-color: #000;
+        padding-bottom: 5%;
     }
 }
 
