@@ -3,6 +3,10 @@
     padding: 0;
     position: absolute;
     top: 50%;
+
+    @include bp($foundation-small, $tablet) {
+        display: none !important;
+    }
 }
 .my-slick-next {
     right: -45px;

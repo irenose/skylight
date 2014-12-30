@@ -88,6 +88,9 @@
     </div>
     <!-- FOOTER -->
     <?=$this->load->view('partials/_modal');?>
+    <div class="is-hidden">
+        <?=$this->load->view('partials/_svg-icon-loader');?>
+    </div>
 
 
     <!-- jQuery -->

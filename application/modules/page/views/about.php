@@ -3,7 +3,6 @@
 ?>
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
-        <img src="<?=asset_url('images/installer-logo-large.png')?>" alt>
 <?php
     /*---------------------------------------------
         Dealer Headline

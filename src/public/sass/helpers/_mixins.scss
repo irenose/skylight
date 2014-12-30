@@ -13,7 +13,7 @@
 @mixin circle($width, $max-width: none, $bg: none) {
     background: $bg;
     border-radius: 50%;
-    height: auto;
+    height: $width;
     max-width: $max-width;
     width: $width;
 

@@ -156,13 +156,89 @@ ww.navigation = (function(){
 /*-----------------------
   @EMBED VIDEO
 ------------------------*/
+
+ww.embed_video = (function() {
+    var s = {
+        autoplay: 1,
+        video_width: 0,
+        video_height: 0,
+        video_ratio: 0,
+        $icon: $(".icon-loader").clone(),
+    };
+
+    return {
+        init: function() {
+            this.register_handlers();
+        },
+
+        // modules available on load
+        register_handlers: function() {
+            $("[data-video-trigger]").on("click", function(e) {
+                e.preventDefault();
+
+                ww.embed_video.do_embed($(this));
+            });
+        },
+
+        // modules not available on load
+        register_modal: function() {
+            var $el;
+
+            $("[data-video-embed='modal']").each(function() {
+                // using $(this) inside of the timeout gets the window object
+                $el = $(this);
+
+                var timeout = window.setTimeout(function() {
+                    ww.embed_video.do_embed($el);
+                }, 500);
+            });
+        },
+
+        do_embed: function($el) {
+
+            var video_id = $el.attr("href").split('/').pop(),
+                $wrapper = $el.closest("[data-video-wrapper]");
+
+            s.video_ratio = $wrapper.data("video-wrapper").v_ratio;
+            s.video_width = $wrapper.outerWidth();
+            s.video_height = s.video_width / s.video_ratio;
+
+            $wrapper
+                .css({
+                    "background-color":"black",
+                    "height":s.video_height,
+                })
+                .addClass("centered")
+                .contents()
+                .fadeOut(300, function() {
+                    $wrapper
+                        .css({
+                            "padding-top":s.video_height / 2,
+                        })
+                        .html(s.$icon);
+                    s.$icon
+                        .delay(500)
+                        .fadeIn(300, function() {
+                            s.$icon.delay(1500).fadeOut(300, function() {
+                                $wrapper
+                                    .css({"padding-top":0})
+                                    .html('<iframe src="//player.vimeo.com/video/'+video_id+'?title=0&amp;byline=0&amp;portrait=0&amp;autoplay='+s.autoplay+'" width="'+s.video_width+'" height="'+s.video_height+'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+                                    .fitVids();
+                            });
+                        });
+                });
+        },
+    };
+})();
+
+/*
 ww.embed_video = (function() {
     var settings = {
         autoplay: 1,
         video_width: 462,
         video_height: 260,
         current_height: 0,
-        $icon: $(".footer .logo").clone(),
+        $icon: $(".icon-loader").clone(),
     };
 
     return {
@@ -197,6 +273,7 @@ ww.embed_video = (function() {
         },
     };
 })();
+*/
 
 /*-----------------------
   @CUSTOM FORMS
