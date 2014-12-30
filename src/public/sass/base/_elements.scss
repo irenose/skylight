@@ -20,7 +20,10 @@ body {
     line-height: $line-height-default;
 
     @include bp($mobile-landscape) {
-        font-size: $font-size-default; // allow 16px
+        font-size: $font-size-default; // default set to 16px
+    }
+    @include bp($my-very-large) {
+        font-size: $font-size-default * 1.125; // allow 18px on large screens
     }
 }
 

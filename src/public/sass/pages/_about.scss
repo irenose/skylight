@@ -74,11 +74,11 @@
     }
 }
 .principles {
+    margin-top: 10%;
 
     .row {
         @include bp($tablet) {
             display: table;
-            height: 100%;
         }
     }
 
@@ -87,10 +87,6 @@
         font-family: $font-family-display;
         padding: 12% 18%;
         text-align: center;
-
-        .principle {
-
-        }
 
         p {
             margin-bottom: 0;
@@ -102,9 +98,6 @@
             padding: 6% 5%;
             width: 33.33333%;
 
-            .row-2 & {
-                border-top: 1px solid $color-grey-border;
-            }
             &:nth-child(1n + 2) {
                 border-left: 1px solid $color-grey-border;
             }
@@ -112,6 +105,11 @@
     }
 
     @include bp($tablet) {
-        border: 1px solid $color-grey-border;
+        border: {
+            bottom: 1px solid $color-grey-border;
+            left: 1px solid $color-grey-border;
+            right: 1px solid $color-grey-border;
+        }
+        margin-top: 7%;
     }
 }

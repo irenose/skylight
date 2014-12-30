@@ -62,13 +62,13 @@
     }
 
     @include bp($foundation-small, $mobile-landscape) {
-        padding: {
-            left: 10%;
-            right: 10%;
-        }
+        padding: 0;
 
         h3 {
-            padding: 0;
+            padding: {
+                left: 10%;
+                right: 10%;
+            }
         }
     }
 }
