@@ -145,7 +145,7 @@
     @include bp($foundation-large) {
         background-image: url('../images/promotion.jpg');
         margin-bottom: 10px;
-        padding: 15% 0 85%;
+        padding: 15% 0 86%;
 
         h5 {
             margin: 0 auto 10px;
@@ -156,7 +156,7 @@
         padding-bottom: 82%;
     }
     @include bp($my-very-large) {
-        padding-bottom: 84%;
+        padding-bottom: 88%;
     }
 }
 

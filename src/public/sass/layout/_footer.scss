@@ -9,14 +9,6 @@
     }
     text-align: center;
 
-    @include bp($foundation-small, $foundation-med) {
-        padding: 40px 0 80px;
-
-        .columns:nth-child(1n + 2) {
-            margin-top: 2.25em;
-        }
-    }
-
     .columns:nth-child(3) {
 
         @include bp($foundation-small, $foundation-large) {
@@ -184,6 +176,17 @@
             position: absolute;
             transform: translateX(-50%);
         }
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: 40px 0 80px;
+
+        .columns:nth-child(1n + 2) {
+            margin-top: 2.25em;
+        }
+    }
+    @include bp($my-very-large) {
+        font-size: 16px;
     }
 }
 

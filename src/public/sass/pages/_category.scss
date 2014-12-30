@@ -1,9 +1,25 @@
 .hero {
+    background-size: cover;
+
     .card {
-        p {
-            @include bp($foundation-med, $switch-nav-large) {
-                font-size: .9em;
-            }
+        width: 300px;
+
+        @include bp($foundation-small, $foundation-med) {
+            background: $color-grey-light-bg;
+            padding: 10% 10% 8%;
+            width: 100%;
+        }
+        @include bp($my-very-large) {
+            width: 350px;
+        }
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: 0;
+
+        .row, .columns {
+            float: none;
+            padding: 0;
         }
     }
 }
@@ -47,26 +63,7 @@
 ------------------------*/
 .hero--residential {
     background-image: url('../images/residential-hero.jpg');
-    background-size: cover;
 
-    .card {
-        width: 300px;
-
-        @include bp($foundation-small, $foundation-med) {
-            background: $color-grey-light-bg;
-            padding: 10% 10% 8%;
-            width: 100%;
-        }
-    }
-
-    @include bp($foundation-small, $foundation-med) {
-        padding: 0;
-
-        .row, .columns {
-            float: none;
-            padding: 0;
-        }
-    }
     @include bp($foundation-med, $tablet) {
         background-position-x: 10px !important;
     }

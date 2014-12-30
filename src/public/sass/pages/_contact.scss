@@ -30,6 +30,10 @@
     }
     textarea {
         min-height: 218px;
+
+        @include bp($my-very-large) {
+            min-height: 245px;
+        }
     }
 
     @include bp($foundation-large) {
