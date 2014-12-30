@@ -16,19 +16,6 @@
 ?>
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
-<?php
-    /*---------------------------------------------
-        Intro Copy Headline
-    ----------------------------------------------*/
-?>
-    <header class="intro-statement intro-statement--squeezed">
-        <h2 class="normal-weight"><?=$installer_array[0]->about_dealer_headline?></h2>
-    </header>
-<?php
-    /*---------------------------------------------
-        End Intro Copy Headline
-    ----------------------------------------------*/
-?>
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">
             <h1 class="reversed upper">Upgrade Your<br/>Home With An<br/>Upward View.</h1>

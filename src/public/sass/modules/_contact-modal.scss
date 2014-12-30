@@ -80,9 +80,8 @@
         padding: .75em;
 
         &[type="submit"] {
-            border: none;
+            @extend %btn;
             margin-top: 25px;
-            padding: .875em 2em .85em;
         }
     }
     input[type="submit"] {

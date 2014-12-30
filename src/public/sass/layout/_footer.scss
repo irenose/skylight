@@ -101,7 +101,7 @@
         margin-top: 8px;
 
         @include bp($foundation-small, $foundation-med) {
-            bottom: 35px;
+            bottom: 30px;
             left: 50%;
             position: absolute;
             transform: translateX(-50%);
@@ -121,7 +121,7 @@
         }
         .nav-major {
             float: left;
-            width: 70%;
+            width: 65%;
             text-transform: uppercase;
 
             a {
@@ -134,7 +134,7 @@
         }
         .nav-minor {
             float: left;
-            width: 30%;
+            width: 35%;
 
             a {
                 color: $color-grey;
@@ -165,15 +165,16 @@
     }
     .social {
         @extend %centered;
+        margin-top: 5px;
 
         .icon {
-            height: 25px;
+            height: 18px;
             margin: 0 .25em;
-            width: 25px;
+            width: 18px;
 
-            @include bp($my-large) {
-                height: 14px;
-                width: 14px;
+            @include bp($foundation-small, $foundation-med) {
+                height: 24px;
+                width: 24px;
             }
         }
 
@@ -182,16 +183,6 @@
             left: 50%;
             position: absolute;
             transform: translateX(-50%);
-        }
-    }
-    .tablet-border {
-        background: $color-grey-border;
-        display: none;
-        height: 1px;
-        width: 100%;
-
-        @include bp($foundation-med, $foundation-large) {
-            display: block;
         }
     }
 }

@@ -17,6 +17,13 @@
     }
 }
 
+.testimonial-carousel {
+
+    @include bp($foundation-small, $foundation-large) {
+        padding: 0;
+    }
+}
+
 .testimonial-link {
 
     &:before {

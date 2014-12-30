@@ -9,14 +9,14 @@
                 <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
                         <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/icon-twitter--reversed.svg')?>#icon-twitter--reversed"></use>
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-twitter--reversed"></use>
                         </svg>
                     </i>
                 </a>
                 <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
                         <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/icon-facebook--reversed.svg')?>#icon-facebook--reversed"></use>
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-facebook--reversed"></use>
                         </svg>
                     </i>
                 </a>
