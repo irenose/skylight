@@ -51,29 +51,29 @@
   @INDIVIDUAL PROMOTIONS
 ------------------------*/
 .about-teaser {
-    background-image: url('../images/about-us-teaser.jpg');
+    background-image: url('../images/discover-more/about-us-teaser.jpg');
 
     .discover-card {
         @extend %vc;
     }
 
     @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/about-us-teaser-wide.jpg');
+        background-image: url('../images/discover-more/about-us-teaser-wide.jpg');
     }
 }
 
 .skylight-planner {
-    background-image: url('../images/skylight-planner.jpg');
+    background-image: url('../images/discover-more/skylight-planner.jpg');
 
     @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/skylight-planner-wide.jpg');
+        background-image: url('../images/discover-more/skylight-planner-wide.jpg');
     }
 }
 
 .tax-credit {
-    background-image: url('../images/tax-credit.jpg');
+    background-image: url('../images/discover-more/tax-credit.jpg');
 
     @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/tax-credit-wide.jpg');
+        background-image: url('../images/discover-more/tax-credit-wide.jpg');
     }
 }

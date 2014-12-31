@@ -143,7 +143,7 @@ ww.navigation = (function(){
         products_subnav_click: function() {
 
             settings.$subnav_trigger_mobile.on("click", function(e) {
-                if ($(window).width() < 1024) {
+                if ($(window).width() < 1025) {
                     settings.$masthead.toggleClass('subnav-products--is-open');
                     settings.$nav_arrow_products.toggleClass('selected');
                     e.preventDefault();
@@ -230,50 +230,6 @@ ww.embed_video = (function() {
         },
     };
 })();
-
-/*
-ww.embed_video = (function() {
-    var settings = {
-        autoplay: 1,
-        video_width: 462,
-        video_height: 260,
-        current_height: 0,
-        $icon: $(".icon-loader").clone(),
-    };
-
-    return {
-        init: function() {
-            $(".video-embed-trigger").on("click", function(e) {
-                e.preventDefault();
-
-                var $el = $(this),
-                    video_id = $el.attr("href").split('/').pop(),
-                    $wrapper = $el.closest(".video");
-                settings.current_height = $wrapper.outerHeight();
-
-                $wrapper
-                    .css({"height":settings.current_height})
-                    .contents()
-                    .fadeOut(300, function() {
-                        $wrapper
-                            .css({"padding-top":settings.current_height / 2})
-                            .html(settings.$icon);
-                        settings.$icon
-                            .delay(500)
-                            .fadeIn(300, function() {
-                                settings.$icon.delay(1500).fadeOut(300, function() {
-                                    $wrapper
-                                        .css({"padding-top":0})
-                                        .html('<iframe src="//player.vimeo.com/video/'+video_id+'?title=0&amp;byline=0&amp;portrait=0&amp;autoplay='+settings.autoplay+'" width="'+settings.video_width+'" height="'+settings.video_height+'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
-                                        .fitVids();
-                                });
-                            });
-                    });
-            });
-        },
-    };
-})();
-*/
 
 /*-----------------------
   @CUSTOM FORMS

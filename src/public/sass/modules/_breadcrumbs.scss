@@ -25,7 +25,7 @@
             border-bottom: 1px dotted;
         }
 
-        @include bp($foundation-small, $switch-nav-medium) {
+        @include bp($foundation-small, $foundation-large) {
             display: none;
         }
     }

@@ -35,7 +35,7 @@
     /******************************* SKYLIGHT ORIENTATION *************************/ 
 ?>
 <a name="skylight-orientation"></a>
-<section class="page-row bg-grey border-top-grey">
+<section class="page-row page-row--short bg-grey border-top-grey">
     <header class="header-statement header-statement--squeezed">
         <h3 class="upper">Skylight Orientation and Utility Savings</h3>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>

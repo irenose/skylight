@@ -62,7 +62,7 @@
   @RESIDENTIAL SKYLIGHTS
 ------------------------*/
 .hero--residential {
-    background-image: url('../images/residential-hero.jpg');
+    background-image: url('../images/categories/residential-hero.jpg');
 
     @include bp($foundation-med, $tablet) {
         background-position-x: 10px !important;

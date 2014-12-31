@@ -9,7 +9,7 @@
         background-position: -16px 0;
     }
 
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-large) {
         &.hovered {
             background-position: -16px 0;
         }

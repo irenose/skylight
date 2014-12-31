@@ -96,7 +96,7 @@
                 }
             }
 
-            @include bp($switch-nav-medium) {
+            @include bp($foundation-large) {
                 margin: {
                     left: 20px;
                     right: 20px;
@@ -104,7 +104,7 @@
             }
         }
 
-        @include bp($switch-nav-medium) {
+        @include bp($foundation-large) {
             float: left;
 
             .subnav-products--is-hovered & .nav-major__subnav {
@@ -131,7 +131,7 @@
                 display: inline-block;
                 line-height: $masthead-height;
                 margin: {
-                    left: 18px;
+                    left: 28px;
                     right: 18px;
                 }
                 width: auto;
@@ -156,7 +156,7 @@
             display: block;
             margin-top: 15px;
 
-            @include bp($switch-nav-medium) {
+            @include bp($foundation-large) {
                 display: none;
             }
         }
@@ -178,6 +178,9 @@
             margin-left: 15px;
             padding: 0;
         }
+    }
+    @include bp($foundation-small, $mobile-landscape) {
+        font-size: 1.125em;
     }
     @include bp($foundation-small, $tablet) {
         box-shadow: 0 3px 6px 0 rgba(50,50,50,.25);

@@ -1,5 +1,5 @@
 .installing {
-    background-image: url('../images/installing-bg.jpg');
+    background-image: url('../images/backgrounds/installing-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -133,7 +133,7 @@
 
 .replacing {
     background-color: #000;
-    background-image: url('../images/replacing-bg.jpg');
+    background-image: url('../images/backgrounds/replacing-bg.jpg');
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -152,7 +152,7 @@
 
         .incentives {
 
-            @include bp($switch-nav-medium) {
+            @include bp($foundation-large) {
                 margin: 0 auto;
                 width: 600px;
             }
@@ -191,7 +191,7 @@
 }
 
 .after-installation {
-    background-image: url('../images/after-installing-bg.jpg');
+    background-image: url('../images/backgrounds/after-installing-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

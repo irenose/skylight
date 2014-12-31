@@ -18,6 +18,7 @@
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="canonical" href="<?php echo $canonical_url; ?>" />
+    <?=$this->load->view('partials/_favicons');?>
 
     <?php
         /*-------------------------------

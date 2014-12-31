@@ -24,7 +24,7 @@
                         echo '<div class="' . $class . '">' . "\n";
                             echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . "\n";
                                 echo '<div class="polaroid">' . "\n";
-                                    echo '<img src="' . asset_url('images/' . $category->category_image . '-short.jpg') . '" alt="' . $category->product_category_name . '">' . "\n";
+                                    echo '<img src="' . asset_url('images/categories/' . $category->category_image . '-short.jpg') . '" alt="' . $category->product_category_name . '">' . "\n";
                                 echo '</div>' . "\n";
                             echo '</a>' . "\n";
                             echo '<h5>' . $category->product_category_name . '</h5>' . "\n";

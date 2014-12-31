@@ -106,7 +106,7 @@
   @INDIVIDUAL PROMOTIONS
 ------------------------*/
 .upgrade {
-    background-image: url('../images/hero.jpg');
+    background-image: url('../images/welcome/hero.jpg');
     padding: 18% 10% 24%;
 
     h1 {
@@ -131,7 +131,7 @@
 }
 
 .fresh-air {
-    background-image: url('../images/promotion-wide.jpg');
+    background-image: url('../images/welcome/promotion-wide.jpg');
     padding: 8% 10% 33%;
 
     @include bp($foundation-small, $mobile-landscape) {
@@ -143,14 +143,20 @@
 
     }
     @include bp($foundation-large) {
-        background-image: url('../images/promotion.jpg');
+        background-image: url('../images/welcome/promotion.jpg');
         margin-bottom: 10px;
-        padding: 15% 0 86%;
+        padding: 15% 0 89%;
 
         h5 {
             margin: 0 auto 10px;
             width: 360px;
         }
+    }
+    @include bp(1100px) {
+        padding-bottom: 87%;
+    }
+    @include bp(1200px) {
+        padding-bottom: 85%;
     }
     @include bp($my-large) {
         padding-bottom: 82%;
@@ -161,7 +167,7 @@
 }
 
 .schedule-consult {
-    background-image: url('../images/cta-wide.jpg');
+    background-image: url('../images/welcome/cta-wide.jpg');
     padding: {
         bottom: 15%;
         left: 10%;
@@ -174,6 +180,6 @@
     }
 
     @include bp($foundation-large) {
-        background-image: url('../images/cta.jpg');
+        background-image: url('../images/welcome/cta.jpg');
     }
 }

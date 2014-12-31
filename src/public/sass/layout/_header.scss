@@ -59,7 +59,7 @@
 
     &--large {
         padding: {
-            left: 3.5%;
+            left: 2.5%;
         }
         position: static;
     }
@@ -94,7 +94,7 @@
         @include bp($foundation-small, $tablet) {
             left: 0;
         }
-        @include bp($switch-nav-medium) {
+        @include bp($foundation-large) {
             position: relative;
             right: 0;
         }
@@ -103,7 +103,7 @@
     &--velux {
         display: none;
 
-        @include bp($switch-nav-medium) {
+        @include bp($foundation-large) {
             display: block;
             max-width: 160px;
         }
@@ -148,7 +148,7 @@
     @include bp($tablet) {
         border: none;
     }
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-large) {
         float: right;
         margin-right: 10px;
         position: relative;

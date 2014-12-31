@@ -29,7 +29,7 @@
     @include bp($foundation-small, $tablet) {
         display: none;
     }
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-large) {
         display: none;
     }
 }
@@ -45,12 +45,12 @@
 }
 
 .desktop {
-    @include bp($foundation-small, $switch-nav-medium) {
+    @include bp($foundation-small, $foundation-large) {
         display: none;
     }
 }
 .desktop-down {
-    @include bp($switch-nav-medium) {
+    @include bp($foundation-large) {
         display: none;
     }
 }
