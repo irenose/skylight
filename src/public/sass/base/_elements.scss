@@ -242,24 +242,32 @@ button {
   @INPUT
 ------------------------*/
 
-input[type="text"] {
+%general-input {
 
+    &:focus {
+        background: $color-grey-light-bg;
+        outline: none;
+    }
+}
+
+input[type="text"] {
+    @extend %general-input;
 }
 
 input[type="tel"] {
-
+    @extend %general-input;
 }
 
 input[type="email"] {
-
+    @extend %general-input;
 }
 
 input[type="url"] {
-
+    @extend %general-input;
 }
 
 input[type="password"] {
-
+    @extend %general-input;
 }
 
 input[type="file"] {
@@ -307,5 +315,5 @@ select {
   @TEXTAREA
 ------------------------*/
 textarea {
-
+    @extend %general-input;
 }

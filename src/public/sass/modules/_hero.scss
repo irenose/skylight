@@ -1,3 +1,32 @@
 .hero {
     background-position: center;
+    background-size: cover;
+
+    .card {
+        background-clip: padding-box;
+        border: 10px solid rgba(245,245,245,.6);
+        width: 300px;
+
+        @include bp($foundation-small, $foundation-med) {
+            background: $color-grey-light-bg;
+            padding: 10% 10% 8%;
+            width: 100%;
+        }
+        @include bp($my-very-large) {
+            width: 350px;
+
+            p {
+                font-size: .875em;
+            }
+        }
+    }
+
+    @include bp($foundation-small, $foundation-med) {
+        padding: 0;
+
+        .row, .columns {
+            float: none;
+            padding: 0;
+        }
+    }
 }

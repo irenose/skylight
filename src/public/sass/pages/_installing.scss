@@ -152,10 +152,6 @@
 
         .incentives {
 
-            @include bp($foundation-large) {
-                margin: 0 auto;
-                width: 490px;
-            }
             @include bp($foundation-small, $mobile-landscape) {
                 margin-top: 230px;
             }
@@ -163,7 +159,11 @@
                 margin-top: 250px;
             }
             @include bp($foundation-large) {
-                margin-top: 40px;
+                margin-top: 40px auto 0;
+                width: 490px;
+            }
+            @include bp($my-very-large) {
+                width: 540px;
             }
         }
         .incentive {

@@ -65,7 +65,7 @@
     }
     &--small {
         float: right;
-        width: 120px;
+        width: 130px;
 
         @include bp($mobile-landscape) {
             width: 140px;
