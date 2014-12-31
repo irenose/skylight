@@ -41,6 +41,9 @@
 }
 .discover-card {
 
+    a:hover {
+        @extend %no-underline;
+    }
     h5 {
         margin-bottom: 4%;
         margin-top: 10%;

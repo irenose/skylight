@@ -22,6 +22,10 @@
     line-height: 70px;
     margin: 0 1em;
     text-transform: uppercase;
+
+    &:hover {
+        @extend %no-underline;
+    }
 }
 
 .nav-secondary--select {

@@ -84,13 +84,14 @@
         }
     }
     .logo {
+        @extend %centered;
         position: static;
     }
     .copyright {
-        @extend %centered;
         color: $color-grey-light;
         font-size: 0.857em;
-        margin-top: 8px;
+        margin: 8px auto;
+        max-width: 60%;
 
         @include bp($foundation-small, $foundation-med) {
             bottom: 30px;
@@ -156,8 +157,6 @@
         }
     }
     .social {
-        @extend %centered;
-        margin-top: 5px;
 
         .icon {
             height: 18px;

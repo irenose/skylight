@@ -1,5 +1,6 @@
 .breadcrumb {
     color: $color-grey-light;
+    display: none;
     font-size: .875em;
     overflow: hidden;
     padding: {
@@ -13,6 +14,7 @@
         float: left;
     }
     .breadcrumb-links {
+        display: none;
         float: right;
         font-size: .875em;
         top: 4px;
@@ -25,8 +27,8 @@
             border-bottom: 1px dotted;
         }
 
-        @include bp($foundation-small, $foundation-large) {
-            display: none;
+        @include bp($foundation-large) {
+            display: block;
         }
     }
 
@@ -36,5 +38,9 @@
     }
     a:hover {
         text-decoration: none;
+    }
+
+    @include bp($foundation-med) {
+        display: block;
     }
 }
