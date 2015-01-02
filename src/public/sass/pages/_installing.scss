@@ -159,7 +159,7 @@
                 margin-top: 250px;
             }
             @include bp($foundation-large) {
-                margin-top: 40px auto 0;
+                margin: 40px auto 0;
                 width: 490px;
             }
             @include bp($my-very-large) {
