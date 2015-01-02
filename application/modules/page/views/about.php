@@ -63,7 +63,8 @@
 <?php 
     /******************************* OPTIONAL TESTIMONIALS *************************/ 
 ?>
-<section id="testimonials">
+<section>
+<a name="testimonials"></a>
 <?php
     /*---------------------------------------------
         Testimonails

@@ -29,11 +29,11 @@
 
     @include bp($foundation-small, $foundation-med) {
         background-position: center;
-        height: 350px;
+        height: 325px;
         margin-top: 40px;
     }
     @include bp($foundation-med, $tablet) {
-        padding: 5%;
+        padding: 20% 5%;
     }
     @include bp($tablet) {
         height: 345px;
@@ -41,12 +41,17 @@
 }
 .discover-card {
 
+    a {
+        font-size: .875em;
+    }
     a:hover {
         @extend %no-underline;
     }
     h5 {
-        margin-bottom: 4%;
-        margin-top: 10%;
+        margin-bottom: 2%;
+    }
+    img {
+        margin-bottom: 10%;
     }
 }
 

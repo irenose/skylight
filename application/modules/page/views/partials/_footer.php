@@ -1,10 +1,10 @@
 <section class="footer-wrapper">
     <div class="row footer">
         <div class="small-12 medium-6 large-3 columns logo">
-            <a>
-                <img src="<?=asset_url('images/installer-logo-footer.png')?>" alt>
+            <a href="<?=$installer_base_url?>" title="Home">
+                <img src="<?=asset_url('images/installer-logo.png')?>" alt>
             </a>
-            <div class="copyright">&copy; 2014 Installer Name</div>
+            <div class="copyright">&copy; 2015 Installer Name</div>
             <div class="social">
                 <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
@@ -14,7 +14,7 @@
                     </i>
                 </a>
                 <a href="#" target="_blank" class="social__link">
-                    <i class="icon icon-twitter--reversed">
+                    <i class="icon icon-facebook--reversed">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-facebook--reversed"></use>
                         </svg>

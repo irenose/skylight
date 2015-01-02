@@ -155,8 +155,9 @@ gulp.task('scripts:ours', function() {
             'bower_components/jquery.scrollTo/jquery.scrollTo.min.js',
             'bower_components/jquery-selectric/dist/jquery.selectric.min.js',
             'bower_components/slick-carousel/slick/slick.min.js',
+            'bower_components/svg4everybody/svg4everybody.min.js',  // IE9-11. <= IE8 included in template.php
             config.path_src_js + '/*.js',
-            '!' + config.path_src_js + '/vendor/*'
+            '!' + config.path_src_js + '/vendor/passthru/*'
         ])
         .pipe(concat(config.main_js))
         .pipe(gulp.dest(config.path_dist_js))
