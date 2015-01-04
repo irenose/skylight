@@ -44,11 +44,15 @@
 
 <?php
     /******************************* OUR PRODUCTS *************************/ 
-?>
 
-<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>
+    /*---------------------------------------------
+        Only show product categories if installer
+        has more than 1
+    ----------------------------------------------*/
+    if( isset($product_category_array) && count($product_category_array) > 1) {
+        echo $this->load->view('partials/_products-short');
+    }
 
-<?php
     /******************************* OPTIONAL TESTIMONIALS *************************/ 
 ?>
 <?php
