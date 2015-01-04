@@ -80,9 +80,7 @@
     /*---------------------------------------------
         End Optional Testimonial
     ----------------------------------------------*/
-?>
-
-<?php
+    
     /******************************* DISCOVER MORE *************************/ 
+    echo $this->load->view('partials/_discover-more');
 ?>
-<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>
