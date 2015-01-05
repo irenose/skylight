@@ -74,6 +74,15 @@ gulp.task('clean', function(cb) {
 });
 
 /*-----------------------
+  @CLEAR CACHE
+
+  Clear gulp-cache cache
+------------------------*/
+gulp.task('clear', function (done) {
+    return cache.clearAll(done);
+});
+
+/*-----------------------
   @STYLES:OURS
 
   Compile SASS, concatenate and minify our stylesheets, reload browser
@@ -157,7 +166,7 @@ gulp.task('scripts:ours', function() {
             'bower_components/slick-carousel/slick/slick.min.js',
             'bower_components/svg4everybody/svg4everybody.min.js',  // IE9-11. <= IE8 included in template.php
             config.path_src_js + '/*.js',
-            '!' + config.path_src_js + '/vendor/passthru/*'
+            '!' + config.path_src_js + '/vendor/*'
         ])
         .pipe(concat(config.main_js))
         .pipe(gulp.dest(config.path_dist_js))
