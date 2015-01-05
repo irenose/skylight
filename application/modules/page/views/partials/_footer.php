@@ -4,7 +4,7 @@
             <a href="<?=$installer_base_url?>" title="Home">
                 <img src="<?=asset_url('images/installer-logo.png')?>" alt>
             </a>
-            <div class="copyright">&copy; 2015 Installer Name</div>
+            <div class="copyright">&copy; <?php echo date("Y") ?> Installer Name</div>
             <div class="social">
                 <a href="#" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">

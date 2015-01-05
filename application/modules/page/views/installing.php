@@ -6,8 +6,7 @@
 <?php 
     /******************************* INTRO COPY *************************/ 
 ?>
-<a name="overview"></a>
-<section class="page-row bg-grey">
+<section class="page-row bg-grey" id="overview">
     <header class="intro-statement intro-statement--squeezed">
         <h2 class="normal-weight">Installing Skylights</h2>
         <p>Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.</p>
@@ -18,14 +17,14 @@
 <?php 
     /******************************* WHAT TO EXPECT *************************/ 
 ?>
-<a name="what-to-expect"></a>
-<section class="page-row page-row--tall border-top-grey installing">
+<!--<a name="what-to-expect"></a>-->
+<section class="page-row page-row--tall border-top-grey installing" id="what-to-expect">
     <div class="row">
         <div class="small-12 medium-6 columns centered video">
             <?=$this->load->view('partials/_video')?>
         </div>
         <div class="small-12 medium-5 medium-offset-1 columns reversed what-to-expect">
-            <h3>What Should You Expect During Installation?</h3>
+            <h3 class="upper">What Should You Expect During Installation?</h3>
             <p>A new skylight installation typically takes four to five hours per skylight and happens in two phases: rooftop and interior. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
         </div>
     </div>
@@ -34,14 +33,13 @@
 <?php 
     /******************************* SKYLIGHT ORIENTATION *************************/ 
 ?>
-<a name="skylight-orientation"></a>
-<section class="page-row page-row--short bg-grey border-top-grey">
+<section class="page-row bg-grey border-top-grey skylight-orientation" id="skylight-orientation">
     <header class="header-statement header-statement--squeezed">
         <h3 class="upper">Skylight Orientation and Utility Savings</h3>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
     </header>
 </section>
-<section class="border-top-grey bg-grey skylight-orientation">
+<section class="border-top-grey bg-grey skylight-exposure">
     <div class="row">
         <div class="small-12 medium-6 columns centered">
             <div class="centered-half centered-half--squeezed first">
@@ -71,8 +69,7 @@
 <?php 
     /******************************* ENERGY EFFICIENCY *************************/ 
 ?>
-<a name="energy-efficiency"></a>
-<section class="page-row border-top-grey centered">
+<section class="page-row border-top-grey centered" id="energy-efficiency">
     <div class="row statement-images--installing">
             <div class="small-12 medium-5 medium-push-1 columns text-right">
                 <div class="statement-image-container polaroid--round old">
@@ -95,8 +92,7 @@
 <?php 
     /******************************* TAX CREDITS *************************/ 
 ?>
-<a name="tax-credits"></a>
-<section class="page-row page-row--extra-tall replacing">
+<section class="page-row page-row--extra-tall replacing" id="tax-credits">
     <div class="row">
         <div class="small-12 medium-6 columns reversed first">
             <h3 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
@@ -134,5 +130,4 @@
 <?php 
     /******************************* DISCOVER MORE *************************/ 
 ?>
-<a name="discover-more"></a>
 <?=$this->load->view('partials/_discover-more');?>

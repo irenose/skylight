@@ -1,7 +1,7 @@
 <?php 
     /******************************* INTRO COPY AND OPTIONAL HOURS *************************/ 
 ?>
-<section class="page-row page-row--short bg-grey contact-info">
+<section class="page-row bg-grey contact-info">
     <div class="row">
 <?php
     /*---------------------------------------------
@@ -30,7 +30,7 @@
 <?php 
     /******************************* DEALER ADDRESS AND CONTACT FORM *************************/ 
 ?>
-<section class="page-row">
+<section class="page-row address-and-form">
 
 <?php
     /*---------------------------------------------

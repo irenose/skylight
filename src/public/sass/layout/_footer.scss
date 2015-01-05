@@ -18,7 +18,7 @@
     .columns:nth-child(1n + 3) {
 
         @include bp($foundation-med, $foundation-large) {
-            border-top: 1px solid $color-grey-border;
+            border-top: 1px solid $color-grey;
             margin-top: 20px;
             padding-top: 30px;
         }
@@ -54,7 +54,7 @@
             background-image: url('../images/5-star.png');
             background-position: 50% 85%;
             background-repeat: no-repeat;
-            border-bottom: 1px solid $color-grey-border; 
+            border-bottom: 1px solid $color-grey; 
             padding: {
                 bottom: 160px;
             }
@@ -88,12 +88,12 @@
         position: static;
 
         img {
-            max-height: 50%;
-            max-width: 60%;
+            max-height: 30%;
+            max-width: 40%;
         }
     }
     .copyright {
-        color: $color-grey-light;
+        color: $color-grey;
         font-size: 0.857em;
         margin: 8px auto;
         max-width: 60%;
@@ -153,7 +153,7 @@
         }
 
         @include bp($foundation-small, $foundation-med) {
-            border-bottom: 1px solid $color-grey-border;
+            border-bottom: 1px solid $color-grey;
             padding-bottom: 2.25em;
 
             nav {

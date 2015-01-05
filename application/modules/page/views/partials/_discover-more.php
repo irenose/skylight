@@ -1,4 +1,4 @@
-<section class="page-row bg-grey centered discover-more-container">
+<section class="page-row bg-grey centered discover-more-container" id="discover-more">
     <h3 class="upper">Discover More</h3>
     <div class="row discover-more">
         <div class="small-12 medium-4 columns">

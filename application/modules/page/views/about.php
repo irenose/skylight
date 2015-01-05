@@ -23,7 +23,7 @@
     /******************************* ABOUT INSTALLER COPY *************************/ 
 ?>
 <section class="page-row about-dealer">
-    <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
+    <h3 class="about-dealer-title normal-weight upper">Our Company</h3>
     <div class="dealer-image polaroid--round">
         <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
     </div>
@@ -101,7 +101,7 @@
 ?>
 <section class="page-row our-principles">
     <header class="header-statement header-statement--squeezed">
-        <h2 class="upper">Our Principles</h2>
+        <h3 class="upper">Our Principles</h3>
         <p class="font-display">To do our part in helping take care of the world we all share, we're committed to the following principles:</p>
     </header>
     <div class="principles">

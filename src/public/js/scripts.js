@@ -413,7 +413,7 @@ ww.maps = (function() {
                     center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
                     zoom: 14,
                     // UI options
-                    mapTypeControl: false,
+                    //mapTypeControl: false,
                     panControl: false,
                     scrollwheel: false,
                     streetViewControl: false, // pegman
@@ -469,7 +469,7 @@ ww.scrollto = (function() {
             s.$trigger.on("click", function(e){
                 e.preventDefault();
                 hash = $(this).attr("href").replace("#", "");
-                $scroll_target = $("[name='"+hash+"']");
+                $scroll_target = $("[id='"+hash+"']");
                 s.my_offset = s.$masthead;
 
                 $.scrollTo($scroll_target, s.scroll_rate, {
@@ -521,7 +521,7 @@ ww.anchors_to_options = (function(){
                     my_offset: 0,
                 };
                 s.my_offset = s.$masthead;
-                $.scrollTo($('[name="' + tag + '"]'), s.scroll_rate, {
+                $.scrollTo($('[id="' + tag + '"]'), s.scroll_rate, {
                     offset: -s.my_offset,
                 });
             });

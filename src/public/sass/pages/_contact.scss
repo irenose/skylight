@@ -11,7 +11,7 @@
     }
 
     input, textarea, select {
-        border: 1px solid $color-default-light;
+        border: 1px solid $color-grey-light;
         display: block;
         padding: .75em;
 
@@ -49,7 +49,18 @@
         }
     }
 }
+.address-and-form {
 
+    @include bp($foundation-small, $foundation-large) {
+        padding-top: 5%
+    }
+}
+.contact-info {
+
+    @include bp($foundation-small, $foundation-large) {
+        padding-bottom: 6%;
+    }
+}
 .dealer-info--contact {
     margin-top: 1em;
 }

@@ -54,6 +54,24 @@
     }
 }
 
+.color-chip--grey-light {
+    @extend %color-chip;
+    background: $color-grey-light;
+
+    + .color-chip__heading:after {
+        content: 'color-grey-light';
+    }
+}
+
+.color-chip--footer-bg {
+    @extend %color-chip;
+    background: $color-footer-bg;
+
+    + .color-chip__heading:after {
+        content: 'color-footer-bg';
+    }
+}
+
 
 /*-----------------------
   @BLOCKS

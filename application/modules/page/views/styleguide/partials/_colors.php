@@ -16,4 +16,12 @@
         <div class="color-chip--blue"></div>
         <span class="color-chip__heading"></span>
     </div>
+    <div class="styleguide__color-chip">
+        <div class="color-chip--grey-light"></div>
+        <span class="color-chip__heading"></span>
+    </div>
+    <div class="styleguide__color-chip">
+        <div class="color-chip--footer-bg"></div>
+        <span class="color-chip__heading"></span>
+    </div>
 </section>

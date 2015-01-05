@@ -9,7 +9,7 @@
     p {
         font-family: $font-family-display;
         line-height: 2;
-        margin-bottom: 2.25em;
+        margin-bottom: 2.75em;
     }
 
     @include bp($my-large) {
@@ -33,7 +33,7 @@
         height: 4px;
         left: 50%;
         position: absolute;
-        top: -15px;
+        top: -22px;
         transform: translateX(-50%);
         width: 30px;
     }

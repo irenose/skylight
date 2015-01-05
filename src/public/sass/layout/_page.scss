@@ -42,33 +42,33 @@
 }
 .page-row--snug {
     padding: {
-        left: 5%;
-        right: 5%;
+        left: 5% !important;
+        right: 5% !important;
     }
 }
 .page-row--squeezed {
     padding: {
-        left: 20%;
-        right: 20%;
+        left: 20% !important;
+        right: 20% !important;
     }
 
     @include bp($foundation-small, $mobile-landscape) {
         padding: {
-            left: 10%;
-            right: 10%;
+            left: 10% !important;
+            right: 10% !important;
         }
     }
 }
 .page-row--short {
     padding: {
-        bottom: 3%;
-        top: 3%;
+        bottom: 3% !important;
+        top: 3% !important;
     }
 }
 .page-row--tall {
     padding: {
-        bottom: 15%;
-        top: 15%;
+        bottom: 15% !important;
+        top: 15% !important;
     }
 
     @include bp($mobile-landscape) {
@@ -80,8 +80,8 @@
 }
 .page-row--extra-tall {
     padding: {
-        bottom: 15%;
-        top: 15%;
+        bottom: 15% !important;
+        top: 15% !important;
     }
 }
 
