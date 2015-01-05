@@ -67,7 +67,7 @@
 .icon-compass {
     $d-compass: 98px;
     $d-pointer: 16px;
-    $letter-padding-top: 18px;
+    $letter-padding-top: 15px;
 
     height: $d-compass;
     position: relative;
@@ -94,6 +94,7 @@
         &:before {
             color: $color-green;
             content: 'N';
+            padding-left: 2px;
             padding-top: $letter-padding-top + $d-pointer;
         }
     }
@@ -107,6 +108,7 @@
         &:before {
             color: $color-blue;
             content: 'S';
+            padding-left: 2px;
             padding-top: $letter-padding-top;
         }
     }
