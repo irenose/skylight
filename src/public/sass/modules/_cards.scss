@@ -1,0 +1,17 @@
+/*-----------------------
+  @CARD
+------------------------*/
+.card {
+    background: $color-reverse-heading;
+    color: $color-default-light;
+    text-align: center;
+    padding: 2em;
+
+    h3 {
+        color: $color-default;
+        margin-bottom: 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}

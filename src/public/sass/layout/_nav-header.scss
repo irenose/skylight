@@ -85,9 +85,8 @@
         }
 
         a {
-            /*font-weight: bold;*/
+            @extend %upper;
             margin: 0 auto;
-            text-transform: uppercase;
 
             @include bp($tablet) {
                 margin: {

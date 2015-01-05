@@ -154,4 +154,4 @@
     /******************************* ACCESSORIES *************************/ 
 ?>
 <div class="border-top-grey"></div>
-<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_accessories') : null );?>
+<?=$this->load->view('partials/_accessories');?>

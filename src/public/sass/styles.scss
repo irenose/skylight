@@ -12,9 +12,32 @@
 // normalize included in gulp build
 @import "base/elements";
 
-@import "layout/page";
-@import "layout/header";
 @import "layout/footer";
+@import "layout/header";
+@import "layout/nav-header";
+@import "layout/nav-secondary";
+@import "layout/page";
+
+@import "modules/accessories";
+@import "modules/arrows";
+@import "modules/breadcrumbs";
+@import "modules/buttons";
+@import "modules/cards";
+@import "modules/contact-modal";
+@import "modules/discover-more";
+@import "modules/forms";
+@import "modules/gallery";
+@import "modules/hero";
+@import "modules/hooks";
+@import "modules/icons";
+@import "modules/incentives";
+@import "modules/map";
+@import "modules/polaroids";
+@import "modules/products-section";
+@import "modules/slick";
+@import "modules/statements";
+@import "modules/testimonials";
+@import "modules/welcome";
 
 @import "pages/about";
 @import "pages/brochures";
@@ -25,23 +48,3 @@
 @import "pages/products";
 @import "pages/why-skylights";
 @import "pages/styleguide";
-
-@import "modules/accessories";
-@import "modules/arrows";
-@import "modules/breadcrumbs";
-@import "modules/buttons";
-@import "modules/contact-modal";
-@import "modules/discover-more";
-@import "modules/forms";
-@import "modules/gallery";
-@import "modules/hero";
-@import "modules/icons";
-@import "modules/incentives";
-@import "modules/map";
-@import "modules/nav-header";
-@import "modules/nav-secondary";
-@import "modules/products-section";
-@import "modules/slick";
-@import "modules/statements";
-@import "modules/testimonials";
-@import "modules/welcome";

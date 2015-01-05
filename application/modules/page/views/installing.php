@@ -135,4 +135,4 @@
     /******************************* DISCOVER MORE *************************/ 
 ?>
 <a name="discover-more"></a>
-<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_discover-more') : null );?>
+<?=$this->load->view('partials/_discover-more');?>

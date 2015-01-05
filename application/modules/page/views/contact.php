@@ -72,7 +72,7 @@
                 <label>How can we help?<?php echo required_text('comments'); ?></label>
                 <textarea name="comments" class="<?php echo form_textarea_error('comments'); ?>"><?php echo set_value('comments');?></textarea> -->
 
-            <?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_contact-form') : null );?>
+            <?=$this->load->view('partials/_contact-form');?>
         </div>
     </div>
 </section>

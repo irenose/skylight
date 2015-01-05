@@ -119,6 +119,9 @@ class Page extends CI_Controller {
                                 }
                             }
                             break;
+                        case 'styleguide':
+                            $data['page_view'] = 'styleguide/index';
+                            break;
                         case 'why-skylights':
                             $data['current_section'] = 'why-skylights';
                             $data['meta_array'] = array(

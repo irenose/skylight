@@ -51,4 +51,4 @@
     /******************************* OUR PRODUCTS *************************/ 
 ?>
 <div class="border-top-grey"></div>
-<?=( $this->uri->segment(1) != 'styleguide' ? $this->load->view('partials/_products-short') : null );?>
+<?=$this->load->view('partials/_products-short');?>

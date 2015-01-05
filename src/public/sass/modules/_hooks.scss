@@ -1,0 +1,26 @@
+/*-----------------------
+  @HOOKS
+
+  adds ability to check a breakpoint in JS
+  see ww.common.check_breakpoint() in scripts.js
+------------------------*/
+@include bp($foundation-med) {
+    body:after {
+        content: 'foundation-med';
+        display: none;
+    }
+}
+
+@include bp($tablet) {
+    body:after {
+        content: 'foundation-med tablet';
+        display: none;
+    }
+}
+
+@include bp($modal-is-enabled) {
+    body:after {
+        content: 'foundation-med tablet modal-is-enabled';
+        display: none;
+    }
+}

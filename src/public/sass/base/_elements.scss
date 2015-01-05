@@ -33,10 +33,10 @@ body {
 }
 
 /*-----------------------
-  @LIST
+  @SECTIONS
 ------------------------*/
 section {
-    @extend %clearfix;
+    @extend %cf;
 }
 
 /*-----------------------
@@ -46,7 +46,6 @@ section {
 ------------------------*/
 h1, h2, h3, h4, h5, h6 {
     @extend %font-display;
-    font-family: $font-family-display;
     margin-top: 0;
     /*text-transform: uppercase;*/
 }
@@ -139,8 +138,8 @@ li {
   @LINK
 ------------------------*/
 %a {
+    @extend %font-display;
     color: $color-primary;
-    font-family: $font-family-display;
     text-decoration: none;
 }
 %a-hover {
@@ -222,17 +221,17 @@ legend {
   @BUTTON
 ------------------------*/
 %button {
-    @extend %centered;
     @extend %a;
+    @extend %bold;
+    @extend %centered;
+    @extend %upper;
     background: $color-primary;
     border: none;
-    color: #fff;
+    color: $color-reverse-heading;
     display: inline-block;
-    font-weight: bold;
     font-size: 0.875em;
     outline: none;
     padding: .85em 1.5em .85em;
-    text-transform: uppercase;
 }
 button {
     @extend %button;
