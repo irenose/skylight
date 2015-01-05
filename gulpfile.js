@@ -14,6 +14,7 @@ var gulp = require('gulp');
 // Ours
 var autoprefixer = require('gulp-autoprefixer'),
     cache     = require('gulp-cache'),
+    cheerio   = require('gulp-cheerio'),
     concat    = require('gulp-concat'),
     del       = require('del'),
     imagemin  = require('gulp-imagemin'),
@@ -264,11 +265,10 @@ gulp.task('images:vector:sprites', function () {
         .pipe(svgstore({
             fileName: 'sprite.svg',
             inlineSvg: true,
-            transformSvg: function($svg, done) {
-                $svg.attr({style: 'display:none'}) // make sure the spritemap doesn't show
-                $svg.find('[fill]').removeAttr('fill') // remove all 'fill' attributes in order to control via CSS
-                done(null, $svg)
-            },
+        }))
+        .pipe(cheerio(function ($) {
+            $('svg').attr('style', 'display:none'); // make sure the spritemap doesn't show
+            $('[fill]').removeAttr('fill'); // remove all 'fill' attributes in order to control via CSS
         }))
         .on('error', function(err){
             displayError(err);
