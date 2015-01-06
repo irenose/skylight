@@ -31,7 +31,11 @@
 <section class="page-row about-dealer">
     <h3 class="about-dealer-title normal-weight upper">Our Company</h3>
     <div class="dealer-image polaroid--round">
-        <img src="<?=asset_url('images/about-dealer-placeholder.png')?>" alt>
+        <?php
+            if($about_dealer_image != '') {
+                echo $about_dealer_image;
+            }
+        ?>
     </div>
 <?php
     /*---------------------------------------------

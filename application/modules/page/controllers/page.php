@@ -185,6 +185,7 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
+                            $data['about_dealer_image'] = $this->page_model->get_dealer_about_image($data['installer_array']);
                             $data['page_view'] = 'about';
                             break;
                         case 'warranty':

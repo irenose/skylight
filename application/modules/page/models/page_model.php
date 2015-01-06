@@ -98,6 +98,15 @@ class Page_model extends CI_Model {
 		}
 	}
 
+	function get_dealer_about_image($installer_array) {
+		if($installer_array[0]->about_image != '' && file_exists($this->config->item('dealer_assets_full_dir') . 'about-images/' . $installer_array[0]->about_image . '.' . $installer_array[0]->about_extension)) {
+			return '<img src="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $installer_array[0]->about_image . '.' . $installer_array[0]->about_extension . '" alt="About ' . $installer_array[0]->name . '">';
+
+		} else {
+			return '';
+		}
+	}
+
 /**********************************************************************************************************************************
 		PRODUCT FUNCTIONS
 ***********************************************************************************************************************************/
