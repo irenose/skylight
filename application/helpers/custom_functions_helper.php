@@ -756,3 +756,17 @@ if ( ! function_exists('oembed_vimeo')) {
         return json_decode(curl_get($json_url));
     }
 }
+
+if( ! function_exists('filter_custom_tags')) {
+    function filter_custom_tags($type, $string, $replace) {
+    	switch($type) {
+    		case 'city':
+    			return str_replace('[DEALER_CITY]',$replace,$string);
+    			break;
+    		case 'name':
+    			return str_replace('[DEALER_NAME]',$replace,$string);
+    			break;
+    	}
+
+    }
+}

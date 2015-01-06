@@ -17,7 +17,7 @@
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
     <header class="intro-statement intro-statement--squeezed">
-        <h2 class="normal-weight"><?=$installer_array[0]->about_dealer_headline?></h2>
+        <h2 class="normal-weight"><?= filter_custom_tags('city', $installer_array[0]->dealer_homepage_headline, $installer_array[0]->city); ?></h2>
     </header>
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">

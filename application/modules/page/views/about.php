@@ -8,7 +8,12 @@
         Dealer Headline
     ----------------------------------------------*/
 ?>
-        <h2 class="normal-weight"><?= $installer_array[0]->about_dealer_headline; ?></h2>
+        <h2 class="normal-weight">
+            <?php
+                $headline = $installer_array[0]->about_dealer_headline != '' ? $installer_array[0]->about_dealer_headline : 'About Us'; 
+                echo $headline;
+            ?>
+        </h2>
 <?php
     /*---------------------------------------------
         End Dealer Headline
@@ -21,6 +26,7 @@
 
 <?php 
     /******************************* ABOUT INSTALLER COPY *************************/ 
+    if($installer_array[0]->about_dealer_text != '') {
 ?>
 <section class="page-row about-dealer">
     <h3 class="about-dealer-title normal-weight upper">Our Company</h3>
@@ -31,9 +37,12 @@
     /*---------------------------------------------
         About Dealer Text
     ----------------------------------------------*/
+    $word_count = str_word_count($installer_array[0]->about_dealer_text);
+    $column_class = ($word_count > 50) ? ' text-columns-2' : '';
 ?>
-    <p class="text-columns-2 about-dealer-text"><?= $installer_array[0]->about_dealer_text; ?></p>
+    <p class="about-dealer-text<?= $column_class; ?>"><?= $installer_array[0]->about_dealer_text; ?></p>
 <?php
+    }
     /*---------------------------------------------
         End About Dealer Text
     ----------------------------------------------*/
