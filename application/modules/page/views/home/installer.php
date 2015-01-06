@@ -85,5 +85,6 @@
     ----------------------------------------------*/
     
     /******************************* DISCOVER MORE *************************/ 
-    echo $this->load->view('partials/_discover-more');
+    $data['discover_section'] = 'home';
+    echo $this->load->view('partials/_discover-more',$data);
 ?>

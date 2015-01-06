@@ -41,19 +41,31 @@
     ----------------------------------------------*/
     if( count( $product_category_array['subcategory_array']) > 0) {
     	foreach($product_category_array['subcategory_array'] as $subcategory) {
-    		echo '<section class="page-row page-row--squeezed border-top-grey product-row-container">' . "\n";
+    		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
+    		echo '<section class="page-row page-row--squeezed border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
 	    		echo '<header class="header-statement">' . "\n";
 					echo '<h3 class="upper">' . $subcategory->subcategory_name . '</h3>' . "\n";
 				echo '</header>' . "\n";
 				echo '<div class="row product-row">' . "\n";
 					$count = 0;
+					$product_count = count($subcategory->subcategory_products);
+
 					foreach($subcategory->subcategory_products as $product) {
 						if($count % 2 == 0) {
 							echo '</div>' . "\n";
 							echo '<div class="row product-row">' . "\n";
 						}
 						$count++;
-						echo '<div class="small-12 medium-6 columns centered">' . "\n";
+
+						/*---------------------------------------------
+					        Center last product if odd number
+					    ----------------------------------------------*/
+						if($count == $product_count) {
+							$last_product_class = $product_count % 2 == 0 ? '' : ' medium-push-3';
+						} else {
+							$last_product_class = '';
+						}
+						echo '<div class="small-12 medium-6' . $last_product_class . ' columns centered">' . "\n";
 							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . asset_url('images/solar-powered-1.jpg') . '" alt></a>' . "\n";
 							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
 							//echo '<p>Curb mounted skylight</p>' . "\n";
@@ -64,93 +76,7 @@
 			echo '</section>' . "\n";
     	}
     }
-?>
 
-<!--
-<section class="page-row page-row--squeezed border-top-grey product-row-container">
-	<header class="header-statement">
-		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
-	</header>
-	<div class="row product-row">
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VCS)</a>
-			<p>Curb mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-2.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VSS)</a>
-			<p>Deck mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-	</div>
-</section>
-<?php
-    /*---------------------------------------------
-        End Product Rows
-    ----------------------------------------------*/
-?>
-<section class="page-row page-row--squeezed border-top-grey product-row-container">
-	<header class="header-statement">
-		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
-	</header>
-	<div class="row product-row">
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VCS)</a>
-			<p>Curb mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-2.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VSS)</a>
-			<p>Deck mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-	</div>
-</section>
-<section class="page-row page-row--squeezed border-top-grey product-row-container">
-	<header class="header-statement">
-		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
-	</header>
-	<div class="row product-row">
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VCS)</a>
-			<p>Curb mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-2.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VSS)</a>
-			<p>Deck mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-	</div>
-</section>
-<section class="page-row page-row--squeezed border-top-grey product-row-container">
-	<header class="header-statement">
-		<h3 class="upper">Solar Powered "Fresh Air" Skylights</h3>
-	</header>
-	<div class="row product-row">
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-1.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VCS)</a>
-			<p>Curb mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-		<div class="small-12 medium-6 columns centered">
-			<a href="" class="product-image"><img src="<?=asset_url('images/solar-powered-2.jpg')?>" alt></a>
-			<a class="product-title">Solar Powered "Fresh Air" Skylight (VSS)</a>
-			<p>Deck mounted skylight</p>
-			<img src="<?=asset_url('images/stars.png')?>" alt>
-		</div>
-	</div>
-</section>
--->
-
-<?php 
     /******************************* ACCESSORIES *************************/ 
 ?>
 <div class="border-top-grey"></div>

@@ -206,6 +206,27 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_contact_product_list($dealer_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'products';
+		$options_array = $this->get_dealer_options($dealer_id);
+		if(count($options_array) > 0) {
+			foreach($options_array as $option) {
+				$products_exclude = $option->products;
+				$exclude_array = explode(',', $products_exclude); 
+			}
+		} else {
+			$exclude_array = array();	
+		}
+		$where = array('product_status' => 'active');
+		$this->db->where($where);
+		if(count($exclude_array) > 0) {
+			$this->db->where_not_in('product_id',$exclude_array);
+		}
+		$this->db->order_by('sort_order ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
 /**********************************************************************************************************************************
 		HOMEPAGE FUNCTIONS
 ***********************************************************************************************************************************/

@@ -42,25 +42,27 @@
 
 <?php
     /******************************* OPTIONAL PHOTO GALLERY *************************/ 
+    if( isset($gallery_array) && count($gallery_array) > 0) {
 ?>
-<section class="page-row bg-grey gallery">
-    <div class="slick-carousel">
-        <div class="centered">
-            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-        </div>
-        <div class="centered">
-            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-        </div>
-        <div class="centered">
-            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-        </div>
-        <div class="centered">
-            <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-        </div>
-    </div>
-</section>
+        <section class="page-row bg-grey gallery">
+            <div class="slick-carousel">
+                <div class="centered">
+                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+                </div>
+                <div class="centered">
+                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+                </div>
+                <div class="centered">
+                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+                </div>
+                <div class="centered">
+                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
+                </div>
+            </div>
+        </section>
 
 <?php 
+    }
     /******************************* OPTIONAL TESTIMONIALS *************************/ 
 ?>
 <section>

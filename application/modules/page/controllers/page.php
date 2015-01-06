@@ -36,17 +36,27 @@ class Page extends CI_Controller {
 
         $data['show_installer_header_footer'] = TRUE;
         $data['installer_base_url'] = base_url();
+        $data['secondary_nav_array'] = array();
+        $data['discover_section'] = '';
+        $data['contact_products_array'] = array();
 
         if (count($vars_array) > 0) {
             $installer_url = $vars_array[1];
             $data['installer_url'] = $installer_url;
             $data['current_section'] = ''; // set default
             $data['installer_array'] = $this->page_model->get_installer_array($installer_url);
+
+            //REDIRECT TO MAIN SEARCH IF INSTALLER URL INVALID
+            if(count($data['installer_array']) == 0) {
+                redirect('');
+            }
+
             //UPDATE WITH INSTALLER URL ADDED
             $data['installer_base_url'] = base_url() . $installer_url;
             $data['canonical_url'] = base_url() . $installer_url;
             $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
             $data['breadcrumbs_array'][] = array('label' => 'Home', 'url' => $data['installer_base_url']);
+            $data['contact_products_array'] = $this->page_model->get_contact_product_list($data['installer_array'][0]->dealer_id);
 
             if(count($data['installer_array']) > 0) {
                 if($vars_size == 1) {
@@ -92,6 +102,16 @@ class Page extends CI_Controller {
                                                 );
                                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                                 $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
+
+                                                //Only show anchors if more than 1 subcategory
+                                                if(count($data['product_category_array']['subcategory_array']) > 1) {
+                                                    foreach($data['product_category_array']['subcategory_array'] as $subcategory) {
+                                                        $data['secondary_nav_array'][] = array(
+                                                            'label' => $subcategory->subcategory_name,
+                                                            'anchor' => '#' . url_title($subcategory->subcategory_name,'dash',TRUE)
+                                                        );
+                                                    }
+                                                }
                                                 $data['page_view'] = 'products/category';
                                             } else {
                                                 redirect('/' . $data['installer_array'][0]->dealer_url . '/products');
@@ -111,6 +131,12 @@ class Page extends CI_Controller {
                                             $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                             $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_category_name, 'url' => $data['installer_base_url'] . '/products/category/' . $data['product_info_array'][0]->product_category_url);
                                             $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_name, 'url' => '');
+
+                                            //Set selected product for pre-populating contact form
+                                            $product_name = ascii_to_entities($data['product_info_array'][0]->product_name);
+                                            $product_name = ($data['product_info_array'][0]->model_number != '') ? $product_name . ' (' . $data['product_info_array'][0]->model_number . ')' : $product_name;
+                                            $data['selected_contact_product'] = $product_name;
+
                                             $data['page_view'] = 'products/product';
                                         } else {
                                             redirect($data['installer_base_url'] . '/products');
@@ -138,11 +164,20 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
+                            $data['secondary_nav_array'] = array(
+                                array('label' => 'Overview', 'anchor' => '#overview'),
+                                array('label' => 'What to Expect', 'anchor' => '#what-to-expect'),
+                                array('label' => 'Skylight Orientation', 'anchor' => '#skylight-orientation'),
+                                array('label' => 'Energy Efficiency', 'anchor' => '#energy-efficiency'),
+                                array('label' => 'Federal Tax Credits', 'anchor' => '#tax-credits'),
+                                array('label' => 'Discover More', 'anchor' => '#discover-more'),
+                            );
                             $data['page_view'] = 'installing';
                             break;
                         case 'about':
                             $data['current_section'] = 'about';
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
+                            $data['gallery_array'] = array();
                             $data['meta_array'] = array(
                                 'title' => 'About',
                                 'description' => '',
@@ -178,6 +213,7 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
+
                             $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
                             if($this->input->post('phone') == '') {
                                 $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');

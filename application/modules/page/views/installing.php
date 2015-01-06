@@ -85,7 +85,6 @@
     <header class="header-statement header-statement--squeezed">
         <h3 class="upper">Improve Home Efficiency</h3>
         <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat<sup>&reg;</sup> glass technology.</p>
-        <a class="btn">Learn More</a>
     </header>
 </section>
 
@@ -97,7 +96,6 @@
         <div class="small-12 medium-6 columns reversed first">
             <h3 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
             <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
-            <a class="btn">Learn More</a>
         </div>
         <div class="small-12 medium-6 columns centered last">
             <div class="incentives">
@@ -129,5 +127,7 @@
 
 <?php 
     /******************************* DISCOVER MORE *************************/ 
+    $data['discover_section'] = 'installing';
+    echo $this->load->view('partials/_discover-more',$data);
 ?>
-<?=$this->load->view('partials/_discover-more');?>
+

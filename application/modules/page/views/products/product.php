@@ -17,9 +17,11 @@
 	?>
 </section>
 <section>
-	<h1><?= filter_page_content($product_info_array[0]->product_name); ?></h1>
-	<?= filter_page_content($product_info_array[0]->product_description); ?>
-	<p><a href="">Contact Us (Modal)</a>
+	<?php
+		echo '<h1>' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
+		echo filter_page_content($product_info_array[0]->product_description) . "\n";
+		echo '<p><a href="' . $installer_base_url . '/contact" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}">Contact Us (Modal)</a></p>';
+	?>
 </section>
 <section>
 	FEATURE HEADLINE - TBD IF STATIC OR NOT

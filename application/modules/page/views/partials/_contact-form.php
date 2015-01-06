@@ -36,10 +36,20 @@
         <div class="small-12 medium-6 columns">
             <label>What Can We Help You With?<?=required_text('subject'); ?></label>
             <select name="subject" class="selectric">
-                <option value="default" selected>Please choose one</option>
-                <option value="option-a">Option A</option>
-                <option value="option-b">Option B</option>
-                <option value="option-c">Option C</option>
+                <option value="">Please choose one</option>
+                <option value="General Information"<?= set_select('subject', 'General Information'); ?>>General Information</option>
+                <option value="Schedule Consultation"<?= set_select('subject', 'Schedule Consultation'); ?>>Schedule Consultation</option>
+                <option value="Request a Quote"<?= set_select('subject', 'Request a Quote'); ?>>Request a Quote</option>
+                <option value="Installation"<?= set_select('subject', 'Installation'); ?>>Installation</option>
+                <option value="Repair or Replacement"<?= set_select('subject', 'Repair or Replacement'); ?>>Repair/Replacement</option>
+                <?php
+                    foreach($contact_products_array as $product) {
+                        $product_name = ascii_to_entities($product->product_name);
+                        $product_name = $product->model_number != '' ? $product_name . ' (' . $product->model_number . ')' : $product_name;
+                        $selected = (isset($selected_contact_product) && $selected_contact_product == $product_name) ? TRUE : FALSE;
+                        echo '<option value="' . $product_name . '"' . set_select('subject',$product_name,$selected) . '>' . $product_name . '</option>'.  "\n";
+                    }
+                ?>
             </select>
 
             <label>Message<?=required_text('comments'); ?></label>
