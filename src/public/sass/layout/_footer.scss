@@ -173,6 +173,9 @@
                 width: 24px;
             }
         }
+        .social__link:hover {
+            @extend %no-underline;
+        }
 
         @include bp($foundation-small, $foundation-med) {
             bottom: 50px;
