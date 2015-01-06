@@ -56,27 +56,11 @@
     ----------------------------------------------*/
 ?>
         <div class="small-12 large-7 large-pull-5 columns contact-form">
-        
-                <!-- <label>Name<?php echo required_text('name'); ?></label>
-                <input type="text" name="name" class="<?php echo error_class('name'); ?>" value="<?php echo set_value('name');?>" />
-
-                <label>Company<?php echo required_text('company'); ?></label>
-                <input type="text" name="company" class="<?php echo error_class('company'); ?>" value="<?php echo set_value('company');?>" />
-
-                <label>Email Address<?php echo required_text('email'); ?></label>
-                <input type="text" name="email" class="<?php echo error_class('email'); ?>" value="<?php echo set_value('email');?>" />
-
-                <label>Phone<?php echo required_text('phone'); ?></label>
-                <input type="text" name="phone" class="<?php echo error_class('phone'); ?>" value="<?php echo set_value('phone');?>" />
-
-                <label>How can we help?<?php echo required_text('comments'); ?></label>
-                <textarea name="comments" class="<?php echo form_textarea_error('comments'); ?>"><?php echo set_value('comments');?></textarea> -->
-
-            <?=$this->load->view('partials/_contact-form');?>
+            <?= $this->load->view('partials/_contact-form');?>
         </div>
     </div>
 </section>
 <section>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
-    <div id="map"></div>
+    <div id="map" data-lat="<?=$installer_array[0]->latitude; ?>" data-long="<?=$installer_array[0]->longitude; ?>"></div>
 </section>

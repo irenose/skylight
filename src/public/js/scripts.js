@@ -346,7 +346,9 @@ ww.conditional_modals = (function() {
             $("[data-modal-open]").on("click", function(e) {
                 if (ww.common.check_breakpoint('modal-is-enabled')) {
                     e.preventDefault();
-                    ww.conditional_modals.inject_modal_content($(this));
+                    //ww.conditional_modals.inject_modal_content($(this));
+                    ww.conditional_modals.open_modal();
+
                 }
             });
 
@@ -403,8 +405,8 @@ ww.maps = (function() {
 
         draw_map: function() {
             var coordinates = {
-                lat: -33.8665433,
-                lng: 151.1956316,
+                lat: $('#map').attr('data-lat'),
+                lng: $('#map').attr('data-long')
             };
 
             var settings = {
@@ -413,7 +415,7 @@ ww.maps = (function() {
                     center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
                     zoom: 14,
                     // UI options
-                    //mapTypeControl: false,
+                    mapTypeControl: false,
                     panControl: false,
                     scrollwheel: false,
                     streetViewControl: false, // pegman
@@ -433,7 +435,7 @@ ww.maps = (function() {
                     // set marker
                     var ww_marker = new google.maps.Marker({
                         map: ww_map,
-                        position: place.geometry.location
+                        position: settings.map_options.center
                     });
 
                     google.maps.event.addListener(ww_marker, 'click', function() {

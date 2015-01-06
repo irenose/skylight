@@ -1,4 +1,4 @@
-<form action="/contact" method="post">
+<form action="<?=$installer_base_url; ?>/contact" method="post">
     <div class="row">
         <div class="small-12 medium-6 columns">
             <label>Name<?=required_text('name'); ?></label>
@@ -34,8 +34,8 @@
             </div>
         </div>
         <div class="small-12 medium-6 columns">
-            <label>What Can We Help You With?</label>
-            <select name="help" class="selectric">
+            <label>What Can We Help You With?<?=required_text('subject'); ?></label>
+            <select name="subject" class="selectric">
                 <option value="default" selected>Please choose one</option>
                 <option value="option-a">Option A</option>
                 <option value="option-b">Option B</option>

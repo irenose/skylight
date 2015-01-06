@@ -178,7 +178,20 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
-                            $data['page_view'] = 'contact';
+                            $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                            if($this->input->post('phone') == '') {
+                                $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
+                            }
+                            $this->form_validation->set_rules('city', 'City', 'trim|xss_clean');
+                            $this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
+                            $this->form_validation->set_rules('zip', 'Zip', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
+                            if ($this->form_validation->run() == FALSE) {
+                                $data['page_view'] = 'contact';
+                            } else {
+                                _a($_POST);
+                            }
                             break;
                         case 'promotions':
                             $data['current_section'] = 'promotions';

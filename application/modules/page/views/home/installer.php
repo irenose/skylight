@@ -16,6 +16,9 @@
 ?>
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
+    <header class="intro-statement intro-statement--squeezed">
+        <h2 class="normal-weight"><?=$installer_array[0]->about_dealer_headline?></h2>
+    </header>
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">
             <h1 class="reversed upper">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
@@ -36,7 +39,7 @@
             </div>
             <div class="promotion-small cta schedule-consult">
                 <p class="reversed font-display">Schedule A Consultation</p>
-                <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
+                <a href="<?= $installer_base_url; ?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
             </div>
         </div>
     </div>
