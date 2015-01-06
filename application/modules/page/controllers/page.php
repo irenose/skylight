@@ -39,6 +39,7 @@ class Page extends CI_Controller {
         $data['secondary_nav_array'] = array();
         $data['discover_section'] = '';
         $data['contact_products_array'] = array();
+        $data['dealer_logo_display'] = '';
 
         if (count($vars_array) > 0) {
             $installer_url = $vars_array[1];
