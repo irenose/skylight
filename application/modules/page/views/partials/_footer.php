@@ -2,7 +2,7 @@
     <div class="row footer">
         <div class="small-12 medium-6 large-3 columns logo">
             <a href="<?=$installer_base_url?>" title="Home">
-                <img src="<?=asset_url('images/installer-logo.png')?>" alt>
+                <?= $dealer_logo_display; ?>
             </a>
             <div class="copyright">&copy; <?php echo date("Y") ?> Installer Name</div>
             <div class="social">

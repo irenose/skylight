@@ -1,8 +1,7 @@
 <section class="masthead-wrapper">
     <div class="branding">
         <a href="<?=$installer_base_url?>" class="brand" title="Home">
-            <img src="<?=asset_url('images/installer-logo.png')?>" alt>
-            <!--<div>Joe's Plubming, Heating, A/C, and Ventilation Services</div>-->
+            <?= $dealer_logo_display; ?>
         </a>
     </div>
     <div class="masthead" data-fixie>

@@ -57,6 +57,7 @@ class Page extends CI_Controller {
             $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
             $data['breadcrumbs_array'][] = array('label' => 'Home', 'url' => $data['installer_base_url']);
             $data['contact_products_array'] = $this->page_model->get_contact_product_list($data['installer_array'][0]->dealer_id);
+            $data['dealer_logo_display'] = $this->page_model->get_dealer_logo($data['installer_array']);
 
             if(count($data['installer_array']) > 0) {
                 if($vars_size == 1) {
