@@ -236,8 +236,8 @@ class Page extends CI_Controller {
                                 _a($_POST);
                             }
                             break;
-                        case 'promotion':
-                            $data['current_section'] = 'promotion';
+                        case 'promotions':
+                            $data['current_section'] = 'promotions';
                             if($data['installer_array'][0]->promotion_page_copy == '') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
@@ -246,7 +246,7 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
-                            $data['page_view'] = 'promotion';
+                            $data['page_view'] = 'promotions';
                             break;
                         case 'ps':
                             switch($vars_array[3]) {

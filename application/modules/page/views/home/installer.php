@@ -40,7 +40,7 @@
                             echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
                         }
                         if(trim($installer_array[0]->promotion_page_copy) != '') {
-                            echo ' <a href="' . $installer_base_url . '/promotion">Learn More</a>' . "\n";
+                            echo ' <a href="' . $installer_base_url . '/promotions">Learn More</a>' . "\n";
                         }
                    echo ' </div>' . "\n";
                 } else {
