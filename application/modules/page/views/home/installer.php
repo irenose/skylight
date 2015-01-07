@@ -32,11 +32,25 @@
             </div>
         </div>
         <div class="promotions-small">
-            <div class="promotion-small reversed dealer-promo">
-                <h3 class="normal-weight">Save 20%</h3>
-                <p>Dealer Managed Promo goes here</p>
-                <a href="">Learn More</a>
-            </div>
+            <?php
+                if($installer_array[0]->promotion_status == 'active' && trim($installer_array[0]->promotion_headline) != '') {
+                    echo '<div class="promotion-small reversed dealer-promo">' . "\n";
+                        echo '<h3 class="normal-weight">' . trim($installer_array[0]->promotion_headline) . '</h3>' . "\n";
+                        if(trim($installer_array[0]->promotion_callout_copy) != '') {
+                            echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
+                        }
+                        if(trim($installer_array[0]->promotion_page_copy) != '') {
+                            echo ' <a href="' . $installer_base_url . '/promotion">Learn More</a>' . "\n";
+                        }
+                   echo ' </div>' . "\n";
+                } else {
+                    echo '<div class="promotion-small reversed dealer-promo">' . "\n";
+                        echo '<h3 class="normal-weight">Default Promo</h3>' . "\n";
+                        echo '<p>If Dealer has no promo, this goes here</p>' . "\n";
+                        echo '<a href="">Learn More</a>' . "\n";
+                    echo '</div>' . "\n";
+                }
+            ?>
             <div class="promotion-small cta schedule-consult">
                 <p class="reversed font-display">Schedule A Consultation</p>
                 <a href="<?= $installer_base_url; ?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>

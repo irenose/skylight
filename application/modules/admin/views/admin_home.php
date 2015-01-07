@@ -16,7 +16,7 @@
 				}
 				
 				
-				echo '<div class="dealer_link" style="float:left;width:33%;"><b><a href="/dealer-admin/home/' . $dealer->dealer_id . '">' . $dealer->name  . '</a></b><br /><i>' . $dealer->city . ', ' . $dealer->state . '</i><br />Site Status: ' . $status . '</div>';
+				echo '<div class="dealer_link" style="float:left;width:33%;"><b><a href="/installer-admin/home/' . $dealer->dealer_id . '">' . $dealer->name  . '</a></b><br /><i>' . $dealer->city . ', ' . $dealer->state . '</i><br />Site Status: ' . $status . '</div>';
 			}
 			if($count == 3) {
 				echo '<div class="clearfix" style="height:50px;"> </div>';

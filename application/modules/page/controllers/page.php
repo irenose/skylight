@@ -236,10 +236,9 @@ class Page extends CI_Controller {
                                 _a($_POST);
                             }
                             break;
-                        case 'promotions':
-                            $data['current_section'] = 'promotions';
-                            $data['dealer_promotion_array'] = $this->page_model->get_dealer_promotion_page($data['installer_array'][0]->dealer_id);
-                            if(count($data['dealer_promotion_array']) == 0) {
+                        case 'promotion':
+                            $data['current_section'] = 'promotion';
+                            if($data['installer_array'][0]->promotion_page_copy == '') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
                             $data['meta_array'] = array(
@@ -247,7 +246,7 @@ class Page extends CI_Controller {
                                 'description' => '',
                                 'keywords' => ''
                             );
-                            $data['page_view'] = 'promotions';
+                            $data['page_view'] = 'promotion';
                             break;
                         case 'ps':
                             switch($vars_array[3]) {

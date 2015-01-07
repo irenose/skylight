@@ -4,7 +4,7 @@
 	}
 	
 	if( ! isset($logout_link)) {
-		$logout_link = '/admin/logout';
+		$logout_link = '/installer-admin/logout';
 	}
 	
 	if( ! isset($current_section)) {
@@ -51,7 +51,7 @@
 
 <div id="global">
 	<div id="logo">
-    	<a href="/admin/home">
+    	<a href="/installer-admin/home">
         	<?php
 				if($this->config->item('admin_client_logo') != '') {
 					echo '<img src="' . $this->config->item('admin_client_logo') . '" alt="' . $this->config->item('admin_client_name') . '" border="0" />';
@@ -68,7 +68,7 @@
 <div id="welcome_logout"><span class="welcome_messaging">WELCOME <span class="admin_username"><?php echo $_SESSION['first_name']; ?></span></span> | 
 	<?php 
 		if($_SESSION['uid'] != '' && $_SESSION['uid'] != '99999') { 
-			echo '<span class="welcome_messaging"><a href="/admin/profile/update-password/' . $_SESSION['uid'] . '">Change Password</a></span> | ';
+			echo '<span class="welcome_messaging"><a href="/installer-admin/profile/update-password/' . $_SESSION['uid'] . '">Change Password</a></span> | ';
 		}
 	?>
 	<span class="welcome_messaging"><a href="<?php echo $logout_link; ?>" class="logout">log out</a></span>
@@ -91,15 +91,13 @@
                 if( ! isset($hide_navigation) || $hide_navigation == FALSE) { 
             ?>
                 <ul id="menu">
-                	<li class="main<?php if($current_section == 'home') { echo ' selected'; } ?>"><a href="/admin/home" class="section">Home</a></li>
-                	<li class="main<?php if($current_section == 'updates') { echo ' selected'; } ?>"><a href="/admin/updates" class="section">Updates</a></li>
-                	<li class="main<?php if($current_section == 'pages') { echo ' selected'; } ?>"><a href="/admin/pages" class="section">Pages</a></li>
-					<li class="main<?php if($current_section == 'installers') { echo ' selected'; } ?>"><a href="/admin/installers" class="section">Installers</a></li>
-					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/admin/products" class="section">Products</a></li>
-					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/admin/testimonials" class="section">Testimonials</a></li>
-					<li class="main<?php if($current_section == 'literature') { echo ' selected'; } ?>"><a href="/admin/literature" class="section">Literature</a></li>
-					<li class="main<?php if($current_section == 'contact') { echo ' selected'; } ?>"><a href="/admin/contact" class="section">Contact</a></li>
-                    <li class="main<?php if($current_section == 'users') { echo ' selected'; } ?>"><a href="/admin/users" class="section">Users</a>
+                	<li class="main<?php if($current_section == 'home') { echo ' selected'; } ?>"><a href="/installer-admin/home" class="section">Home</a></li>
+                	<li class="main<?php if($current_section == 'about') { echo ' selected'; } ?>"><a href="/installer-admin/about" class="section">About</a></li>
+                	<li class="main<?php if($current_section == 'promotion') { echo ' selected'; } ?>"><a href="/installer-admin/promotion" class="section">Promotion</a></li>
+					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/installer-admin/products" class="section">Products</a></li>
+					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/installer-admin/testimonials" class="section">Testimonials</a></li>
+					<li class="main<?php if($current_section == 'literature') { echo ' selected'; } ?>"><a href="/installer-admin/literature" class="section">Literature</a></li>
+					<li class="main<?php if($current_section == 'contact') { echo ' selected'; } ?>"><a href="/installer-admin/contact" class="section">Contact</a></li>
                     
                 </ul>
             
@@ -133,8 +131,8 @@
 </footer>
 
 
-<script type="text/javascript" src="/src/admin/assets/js/admin_functions.js"></script>
-<script type="text/javascript" src="/src/admin/assets/js/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/src/installer-admin/assets/js/installer-admin_functions.js"></script>
+<script type="text/javascript" src="/src/installer-admin/assets/js/jquery.colorbox.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -175,9 +173,9 @@ tinyMCE.init({
 		height:"350",
 
         // Example content CSS (should be your site CSS)
-        content_css : "/src/admin/assets/css/tinymce.css?" + new Date().getTime(),
+        content_css : "/src/installer-admin/assets/css/tinymce.css?" + new Date().getTime(),
 		
-        external_image_list_url : "/admin/image_list"
+        external_image_list_url : "/installer-admin/image_list"
 
 
 });
