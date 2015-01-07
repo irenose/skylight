@@ -11,6 +11,12 @@ class Installer_admin_model extends CI_Model {
 /*		GET FUNCTIONS
 ************************************************************************************************************************************/
 
+	function get_site_defaults() {
+		$db_table = $this->config->item('db_table_prefix') . 'site_default';
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+
 	function get_dealer_by_id($dealer_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$this->db->where('dealer_id',$dealer_id);

@@ -92,8 +92,15 @@
             ?>
                 <ul id="menu">
                 	<li class="main<?php if($current_section == 'home') { echo ' selected'; } ?>"><a href="/installer-admin/home" class="section">Home</a></li>
-                	<li class="main<?php if($current_section == 'about') { echo ' selected'; } ?>"><a href="/installer-admin/about" class="section">About</a></li>
-                	<li class="main<?php if($current_section == 'promotion') { echo ' selected'; } ?>"><a href="/installer-admin/promotion" class="section">Promotion</a></li>
+                	<li class="main<?php if($current_section == 'account') { echo ' selected'; } ?>"><a href="/installer-admin/account" class="section">Account</a>
+						<?php
+							if($current_section == 'account') {
+								echo '<a href="/installer-admin/account/homepage" class="nav_action">Update Homepage</a>';
+								echo '<a href="/installer-admin/account/about" class="nav_action">Update About</a>';
+								echo '<a href="/installer-admin/account/promotion" class="nav_action">Update Promotion</a>';
+							}
+						?>	
+                	</li>
 					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/installer-admin/products" class="section">Products</a></li>
 					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/installer-admin/testimonials" class="section">Testimonials</a></li>
 					<li class="main<?php if($current_section == 'literature') { echo ' selected'; } ?>"><a href="/installer-admin/literature" class="section">Literature</a></li>

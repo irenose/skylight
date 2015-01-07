@@ -966,6 +966,14 @@ a.manual_upload_file_selected
 	height:30px;
 }
 
+
+.padded_block {
+	padding:20px;
+}
+.padded_block_gray {
+	background-color:#eeeeee;
+}
+
 /****************************************   MOBILE  *****************************************************/
 
 /* Smaller than standard 960 (devices and browsers) */
