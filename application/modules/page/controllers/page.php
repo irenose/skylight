@@ -25,6 +25,10 @@ class Page extends CI_Controller {
         if ($vars_size > 0) {
             $url_page_name = $vars_array[$vars_size];   //url_page_name is last segment of url
             $data['url_page_name'] = $url_page_name;
+
+            if($vars_array[1] == 'dealer-admin') {
+                redirect('installer-admin');
+            }
         }
 
         //Define and Set as Empty Array
