@@ -587,6 +587,27 @@ class Installer_admin extends CI_Controller {
 		$this->load->view('admin_template', $data);
 	}
 
+	function warranty() {
+		$data['current_section'] = 'warranty';
+		$data['page_title'] = 'Installer Administration - Update Warranty';
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
+		$this->form_validation->set_rules('dealer_warranty', 'Warranty', 'trim|required|xss_clean');
+		
+		if($this->form_validation->run() == FALSE) {
+			$data['page_content'] = 'admin_warranty';
+		} else {
+			$update = $this->installer_admin_model->update_promotion($_POST);
+			if($update) {
+				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
+				redirect('installer-admin/warranty');
+			} else {
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+				redirect('installer-admin/warranty');
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
 	
 /*****************************************************************************************************************************************
 /*	LOGOUT Page
