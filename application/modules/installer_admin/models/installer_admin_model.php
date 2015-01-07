@@ -1,6 +1,6 @@
 <?php
 
-class Dealer_admin_model extends CI_Model {
+class Installer_admin_model extends CI_Model {
 
 	function __construct()
 	{

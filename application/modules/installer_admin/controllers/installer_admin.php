@@ -1,6 +1,6 @@
 <?php
 
-class Dealer_admin extends CI_Controller {
+class Installer_admin extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -9,7 +9,7 @@ class Dealer_admin extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->library('sitemap');
 		$this->load->library('rss');
-		$this->load->model('dealer_admin_model');
+		$this->load->model('installer_admin_model');
 		$this->load->model('page/page_model');
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 	}
@@ -18,8 +18,36 @@ class Dealer_admin extends CI_Controller {
 /*	LOGIN Page
 *****************************************************************************************************************************************/
 	function index() {
-		echo 'here';
-		exit;
+		if(isset($_SESSION['uid']) && $_SESSION['uid'] != '') { 
+			redirect('dealer-admin/home');
+		}
+
+		$data['page_title'] = 'Administration Login';
+		$data['hide_navigation'] = TRUE;
+		
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|valid_email|xss_clean');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+
+		$data['redirected_from'] = ($this->input->get('redirect') != '') ? $this->input->get('redirect') : '';
+		
+		if ($this->form_validation->run() == FALSE) {
+			$data['page_content'] = 'admin_login';
+			$this->load->view('admin_template', $data);
+		} else {
+			if ($this->input->post('login_submitted') != FALSE)
+			{
+				$username = htmlspecialchars($this->input->post('username'), ENT_QUOTES, 'UTF-8');
+				$login = array($username, $this->input->post('password'));
+				$data['user_array'] = $this->auth->process_login($login, TRUE, $data['redirected_from']);
+				if($data['user_array'] != FALSE) {
+					$this->load->view('admin_session', $data);
+				} else {
+					$data['error'] = 'Login failed, please try again';
+					$data['page_content'] = 'admin_login';
+					$this->load->view('admin_template', $data);
+				}
+			}
+		}
 	}
 	
 	
@@ -28,6 +56,17 @@ class Dealer_admin extends CI_Controller {
 																
 ***********************************************************************************************************************************************************/
 
+	function home() {
+
+	}
+
+	function promotion($action = NULL) {
+
+	}
+
+	function about($action = NULL) {
+
+	}
 
 	
 /*****************************************************************************************************************************************
