@@ -2,18 +2,18 @@
 	<div class="header_label">Account Information</div>
     <div class="header_actions">
     	<a href="/installer-admin/account/update" class="header_action">Update Account</a>
-    	<a href="/installer-admin/account/homepage" class="header_action">Update Homepage</a>
-    	<a href="/installer-admin/account/about" class="header_action">Update About</a>
-    	<a href="/installer-admin/account/promotion" class="header_action">Update Promotion</a>
     </div>
 </h1>
-<p>Click the blue update buttons to update account information, as well as information for your homepage and about us page.</p>
+<p>Click the gray update buttons to update account information, as well as information for your homepage, your about us page and your promotion.</p>
+
 <div class="flashdata">
 <?php 
 	//Success/Error Flash Data
 	echo $this->session->flashdata('status_message');
 ?>
 </div>
+<div class="form_spacer"></div>
+
 <div class="padded_block padded_block_gray">
 
 <?php
@@ -76,12 +76,12 @@
 	
 	
 	echo '<b>Dealer Credentials</b><br />' . "\n";
-	echo nl2br($dealer_array[0]->credentials) . '<br /><br />' . "\n";
+	echo nl2br($dealer_array[0]->credentials) . '</p>' . "\n";
 	
-	echo '<div class="content_divider"> </div>' . "\n";
-	echo '<h3>Contact Requests</h3>';
+	echo '<div class="form_spacer"> </div>' . "\n";
+	echo '<h2>Contact Requests</h2>';
 	
-	echo '<b>Primary Recipient:</b><br >' . "\n";
+	echo '<p><b>Primary Recipient:</b><br >' . "\n";
 	if($dealer_array[0]->primary_email == '') {
 		echo $dealer_array[0]->email . ' <i>(This is your default account e-mail address)</i> <br /><br />';
 	} else {

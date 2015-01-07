@@ -5,7 +5,7 @@
 <h1 class="clearfix">
     <div class="header_label">Update Promotion</div>
 </h1>
-<p>COPY COPY COPY</p>
+<p>Use the form below to create/edit a promotion that you want to display on the site.</p>
 
 <div class="flashdata">
     <?php 
@@ -19,7 +19,7 @@
     ?>
 </div>
 	
-<?php echo form_open('/installer-admin/account/promotion/' . $_SESSION['dealer_id']); ?>
+<?php echo form_open('/installer-admin/promotion/' . $_SESSION['dealer_id']); ?>
 	<input type="hidden" name="dealer_id" value="<?php echo $_SESSION['dealer_id']; ?>" />
 
     <div id="action_form_wrapper">
@@ -28,8 +28,10 @@
             <label for="name">Promotion Headline<?php echo required_text('promotion_headline'); ?></label>
             <input type="text" class="input_text" name="dealer_homepage_headline" id="dealer_homepage_headline" value="<?php echo set_value('promotion_headline', $dealer_array[0]->promotion_headline); ?>" />
             
-            
-            <label for="promotion_page_copy">Promotio Page Copy<?php echo required_text('promotion_page_copy'); ?></label>
+            <label for="promotion_callout_copy">Promotion Callout Copy<?php echo required_text('promotion_callout_copy'); ?></label>
+            <input type="text" class="input_text" name="promotion_callout_copy" id="promotion_callout_copy" value="<?php echo set_value('promotion_callout_copy', $dealer_array[0]->promotion_callout_copy); ?>" />
+
+            <label for="promotion_page_copy">Promotion Page Copy<?php echo required_text('promotion_page_copy'); ?></label>
             <textarea name="promotion_page_copy" id="promotion_page_copy" class="textarea_text"><?php echo set_value('promotion_page_copy', $dealer_array[0]->promotion_page_copy); ?></textarea>
 
             <label for="promotion_status">Status</label>
@@ -40,7 +42,7 @@
             </select>
             
             <div class="action_form_submit_cancel clearfix">
-                <input type="submit" name="action" id="update_promotion" rel="update_promotion" value="Update Promotion" class="submit" /><a href="/installer-admin/account" class="cancel_button">Cancel</a>
+                <input type="submit" name="action" id="update_promotion" rel="update_promotion" value="Update Promotion" class="submit" /><a href="/installer-admin/home" class="cancel_button">Cancel</a>
             </div>
 
         </div>

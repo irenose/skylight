@@ -15,7 +15,7 @@
 		echo $this->session->flashdata('status_message');
 	?>
 </div>
-<?php echo form_open_multipart('/installer-admin/account/about/' . $_SESSION['dealer_id']); ?>
+<?php echo form_open_multipart('/installer-admin/about/' . $_SESSION['dealer_id']); ?>
 	<input type="hidden" name="dealer_id" value="<?php echo $_SESSION['dealer_id']; ?>" />
 
 	<div id="action_form_wrapper">
@@ -71,7 +71,7 @@
 			?>
 
 		    <div class="action_form_submit_cancel clearfix">
-                <input type="submit" name="action" id="update_about" rel="update_about" value="Update About Us" class="submit" /><a href="/installer-admin/account" class="cancel_button">Cancel</a>
+                <input type="submit" name="action" id="update_about" rel="update_about" value="Update About Us" class="submit" /><a href="/installer-admin/home" class="cancel_button">Cancel</a>
             </div>
 		</div>
 	</div>

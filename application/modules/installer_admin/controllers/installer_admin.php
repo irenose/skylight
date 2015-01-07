@@ -163,11 +163,12 @@ class Installer_admin extends CI_Controller {
 /*	
 /****************************************************************************************************************************************/	
 	function account($action = NULL, $id = NULL) {
-		$this->auth->restrict();
+		$this->auth->restrict(FALSE, '3');
 		$data['current_section'] = 'account';
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
 		
 		if($action == NULL) {
+			$data['page_title'] = 'Installer Administration - Account Information';
 			$data['page_content'] = 'admin_account';
 		} else {
 			switch($action) {
@@ -436,6 +437,153 @@ class Installer_admin extends CI_Controller {
 			}
 		}
 		
+		$this->load->view('admin_template', $data);
+	}
+
+	function homepage() {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'homepage';
+		$data['page_title'] = 'Installer Administration - Update Homepage';
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
+		$data['default_info_array'] = $this->installer_admin_model->get_site_defaults();
+		$this->form_validation->set_rules('dealer_homepage_headline', 'Homepage Headline', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('dealer_homepage_copy', 'Homepage Copy', 'trim|required|xss_clean');
+		
+		//Only visible to super admins, not dealers
+		if($_SESSION['super_admin'] == 'yes') {
+			$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
+		}
+		if($this->form_validation->run() == FALSE) {
+			$data['page_content'] = 'admin_homepage';
+		} else {
+			$update = $this->installer_admin_model->update_homepage_copy($_POST);
+			if($update) {
+				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
+				redirect('/installer-admin/homepage');
+			} else {
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+				redirect('/installer-admin/homepage');
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+	function about() {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'about';
+		$data['page_title'] = 'Installer Administration - Update About';
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
+		$this->form_validation->set_rules('about_dealer_text', 'About Dealer Copy', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('about_dealer_headline', 'About Dealer Headline', 'trim|required|xss_clean');
+		//Only visible to super admins, not dealers
+		if($_SESSION['super_admin'] == 'yes') {
+			$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
+		}
+		if($this->form_validation->run() == FALSE) {
+			$data['page_content'] = 'admin_about';
+		} else {
+			$config['upload_path'] = './dealer_assets/about_images/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '2000';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+			
+			//Load Upload and Image libraries
+			$this->load->library('upload');
+			$this->load->library('image_lib');
+			
+			if( ! empty($_FILES['userfile']['name'])) {
+				//Has previously uploaded image, so include overwrite settings
+				if($this->input->post('current_filename_base') != '') {
+					$config['file_name'] = $this->input->post('current_filename');
+					$config['overwrite'] = TRUE;
+				}
+				$error = '';
+				//Initialize
+				$this->upload->initialize($config);
+				
+				if ( ! $this->upload->do_upload()) {
+					$error = $this->upload->display_errors('','');
+					$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+					$data['page_content'] = 'admin_about';
+					break;
+				} else {
+					$file_path = '';
+					$image_name = '';
+					
+					$data = array('upload_data' => $this->upload->data());
+					$file_path = $data['upload_data']['file_path'];
+					$image_name = $data['upload_data']['file_name'];
+					$image_width = $data['upload_data']['image_width'];
+					
+					if($image_width > 200) {
+						$image_config['width'] = '200';
+						//If no height specified, ratio doesn't work. set ridiculously high
+						$image_config['height'] = '1500';
+						$image_config['source_image'] = $file_path . $image_name;
+						$image_config['maintain_ratio'] = TRUE;
+						$this->image_lib->initialize($image_config);
+						$this->image_lib->resize();
+					}
+					
+					//Use raw name to insert into DB
+					$raw_name = $data['upload_data']['raw_name'];
+					$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+					
+					//rename post array so we can add values to it for image
+					$data_array = $_POST;
+					
+					$data_array['about_image'] = $raw_name;
+					$data_array['about_extension'] = $ext;
+					
+					$update = $this->dealer_admin_model->update_about_copy($data_array, TRUE);
+					if($update) {
+					$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
+						redirect('/installer-admin/about');
+					} else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+						redirect('/installer-admin/about');
+					}
+				}
+			} else {
+				
+				$update = $this->dealer_admin_model->update_about_copy($_POST);
+				if($update) {
+					$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
+					redirect('installer-admin/about');
+				} else {
+					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+					redirect('installer-admin/about');
+				}
+				
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+	function promotion() {
+		$data['current_section'] = 'promotion';
+		$data['page_title'] = 'Installer Administration - Update Promotion';
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
+		$this->form_validation->set_rules('dealer_homepage_headline', 'Homepage Headline', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('dealer_homepage_copy', 'Homepage Copy', 'trim|required|xss_clean');
+		
+		if($this->form_validation->run() == FALSE) {
+			$data['page_content'] = 'admin_promotion';
+		} else {
+			$update = $this->installer_admin_model->update_promotion($_POST);
+			if($update) {
+				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
+				redirect('installer-admin/promotion');
+			} else {
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+				redirect('installer-admin/promotion');
+			}
+		}
 		$this->load->view('admin_template', $data);
 	}
 
