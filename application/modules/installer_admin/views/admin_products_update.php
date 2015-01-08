@@ -37,7 +37,7 @@
             <?php
                 if(count($products_array) > 0) {
                     $cur_category = $products_array[0]->product_category_name;
-                    $bg_color = 'gray';
+                    $bg_color = 'white';
                     echo '<h2>' . $cur_category . '</h2>' . "\n";
                     echo '<table class="list_table" cellpadding="0" cellspacing="0" border="0">' . "\n";
                     echo '<tr>' . "\n";
@@ -51,7 +51,7 @@
                             echo '</table>';
                             echo '<h2>' . $product->product_category_name . '</h2>' . "\n";
                             $cur_category = $product->product_category_name;
-                            $bg_color = 'gray';
+                            $bg_color = 'white';
                             echo '<table class="list_table" cellpadding="0" cellspacing="0" border="0">' . "\n";
                             echo '<tr>' . "\n";
                             echo '<td width="10%" class="table_header"><span class="table_header_text">SHOW</span></td>' . "\n";

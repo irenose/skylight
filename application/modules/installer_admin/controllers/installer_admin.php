@@ -305,7 +305,7 @@ class Installer_admin extends CI_Controller {
 					$this->form_validation->set_rules('about_dealer_text', 'About Dealer Copy', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('about_dealer_headline', 'About Dealer Headline', 'trim|required|xss_clean');
 					//Only visible to super admins, not dealers
-					if($this->session->userdata('super_admin') == 'yes') {
+					if($_SESSION['super_admin'] == 'yes') {
 						$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
 						$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
 						$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
@@ -615,6 +615,7 @@ class Installer_admin extends CI_Controller {
 	function testimonials($action = NULL, $testimonial_id = NULL) {
 		$this->auth->restrict(FALSE, '3');
 		$data['current_section'] = 'testimonials';
+		$data['page_title'] = 'Installer Administration - Testimonials';
 		$data['dealer_id'] = $_SESSION['dealer_id'];
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
 		
@@ -699,6 +700,7 @@ class Installer_admin extends CI_Controller {
 	function products($action = NULL, $id = NULL) {
 		$this->auth->restrict(FALSE, '3');
 		$data['current_section'] = 'products';
+		$data['page_title'] = 'Installer Administration - Products';
 		$data['dealer_id'] = $_SESSION['dealer_id'];
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
 		
@@ -762,6 +764,7 @@ class Installer_admin extends CI_Controller {
 	function literature($action = NULL, $id = NULL) {
 		$this->auth->restrict(FALSE, '3');
 		$data['current_section'] = 'literature';
+		$data['page_title'] = 'Installer Administration - Literature';
 		$data['dealer_id'] = $_SESSION['dealer_id'];
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
 		
@@ -783,6 +786,34 @@ class Installer_admin extends CI_Controller {
 			}
 		} else {
 			
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+/*****************************************************************************************************************************************
+/*	CONTACT Page
+/*	
+/****************************************************************************************************************************************/	
+	function contact($action = NULL, $id = NULL) {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'contact';
+		$data['page_title'] = 'Installer Administration - Contact';
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
+		
+		if($action == NULL) {
+			$data['page_content'] = 'admin_contact';
+		} else {
+			$report_file = $this->installer_admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'), $this->input->post('dealer_id'));
+			if($report_file !== FALSE) {
+				$this->load->helper('download');
+				$data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/reports/' . $report_file);
+				$name = $report_file;
+				force_download($name, $data);
+			} else {
+				echo 'error';
+				$data['page_content'] = 'admin_contact';
+			}
 		}
 		$this->load->view('admin_template', $data);
 	}

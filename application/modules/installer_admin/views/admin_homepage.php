@@ -30,12 +30,12 @@
     
             <label for="name">Homepage Headline<?php echo required_text('dealer_homepage_headline'); ?></label>
             <input type="text" class="input_text" name="dealer_homepage_headline" id="dealer_homepage_headline" value="<?php echo set_value('dealer_homepage_headline', $homepage_headline); ?>" /><br>
-            <a href="#" class="text_replace" rel="default_headline" name="dealer_homepage_headline" style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Headline</a>
+            <a href="#" class="text_replace" data-target="dealer_homepage_headline" data-source="default_headline"  style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Headline</a>
             
             
             <label for="dealer_homepage_copy">Homepage Copy<?php echo required_text('dealer_homepage_copy'); ?></label>
             <textarea name="dealer_homepage_copy" id="dealer_homepage_copy" class="textarea_text"><?php echo set_value('dealer_homepage_copy', $homepage_copy); ?></textarea><br>
-            <a href="#" class="text_replace" rel="default_copy" name="dealer_homepage_copy" style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Homepage Copy</a>
+            <a href="#" class="text_replace" data-target="dealer_homepage_copy" data-source="default_copy" style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Homepage Copy</a>
 
             <div class="form_spacer"></div>
             

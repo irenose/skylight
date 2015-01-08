@@ -34,18 +34,21 @@
 		    <label for="about_dealer_text">About Dealer Copy<?php echo required_text('about_dealer_text'); ?></label>
 		    <textarea name="about_dealer_text" class="textarea_text" id="custom_textarea"><?php echo set_value('about_dealer_text', $dealer_array[0]->about_dealer_text); ?></textarea>
 
-		    
-		    <label for="logo">About Us Image</label>
-		    <input type="file" name="userfile" />
-		    <?php
-				$random = rand(100,999);
-				if(trim($dealer_array[0]->about_image) != '') {
-					echo '&nbsp;&nbsp;Current Image: <a class="lightbox" href="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '">' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '</a>';
-					echo '<br /><a href="/installer-admin/account/delete-image/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Image</a>';
-				}
-			?>
+		    <div class="form_spacer"></div>
 
-		    <p class="instruction"><i>Photo must be one of the following file formats: jpg, png or gif. If your image exceeds 200px wide, it will be re-sized. <b>Images for upload must be less than 1.5MB in file size</b>.</i></p>
+		    <div class="padded_block padded_block_gray">
+			    <label for="logo">About Us Image</label>
+			    <input type="file" name="userfile" />
+			    <?php
+					$random = rand(100,999);
+					if(trim($dealer_array[0]->about_image) != '') {
+						echo '&nbsp;&nbsp;Current Image: <a class="lightbox" href="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '">' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '</a>';
+						echo '<br /><a href="/installer-admin/account/delete-image/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Image</a>';
+					}
+				?>
+
+			    <p class="instruction"><i>Photo must be one of the following file formats: jpg, png or gif. If your image exceeds 200px wide, it will be re-sized. <b>Images for upload must be less than 1.5MB in file size</b>.</i></p>
+			</div>
 		    
 		    <div class="form_spacer"></div>
 		    

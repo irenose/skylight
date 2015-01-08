@@ -140,8 +140,8 @@
 </footer>
 
 
-<script type="text/javascript" src="/src/installer-admin/assets/js/installer-admin_functions.js"></script>
-<script type="text/javascript" src="/src/installer-admin/assets/js/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/src/admin/assets/js/admin_functions.js"></script>
+<script type="text/javascript" src="/src/admin/assets/js/jquery.colorbox.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 

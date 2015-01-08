@@ -968,10 +968,18 @@ a.manual_upload_file_selected
 
 
 .padded_block {
-	padding:20px;
+	padding:3%;
+	width:88%;
 }
 .padded_block_gray {
 	background-color:#eeeeee;
+}
+.update {
+	font:12px/18px Arial, Helvetica, sans-serif;
+	margin-bottom:20px;
+}
+.update_date {
+	font-weight:bold;
 }
 
 /****************************************   MOBILE  *****************************************************/

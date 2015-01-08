@@ -7,11 +7,11 @@
 	if( isset($site_updates_array) && count($site_updates_array) > 0) {
 		$current_date = format_date($site_updates_array[0]->insert_date, 'DisplayNoTime');
 		$count = 0;
-		echo '<div class="update"><div class="date">' . $current_date . '</div>';
+		echo '<div class="update"><div class="update_date">' . $current_date . '</div>';
 		foreach($site_updates_array as $update) {
 			$count++;
 			if($current_date != format_date($update->insert_date, 'DisplayNoTime')) {
-				echo '</div><div class="update"><div class="date">' . format_date($update->insert_date, 'DisplayNoTime') . '</div>';
+				echo '</div><div class="update"><div class="update_date">' . format_date($update->insert_date, 'DisplayNoTime') . '</div>';
 				$current_date = format_date($update->insert_date, 'DisplayNoTime');
 				$count = 1;
 			} else {

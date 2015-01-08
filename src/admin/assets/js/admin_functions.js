@@ -162,6 +162,14 @@ $(document).ready(function() {
 		});							  
 		return false;								  
 	});
+
+	$('.text_replace').click(function() {
+		var $this = $(this),
+			target = '#' + $this.attr('data-target'),
+			source = '#' + $this.attr('data-source');
+		$(target).val($(source).text());
+		return false;
+	});
 	
 });
 

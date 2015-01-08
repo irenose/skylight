@@ -18,7 +18,7 @@
 
 <?php
 	echo '<div class="current_logo">' . "\n";
-		echo '<b>Logo</b><br />' . "\n";
+		echo '<h2 style="margin-top:0px; margin-bottom:15px;">Logo</h2>' . "\n";
 		if(trim($dealer_array[0]->dealer_logo) != '') {
 			echo '<img src="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '" border="0"><br /><br />';
 		} else {
