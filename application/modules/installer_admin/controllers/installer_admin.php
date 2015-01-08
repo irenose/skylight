@@ -19,7 +19,7 @@ class Installer_admin extends CI_Controller {
 *****************************************************************************************************************************************/
 	function index() {
 		if(isset($_SESSION['uid']) && $_SESSION['uid'] != '') { 
-			redirect('dealer-admin/home');
+			redirect('/installer-admin/home');
 		}
 
 		$data['page_title'] = 'Administration Login';
@@ -251,7 +251,7 @@ class Installer_admin extends CI_Controller {
 								$data_array['dealer_logo'] = $raw_name;
 								$data_array['extension'] = $ext;
 								
-								$update = $this->dealer_admin_model->update_profile($data_array, TRUE);
+								$update = $this->installer_admin_model->update_profile($data_array, TRUE);
 								if($update) {
 									$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
 									redirect('/installer-admin/account/update/');
@@ -262,7 +262,7 @@ class Installer_admin extends CI_Controller {
 							}
 						} else {
 							// Dealer is not trying to update or add a logo
-							$update = $this->dealer_admin_model->update_profile($_POST);
+							$update = $this->installer_admin_model->update_profile($_POST);
 							if($update) {
 								$this->session->set_flashdata('status_message','<div class="success">Profile has been updated successfully</div>');
 								redirect('/installer-admin/account/update/');
@@ -367,7 +367,7 @@ class Installer_admin extends CI_Controller {
 								$data_array['about_image'] = $raw_name;
 								$data_array['about_extension'] = $ext;
 								
-								$update = $this->dealer_admin_model->update_about_copy($data_array, TRUE);
+								$update = $this->installer_admin_model->update_about_copy($data_array, TRUE);
 								if($update) {
 								$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
 									redirect('/installer-admin/account/about/');
@@ -378,13 +378,13 @@ class Installer_admin extends CI_Controller {
 							}
 						} else {
 							
-							$update = $this->dealer_admin_model->update_about_copy($_POST);
+							$update = $this->installer_admin_model->update_about_copy($_POST);
 							if($update) {
 								$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
-								redirect('installer-admin/account/about/');
+								redirect('/installer-admin/account/about/');
 							} else {
 								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
-								redirect('installer-admin/account/about/');
+								redirect('/installer-admin/account/about/');
 							}
 							
 						}
@@ -403,17 +403,17 @@ class Installer_admin extends CI_Controller {
 						$update = $this->installer_admin_model->update_promotion($_POST);
 						if($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
-							redirect('installer-admin/account/homepage/');
+							redirect('/installer-admin/account/homepage/');
 						} else {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
-							redirect('installer-admin/account/homepage/');
+							redirect('/installer-admin/account/homepage/');
 						}
 					}
 					break;
 					
 				case 'delete-logo':
 					$data_array = array('dealer_id' => $id);
-					$update = $this->dealer_admin_model->delete_logo($data_array);
+					$update = $this->installer_admin_model->delete_logo($data_array);
 					if($update) {
 						$this->session->set_flashdata('status_message','<div class="success">Logo has been deleted successfully</div>');
 						redirect('/installer-admin/account/update/');
@@ -425,7 +425,7 @@ class Installer_admin extends CI_Controller {
 					
 				case 'delete-image':
 					$data_array = array('dealer_id' => $id);
-					$update = $this->dealer_admin_model->delete_about_image($data_array);
+					$update = $this->installer_admin_model->delete_about_image($data_array);
 					if($update) {
 						$this->session->set_flashdata('status_message','<div class="success">Image has been deleted successfully</div>');
 						redirect('/installer-admin/account/about/');
@@ -540,7 +540,7 @@ class Installer_admin extends CI_Controller {
 					$data_array['about_image'] = $raw_name;
 					$data_array['about_extension'] = $ext;
 					
-					$update = $this->dealer_admin_model->update_about_copy($data_array, TRUE);
+					$update = $this->installer_admin_model->update_about_copy($data_array, TRUE);
 					if($update) {
 					$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
 						redirect('/installer-admin/about');
@@ -551,13 +551,13 @@ class Installer_admin extends CI_Controller {
 				}
 			} else {
 				
-				$update = $this->dealer_admin_model->update_about_copy($_POST);
+				$update = $this->installer_admin_model->update_about_copy($_POST);
 				if($update) {
 					$this->session->set_flashdata('status_message','<div class="success">About copy has been updated successfully</div>');
-					redirect('installer-admin/about');
+					redirect('/installer-admin/about');
 				} else {
 					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
-					redirect('installer-admin/about');
+					redirect('/installer-admin/about');
 				}
 				
 			}
@@ -578,10 +578,10 @@ class Installer_admin extends CI_Controller {
 			$update = $this->installer_admin_model->update_promotion($_POST);
 			if($update) {
 				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
-				redirect('installer-admin/promotion');
+				redirect('/installer-admin/promotion');
 			} else {
 				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
-				redirect('installer-admin/promotion');
+				redirect('/installer-admin/promotion');
 			}
 		}
 		$this->load->view('admin_template', $data);
@@ -596,14 +596,193 @@ class Installer_admin extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_warranty';
 		} else {
-			$update = $this->installer_admin_model->update_promotion($_POST);
+			$update = $this->installer_admin_model->update_warranty($_POST);
 			if($update) {
-				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
-				redirect('installer-admin/warranty');
+				$this->session->set_flashdata('status_message','<div class="success">Warranty copy has been updated successfully</div>');
+				redirect('/installer-admin/warranty');
 			} else {
-				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
-				redirect('installer-admin/warranty');
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating warranty copy. Please try again.</p></div>');
+				redirect('/installer-admin/warranty');
 			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+/*****************************************************************************************************************************************
+/*	TESTIMONIALS Page
+/*	
+/****************************************************************************************************************************************/	
+	function testimonials($action = NULL, $testimonial_id = NULL) {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'testimonials';
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
+		
+		$data['velux_testimonials_array'] = $this->installer_admin_model->get_testimonials(0, 'active');
+		$data['dealer_testimonials_array'] = $this->installer_admin_model->get_testimonials($data['dealer_id'], 'active');
+		
+		if($action == NULL) {
+			$this->form_validation->set_rules('all_testimonials_list', '', 'trim');
+			if ($this->form_validation->run() == FALSE) {
+				$data['page_content'] = 'admin_testimonials';
+			} else {
+				$update = $this->installer_admin_model->update_testimonials($_POST);
+				if($update) {
+					$this->session->set_flashdata('status_message','<div class="success">Testimonials have been updated successfully</div>');
+					redirect('/installer-admin/testimonials/');
+				} else {
+					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating testimonials. Please try again.</p></div>');
+					redirect('/installer-admin/testimonials');
+				}
+			}
+		} else {
+			switch($action) {
+				case 'add':
+					$this->form_validation->set_rules('testimonial_copy', 'Testimonial Copy', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('testimonial_name', 'Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('testimonial_source', '', 'trim|xss_clean');
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_testimonials_add';
+					} else {
+						$insert_id = $this->installer_admin_model->add_testimonial($_POST);
+						if($insert_id != FALSE) {
+							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been added successfully</div>');
+							redirect('/installer-admin/testimonials');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this testimonial. Please try again.</p></div>');
+							redirect('/installer-admin/testimonials');
+						}
+					}
+					break;
+					
+				case 'update':
+					$this->form_validation->set_rules('testimonial_copy', 'Testimonial Copy', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('testimonial_name', 'Name', 'trim|required|xss_clean');
+					$this->form_validation->set_rules('testimonial_source', '', 'trim|xss_clean');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['testimonial_id'] = $testimonial_id;
+						$data['testimonial_array'] = $this->installer_admin_model->get_testimonial_by_id($testimonial_id);
+						$data['page_content'] = 'admin_testimonials_update';
+					} else {
+						$update = $this->installer_admin_model->update_testimonial($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been updated successfully</div>');
+							redirect('/installer-admin/testimonials/update/' . $testimonial_id);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this testimonial. Please try again.</p></div>');
+							redirect('/installer-admin/testimonials/update/' . $testimonial_id);
+						}
+					}
+					break;
+				case 'delete':
+					$data_array = array('testimonial_id' => $testimonial_id);
+					$delete = $this->installer_admin_model->delete_testimonial($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your testimonial has been deleted successfully.</div>');
+						redirect('/installer-admin/testimonials/');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this testimonial. Please try again.</p></div>');
+						redirect('/installer-admin/testimonials/');
+					}
+					break;
+			}
+		}
+		
+		$this->load->view('admin_template', $data);
+	}
+
+/*****************************************************************************************************************************************
+/*	PRODUCTS Page
+/*	
+/****************************************************************************************************************************************/	
+	function products($action = NULL, $id = NULL) {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'products';
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
+		
+		if($action == NULL) {
+			$data['product_categories_array'] = $this->installer_admin_model->get_product_categories();
+			$data['page_content'] = 'admin_product_categories';
+		} else {
+			switch($action) {
+				
+				case 'activate':
+					$product_category_id = $id;
+					$update = $this->installer_admin_model->activate_product_category($product_category_id, $data['dealer_id']);
+					if($update) {
+						$this->session->set_flashdata('status_message','<div class="success">Product category has been updated successfully</div>');
+						redirect('/installer-admin/products/');
+					} else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating the product category. Please try again.</p></div>');
+						redirect('/installer-admin/products/');
+					}
+					break;
+				case 'deactivate':
+					$product_category_id = $id;
+					$update = $this->installer_admin_model->deactivate_product_category($product_category_id, $data['dealer_id']);
+					if($update) {
+						$this->session->set_flashdata('status_message','<div class="success">Product category has been updated successfully</div>');
+						redirect('/installer-admin/products/');
+					} else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating the product category. Please try again.</p></div>');
+						redirect('/installer-admin/products/');
+					}
+					break;
+					
+				case 'update':
+					$data['product_category_id'] = $id;
+					$this->form_validation->set_rules('featured', '', '');
+					
+					if ($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_products_update';
+					} else {
+						$update = $this->installer_admin_model->update_available_products($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Products have been updated successfully</div>');
+							redirect('/installer-admin/products/update/' . $data['product_category_id']);
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating the products. Please try again.</p></div>');
+							redirect('/installer-admin/products/update/' . $data['product_category_id']);
+						}
+					}
+					
+					break;
+			}
+			
+		}
+		$this->load->view('admin_template', $data);
+	}
+	
+/*****************************************************************************************************************************************
+/*	LITERATURE Page
+/*	
+/****************************************************************************************************************************************/	
+	function literature($action = NULL, $id = NULL) {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'literature';
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
+		
+		if($action == NULL) {
+			
+			$this->form_validation->set_rules('all_brochures_list', '', 'trim');
+			if ($this->form_validation->run() == FALSE) {
+				$data['literature_array'] = $this->installer_admin_model->get_literature('active');
+				$data['page_content'] = 'admin_literature';
+			} else {
+				$update = $this->installer_admin_model->update_literature($_POST);
+				if($update) {
+					$this->session->set_flashdata('status_message','<div class="success">Literature been updated successfully</div>');
+					redirect('/installer-admin/literature');
+				} else {
+					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating literature. Please try again.</p></div>');
+					redirect('/installer-admin/literature');
+				}
+			}
+		} else {
+			
 		}
 		$this->load->view('admin_template', $data);
 	}
@@ -616,7 +795,7 @@ class Installer_admin extends CI_Controller {
 	function logout() {
 		$this->session->sess_destroy();
 		session_destroy();
-		redirect('installer-admin');
+		redirect('/installer-admin');
 	}
 	
 	

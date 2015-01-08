@@ -72,7 +72,7 @@
 	echo $dealer_array[0]->website . '<br /><br />';
 	
 	echo '<b>Hours:</b><br >' . "\n";
-	echo $dealer_array[0]->dealer_hours . '<br /><br />';
+	echo nl2br($dealer_array[0]->dealer_hours) . '<br /><br />';
 	
 	
 	echo '<b>Dealer Credentials</b><br />' . "\n";

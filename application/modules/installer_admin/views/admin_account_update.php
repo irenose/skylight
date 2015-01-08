@@ -145,18 +145,21 @@
             
             <div class="form_spacer"> </div>
 
-            <h2>Company Logo</h2>
-            <p class="instruction">Logos should be one of the following formats: .jpg, .png or .gif. If your logo exceeds 115px in height, it will be resized automatically. <b>Images for upload must be less than 1.5MB in file size</b>.</p>
-            
-            <label for="logo">Logo</label>
-            <input type="file" name="userfile" />
-            <?php
-        		if(trim($dealer_array[0]->dealer_logo) != '') {
-        			echo '&nbsp;&nbsp;Current Logo: <a class="lightbox" href="/dealer_assets/dealer_logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '">' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '</a>';
-        			echo '<br /><a href="/dealer-admin/account/delete-logo/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Logo</a>';
-        		}
-        	?>
-            <br /><br />
+            <div class="padded_block padded_block_gray">
+
+                <h2>Company Logo</h2>
+                <p class="instruction">Logos should be one of the following formats: .jpg, .png or .gif. If your logo exceeds 115px in height, it will be resized automatically. <b>Images for upload must be less than 1.5MB in file size</b>.</p>
+                
+                <label for="logo">Logo</label>
+                <input type="file" name="userfile" />
+                <?php
+            		if(trim($dealer_array[0]->dealer_logo) != '') {
+            			echo '&nbsp;&nbsp;Current Logo: <a class="lightbox" href="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '">' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '</a>';
+            			echo '<br><br><a href="/installer-admin/account/delete-logo/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Logo</a>';
+            		}
+            	?>
+                <br /><br />
+            </div>
             
             <div class="form_spacer"> </div>
 
