@@ -460,35 +460,20 @@ ww.maps = (function() {
                     panControl: false,
                     scrollwheel: false,
                     streetViewControl: false, // pegman
-                },
-                request: {
-                    placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-                },
+                }
             };
 
-            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options),
-                ww_service = new google.maps.places.PlacesService(ww_map),
-                ww_infowindow = new google.maps.InfoWindow();
 
-            ww_service.getDetails(settings.request, function(place, status) {
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    
-                    // set marker
-                    var ww_marker = new google.maps.Marker({
-                        map: ww_map,
-                        position: settings.map_options.center
-                    });
 
-                    google.maps.event.addListener(ww_marker, 'click', function() {
-                        ww_infowindow.setContent(place.name);
-                        ww_infowindow.open(ww_map, this);
-                    });
+            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
 
-                    google.maps.event.addDomListener(window, 'resize', function() {
-                        ww_map.setCenter(settings.map_options.center);
-                    });
-                }
+            // set marker
+            var ww_marker = new google.maps.Marker({
+                map: ww_map,
+                position: settings.map_options.center
             });
+
+            
         },
     };
 })();
