@@ -23,11 +23,17 @@ $config['default_meta_array'] = array(
 	'keywords' => ''
 );
 
-$config['contact_form_recipient'] = '';
-$config['contact_form_from'] = '';
+$config['global_email_from'] = 'microsites@skylightspecialist.com';
+$config['global_email_name'] = 'VELUX';
 
-$config['global_email_from'] = '';
-$config['global_email_name'] = '';
+if(defined('ENVIRONMENT') && (ENVIRONMENT == 'staging' || ENVIRONMENT == 'development')) {
+	//STAGING/DEVELOPMENT
+	$config['site_status_recipient'] = 'dev@wrayward.com';
+} else {
+	//PRODUCTION
+	$config['site_status_recipient'] = 'stephanie@ravenelconsulting.com,jvoorhees@wrayward.com,dev@wrayward.com';
+
+}
 
 $config['admin_client_logo'] = '/src/admin/assets/images/velux_logo.png';
 $config['admin_client_name'] = 'VELUX';

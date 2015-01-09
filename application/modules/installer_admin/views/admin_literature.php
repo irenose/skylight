@@ -16,7 +16,7 @@
     ?>
 </div>
 <?php
-    echo form_open('dealer-admin/literature');
+    echo form_open('/installer-admin/literature');
     echo '<input type="hidden" name="dealer_id" value="' . $dealer_id . '">';
     $options_array = $this->installer_admin_model->get_dealer_options($dealer_id);
     $all_brochures_array = array();

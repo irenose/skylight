@@ -159,8 +159,35 @@ class Installer_admin extends CI_Controller {
 	}
 
 /*****************************************************************************************************************************************
-/*	ACCOUNT INFO Page
-/*	
+/*	SITE STATUS
+/****************************************************************************************************************************************/	
+	function status($action) {
+		$this->auth->restrict();
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$valid_array = array('activate','deactivate');
+		if($action == NULL || ! in_array($action, $valid_array)) {
+			redirect('/installer-admin/home');	
+		}
+		$update = $this->installer_admin_model->update_site_status($data['dealer_id'], $action);
+		if($action == 'activate') {
+			$status = 'Your site has been activated successfully';
+		} else {
+			$status = 'Your site has been de-activated successfully';
+		}
+		if($update) {
+			/************************ UPDATE SITEMAP ******************************/
+			//$this->installer_admin_model->generate_sitemap();
+			
+			$this->session->set_flashdata('status_message','<div class="success">' . $status . '</div>');
+			redirect('/installer-admin/home/');
+		} else {
+			$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating your site. Please try again.</p></div>');
+			redirect('/installer-admin/home');
+		}
+	}
+
+/*****************************************************************************************************************************************
+/*	ACCOUNT INFO
 /****************************************************************************************************************************************/	
 	function account($action = NULL, $id = NULL) {
 		$this->auth->restrict(FALSE, '3');

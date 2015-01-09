@@ -976,10 +976,20 @@ a.manual_upload_file_selected
 }
 .update {
 	font:12px/18px Arial, Helvetica, sans-serif;
-	margin-bottom:20px;
+	margin:20px 0;
 }
 .update_date {
 	font-weight:bold;
+}
+.active {
+	color:#3ea752;
+}
+.inactive {
+	color:#ed1c24;
+}
+.header_action.site_status {
+	margin-top:10px;
+	display:inline-block;
 }
 
 /****************************************   MOBILE  *****************************************************/

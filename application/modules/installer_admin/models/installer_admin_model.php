@@ -115,6 +115,34 @@ class Installer_admin_model extends CI_Model {
 	}
 
 /***********************************************************************************************************************************
+/*		ADD FUNCTIONS
+************************************************************************************************************************************/
+	function add_testimonial($data_array) {
+		
+		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
+		
+		$data = array(
+			'dealer_id' => $data_array['dealer_id'],
+			'testimonial_copy' => htmlspecialchars(strip_tags($data_array['testimonial_copy']), ENT_QUOTES, 'UTF-8'),
+			'testimonial_name' => $data_array['testimonial_name'],
+			'testimonial_source' => $data_array['testimonial_source'],
+			'testimonial_status' => 'active',
+			'modified_by' => $this->session->userdata('admin_username'),
+			'insert_date' => current_timestamp(),
+			'modification_date' => current_timestamp()
+		);
+			
+		$added = $this->db->insert($db_table, $data);
+		if($added) {
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		} else {
+			return FALSE;
+		}
+		
+	}
+
+/***********************************************************************************************************************************
 /*		UPDATE FUNCTIONS
 ************************************************************************************************************************************/
 
@@ -279,7 +307,7 @@ class Installer_admin_model extends CI_Model {
 		}
 		
 		
-		$db_table = $this->config->item('db_table_prefix') . 'ss_dealer_options';
+		$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
 		
 		$data = array(
 			'literature' => $inactive,
@@ -315,18 +343,11 @@ class Installer_admin_model extends CI_Model {
 		$this->db->where('dealer_id',$dealer_id);
 		$result = $this->db->update($db_table, $data);
 		if($result) {
-			//EMAIL RAV AND JV
-			$this->load->library('email');
-			$this->email->from('microsites@skylightspecialist.com','VELUX');
-			$this->email->to('jvoorhees@wrayward.com');
-			$this->email->cc('stephanie@ravenelconsulting.com');
-			$this->email->bcc('gparish@wrayward.com');
-			$this->email->subject('A VELUX microsite site status has been updated');
-			$email_message = $dealer_array[0]->name . ' has updated their site status to: ' . $status . ".\n";
-			$this->email->message($email_message);
-			$this->email->send();
-			
-			
+			$recipient = $this->config->item('site_status_recipient');
+			$from = $this->config->item('global_email_from');
+			$subject = 'A VELUX microsite site status has been updated';
+			$message = $dealer_array[0]->name . ' has updated their site status to: ' . $status . ".\n";
+			Email_Send($recipient, $from, $subject, $message);
 			return TRUE;
 		} else {
 			return FALSE;
@@ -343,6 +364,80 @@ class Installer_admin_model extends CI_Model {
 		);
 			
 		$this->db->where('dealer_id', $data_array['dealer_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	function update_testimonials($data_array) {
+		
+		$all_testimonials_array = explode(',',$data_array['all_testimonials_list']);
+		
+		if( isset($data_array['custom_testimonials'])) {
+			foreach($data_array['custom_testimonials'] as $key => $value) {
+				$testimonial_key = array_search($value,$all_testimonials_array);
+				unset($all_testimonials_array[$testimonial_key]);
+			}
+		}
+		
+		if( isset($data_array['velux_testimonials'])) {
+			foreach($data_array['velux_testimonials'] as $key => $value) {
+				$testimonial_key = array_search($value,$all_testimonials_array);
+				unset($all_testimonials_array[$testimonial_key]);
+			}
+		}
+		
+		if(count($all_testimonials_array) > 0) {
+			$counter = 0;
+			$inactive = '';
+			foreach($all_testimonials_array as $key => $value) {
+				$counter++;
+				if($counter == 1) {
+					$inactive .= $value;
+				} else {
+					$inactive .= ',' . $value;
+				}
+			}
+		} else {
+			$inactive = '';
+		}
+		
+		
+		$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
+		
+		$data = array(
+			'testimonials' => $inactive,
+			'modification_date' => current_timestamp()
+		);
+		
+		$this->db->where('dealer_id', $data_array['dealer_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	function update_testimonial($data_array) {
+		
+		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
+		
+		$data = array(
+			'dealer_id' => $data_array['dealer_id'],
+			'testimonial_copy' => $data_array['testimonial_copy'],
+			'testimonial_name' => $data_array['testimonial_name'],
+			'testimonial_source' => $data_array['testimonial_source'],
+			'modified_by' => $this->session->userdata('admin_username'),
+			'modification_date' => current_timestamp()
+		);
+			
+		$this->db->where('testimonial_id', $data_array['testimonial_id']);
 		$result = $this->db->update($db_table, $data); 
 		
 		if($result) {
@@ -456,9 +551,6 @@ class Installer_admin_model extends CI_Model {
 				$output .= '</url>' . "\n";
 			}
 		}
-		
-		
-		
 		
 		$output .= '</urlset>';
 		
