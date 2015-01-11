@@ -408,11 +408,13 @@ ww.maps = (function() {
                 lat: $('#map').attr('data-lat'),
                 lng: $('#map').attr('data-long')
             };
+            var encoded_address = $('#map').attr('data-address');
+            var geocoder = new google.maps.Geocoder();
 
             var settings = {
                 $el: $('#map'),
                 map_options: {
-                    center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                    //center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
                     zoom: 14,
                     // UI options
                     mapTypeControl: false,
@@ -421,18 +423,25 @@ ww.maps = (function() {
                     streetViewControl: false, // pegman
                 }
             };
-
-
-
             var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
 
-            // set marker
-            var ww_marker = new google.maps.Marker({
-                map: ww_map,
-                position: settings.map_options.center
-            });
+            geocoder.geocode( { 'address': encoded_address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    ww_map.setCenter(results[0].geometry.location);
+                    ww_marker = new google.maps.Marker({
+                        map: ww_map,
+                        position: results[0].geometry.location
+                    });
 
-            
+                } else {
+                    ww_map.setCenter(new google.maps.LatLng(coordinates.lat, coordinates.lng));
+                    // set marker
+                    ww_marker = new google.maps.Marker({
+                        map: ww_map,
+                        position: settings.map_options.center
+                    });
+                }
+            });          
         },
     };
 })();
