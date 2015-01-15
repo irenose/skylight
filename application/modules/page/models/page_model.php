@@ -249,41 +249,13 @@ class Page_model extends CI_Model {
 		HOMEPAGE FUNCTIONS
 ***********************************************************************************************************************************/
 
-	function get_homepage_promotion($dealer_id) {
-		$db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
-		$this->db->select($this->config->item('db_table_prefix') . 'dealer_promotions.promotion_title AS promotion_title, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.dealer_promotion_id AS dealer_promotion_id, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_page_copy AS promotion_page_copy, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_status AS promotion_status, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_text AS promotion_text, ' . $this->config->item('db_table_prefix') . 'promotions.promotion_file AS promotion_file, ' . $this->config->item('db_table_prefix') . 'promotions.has_flash AS has_flash, ' . $this->config->item('db_table_prefix') . 'promotions.extension AS extension, ss_dealer_promotions.has_promotion_page AS has_promotion_page, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_id AS promotion_id, ' . $this->config->item('db_table_prefix') . 'promotions.top_coordinate AS top_coordinate, ' . $this->config->item('db_table_prefix') . 'promotions.left_coordinate AS left_coordinate', FALSE);
-		$this->db->join($this->config->item('db_table_prefix') . 'promotions', $this->config->item('db_table_prefix') . 'promotions.promotion_id = ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_id', 'inner');
-
-		$where = array($this->config->item('db_table_prefix') . 'dealer_promotions.dealer_id' => $dealer_id, $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_status' => 'active');
-		$this->db->where($where);
-		$query = $this->db->get($db_table,1);
-		
-		if(count($query->result()) > 0) {
-			return $query->result();
-		} else {
-			$db_table = $this->config->item('db_table_prefix') . 'promotions';
-			$where = array('promotion_status' => 'active', 'default_option' => 'yes');
-			$this->db->where($where);
-			$this->db->order_by('RAND()');
-			$query = $this->db->get($db_table,1);
-			return $query->result();
-		}
-	}
+	
 
 /**********************************************************************************************************************************
 		PROMOTIONS FUNCTIONS
 ***********************************************************************************************************************************/
 
-	function get_dealer_promotion_page($dealer_id) {
-		$db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
-		$this->db->select($this->config->item('db_table_prefix') . 'dealer_promotions.promotion_page_copy AS promotion_page_copy, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_status AS promotion_status, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_text AS promotion_text, ' . $this->config->item('db_table_prefix') . 'promotions.promotion_banner AS promotion_banner, ' . $this->config->item('db_table_prefix') . 'promotions.banner_extension AS banner_extension, ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_id AS promotion_id', FALSE);
-		$this->db->join($this->config->item('db_table_prefix') . 'promotions', $this->config->item('db_table_prefix') . 'promotions.promotion_id = ' . $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_id', 'inner');
-		
-		$where = array($this->config->item('db_table_prefix') . 'dealer_promotions.dealer_id' => $dealer_id, $this->config->item('db_table_prefix') . 'dealer_promotions.has_promotion_page' => 'yes', $this->config->item('db_table_prefix') . 'dealer_promotions.promotion_status' => 'active');
-		$this->db->where($where);
-		$query = $this->db->get($db_table,1);
-		return $query->result();
-	}
+	
 
 /**********************************************************************************************************************************
 		TESTIMONIALS FUNCTIONS

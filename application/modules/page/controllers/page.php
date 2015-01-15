@@ -68,7 +68,6 @@ class Page extends CI_Controller {
                 if($vars_size == 1) {
                     //INSTALLER HOMEPAGE
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
-                    $data['promotion_array'] = $this->page_model->get_homepage_promotion($data['installer_array'][0]->dealer_id);
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
                     $data['meta_array'] = array(
                         'title' => 'Home',

@@ -43,12 +43,6 @@
                             echo ' <a href="' . $installer_base_url . '/promotions">Learn More</a>' . "\n";
                         }
                    echo ' </div>' . "\n";
-                } else {
-                    echo '<div class="promotion-small reversed dealer-promo">' . "\n";
-                        echo '<h3 class="normal-weight">Default Promo</h3>' . "\n";
-                        echo '<p>If Dealer has no promo, this goes here</p>' . "\n";
-                        echo '<a href="">Learn More</a>' . "\n";
-                    echo '</div>' . "\n";
                 }
             ?>
             <div class="promotion-small cta schedule-consult">
