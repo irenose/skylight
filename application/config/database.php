@@ -96,9 +96,9 @@ $db['production']['autoinit'] = TRUE;
 $db['production']['stricton'] = FALSE;
 
 $db['staging'] = $db['production'];
-$db['staging']['username'] = '';
-$db['staging']['password'] = '';
-$db['staging']['database'] = '';
+$db['staging']['username'] = 'wrayward';
+$db['staging']['password'] = 'wNL9C5&h';
+$db['staging']['database'] = 'wwdev';
 
 $db['development'] = $db['production'];
 $db['development']['username'] = 'root';
