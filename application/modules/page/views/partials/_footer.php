@@ -4,7 +4,12 @@
             <a href="<?=$installer_base_url?>" title="Home">
                 <?= $dealer_logo_display; ?>
             </a>
-            <div class="copyright">&copy; <?php echo date("Y") . ' ' . $installer_array[0]->name; ?></div>
+            <div class="copyright">
+                <?php
+                    $copyright = (isset($installer_array) && count($installer_array) > 0) ? date('Y') . ' ' . $installer_array[0]->name : date('Y') . ' VELUX';
+                    echo '&copy; ' . $copyright;
+                ?>
+            </div>
             <div class="social">
                 <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
