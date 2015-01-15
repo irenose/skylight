@@ -1,18 +1,16 @@
 .contact-form {
     margin-top: 30px;
 
-    .full-width {
-        width: 100%;
-    }
     .updates {
         @include bp($foundation-med) {
-            margin-top: 50px;
+            margin-top: 3em;
         }
     }
 
     input, textarea, select {
         border: 1px solid $color-grey-light;
         display: block;
+        line-height: 1.25em;
         padding: .75em;
 
         &[type="submit"] {
@@ -25,11 +23,8 @@
         line-height: 1.75em;
         margin-top: 15px;
     }
-    select {
-        padding: .55em
-    }
     textarea {
-        min-height: 218px;
+        min-height: 224px;
 
         @include bp($my-very-large) {
             min-height: 245px;

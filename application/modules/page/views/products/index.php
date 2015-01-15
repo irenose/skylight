@@ -3,7 +3,7 @@
 ?>
 <section class="page-row products">
     <header class="intro-statement intro-statement--squeezed">
-        <h2 class="normal-weight">Our Products</h2>
+        <h1 class="normal-weight">Our Products</h1>
         <p>Want to let more light and fresh air into your home? You’re in the right place.</p>
     </header>
 
@@ -38,7 +38,7 @@
                                     echo '<img src="' . asset_url('images/' . $category->category_image . '-short.jpg') . '" alt="' . $category->product_category_name . '" class="desktop-down">' . "\n";
                                 echo '</div>' . "\n";
                             echo '</a>' . "\n";
-                            echo '<h5>' . $category->product_category_name . '</h5>' . "\n";
+                            echo '<h4>' . $category->product_category_name . '</h4>' . "\n";
                             echo '<p>' . filter_page_content($category->product_category_teaser) . '</p>' . "\n";
                             echo '<a class="btn" href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">Learn More</a>';
                         echo '</div>' . "\n";

@@ -17,16 +17,16 @@
 
 <section class="page-row page-row--snug bg-grey installer-welcome-wrapper">
     <header class="intro-statement intro-statement--squeezed">
-        <h2 class="normal-weight"><?= filter_custom_tags('city', $installer_array[0]->dealer_homepage_headline, $installer_array[0]->city); ?></h2>
+        <h1 class="normal-weight"><?= filter_custom_tags('city', $installer_array[0]->dealer_homepage_headline, $installer_array[0]->city); ?></h1>
     </header>
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">
-            <h1 class="reversed upper">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
+            <h1 class="reversed upper mega-heading">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
             <a href="" class="btn">Learn More</a>
         </div>
         <div class="small-12 large-6 columns featured-images">
             <div class="promotion-large fresh-air">
-                <h5 class="normal-weight">Solar Powered “Fresh Air” Skylight</h5>
+                <h4 class="normal-weight">Solar Powered “Fresh Air” Skylight</h4>
                 <a href="">Learn More</a>
                 <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
             </div>

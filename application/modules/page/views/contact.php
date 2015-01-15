@@ -9,7 +9,7 @@
     ----------------------------------------------*/
 ?>
         <div class="small-12 large-6 columns">
-            <h2 class="normal-weight">Contact <?= $installer_array[0]->name; ?></h2>
+            <h1 class="normal-weight">Contact <?= $installer_array[0]->name; ?></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
         <div class="small-12 large-4 large-offset-2 columns hours">

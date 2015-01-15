@@ -3,4 +3,12 @@
     max-height: 1000px;
     min-height: 400px;
     width: 100%;
+
+    img { 
+        max-width: none;
+    }
+    label {
+        display: inline;
+        width: auto;
+    }
 }

@@ -85,8 +85,8 @@
             echo $this->load->view($page_view);
         ?>
         </main>
-        <?=$this->load->view('partials/_footer');?>
     </div>
+    <?=$this->load->view('partials/_footer');?>
     <!-- FOOTER -->
     <?=$this->load->view('partials/_modal');?>
     <div class="is-hidden">

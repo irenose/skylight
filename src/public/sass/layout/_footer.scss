@@ -29,7 +29,8 @@
                 display: none;
             }
         }
-        @include bp($foundation-large, $my-large) {
+        @include bp($foundation-large) {
+            text-align: left;
             width: 15%;
         }
     }
@@ -41,6 +42,10 @@
         .address {
             float: left;
             width: 50%;
+
+            @include bp($foundation-med) {
+                padding-right: 5%;
+            }
         }
         .dealer-info__header {
             color: $color-text-light;
@@ -74,11 +79,12 @@
         @include bp($foundation-med, $foundation-large) {
             float: right;
         }
-        @include bp($foundation-large, $my-large) {
+        @include bp($foundation-large) {
             padding-left: 5%;
             width: 35%;
 
             .address, .hours {
+                padding-right: 3%;
                 width: 47%;
             }
         }

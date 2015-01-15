@@ -2,7 +2,7 @@
     /******************************* INTRO COPY *************************/ 
 ?>
 <section class="page-row bg-grey intro-statement intro-statement--squeezed">
-    <h3 class="normal-weight">Warranty</h3>
+    <h1 class="normal-weight">Warranty</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
 </section>
 
@@ -10,7 +10,7 @@
     /******************************* 10 YEAR WARRANTY *************************/ 
 ?>
 <section class="page-row bg-grey-dark reversed 10-year-warranty">
-    <h3 class="normal-weight upper">The 10 Year Warranty</h3>
+    <h2 class="normal-weight upper">The 10 Year Warranty</h2>
     <p class="text-columns-2 ten-year-warranty">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. <br><br>Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
     <a class="btn">Download PDF</a>
 </section>
@@ -25,7 +25,7 @@
     ----------------------------------------------*/
 ?> 
     <section class="page-row installer-warranty">
-        <h3 class="normal-weight upper"><?= $installer_array[0]->name; ?> Warranty</h3>
+        <h2 class="normal-weight upper"><?= $installer_array[0]->name; ?> Warranty</h2>
         <p class="text-columns-2 installer-warranty"><?= filter_page_content($warranty_array[0]->dealer_warranty); ?></p>
     </section> 
 <?php

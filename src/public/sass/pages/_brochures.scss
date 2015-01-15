@@ -10,7 +10,7 @@
         a {
             text-transform: uppercase;
         }
-        h5 {
+        h4 {
             margin-bottom: 0;
             text-transform: none;
         }
@@ -19,6 +19,17 @@
                 bottom: 1.25em;
                 top: .75em;
             }
+        }
+    }
+
+    [class*=column]+[class*=column]:last-child {
+        float: left;
+    }
+
+    .brochure:nth-child(2n + 1) {
+
+        @include bp($foundation-med, $foundation-large) {
+            clear: left;
         }
     }
 }

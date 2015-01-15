@@ -8,7 +8,7 @@
 ?>
 <section class="page-row bg-grey" id="overview">
     <header class="intro-statement intro-statement--squeezed">
-        <h2 class="normal-weight">Installing Skylights</h2>
+        <h1 class="normal-weight">Installing Skylights</h1>
         <p>Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.</p>
         <a class="upper" href="<?= $installer_base_url; ?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
@@ -24,7 +24,7 @@
             <?=$this->load->view('partials/_video')?>
         </div>
         <div class="small-12 medium-5 medium-offset-1 columns reversed what-to-expect">
-            <h3 class="upper">What Should You Expect During Installation?</h3>
+            <h2 class="upper">What Should You Expect During Installation?</h2>
             <p>A new skylight installation typically takes four to five hours per skylight and happens in two phases: rooftop and interior. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
 ?>
 <section class="page-row bg-grey border-top-grey skylight-orientation" id="skylight-orientation">
     <header class="header-statement header-statement--squeezed">
-        <h3 class="upper">Skylight Orientation and Utility Savings</h3>
+        <h2 class="upper">Skylight Orientation and Utility Savings</h2>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
     </header>
 </section>
@@ -48,7 +48,7 @@
                         <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass"></use>
                     </svg>
                 </i>
-                <h4>Northern Exposure</h4>
+                <h3>Northern Exposure</h3>
                 <p>Homes in warmer climates can reduce lighting costs by maximizing natural lighting provided by skylights installed on a roof with a northern exposure.</p>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass"></use>
                     </svg>
                 </i>
-                <h4>Southern Exposure</h4>
+                <h3>Southern Exposure</h3>
                 <p>Studies show that homes located in cooler climates can reduce heating costs in the winter and lighting costs during warmer months with skylights installed on a roof with a southern exposure.</p>
             </div>
         </div>
@@ -83,7 +83,7 @@
             </div>
     </div>
     <header class="header-statement header-statement--squeezed">
-        <h3 class="upper">Improve Home Efficiency</h3>
+        <h2 class="upper">Improve Home Efficiency</h2>
         <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat<sup>&reg;</sup> glass technology.</p>
     </header>
 </section>
@@ -94,7 +94,7 @@
 <section class="page-row page-row--extra-tall replacing" id="tax-credits">
     <div class="row">
         <div class="small-12 medium-6 columns reversed first">
-            <h3 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h3>
+            <h2 class="upper">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h2>
             <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
         </div>
         <div class="small-12 medium-6 columns centered last">
@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns first reversed">
-            <h3 class="upper">After Installation</h3>
+            <h2 class="upper">After Installation</h2>
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
             <a class="btn">Download</a>
         </div>

@@ -1,2 +1,7 @@
-<h1><?= $installer_array[0]->promotion_headline; ?></h1>
-<?= filter_page_content($installer_array[0]->promotion_page_copy); ?>
+<section class="page-row bg-grey promotions">
+    <header class="intro-statement intro-statement--squeezed">
+        <h1><?= $installer_array[0]->promotion_headline; ?></h1>
+        <p><?= filter_page_content($installer_array[0]->promotion_page_copy); ?></p>
+        <a href="" class="upper">CTA</a>
+    </header>
+</section>

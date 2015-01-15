@@ -9,9 +9,9 @@
             <?=$this->load->view('partials/_navigation-header');?>
         </div>
         <div class="masthead__section masthead__section--small masthead__section--velux">
-            <a class="velux-logo">
+            <div class="velux-logo">
                 <img src="<?=asset_url('images/velux-logo.png')?>" alt>
-            </a>
+            </div>
         </div>
         <div class="masthead__section masthead__section--small masthead__section--phone">
             <?php

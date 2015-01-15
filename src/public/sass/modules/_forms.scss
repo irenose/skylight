@@ -13,12 +13,25 @@
     }
 }
 
+.error-alert {
+    @extend %italic;
+    color: $color-primary;
+    font-weight: 300;
+}
+
 .icheckbox_flat {
     background: url('../images/flat.png');
     margin-right: 10px;
     outline: 1px solid $color-grey-light;
     positon: relative;
     top: -2px;
+}
+
+.required {
+    @extend %italic;
+    color: $color-primary;
+    font-weight: 300;
+    margin-left: 1.5em;
 }
 
 .selectricWrapper {
@@ -30,19 +43,18 @@
         border-radius: 0;
 
         .button {
-            top: 4px;
+            top: 8px;
 
             &:after {
                 border-top-color: $color-grey-light;
             }
         }
 
-        p {
+        .label {
+            font-size: 1em;
+            line-height: 1.25em;
             padding: .75em;
         }
-    }
-    .selectric .label {
-        font-size: $font-size-default;
     }
 }
 

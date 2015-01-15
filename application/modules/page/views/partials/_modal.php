@@ -10,7 +10,7 @@
             </button>
         </header>
         <div class="modal__body">
-            <h2 class="normal-weight">Contact <?=$installer_array[0]->name; ?></h2>
+            <h1 class="normal-weight">Contact <?=$installer_array[0]->name; ?></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
             <?= $this->load->view('partials/_contact-form') ?>
         </div>

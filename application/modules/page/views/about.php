@@ -8,12 +8,12 @@
         Dealer Headline
     ----------------------------------------------*/
 ?>
-        <h2 class="normal-weight">
+        <h1 class="normal-weight">
             <?php
                 $headline = $installer_array[0]->about_dealer_headline != '' ? $installer_array[0]->about_dealer_headline : 'About Us'; 
                 echo $headline;
             ?>
-        </h2>
+        </h1>
 <?php
     /*---------------------------------------------
         End Dealer Headline
@@ -29,7 +29,7 @@
     if($installer_array[0]->about_dealer_text != '') {
 ?>
 <section class="page-row about-dealer">
-    <h3 class="about-dealer-title normal-weight upper">Our Company</h3>
+    <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
     <div class="dealer-image polaroid--round">
         <?php
             if($about_dealer_image != '') {
@@ -116,7 +116,7 @@
 ?>
 <section class="page-row our-principles">
     <header class="header-statement header-statement--squeezed">
-        <h3 class="upper">Our Principles</h3>
+        <h2 class="upper">Our Principles</h2>
         <p class="font-display">To do our part in helping take care of the world we all share, we're committed to the following principles:</p>
     </header>
     <div class="principles">

@@ -15,7 +15,7 @@
 	<div class="row">
 		<div class="small-12 large-6 columns">
 			<div class="card">
-				<h3><?= $product_category_array['category']->product_category_name; ?></h3>
+				<h2><?= $product_category_array['category']->product_category_name; ?></h2>
 				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
     		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
     		echo '<section class="page-row page-row--squeezed border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
 	    		echo '<header class="header-statement">' . "\n";
-					echo '<h3 class="upper">' . $subcategory->subcategory_name . '</h3>' . "\n";
+					echo '<h2 class="upper">' . $subcategory->subcategory_name . '</h2>' . "\n";
 				echo '</header>' . "\n";
 				echo '<div class="row product-row">' . "\n";
 					$count = 0;

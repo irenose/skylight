@@ -44,11 +44,6 @@
     text-align: right;
 }
 
-.modal__body {
-    background: #fff;
-    padding: 5% 10%;
-}
-
 /*[data-modal-open] {
     @include bp(0, $foundation-large) {
         display: none;
@@ -63,20 +58,26 @@
 }
 
 .modal__body {
+    background: #fff;
     margin-top: 30px;
+    padding: 5% 10%;
 
-    .full-width {
-        width: 100%;
-    }
     .updates {
         @include bp($foundation-med) {
             margin-top: 51px;
         }
     }
 
+    form > div.row > div.columns:nth-child(1) {
+        @extend %snug-left;
+    }
+    form > div.row > div.columns:nth-child(2) {
+        @extend %snug-right;
+    }
     input, textarea, select {
-        border: 1px solid $color-default-light;
+        border: 1px solid $color-grey-light;
         display: block;
+        line-height: 1.25em;
         padding: .75em;
 
         &[type="submit"] {
@@ -84,16 +85,10 @@
             margin-top: 25px;
         }
     }
-    input[type="submit"] {
-        margin-left: 15px;
-    }
     label {
         display: block;
         line-height: 1.75em;
         margin-top: 15px;
-    }
-    select {
-        padding: .55em
     }
     textarea {
         min-height: 218px;

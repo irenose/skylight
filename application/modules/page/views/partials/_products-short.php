@@ -1,7 +1,7 @@
 <section class="page-row products--short">
     <div class="product-category-wrapper">
         <header class="header-statement">
-            <h3 class="upper">Our Products</h2>
+            <h2 class="upper">Our Products</h2>
         </header>
         <?php
             if( isset($product_category_array) && count($product_category_array) > 0) {
@@ -27,7 +27,7 @@
                                     echo '<img src="' . asset_url('images/categories/' . $category->category_image . '-short.jpg') . '" alt="' . $category->product_category_name . '">' . "\n";
                                 echo '</div>' . "\n";
                             echo '</a>' . "\n";
-                            echo '<h5>' . $category->product_category_name . '</h5>' . "\n";
+                            echo '<h4>' . $category->product_category_name . '</h4>' . "\n";
                             echo '<p>' . filter_page_content($category->product_category_teaser) . '</p>' . "\n";
                             echo '<a class="btn" href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">Learn More</a>';
                         echo '</div>' . "\n";

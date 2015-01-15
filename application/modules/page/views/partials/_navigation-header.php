@@ -19,7 +19,7 @@
             $why_active = $current_section == 'why-skylights' ? ' is-active' : '';
             $installing_active = $current_section == 'installing' ? ' is-active' : '';
             $about_active = $current_section == 'about' ? ' is-active' : '';
-            $warranty_active = $current_section == 'warraty' ? ' is-active' : '';
+            $warranty_active = $current_section == 'warranty' ? ' is-active' : '';
             $brochures_active = $current_section == 'brochures' ? ' is-active' : '';
             $contact_active = $current_section == 'contact' ? ' is-active' : '';
 
@@ -28,7 +28,7 @@
             echo '<a href="' . $installer_base_url . '/about" class="nav-header__link first' . $about_active . '">About</a>';
             echo '<a href="' . $installer_base_url . '/warranty" class="nav-header__link' . $warranty_active . '">Warranty</a>';
             echo '<a href="' . $installer_base_url . '/brochures" class="nav-header__link' . $brochures_active . '">Brochures</a>';
-            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last' . $contact_active . '">Contact</a><a href="" class="hav-header__link popout-velux-logo"><img src="' . asset_url('images/velux-logo.jpg') . '" alt></a></nav>';
+            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last' . $contact_active . '">Contact</a><a href="" class="nav-header__link popout-velux-logo"><img src="' . asset_url('images/velux-logo-mobile.png') . '" alt></a></nav>';
         }
     ?>
 </div>

@@ -11,13 +11,22 @@
         display: inline-block;
 
         img {
+            max-height: 200px;
             max-width: 250px;
             width: 100%;
+
+            @include bp($foundation-small, $foundation-med) {
+                max-width: 200px;
+            }
         }
         div {
             display: inline-block;
             vertical-align: middle;
         }
+    }
+
+    @include bp($tablet) {
+        padding: 15px 0 13px;
     }
     /*.nav-header--is-open & {
         @include bp($foundation-small, $tablet) {
@@ -85,13 +94,8 @@
         right: 80px;
         top: 0;
 
-        .nav-header--is-open & {
-            @include bp($foundation-small, $tablet) {
-                display: none;
-            }
-        }
-
         @include bp($foundation-small, $tablet) {
+            border-right:0;
             left: 0;
         }
         @include bp($foundation-large) {
@@ -118,7 +122,6 @@
 .nav-header-trigger {
     @extend %centered;
     background: transparent !important;
-    border-left: 1px solid $color-secondary;
     color: $color-primary;
     display: block;
     height: $masthead-mobile;
@@ -144,9 +147,6 @@
 
     @include bp($foundation-med) {
         height: $masthead-height;
-    }
-    @include bp($tablet) {
-        border: none;
     }
     @include bp($foundation-large) {
         float: right;

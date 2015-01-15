@@ -26,6 +26,7 @@
 ------------------------*/
 .icon-hamburger {
     background: $color-grey-light;
+    cursor: pointer;
     display: inline-block;
     height: 3px;
     overflow: visible;
@@ -52,6 +53,7 @@
 }
 
 .icon-x {
+    cursor: pointer;
     height: 18px;
     vertical-align: middle;
     width: 24px;

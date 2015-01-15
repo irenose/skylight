@@ -41,6 +41,16 @@
                     position: absolute;
                     right: 0;
                 }
+                &.is-active:after {
+                    background: $color-primary;
+                    bottom: 0;
+                    content: '';
+                    display: block;
+                    height: 4px;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                }
             }
         }
         .nav-major__subnav {
@@ -136,15 +146,11 @@
                 }
                 width: auto;
                 
-                &:hover:after {
-                    background: $color-primary;
-                    bottom: 0;
-                    content: '';
-                    display: block;
-                    height: 4px;
-                    left: 0;
-                    position: absolute;
-                    right: 0;
+                &:hover {
+                    color: $color-primary;
+                }
+                &.is-active {
+                    color: $color-primary;
                 }
             }
         }

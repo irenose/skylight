@@ -1,4 +1,16 @@
 /*-----------------------
+  @HEADINGS
+------------------------*/
+%mega-heading {
+    font-size: 3em; /* 48 / 16 */
+    line-height: 1em; /* (24 * 2) / 48  (double) */
+    margin-bottom: .5em; /* 24 / 48 */
+}
+.mega-heading {
+    @extend %mega-heading;
+}
+
+/*-----------------------
   @TYPE
 
   trying to conflict
@@ -211,6 +223,20 @@
 }
 .snug-bottom {
     @extend %snug-bottom;
+}
+
+%snug-left {
+    padding-left: 0 !important;
+}
+.snug-left {
+    @extend %snug-left;
+}
+
+%snug-right {
+    padding-right: 0 !important;
+}
+.snug-right {
+    @extend %snug-right;
 }
 
 /*-----------------------
