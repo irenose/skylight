@@ -20,13 +20,15 @@
                 }
             ?>
         </div>
-        <button class="nav-header-trigger" title="Menu">
-            <i class="icon icon-hamburger navbar-icon-open"></i>
-            <i class="icon icon-x navbar-icon-close">
-                <svg class="icon__svg">
-                    <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-x"></use>
-                </svg>
-            </i>
-        </button>
+        <?php if($show_installer_header_footer) { ?>
+            <button class="nav-header-trigger" title="Menu">
+                <i class="icon icon-hamburger navbar-icon-open"></i>
+                <i class="icon icon-x navbar-icon-close">
+                    <svg class="icon__svg">
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-x"></use>
+                    </svg>
+                </i>
+            </button>
+        <?php } ?>
     </div>
 </section>
