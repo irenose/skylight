@@ -3,17 +3,8 @@
 ?>
 <?=$this->load->view('partials/_breadcrumb')?>
 <section>
-	LIFESTYLE IMAGE
 	<?php 
-		/*
-			PRODUCT IMAGE URLS ARE AS FOLLOWS:
-
-			PRODUCT IMAGE:
-			$this->config->item('product_images_dir') . $product_info_array[0]->product_image . '.' . $product_info_array[0]->extension;
-
-			LIFESTYLE IMAGE:
-			$this->config->item('product_images_dir') . $product_info_array[0]->lifestyle_image . '.' . $product_info_array[0]->lifestyle_extension;
-		*/
+		echo '<img src="' . $this->config->item('product_images_dir') . $product_info_array[0]->product_image . '.' . $product_info_array[0]->extension . '" alt="' . $product_info_array[0]->product_name . '">';
 	?>
 </section>
 <section>

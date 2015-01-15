@@ -2142,7 +2142,60 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_template', $data);
 	}
 
+/****************************************************************************************************************************************
+/*	BAZAARVOICE FEED GENERATOR
+/****************************************************************************************************************************************/
 
+	function bazaarvoice() {
+		$cats = $this->admin_model->get_bazaarvoice_categories();
+		$prods = $this->admin_model->get_bazaarvoice_products();
+		$parent_url = array(
+			1 => 'sun-tunnel-skylights',
+			2 => 'residential-skylights',
+			3 => 'commercial-skylights'
+		);
+		$xml = '<Categories>' . "\n";
+		foreach($cats as $cat) {
+			$xml .= "\t" . '<Category>' . "\n";
+			$xml .= "\t\t" . '<ExternalId>prod-cat-' . $cat->product_category_id . '</ExternalId>' . "\n";
+			if($cat->primary_category_id != 0) {
+				$xml .= "\t\t" . '<ParentExternalId>' . $cat->primary_category_id . '</ParentExternalId>' . "\n";
+			}
+            $xml .= "\t\t" . '<Name>' . str_replace('&trade;','',$cat->product_category_name) . '</Name>' . "\n";
+            if($cat->primary_category_id != 0) {
+            	$xml .= "\t\t" . '<CategoryPageUrl>http://www.skylightspecialist.com/DEALER/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            } else {
+            	$xml .= "\t\t" . '<CategoryPageUrl>http://www.skylightspecialist.com/DEALER/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            }
+            $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
+            $xml .= "\t" . '</Category>' . "\n";
+		}
+		$xml .= '</Categories>' . "\n";
+		$xml .= '<Products>' . "\n";
+	    foreach($prods as $prod) {
+	        $xml .= "\t" . '<Product>' . "\n";
+	        $xml .= "\t\t" . '<ExternalId>prod-' . $prod->product_id . '</ExternalId>' . "\n";
+	        $xml .= "\t\t" . '<Name>' . $prod->product_name . '</Name>' . "\n";
+
+	        $xml .= "\t\t" . '<Description>' . strip_tags($prod->product_description) . '</Description>' . "\n";
+	        $xml .= "\t\t" . '<BrandExternalId>VELUX-SS</BrandExternalId>' . "\n";
+	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
+	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'DEALER/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
+	        $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
+	        if($prod->model_number != '') {
+		        $xml .= "\t\t" . '<ModelNumbers>' . "\n";
+		            $xml .= "\t\t\t" . '<ModelNumber>' . str_replace('Model ', '', $prod->model_number) . '</ModelNumber>' . "\n";
+		        $xml .= "\t\t" . '</ModelNumbers>' . "\n";
+		    }
+	        $xml .= "\t\t" . '<UPCs>' . "\n";
+	            $xml .= "\t\t\t" . '<UPC> </UPC>' . "\n";
+	        $xml .= "\t\t" . '</UPCs>' . "\n";
+	        $xml .= "\t" . '</Product>' . "\n";
+	    }
+	    $xml .= '</Products>' . "\n";
+	    echo $xml;
+	    exit;
+	}
 	
 /*****************************************************************************************************************************************
 /*	LOGOUT Page

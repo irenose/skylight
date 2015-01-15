@@ -2318,6 +2318,24 @@ class Admin_model extends CI_Model {
 		}
 	}
 
+	function get_bazaarvoice_categories() {
+		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
+		$where = array('product_category_status' => 'active');
+		$this->db->where($where);
+		$this->db->order_by('primary_category_id ASC, sort_order ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function get_bazaarvoice_products() {
+		$db_table = $this->config->item('db_table_prefix') . 'products';
+		$where = array('product_status' => 'active', 'product_id !=' => '25', 'product_id !=' => '26');
+		$this->db->where($where);
+		$this->db->order_by('primary_category_id ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
 
 
 }

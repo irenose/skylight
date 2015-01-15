@@ -66,7 +66,7 @@
 							$last_product_class = '';
 						}
 						echo '<div class="small-12 medium-6' . $last_product_class . ' columns centered">' . "\n";
-							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . asset_url('images/solar-powered-1.jpg') . '" alt></a>' . "\n";
+							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '-th.' . $product->extension . '" alt></a>' . "\n";
 							echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
 							//echo '<p>Curb mounted skylight</p>' . "\n";
 							//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";

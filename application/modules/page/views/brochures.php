@@ -22,8 +22,8 @@
                     echo '</div>' . "\n";
                     echo '<h4 class="brochure__title">' . $brochure->name . '</h4>' . "\n";
                     echo '<p class="brochure__description">' . filter_page_content($brochure->description) . '</p>' . "\n";
-                    if( file_exists($this->config->item('resources_full_dir') . 'resources/' . $brochure->filename . '.' . $brochure->extension)) {
-                        echo '<a href="' . $this->config->item('resources_dir') . 'resources/' . $brochure->filename . '.' . $brochure->extension . '">Download</a>';
+                    if( file_exists($this->config->item('resources_full_dir') . $brochure->filename . '.' . $brochure->extension)) {
+                        echo '<a href="' . $this->config->item('resources_dir') . $brochure->filename . '.' . $brochure->extension . '" target="_blank">Download</a>';
                     }
                 echo '</div>' . "\n";
             }
