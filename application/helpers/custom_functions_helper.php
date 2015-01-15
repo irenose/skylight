@@ -770,3 +770,37 @@ if( ! function_exists('filter_custom_tags')) {
 
     }
 }
+
+/*
+	Do a check on form fields for standard form spam patterns
+    @$_POST array
+    @check_fields = array of fields to be checked for the pattern
+    @$honeypot_field = it set, name of field that is honeypot field
+*/
+if ( ! function_exists('check_spam_count')) {
+    function check_spam_count($post_array, $check_fields = array(), $honeypot_field = FALSE) {
+    	//CHECK FOR SPAM
+		$pattern1 = 'link=';
+		$pattern2 = 'url=';
+		$pattern3 = 'href=';
+
+        $spam_count = 0;
+        foreach($check_fields as $key => $value) {
+        	if(stristr($post_array[$value],$pattern1)) {
+        		$spam_count++;
+        	}
+        	if(stristr($post_array[$value],$pattern2)) {
+        		$spam_count++;
+        	}
+        	if(stristr($post_array[$value],$pattern3)) {
+        		$spam_count++;
+        	}
+        }
+        if($honeypot_field) {
+        	if($post_array[$honeypot_field] != '') {
+        		$spam_count++;
+        	}
+        }
+        return $spam_count;
+    }
+}

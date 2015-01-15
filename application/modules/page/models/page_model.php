@@ -351,6 +351,30 @@ class Page_model extends CI_Model {
 
 	}
 
+	function add_paid_search_contact($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'contact';
+		
+		$data = array(
+		   'name' => $data_array['name'],
+		   'dealer_id' => $data_array['dealer_id'],
+		   'phone' => $data_array['phone'],
+		   'email' => $data_array['email'],
+		   'comments' => strip_tags($data_array['comments']),
+		   'paid_search_url' => $data_array['ps_url'],
+		   'paid_search_page_type' => $data_array['ps_page_type'],
+		   'insert_date' => current_timestamp(),
+		);
+		
+		$added = $this->db->insert($db_table, $data);
+		if($added) {
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		} else {
+			return FALSE;
+		}
+
+	}
+
 }
 	
 /* End of file page_model.php */

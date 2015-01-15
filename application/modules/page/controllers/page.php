@@ -44,6 +44,7 @@ class Page extends CI_Controller {
         $data['discover_section'] = '';
         $data['contact_products_array'] = array();
         $data['dealer_logo_display'] = '';
+        $data['paid_search_page_type'] = 'day';
 
         if (count($vars_array) > 0) {
             $installer_url = $vars_array[1];
@@ -248,31 +249,58 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'promotions';
                             break;
                         case 'ps':
+                            $template = 'template_ps';
+                            if($vars_size == 4 && $vars_array[4] == 'night') {
+                                $data['paid_search_page_type'] = 'night';
+                            }
                             switch($vars_array[3]) {
                                 case 'no-leak-skylight':
-                                    $data['page_view'] = 'paidsearch/no_leak';
+                                    $page_view = 'paidsearch/no_leak';
                                     break;
                                 case 'energy-efficiency':
-                                    $data['page_view'] = 'paidsearch/efficiency';
+                                    $page_view = 'paidsearch/efficiency';
                                     break;
                                 case 'skylight-repair':
-                                    $data['page_view'] = 'paidsearch/repair';
+                                    $page_view = 'paidsearch/repair';
                                     break;
                                 case 'sun-tunnel-skylight':
-                                    $data['page_view'] = 'paidsearch/sun_tunnel';
+                                    $page_view = 'paidsearch/sun_tunnel';
                                     break;
                                 case 'commercial-sun-tunnel':
-                                    $data['page_view'] = 'paidsearch/commercial_sun_tunnel';
+                                    $page_view = 'paidsearch/commercial_sun_tunnel';
                                     break;
                                 case 'skylight-replacement':
-                                    $data['page_view'] = 'paidsearch/replacement';
+                                    $page_view = 'paidsearch/replacement';
                                     break;
                                 case 'skylight-blinds':
-                                    $data['page_view'] = 'paidsearch/blinds';
+                                    $page_view = 'paidsearch/blinds';
                                     break;
                                 default:
                                     redirect($data['installer_base_url']);
                                     break;
+                            }
+                            $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                            if($this->input->post('phone') == '') {
+                                $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
+                            }
+                            $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
+                            if ($this->form_validation->run() == FALSE) {
+                                $data['page_view'] = $page_view;
+                            } else {
+                                $check_fields = array('name','phone','email','comments');
+                                $spam_count = check_spam_count($_POST, $check_fields, 'confirm_email');
+                                if($spam_count == 0) {
+                                    $insert_id = $this->page_model->add_paid_search_contact($_POST);
+                                    if($insert_id != FALSE) {
+                                        $data['form_status'] = 'success';
+                                    } else {
+                                        $data['form_status'] = 'error';
+                                    }
+                                } else {
+                                    //GENERATE SPAM EMAIL
+                                    $data['form_status'] = 'success';
+                                }
+                                $data['page_view'] = 'paidsearch/thanks';
                             }
                             break;
                         default:
