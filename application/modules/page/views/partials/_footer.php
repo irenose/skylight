@@ -6,14 +6,14 @@
             </a>
             <div class="copyright">&copy; <?php echo date("Y") ?> Installer Name</div>
             <div class="social">
-                <a href="#" target="_blank" class="social__link">
+                <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
                     <i class="icon icon-twitter--reversed">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-twitter--reversed"></use>
                         </svg>
                     </i>
                 </a>
-                <a href="#" target="_blank" class="social__link">
+                <a href="https://facebook.com/VELUXAmerica" target="_blank" class="social__link">
                     <i class="icon icon-facebook--reversed">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-facebook--reversed"></use>
