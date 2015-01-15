@@ -233,7 +233,14 @@ class Page extends CI_Controller {
                             if ($this->form_validation->run() == FALSE) {
                                 $data['page_view'] = 'contact';
                             } else {
+                                $spam_count = check_spam_count($_POST, $check_fields);
+                                if($spam_count == 0) {
+                                    $insert_id = $this->page_model->add_contact($_POST);
+                                } else {
+                                    //Send Spam Emails
+                                }
                                 _a($_POST);
+                                exit;
                             }
                             break;
                         case 'promotions':

@@ -332,18 +332,55 @@ class Page_model extends CI_Model {
 ***********************************************************************************************************************************/
 	function add_contact($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'contact';
+
+		$installer_array = $this->get_dealer_by_id($data_array['dealer_id']);
+		if(count($installer_array) > 0) {
+			$form_source = $installer_array[0]->name;
+		} else {
+			$form_source = 'General';	
+		}
 		
+		if( isset($data_array['receive_more_info']) && $data_array['receive_more_info'] == 'yes') {
+			$receive_more_info = 'yes';
+		} else {
+			$receive_more_info = 'no';
+		}
 		$data = array(
+		   'dealer_id' => $data_array['dealer_id'],
+		   'contact_type' => $type,
 		   'name' => $data_array['name'],
-		   'phone' => $data_array['phone'],
 		   'email' => $data_array['email'],
-		   'comments' => strip_tags($data_array['comments']),
+		   'phone' => $data_array['phone'],
+		   'address' => $data_array['address'],
+		   'city' => $data_array['city'],
+		   'state' => $data_array['state'],
+		   'zip' => $data_array['zip'],
+		   'subject' => $data_array['subject'],
+		   'comments' => $data_array['comments'],
+		   'receive_more_info' => $receive_more_info,
 		   'insert_date' => current_timestamp(),
+		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
+			if($receive_more_info == 'yes') {
+				/*
+				require_once($_SERVER['DOCUMENT_ROOT'] . '/_assets/classes/CMBase.php');
+				$api_key = 'cac210444b070af4de6684c651a8093f';
+				$client_id = null;
+				$campaign_id = null;
+				$list_id = '353de6d98fbde21b3a552cef7e98da1d';
+				
+				$subscribe_email = $data_array['email'];
+				$name = $data_array['name'];
+				$custom_fields = array('formSource' => $form_source);
+				$cm = new CampaignMonitor( $api_key, $client_id, $campaign_id, $list_id );
+				$result = $cm->subscriberAddWithCustomFields($subscribe_email, $name, $custom_fields);
+				*/
+				
+			}
 			return $insert_id;
 		} else {
 			return FALSE;
@@ -357,6 +394,7 @@ class Page_model extends CI_Model {
 		$data = array(
 		   'name' => $data_array['name'],
 		   'dealer_id' => $data_array['dealer_id'],
+		   'contact_type' => 'paid_search',
 		   'phone' => $data_array['phone'],
 		   'email' => $data_array['email'],
 		   'comments' => strip_tags($data_array['comments']),
