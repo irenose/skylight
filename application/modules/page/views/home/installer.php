@@ -22,12 +22,10 @@
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">
             <h1 class="reversed upper mega-heading">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
-            <a href="" class="btn">Learn More</a>
         </div>
         <div class="small-12 large-6 columns featured-images">
             <div class="promotion-large fresh-air">
                 <h4 class="normal-weight">Solar Powered “Fresh Air” Skylight</h4>
-                <a href="">Learn More</a>
                 <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
             </div>
         </div>
