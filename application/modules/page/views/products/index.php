@@ -53,8 +53,3 @@
         End Product Categories
     ----------------------------------------------*/
 ?>
-
-<?php 
-    /******************************* ACCESSORIES *************************/ 
-?>
-<?=$this->load->view('partials/_accessories');?>

@@ -10,7 +10,7 @@
     /******************************* 10 YEAR WARRANTY *************************/ 
 ?>
 <section class="page-row bg-grey-dark reversed 10-year-warranty">
-    <h2 class="normal-weight upper">The 10 Year Warranty</h2>
+    <h2 class="normal-weight upper">The VELUX 10 Year Warranty</h2>
     <p class="text-columns-2 ten-year-warranty">As the world leader in skylights, we’ve stood behind our products for over 50 years with a promise of lasting service and quality. And we still do to this day with our VELUX 20/10/5 years limited product warranties for specific product coverage issues. As well as, a 10-year “No Leak” installation warranty on deck mounted skylights. This covers correct skylight and flashing installation (product and labor) against leaks. If you have any questions about these warranties, want to read all the details or have concerns about your VELUX products that may require a warranty claim, or ask your 5-Star Skylight Specialist.</p>
     <a href="<?=site_url('content-uploads/resources/product-warranty.pdf')?>" class="btn">Download PDF</a>
 </section>

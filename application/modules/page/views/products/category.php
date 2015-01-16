@@ -29,8 +29,9 @@
 
 <?php 
     /******************************* SECONDARY NAV *************************/ 
+    //Removed 1/16/2015
+    //echo $this->load->view('partials/_navigation-secondary');
 ?>
-<?=$this->load->view('partials/_navigation-secondary')?>
 
 <?php 
     /******************************* PRODUCT ROWS *************************/ 
@@ -76,8 +77,5 @@
 			echo '</section>' . "\n";
     	}
     }
-
-    /******************************* ACCESSORIES *************************/ 
 ?>
-<div class="border-top-grey"></div>
-<?=$this->load->view('partials/_accessories');?>
+
