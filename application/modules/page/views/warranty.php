@@ -17,7 +17,7 @@
 
 <?php
     /******************************* OPTIONAL INSTALLER WARRANTY *************************/ 
-    if( isset($warranty_array) && count($warranty_array) > 0) {
+    if( isset($warranty_array) && count($warranty_array) > 0 && trim($warranty_array[0]->dealer_warranty) != '') {
 ?>
 <?php
     /*---------------------------------------------
