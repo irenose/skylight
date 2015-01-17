@@ -15,8 +15,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-one.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 columns reason">
@@ -33,8 +33,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-two.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns reason">
@@ -51,8 +51,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-three.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 columns reason">
@@ -69,8 +69,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-four.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns reason">
@@ -87,8 +87,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-five.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 columns reason">
@@ -105,8 +105,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-six.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns reason">
@@ -123,8 +123,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-seven.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 columns reason">
@@ -141,8 +141,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-eight.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns reason">
@@ -159,8 +159,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-nine.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 columns reason">
@@ -177,8 +177,8 @@
 <section class="page-row bg-grey border-top-grey">
     <div class="row">
         <div class="small-12 medium-6 medium-push-6 columns">
-            <div class="polaroid">
-                <img src="http://placehold.it/528x302" alt>
+            <div class="reason__image">
+                <img src="<?=asset_url('images/reasons/reason-ten.png')?>" alt>
             </div>
         </div>
         <div class="small-12 medium-6 medium-pull-6 columns reason">
