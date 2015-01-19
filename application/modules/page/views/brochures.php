@@ -1,7 +1,7 @@
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--snug">
         <h1 class="normal-weight">Brochures</h1>
-        <p class="font-display">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam consectetur incidunt debitis porro voluptatibus quasi asperiores voluptas, accusantium nemo, quibusdam omnis neque! Quo odio iste voluptas deserunt perspiciatis ipsum quod.</p>
+        <p class="font-display">We offer easy to understand downloads to help you choose the skylight that's perfect for you.</p>
     </header>
 </section>
 <section class="page-row border-top-grey brochures">
