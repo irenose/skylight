@@ -30,8 +30,8 @@
 			echo '<tr class="' . $bg_color . '">' . "\n";
 			echo '<td width="25%" class="td_border"><span' . $span_class . '>' .  $dealer->name . '</span></td>' . "\n";
 			echo '<td width="10%" class="td_border"><span' . $span_class . '>' .  $dealer->dealer_url . '</span></td>' . "\n";
-			echo '<td width="10%" class="td_border"><span' . $span_class . '>' .  ucfirst($dealer->site_status) . '</span></td>' . "\n";
-			echo '<td width="10%" class="td_border"><span' . $span_class . '>' .  ucfirst($dealer->dealer_status) . '</span></td>' . "\n";
+			echo '<td width="10%" class="td_border"><span class="' . $site_class . '">' .  ucfirst($dealer->site_status) . '</span></td>' . "\n";
+			echo '<td width="10%" class="td_border"><span class="' . $span_class . '">' .  ucfirst($dealer->dealer_status) . '</span></td>' . "\n";
 			echo '<td class="td_border"><a href="/admin/installers/update/' . $dealer->dealer_id . '" class="blue_button list_action">Update</a><a href="/admin/installers/delete/' . $dealer->dealer_id . '" class="delete_confirm list_action">Delete</a></td>' . "\n";
 			echo '</tr>' . "\n";		
 		

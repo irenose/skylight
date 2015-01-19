@@ -26,7 +26,7 @@
 			$class = $testimonial->testimonial_status == 'active' ? 'active' : 'inactive';
 				
 			echo '<tr class="' . $bg_color . '">' . "\n";
-			echo '<td width="40%" class="td_border"><span class="' . $class . '">' . word_limiter($testimonial->testimonial_copy,15) . '</span></td>' . "\n";
+			echo '<td width="40%" class="td_border"><span>' . word_limiter($testimonial->testimonial_copy,15) . '</span></td>' . "\n";
 			echo '<td width="10%" class="td_border"><span class="' . $class . '">' . ucfirst($testimonial->testimonial_status) . '</span></td>' . "\n";
 			echo '<td class="td_border"><a href="/admin/testimonials/update/' . $testimonial->testimonial_id . '" class="blue_button list_action">Update</a><a href="/admin/testimonials/delete/' . $testimonial->testimonial_id . '" class="delete_confirm list_action">Delete</a></td>' . "\n";
 			echo '</tr>' . "\n";

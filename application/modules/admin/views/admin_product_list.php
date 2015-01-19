@@ -29,9 +29,9 @@
 					$bg_color = $bg_color == 'white' ? 'gray' : 'white';
 					$class = $product->product_status == 'active' ? 'active' : 'inactive';
 					echo '<tr class="' . $bg_color . '">' . "\n";
-					echo '<td width="15%" class="td_border"><span class="' . $class .'">' . $product->product_category_name . '</span></td>' . "\n";
-					echo '<td width="20%" class="td_border"><span class="' . $class .'">' . $product->product_name . '</span></td>' . "\n";
-					echo '<td width="10%" class="td_border"><span class="' . $class .'">' . $product->model_number . '</span></td>' . "\n";
+					echo '<td width="15%" class="td_border"><span>' . $product->product_category_name . '</span></td>' . "\n";
+					echo '<td width="20%" class="td_border"><span>' . $product->product_name . '</span></td>' . "\n";
+					echo '<td width="10%" class="td_border"><span>' . $product->model_number . '</span></td>' . "\n";
 					echo '<td width="10%" class="td_border"><span class="' . $class . '">' . ucfirst($product->product_status) . '</span></td>' . "\n";
 					echo '<td class="td_border"><a href="/admin/products/update/' . $product->product_id . '" class="blue_button list_action">Update</a><a href="/admin/products/delete/' . $product->product_id . '" class="delete_confirm list_action">Delete</a></td>' . "\n";
 					echo '</tr>' . "\n";

@@ -93,7 +93,6 @@
                 <ul id="menu">
                 	<li class="main<?php if($current_section == 'home') { echo ' selected'; } ?>"><a href="/admin/home" class="section">Home</a></li>
                 	<li class="main<?php if($current_section == 'updates') { echo ' selected'; } ?>"><a href="/admin/updates" class="section">Updates</a></li>
-                	<li class="main<?php if($current_section == 'pages') { echo ' selected'; } ?>"><a href="/admin/pages" class="section">Pages</a></li>
 					<li class="main<?php if($current_section == 'installers') { echo ' selected'; } ?>"><a href="/admin/installers" class="section">Installers</a></li>
 					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/admin/products" class="section">Products</a></li>
 					<li class="main<?php if($current_section == 'testimonials') { echo ' selected'; } ?>"><a href="/admin/testimonials" class="section">Testimonials</a></li>

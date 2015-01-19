@@ -24,7 +24,7 @@
 			$bg_color = $bg_color == 'white' ? 'gray' : 'white';
 			$class = $brochure->literature_status == 'active' ? 'active' : 'inactive';
 			echo '<tr class="' . $bg_color . '">' . "\n";
-			echo '<td width="40%" class="td_border"><span class="' . $class . '">' . $brochure->name . '</span></td>' . "\n";
+			echo '<td width="40%" class="td_border"><span>' . $brochure->name . '</span></td>' . "\n";
 			echo '<td width="10%" class="td_border"><span class="' . $class . '">' . ucfirst($brochure->literature_status) . '</span></td>' . "\n";
 			echo '<td class="td_border"><a href="/admin/literature/update/' . $brochure->literature_id . '" class="blue_button list_action">Update</a><a href="/admin/literature/delete/' . $brochure->literature_id . '" class="delete_confirm list_action">Delete</a></td>' . "\n";
 			echo '</tr>' . "\n";
