@@ -49,7 +49,7 @@
                         
                         echo '<tr class="' . $bg_color . '">' . "\n";
                         echo '<td width="50" class="td_border"><input type="checkbox" name="literature[]" value="' . $brochure->literature_id . '"' . $checked . '></td>' . "\n";
-                        echo '<td class="td_border"><img src="/downloads/thumbs/' . $brochure->thumbnail . '.' . $brochure->thumbnail_extension . '" width="75" border="0"></td>' . "\n";
+                        echo '<td class="td_border"><img src="' . $this->config->item('brochure_assets_dir') . $brochure->thumbnail . '.' . $brochure->thumbnail_extension . '" width="75" border="0"></td>' . "\n";
                         echo '<td class="td_border">' . $brochure->name . '</td>' . "\n";
                         echo '</tr>' . "\n";    
                     }
