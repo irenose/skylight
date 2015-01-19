@@ -17,7 +17,7 @@
     <div id="action_form_wrapper">
         <div class="action_form">
         	<label for="testimonial_copy">Testimonial Copy<?php echo required_text('testimonial_copy'); ?></label>
-            <textarea name="testimonial_copy" class="textarea_text MCE"><?php echo set_value('testimonial_copy'); ?></textarea>
+            <textarea name="testimonial_copy" class="textarea_text"><?php echo set_value('testimonial_copy'); ?></textarea>
                         
         	<label for="name">Testimonial Name<?php echo required_text('testimonial_name'); ?></label>
             <input type="text" name="testimonial_name" class="input_text" value="<?php echo set_value('testimonial_name') ?>" />

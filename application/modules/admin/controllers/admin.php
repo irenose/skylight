@@ -13,6 +13,20 @@ class Admin extends CI_Controller {
 		$this->load->model('page/page_model');
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 	}
+
+	function update_about() {
+		$dealers = $this->admin_model->get_dealer_list(0,1000);
+		foreach($dealers as $dealer) {
+			$db_table = $this->config->item('db_table_prefix') . 'dealers';
+			$new_text = str_replace('? including skylights,','- including skylights,',$dealer->about_dealer_text);
+			$data = array(
+				'about_dealer_text' => $new_text,
+			);
+				
+			$this->db->where('dealer_id', $dealer->dealer_id);
+			$result = $this->db->update($db_table, $data); 
+		}
+	}
 	
 /*****************************************************************************************************************************************
 /*	LOGIN Page
