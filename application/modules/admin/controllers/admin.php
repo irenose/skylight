@@ -2163,9 +2163,9 @@ class Admin extends CI_Controller {
 			}
             $xml .= "\t\t" . '<Name>' . str_replace('&trade;','',$cat->product_category_name) . '</Name>' . "\n";
             if($cat->primary_category_id != 0) {
-            	$xml .= "\t\t" . '<CategoryPageUrl>http://www.skylightspecialist.com/DEALER/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            	$xml .= "\t\t" . '<CategoryPageUrl>' . base_url() . 'catalog/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             } else {
-            	$xml .= "\t\t" . '<CategoryPageUrl>http://www.skylightspecialist.com/DEALER/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            	$xml .= "\t\t" . '<CategoryPageUrl>' . base_url() .  'catalog/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             }
             $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
             $xml .= "\t" . '</Category>' . "\n";
@@ -2180,7 +2180,7 @@ class Admin extends CI_Controller {
 	        $xml .= "\t\t" . '<Description>' . strip_tags($prod->product_description) . '</Description>' . "\n";
 	        $xml .= "\t\t" . '<BrandExternalId>VELUX-SS</BrandExternalId>' . "\n";
 	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
-	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'DEALER/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
+	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
 	        $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
 	        if($prod->model_number != '') {
 		        $xml .= "\t\t" . '<ModelNumbers>' . "\n";
