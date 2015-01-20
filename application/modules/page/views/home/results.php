@@ -1,5 +1,5 @@
 <?php
-	//_a($installer_search_array);
+	/*
 	if( isset($installer_search_array) && count($installer_search_array) > 0) {
 		$total_results_label = count($installer_search_array) == 1 ? 'is 1 installer' : 'are ' . count($installer_search_array) . ' installers';
 		echo '<h2>There ' . $total_results_label . ' near ' . $search_zip_code . '</h2>';
@@ -11,6 +11,7 @@
 	} else {
 		echo 'There are no installers in your area.';
 	}
+	*/
 ?>
 <section>
     <div class="page-row reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
