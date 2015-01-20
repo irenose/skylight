@@ -35,7 +35,7 @@ class Page_model extends CI_Model {
 			$distance = '5000';
 			$latitude = $coordinates_array[0]->latitude;
 			$longitude = $coordinates_array[0]->longitude;
-			$this->db->select('dealer_id, name, address, city, state, zip, email, phone1, website, dealer_url, dealer_status, site_status, ( 3959 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) *  sin( radians( latitude ) ) ) ) AS distance', FALSE);
+			$this->db->select('dealer_id, name, address, city, state, zip, email, phone1, website, dealer_url, dealer_status, site_status, longitude, latitude, ( 3959 * acos( cos( radians(' . $latitude . ') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(' . $longitude . ') ) + sin( radians(' . $latitude . ') ) *  sin( radians( latitude ) ) ) ) AS distance', FALSE);
 			$where = "distance <= '$distance' AND dealer_status = 'active' AND site_status = 'active' AND dealer_id <> '6' AND dealer_id <> '166'";
 			$this->db->having($where, NULL, FALSE);
 			$this->db->order_by('distance ASC');
