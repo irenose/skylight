@@ -155,6 +155,16 @@ class Page_model extends CI_Model {
 
 	}
 
+	function get_bv_product_categories() {
+		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
+		$where = array('primary_category_id' => 0, 'product_category_status' => 'active');
+		$this->db->where($where);
+		$this->db->order_by('sort_order ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+
+	}
+
 	function get_category_by_url($product_category_url, $status = 'active') {
 		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
 		$where = array('product_category_url' => $product_category_url, 'product_category_status' => $status);
@@ -174,6 +184,27 @@ class Page_model extends CI_Model {
 			foreach($subcategory_array as $subcategory) {
 				$subcategory_count++;
 				$products_array = $this->get_products_by_category($dealer_id, $subcategory->product_category_id, $category_array[0]->product_category_id);
+				$category_products_array['subcategory_array'][$subcategory_count] = (object) array(
+					'subcategory_name' => $subcategory->product_category_name,
+					'subcategory_url' => $subcategory->product_category_url,
+					'subcategory_products' => $products_array
+				);
+			}
+		} 
+		return $category_products_array;
+	}
+
+	function get_bv_category_products($product_category_url, $status = 'active') {
+		$category_products_array = array();
+
+		$category_array = $this->get_category_by_url($product_category_url, $status);
+		if( count($category_array) > 0) {
+			$category_products_array['category'] = $category_array[0];
+			$subcategory_array = $this->get_subcategories($category_array[0]->product_category_id, 'active');
+			$subcategory_count = -1;
+			foreach($subcategory_array as $subcategory) {
+				$subcategory_count++;
+				$products_array = $this->get_bv_products_by_category($subcategory->product_category_id, $category_array[0]->product_category_id);
 				$category_products_array['subcategory_array'][$subcategory_count] = (object) array(
 					'subcategory_name' => $subcategory->product_category_name,
 					'subcategory_url' => $subcategory->product_category_url,
@@ -204,6 +235,19 @@ class Page_model extends CI_Model {
 		} else {
 			$exclude_array = array();	
 		}
+		$where = array('primary_category_id' => $primary_category_id, 'product_category_id' => $product_category_id, 'product_status' => $status);
+		$this->db->where($where);
+		if(count($exclude_array) > 0) {
+			$this->db->where_not_in('product_id',$exclude_array);
+		}
+		$this->db->order_by('sort_order ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function get_bv_products_by_category($primary_category_id, $product_category_id, $status = 'active') {
+		$db_table = $this->config->item('db_table_prefix') . 'products';
+		$exclude_array = array();	
 		$where = array('primary_category_id' => $primary_category_id, 'product_category_id' => $product_category_id, 'product_status' => $status);
 		$this->db->where($where);
 		if(count($exclude_array) > 0) {

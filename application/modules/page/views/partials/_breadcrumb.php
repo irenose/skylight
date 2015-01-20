@@ -15,7 +15,16 @@
     		}
     	?>
     </nav>
-    <div class="breadcrumb-links">
-        <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule a Consultation</a>
-    </div>
+    <?php
+        /*-------------------------------------------------------
+            Only hidden on BV Catalog page
+        -------------------------------------------------------*/
+        if($show_breadcrumb_modal) {
+    ?>
+            <div class="breadcrumb-links">
+                <a href=<?php echo '"' . $installer_base_url . '/contact"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule a Consultation</a>
+            </div>
+    <?php
+        }
+    ?>
 </div>
