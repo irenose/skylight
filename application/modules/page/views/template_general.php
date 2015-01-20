@@ -80,9 +80,7 @@
     <div class="page">
         <section class="masthead-wrapper">
             <div class="branding">
-                <a href="<?=base_url()?>" class="brand" title="Home">
-                    <img src="<?=asset_url('images/velux-logo.png')?>" alt="VELUX Skylights">
-                </a>
+                <img src="<?=asset_url('images/velux-logo.png')?>" alt="VELUX Skylights">
             </div>
         </section>
 
