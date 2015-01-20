@@ -120,6 +120,12 @@
 /*-----------------------
   @DIMENSIONS
 ------------------------*/
+.constrained {
+    margin: 0 auto;
+    max-width: 60em;
+    width: 100%;
+}
+
 %full-width {
     width: 100%;
 }
@@ -242,12 +248,34 @@
 /*-----------------------
   @BORDERS
 ------------------------*/
+%border-top-grey {
+    border-top: 1px solid $color-secondary;
+}
+.border-top-grey {
+    @extend %border-top-grey;
+}
+
+%border-bottom-grey {
+    border-bottom: 1px solid $color-secondary;
+}
+.border-bottom-grey {
+    @extend %border-bottom-grey;
+}
 
 %no-border {
     border: none;
 }
 .no-border {
     @extend %no-border;
+}
+
+/*-----------------------
+  @SHADOWS
+------------------------*/
+.top-shadow {
+    background-image: url('../images/top-shadow.png');
+    background-position: 50% 0%;
+    background-repeat: repeat-x;
 }
 
 /*-----------------------

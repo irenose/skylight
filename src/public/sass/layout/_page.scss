@@ -1,15 +1,8 @@
 .bg-grey {
-    background: $color-grey-light-bg;
+    background-color: $color-grey-light-bg;
 }
 .bg-grey-dark {
-    background: $color-grey-dark;
-}
-
-%border-top-grey {
-    border-top: 1px solid $color-secondary;
-}
-.border-top-grey {
-    @extend %border-top-grey;
+    background-color: $color-grey-dark;
 }
 
 .page {

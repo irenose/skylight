@@ -1,12 +1,27 @@
-.footer {
-    background: $color-footer-bg;
+.five-star {
+
+}
+.five-star--bottom {
+
+    @include bp($foundation-small, $foundation-med) {
+        width: 40%
+    }
+    @include bp($tablet) {
+        display: none;
+    }
+}
+.five-star--top {
+    display: none;
+
+    @include bp($tablet) {
+        display: block;
+    }
+}
+
+.footer-row {
     font-size: 14px;
     margin: 0 auto;
     max-width: $page-max-width;
-    padding: {
-        bottom: 55px;
-        top: 60px;
-    }
     text-align: center;
 
     .columns:nth-child(3) {
@@ -23,74 +38,12 @@
             padding-top: 30px;
         }
     }
-    .accreditations {
-        @include bp($foundation-small, $foundation-med) {
-            img {
-                display: none;
-            }
-        }
-        @include bp($foundation-large) {
-            text-align: left;
-            width: 15%;
-        }
-    }
     .dealer-info {
-        color: $color-grey;
-        line-height: 1.8;
-        text-align: left;
-
-        .address {
-            float: left;
-            width: 50%;
-
-            @include bp($foundation-med) {
-                padding-right: 5%;
-            }
-        }
-        .dealer-info__header {
-            color: $color-text-light;
-        }
-        .hours {
-            float: left;
-            width: 50%;
-        }
-
-        @include bp($foundation-small, $foundation-med) {
-            background-image: url('../images/5-star.png');
-            background-position: 50% 85%;
-            background-repeat: no-repeat;
-            border-bottom: 1px solid $color-grey; 
-            padding: {
-                bottom: 160px;
-            }
-
-            .address, .hours {
-                float: none;
-                margin: {
-                    left: auto;
-                    right: auto;
-                }
-                text-align: center;
-            }
-            .hours {
-                margin-top: 20px;
-            }
-        }
-        @include bp($foundation-med, $foundation-large) {
-            float: right;
-        }
-        @include bp($foundation-large) {
-            padding-left: 5%;
-            width: 35%;
-
-            .address, .hours {
-                padding-right: 3%;
-                width: 47%;
-            }
-        }
+        
     }
     .logo {
         @extend %centered;
+        display: none;
         position: static;
 
         img {
@@ -98,74 +51,40 @@
             max-height: 30%;
             max-width: 40%;
         }
+
+        @include bp($foundation-large) {
+            display: block;
+        }
     }
     .copyright {
-        color: $color-grey;
+        color: $color-social-icons;
         font-size: 0.857em;
-        margin: 8px auto;
-        max-width: 50%;
+        width: 10%;
 
-        @include bp($foundation-small, $foundation-med) {
-            bottom: 26px;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-        }
     }
     .nav-footer {
-        line-height: 1.8;
-        text-align: left;
+        width: 75%;
 
-        .nav-footer__container {
+        .nav-footer-container {
+            margin: 0 auto;
 
-            @include bp($foundation-small, $foundation-med) {
-                margin: 0 auto;
-                max-width: 260px;
-                overflow: hidden;
+            .nav-major {
+
             }
-        }
-        .nav-major {
-            float: left;
-            width: 65%;
-            text-transform: uppercase;
+            .nav-minor {
 
-            a {
-                color: $color-text-light;
-            }
-
-            @include bp($foundation-med, $foundation-large) {
-                width: 50% !important;
-            }
-        }
-        .nav-minor {
-            float: left;
-            width: 35%;
-
-            a {
-                color: $color-grey;
-            }
-
-            @include bp($foundation-med, $foundation-large) {
-                width: 50% !important;
             }
         }
 
         a {
-            float: left;
-            clear: left;
+            display: block;
 
-            &:hover {
-                text-decoration: none;
+            @include bp($foundation-large) {
+                display: inline;
             }
         }
-
-        @include bp($foundation-small, $foundation-med) {
-            border-bottom: 1px solid $color-grey;
-            padding-bottom: 2.25em;
-
-            nav {
-                text-align: center;
-            }
+        nav {
+            display: inline-block;
         }
     }
     .social {
@@ -183,13 +102,6 @@
         .social__link:hover {
             @extend %no-underline;
         }
-
-        @include bp($foundation-small, $foundation-med) {
-            bottom: 50px;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-        }
     }
 
     @include bp($foundation-small, $foundation-med) {
@@ -199,11 +111,24 @@
             margin-top: 2.25em;
         }
     }
-    @include bp($my-very-large) {
-        font-size: 16px;
+}
+.footer-row--bottom {
+    background: $color-reverse-heading;
+    padding: 3em 0;
+
+    @include bp($tablet) {
+
+        .copyright,
+        .nav-footer,
+        .social {
+            float: left;
+        }
     }
 }
-
+.footer-row--top {
+    background: $color-footer-bg;
+    padding: 3em 0;
+}
 .footer-wrapper {
     width: 100%;
 }

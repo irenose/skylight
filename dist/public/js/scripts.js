@@ -303,11 +303,30 @@ ww.carousels = (function(){
             $('.slick-carousel').slick({
                 prevArrow: '<button type="button" class="my-slick-prev"><img src="http://skylightspecialist.dev/assets/images/prev-arrow.png"></button>',
                 nextArrow: '<button type="button" class="my-slick-next"><img src="http://skylightspecialist.dev/assets/images/next-arrow.png"></button>',
-                infinite: true,
                 speed: 500,
                 fade: true,
                 slide: 'div',
                 cssEase: 'linear'
+            });
+
+            $('.slick-carousel-cards').slick({
+                arrows: false,
+                dots: true,
+                speed: 500,
+                cssEase: 'linear',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            dots: true,
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         },
     };
