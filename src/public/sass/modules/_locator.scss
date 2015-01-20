@@ -1,0 +1,66 @@
+/*-----------------------
+  @HEADING
+------------------------*/
+.locator {
+    padding: $row-padding-vertical $row-padding-horizontal ($row-padding-vertical / 2);
+}
+
+.locator__heading {
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.locator__heading__link {
+    font-size: .5em;
+    text-decoration: underline;
+}
+
+/*-----------------------
+  @INSTALLER CARDS
+------------------------*/
+.installer {
+    @extend %centered;
+    background: #fff;
+
+    &.my_infowindow {
+        left: 10px;
+
+        .card__body {
+            padding: $padding-card ($padding-card / 2) 0;
+        }
+        .card__footer {
+            border: none;
+            padding: ($padding-card / 2) ($padding-card / 2) $padding-card;
+        }
+    }
+    img.icon-pin--fancy {
+        @extend %block;
+        height: 40px;
+        margin: 0 auto 1em;
+        width: 50px;
+    }
+}
+
+.installer__name {
+    margin: 0;
+    margin: 0 0 1.2em;
+}
+
+.installer__rating,
+.installer__address,
+.installer__phone {
+    color: #868686;
+    font-family: $font-family-default;
+    margin: 1em 0 0;
+}
+
+.installer__name,
+.installer__address {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 190px;
+}
+
+.installer__phone {
+    @extend %bold;
+}
