@@ -399,7 +399,7 @@ ww.conditional_modals = (function() {
             s.$modal.add(s.$modal_screen).removeClass('modal--is-open');
 
             // prepare for next opening
-            s.$modal_body.empty();
+            //s.$modal_body.empty();
         },
     };
 })();
