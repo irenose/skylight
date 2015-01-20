@@ -9,8 +9,8 @@
     ----------------------------------------------*/
 ?>
         <div class="small-12 large-6 columns">
-            <h1 class="normal-weight">Contact <?= $installer_array[0]->name; ?></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h1 class="normal-weight">Contact Us, And Things Will Be Looking Up.</h1>
+            <p>How can we help? Let us know if we can answer any questions, or if you're ready to start transforming your home with the beauty of daylight and fresh air. We look forward to working with you, and giving you your own slice of the sky.</p>
         </div>
         <div class="small-12 large-4 large-offset-2 columns hours">
             <?php
