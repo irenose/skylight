@@ -22,7 +22,7 @@
     font-size: 14px;
     margin: 0 auto;
     max-width: $page-max-width;
-    text-align: center;
+    text-align: left;
 
     .columns:nth-child(3) {
 
@@ -38,8 +38,19 @@
             padding-top: 30px;
         }
     }
-    .dealer-info {
-        
+    .dealer-info-container {
+        display: inline-block;
+
+        .dealer-info {
+            display: inline-block;
+        }
+        .address,
+        .numbers {
+            display: inline-block;
+        }
+        .hours {
+            display: inline-block;
+        }
     }
     .logo {
         @extend %centered;
@@ -128,6 +139,14 @@
 .footer-row--top {
     background: $color-footer-bg;
     padding: 3em 0;
+
+    @include bp($tablet) {
+
+        .dealer-info-container,
+        .five-star--top {
+            float: left;
+        }
+    }
 }
 .footer-wrapper {
     width: 100%;
