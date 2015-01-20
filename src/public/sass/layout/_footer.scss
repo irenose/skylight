@@ -1,10 +1,22 @@
 .five-star {
 
+    .icon-five-star {
+        line-height: 0;
+        height: 90px;
+        width: 90px;
+    }
 }
 .five-star--bottom {
 
     @include bp($foundation-small, $foundation-med) {
-        width: 40%
+        bottom: 40px;
+        left: 8%;
+        position: absolute;
+    }
+    @include bp($foundation-med, $tablet) {
+        bottom: 80px;
+        left: 4%;
+        position: absolute;
     }
     @include bp($tablet) {
         display: none;
@@ -12,6 +24,9 @@
 }
 .five-star--top {
     display: none;
+    line-height: 0;
+    text-align: center;
+    width: 10%;
 
     @include bp($tablet) {
         display: block;
@@ -19,71 +34,141 @@
 }
 
 .footer-row {
-    font-size: 14px;
+    font-size: .875em;
     margin: 0 auto;
     max-width: $page-max-width;
+    padding: {
+        left: 8%;
+        right: 8%;
+    }
     text-align: left;
 
-    .columns:nth-child(3) {
-
-        @include bp($foundation-small, $foundation-large) {
-            clear: left;
+    @include bp($foundation-large) {
+        padding: {
+            left: 2%;
+            right: 2%;
         }
     }
-    .columns:nth-child(1n + 3) {
-
-        @include bp($foundation-med, $foundation-large) {
-            border-top: 1px solid $color-grey;
-            margin-top: 20px;
-            padding-top: 30px;
+    @include bp($my-very-large) {
+        padding: {
+            left: 4%;
+            right: 4%;
         }
     }
-    .dealer-info-container {
-        display: inline-block;
-
-        .dealer-info {
-            display: inline-block;
-        }
-        .address,
-        .numbers {
-            display: inline-block;
-        }
-        .hours {
-            display: inline-block;
-        }
+}
+.footer-row--bottom {
+    background: $color-reverse-heading;
+    padding: {
+        bottom: 3em;
+        top: 3em;
     }
-    .logo {
-        @extend %centered;
-        display: none;
-        position: static;
 
-        img {
-            margin-bottom: 5px;
-            max-height: 30%;
-            max-width: 40%;
-        }
-
-        @include bp($foundation-large) {
-            display: block;
-        }
-    }
     .copyright {
         color: $color-social-icons;
-        font-size: 0.857em;
-        width: 10%;
+        width: 10em;
+
+        @include bp($foundation-small, $tablet) {
+            bottom: 10px;
+            left: 8%;
+            position: absolute;
+        }
+        @include bp($foundation-med, $tablet) {
+            left: 4%;
+        }
+        @include bp($tablet) {
+            float: left;
+        }
+        @include bp($foundation-large) {
+            font-size: .875em;
+            top: 2px;
+        }
 
     }
     .nav-footer {
-        width: 75%;
+        margin: 0 auto;
+        max-width: 800px;
 
-        .nav-footer-container {
+        .nav-footer__container {
             margin: 0 auto;
+            text-align: center;
+            white-space: nowrap;
+            width: 100%;
 
             .nav-major {
+                text-align: left;
 
+                a {
+                    @extend %upper;
+                    color: $color-default;
+
+                    @include bp($foundation-large) {
+                        margin-right: 4%;
+                    }
+                    @include bp($my-large) {
+                        margin-right: 8%;
+                    }
+                    @include bp($my-very-large) {
+                        margin-right: 10%;
+                    }
+                }
+                a:last-child {
+                    margin-right: 0;
+                }
+
+                @include bp($foundation-small, $foundation-large) {
+                    width: 60%;
+                }
+                @include bp($foundation-large) {
+                    margin-right: 3%;
+                    min-width: 50%;
+                }
+                @include bp($my-large) {
+                    min-width: 40%;
+                }
+                @include bp($my-very-large) {
+                    margin-right: 5%;
+                    min-width: 50%;
+                }
+                a:last-child {
+                    margin-right: 0;
+                }
             }
             .nav-minor {
+                text-align: left;
 
+                a {
+                    color: $color-grey;
+
+                    @include bp($foundation-large) {
+                        margin-right: 4%;
+                    }
+                    @include bp($my-large) {
+                        margin-right: 10%;
+                    }
+                    @include bp($my-very-large) {
+                        margin-right: 11%;
+                    }
+                }
+
+                @include bp($foundation-small, $foundation-large) {
+                    width: 40%;
+                }
+                @include bp($foundation-large) {
+                    min-width: 30%;
+                }
+                @include bp($my-very-large) {
+                    min-width: 40%;
+                }
+            }
+
+            @include bp($foundation-small, $foundation-large) {
+                line-height: 2.125;
+            }
+            @include bp($tablet, foundation-large) {
+                text-align: left;
+            }
+            @include bp($foundation-large, $my-large) {
+                left: -10px;
             }
         }
 
@@ -97,6 +182,20 @@
         nav {
             display: inline-block;
         }
+
+        @include bp($foundation-small, $foundation-med) {
+            width: 100%;
+        }
+        @include bp($foundation-med, $tablet) {
+            margin: 0 0 0 auto;
+            width: 70%;
+        }
+        @include bp($tablet, $foundation-large) {
+            width: 40%;
+        }
+        @include bp($my-large) {
+            max-width: 1200px;
+        }
     }
     .social {
 
@@ -106,42 +205,121 @@
             width: 18px;
 
             @include bp($foundation-small, $foundation-med) {
-                height: 24px;
-                width: 24px;
+                height: 20px;
+                width: 20px;
             }
         }
         .social__link:hover {
             @extend %no-underline;
         }
+
+        @include bp($foundation-small, $foundation-med) {
+            bottom: 75px;
+            left: 58%;
+            position: absolute;
+        }
+        @include bp($foundation-med, $tablet) {
+            bottom: 10px;
+            left: 68%;
+            position: absolute;
+        }
+        @include bp($tablet) {
+            float: right;
+        }
     }
 
     @include bp($foundation-small, $foundation-med) {
-        padding: 40px 0 80px;
-
-        .columns:nth-child(1n + 2) {
-            margin-top: 2.25em;
-        }
+        padding-bottom: 170px;
     }
-}
-.footer-row--bottom {
-    background: $color-reverse-heading;
-    padding: 3em 0;
-
-    @include bp($tablet) {
-
-        .copyright,
-        .nav-footer,
-        .social {
-            float: left;
+    @include bp($foundation-med, $tablet) {
+        padding-bottom: 80px;
+    }
+    @include bp($foundation-large) {
+        padding: {
+            bottom: 1.5em;
+            top: 1.5em;
         }
     }
 }
 .footer-row--top {
     background: $color-footer-bg;
-    padding: 3em 0;
+    padding: {
+        bottom: 3em;
+        top: 3em;
+    }
+
+    .dealer-info-container {
+        color: $color-grey;
+        display: inline-block;
+        font-family: $font-family-display;
+        line-height: 2;
+        min-height: 90px;
+        width: 100%;
+
+        .dealer-info {
+            display: inline-block;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                width: 66%;
+            }
+        }
+        .dealer-info__header {
+            color: $color-text-light;
+        }
+        .address,
+        .numbers {
+            display: inline-block;
+            margin-bottom: 1.75em;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                margin-bottom: 0;
+                width: 50%;
+            }
+        }
+        .hours {
+            display: inline-block;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                width: 33%;
+            }
+        }
+
+        @include bp($tablet) {
+            width: 90%;
+        }
+        @include bp($foundation-large) {
+            width: 65%;
+        }
+    }
+    .dealer-info-container > * {
+
+        @include bp($foundation-large) {
+            vertical-align: top;
+        }
+    }
+    .logo {
+        display: none;
+        margin-right: 5%;
+        text-align: left;
+        width: 20%;
+
+        img {
+            width: 80%;
+            max-height: 150px;
+            max-width: 250px;
+        }
+
+        @include bp($foundation-large) {
+            display: block;
+        }
+    }
 
     @include bp($tablet) {
 
+        .logo,
         .dealer-info-container,
         .five-star--top {
             float: left;

@@ -25,19 +25,6 @@
             <?=$this->load->view('partials/_svg-icon-five-star.php');?>
         </div>
         <div class="copyright"><span>&#169; Copyright <?php echo date("Y") ?></span></div>
-        <?php
-            if($show_installer_header_footer) {
-                //SHOW INSTALLER SPECIFIC CONTENT
-                echo '<div class="nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
-                echo '<a href="' . $installer_base_url . '/gallery">Gallery</a>';
-                echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>';
-                echo '<a href="' . $installer_base_url . '/installing">Installing</a></nav>';
-                echo '<nav class="nav-minor"><a href="' . $installer_base_url . '/about">About</a>';
-                echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>';
-                echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>';
-                echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div></div>';
-            }
-        ?>
         <div class="social">
             <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
                 <i class="icon icon-twitter">
@@ -68,5 +55,18 @@
                 </i>
             </a>
         </div>
+        <?php
+            if($show_installer_header_footer) {
+                //SHOW INSTALLER SPECIFIC CONTENT
+                echo '<div class="nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
+                echo '<a href="' . $installer_base_url . '/gallery">Gallery</a>';
+                echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>';
+                echo '<a href="' . $installer_base_url . '/installing">Installing</a></nav>';
+                echo '<nav class="nav-minor"><a href="' . $installer_base_url . '/about">About</a>';
+                echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>';
+                echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>';
+                echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div></div>';
+            }
+        ?>
     </div>
 </section>
