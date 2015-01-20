@@ -339,7 +339,7 @@ class Page extends CI_Controller {
                     $redirect_link = str_replace('catalog', $_COOKIE['installer_url'], current_url());
                     redirect($redirect_link);
                 }
-                $template = 'template_bv';
+                $template = 'template_general';
                 $data['installer_base_url'] = base_url() . 'catalog';
                 $data['canonical_url'] = base_url() . 'catalog';
                 $data['show_breadcrumb_modal'] = FALSE;
@@ -419,6 +419,7 @@ class Page extends CI_Controller {
                 Global Landing Page
                 Search for Installer
             ------------------------*/
+            $template = 'template_general';
             $data['canonical_url'] = base_url();
             $data['category_url'] = 'home';
             $data['meta_array'] = array(
@@ -427,6 +428,8 @@ class Page extends CI_Controller {
                 'keywords' => ''
             );
             $data['show_installer_header_footer'] = FALSE;
+            $data['product_category_array'] = $this->page_model->get_bv_product_categories();
+            
             if($this->input->post('installer_search') == 'yes') {
                 $data['search_zip_code'] = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
                 $data['installer_search_array'] = $this->page_model->get_closest_installers($data['search_zip_code']);

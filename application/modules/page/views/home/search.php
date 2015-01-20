@@ -5,3 +5,6 @@
 	<input type="text" name="zip">
 	<input type="submit" value="Find Installers">
 </form>	
+<?php
+	echo $this->load->view('products/index');
+?>
