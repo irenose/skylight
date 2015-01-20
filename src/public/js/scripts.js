@@ -41,6 +41,7 @@ ww.main = (function() {
             ww.conditional_modals.init();
             ww.scrollto.init();
             ww.maps.init();
+            ww.search_maps.init();
             ww.anchors_to_options.init();
         },
     };
@@ -461,6 +462,62 @@ ww.maps = (function() {
                     });
                 }
             });          
+        },
+    };
+})();
+
+/*-----------------------
+  @SEARCH PAGE MAPS
+
+  Google Maps API v3
+  https://developers.google.com/maps/documentation/javascript/examples/place-details
+------------------------*/
+ww.search_maps = (function() {
+    var s = {
+        el: 'search-map',
+    };
+
+    return {
+        init: function() {
+            if ($("#" + s.el).length) {
+                google.maps.event.addDomListener(window, 'load', this.draw_map());
+            }
+        },
+
+        draw_map: function() {
+            var coordinates = {
+                lat: $('#search-map').attr('data-lat'),
+                lng: $('#search-map').attr('data-long')
+            };
+            var geocoder = new google.maps.Geocoder();
+
+            var settings = {
+                $el: $('#search-map'),
+                map_options: {
+                    center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                    zoom: 8,
+                    // UI options
+                    mapTypeControl: false,
+                    panControl: false,
+                    scrollwheel: false,
+                    streetViewControl: false, // pegman
+                }
+            };
+            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+
+            $('.installer').each(function() {
+                var encoded_address = $(this).attr('data-address');
+                geocoder.geocode( { 'address': encoded_address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        ww_marker = new google.maps.Marker({
+                            map: ww_map,
+                            position: results[0].geometry.location
+                        });
+
+                    }
+                });
+            });
+        
         },
     };
 })();

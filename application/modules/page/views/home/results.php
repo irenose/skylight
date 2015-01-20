@@ -52,14 +52,14 @@
 		            </menu>
 		        </div>
 		        <div class="tabs-content">
-		            <div id="map" class="tabs-content__item" data-lat="<?=$installer_search_array[0]->latitude?>" data-long="<?=$installer_search_array[0]->longitude?>"><!-- map inserted here --></div>
+		            <div id="search-map" class="tabs-content__item" data-lat="<?=$installer_search_array[0]->latitude?>" data-long="<?=$installer_search_array[0]->longitude?>"><!-- map inserted here --></div>
 		            <div id="list" class="push-top--half tabs-content__item">
 		                <div class="constrained">
 		                    <ul class="slick" data-carousel-type="locator" data-equal-heights aria-labelledby="hank">
 		                        <?php foreach ($installer_search_array as $installer): ?>
 		                        <li class="slick__item">
 		                            <div class="card shadowed">
-		                                <div class="installer" data-coordinates='{"lat":<?=$installer->latitude?>, "lng":<?=$installer->longitude?>}'>
+		                                <div class="installer" data-coordinates='{"lat":<?=$installer->latitude?>, "lng":<?=$installer->longitude?>}' data-address="<?=urlencode($installer->address . ' ' . $installer->city . ' ' . $installer->state . ' ' . $installer->zip)?>">
 		                                    <div class="card__body">
 		                                        <img src="<?=asset_url('images/icon-pin--fancy.png')?>" class="icon-pin--fancy" aria-hidden="true">
 		                                        <h3 class="installer__name">
@@ -69,7 +69,7 @@
 
 		                                        </div>
 		                                        <div class="installer__address">
-		                                            <?=$installer->address?>
+		                                            <?=$installer->address . '<br>' . $installer->city . ',' . $installer->state . ' ' . $installer->zip?>
 		                                        </div>
 		                                        <div class="installer__phone">
 		                                            <?=$installer->phone1?>
