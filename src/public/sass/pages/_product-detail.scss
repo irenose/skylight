@@ -1,0 +1,263 @@
+.product-detail {
+    font-family: $font-family-display;
+
+    .columns {
+        @include bp($foundation-small, $tablet) {
+            width: 100%;
+        }
+    }
+    .product-description {
+
+        .product-category {
+            color: $color-primary;
+            margin: 0 auto .5em;
+            padding: 0;
+
+            @include bp($mobile-landscape) {
+                font-size: .875em;
+            }
+        }
+    }
+    .product-icon-wrapper {
+        width: 100%;
+        
+        .product-icons {
+            @extend %unstyled;
+            margin: 2em auto 1em;
+            max-width: 130px;
+
+            li {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0;
+                padding: 5px;
+                width: 48%;
+
+                img {
+                    border: 1px solid $color-secondary;
+                    border-radius: 100%;
+                }
+            }
+            li:before {
+                content: '';
+            }
+        }
+    }
+    .product-accreditations-wrapper {
+        width: 100%;
+
+        .product-accreditations {
+            @extend %centered;
+            @extend %unstyled;
+            margin: 2.5em auto 3em;
+            max-width: 320px;
+
+            li {
+                display: inline-block;
+                margin: 0;
+                padding: 5px;
+                width: 48%;
+                vertical-align: middle;
+
+                .icon-no-leak {
+                    height: 75%;
+                    line-height: 0;
+                    margin: 0 auto;
+                    vertical-align: middle;
+                    width: 75%;
+                }
+                .incentive {
+                    height: 8em;
+                    width: 8em;
+
+                    @include bp($mobile-landscape) {
+                        height: 9em;
+                        width: 9em;
+                    }
+                }
+            }
+            li:before {
+                content: '';
+            }
+        }
+    }
+    .product-images {
+
+        @include bp($tablet) {
+            padding: 0 2%;
+        }
+        @include bp($foundation-large) {
+            padding: 0 5%;
+        }
+    }
+    .product-image {
+        margin: 0 auto;
+        width: 100%;
+
+        @include bp($mobile-landscape) {
+            width: 90%;
+        }
+        @include bp($foundation-med) {
+            width: 85%;
+        }
+        @include bp($tablet) {
+            width: 100%;
+        }
+    }
+
+    p {
+        line-height: 1.75;
+    }
+    ul {
+        color: $color-default-light;
+        list-style: none;
+        padding-left: 1.75em;
+
+        li {
+            margin-bottom: .75em;
+        }
+        li:before {
+            color: $color-primary;
+            content: '•';
+            display: block;
+            font-size: 1.5em;
+            left: -20px;
+            max-height: 0;
+            max-width: 0;
+            position: relative;
+            top: -.25em;
+        }
+
+        @include bp($foundation-small, $mobile-landscape) {
+            padding-left: 1.25em;
+        }
+        @include bp($mobile-landscape) {
+            font-size: .875em;
+        }
+    }
+}
+
+.product-cards {
+    @extend %centered;
+
+    .product-card-wrapper {
+        padding: 2% 3%;
+
+        @include bp($mobile-landscape, $foundation-med) {
+            padding: 2% 4%;
+        }
+        @include bp($foundation-med, $tablet) {
+            padding: 2% 5%;
+        }
+         @include bp($tablet) {
+            padding: 10% 3%;
+        }
+    }
+    .product-card {
+        background: #fff;
+        box-shadow: 0px 4px 0px 0px rgba(225,225,225,1);
+        padding: 8%;
+
+        .img-wrapper {
+            padding: 2%;
+        }
+
+        h3 {
+            margin-bottom: 6%;
+        }
+        img {
+            border-radius: 100%;
+            margin-bottom: 14%;
+            width: 100%;
+        }
+        p {
+            color: $color-default-light;
+            height: 7.5em;
+            margin: 0;
+
+            @include bp($tablet) {
+                height: 10.5em;
+            }
+            @include bp($foundation-large) {
+                height: 7.5em;
+                padding: 0 2%;
+            }
+            @include bp($my-large) {
+                padding: 0 4%;
+            }
+        }
+
+        @include bp($foundation-small, $foundation-med) {
+            margin: 0 auto;
+            max-width: 350px;
+        }
+        @include bp($foundation-med, $tablet) {
+            margin: 0 auto;
+            max-width: 340px;
+        }
+        @include bp($tablet) {
+            &:nth-child(1) {
+                margin-left: 0;
+            }
+        }
+        @include bp($foundation-large) {
+            padding: 10%;
+        }
+    }
+}
+
+.blinds {
+    .columns {
+        @include bp($foundation-small, $tablet) {
+            width: 100%;
+        }
+        &.medium-push-7 {
+            @include bp($foundation-small, $tablet) {
+                left: 0;
+            }
+        }
+    }
+    p {
+        color: $color-default-light;
+    }
+    
+    @include bp($foundation-small, $mobile-landscape) {
+        background-position: 0% 420px;
+        background-size: 110%;
+        padding-bottom: 350px;
+    }
+    @include bp($mobile-landscape, $tablet) {
+        background-position: 0% 400px;
+        background-size: 110%;
+        padding-bottom: 400px;
+    }
+
+    background-image: url('../images/backgrounds/blinds-bg.jpg');
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+}
+
+.no-leak {
+    background-image: url('../images/backgrounds/after-installing-bg.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .header-statement {
+        @include bp($my-large) {
+            padding: {
+                left: 30%;
+                right: 30%;
+            }
+        }
+    }
+    .icon-no-leak {
+        height: 100px;
+        margin-bottom: 20px;
+        width: 100px;
+    }
+    p {
+        color: $color-grey-border;
+    }
+}

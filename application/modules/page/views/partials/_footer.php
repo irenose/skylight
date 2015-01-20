@@ -1,36 +1,35 @@
 <section class="footer-wrapper">
-    <div class="row footer">
-        <div class="small-12 medium-6 large-3 columns logo">
+    <div class="row footer-row footer-row--top">
+        <div class="logo">
             <a href="<?=$installer_base_url?>" title="Home">
                 <?= $dealer_logo_display; ?>
             </a>
-            <div class="copyright">
-                <?php
-                    $copyright = (isset($installer_array) && count($installer_array) > 0) ? date('Y') . ' ' . $installer_array[0]->name : date('Y') . ' VELUX';
-                    echo '&copy; ' . $copyright;
-                ?>
-            </div>
-            <div class="social">
-                <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
-                    <i class="icon icon-twitter--reversed">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-twitter--reversed"></use>
-                        </svg>
-                    </i>
-                </a>
-                <a href="https://facebook.com/VELUXAmerica" target="_blank" class="social__link">
-                    <i class="icon icon-facebook--reversed">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-facebook--reversed"></use>
-                        </svg>
-                    </i>
-                </a>
-            </div>
         </div>
+        <div class="dealer-info">
+            <?php
+                if($show_installer_header_footer) {
+                    //SHOW INSTALLER SPECIFIC CONTENT
+                    echo '<div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>Phone: ' . $installer_array[0]->phone1 . '<br>Fax: ' . $installer_array[0]->fax . '</div>';
+                    if($installer_array[0]->dealer_hours != '') {
+                        echo '<div class="hours"><span class="dealer-info__header">Hours</span><br>' . nl2br($installer_array[0]->dealer_hours) . '</div>';
+                    }
+                }
+            ?>
+        </div>
+        <div class="five-star five-star--top">
+            <?=$this->load->view('partials/_svg-icon-five-star.php');?>
+        </div>
+    </div>
+    <div class="row footer-row footer-row--bottom">
+        <div class="five-star five-star--bottom">
+            <?=$this->load->view('partials/_svg-icon-five-star.php');?>
+        </div>
+        <div class="copyright"><span>&#169; Copyright <?php echo date("Y") ?></span></div>
         <?php
             if($show_installer_header_footer) {
                 //SHOW INSTALLER SPECIFIC CONTENT
-                echo '<div class="small-12 medium-6 large-3 columns nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
+                echo '<div class="nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
+                echo '<a href="' . $installer_base_url . '/gallery">Gallery</a>';
                 echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>';
                 echo '<a href="' . $installer_base_url . '/installing">Installing</a></nav>';
                 echo '<nav class="nav-minor"><a href="' . $installer_base_url . '/about">About</a>';
@@ -39,19 +38,35 @@
                 echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div></div>';
             }
         ?>
-        <div class="small-12 medium-6 large-3 columns dealer-info">
-            <?php
-                if($show_installer_header_footer) {
-                    //SHOW INSTALLER SPECIFIC CONTENT
-                    echo '<div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '</div>';
-                    if($installer_array[0]->dealer_hours != '') {
-                        echo '<div class="hours"><span class="dealer-info__header">Hours</span><br>' . nl2br($installer_array[0]->dealer_hours) . '</div>';
-                    }
-                }
-            ?>
-        </div>
-        <div class="small-12 medium-6 large-3 columns accreditations">
-            <img src="<?=asset_url('images/5-star.png')?>" alt>
+        <div class="social">
+            <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
+                <i class="icon icon-twitter">
+                    <svg class="icon__svg">
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-twitter"></use>
+                    </svg>
+                </i>
+            </a>
+            <a href="https://facebook.com/VELUXAmerica" target="_blank" class="social__link">
+                <i class="icon icon-facebook">
+                    <svg class="icon__svg">
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-facebook"></use>
+                    </svg>
+                </i>
+            </a>
+            <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
+                <i class="icon icon-pinterest">
+                    <svg class="icon__svg">
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-pinterest"></use>
+                    </svg>
+                </i>
+            </a>
+            <a href="https://facebook.com/VELUXAmerica" target="_blank" class="social__link">
+                <i class="icon icon-tie-fighter">
+                    <svg class="icon__svg">
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-tie-fighter"></use>
+                    </svg>
+                </i>
+            </a>
         </div>
     </div>
 </section>
