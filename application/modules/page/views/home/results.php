@@ -96,11 +96,6 @@
 		                        <?php endforeach; ?>
 		                    </ul>
 		                </div>
-		                <div class="centered push-top--half push-bottom--half squeezed-3">
-		                    <small><strong>5-Star skylight specialists</strong> are companies that specialize in VELUX products and have achieved our company's highest standard of certification as an independent installer of our product. This company has the ability and desire to assist you with all of your VELUX product needs.</small>
-		                    <br><br>
-		                    <small><strong>3-Star skylight specialists</strong> may be able to assist you with VELUX only projects, but VELUX products may not be their main emphasis.</small>
-		                </div>
 		            </div>
 		        </div>
 		    </div>
