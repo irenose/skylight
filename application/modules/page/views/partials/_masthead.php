@@ -10,7 +10,7 @@
         </div>
         <div class="masthead__section masthead__section--small masthead__section--velux">
             <div class="velux-logo">
-                <img src="<?=asset_url('images/velux-logo.png')?>" alt>
+                <img src="<?=asset_url('images/velux-logo.png')?>" alt="VELUX Skylights">
             </div>
         </div>
         <div class="masthead__section masthead__section--small masthead__section--phone">

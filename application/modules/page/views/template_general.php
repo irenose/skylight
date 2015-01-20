@@ -81,7 +81,7 @@
         <section class="masthead-wrapper">
             <div class="branding">
                 <a href="<?=base_url()?>" class="brand" title="Home">
-                    <img src="http://skylightspecialist.com/_assets/images/global/logo_velux_skylights.jpg">
+                    <img src="<?=asset_url('images/velux-logo.png')?>" alt="VELUX Skylights">
                 </a>
             </div>
         </section>
