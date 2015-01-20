@@ -142,6 +142,7 @@ class Page extends CI_Controller {
                                     default:
                                         $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
                                         if(count($data['product_info_array']) > 0) {
+                                            $data['product_info_array'][0]->product_subcategory_name = $this->page_model->get_category_name_by_id($data['product_info_array'][0]->primary_category_id);
                                             $data['meta_array'] = array(
                                                 'title' => $data['product_info_array'][0]->product_name,
                                                 'description' => '',
@@ -386,6 +387,7 @@ class Page extends CI_Controller {
                                 }
                                 $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
                                 if(count($data['product_info_array']) > 0) {
+                                    $data['product_info_array'][0]->product_subcategory_name = $this->page_model->get_category_name_by_id($data['product_info_array'][0]->primary_category_id);
                                     $data['meta_array'] = array(
                                         'title' => $data['product_info_array'][0]->product_name,
                                         'description' => '',
@@ -429,7 +431,7 @@ class Page extends CI_Controller {
             );
             $data['show_installer_header_footer'] = FALSE;
             $data['product_category_array'] = $this->page_model->get_bv_product_categories();
-            
+
             if($this->input->post('installer_search') == 'yes') {
                 $data['search_zip_code'] = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
                 $data['installer_search_array'] = $this->page_model->get_closest_installers($data['search_zip_code']);

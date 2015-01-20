@@ -28,30 +28,23 @@
     /******************************* ABOUT INSTALLER COPY *************************/ 
     if($installer_array[0]->about_dealer_text != '') {
 ?>
-<section class="page-row about-dealer">
-    <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
-    <div class="dealer-image polaroid--round">
-        <?php
-            if($about_dealer_image != '') {
-                echo $about_dealer_image;
-            }
-        ?>
-    </div>
+        <section class="page-row about-dealer intro-statement intro-statement--squeezed">
+            <?php
+                if($about_dealer_image != '') {
+                    echo '<div class="polaroid--round">' . $about_dealer_image . '</div>';
+                }
+            ?>
+            <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
+            <p class="about-dealer-text"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
+        </section>
 <?php
-    /*---------------------------------------------
-        About Dealer Text
-    ----------------------------------------------*/
-    $word_count = str_word_count($installer_array[0]->about_dealer_text);
-    $column_class = ($word_count > 50) ? ' text-columns-2' : '';
-?>
-    <p class="about-dealer-text<?= $column_class; ?>"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
-<?php
-    }
     /*---------------------------------------------
         End About Dealer Text
     ----------------------------------------------*/
+    }
+    
 ?>
-</section>
+
 
 <?php
     /******************************* OPTIONAL PHOTO GALLERY *************************/ 

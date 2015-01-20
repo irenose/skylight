@@ -1,7 +1,9 @@
 <?php 
     /******************************* BREADCRUMB *************************/ 
 ?>
-<?=$this->load->view('partials/_breadcrumb')?>
+<div class="bg-grey border-bottom-grey">
+	<?=$this->load->view('partials/_breadcrumb')?>
+</div>
 
 <?php 
     /******************************* STATIC CATEGORY HERO WITH CARD *************************/ 

@@ -289,6 +289,20 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_category_name_by_id($product_category_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
+		$where = array('product_category_id' => $product_category_id, 'product_category_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		if($query->num_rows() == 1) {
+			foreach($query->result() as $result) {
+				return $result->product_category_name;
+			}
+		} else {
+			return '';
+		}
+	}
+
 /**********************************************************************************************************************************
 		HOMEPAGE FUNCTIONS
 ***********************************************************************************************************************************/

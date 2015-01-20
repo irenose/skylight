@@ -12,7 +12,7 @@
 <section class="page-row bg-grey-dark reversed 10-year-warranty after-installation">
     <h2 class="normal-weight upper">The VELUX Warranty</h2>
     <p class="text-columns-2 ten-year-warranty">As the world leader in roof windows and skylights, we stand behind our products with a promise of lasting service and quality. We do offer the VELUX 20/10/5 years limited product warranty for specific product coverage issues. If you have concerns about your VELUX products that may require a warranty claim, the warranty brochure includes specific steps for you to follow that will help VELUX better assist you.</p>
-    <a href="<?=site_url('content-uploads/resources/product-warranty.pdf')?>" class="btn">Download PDF</a>
+    <a href="<?=site_url('content-uploads/resources/product-warranty.pdf')?>" class="btn" target="_blank">Download PDF</a>
 </section>
 
 <?php
