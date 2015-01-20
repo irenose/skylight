@@ -504,9 +504,12 @@ ww.search_maps = (function() {
                 }
             };
             var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
-
+            var infowindow = new google.maps.InfoWindow();
+            var count = 0;
             $('.installer').each(function() {
+                count++;
                 var encoded_address = $(this).attr('data-address');
+                var info_window_content = $(this).clone().addClass("my_infowindow").get(0);
                 geocoder.geocode( { 'address': encoded_address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         ww_marker = new google.maps.Marker({
@@ -515,6 +518,12 @@ ww.search_maps = (function() {
                         });
 
                     }
+                    google.maps.event.addListener(ww_marker, 'click', (function(ww_marker) {
+                        return function() {
+                            infowindow.setContent(info_window_content);
+                            infowindow.open(ww_map, ww_marker);
+                        };
+                    })(ww_marker));
                 });
             });
         
