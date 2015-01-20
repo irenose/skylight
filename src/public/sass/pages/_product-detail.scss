@@ -105,11 +105,12 @@
         }
     }
 
-    p {
+    div {
         line-height: 1.75;
     }
     ul {
         color: $color-default-light;
+        line-height: 1.5;
         list-style: none;
         padding-left: 1.75em;
 

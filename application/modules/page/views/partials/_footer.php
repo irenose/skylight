@@ -40,7 +40,7 @@
                     </svg>
                 </i>
             </a>
-            <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
+            <a href="https://www.pinterest.com/veluxamerica" target="_blank" class="social__link">
                 <i class="icon icon-pinterest">
                     <svg class="icon__svg">
                         <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-pinterest"></use>
@@ -68,5 +68,6 @@
                 echo '<a href="' . $installer_base_url . '/contact">Contact</a></nav></div></div>';
             }
         ?>
+        <div class="footer-grey-border"></div>
     </div>
 </section>
