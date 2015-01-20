@@ -70,7 +70,7 @@
 
 		                                        </div>
 		                                        <div class="installer__address">
-		                                            <?=$installer->address . '<br>' . $installer->city . ',' . $installer->state . ' ' . $installer->zip?>
+		                                            <?=$installer->address . '<br>' . $installer->city . ', ' . $installer->state . ' ' . $installer->zip?>
 		                                        </div>
 		                                        <div class="installer__phone">
 		                                            <?=$installer->phone1?>
