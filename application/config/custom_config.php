@@ -63,6 +63,9 @@ $config['resources_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/re
 $config['dealer_assets_dir'] = '/content-uploads/dealer-assets/';
 $config['dealer_assets_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/dealer-assets/';
 
+$config['brochure_assets_dir'] = '/content-uploads/brochure-images/';
+$config['brochure_assets_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/brochure-images/';
+
 /*-----------------------
   @Upload Paths
 ------------------------*/

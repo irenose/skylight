@@ -10,16 +10,16 @@
 			$count++;
 			if($dealer->dealer_status != 'delete') {
 				if($dealer->site_status == 'active') {
-					$status = '<span style="color:#02922a;font-weight:bold;">Active</span>';
+					$status = '<span class="active" style="font-weight:bold;">Active</span>';
 				} else {
-					$status = '<span style="color:#a2a2a2">Inactive</span>';
+					$status = '<span class="inactive">Inactive</span>';
 				}
 				
 				
-				echo '<div class="dealer_link" style="float:left;width:33%;"><b><a href="/installer-admin/home/' . $dealer->dealer_id . '">' . $dealer->name  . '</a></b><br /><i>' . $dealer->city . ', ' . $dealer->state . '</i><br />Site Status: ' . $status . '</div>';
+				echo '<div class="dealer_link" style="float:left;width:33%;font-family:arial;font-size:12px;"><b><a href="/installer-admin/home/' . $dealer->dealer_id . '">' . $dealer->name  . '</a></b><br /><i>' . $dealer->city . ', ' . $dealer->state . '</i><br />Site Status: ' . $status . '</div>';
 			}
 			if($count == 3) {
-				echo '<div class="clearfix" style="height:50px;"> </div>';
+				echo '<div class="clearfix" style="height:75px;"> </div>';
 				$count = 0;
 			}
 		}

@@ -48,7 +48,7 @@
         echo '<tr class="' . $bg_color . '">' . "\n";
         echo '<td width="35%" class="td_border"><span>' .  $category->product_category_name  . '</span></td>' . "\n";
         echo '<td width="10%" class="td_border"><span' . $span_class . '>' .  $status . '</span></td>' . "\n";
-        echo '<td class="td_border">' . $activate_link . '<a href="/installer-admin/products/update/' . $category->product_category_id . '" class="list_action">Update Products</a></td>' . "\n";
+        echo '<td class="td_border"><a href="/installer-admin/products/update/' . $category->product_category_id . '" class="list_action">Update Products</a>' . $activate_link . '</td>' . "\n";
         echo '</tr>' . "\n";
     }
 ?>

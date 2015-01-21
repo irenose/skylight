@@ -63,6 +63,61 @@
     }
 }
 
+.icon-phone {
+    display: inline-block;
+    height: 18px;
+    position: relative;
+    width: 18px;
+    vertical-align: middle;
+
+    .icon__svg {
+        fill: $color-primary;
+    }
+}
+
+/*-----------------------
+  @SOCIAL
+------------------------*/
+.icon-twitter,
+.icon-facebook,
+.icon-pinterest,
+.icon-tie-fighter {
+    .icon__svg {
+        fill: $color-social-icons;
+    }
+}
+
+/*-----------------------
+  @ICON-LOADER
+------------------------*/
+
+// http://codepen.io/aurer/pen/jEGbA
+.icon-loader {
+
+}
+#icon-loader #runner {
+    fill: white;
+}
+#icon-loader #background {
+    fill: #666;
+}
+
+/*-----------------------
+  @ABOUT
+------------------------*/
+.icon-about {
+    display: inline-block;
+    height: 36px;
+    position: relative;
+    width: 36px;
+    vertical-align: bottom;
+
+    .icon__svg {
+        fill: $color-primary;
+    }
+}
+
+
 /*-----------------------
   @COMPASS
 ------------------------*/
@@ -117,6 +172,22 @@
 }
 
 /*-----------------------
+  @FIVE-STAR
+------------------------*/
+.icon-five-star {
+    display: inline-block;
+    position: relative;
+}
+
+/*-----------------------
+  @NO-LEAK
+------------------------*/
+.icon-no-leak {
+    display: inline-block;
+    position: relative;
+}
+
+/*-----------------------
   @VIDEO
 ------------------------*/
 .icon-play {
@@ -152,30 +223,4 @@
         transition: all, .2s, ease;
         z-index: 2;
     }
-}
-
-/*-----------------------
-  @SOCIAL
-------------------------*/
-.icon-facebook--reversed,
-.icon-twitter--reversed,
-.icon-pinterest--reversed {
-    .icon__svg {
-        fill: $color-text-light;
-    }
-}
-
-/*-----------------------
-  @ICON-LOADER
-------------------------*/
-
-// http://codepen.io/aurer/pen/jEGbA
-.icon-loader {
-
-}
-#icon-loader #runner {
-    fill: white;
-}
-#icon-loader #background {
-    fill: #666;
 }

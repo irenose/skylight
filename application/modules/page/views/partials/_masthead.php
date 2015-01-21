@@ -10,13 +10,13 @@
         </div>
         <div class="masthead__section masthead__section--small masthead__section--velux">
             <div class="velux-logo">
-                <img src="<?=asset_url('images/velux-logo.png')?>" alt>
+                <img src="<?=asset_url('images/velux-logo.png')?>" alt="VELUX Skylights">
             </div>
         </div>
         <div class="masthead__section masthead__section--small masthead__section--phone">
             <?php
                 if($show_installer_header_footer) {
-                    echo '<div class="phone"><a href="tel:' . $installer_array[0]->phone1 . '" class="nav-header__link phone-number"><img src="' . asset_url('images/phone.png') . '" alt>' . $installer_array[0]->phone1 . '</a></div>';
+                    echo '<div class="phone"><a href="tel:' . $installer_array[0]->phone1 . '" class="nav-header__link phone-number"><i class="icon icon-phone"><svg class="icon__svg"><use xlink:href="' . asset_url('images/sprites/sprite.svg') . '#icon-phone"></use></svg></i>' . $installer_array[0]->phone1 . '</a></div>';
                 }
             ?>
         </div>

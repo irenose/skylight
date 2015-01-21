@@ -78,7 +78,7 @@
 <body>
     <!-- HEADER -->
     <div class="page">
-        <?=$this->load->view('partials/_masthead');?>
+        <?=$this->load->view('partials/_paid-search-masthead');?>
 
         <main role="main">
         <?php

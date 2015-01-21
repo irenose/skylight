@@ -1,7 +1,10 @@
 <?php 
     /******************************* SECONDARY NAV *************************/ 
+    /*
+        REMOVED 1-19-15
+        $this->load->view('partials/_navigation-secondary');
+    */
 ?>
-<?=$this->load->view('partials/_navigation-secondary')?>
 
 <?php 
     /******************************* INTRO COPY *************************/ 

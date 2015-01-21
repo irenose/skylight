@@ -69,7 +69,7 @@
                         }
                         echo '<tr class="' . $bg_color . '">' . "\n";
                         echo '<td width="10%" class="td_border"><input type="checkbox" name="products[]" value="' . $product->product_id . '"' . $checked . '></td>' . "\n";
-                        echo '<td width="15%" class="td_border"><img src="/product_images/' . $product->product_image . '_th.' . $product->extension . '" border="0"></td>' . "\n";
+                        echo '<td width="15%" class="td_border"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" border="0" style="width:75px;"></td>' . "\n";
                         echo '<td width="40%" class="td_border">' . $product->product_name . '</td>' . "\n";
                         
                         $radio_checked = '';

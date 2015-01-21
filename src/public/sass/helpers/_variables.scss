@@ -2,11 +2,16 @@
 
 // dimensions
 $page-max-width: 1800px;
+$ps-masthead-height: 120px;
+$ps-masthead-mobile: 80px;
 $masthead-height: 78px;
 $masthead-border: 1px;
 $masthead-mobile: 70px;
 $icon: 44px;
 $icon-play: 66px;
+$row-padding-horizontal: 5%;
+$row-padding-vertical: 10%;
+$padding-card: 30px;
 
 // breakpoints
 $mobile-portrait: 320px;
@@ -40,6 +45,7 @@ $color-grey-border: #dfdfdf;
 $color-grey-dark-border: #4a4f50;
 $color-reverse-heading: #fff;
 $color-reverse: #dfdfdf;
+$color-social-icons: #5f6c71;
 $color-text-light: #f0f0f0;
 $overlay: $color-footer-bg;
 

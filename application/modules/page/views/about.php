@@ -28,30 +28,23 @@
     /******************************* ABOUT INSTALLER COPY *************************/ 
     if($installer_array[0]->about_dealer_text != '') {
 ?>
-<section class="page-row about-dealer">
-    <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
-    <div class="dealer-image polaroid--round">
-        <?php
-            if($about_dealer_image != '') {
-                echo $about_dealer_image;
-            }
-        ?>
-    </div>
+        <section class="page-row about-dealer intro-statement intro-statement--squeezed">
+            <?php
+                if($about_dealer_image != '') {
+                    echo '<div class="polaroid--round">' . $about_dealer_image . '</div>';
+                }
+            ?>
+            <h2 class="about-dealer-title normal-weight upper">Our Company</h2>
+            <p class="about-dealer-text"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
+        </section>
 <?php
-    /*---------------------------------------------
-        About Dealer Text
-    ----------------------------------------------*/
-    $word_count = str_word_count($installer_array[0]->about_dealer_text);
-    $column_class = ($word_count > 50) ? ' text-columns-2' : '';
-?>
-    <p class="about-dealer-text<?= $column_class; ?>"><?= $installer_array[0]->about_dealer_text; ?></p>
-<?php
-    }
     /*---------------------------------------------
         End About Dealer Text
     ----------------------------------------------*/
+    }
+    
 ?>
-</section>
+
 
 <?php
     /******************************* OPTIONAL PHOTO GALLERY *************************/ 
@@ -123,19 +116,31 @@
         <div class="row">
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/environment.png')?>" alt>
+                    <i class="icon icon-about icon-world">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-world"></use>
+                        </svg>
+                    </i>
                     <p>We will design our products so that their environmental impact during manufacture, use and disposal is diminished.</p>
                 </div>
             </div>
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/checklist.png')?>" alt>
+                    <i class="icon icon-about icon-notepad">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-notepad"></use>
+                        </svg>
+                    </i>
                     <p>We will use raw materials, water and energy more efficiently in order to diminish our effect on the environment.</p>
                 </div>
             </div>
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/trees.png')?>" alt>
+                    <i class="icon icon-about icon-mountains">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-mountains"></use>
+                        </svg>
+                    </i>
                     <p>We will reduce emissions and waste in all our activities.</p>
                 </div>
             </div>
@@ -143,19 +148,31 @@
         <div class="row row-2">
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/people.png')?>" alt>
+                    <i class="icon icon-about icon-people">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-people"></use>
+                        </svg>
+                    </i>
                     <p>We will maintain high standards of safety at work for our employees and partners.</p>
                 </div>
             </div>
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/graph.png')?>" alt>
+                    <i class="icon icon-about icon-chart">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chart"></use>
+                        </svg>
+                    </i>
                     <p>We will cooperate with our suppliers, customers and business partners to achieve higher environmental standards at every step.</p>
                 </div>
             </div>
             <div class="small-12 large-4 columns principle-container">
                 <div class="principle">
-                    <img src="<?=asset_url('images/atom.png')?>" alt>
+                    <i class="icon icon-about icon-atom">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-atom"></use>
+                        </svg>
+                    </i>
                     <p>We will seek out new ways to improve the environmental sustainability of our products and manufacturing methods.</p>
                 </div>
             </div>

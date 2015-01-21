@@ -1,170 +1,233 @@
-.footer {
-    background: $color-footer-bg;
-    font-size: 14px;
+.five-star {
+
+    .icon-five-star {
+        line-height: 0;
+        height: 90px;
+        width: 90px;
+    }
+}
+.five-star--bottom {
+
+    @include bp($foundation-small, $tablet) {
+        bottom: 35px;
+        left: 8%;
+        position: absolute;
+    }
+    @include bp($foundation-med, $tablet) {
+        bottom: 85px;
+    }
+    @include bp($tablet) {
+        display: none;
+    }
+}
+.five-star--top {
+    display: none;
+    line-height: 0;
+    text-align: center;
+    width: 10%;
+
+    @include bp($tablet) {
+        display: block;
+    }
+}
+
+.footer-grey-border {
+    background: $color-secondary;
+    bottom: 155px;
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+
+    @include bp($foundation-med) {
+        bottom: 45px;
+    }
+    @include bp($tablet) {
+        display: none !important;
+    }
+}
+
+.footer-row {
     margin: 0 auto;
     max-width: $page-max-width;
     padding: {
-        bottom: 55px;
-        top: 60px;
+        left: 8%;
+        right: 8%;
     }
-    text-align: center;
+    text-align: left;
 
-    .columns:nth-child(3) {
-
-        @include bp($foundation-small, $foundation-large) {
-            clear: left;
-        }
+    a {
+        @extend %no-underline;
     }
-    .columns:nth-child(1n + 3) {
 
-        @include bp($foundation-med, $foundation-large) {
-            border-top: 1px solid $color-grey;
-            margin-top: 20px;
-            padding-top: 30px;
-        }
+    @include bp($mobile-landscape) {
+        font-size: .875em;
     }
-    .accreditations {
-        @include bp($foundation-small, $foundation-med) {
-            img {
-                display: none;
-            }
-        }
-        @include bp($foundation-large) {
-            text-align: left;
-            width: 15%;
+    @include bp($foundation-large) {
+        padding: {
+            left: 2%;
+            right: 2%;
         }
     }
-    .dealer-info {
-        color: $color-grey;
-        line-height: 1.8;
-        text-align: left;
-
-        .address {
-            float: left;
-            width: 50%;
-
-            @include bp($foundation-med) {
-                padding-right: 5%;
-            }
-        }
-        .dealer-info__header {
-            color: $color-text-light;
-        }
-        .hours {
-            float: left;
-            width: 50%;
-        }
-
-        @include bp($foundation-small, $foundation-med) {
-            background-image: url('../images/5-star.png');
-            background-position: 50% 85%;
-            background-repeat: no-repeat;
-            border-bottom: 1px solid $color-grey; 
-            padding: {
-                bottom: 160px;
-            }
-
-            .address, .hours {
-                float: none;
-                margin: {
-                    left: auto;
-                    right: auto;
-                }
-                text-align: center;
-            }
-            .hours {
-                margin-top: 20px;
-            }
-        }
-        @include bp($foundation-med, $foundation-large) {
-            float: right;
-        }
-        @include bp($foundation-large) {
-            padding-left: 5%;
-            width: 35%;
-
-            .address, .hours {
-                padding-right: 3%;
-                width: 47%;
-            }
+    @include bp($my-very-large) {
+        padding: {
+            left: 4%;
+            right: 4%;
         }
     }
-    .logo {
-        @extend %centered;
-        position: static;
-
-        img {
-            max-height: 30%;
-            max-width: 40%;
-        }
+}
+.footer-row--bottom {
+    background: $color-reverse-heading;
+    padding: {
+        bottom: 3em;
+        top: 3em;
     }
+
     .copyright {
-        color: $color-grey;
-        font-size: 0.857em;
-        margin: 8px auto;
-        max-width: 60%;
+        color: $color-social-icons;
+        width: 10em;
 
-        @include bp($foundation-small, $foundation-med) {
-            bottom: 26px;
-            left: 50%;
+        @include bp($foundation-small, $tablet) {
+            bottom: 11px;
+            left: 8%;
             position: absolute;
-            transform: translateX(-50%);
         }
+        @include bp($foundation-med, $tablet) {
+            left: 8%;
+        }
+        @include bp($tablet) {
+            float: left;
+        }
+        @include bp($foundation-large) {
+            font-size: .875em;
+            top: 2px;
+        }
+
     }
     .nav-footer {
-        line-height: 1.8;
-        text-align: left;
+        margin: 0 auto;
+        max-width: 800px;
 
         .nav-footer__container {
+            margin: 0 auto;
+            text-align: center;
+            white-space: nowrap;
+            width: 100%;
 
-            @include bp($foundation-small, $foundation-med) {
-                margin: 0 auto;
-                max-width: 260px;
-                overflow: hidden;
+            .nav-major {
+                text-align: left;
+
+                a {
+                    @extend %upper;
+                    color: $color-default;
+
+                    @include bp($foundation-large) {
+                        margin-right: 4%;
+                    }
+                    @include bp($my-large) {
+                        margin-right: 8%;
+                    }
+                    @include bp($my-very-large) {
+                        margin-right: 10%;
+                    }
+                }
+                a:last-child {
+                    margin-right: 0;
+                }
+
+                @include bp($foundation-small, $foundation-large) {
+                    line-height: 2.125;
+                    width: 60%;
+                }
+                @include bp($foundation-med, $tablet) {
+                    width: 50%;
+                }
+                @include bp($foundation-large) {
+                    margin-right: 3%;
+                    min-width: 50%;
+                }
+                @include bp($my-large) {
+                    min-width: 40%;
+                }
+                @include bp($my-very-large) {
+                    margin-right: 5%;
+                    min-width: 50%;
+                }
+                a:last-child {
+                    margin-right: 0;
+                }
             }
-        }
-        .nav-major {
-            float: left;
-            width: 65%;
-            text-transform: uppercase;
+            .nav-minor {
+                text-align: left;
 
-            a {
-                color: $color-text-light;
+                a {
+                    color: $color-grey;
+
+                    @include bp($foundation-large) {
+                        margin-right: 4%;
+                    }
+                    @include bp($my-large) {
+                        margin-right: 10%;
+                    }
+                    @include bp($my-very-large) {
+                        margin-right: 11%;
+                    }
+                }
+
+                @include bp($foundation-small, $foundation-large) {
+                    line-height: 2.125;
+                    width: 40%;
+                }
+                @include bp($foundation-med, $tablet) {
+                    width: 50%;
+                }
+                @include bp($foundation-large) {
+                    min-width: 30%;
+                }
+                @include bp($my-very-large) {
+                    min-width: 40%;
+                }
             }
 
-            @include bp($foundation-med, $foundation-large) {
-                width: 50% !important;
+            @include bp($foundation-small, $foundation-large) {
+                line-height: 0;
             }
-        }
-        .nav-minor {
-            float: left;
-            width: 35%;
-
-            a {
-                color: $color-grey;
+            @include bp($tablet, foundation-large) {
+                text-align: left;
             }
-
-            @include bp($foundation-med, $foundation-large) {
-                width: 50% !important;
+            @include bp($foundation-large, $my-large) {
+                left: -10px;
             }
         }
 
         a {
-            float: left;
             clear: left;
+            display: block;
+            float: left;
 
-            &:hover {
-                text-decoration: none;
+            @include bp($foundation-large) {
+                clear: none;
+                display: inline;
+                float: none;
             }
+        }
+        nav {
+            display: inline-block;
         }
 
         @include bp($foundation-small, $foundation-med) {
-            border-bottom: 1px solid $color-grey;
-            padding-bottom: 2.25em;
-
-            nav {
-                text-align: center;
-            }
+            width: 100%;
+        }
+        @include bp($foundation-med, $tablet) {
+            margin: 0 0 0 auto;
+            width: 67%;
+        }
+        @include bp($tablet, $foundation-large) {
+            width: 40%;
+        }
+        @include bp($my-large) {
+            max-width: 1200px;
         }
     }
     .social {
@@ -175,8 +238,8 @@
             width: 18px;
 
             @include bp($foundation-small, $foundation-med) {
-                height: 24px;
-                width: 24px;
+                height: 20px;
+                width: 20px;
             }
         }
         .social__link:hover {
@@ -184,25 +247,118 @@
         }
 
         @include bp($foundation-small, $foundation-med) {
-            bottom: 50px;
-            left: 50%;
+            bottom: 70px;
+            left: 58%;
             position: absolute;
-            transform: translateX(-50%);
+        }
+        @include bp($foundation-med, $tablet) {
+            bottom: 8px;
+            left: 63%;
+            position: absolute;
+        }
+        @include bp($tablet) {
+            float: right;
         }
     }
 
     @include bp($foundation-small, $foundation-med) {
-        padding: 40px 0 80px;
-
-        .columns:nth-child(1n + 2) {
-            margin-top: 2.25em;
+        padding-bottom: 180px;
+    }
+    @include bp($foundation-med, $tablet) {
+        padding-bottom: 80px;
+    }
+    @include bp($foundation-large) {
+        padding: {
+            bottom: 1.5em;
+            top: 1.5em;
         }
     }
-    @include bp($my-very-large) {
-        font-size: 16px;
+}
+.footer-row--top {
+    background: $color-footer-bg;
+    padding: {
+        bottom: 3em;
+        top: 3em;
+    }
+
+    .dealer-info-container {
+        color: $color-grey;
+        display: inline-block;
+        font-family: $font-family-display;
+        line-height: 2;
+        min-height: 90px;
+        width: 100%;
+
+        .dealer-info {
+            display: inline-block;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                width: 66%;
+            }
+        }
+        .dealer-info__header {
+            color: $color-text-light;
+        }
+        .address,
+        .numbers {
+            display: inline-block;
+            margin-bottom: 1.75em;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                margin-bottom: 0;
+                width: 50%;
+            }
+        }
+        .hours {
+            display: inline-block;
+            width: 100%;
+
+            @include bp($foundation-med) {
+                width: 33%;
+            }
+        }
+
+        @include bp($tablet) {
+            width: 90%;
+        }
+        @include bp($foundation-large) {
+            width: 65%;
+        }
+    }
+    .dealer-info-container > * {
+
+        @include bp($foundation-large) {
+            vertical-align: top;
+        }
+    }
+    .logo {
+        display: none;
+        margin-right: 5%;
+        text-align: left;
+        width: 20%;
+
+        img {
+            width: 80%;
+            max-height: 150px;
+            max-width: 250px;
+        }
+
+        @include bp($foundation-large) {
+            display: block;
+        }
+    }
+
+    @include bp($tablet) {
+
+        .logo,
+        .dealer-info-container,
+        .five-star--top {
+            float: left;
+        }
     }
 }
-
 .footer-wrapper {
     width: 100%;
 }

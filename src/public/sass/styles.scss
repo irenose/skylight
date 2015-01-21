@@ -17,6 +17,7 @@
 @import "layout/nav-header";
 @import "layout/nav-secondary";
 @import "layout/page";
+@import "layout/paid-search-header";
 
 @import "modules/accessories";
 @import "modules/arrows";
@@ -31,6 +32,7 @@
 @import "modules/hooks";
 @import "modules/icons";
 @import "modules/incentives";
+@import "modules/locator";
 @import "modules/map";
 @import "modules/polaroids";
 @import "modules/products-section";
@@ -45,6 +47,8 @@
 @import "pages/contact";
 @import "pages/homepage";
 @import "pages/installing";
+@import "pages/paid-search";
+@import "pages/product-detail";
 @import "pages/products";
 @import "pages/promotions";
 @import "pages/why-skylights";

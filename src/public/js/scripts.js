@@ -41,6 +41,7 @@ ww.main = (function() {
             ww.conditional_modals.init();
             ww.scrollto.init();
             ww.maps.init();
+            ww.search_maps.init();
             ww.anchors_to_options.init();
         },
     };
@@ -262,11 +263,30 @@ ww.carousels = (function(){
             $('.slick-carousel').slick({
                 prevArrow: '<button type="button" class="my-slick-prev"><img src="http://skylightspecialist.dev/assets/images/prev-arrow.png"></button>',
                 nextArrow: '<button type="button" class="my-slick-next"><img src="http://skylightspecialist.dev/assets/images/next-arrow.png"></button>',
-                infinite: true,
                 speed: 500,
                 fade: true,
                 slide: 'div',
                 cssEase: 'linear'
+            });
+
+            $('.slick-carousel-cards').slick({
+                arrows: false,
+                dots: true,
+                speed: 500,
+                cssEase: 'linear',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            dots: true,
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         },
     };
@@ -380,7 +400,7 @@ ww.conditional_modals = (function() {
             s.$modal.add(s.$modal_screen).removeClass('modal--is-open');
 
             // prepare for next opening
-            s.$modal_body.empty();
+            //s.$modal_body.empty();
         },
     };
 })();
@@ -442,6 +462,71 @@ ww.maps = (function() {
                     });
                 }
             });          
+        },
+    };
+})();
+
+/*-----------------------
+  @SEARCH PAGE MAPS
+
+  Google Maps API v3
+  https://developers.google.com/maps/documentation/javascript/examples/place-details
+------------------------*/
+ww.search_maps = (function() {
+    var s = {
+        el: 'search-map',
+    };
+
+    return {
+        init: function() {
+            if ($("#" + s.el).length) {
+                google.maps.event.addDomListener(window, 'load', this.draw_map());
+            }
+        },
+
+        draw_map: function() {
+            var coordinates = {
+                lat: $('#search-map').attr('data-lat'),
+                lng: $('#search-map').attr('data-long')
+            };
+            var geocoder = new google.maps.Geocoder();
+
+            var settings = {
+                $el: $('#search-map'),
+                map_options: {
+                    center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                    zoom: 8,
+                    // UI options
+                    mapTypeControl: false,
+                    panControl: false,
+                    scrollwheel: false,
+                    streetViewControl: false, // pegman
+                }
+            };
+            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+            var infowindow = new google.maps.InfoWindow();
+            var count = 0;
+            $('.installer').each(function() {
+                count++;
+                var encoded_address = $(this).attr('data-address');
+                var info_window_content = $(this).clone().addClass("my_infowindow").get(0);
+                geocoder.geocode( { 'address': encoded_address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        ww_marker = new google.maps.Marker({
+                            map: ww_map,
+                            position: results[0].geometry.location
+                        });
+
+                    }
+                    google.maps.event.addListener(ww_marker, 'click', (function(ww_marker) {
+                        return function() {
+                            infowindow.setContent(info_window_content);
+                            infowindow.open(ww_map, ww_marker);
+                        };
+                    })(ww_marker));
+                });
+            });
+        
         },
     };
 })();

@@ -127,21 +127,22 @@
 ------------------------*/
 .upgrade {
     background-image: url('../images/welcome/hero.jpg');
-    padding: 18% 10% 24%;
+    padding: 18% 10% 26%;
 
     h1 {
         text-shadow: 1px 1px 3px rgba(50,50,50,1);
     }
 
     @include bp($foundation-small, $foundation-med) {
-        padding: 18% 4% 64%;
+        background-size: 135%;
+        padding: 27% 4% 50%;
 
         h1 {
             font-size: 2.25em;
         }
     }
     @include bp($my-large) {
-        padding: 14% 15% 22%;
+        padding: 14% 15% 23.5%;
         width: 66%;
 
         h1 {
