@@ -1,36 +1,3 @@
-.branding {
-    background: #fff;
-    border-bottom: $masthead-border solid $color-secondary;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 12px 0 10px;
-    text-align: center;
-    width: 100%;
-
-    .brand {
-        display: inline-block;
-
-        img {
-            max-height: 200px;
-            max-width: 250px;
-            width: 100%;
-
-            @include bp($foundation-small, $foundation-med) {
-                max-width: 200px;
-            }
-        }
-    }
-
-    @include bp($tablet) {
-        padding: 15px 0 13px;
-    }
-    /*.nav-header--is-open & {
-        @include bp($foundation-small, $tablet) {
-            background: $color-grey-dark;
-        }
-    }*/
-}
-
 .masthead {
     @extend %cf;
     background: #fff;
@@ -220,4 +187,37 @@
 .masthead-wrapper {
     width: 100%;
     z-index: 100;
+
+    .branding {
+        background: #fff;
+        border-bottom: $masthead-border solid $color-secondary;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px 0 10px;
+        text-align: center;
+        width: 100%;
+
+        .brand {
+            display: inline-block;
+
+            img {
+                max-height: 200px;
+                max-width: 250px;
+                width: 100%;
+
+                @include bp($foundation-small, $foundation-med) {
+                    max-width: 200px;
+                }
+            }
+        }
+
+        @include bp($tablet) {
+            padding: 15px 0 13px;
+        }
+        /*.nav-header--is-open & {
+            @include bp($foundation-small, $tablet) {
+                background: $color-grey-dark;
+            }
+        }*/
+    }
 }
