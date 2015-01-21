@@ -78,6 +78,14 @@ class Page extends CI_Controller {
                     $data['page_view'] = 'home/installer';
                 } else {
                     switch($vars_array[2]) {
+                        case 'styleguide':
+                            $data['page_view'] = 'styleguide/index';
+                            break;
+
+                        case 'partials':
+                            $data['page_view'] = 'partials/_'.$url_page_name;
+                            break;
+
                         case 'products':
                             $data['current_section'] = 'products';
                             if($vars_size == 2) {
@@ -150,9 +158,6 @@ class Page extends CI_Controller {
                                         break;
                                 }
                             }
-                            break;
-                        case 'styleguide':
-                            $data['page_view'] = 'styleguide/index';
                             break;
                         case 'why-skylights':
                             $data['current_section'] = 'why-skylights';
