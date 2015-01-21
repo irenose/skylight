@@ -1,4 +1,24 @@
 /*-----------------------
+  @DISPLAY
+------------------------*/
+%block {
+    display: block;
+}
+.block {
+    @extend %block;
+}
+
+%inline-block {
+    display: inline-block;
+}
+
+.br {
+    @include bp($tablet) {
+        display: block;
+    }
+}
+
+/*-----------------------
   @HEADINGS
 ------------------------*/
 %mega-heading {
@@ -245,6 +265,18 @@
     @extend %snug-right;
 }
 
+.squeezed {
+    @include squeezed;
+}
+
+.squeezed-2 {
+    @include squeezed(2);
+}
+
+.squeezed-3 {
+    @include squeezed(3);
+}
+
 /*-----------------------
   @BORDERS
 ------------------------*/
@@ -272,6 +304,13 @@
 /*-----------------------
   @SHADOWS
 ------------------------*/
+%overlap {
+    box-shadow: 0px 1px 7px 0px rgba(50, 50, 50, 0.25);
+}
+.overlap {
+    @extend %overlap;
+}
+
 .top-shadow {
     background-image: url('../images/top-shadow.png');
     background-position: 50% 0%;
@@ -281,7 +320,6 @@
 /*-----------------------
   @IMAGES
 ------------------------*/
-
 .product-image {
     display: block;
 }

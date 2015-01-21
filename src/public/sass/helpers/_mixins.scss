@@ -88,7 +88,7 @@
 }
 
 @mixin squeezed($factor: 1) {
-    @include bp($my-medium) {
+    @include bp($tablet) {
         padding-right: $row-padding-horizontal * ($factor * 1.5);
         padding-left: $row-padding-horizontal * ($factor * 1.5);
     }
@@ -96,7 +96,7 @@
         padding-right: $row-padding-horizontal * ($factor * 2);
         padding-left: $row-padding-horizontal * ($factor * 2);
     }
-    @include bp($my-max) {
+    @include bp($max) {
         // padding-right: $row-padding-horizontal * ($factor * 2.5);
         // padding-left: $row-padding-horizontal * ($factor * 2.5);
     }

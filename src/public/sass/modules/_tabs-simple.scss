@@ -1,0 +1,95 @@
+/*-----------------------
+  @SIMPLE TABS
+------------------------*/
+.tabs-menu {
+    @extend %centered;
+}
+
+.tabs-menu__link {
+    @extend %inline-block;
+    @extend %upper;
+
+    // layout
+    height: 64px;
+    padding: 22px 2em 0;
+    vertical-align: middle;
+
+    // text
+    font-size: .75em;
+    font-weight: normal;
+    letter-spacing: 1px;
+
+    // theme
+    color: #85898a;
+    background: #fff;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+
+    .thin-strip & {
+        border-top: none;
+    }
+}
+
+.tabs-menu__link:hover,
+.tabs-menu__link.is-active {
+    // theme
+    text-decoration: none;
+
+    // underscore
+    &:after {
+        background: $color-blue;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 2px;
+        left: 0;
+        right: 0;
+        position: relative;
+        width: 100%;
+    }
+}
+
+.tabs-menu__link.is-active {
+    // theme
+    color: $color-default;
+    background: $color-whitesmoke;
+    border-color: $color-gainsboro;
+}
+
+.tabs-menu__link + .tabs-menu__link {
+    margin-left: -4px; // accounts for inline-block spacing
+
+    .filters & {
+        margin-left: -6px; // add borders
+    }
+}
+
+/*-----------------------
+  @REVERSED
+------------------------*/
+.tabs-menu__link {
+    .reversed & {
+        background: black;
+        border-color: $color-montana;
+        border-top: none;
+        padding: 23px 2em 20px;
+
+        .icon__svg {
+            transition: none;
+        }
+    }
+    .reversed &.is-active,
+    .reversed &:hover {
+        color: #fff;
+
+        .icon__svg {
+            fill: #fff;
+        }
+
+        // underscore
+        &:after {
+            display: none;
+        }
+    }
+}

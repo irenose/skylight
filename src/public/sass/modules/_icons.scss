@@ -224,3 +224,45 @@
         z-index: 2;
     }
 }
+
+/*-----------------------
+  @PIN
+------------------------*/
+.icon-pin--primary {
+    height: 55px;
+    width: 55px;
+
+    .icon__svg {
+        fill: $color-primary;
+    }
+}
+
+.icon-pin--reversed {
+    .icon__svg {
+        fill: white;
+    }
+}
+
+/*-----------------------
+  @SEARCH
+------------------------*/
+.icon-search--reversed {
+    .icon__svg {
+        fill: white;
+    }
+}
+
+/*-----------------------
+  @LOCATOR
+------------------------*/
+.icon-map {
+    .icon__svg {
+        fill: #868686;
+    }
+}
+
+.icon-list {
+    .icon__svg {
+        fill: #868686;
+    }
+}

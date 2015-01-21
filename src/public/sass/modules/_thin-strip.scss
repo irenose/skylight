@@ -1,0 +1,26 @@
+.thin-strip {
+    @extend %border-bottom-grey;
+    @extend %centered;
+    background: $color-zircon;
+
+    @include bp(0, $my-switch-nav) {
+        padding: 20px 0;
+    }
+    &.filters {
+        background: $color-whitesmoke-dark;
+    }
+    &.reversed {
+        background: black;
+        border-top-color: $color-montana;
+        border-bottom: none;
+    }
+
+    &.is-fixed {
+        @extend %overlap;
+        left: auto;
+        position: fixed;
+        right: auto;
+        top: 0;
+        z-index: 10000;
+    }
+}

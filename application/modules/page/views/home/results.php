@@ -26,7 +26,7 @@
     </div>
     <?php
     	if(count($installer_search_array) == 0) {
-    		$data['cta_type'] = 'short';
+    		$data['cta_type'] = 'long';
     		echo $this->load->view('partials/_find-installer', $data);
     	} else {
     ?>
@@ -85,9 +85,9 @@
 													if(count($categories_array) > 0) {
 														echo 'We offer the following products<br>';
 														foreach($categories_array as $category) {
-															echo '<a href="' . base_url() . $installer->dealer_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br />';	
+															echo '<a href="' . base_url() . $installer->dealer_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br />';
 														}
-														
+
 													}
 												?>
 		                                    </footer>

@@ -144,6 +144,64 @@ ww.common = (function(){
 })();
 
 /*-----------------------
+  @WINDOW EVENTS
+------------------------*/
+ww.window_events = (function() {
+    return {
+        init: function() {
+            this.register_events();
+        },
+
+        register_events: function() {
+            ww.wallpaper.init();
+
+            if ($("[data-module='tabs']").length) {
+                // ww.simple_tabs.init();
+            }
+        },
+    };
+})();
+
+/*-----------------------
+  @WALLPAPER IMAGES
+------------------------*/
+ww.wallpaper = (function(){
+    var s = {
+        img_path: "/assets/images/backgrounds/",
+    };
+
+    return {
+        init: function() {
+            $("[data-wallpaper]").each(function() {
+                var $el = $(this),
+                    img_obj = $el.data("wallpaper");
+
+                ww.wallpaper.do_check($el, img_obj);
+            });
+        },
+
+        do_check: function($el, img_obj) {
+            // run bp check
+            if ($el.is("[data-check-bp]")) {
+                if ($el.data("check-bp-status") === "passing") {
+                    this.load_wallpaper($el, img_obj);
+                }
+            }
+            // auto load
+            else {
+                this.load_wallpaper($el, img_obj);
+            }
+        },
+
+        load_wallpaper: function($el, img_obj) {
+            $el.css({
+                "background-image" : "url('" + s.img_path + img_obj.file + "." + img_obj.ext + "')",
+            });
+        },
+    };
+})();
+
+/*-----------------------
   @NAVIGATION
 ------------------------*/
 ww.navigation = (function(){
@@ -198,7 +256,6 @@ ww.navigation = (function(){
 /*-----------------------
   @EMBED VIDEO
 ------------------------*/
-
 ww.embed_video = (function() {
     var s = {
         autoplay: 1,
@@ -502,7 +559,7 @@ ww.maps = (function() {
                         position: settings.map_options.center
                     });
                 }
-            });          
+            });
         },
     };
 })();
@@ -567,7 +624,7 @@ ww.search_maps = (function() {
                     })(ww_marker));
                 });
             });
-        
+
         },
     };
 })();
@@ -654,7 +711,11 @@ ww.anchors_to_options = (function(){
 /*
  * LOAD!
  */
- 
+
 jQuery(function() {
     ww.main.init();
+});
+
+$(window).load(function() {
+    ww.window_events.init();
 });

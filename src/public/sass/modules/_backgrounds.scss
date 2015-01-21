@@ -1,0 +1,21 @@
+[data-wallpaper] {
+    background-color: $color-cod-grey;
+    background-position: center;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+}
+
+[data-wallpaper*="us-map"] {
+    background-position: center -2%;
+    background-repeat: no-repeat;
+    background-size: 200%;
+
+    @include bp($tablet) {
+        background-position: center;
+        background-size: 80%;
+    }
+    [data-carousel-type="footer-dots"] & {
+        background-position: center center;
+        background-size: 150%;
+    }
+}

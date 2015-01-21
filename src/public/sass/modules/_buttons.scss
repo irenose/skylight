@@ -21,6 +21,18 @@
     padding: 0;
 }
 
+.btn-text-icon {
+    .icon {
+        height: 16px;
+        margin-left: -5px;
+        margin-right: 5px;
+        position: relative;
+        top: -2px;
+        width: 16px;
+        vertical-align: middle;
+    }
+}
+
 
 /*-----------------------
   @BUTTON PLAY
