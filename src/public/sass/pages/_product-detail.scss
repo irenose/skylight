@@ -20,7 +20,7 @@
     }
     .product-icon-wrapper {
         width: 100%;
-        
+
         .product-icons {
             @extend %unstyled;
             margin: 2em auto 1em;
@@ -149,10 +149,10 @@
             padding: 2% 4%;
         }
         @include bp($foundation-med, $tablet) {
-            padding: 2% 5%;
+            padding: 1% 5%;
         }
          @include bp($tablet) {
-            padding: 10% 3%;
+            padding: 5% 3%;
         }
     }
     .product-card {
@@ -222,7 +222,7 @@
     p {
         color: $color-default-light;
     }
-    
+
     @include bp($foundation-small, $mobile-landscape) {
         background-position: 0% 420px;
         background-size: 110%;

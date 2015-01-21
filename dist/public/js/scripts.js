@@ -556,7 +556,24 @@ ww.carousels = (function(){
                     break;
 
                 case "product-cards":
-                    // @TODO
+                    // dots
+                    slick_options.arrows = false;
+                    slick_options.dots = true;
+
+                    // to show
+                    slick_options.slidesToShow = $carousel.data("slides-to-show");
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                centerMode: false,
+                                // centerPadding: '40px',
+                                slidesToShow: 1,
+                            }
+                        },
+                    ];
                     break;
 
                 case "locator":

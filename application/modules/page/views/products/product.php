@@ -72,10 +72,12 @@
     	}
 ?>
 		<section class="bg-grey top-shadow product-cards">
-		    <div class="constrained slick-carousel-cards" data-carousel-init="auto" data-carousel-type="product-cards">
-				<?php
-					echo $this->load->view('partials/_product-cards',$data);
-				?>
+		    <div class="constrained">
+                <div data-carousel-init="auto" data-carousel-type="product-cards" data-slides-to-show="3">
+    				<?php
+    					echo $this->load->view('partials/_product-cards',$data);
+    				?>
+                </div>
 		    </div>
 		</section>
 
