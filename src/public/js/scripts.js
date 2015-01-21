@@ -17,6 +17,23 @@
 
 /*-----------------------*/
 
+if (!window.console) {
+    console = {log: function() {}};
+}
+
+var ww_globals = {
+    $win: $(window),
+    KEYCODE_ENTER: 13,
+    KEYCODE_ESC: 27,
+    KEYCODE_ARROW_LEFT: 37,
+    KEYCODE_ARROW_RIGHT: 39,
+    KEYCODE_M: 77,
+    icon_chevron_left: '<i class="icon icon-chevron--left"><svg class="icon__svg"><use xlink:href="/assets/images/sprites/sprite.svg#icon-chevron--left"></use></svg></i>',
+    icon_chevron_right: '<i class="icon icon-chevron--right"><svg class="icon__svg"><use xlink:href="/assets/images/sprites/sprite.svg#icon-chevron--right"></use></svg></i>',
+    icon_chevron_left_reversed: '<i class="icon icon-chevron--left--reversed"><svg class="icon__svg"><use xlink:href="/assets/images/sprites/sprite.svg#icon-chevron--left--reversed"></use></svg></i>',
+    icon_chevron_right_reversed: '<i class="icon icon-chevron--right--reversed"><svg class="icon__svg"><use xlink:href="/assets/images/sprites/sprite.svg#icon-chevron--right--reversed"></use></svg></i>',
+};
+
 if (typeof ww == 'undefined') {
     var ww = {};
 }
@@ -115,7 +132,7 @@ ww.window_events = (function() {
             ww.wallpaper.init();
 
             if ($("[data-module='tabs']").length) {
-                // ww.simple_tabs.init();
+                ww.simple_tabs.init();
             }
         },
     };
@@ -209,6 +226,78 @@ ww.navigation = (function(){
                 }
             });
         }
+    };
+})();
+
+/*-----------------------
+  @TABS SIMPLE
+
+  Loads tab if valid hash is present
+  If hash doesn't exist in this module, loads the first item (is-active)
+------------------------*/
+ww.simple_tabs = (function(){
+    var s = {
+        hash: window.location.hash.substr(1),
+        $menu: $(".tabs-menu"),
+        $menu_links: $(".tabs-menu__link"),
+        $content: $(".tabs-content"),
+        $content_items: $(".tabs-content__item"),
+    };
+
+    return {
+        init: function() {
+            this.set_height();
+            this.register_handlers();
+
+            if (s.hash !== '') {
+                this.load_hash();
+            } else {
+                this.load_first();
+            }
+
+        },
+
+        set_height: function() {
+            // for things like loading carousels inside a tab
+            // this helps prevent an initially hidden tab from being super tall before the carousel is initialized
+            if (s.$content.is("[data-set-height]")) {
+                s.$content.css({
+                    "height":s.$content_items.first().outerHeight(),
+                });
+            }
+        },
+
+        register_handlers: function() {
+            s.$menu_links.on("click", function(e) {
+                var tab = $(this).attr("href").replace("#", "");
+
+                e.preventDefault();
+                ww.simple_tabs.switch_tab(tab);
+            });
+        },
+
+        load_hash: function() {
+            var $el = s.$menu_links.filter("[href='#"+s.hash+"']");
+
+            if ($el.length) {
+                ww.simple_tabs.switch_tab(s.hash);
+            } else {
+                console.log("simple bad hash");
+                this.load_first();
+            }
+        },
+
+        load_first: function() {
+            var tab = s.$menu_links.first().attr("href").replace("#", "");
+            this.switch_tab(tab);
+        },
+
+        switch_tab: function(tab) {
+            var $link = s.$menu_links.filter("[href=#"+tab+"]");
+
+            $link.addClass("is-active").siblings().removeClass("is-active");
+            s.$content_items.hide().filter($("#"+tab)).show();
+        },
     };
 })();
 
@@ -314,37 +403,184 @@ ww.custom_forms = (function() {
 /*-----------------------
   @CAROUSELS
 ------------------------*/
+// ww.carousels = (function(){
+//     return {
+//         init: function() {
+//             $('.slick-carousel').slick({
+//                 prevArrow: '<button type="button" class="my-slick-prev"><img src="http://skylightspecialist.dev/assets/images/prev-arrow.png"></button>',
+//                 nextArrow: '<button type="button" class="my-slick-next"><img src="http://skylightspecialist.dev/assets/images/next-arrow.png"></button>',
+//                 speed: 500,
+//                 fade: true,
+//                 slide: 'div',
+//                 cssEase: 'linear'
+//             });
+
+//             $('.slick-carousel-cards').slick({
+//                 arrows: false,
+//                 dots: true,
+//                 speed: 500,
+//                 cssEase: 'linear',
+//                 slidesToShow: 3,
+//                 responsive: [
+//                     {
+//                         breakpoint: 768,
+//                         settings: {
+//                             arrows: false,
+//                             centerMode: false,
+//                             centerPadding: '40px',
+//                             dots: true,
+//                             slidesToShow: 1
+//                         }
+//                     }
+//                 ]
+//             });
+//         },
+//     };
+// })();
+
 ww.carousels = (function(){
+    var s = {
+        arrows: {
+            nextArrow: '<button class="my-slick-next" title="Next">' + ww_globals.icon_chevron_right + '</button>',
+            prevArrow: '<button class="my-slick-prev" title="Previous">' + ww_globals.icon_chevron_left + '</button>',
+            nextArrow_reversed: '<button class="my-slick-next reversed" title="Next">' + ww_globals.icon_chevron_right_reversed + '</button>',
+            prevArrow_reversed: '<button class="my-slick-prev reversed" title="Previous">' + ww_globals.icon_chevron_left_reversed + '</button>',
+        },
+        nodes: {
+            controls: '<div class="my-slick-controls"></div>',
+        }
+    };
+
     return {
         init: function() {
-            $('.slick-carousel').slick({
-                prevArrow: '<button type="button" class="my-slick-prev"><img src="http://skylightspecialist.dev/assets/images/prev-arrow.png"></button>',
-                nextArrow: '<button type="button" class="my-slick-next"><img src="http://skylightspecialist.dev/assets/images/next-arrow.png"></button>',
-                speed: 500,
-                fade: true,
-                slide: 'div',
-                cssEase: 'linear'
+            this.register_handlers();
+        },
+
+        // carousels available on page load
+        register_handlers: function() {
+            // auto
+            $("[data-carousel-init='auto']").each(function() {
+                ww.carousels.set_options($(this));
             });
 
-            $('.slick-carousel-cards').slick({
-                arrows: false,
-                dots: true,
-                speed: 500,
-                cssEase: 'linear',
-                slidesToShow: 3,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            dots: true,
-                            slidesToShow: 1
-                        }
-                    }
-                ]
+            // manual
+            $("[data-carousel-trigger]").on("click", function() {
+                var $btn = $(this),
+                    $carousel = $("[aria-labelledby='" + $btn.attr("id") + "']"),
+                    timeout = window.setTimeout(function() {
+                        ww.carousels.set_options($carousel);
+                    }, 500);
+
+                    // we only want to initialize the carousel once
+                    $btn.removeAttr("data-carousel-trigger");
             });
+        },
+
+        set_options: function($carousel) {
+            var carousel_type = $carousel.data("carousel-type");
+
+            var slick_options = {
+                draggable: false,
+                responsive: null,
+                slide: '.slick__item',
+                swipe: false,
+                touchMove: false,
+                touchThreshold: 100, // prevents a minimal touch from temporarily hiding the slide
+            };
+
+            switch (carousel_type) {
+
+                case "photo-gallery":
+
+// speed: 500,
+// cssEase: 'linear'
+
+                    // nodes
+                    ww.carousels.insert_nodes($carousel, ['controls']);
+
+                    // arrows
+                    slick_options.arrows = true;
+                    slick_options.appendArrows = $carousel.find(".my-slick-controls");
+                    slick_options.nextArrow = s.arrows.nextArrow_reversed;
+                    slick_options.prevArrow = s.arrows.prevArrow_reversed;
+
+                    // dots
+                    slick_options.dots = false;
+
+                    // to show
+                    slick_options.slidesToShow = $carousel.data("slides-to-show");
+
+                    // transition
+                    slick_options.fade = true;
+                    break;
+
+                case "product-cards":
+                    // @TODO
+                    break;
+
+                case "locator":
+                    // nodes
+                    ww.carousels.insert_nodes($carousel, ['controls']);
+
+                    // arrows
+                    slick_options.arrows = true;
+                    slick_options.appendArrows = $carousel.find(".my-slick-controls");
+                    slick_options.nextArrow = s.arrows.nextArrow_reversed;
+                    slick_options.prevArrow = s.arrows.prevArrow_reversed;
+
+                    // to show
+                    slick_options.slidesToShow = 3;
+
+                    // centering
+                    slick_options.centerMode = true;
+                    slick_options.centerPadding = '0';
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 960,
+                            settings: {
+                                arrows: true,
+                                centerMode: true,
+                                centerPadding: '40px',
+                                slidesToShow: 1,
+                            }
+                        },
+                    ];
+                    break;
+            }
+
+            this.do_carousel($carousel, slick_options);
+        },
+
+        do_carousel: function($carousel, slick_options) {
+            var $slick_api = $carousel.slick(slick_options);
+
+            this.equal_heights($carousel);
+        },
+
+        equal_heights: function($carousel) {
+            if ($carousel.is("[data-equal-heights]")) {
+                // Get an array of all element heights
+                var elementHeights = $carousel.find('.slick__item').map(function() {
+                    return $(this).height();
+                }).get();
+
+                // Math.max takes a variable number of arguments
+                // `apply` is equivalent to passing each height as an argument
+                var maxHeight = Math.max.apply(null, elementHeights);
+
+                // Set each height to the max height
+                $carousel.find('.slick__item').height(maxHeight);
+
+                $carousel.attr("data-equal-heights", "done");
+            }
+        },
+
+        insert_nodes: function($carousel, types) {
+            for (var i = 0; i < types.length; i++) {
+                $carousel.append(s.nodes[types[i]]);
+            }
         },
     };
 })();

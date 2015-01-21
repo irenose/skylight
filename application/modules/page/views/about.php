@@ -1,5 +1,5 @@
-<?php 
-    /******************************* INTRO COPY *************************/ 
+<?php
+    /******************************* INTRO COPY *************************/
 ?>
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--squeezed">
@@ -10,7 +10,7 @@
 ?>
         <h1 class="normal-weight">
             <?php
-                $headline = $installer_array[0]->about_dealer_headline != '' ? $installer_array[0]->about_dealer_headline : 'About Us'; 
+                $headline = $installer_array[0]->about_dealer_headline != '' ? $installer_array[0]->about_dealer_headline : 'About Us';
                 echo $headline;
             ?>
         </h1>
@@ -24,13 +24,13 @@
     </header>
 </section>
 
-<?php 
-    /******************************* ABOUT INSTALLER COPY *************************/ 
-    if($installer_array[0]->about_dealer_text != '') {
+<?php
+    /******************************* ABOUT INSTALLER COPY *************************/
+    if ($installer_array[0]->about_dealer_text != '') {
 ?>
         <section class="page-row about-dealer intro-statement intro-statement--squeezed">
             <?php
-                if($about_dealer_image != '') {
+                if ($about_dealer_image != '') {
                     echo '<div class="polaroid--round">' . $about_dealer_image . '</div>';
                 }
             ?>
@@ -42,34 +42,34 @@
         End About Dealer Text
     ----------------------------------------------*/
     }
-    
+
 ?>
 
 
 <?php
-    /******************************* OPTIONAL PHOTO GALLERY *************************/ 
-    if( isset($gallery_array) && count($gallery_array) > 0) {
+    /******************************* OPTIONAL PHOTO GALLERY *************************/
+    if (isset($gallery_array) && count($gallery_array) > 0) {
 ?>
         <section class="page-row bg-grey gallery">
-            <div class="slick-carousel">
-                <div class="centered">
+            <div class="slick-carousel" data-carousel-init="auto" data-carousel-type="photo-gallery" data-slides-to-show="4">
+                <div class="slick__item centered">
                     <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
                 </div>
-                <div class="centered">
+                <div class="slick__item centered">
                     <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
                 </div>
-                <div class="centered">
+                <div class="slick__item centered">
                     <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
                 </div>
-                <div class="centered">
+                <div class="slick__item centered">
                     <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
                 </div>
             </div>
         </section>
 
-<?php 
+<?php
     }
-    /******************************* OPTIONAL TESTIMONIALS *************************/ 
+    /******************************* OPTIONAL TESTIMONIALS *************************/
 ?>
 <section>
 <a name="testimonials"></a>
@@ -79,7 +79,7 @@
     ----------------------------------------------*/
 ?>
     <?php
-        if( isset($testimonials_array) && count($testimonials_array) > 0) {
+        if (isset($testimonials_array) && count($testimonials_array) > 0) {
             echo '<section class="page-row border-top-grey"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
             foreach($testimonials_array as $testimonial) {
                 echo '<p>"' . filter_page_content($testimonial->testimonial_copy) . '"</p>';
@@ -94,8 +94,8 @@
 ?>
 </section>
 
-<?php 
-    /******************************* STATIC ABOUT VELUX *************************/ 
+<?php
+    /******************************* STATIC ABOUT VELUX *************************/
 ?>
 <section class="page-row bg-grey about-velux">
     <div class="centered">
@@ -104,8 +104,8 @@
     <p class="text-columns-3 font-display">Founded on a vision of daylight, fresh air and quality of life, for over 60 years, we have created energy-efficient daylighting solutions for commercial and residential clients across the globe.<br><br>And today, we lead the industry in our commitment to developing and manufacturing architectural-grade products that provide and control daylight and fresh air. This, of course, is no coincidence. It is a result of our intense focus on offering the highest quality and most energy-efficient daylighting products on the market.<br><br>We're as equally dedicated to upholding our tradition of quality and craftsmanship as we are to reducing the environmental impact of the manufacture, use and disposal of our products. Because our activities use some natural resources, this gives us a direct obligation towards the environment we rely on.</p>
 </section>
 
-<?php 
-    /******************************* STATIC OUR PRINCIPLES *************************/ 
+<?php
+    /******************************* STATIC OUR PRINCIPLES *************************/
 ?>
 <section class="page-row our-principles">
     <header class="header-statement header-statement--squeezed">

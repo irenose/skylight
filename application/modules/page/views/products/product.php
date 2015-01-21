@@ -1,5 +1,5 @@
-<?php 
-    /******************************* BREADCRUMB *************************/ 
+<?php
+    /******************************* BREADCRUMB *************************/
 ?>
 <div class="bg-grey border-bottom-grey">
 	<?=$this->load->view('partials/_breadcrumb')?>
@@ -10,7 +10,7 @@
 			<?php
 				echo '<img src="' . $this->config->item('product_images_dir') . $product_info_array[0]->product_image . '.' . $product_info_array[0]->extension . '" class="product-image" alt="' . $product_info_array[0]->product_name . '">';
 			?>
-			<?php 
+			<?php
 				/*
 					HIDING FOR NOW 1-20-15
 		            <div class="product-icon-wrapper">
@@ -24,12 +24,12 @@
             <div class="product-accreditations-wrapper">
                 <ul class="product-accreditations">
                 	<?php
-                		if($product_info_array[0]->no_leak_flag == 'yes') {
+                		if ($product_info_array[0]->no_leak_flag == 'yes') {
                 			echo '<li>';
                 			echo $this->load->view('partials/_svg-icon-no-leak');
                 			echo '</li>' . "\n";
                 		}
-                		if($product_info_array[0]->tax_credit == 'yes') {
+                		if ($product_info_array[0]->tax_credit == 'yes') {
                 			echo '<li><div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div></li>' . "\n";
                 		}
                 	?>
@@ -47,10 +47,11 @@
 	</div>
 </section>
 
-<?php 
+<?php
     /******************************* PRODUCT CARDS *************************/
+    _a($product_info_array); die;
     $product_cards_category_array = array(4,5,6,7,8,17);
-    if(in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
+    if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
     	switch($product_info_array[0]->primary_category_id) {
     		case 4:
     		case 5:
@@ -72,7 +73,7 @@
     	}
 ?>
 		<section class="bg-grey top-shadow product-cards">
-		    <div class="constrained slick-carousel-cards">
+		    <div class="constrained slick-carousel-cards" data-carousel-init="auto" data-carousel-type="product-cards">
 				<?php
 					echo $this->load->view('partials/_product-cards',$data);
 				?>
@@ -81,7 +82,7 @@
 
 <?php
 	}
-    /******************************* TAX CREDITS *************************/ 
+    /******************************* TAX CREDITS *************************/
 ?>
 <section class="page-row page-row--extra-tall replacing">
     <div class="row">
@@ -99,8 +100,8 @@
     </div>
 </section>
 
-<?php 
-    /******************************* TAX CREDITS *************************/ 
+<?php
+    /******************************* TAX CREDITS *************************/
 ?>
 <section class="page-row page-row--tall blinds">
 	<div class="row">
@@ -112,8 +113,8 @@
 	</div>
 </section>
 
-<?php 
-    /******************************* NO LEAK *************************/ 
+<?php
+    /******************************* NO LEAK *************************/
 ?>
 <section class="page-row page-row--tall centered reversed no-leak">
 	<header class="header-statement header-statement--squeezed">

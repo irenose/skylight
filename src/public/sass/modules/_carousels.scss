@@ -1,0 +1,190 @@
+/*-----------------------
+  @CAROUSELS
+
+  Building off of Slick
+------------------------*/
+.slick {
+    @extend %unstyled;
+}
+
+.slick-loading .slick-list {
+    background: none;
+}
+
+.slick__item {
+    margin: 20px 15px;
+}
+
+.slick-dots {
+    $d-dots: 17px;
+    @extend %centered;
+    bottom: 0;
+
+    li {
+        margin: 0;
+        width: $d-dots;
+
+        button {
+            width: $d-dots;
+        }
+        button:before {
+            color: $color-trout;
+            font-family: sans-serif;
+            font-size: 40px;
+            opacity: 1;
+            width: $d-dots;
+
+            .reversed & {
+                color: $color-alabaster
+            }
+        }
+        &.slick-active button:before {
+            color: $color-primary;
+        }
+    }
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: sans-serif;
+}
+
+/*-----------------------
+  @CONTENT
+------------------------*/
+.slick__item {
+    visibility: hidden;
+
+    &:first-child,
+    .slick-initialized & {
+        visibility: visible;
+    }
+    &.slick-active.slick-center {
+        display: block;
+    }
+    .slick-initialized & {
+        img {
+            width: 100%;
+        }
+    }
+}
+
+/*-----------------------
+  @ARROWS
+------------------------*/
+.my-slick-prev,
+.my-slick-next {
+    @extend %centered;
+    @extend %inline-block;
+    height: 44px;
+    line-height: 1;
+    padding: 16px 0 14px;
+    position: absolute;
+    top: 0;
+    width: 44px;
+
+    .icon {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+.my-slick-prev,
+.my-slick-next {
+    @include circle(44px, 44px, transparent);
+    &:hover {
+        background: transparent;
+
+        .icon__svg {
+            fill: $color-primary;
+        }
+    }
+
+    &.reversed {
+        @include circle(44px, 44px, grey);
+        &:hover {
+            background: black;
+
+            .icon__svg {
+                fill: $color-reversed;
+            }
+        }
+    }
+}
+
+.my-slick-prev {
+    left: 0;
+
+    .icon {
+        margin-left: -2px;
+    }
+}
+
+.my-slick-next {
+    right: 0;
+
+    .icon {
+        margin-right: -2px;
+    }
+}
+
+/*-----------------------
+  @ALL CAROUSELS
+------------------------*/
+[data-carousel-type] {
+    padding-bottom: 40px;
+}
+
+/*-----------------------
+  @LOCATOR
+------------------------*/
+[data-carousel-type="locator"] {
+    &.slick {
+        padding-right: $row-padding-horizontal;
+        padding-left: $row-padding-horizontal;
+
+        @include bp($my-large) {
+            padding-right: $row-padding-horizontal * 2;
+            padding-left: $row-padding-horizontal * 2;
+        }
+    }
+    .slick__item {
+        opacity: .5;
+
+        @include bp(0, $switch-nav-large) {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        &.slick-active.slick-center {
+            opacity: 1;
+        }
+    }
+    .my-slick-controls {
+        margin: 0 auto;
+        left: 0;
+        position: absolute;
+        top: 42%;
+        width: 100%;
+        z-index: 10;
+
+        @include bp($tablet) {
+            // width: 50%;
+        }
+        @include bp($my-large) {
+            left: 5%;
+            width: 90%;
+        }
+    }
+}
+
+/*-----------------------
+  @CAROUSEL MENU
+------------------------*/
+.carousel-menu__item {
+    @extend %inline-block;
+    margin: 0 10px;
+
+    &.is-active {
+        border-bottom: 3px solid $color-blue;
+    }
+}
