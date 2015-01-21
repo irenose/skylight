@@ -49,7 +49,6 @@
 
 <?php
     /******************************* PRODUCT CARDS *************************/
-    _a($product_info_array); die;
     $product_cards_category_array = array(4,5,6,7,8,17);
     if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
     	switch($product_info_array[0]->primary_category_id) {
