@@ -45,6 +45,7 @@
                     }
 
                     @include bp($foundation-small, $tablet) {
+                        margin-left: 5%;
                         position: relative;
                         top: 50%;
                         transform: translateY(-50%);
@@ -95,6 +96,7 @@
 
                     @include bp($foundation-small, $tablet) {
                         line-height: 0;
+                        margin-right: 5%;
                         position: absolute;
                         top: 50%;
                         transform: translateY(-50%);
