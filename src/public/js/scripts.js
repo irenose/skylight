@@ -741,37 +741,77 @@ ww.maps = (function() {
             var encoded_address = $('#map').attr('data-address');
             var geocoder = new google.maps.Geocoder();
 
-            var settings = {
-                $el: $('#map'),
-                map_options: {
-                    //center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
-                    zoom: 14,
-                    // UI options
-                    mapTypeControl: false,
-                    panControl: false,
-                    scrollwheel: false,
-                    streetViewControl: false, // pegman
-                }
-            };
-            var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+            if($('.installer').length) {
+                var settings = {
+                    $el: $('#map'),
+                    map_options: {
+                        center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                        zoom: 8,
+                        // UI options
+                        mapTypeControl: false,
+                        panControl: false,
+                        scrollwheel: false,
+                        streetViewControl: false, // pegman
+                    }
+                };
+                var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+                var infowindow = new google.maps.InfoWindow();
+                var count = 0;
+                $('.installer').each(function() {
+                    count++;
+                    var encoded_address = $(this).attr('data-address');
+                    var info_window_content = $(this).clone().addClass("my_infowindow").get(0);
+                    geocoder.geocode( { 'address': encoded_address}, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            ww_marker = new google.maps.Marker({
+                                map: ww_map,
+                                position: results[0].geometry.location
+                            });
 
-            geocoder.geocode( { 'address': encoded_address}, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    ww_map.setCenter(results[0].geometry.location);
-                    ww_marker = new google.maps.Marker({
-                        map: ww_map,
-                        position: results[0].geometry.location
+                        }
+                        google.maps.event.addListener(ww_marker, 'click', (function(ww_marker) {
+                            return function() {
+                                infowindow.setContent(info_window_content);
+                                infowindow.open(ww_map, ww_marker);
+                            };
+                        })(ww_marker));
                     });
+                });
 
-                } else {
-                    ww_map.setCenter(new google.maps.LatLng(coordinates.lat, coordinates.lng));
-                    // set marker
-                    ww_marker = new google.maps.Marker({
-                        map: ww_map,
-                        position: settings.map_options.center
-                    });
-                }
-            });
+            } else {
+
+                var settings = {
+                    $el: $('#map'),
+                    map_options: {
+                        //center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                        zoom: 14,
+                        // UI options
+                        mapTypeControl: false,
+                        panControl: false,
+                        scrollwheel: false,
+                        streetViewControl: false, // pegman
+                    }
+                };
+                var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+
+                geocoder.geocode( { 'address': encoded_address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        ww_map.setCenter(results[0].geometry.location);
+                        ww_marker = new google.maps.Marker({
+                            map: ww_map,
+                            position: results[0].geometry.location
+                        });
+
+                    } else {
+                        ww_map.setCenter(new google.maps.LatLng(coordinates.lat, coordinates.lng));
+                        // set marker
+                        ww_marker = new google.maps.Marker({
+                            map: ww_map,
+                            position: settings.map_options.center
+                        });
+                    }
+                });
+            }
         },
     };
 })();
