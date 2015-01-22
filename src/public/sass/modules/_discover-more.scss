@@ -31,6 +31,7 @@
         background-position: center;
         height: 325px;
         margin-top: 40px;
+        padding-top: 20%;
     }
     @include bp($foundation-med, $tablet) {
         padding: 20% 5%;

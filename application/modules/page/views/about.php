@@ -20,7 +20,7 @@
     ----------------------------------------------*/
 ?>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
-        <a class="upper" href="<?= $installer_base_url; ?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
+        <a class="upper" href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>
 
@@ -84,7 +84,7 @@
             foreach($testimonials_array as $testimonial) {
                 echo '<p>"' . filter_page_content($testimonial->testimonial_copy) . '"</p>';
             }
-            echo '</div></div><div class="testimonial-link"><a href="">View All Testimonials</a></div></div></div></section>';
+            echo '</div></div></div></div></section>';
         }
     ?>
 <?php

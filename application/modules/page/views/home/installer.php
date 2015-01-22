@@ -45,7 +45,7 @@
             ?>
             <div class="promotion-small cta schedule-consult">
                 <p class="reversed font-display">Schedule A Consultation</p>
-                <a href="<?= $installer_base_url; ?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
+                <a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
             </div>
         </div>
     </div>

@@ -209,6 +209,9 @@
             display: block;
             margin-top: 15px;
 
+            @include bp($tablet) {
+                margin-top: 0;
+            }
             @include bp($foundation-large) {
                 display: none;
             }

@@ -5,7 +5,7 @@
     <header class="intro-statement intro-statement--squeezed">
         <h1 class="normal-weight">So Really, Why Skylights?</h1>
         <p>There are seemingly limitless reasons why VELUX skylights can help you create a living space that will not only impress you and your family, but that will also lower your energy costs.</p>
-        <a class="upper" href="<?= $installer_base_url;?>/contact" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
+        <a class="upper" href="<?= $installer_base_url;?>/contact/#contact-form" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>
 

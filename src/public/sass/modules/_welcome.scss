@@ -1,24 +1,36 @@
 .installer-welcome-wrapper {
     padding-top: 4%;
 
-    @include bp($foundation-small, $foundation-large) {
+    @include bp($foundation-small, $tablet) {
         padding: 6% 0 0;
+    }
+    @include bp($tablet, $foundation-large) {
+        padding: 5% 0 0;
     }
 
     .intro-statement {
+        padding-bottom: 4%;
 
-        @include bp($foundation-small, $foundation-large) {
+        @include bp($foundation-small, $tablet) {
             padding: {
+                bottom: 6%;
+                left: 2%;
+                right: 2%;
+            }
+        }
+        @include bp($tablet, $foundation-large) {
+            padding: {
+                bottom: 5%;
                 left: 2%;
                 right: 2%;
             }
         }
 
         h1 {
-            margin-bottom: 1.5em;
+            margin-bottom: 0;
             text-transform: none;
 
-            @include bp($foundation-small, $foundation-large) {
+            @include bp($foundation-small, $tablet) {
                 padding: {
                     left: 0%;
                     right: 0;

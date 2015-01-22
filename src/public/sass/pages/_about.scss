@@ -9,10 +9,6 @@
     @include bp($foundation-small, $foundation-med) {
         padding-bottom: 270px;
 
-        .about-dealer-title {
-            text-align: center;
-        }
-
         .dealer-image {
             bottom: 5%;
             float: none;
@@ -21,6 +17,9 @@
             position: absolute;
             transform: translateX(-50%);
         }
+    }
+    .about-dealer-text {
+        line-height: 2;
     }
     .dealer-image {
         float: right;
