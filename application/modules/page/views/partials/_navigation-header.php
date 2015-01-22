@@ -32,7 +32,7 @@
             echo '<a href="' . $installer_base_url . '/about" class="nav-header__link first' . $about_active . '">About</a>';
             echo '<a href="' . $installer_base_url . '/warranty" class="nav-header__link' . $warranty_active . '">Warranty</a>';
             echo '<a href="' . $installer_base_url . '/brochures" class="nav-header__link' . $brochures_active . '">Brochures</a>';
-            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last' . $contact_active . '">Contact</a><a href="" class="nav-header__link popout-velux-logo"><img src="' . asset_url('images/velux-logo.png') . '" alt></a></nav>';
+            echo '<a href="' . $installer_base_url . '/contact" class="nav-header__link last' . $contact_active . '">Contact</a><div href="" class="nav-header__link popout-velux-logo"><img src="' . asset_url('images/velux-logo.png') . '" alt></div></nav>';
         }
     ?>
 </div>
