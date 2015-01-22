@@ -88,6 +88,7 @@
     </div>
     <?=$this->load->view('partials/_footer');?>
     <!-- FOOTER -->
+    <?=$this->load->view('partials/_paid-search-mobile');?>
     <div class="is-hidden">
         <?=$this->load->view('partials/_svg-icon-loader');?>
     </div>

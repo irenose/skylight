@@ -336,13 +336,13 @@
     .logo {
         display: none;
         margin-right: 5%;
+        padding-right: 4%;
         text-align: left;
         width: 20%;
 
         img {
-            width: 80%;
-            max-height: 150px;
-            max-width: 250px;
+            max-height: 120px;
+            max-width: 200px;
         }
 
         @include bp($foundation-large) {

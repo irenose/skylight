@@ -17,6 +17,7 @@ body {
     color: $color-default;
     font-family: $font-family-default;
     font-size: $font-size-default * .875; // set to 14px on mobile
+    font-weight: 300;
     line-height: $line-height-default;
 
     @include bp($mobile-landscape) {

@@ -172,6 +172,23 @@
 }
 
 /*-----------------------
+  @PLUS
+------------------------*/
+.icon-plus {
+    @extend %centered;
+    @include circle(100%, 25px);
+    background: $color-primary;
+    color: $color-reverse-heading;
+    display: inline-block;
+    font-family: $font-family-display;
+    font-size: 2em;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    width: 25px;
+}
+
+/*-----------------------
   @FIVE-STAR
 ------------------------*/
 .icon-five-star {

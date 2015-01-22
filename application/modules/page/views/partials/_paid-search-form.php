@@ -7,7 +7,7 @@
     <input type="hidden" name="ps_page_type" value="<?=$paid_search_page_type; ?>">
     <div class="row">
         <div class="small-12 columns">
-            <h4>Get In Touch With Us</h4>
+            <h4>Get In Touch With Us:</h4>
             <div class="form-grey-border"></div>
             <label class="first-label">Name<?=required_text('name'); ?></label>
             <input type="text" name="name" class="<?=error_class('name'); ?> full-width" value="<?=set_value('name');?>" />

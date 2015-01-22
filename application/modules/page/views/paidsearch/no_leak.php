@@ -18,12 +18,12 @@
 <section class="page-row snug-bottom product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
-            <h3 class="normal-weight">The revolutionary No Leak Solar Powered “Fresh Air” Skylight features a solar panel that captures any available daylight and uses it to recharge a highly efficient battery that opens and closes the skylight.</h3>
+            <h4 class="normal-weight">The revolutionary No Leak Solar Powered “Fresh Air” Skylight features a solar panel that captures any available daylight and uses it to recharge a highly efficient battery that opens and closes the skylight.</h4>
             <img src="<?=asset_url('images/ps/skylight.png')?>" alt>
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom benefits">
+<section class="page-row short-top snug-bottom ps-section benefits">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
             <h4 class="normal-weight underlined color-primary">Benefits</h4>
@@ -48,7 +48,7 @@
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom why-velux">
+<section class="page-row short-top snug-bottom ps-section why-velux">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <h4 class="normal-weight underlined color-primary">Why VELUX</h4>
@@ -61,34 +61,28 @@
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom no-leak-skylight">
+<section class="page-row short-top snug-bottom ps-section no-leak-skylight">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
-            <div class="full-height-wrapper">
-                <?=$this->load->view('partials/_svg-icon-no-leak.php');?>
-            </div>
+            <?=$this->load->view('partials/_svg-icon-no-leak.php');?>
             <h4 class="normal-weight underlined color-primary">The No Leak Skylight</h4>
             <p>With The No Leak Skylight, we promise you no leaks and no worries because our revolutionary product is built with three powerful layers of protection. That’s why we offer a 10-year product and installation warranty.</p>
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom complete-system">
+<section class="page-row short-top snug-bottom ps-section complete-system">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
-            <div class="full-height-wrapper">
-                <img src="<?=asset_url('images/ps/complete-system.jpg')?>" alt>
-            </div>
+            <img src="<?=asset_url('images/ps/complete-system.jpg')?>" alt>
             <h4 class="normal-weight underlined color-primary">The Complete VELUX System</h4>
             <p>Whether it’s skylights, roof windows, or all the accessories that go with it, you’ll find everything you need to right here.</p>
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom installation-methods">
+<section class="page-row short-top snug-bottom ps-section installation-methods">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
-            <div class="full-height-wrapper">
-                <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
-            </div>
+            <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
             <h4 class="normal-weight underlined color-primary">Skylight Installation Methods</h4>
             <p>Skylights are installed using a variety of different installation methods that vary based on geographic location, however VELUX has developed products that make the installation process as easy as possible. The three most common installation methods are: deck mounted, curb mounted and self-flashed. Contact us today to schedule an appointment.</p>
             <a class="ps-cta">

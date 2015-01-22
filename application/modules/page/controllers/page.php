@@ -275,6 +275,9 @@ class Page extends CI_Controller {
                                 case 'no-leak-skylight':
                                     $page_view = 'paidsearch/no_leak';
                                     break;
+                                case 'no-leak-skylight-b':
+                                    $page_view = 'paidsearch/no_leak_b';
+                                    break;
                                 case 'energy-efficiency':
                                     $page_view = 'paidsearch/efficiency';
                                     break;

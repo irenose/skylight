@@ -3,6 +3,7 @@
     display: none;
     font-size: 0.875em;
     left: 0;
+    overflow: scroll;
     position: absolute;
     top: $masthead-mobile;
     width: 100%;
@@ -27,23 +28,13 @@
 
     .nav-header--is-open & {
         display: block;
-
-        @include bp($foundation-small, $tablet) {
-            background: $color-grey-dark;
-        }
     }
 
     .nav-major {
 
         .nav-header__link {
             display: block;
-            line-height: 4em;
-
-            .nav-header--is-open & {
-                @include bp($foundation-small, $tablet) {
-                    color: $color-reverse-heading;
-                }
-            }
+            line-height: 3;
 
             @include bp($tablet) {
                 display: inline-block;
@@ -78,33 +69,62 @@
             .subnav-products--is-open & {
                 display: block;
             }
+            .nav-container {
+
+                .polaroid {
+                    display: none;
+                    
+                    @include bp($tablet) {
+                        display: block;
+                        margin-bottom: 15px;
+                    }
+                }
+
+                @include bp($tablet) {
+                    display: inline-block;
+                    max-width: $page-max-width;
+                    width: 100%;
+                }
+            }
 
             a {
                 color: $color-grey-light;
+                font-size: .875em;
                 display: block;
-                margin-bottom: 15px;
+                line-height: 3;
+                padding-left: 1em;
 
                 &:hover {
                     @extend %no-underline;
                 }
                 
                 @include bp($tablet) {
+                    color: $color-default;
                     display: inline-block;
-                    margin-bottom: 0;
+                    font-size: 1em;
+                    line-height: 1.5;
+                    max-width: 400px;
+                    padding: 0;
+                    text-align: center;
+                    width: 28%;
                 }
             }
             
             @include bp($tablet) {
-                background: $color-grey-dark;
-                box-shadow: 0 3px 6px 0 rgba(50,50,50,.25);
+                background: $color-reverse-heading;
+                box-shadow: 0 4px 5px 0 rgba(50,50,50,.35);
                 border-top: $masthead-border solid $color-secondary;
                 display: none;
-                font-size: .875em;
                 left: 0;
                 line-height: 70px;
+                padding: {
+                    left: 2.5%;
+                    right: 2.5%;
+                    top: 2%;
+                }
                 position: absolute;
                 width: 100%;
-                text-align: center;
+                text-align: left;
                 top: $masthead-height;
             }
         }
@@ -115,7 +135,6 @@
 
         a {
             @extend %upper;
-            margin: 0 auto;
 
             @include bp($tablet) {
                 margin: {
@@ -143,20 +162,30 @@
 
     .nav-minor {
         display: none;
-        padding: 0 0 20px;
         z-index: 10;
 
         .nav-header__link {
             color: $color-grey-light;
             display: block;
-            line-height: 3em;
+            font-size: .875em;
+            line-height: 3;
 
+            @include bp($foundation-small, $tablet) {
+                padding-left: 1em;
+
+                &.popout-velux-logo {
+                    padding-left: 0;
+                }
+            }
             @include bp($tablet, $switch-nav-large) {
-                margin: 0 auto;
-                width: 20%;
+                display: inline-block;
+                font-size: 1em;
+                line-height: $masthead-height;
+                margin: 0 20px;
             }
             @include bp($switch-nav-large) {
                 display: inline-block;
+                font-size: 1em;
                 line-height: $masthead-height;
                 margin: {
                     left: 28px;
@@ -185,12 +214,12 @@
             }
         }
 
-        @include bp($tablet) {
-            padding-top: 20px;
+        @include bp($foundation-small, $foundation-large) {
+            padding-bottom: 20px;
         }
         @include bp($tablet, $switch-nav-large) {
-            background: $color-grey-dark;
-            box-shadow: 0 3px 6px 0 rgba(50,50,50,.25);
+            background: $color-reverse-heading;
+            box-shadow: 0 4px 5px 0 rgba(50,50,50,.35);
             left: 0;
             position: absolute;
             top: $masthead-height + $masthead-border;
@@ -206,8 +235,13 @@
     @include bp($foundation-small, $mobile-landscape) {
         font-size: 1.125em;
     }
+    @include bp($mobile-landscape, $tablet) {
+        font-size: 1em;
+    }
     @include bp($foundation-small, $tablet) {
-        box-shadow: 0 3px 6px 0 rgba(50,50,50,.25);
+        box-shadow: 0 4px 5px 0 rgba(50,50,50,.35);
+        padding: 0 .75em;
+        text-align: left;
     }
     @include bp($foundation-med) {
         top: $masthead-height + $masthead-border;

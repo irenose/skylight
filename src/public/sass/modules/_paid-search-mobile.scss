@@ -1,0 +1,139 @@
+.ps-mobile-wrapper {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+
+    .ps-bar {
+        @extend %centered;
+        background: rgba(36,39,40,.9);
+        padding: 1em 3em;
+        width: 100%;
+
+        .icon-plus {
+            margin-left: 2em;
+        }
+
+        span {
+            font-family: $font-family-display;
+            font-size: 1.25em;
+            vertical-align: middle;
+        }
+
+        @include bp($tablet) {
+            display: none !important;
+        }
+    }
+
+    .ps-mobile-form-wrapper {
+        background: $color-grey-dark;
+        bottom: 0;
+        display: none;
+        left: 0;
+        overflow: scroll;
+        right: 0;
+        width: 100%;
+
+        .ps-mobile-form {
+            height: 100%;
+            padding: 5% 8%;
+            width: 100%;
+
+            .icon-x {
+                float: right;
+                height: 25px;
+                position: relative;
+                width: 25px;
+                z-index: 1;
+            }
+
+            form {
+                background: $color-grey-dark;
+                width: 100%;
+
+                .confirm_email {
+                    display: none;
+                    visibility: hidden;
+                }
+                .first-label {
+                    margin-top: 2.75em;
+                }
+                .form-grey-border {
+                    background: #484b4d;
+                    display: block;
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                }
+                .columns,
+                .row {
+                    padding: 0;
+                    position: static;
+                }
+                .columns {
+                    margin-top: -32px;
+                }
+                h4 {
+                    @extend %normal-weight;
+                    color: $color-reverse-heading;
+                    margin: .75em 0 1em;
+                }
+                input, textarea {
+                    background: $color-input-bg;
+                    border: 0;
+                    display: block;
+                    padding: 1em;
+
+                    &[type="submit"] {
+                        @extend %btn;
+                        margin-bottom: 2em;
+                        margin-top: 25px;
+                        padding: 1em 3em;
+                    }
+                    &:focus {
+                        background: $color-grey-light;
+                        outline: none;
+                    }
+
+                    @include bp($foundation-large) {
+                        line-height: 1.25;
+                        padding: 1em;
+                    }
+                }
+                label {
+                    color: $color-label;
+                    display: block;
+                    font-family: $font-family-display;
+                    font-size: .875em;
+                    line-height: 1.25;
+                    margin: 1.5em 0 .25em;
+
+                    @include bp($foundation-large) {
+                        line-height: 1.5;
+                        margin: 1.75em 0 .25em;
+                    }
+                }
+                textarea {
+                    min-height: 120px;
+
+                    @include bp($foundation-large) {
+                        min-height: 150px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.form--is-open {
+
+        .ps-bar {
+            display: none !important;
+        }
+        .ps-mobile-form-wrapper {
+            display: block !important;
+        }
+    }
+}
