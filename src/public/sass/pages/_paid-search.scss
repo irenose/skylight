@@ -1,0 +1,489 @@
+/*-----------------------
+  @GENERAL-USE
+------------------------*/
+.full-height-wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+.full-tablet {
+    color: $color-paid-search;
+    padding-bottom: 2.5em;
+
+    h4 {
+        margin-bottom: .75em;
+    }
+
+    @include bp($foundation-med, $foundation-large) {
+        width: 100%;
+    }
+    @include bp($foundation-large) {
+        margin-right: 3%;
+        width: 63.66667%;
+    }
+}
+.cta-padding {
+    padding-bottom: 8em;
+}
+.short-top {
+    padding-top: 6%;
+
+    @include bp($my-large) {
+        padding-top: 4%;
+    }
+}
+.ps-welcome-wrapper {
+    padding-top: 4%;
+
+    .intro-statement h1 {
+        margin-bottom: 1.5em;
+    }
+    .ps-welcome {
+        height: 310px;
+
+        .ps-hero {
+            background-image: url('../images/categories/residential-hero.jpg');
+            background-position: 90% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+
+            .incentive {
+                position: absolute;
+                top: 15%;
+                left: 10%;
+            }
+
+            @include bp($foundation-small, $tablet) {
+                background-position: 90% 50%;
+                width: 100%;
+            }
+            @include bp($tablet, $foundation-large) {
+                background-position: 50% 50%;
+                width: 60%;
+            }
+        }
+        .ps-form {
+            height: 100%;
+
+            form {
+                background: $color-grey-dark;
+                height: 100%;
+                padding: 5% 7%;
+                position: relative;
+                width: 100%;
+
+                .confirm_email {
+                    display: none;
+                    visibility: hidden;
+                }
+                .first-label {
+                    margin-top: 2.75em;
+                }
+                .form-grey-border {
+                    background: #484b4d;
+                    display: block;
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                }
+                .columns,
+                .row {
+                    position: static;
+                }
+
+                h4 {
+                    @extend %normal-weight;
+                    color: $color-reverse-heading;
+                    margin: .75em 0 1em;
+                }
+                input, textarea {
+                    background: $color-input-bg;
+                    border: 0;
+                    display: block;
+                    padding: .75em;
+
+                    &[type="submit"] {
+                        @extend %btn;
+                        margin-top: 25px;
+                        padding: 1em 3em;
+                    }
+                    &:focus {
+                        background: $color-grey-light;
+                        outline: none;
+                    }
+
+                    @include bp($foundation-large) {
+                        line-height: 1.25;
+                        padding: 1em;
+                    }
+                }
+                label {
+                    color: $color-label;
+                    display: block;
+                    font-family: $font-family-display;
+                    font-size: .875em;
+                    line-height: 1.25;
+                    margin: 1.5em 0 .25em;
+
+                    @include bp($foundation-large) {
+                        line-height: 1.5;
+                        margin: 1.75em 0 .25em;
+                    }
+                }
+                textarea {
+                    min-height: 120px;
+
+                    @include bp($foundation-large) {
+                        min-height: 150px;
+                    }
+                }
+
+                @include bp($my-very-large) {
+                    padding: 5% 8%;
+                }
+            }
+
+            @include bp($foundation-small, $tablet) {
+                display: none;
+            }
+            @include bp($tablet, $foundation-large) {
+                width: 40%;
+            }
+        }
+        .welcome-list-wrapper {
+            height: 100%;
+
+            .welcome-list {
+                background: $color-reverse-heading;
+                box-shadow: 1px 1px 1px 0 rgba(220,220,220,1);
+                height: 100%;
+                padding: 5% 12%;
+
+                .columns,
+                .row {
+                    position: static;
+                }
+                .form-grey-border {
+                    background: $color-secondary;
+                    display: block;
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                }
+
+                h4 {
+                    margin-top: .75em;
+                }
+                ul {
+                    color: $color-paid-search;
+                    margin-top: 3em;
+                    list-style-position: inside;
+                }
+            }
+
+            @include bp($foundation-small, $tablet) {
+                display: none;
+            }
+            @include bp($tablet, $foundation-large) {
+                width: 40%;
+            }
+        }
+
+        @include bp($mobile-landscape) {
+            height: 350px;
+        }
+        @include bp($foundation-med) {
+            height: 420px;
+        }
+        @include bp($tablet) {
+            height: 580px;
+        }
+        @include bp($foundation-large) {
+            height: 680px;
+        }
+        @include bp($my-very-large) {
+            height: 730px;
+        }
+    }
+
+    @include bp($foundation-small, $tablet) {
+        padding: {
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+.product-statement {
+
+    .ps-form {
+        margin-right: .975rem;
+        position: absolute;
+        right: 5%;
+        top: 25%;
+        width: 27.25%;
+
+        form {
+            background: $color-grey-dark;
+            padding: 5% 7%;
+            width: 100%;
+
+            .confirm_email {
+                display: none;
+                visibility: hidden;
+            }
+            .first-label {
+                margin-top: 2.75em;
+            }
+            .form-grey-border {
+                background: #484b4d;
+                display: block;
+                height: 1px;
+                left: 0;
+                position: absolute;
+                right: 0;
+            }
+            .columns,
+            .row {
+                position: static;
+            }
+
+            h4 {
+                @extend %normal-weight;
+                color: $color-reverse-heading;
+                margin: .75em 0 1em;
+            }
+            input, textarea {
+                background: $color-input-bg;
+                border: 0;
+                display: block;
+                padding: .75em;
+
+                &[type="submit"] {
+                    @extend %btn;
+                    margin-bottom: 2em;
+                    margin-top: 25px;
+                    padding: 1em 3em;
+                }
+                &:focus {
+                    background: $color-grey-light;
+                    outline: none;
+                }
+
+                @include bp($foundation-large) {
+                    line-height: 1.25;
+                    padding: 1em;
+                }
+            }
+            label {
+                color: $color-label;
+                display: block;
+                font-family: $font-family-display;
+                font-size: .875em;
+                line-height: 1.25;
+                margin: 1.5em 0 .25em;
+
+                @include bp($foundation-large) {
+                    line-height: 1.5;
+                    margin: 1.75em 0 .25em;
+                }
+            }
+            textarea {
+                min-height: 120px;
+
+                @include bp($foundation-large) {
+                    min-height: 150px;
+                }
+            }
+
+            @include bp($my-very-large) {
+                padding: 5% 8%;
+            }
+        }
+
+        @include bp($foundation-small, $foundation-large) {
+            display: none;
+        }
+        @include bp($my-large) {
+            width: 27.75%;
+        }
+        @include bp($my-very-large) {
+            width: 28%;
+        }
+    }
+    .statement {
+        padding-bottom: 1em;
+
+        h4 {
+            color: $color-default;
+            line-height: 1.75;
+
+            @include bp($tablet) {
+                padding-right: 35%;
+            }
+        }
+        img {
+            bottom: -2em;
+            display: block;
+            margin: 0 auto;
+            margin-top: -1em;
+            position: relative;
+            width: 200px;
+
+            @include bp($tablet) {
+                margin-top: 0;
+                position: absolute;
+                right: -30px;
+                top: -50px;
+                width: 250px;
+            }
+            @include bp($foundation-large) {
+                right: -20px;
+                top: -30px;
+                width: 220px;
+            }
+            @include bp($my-large) {
+                right: -5px;
+                top: -60px;
+                width: 260px;
+            }
+            @include bp($my-very-large) {
+                right: -15px;
+                top: -80px;
+                width: 300px;
+            }
+        }
+    }
+}
+
+.ps-list {
+    list-style: none;
+    padding-left: 1.125em;
+
+    li {
+        margin-bottom: 1em;
+    }
+    li:before {
+        color: $color-primary;
+        content: '•';
+        display: block;
+        font-size: 1.5em;
+        left: -20px;
+        max-height: 0;
+        max-width: 0;
+        position: relative;
+        top: -.25em;
+    }
+}
+
+.ps-cta {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+
+    div {
+        float: left;
+    }
+    span {
+        display: block;
+    }
+
+    .cta {
+        border: {
+            bottom: 0;
+            left: 0;
+            right: 1px solid $color-secondary;
+            top: 1px solid $color-secondary;
+        }
+        color: $color-paid-search;
+        font-family: $font-family-display;
+        font-size: .875em;
+        padding: 1em;
+
+        .number {
+            @extend %color-primary;
+            @extend %bold;
+            font-size: 1.25em;
+            line-height: 1.25;
+        }
+    }
+    .phone {
+        border: {
+            bottom: 0;
+            left: 1px solid $color-secondary;
+            right: 1px solid $color-secondary;
+            top: 1px solid $color-secondary;
+        }
+        padding: 1.25em;
+
+        .icon-phone {
+            display: block;
+            height: 31px;
+            line-height: 0;
+            width: 31px;
+        }
+    }
+}
+
+
+/*-----------------------
+  @INDIVIDUAL-SECTIONS
+------------------------*/
+.why-velux {
+
+    .columns {
+        padding-right: 25%;
+    }
+
+    img {
+        position: absolute;
+        right: 0;
+        top: 15%;
+    }
+}
+
+.no-leak-skylight {
+
+    .full-height-wrapper {
+        float: left;
+    }
+    .icon-no-leak {
+        height: 110px;
+        margin-bottom: 1em;
+        margin-right: 4em;
+        width: 110px;
+    }
+}
+
+.complete-system {
+
+    .full-height-wrapper {
+        float: right;
+    }
+
+    h4 {
+        margin-top: 1em;
+    }
+    img {
+        float: right;
+        margin-bottom: 1em;
+        width: 80%;
+    }
+    p {
+        padding-right: 30%;
+    }
+}
+
+.installation-methods {
+
+    .full-height-wrapper {
+        float: right;
+
+        img {
+            float: right;
+            width: 70%;
+        }
+    }
+}

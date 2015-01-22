@@ -52,6 +52,9 @@
 %underlined {
     text-decoration: underline;
 }
+.underlined {
+    @extend %underlined;
+}
 
 %italic {
     font-style: italic;
@@ -93,6 +96,13 @@
 }
 .normal-weight {
     @extend %normal-weight;
+}
+
+%color-primary {
+    color: $color-primary;
+}
+.color-primary {
+    @extend %color-primary;
 }
 
 /*-----------------------
@@ -167,7 +177,7 @@
 }
 
 /*-----------------------
-  @CENTERING
+  @ALIGNMENT
 ------------------------*/
 %centered {
     text-align: center;

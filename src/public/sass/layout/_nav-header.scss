@@ -7,6 +7,24 @@
     top: $masthead-mobile;
     width: 100%;
 
+    .nav-arrow {
+        background: url('../images/nav-arrow-red.png');
+        display: inline-block;
+        height: 5px;
+        width: 18px;
+        vertical-align: middle;
+
+        &.selected {
+            background-position: -16px 0;
+        }
+
+        @include bp($foundation-large) {
+            &.hovered {
+                background-position: -16px 0;
+            }
+        }
+    }
+
     .nav-header--is-open & {
         display: block;
 

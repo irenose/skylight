@@ -1,4 +1,5 @@
 .incentive {
+    @extend %centered;
     @include circle(100%, 140px);
     background: $color-blue;
     color: $color-reverse-heading;

@@ -1,4 +1,4 @@
-.paid-search-masthead {
+.ps-masthead {
     @extend %cf;
     background: #fff;
     border-bottom: $masthead-border solid $color-secondary;
@@ -59,16 +59,16 @@
                     }
                 }
                 .phone {
-                    font-size: 1.5em;
+                    font-size: 1.25em;
 
                     .phone-number {
 
                         .icon-phone {
                             bottom: 1px;
-                            height: 20px;
+                            height: 18px;
                             line-height: 0;
                             margin-right: .25em;
-                            width: 20px;
+                            width: 18px;
 
                             @include bp($foundation-small, $foundation-med) {
                                 bottom: 0;
@@ -77,8 +77,8 @@
                                 width: 25px;
                             }
                             @include bp($my-very-large) {
-                                height: 22px;
-                                width: 22px;
+                                height: 20px;
+                                width: 20px;
                             }
                         }
                         .number {
@@ -135,7 +135,7 @@
         }
     }
 
-    .paid-search-branding--desktop {
+    .ps-branding--desktop {
         display: none;
         height: $ps-masthead-height;
         float: left;
@@ -164,7 +164,7 @@
     }
 }
 
-.paid-search-masthead-wrapper {
+.ps-masthead-wrapper {
     width: 100%;
     z-index: 100;
 

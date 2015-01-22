@@ -1,11 +1,11 @@
-<section class="paid-search-masthead-wrapper">
+<section class="ps-masthead-wrapper">
     <div class="branding">
         <a href="<?=$installer_base_url?>" class="brand" title="Home">
             <?= $dealer_logo_display; ?>
         </a>
     </div>
-    <div class="paid-search-masthead" data-fixie>
-        <div class="paid-search-branding--desktop">
+    <div class="ps-masthead" data-fixie>
+        <div class="ps-branding--desktop">
             <a href="<?=$installer_base_url?>" class="brand" title="Home">
                 <?= $dealer_logo_display; ?>
             </a>
@@ -25,6 +25,7 @@
                 ?>
                 <?php
                     if($show_installer_header_footer) {
+                        //SHOW INSTALLER PHONE
                         echo '<div class="phone"><a href="tel:' . $installer_array[0]->phone1 . '" class="nav-header__link phone-number"><i class="icon icon-phone"><svg class="icon__svg"><use xlink:href="' . asset_url('images/sprites/sprite.svg') . '#icon-phone"></use></svg></i><span class="number">' . $installer_array[0]->phone1 . '</span></a></div>';
                     }
                 ?>
