@@ -121,8 +121,8 @@
 	<header class="header-statement header-statement--squeezed">
 		<?=$this->load->view('partials/_svg-icon-no-leak.php');?>
         <h2 class="upper">The Velux No Leak Skylight Gives You Peace of Mind</h2>
-        <p class="reversed">The Solar Powered "Fresh Air" Skylight comes with the No Leak Promise, a 10-year warranty on product and installation, so you'll never have to worry.</p>
-        <a href="<?=site_url('content-uploads/resources/product-warranty.pdf')?>" class="btn" target="_blank">Learn More</a>
+        <p class="reversed">As the world leader in roof windows and skylights, we stand behind our products with a promise of lasting service and quality. We do offer the VELUX 20/10/5 years limited product warranty for specific product coverage issues. If you have concerns about your VELUX products that may require a warranty claim, the warranty brochure includes specific steps for you to follow that will help VELUX better assist you.</p>
+        <a class="btn" href="<?=$installer_base_url?>/warranty">Learn More</a>
 	</header>
 </section>
 <section>
