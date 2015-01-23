@@ -7,15 +7,31 @@
         <div class="small-12 medium-8 columns ps-hero">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
         </div>
-        <div class="small-12 medium-4 columns ps-form" id="ps-form">
-            <?php 
-                /******************************* LOAD FORM *************************/
-                echo $this->load->view('partials/_paid-search-form');
-            ?>
+        <div class="small-12 medium-4 columns welcome-list-wrapper">
+            <div class="welcome-list">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h4>Control daylight and add style with blinds. </h4>
+                        <div class="form-grey-border"></div>
+                        <ul class="ps-list">
+                            <li>More than 100 styles of blinds available to choose from</li>
+                            <li>Solar powered blinds are eligible for the 30% Federal tax credit</li>
+                            <li>Blinds can soften of completely block the daylight entering your room</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<section class="page-row snug-bottom product-statement">
+<section class="page-row short-top snug-bottom product-statement">
+    <div class="ps-form" id="ps-form">
+        <?php 
+            /******************************* LOAD FORM *************************/
+            echo $this->load->view('partials/_paid-search-form');
+        ?>
+    </div>
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
             <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in variety of stylish designs to help reflect your home's personality.</h4>
@@ -31,9 +47,9 @@
             <ul class="ps-list">
                 <li><strong>Room darkening &ndash; double pleated blinds:</strong> Solar powered or manually operated, these blinds feature blackout cloth with a honeycomb structure that are energy efficient and have a sleek design</li>
                 <li><strong>Light filtering &ndash; single pleat blinds:</strong> Solar powered or manually operated, these blinds let a soft light enter the room and come in 15 color options</li>
-				<li><strong>Blackout blinds &ndash; flat:</strong> Solar powered or manually operated, ideal for bedroom applications and come in more than 20 colors and patterns</li>
-				<li><strong>Light filtering blinds &ndash; flat:</strong> Solar powered or manually operated, offers both protection and good looks with 15 colors and patterns to choose from</li>
-				<li><strong>Venetian blinds:</strong> Manually operated and available in eight colors, lets you control the direction of incoming light</li>
+                <li><strong>Blackout blinds &ndash; flat:</strong> Solar powered or manually operated, ideal for bedroom applications and come in more than 20 colors and patterns</li>
+                <li><strong>Light filtering blinds &ndash; flat:</strong> Solar powered or manually operated, offers both protection and good looks with 15 colors and patterns to choose from</li>
+                <li><strong>Venetian blinds:</strong> Manually operated and available in eight colors, lets you control the direction of incoming light</li>
             </ul>
             <p>If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special order designer blinds. Special order blinds will ship separately.  </p>
             <a class="ps-cta">
