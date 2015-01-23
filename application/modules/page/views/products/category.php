@@ -17,8 +17,22 @@
 	<div class="row">
 		<div class="small-12 large-6 columns">
 			<div class="card">
-				<h2><?= $product_category_array['category']->product_category_name; ?></h2>
-				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
+                <div class="card-container">
+    				<h2><?= $product_category_array['category']->product_category_name; ?></h2>
+    				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
+                </div>
+                <div class="bg-grey border-top-grey category-scroll-bar">
+                        <a href="#">
+                        <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
+                            <i class="icon icon-chevron--down--reversed">
+                                <svg class="icon__svg">
+                                    <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chevron--down--reversed"></use>
+                                </svg>
+                            </i>
+                        </div>
+                        <span class="upper no-underline category-scroll-link">View <?= $product_category_array['category']->product_category_name;?></span>
+                    </a>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -47,7 +61,7 @@
     		//Only display if it has products
     		if(count($subcategory->subcategory_products) > 0) {
 	    		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
-	    		echo '<section class="page-row page-row--squeezed border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
+	    		echo '<section class="page-row page-row--category border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
 		    		echo '<header class="header-statement">' . "\n";
 						echo '<h2 class="upper">' . $subcategory->subcategory_name . '</h2>' . "\n";
 					echo '</header>' . "\n";
@@ -65,12 +79,12 @@
 							/*---------------------------------------------
 						        Center last product if odd number
 						    ----------------------------------------------*/
-							if($count == $product_count) {
+							/*if($count == $product_count) {
 								$last_product_class = $product_count % 2 == 0 ? '' : ' medium-push-3';
 							} else {
 								$last_product_class = '';
-							}
-							echo '<div class="small-12 medium-6' . $last_product_class . ' columns centered">' . "\n";
+							}*/
+							echo '<div class="small-12 medium-3' /*. $last_product_class */. ' columns centered">' . "\n";
 								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" alt></a>' . "\n";
 								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
 								//echo '<p>Curb mounted skylight</p>' . "\n";

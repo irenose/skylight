@@ -1,9 +1,50 @@
 .hero {
-    background-position: center;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
     background-size: cover;
 
     .card {
-        width: 300px;
+        padding-bottom: 4em;
+        width: 360px;
+
+        .category-scroll-bar {
+            bottom: 0;
+            position: absolute;
+            left: 0;
+            padding: .75em 2em;
+            right: 0;
+            width: 100%;
+
+            .category-scroll-button {
+                @include circle(100%);
+                background: $color-primary;
+                display: inline-block;
+                height: 2.25em;
+                margin-right: .5em;
+                padding: .5em;
+                text-align: center;
+                width: 2.25em;
+
+                .icon-chevron--down--reversed {
+                    height: .875em;
+                    width: .875em;
+
+                    .icon__svg {
+                        fill: $color-reverse-heading;
+                    }
+                }
+            }
+            .category-scroll-link {
+                font-size: .75em;
+                display: inline-block;
+                position: relative;
+                top: -.25em;
+            }
+
+            a:hover {
+                @extend %no-underline;
+            }
+        }
 
         @include bp($foundation-small, $foundation-med) {
             background: $color-grey-light-bg;
@@ -13,9 +54,10 @@
         @include bp($foundation-med) {
             background-clip: padding-box;
             border: 10px solid rgba(245,245,245,.6);
+            text-align: left;
         }
         @include bp($my-very-large) {
-            width: 350px;
+            width: 420px;
 
             p {
                 font-size: .875em;

@@ -1,3 +1,24 @@
+.page-row--category {
+    padding: {
+        left: 5%;
+        right: 5%;
+    }
+
+    [class*=column]+[class*=column]:last-child {
+        float: left;
+    }
+    .header-statement {
+        padding: 0;
+
+        h2 {
+            padding: 0 5%;
+        }
+
+        @include bp($foundation-med) {
+            text-align: left;
+        }
+    }
+}
 .product-row-container {
     h2 {
         margin-bottom: 5%;
@@ -39,7 +60,7 @@
 .hero--residential {
     background-image: url('../images/categories/residential-hero.jpg');
 
-    @include bp($foundation-med, $tablet) {
-        background-position-x: 10px !important;
+    @include bp($foundation-med, $foundation-large) {
+        background-position: 0% 50%;
     }
 }

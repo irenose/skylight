@@ -5,7 +5,10 @@
     background: $color-reverse-heading;
     color: $color-default-light;
     text-align: center;
-    padding: 2em;
+
+    .card-container {
+        padding: 2em;
+    }
 
     h2 {
         color: $color-default;
