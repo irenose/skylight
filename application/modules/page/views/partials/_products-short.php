@@ -22,14 +22,20 @@
 
                         }
                         echo '<div class="' . $class . '">' . "\n";
-                            echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . "\n";
+                            if( ! isset($hide_learn_more_links) || $hide_learn_more_links == FALSE) {
+                                echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . "\n";
+                            }
                                 echo '<div class="polaroid">' . "\n";
                                     echo '<img src="' . asset_url('images/categories/' . $category->category_image . '-short.jpg') . '" alt="' . $category->product_category_name . '">' . "\n";
                                 echo '</div>' . "\n";
-                            echo '</a>' . "\n";
+                            if( ! isset($hide_learn_more_links) || $hide_learn_more_links == FALSE) {
+                                echo '</a>' . "\n";
+                            }
                             echo '<h4>' . $category->product_category_name . '</h4>' . "\n";
                             echo '<p>' . filter_page_content($category->product_category_teaser) . '</p>' . "\n";
-                            echo '<a class="btn" href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">Learn More</a>';
+                            if( ! isset($hide_learn_more_links) || $hide_learn_more_links == FALSE) {
+                                echo '<a class="btn" href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">Learn More</a>';
+                            }
                         echo '</div>' . "\n";
                     }
                 echo '</div>' . "\n";

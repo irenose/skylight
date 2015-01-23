@@ -22,5 +22,6 @@
 </section>
 
 <?php
-	echo $this->load->view('products/index');
+	$data['hide_learn_more_links'] = TRUE;
+	echo $this->load->view('partials/_products-short', $data);
 ?>
