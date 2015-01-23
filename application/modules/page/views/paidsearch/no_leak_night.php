@@ -26,7 +26,7 @@
     </div>
 </section>
 <section class="page-row short-top snug-bottom product-statement">
-    <div class="ps-form">
+    <div class="ps-form" id="ps-form">
         <?php 
             /******************************* LOAD FORM *************************/
             echo $this->load->view('partials/_paid-search-form');

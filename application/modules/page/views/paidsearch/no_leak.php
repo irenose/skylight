@@ -7,7 +7,7 @@
         <div class="small-12 medium-8 columns ps-hero">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
         </div>
-        <div class="small-12 medium-4 columns ps-form">
+        <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
                 /******************************* LOAD FORM *************************/
                 echo $this->load->view('partials/_paid-search-form');

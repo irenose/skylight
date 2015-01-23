@@ -273,28 +273,25 @@ class Page extends CI_Controller {
                             }
                             switch($vars_array[3]) {
                                 case 'no-leak-skylight':
-                                    $page_view = 'paidsearch/no_leak';
-                                    break;
-                                case 'no-leak-skylight-b':
-                                    $page_view = 'paidsearch/no_leak_b';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/no_leak_night' : 'paidsearch/no_leak';
                                     break;
                                 case 'energy-efficiency':
-                                    $page_view = 'paidsearch/efficiency';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/efficiency_night' : 'paidsearch/efficiency';
                                     break;
                                 case 'skylight-repair':
-                                    $page_view = 'paidsearch/repair';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/repair_night' : 'paidsearch/repair';
                                     break;
                                 case 'sun-tunnel-skylight':
-                                    $page_view = 'paidsearch/sun_tunnel';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/sun_tunnel_night' : 'paidsearch/suntunnel';
                                     break;
                                 case 'commercial-sun-tunnel':
-                                    $page_view = 'paidsearch/commercial_sun_tunnel';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/commercial_sun_tunnel_night' : 'paidsearch/commercial_sun_tunnel';
                                     break;
                                 case 'skylight-replacement':
-                                    $page_view = 'paidsearch/replacement';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/replacement_night' : 'paidsearch/replacement';
                                     break;
                                 case 'skylight-blinds':
-                                    $page_view = 'paidsearch/blinds';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/blinds_night' : 'paidsearch/blinds';
                                     break;
                                 default:
                                     redirect($data['installer_base_url']);
