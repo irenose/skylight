@@ -123,7 +123,7 @@
         <div class="small-12 medium-6 medium-pull-6 columns first reversed">
             <h2 class="upper">After Installation</h2>
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
-            <a class="btn" href="<?=site_url('content-uploads/resources/product-warranty.pdf')?>" target="_blank">Download</a>
+            <a class="btn" href="<?=$installer_base_url?>/warranty">Learn More</a>
         </div>
     </div>
 </section>
