@@ -34,8 +34,8 @@
                 <li>Add light control with factory installed blinds, or choose from more than 100 special order blinds</li>
                 <li>Remote control lets you open and close skylights and blinds with the touch of a button</li>
                 <li>Feature Clean, Quiet and Safe glass with Neat&reg; glass technology</li>
-                    <ul>
-                        <li>Clean: the Neat® glass coating keeps skylights virtually spotless</li>
+                    <ul class="ps-list">
+                        <li>Clean: the Neat&reg; glass coating keeps skylights virtually spotless</li>
                         <li>Quiet: reduce unwanted outside noise</li>
                         <li>Safe: VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
 

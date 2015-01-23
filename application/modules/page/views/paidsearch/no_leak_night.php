@@ -50,8 +50,8 @@
                 <li>Comes with the No Leak Promise &ndash; 10-year installation warranty, 20 years on glass, 10 years on the skylight and 5 years on blinds and controls</li>
                 <li>Add light control with factory installed blinds, or choose from more than 100 special order blinds</li>
                 <li>Feature Clean, Quiet and Safe glass with Neat&reg; glass technology</li>
-                    <ul>
-                        <li>Clean: the Neat® glass coating keeps skylights virtually spotless</li>
+                    <ul class="ps-list">
+                        <li>Clean: the Neat&reg; glass coating keeps skylights virtually spotless</li>
                         <li>Quiet: reduce unwanted outside noise</li>
                         <li>Safe: VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
 
