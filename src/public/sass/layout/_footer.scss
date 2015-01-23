@@ -307,8 +307,16 @@
             width: 100%;
 
             @include bp($foundation-med) {
+                display: inline-block;
                 margin-bottom: 0;
+                vertical-align: top;
                 width: 50%;
+            }
+        }
+        .numbers {
+
+            @include bp($foundation-med) {
+                margin-top: 2em;
             }
         }
         .hours {
@@ -361,4 +369,12 @@
 }
 .footer-wrapper {
     width: 100%;
+}
+
+.ps-footer {
+
+    @include bp($foundation-small, $foundation-med) {
+        background-color: #fff;
+        padding-bottom: 4em;
+    }
 }

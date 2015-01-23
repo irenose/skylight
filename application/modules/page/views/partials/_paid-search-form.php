@@ -1,10 +1,11 @@
 <?php
     $ps_url = basename(str_replace('/night','',current_url()));
 ?>
-<form action="<?=current_url();?>#ps-form" method="post">
+<form action="<?=current_url();?>#ps-form-anchor" method="post">
     <input type="hidden" name="dealer_id" value="<?=$installer_array[0]->dealer_id; ?>">
     <input type="hidden" name="ps_url" value="<?=$ps_url; ?>">
     <input type="hidden" name="ps_page_type" value="<?=$paid_search_page_type; ?>">
+    <div id="ps-form-anchor"></div>
     <div class="row">
         <div class="small-12 columns">
             <h4>Get In Touch With Us:</h4>

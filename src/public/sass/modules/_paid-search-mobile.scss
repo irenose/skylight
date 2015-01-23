@@ -14,6 +14,10 @@
 
         .icon-plus {
             margin-left: 2em;
+
+            @include bp($mobile-landscape) {
+                line-height: 1.333333;
+            }
         }
 
         span {

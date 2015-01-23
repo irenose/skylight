@@ -22,7 +22,12 @@
     				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
                 </div>
                 <div class="bg-grey border-top-grey category-scroll-bar">
-                        <a href="#">
+                    <?php
+                        /*---------------------------------------------
+                            Link To First Product Row
+                        ----------------------------------------------*/
+                        echo "<a href='#" . "'" . " data-btn-scroll>";
+                    ?>
                         <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
                             <i class="icon icon-chevron--down--reversed">
                                 <svg class="icon__svg">
@@ -70,7 +75,7 @@
 						$product_count = count($subcategory->subcategory_products);
 
 						foreach($subcategory->subcategory_products as $product) {
-							if($count % 2 == 0) {
+							if($count % 4 == 0) {
 								echo '</div>' . "\n";
 								echo '<div class="row product-row">' . "\n";
 							}

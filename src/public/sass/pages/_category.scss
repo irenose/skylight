@@ -30,10 +30,12 @@
 .product-row {
     color: $color-default-light;
 
+    .product-image {
+        padding: 10%;
+    }
     .product-title {
         color: $color-default;
         display: inline-block;
-        margin-top: 1em;
 
         &:hover {
             text-decoration: none;

@@ -16,6 +16,7 @@
 .error-alert {
     @extend %italic;
     color: $color-primary;
+    font-family: $font-family-default;
     font-weight: 300;
 }
 
@@ -30,6 +31,7 @@
 .required {
     @extend %italic;
     color: $color-primary;
+    font-family: $font-family-default;
     font-weight: 300;
     margin-left: 1.5em;
 }

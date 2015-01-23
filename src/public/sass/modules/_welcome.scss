@@ -100,6 +100,10 @@
         background-repeat: no-repeat;
         background-size: cover;
 
+        @include bp($foundation-large) {
+            margin-left: 4%;
+        }
+
     }
     .dealer-promo {
         background-color: $color-blue;
@@ -116,6 +120,10 @@
             width: 48%;
         }
     }
+    .one-promotion {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
 
     @include bp($foundation-large) {
         bottom: 0;
@@ -123,10 +131,6 @@
         position: absolute;
         right: 0;
         width: 50%;
-
-        .cta {
-            margin-left: 4%;
-        }
     }
     @include bp($my-large) {
         right: 1%;

@@ -40,13 +40,18 @@
                         if(trim($installer_array[0]->promotion_page_copy) != '') {
                             echo ' <a href="' . $installer_base_url . '/promotions">Learn More</a>' . "\n";
                         }
-                   echo ' </div>' . "\n";
+                    echo ' </div>' . "\n";
+                    echo '<div class="promotion-small cta schedule-consult">' . "\n";
+                        echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
+                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                    echo '</div>' . "\n";
+                } else {
+                    echo '<div class="promotion-small one-promotion cta schedule-consult">' . "\n";
+                        echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
+                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                    echo '</div>' . "\n";
                 }
             ?>
-            <div class="promotion-small cta schedule-consult">
-                <p class="reversed font-display">Schedule A Consultation</p>
-                <a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Learn More</a>
-            </div>
         </div>
     </div>
 </section>

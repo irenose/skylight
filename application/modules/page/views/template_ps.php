@@ -86,7 +86,7 @@
         ?>
         </main>
     </div>
-    <?=$this->load->view('partials/_footer');?>
+    <?=$this->load->view('partials/_paid-search-footer');?>
     <!-- FOOTER -->
     <?=$this->load->view('partials/_paid-search-mobile');?>
     <div class="is-hidden">
