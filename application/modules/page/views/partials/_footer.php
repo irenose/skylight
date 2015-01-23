@@ -9,7 +9,13 @@
             <?php
                 if($show_installer_header_footer) {
                     //SHOW INSTALLER SPECIFIC CONTENT
-                    echo '<div class="dealer-info"><div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '</div><div class="numbers">Phone: ' . $installer_array[0]->phone1 . '<br>Fax: ' . $installer_array[0]->fax . '</div></div>';
+                    echo '<div class="dealer-info"><div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '</div><div class="numbers">Phone: ' . $installer_array[0]->phone1;
+
+                    if($installer_array[0]->fax != '') {
+                        echo '<br>Fax: ' . $installer_array[0]->fax;
+                    }
+                    echo  '</div></div>';
+
                     if($installer_array[0]->dealer_hours != '') {
                         echo '<div class="hours"><span class="dealer-info__header">Hours</span><br>' . nl2br($installer_array[0]->dealer_hours) . '</div>';
                     }

@@ -36,7 +36,7 @@
 	?>
 </div>
 
-<?php echo form_open_multipart('dealer-admin/account/update/' . $_SESSION['dealer_id']); ?>
+<?php echo form_open_multipart('installer-admin/account/update/' . $_SESSION['dealer_id']); ?>
 	<input type="hidden" name="dealer_id" value="<?php echo $_SESSION['dealer_id']; ?>" />
     <input type="hidden" name="phone1" value="<?php echo $dealer_array[0]->phone1; ?>" />
     <?php

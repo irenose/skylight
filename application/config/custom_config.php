@@ -29,9 +29,11 @@ $config['global_email_name'] = 'VELUX';
 if(defined('ENVIRONMENT') && (ENVIRONMENT == 'staging' || ENVIRONMENT == 'development')) {
 	//STAGING/DEVELOPMENT
 	$config['site_status_recipient'] = 'dev@wrayward.com';
+	$config['profile_updates_recipient'] = 'dev@wrayward.com';
 } else {
 	//PRODUCTION
 	$config['site_status_recipient'] = 'stephanie@ravenelconsulting.com,jvoorhees@wrayward.com,dev@wrayward.com';
+	$config['profile_updates_recipient'] = 'chan.hoyle@VELUX.com,jvoorhees@wrayward.com,michelle@ravenelconsulting.com,stephanie@ravenelconsulting.com,bettye.booker@VELUX.com,jhalpin@wrayward.com,dev@wrayward.com';
 
 }
 

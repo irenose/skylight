@@ -146,6 +146,180 @@ class Installer_admin_model extends CI_Model {
 /*		UPDATE FUNCTIONS
 ************************************************************************************************************************************/
 
+	/****************************
+		Update Profile
+	********************************/
+	function update_profile($data_array, $has_image = FALSE) {
+		
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$latitude = NULL;
+		$longitude = NULL;
+		
+		$current_info_array = $this->get_dealer_by_id($data_array['dealer_id']);
+		
+		//Get Coordinates
+		$coordinates_array = $this->page_model->get_coordinates($data_array['zip']);
+		if(count($coordinates_array) > 0) {
+			$latitude = $coordinates_array[0]->latitude;
+			$longitude = $coordinates_array[0]->longitude;
+		}
+		
+		//Format URL
+		if(trim($data_array['website']) != '') {
+			$website = prep_url($data_array['website']);
+			
+		} else {
+			$website = '';
+		}
+		
+		//Format URL
+		if(trim($data_array['microsite_url']) != '') {
+			$microsite_url = prep_url($data_array['microsite_url']);
+			
+		} else {
+			$microsite_url = '';
+		}
+		
+		//Format cc emails as comma separated list
+		$temp_cc_email = trim($data_array['cc_email']);
+		if($temp_cc_email != '') {
+			if(strpos($temp_cc_email, ',') > 0) {
+				$email_array = explode(',', $temp_cc_email);				
+			} else if(strpos($temp_cc_email, "\r\n") > 0) {
+				$email_array = explode("\r\n", $temp_cc_email);
+			} else {
+				$email_array = explode("\n", $temp_cc_email);
+			}
+			$count = 0;
+			foreach($email_array as $key => $value) {
+				$count++;
+				if($count == 1) {
+					$cc_email = trim($value);	
+				} else {
+					$cc_email .= ',' . trim($value);	
+				}
+			}
+
+		} else {
+			$cc_email = $temp_cc_email;
+		}
+		
+		$email_headline = '';
+		$email_message = '';
+		$changes = 0;
+		//Compile a list of changes for email
+		if(trim($current_info_array[0]->name) != trim($data_array['name'])) {
+			$email_message .= 'Previous Company Name: ' . $current_info_array[0]->name . "\n" . 'New Company Name: ' . $data_array['name'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->address) != trim($data_array['address'])) {
+			$email_message .= 'Previous Street Address: ' . $current_info_array[0]->address . "\n" . 'New Address: ' . $data_array['address'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->address2) != trim($data_array['address2'])) {
+			$email_message .= 'Previous Street Address 2: ' . $current_info_array[0]->address2 . "\n" . 'New Street Address 2: ' . $data_array['address2'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->city) != trim($data_array['city'])) {
+			$email_message .= 'Previous City: ' . $current_info_array[0]->city . "\n" . 'New City: ' . $data_array['city'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->state) != trim($data_array['state'])) {
+			$email_message .= 'Previous State: ' . $current_info_array[0]->state . "\n" . 'New State: ' . $data_array['state'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->zip) != trim($data_array['zip'])) {
+			$email_message .= 'Previous ZIP: ' . $current_info_array[0]->zip . "\n" . 'New ZIP: ' . $data_array['zip'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->email) != trim($data_array['email'])) {
+			$email_message .= 'Previous E-mail: ' . $current_info_array[0]->email . "\n" . 'New E-mail: ' . $data_array['email'] . "\n\n";
+			$changes++;
+		}
+		if(trim($current_info_array[0]->fax) != trim($data_array['fax'])) {
+			$email_message .= 'Previous Fax: ' . $current_info_array[0]->fax . "\n" . 'New Fax: ' . $data_array['fax'] . "\n\n";
+			$changes++;
+		}
+		if($email_message != '') {
+			$email_headline = $current_info_array[0]->name . ' has updated their skylight microsite information';
+			$email_message = $email_headline . "\n\n" . $email_message;
+		}
+		
+		if($has_image) {
+		
+			$data = array(
+				'name' => $data_array['name'],
+				'contact_first_name' => $data_array['contact_first_name'],
+				'contact_last_name' => $data_array['contact_last_name'],
+				'address' => $data_array['address'],
+				'address2' => $data_array['address2'],
+				'city' => $data_array['city'],
+				'state' => $data_array['state'],
+				'zip' => $data_array['zip'],
+				'region' => $data_array['region'],
+				'phone1' => $data_array['phone1'],
+				'fax' => $data_array['fax'],
+				'email' => $data_array['email'],
+				'dealer_hours' => trim($data_array['dealer_hours']),
+				'website' => $website,
+				'microsite_url' => $microsite_url,
+				'dealer_logo' => $data_array['dealer_logo'],
+				'extension' => $data_array['extension'],
+				'credentials' => $data_array['credentials'],
+				'primary_email' => $data_array['primary_email'],
+				'cc_email' => $cc_email,
+				'longitude' => $longitude,
+				'latitude' => $latitude,
+				'modification_date' => current_timestamp()
+			);
+			
+		} else {
+			$data = array(
+				'name' => $data_array['name'],
+				'contact_first_name' => $data_array['contact_first_name'],
+				'contact_last_name' => $data_array['contact_last_name'],
+				'address' => $data_array['address'],
+				'address2' => $data_array['address2'],
+				'city' => $data_array['city'],
+				'state' => $data_array['state'],
+				'zip' => $data_array['zip'],
+				'region' => $data_array['region'],
+				'phone1' => $data_array['phone1'],
+				'fax' => $data_array['fax'],
+				'email' => $data_array['email'],
+				'dealer_hours' => trim($data_array['dealer_hours']),
+				'website' => $website,
+				'microsite_url' => $microsite_url,
+				'credentials' => $data_array['credentials'],
+				'primary_email' => $data_array['primary_email'],
+				'cc_email' => $cc_email,
+				'longitude' => $longitude,
+				'latitude' => $latitude,
+				'modification_date' => current_timestamp()
+			);
+		}
+		
+		$this->db->where('dealer_id', $data_array['dealer_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			if($email_message != '' && $changes > 0) {
+				$recipient = $this->config->item('profile_updates_recipient');
+				$from = $this->config->item('global_email_from');
+				$subject = $email_headline;
+				$message = $email_message;
+				
+				//SEND CHANGE NOTIFICATION EMAIL
+				Email_Send($recipient, $from, $subject, $message);
+
+			}
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+		
+	}
+
 	function activate_product_category($product_category_id, $dealer_id) {
 		$options_array = $this->get_dealer_options($dealer_id);
 		if(trim($options_array[0]->product_categories) != '') {
