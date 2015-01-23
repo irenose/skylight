@@ -26,7 +26,7 @@
         <div class="action_form">
     
             <label for="name">Promotion Headline<?php echo required_text('promotion_headline'); ?></label>
-            <input type="text" class="input_text" name="dealer_homepage_headline" id="dealer_homepage_headline" value="<?php echo set_value('promotion_headline', $dealer_array[0]->promotion_headline); ?>" />
+            <input type="text" class="input_text" name="promotion_headline" id="promotion_headline" value="<?php echo set_value('promotion_headline', $dealer_array[0]->promotion_headline); ?>" />
             
             <label for="promotion_callout_copy">Promotion Callout Copy<?php echo required_text('promotion_callout_copy'); ?></label>
             <input type="text" class="input_text" name="promotion_callout_copy" id="promotion_callout_copy" value="<?php echo set_value('promotion_callout_copy', $dealer_array[0]->promotion_callout_copy); ?>" />
@@ -34,7 +34,7 @@
             <label for="promotion_page_copy">Promotion Page Copy<?php echo required_text('promotion_page_copy'); ?></label>
             <textarea name="promotion_page_copy" id="promotion_page_copy" class="textarea_text"><?php echo set_value('promotion_page_copy', $dealer_array[0]->promotion_page_copy); ?></textarea>
 
-            <label for="promotion_status">Status</label>
+            <label for="promotion_status">Status<?php echo required_text('promotion_status'); ?></label>
             <select name="promotion_status" class="input_dropdown">
                 <option value="">Choose Status</option>
                 <option value="active"<?php echo set_select('promotion_status', 'active', $active_selected); ?>>Active</option>

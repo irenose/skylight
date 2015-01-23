@@ -127,7 +127,7 @@ class Installer_admin_model extends CI_Model {
 			'testimonial_name' => $data_array['testimonial_name'],
 			'testimonial_source' => $data_array['testimonial_source'],
 			'testimonial_status' => 'active',
-			'modified_by' => $this->session->userdata('admin_username'),
+			'modified_by' => $_SESSION['admin_username'],
 			'insert_date' => current_timestamp(),
 			'modification_date' => current_timestamp()
 		);
@@ -308,7 +308,7 @@ class Installer_admin_model extends CI_Model {
 				$from = $this->config->item('global_email_from');
 				$subject = $email_headline;
 				$message = $email_message;
-				
+
 				//SEND CHANGE NOTIFICATION EMAIL
 				Email_Send($recipient, $from, $subject, $message);
 
@@ -607,11 +607,33 @@ class Installer_admin_model extends CI_Model {
 			'testimonial_copy' => $data_array['testimonial_copy'],
 			'testimonial_name' => $data_array['testimonial_name'],
 			'testimonial_source' => $data_array['testimonial_source'],
-			'modified_by' => $this->session->userdata('admin_username'),
+			'modified_by' => $_SESSION['admin_username'],
 			'modification_date' => current_timestamp()
 		);
 			
 		$this->db->where('testimonial_id', $data_array['testimonial_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	function update_promotion($data_array) {
+		
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		
+		$data = array(
+			'promotion_headline' => $data_array['promotion_headline'],
+			'promotion_callout_copy' => $data_array['promotion_callout_copy'],
+			'promotion_page_copy' => $data_array['promotion_page_copy'],
+			'promotion_status' => $data_array['promotion_status'],
+			'modification_date' => current_timestamp()
+		);
+			
+		$this->db->where('dealer_id', $data_array['dealer_id']);
 		$result = $this->db->update($db_table, $data); 
 		
 		if($result) {

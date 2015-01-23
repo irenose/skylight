@@ -596,18 +596,20 @@ class Installer_admin extends CI_Controller {
 		$data['current_section'] = 'promotion';
 		$data['page_title'] = 'Installer Administration - Update Promotion';
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
-		$this->form_validation->set_rules('dealer_homepage_headline', 'Homepage Headline', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('dealer_homepage_copy', 'Homepage Copy', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('promotion_headline', 'Promotion Headline', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('promotion_callout_copy', 'Promotion Copy', 'trim|xss_clean');
+		$this->form_validation->set_rules('promotion_page_copy', 'Promotion Copy', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('promotion_status', 'Promotion Copy', 'trim|required|xss_clean');
 		
 		if($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_promotion';
 		} else {
 			$update = $this->installer_admin_model->update_promotion($_POST);
 			if($update) {
-				$this->session->set_flashdata('status_message','<div class="success">Homepage copy has been updated successfully</div>');
+				$this->session->set_flashdata('status_message','<div class="success">Promotion has been updated successfully</div>');
 				redirect('/installer-admin/promotion');
 			} else {
-				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this copy. Please try again.</p></div>');
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this promotion. Please try again.</p></div>');
 				redirect('/installer-admin/promotion');
 			}
 		}
