@@ -311,6 +311,16 @@
 }
 
 /*-----------------------
+  @BACKGROUNDS
+------------------------*/
+.bg-grey {
+    background-color: $color-grey-light-bg;
+}
+.bg-grey-dark {
+    background-color: $color-grey-dark;
+}
+
+/*-----------------------
   @SHADOWS
 ------------------------*/
 %overlap {

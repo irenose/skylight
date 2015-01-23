@@ -48,6 +48,12 @@
     }
 }
 
+.footer-container {
+    margin: 0 auto;
+    max-width: $page-max-width;
+    width: 100%;
+}
+
 .footer-row {
     margin: 0 auto;
     max-width: $page-max-width;

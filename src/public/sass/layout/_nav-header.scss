@@ -3,7 +3,6 @@
     display: none;
     font-size: 0.875em;
     left: 0;
-    overflow: scroll;
     position: absolute;
     top: $masthead-mobile;
     width: 100%;
@@ -243,6 +242,7 @@
     }
     @include bp($foundation-small, $tablet) {
         box-shadow: 0 4px 5px 0 rgba(50,50,50,.35);
+        overflow: scroll;
         padding: 0 .75em;
         text-align: left;
     }
