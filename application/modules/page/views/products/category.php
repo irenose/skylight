@@ -26,17 +26,21 @@
                         /*---------------------------------------------
                             Link To First Product Row
                         ----------------------------------------------*/
-                        echo "<a href='#" . "'" . " data-btn-scroll>";
-                    ?>
-                        <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
-                            <i class="icon icon-chevron--down--reversed">
-                                <svg class="icon__svg">
-                                    <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chevron--down--reversed"></use>
-                                </svg>
-                            </i>
-                        </div>
-                        <span class="upper no-underline category-scroll-link">View <?= $product_category_array['category']->product_category_name;?></span>
-                    </a>
+                        if( count($product_category_array['subcategory_array']) > 0) {
+                            echo '<a href="#' . url_title($product_category_array['subcategory_array'][0]->subcategory_name, 'dash', TRUE) . '" data-btn-scroll>';
+                        ?>
+                            <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
+                                <i class="icon icon-chevron--down--reversed">
+                                    <svg class="icon__svg">
+                                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chevron--down--reversed"></use>
+                                    </svg>
+                                </i>
+                            </div>
+                            <span class="upper no-underline category-scroll-link">View <?= $product_category_array['category']->product_category_name;?></span>
+                        <?php
+                            echo '</a>';
+                            }
+                        ?>
                 </div>
 			</div>
 		</div>
