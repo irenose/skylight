@@ -1,7 +1,7 @@
 <section class="page-row products--short">
     <div class="product-category-wrapper">
         <header class="header-statement">
-            <h2 class="upper">Our Products</h2>
+            <h2 class="upper normal-weight">Our Products</h2>
         </header>
         <?php
             if( isset($product_category_array) && count($product_category_array) > 0) {

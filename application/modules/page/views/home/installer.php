@@ -38,17 +38,17 @@
                             echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
                         }
                         if(trim($installer_array[0]->promotion_page_copy) != '') {
-                            echo ' <a href="' . $installer_base_url . '/promotions">Learn More</a>' . "\n";
+                            echo ' <a href="' . $installer_base_url . '/promotions" class="cta-text">Learn More</a>' . "\n";
                         }
                     echo ' </div>' . "\n";
                     echo '<div class="promotion-small cta schedule-consult">' . "\n";
                         echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
                     echo '</div>' . "\n";
                 } else {
                     echo '<div class="promotion-small one-promotion cta schedule-consult">' . "\n";
                         echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
                     echo '</div>' . "\n";
                 }
             ?>
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="testimonial-link">
-                        <a href="<?=$installer_base_url?>/about#testimonials">View All Testimonials</a>
+                        <a href="<?=$installer_base_url?>/about#testimonials" class="cta-text">View All Testimonials</a>
                     </div>
                 </div>
             </div>

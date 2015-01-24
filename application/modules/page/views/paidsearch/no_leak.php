@@ -15,7 +15,7 @@
         </div>
     </div>
 </section>
-<section class="page-row snug-bottom product-statement">
+<section class="page-row short-top snug-bottom product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
             <h4 class="normal-weight">The revolutionary No Leak Solar Powered "Fresh Air" skylight is eligible for a 30% Federal tax credit, saving eligible homeowners an average of $850 on product and installation. </h4>

@@ -1,7 +1,7 @@
 .breadcrumb {
     color: $color-grey-light;
     display: none;
-    font-size: .875em;
+    font-size: .75em;
     overflow: hidden;
     padding: {
         bottom: 15px;
@@ -16,7 +16,6 @@
     .breadcrumb-links {
         display: none;
         float: right;
-        font-size: .875em;
         top: 4px;
 
         a:nth-child(2) {

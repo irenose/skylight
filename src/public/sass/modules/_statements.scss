@@ -17,7 +17,7 @@
     }
     p {
         color: $color-default-light;
-        font-family: $font-family-display;
+        /*font-family: $font-family-display;*/
     }
 
     @include bp($foundation-small, $mobile-landscape) {

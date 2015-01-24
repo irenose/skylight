@@ -1,7 +1,7 @@
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--snug">
         <h1 class="normal-weight">Brochures</h1>
-        <p class="font-display">We offer easy to understand downloads to help you choose the skylight that's perfect for you.</p>
+        <p>We offer easy to understand downloads to help you choose the skylight that's perfect for you.</p>
     </header>
 </section>
 <section class="page-row border-top-grey brochures">
@@ -20,9 +20,9 @@
                     echo '<div class="brochure__image">' . "\n";
                         echo '<img src="' . $this->config->item('brochure_assets_dir') . $brochure->thumbnail . '.' . $brochure->thumbnail_extension . '" alt="' . $brochure->name . '">' . "\n";
                     echo '</div>' . "\n";
-                    echo '<h4 class="brochure__title">' . $brochure->name . '</h4>' . "\n";
+                    echo '<h4 class="brochure__title normal-weight">' . $brochure->name . '</h4>' . "\n";
                     if( file_exists($this->config->item('resources_full_dir') . $brochure->filename . '.' . $brochure->extension)) {
-                        echo '<a href="' . $this->config->item('resources_dir') . $brochure->filename . '.' . $brochure->extension . '" target="_blank">Download</a>';
+                        echo '<a href="' . $this->config->item('resources_dir') . $brochure->filename . '.' . $brochure->extension . '" class="cta-text" target="_blank">Download</a>';
                     }
                 echo '</div>' . "\n";
             }

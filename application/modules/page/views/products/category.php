@@ -19,7 +19,7 @@
 			<div class="card">
                 <div class="card-container">
     				<h2><?= $product_category_array['category']->product_category_name; ?></h2>
-    				<p class="font-display"><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
+    				<p><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
                 </div>
                 <div class="bg-grey border-top-grey category-scroll-bar">
                     <?php

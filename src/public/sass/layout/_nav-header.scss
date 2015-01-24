@@ -33,7 +33,7 @@
 
         .nav-header__link {
             display: block;
-            line-height: 3;
+            line-height: 2.5;
 
             @include bp($tablet) {
                 display: inline-block;
@@ -90,13 +90,16 @@
                 color: $color-grey-light;
                 font-size: .875em;
                 display: block;
-                line-height: 3;
-                padding-left: 1em;
+                line-height: 2.5;
+                padding-left: 0;
 
                 &:hover {
                     @extend %no-underline;
                 }
                 
+                @include bp($mobile-landscape, $tablet) {
+                    padding-left: 1em;
+                }
                 @include bp($tablet) {
                     color: $color-default;
                     display: inline-block;
@@ -117,9 +120,10 @@
                 left: 0;
                 line-height: 70px;
                 padding: {
+                    bottom: 1.5%;
                     left: 2.5%;
                     right: 2.5%;
-                    top: 2%;
+                    top: 3%;
                 }
                 position: absolute;
                 width: 100%;
@@ -150,6 +154,9 @@
             }
         }
 
+        @include bp($foundation-small, $tablet) {
+            float: left;
+        }
         @include bp($foundation-large) {
             float: left;
 
@@ -161,13 +168,13 @@
 
     .nav-minor {
         display: none;
+        position: static;
         z-index: 10;
 
         .nav-header__link {
             color: $color-grey-light;
             display: block;
-            font-size: .875em;
-            line-height: 3;
+            line-height: 2.25;
 
             @include bp($foundation-small, $tablet) {
                 padding-left: 1em;
@@ -178,13 +185,11 @@
             }
             @include bp($tablet, $switch-nav-large) {
                 display: inline-block;
-                font-size: 1em;
                 line-height: $masthead-height;
                 margin: 0 20px;
             }
             @include bp($switch-nav-large) {
                 display: inline-block;
-                font-size: 1em;
                 line-height: $masthead-height;
                 margin: {
                     left: 28px;
@@ -208,6 +213,21 @@
             display: block;
             margin-top: 15px;
 
+            @include bp($foundation-small, $tablet) {
+                border-top: 1px solid $color-secondary;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                max-width: initial;
+                padding: 2.25em 0 1.75em;
+                right: 0;
+                text-align: center;
+                width: 100%;
+
+                img {
+                    width: 110px;
+                }
+            }
             @include bp($tablet) {
                 margin-top: 0;
             }
@@ -216,6 +236,10 @@
             }
         }
 
+        @include bp($foundation-small, $tablet) {
+            float: right;
+            font-size: .875em;
+        }
         @include bp($foundation-small, $foundation-large) {
             padding-bottom: 20px;
         }
@@ -239,11 +263,12 @@
     }
     @include bp($mobile-landscape, $tablet) {
         font-size: 1em;
+        padding: 1em 2.5em 9em;
     }
     @include bp($foundation-small, $tablet) {
         box-shadow: 0 4px 5px 0 rgba(50,50,50,.35);
         overflow: scroll;
-        padding: 0 .75em;
+        padding: 1em 1.75em 9em;
         text-align: left;
     }
     @include bp($foundation-med) {

@@ -116,6 +116,18 @@
     }
 }
 
+a.cta-text {
+    @extend %upper;
+
+    &:hover {
+        @extend %no-underline;
+    }
+
+    @include bp($mobile-landscape) {
+        font-size: .875em;
+    }
+}
+
 /*-----------------------
   @LISTS
 ------------------------*/

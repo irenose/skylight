@@ -110,24 +110,25 @@
     }
     ul {
         color: $color-default-light;
+        font-family: $font-family-default;
         line-height: 1.5;
         list-style: none;
         margin: 2em 0;
         padding-left: 1.75em;
 
         li {
-            margin-bottom: .75em;
+            margin-bottom: 1em;
         }
         li:before {
             color: $color-primary;
             content: '•';
             display: block;
-            font-size: 1.5em;
+            font-size: 1.25em;
             left: -20px;
             max-height: 0;
             max-width: 0;
             position: relative;
-            top: -.25em;
+            top: -.125em;
         }
 
         @include bp($foundation-small, $mobile-landscape) {

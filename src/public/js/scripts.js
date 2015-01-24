@@ -126,7 +126,7 @@ ww.common = (function(){
                 clearTimeout(doit);
                 doit = setTimeout(ww.fixed_nav.reset_offset, 10);
                 doit = setTimeout(ww.paid_search.height_calc, 10);
-                doit = setTimeout(ww.navigation.reset, 10);
+                //doit = setTimeout(ww.navigation.reset, 10);
             };
         }
     };
@@ -215,17 +215,17 @@ ww.navigation = (function(){
 
         mobile_menu: function() {
             settings.$menu_trigger.on("click", function(e) {
-                if ($(window).width() < 768) {
+                /*if ($(window).width() < 768) {
                     ww.navigation.height_calc();
-                }
+                }*/
                 settings.$masthead_wrapper.toggleClass('nav-header--is-open');
                 e.preventDefault();
 
-                ww_globals.$win.scroll(function() {
+                /*ww_globals.$win.scroll(function() {
                     if ($(window).width() < 768) {
                         clearTimeout(setTimeout(ww.navigation.height_calc(), 20));
                     }
-                });
+                });*/
             });
         },
 

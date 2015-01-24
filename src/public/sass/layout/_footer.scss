@@ -84,7 +84,7 @@
     }
 }
 .footer-row--bottom {
-    background: $color-reverse-heading;
+    background: $color-footer-bg;
     padding: {
         bottom: 3em;
         top: 3em;
@@ -126,7 +126,7 @@
 
                 a {
                     @extend %upper;
-                    color: $color-default;
+                    color: $color-reverse;
 
                     @include bp($foundation-large) {
                         margin-right: 4%;
@@ -281,7 +281,8 @@
     }
 }
 .footer-row--top {
-    background: $color-footer-bg;
+    @extend %border-top-grey;
+    background: $color-reverse-heading;
     padding: {
         bottom: 3em;
         top: 3em;
@@ -303,8 +304,12 @@
                 width: 66%;
             }
         }
+        .dealer-info,
+        .hours {
+            vertical-align: top;
+        }
         .dealer-info__header {
-            color: $color-text-light;
+            color: $color-default;
         }
         .address,
         .numbers {

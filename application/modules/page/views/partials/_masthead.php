@@ -16,7 +16,7 @@
         <div class="masthead__section masthead__section--small masthead__section--phone">
             <?php
                 if($show_installer_header_footer) {
-                    echo '<div class="phone"><a href="tel:' . $installer_array[0]->phone1 . '" class="nav-header__link phone-number"><i class="icon icon-phone"><svg class="icon__svg"><use xlink:href="' . asset_url('images/sprites/sprite.svg') . '#icon-phone"></use></svg></i>' . $installer_array[0]->phone1 . '</a></div>';
+                    echo '<div class="phone"><a href="tel:' . $installer_array[0]->phone1 . '" class="nav-header__link phone-number"><i class="icon icon-phone"><svg class="icon__svg"><use xlink:href="' . asset_url('images/sprites/sprite.svg') . '#icon-phone"></use></svg></i><span class="number">' . $installer_array[0]->phone1 . '</span></a></div>';
                 }
             ?>
         </div>

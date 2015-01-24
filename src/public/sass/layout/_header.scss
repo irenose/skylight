@@ -48,8 +48,13 @@
             top: 0;
 
             @include bp($foundation-small, $tablet) {
-                border-right:0;
-                left: 0;
+                border-left: 0;
+                border-right: 0;
+                right: 0;
+            }
+            @include bp($foundation-small, $mobile-landscape) {
+                width: 80px;
+                border-left: 1px solid $color-secondary;
             }
             @include bp($foundation-large) {
                 position: relative;
@@ -73,9 +78,9 @@
         color: $color-primary;
         display: block;
         height: $masthead-mobile;
+        right: 0;
         padding: 0;
         position: absolute;
-        right: 0;
         top: 0;
         width: 80px;
 
@@ -93,6 +98,11 @@
             }
         }
 
+        @include bp($foundation-small, $tablet) {
+            border-right: 1px solid $color-secondary;
+            left: 0;
+            right: auto;
+        }
         @include bp($foundation-med) {
             height: $masthead-height;
         }
@@ -141,8 +151,9 @@
             margin-right: 5px;
 
             @include bp($foundation-small, $mobile-landscape) {
-                height: 16px;
-                width: 16px;
+                height: 22px;
+                margin-right: 0;
+                width: 22px;
             }
             @include bp($my-very-large) {
                 height: 20px;
@@ -153,6 +164,12 @@
         .phone-number {
             font-size: .875em;
             width: 100%;
+
+            .number {
+                @include bp($foundation-small, $mobile-landscape) {
+                    display: none;
+                }
+            }
         }
     }
     .velux-logo {
