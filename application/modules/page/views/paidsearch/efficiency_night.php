@@ -1,24 +1,39 @@
 
 <section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
     <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Energy Efficiency</h1>
+        <h1 class="normal-weight">Energy Efficiency Night</h1>
     </header>
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
         </div>
-        <div class="small-12 medium-4 columns ps-form" id="ps-form">
-            <?php 
-                /******************************* LOAD FORM *************************/
-                echo $this->load->view('partials/_paid-search-form');
-            ?>
+        <div class="small-12 medium-4 columns welcome-list-wrapper">
+            <div class="welcome-list">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h4>Skylight innovation and energy efficiency go hand-in-hand.</h4>
+                        <div class="form-grey-border"></div>
+                        <ul class="ps-list">
+                            <li>More than 90% of VELUX products are ENERGY STAR&reg; qualified </li>
+							<li>"Fresh Air" models help cool home and reduce reliance on air conditioning</li>
+							<li>Add blinds for additional energy-efficiency savings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 <section class="page-row short-top snug-bottom product-statement">
+    <div class="ps-form" id="ps-form">
+        <?php 
+            /******************************* LOAD FORM *************************/
+            echo $this->load->view('partials/_paid-search-form');
+        ?>
+    </div>
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
-            <h4 class="normal-weight">Replacing old skylights with VELUX skylights makes your home more energy efficient.  </h4>
+            <h4 class="normal-weight">Replacing old skylights with VELUX skylights makes your home more energy efficient. </h4>
             <img src="<?=asset_url('images/ps/skylight.png')?>" alt>
         </div>
     </div>

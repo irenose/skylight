@@ -293,6 +293,9 @@ class Page extends CI_Controller {
                                 case 'skylight-blinds':
                                     $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/blinds_night' : 'paidsearch/blinds';
                                     break;
+                                case 'hail-damage':
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/hail_night' : 'paidsearch/hail';
+                                    break;
                                 default:
                                     redirect($data['installer_base_url']);
                                     break;
