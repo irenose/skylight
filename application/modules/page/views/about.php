@@ -52,18 +52,15 @@
 ?>
         <section class="page-row bg-grey gallery">
             <div class="slick-carousel" data-carousel-init="auto" data-carousel-type="photo-gallery" data-slides-to-show="4">
-                <div class="slick__item centered">
-                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-                </div>
-                <div class="slick__item centered">
-                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-                </div>
-                <div class="slick__item centered">
-                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-                </div>
-                <div class="slick__item centered">
-                    <img src="<?=asset_url('images/gallery-placeholder.png')?>" alt>
-                </div>
+                <?php
+                    foreach($gallery_array as $photo) {
+                        if($photo->photo_image != '' && file_exists($this->config->item('gallery_images_full_dir') . $photo->photo_image . '.' . $photo->extension)) {
+                            echo '<div class="slick__item centered">' . "\n";
+                                echo '<img src="' . $this->config->item('gallery_images_dir') . $photo->photo_image . '.' . $photo->extension . '" alt="' . $photo->photo_title . '">';
+                            echo '</div>' . "\n";
+                        }
+                    }
+                ?>
             </div>
         </section>
 

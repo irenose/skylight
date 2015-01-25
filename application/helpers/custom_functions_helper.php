@@ -598,25 +598,19 @@ function create_directory_tree($root) {
     return $result;
 }
 
-function get_directory_contents($selected_file = '') {
+function get_directory_contents($dir) {
 	$result = '';
-	$root = $_SERVER['DOCUMENT_ROOT'] . '/manual_uploads';
+	$root = $dir;
 	$current_directory  = scandir($root);
+	$image_array = array();
 
     foreach ($current_directory as $key => $value) {
 		if ( ! in_array($value,array(".",".."))) {
-			if (is_dir($root . DIRECTORY_SEPARATOR . $value)) {
-			} else {
-				if($selected_file != '' && $selected_file == $value) {
-					$result .= '<a href="' . $value . '" class="manual_upload_file manual_upload_file_selected">' . $value . '</a><br />';
-				} else {
-					$result .= '<a href="' . $value . '" class="manual_upload_file">' . $value . '</a><br />';
-				}
-			}
+			$image_array[] = $value;
 		}
 	}
 
-    return $result;
+    return $image_array;
 }
 
 function get_expiration_date($days_from_now = 365) {

@@ -194,7 +194,7 @@ class Page extends CI_Controller {
                         case 'about':
                             $data['current_section'] = 'about';
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
-                            $data['gallery_array'] = array();
+                            $data['gallery_array'] = $this->page_model->get_photos_by_dealer($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = array(
                                 'title' => 'About',
                                 'description' => '',

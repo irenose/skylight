@@ -100,11 +100,31 @@ class Page_model extends CI_Model {
 
 	function get_dealer_about_image($installer_array) {
 		if($installer_array[0]->about_image != '' && file_exists($this->config->item('dealer_assets_full_dir') . 'about-images/' . $installer_array[0]->about_image . '.' . $installer_array[0]->about_extension)) {
-			return '<img src="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $installer_array[0]->about_image . '.' . $installer_array[0]->about_extension . '" alt="About ' . $installer_array[0]->name . '">';
+			return $this->config->item('dealer_assets_dir') . 'about-images/' . $installer_array[0]->about_image . '.' . $installer_array[0]->about_extension;
 
 		} else {
 			return '';
 		}
+	}
+
+	function get_photos_by_dealer($dealer_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		$where = array('dealer_id' => $dealer_id, 'photo_status' => 'active');
+		$this->db->where($where);
+		$this->db->order_by('sort_order ASC, photo_title ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function update_dealer_photos() {
+		$db_table = '_ss_gallery_images';
+		$where = "dealer_id <> 0 AND dealer_id <> 3";
+		//$where = array('dealer_id !=' => 0, 'dealer_id !=' => 3);
+		$this->db->where($where);
+		$this->db->order_by('dealer_id ASC, sort_order ASC');
+		$query = $this->db->get($db_table);
+		echo $this->db->last_query();
+		return $query->result();
 	}
 
 /**********************************************************************************************************************************

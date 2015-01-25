@@ -806,15 +806,132 @@ class Installer_admin extends CI_Controller {
 			} else {
 				$update = $this->installer_admin_model->update_literature($_POST);
 				if($update) {
-					$this->session->set_flashdata('status_message','<div class="success">Literature been updated successfully</div>');
+					$this->session->set_flashdata('status_message','<div class="success">Literature has been updated successfully</div>');
 					redirect('/installer-admin/literature');
 				} else {
-					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating literature. Please try again.</p></div>');
+					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating the literature. Please try again.</p></div>');
 					redirect('/installer-admin/literature');
 				}
 			}
 		} else {
 			
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+/*****************************************************************************************************************************************
+/*	PHOTOS Section
+/*	
+/****************************************************************************************************************************************/	
+	function photos($action = NULL, $id = NULL) {
+		$this->auth->restrict(FALSE, '3');
+		$data['current_section'] = 'photos';
+		$data['page_title'] = 'Installer Administration - Photos';
+		$data['dealer_id'] = $_SESSION['dealer_id'];
+		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($data['dealer_id']);
+		
+		if($action == NULL) {
+			$data['photos_listing_array'] = $this->installer_admin_model->get_photos_by_dealer($data['dealer_id']);
+			$data['page_content'] = 'admin_photos';
+			
+		} else {
+			$this->form_validation->set_rules('photo_title', 'Name', 'trim|xss_clean');
+			$this->form_validation->set_rules('photo_description', '', 'trim|xss_clean');
+			switch($action) {
+				case 'add':
+					if($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_photos_add';
+					} else {
+						$config['upload_path'] = $this->config->item('gallery_images_upload_path');
+						$config['allowed_types'] = 'gif|jpg|png';
+						$config['max_size']	= '2048';
+						$config['max_width']  = '3072';
+						$config['max_height']  = '2304';
+						
+						//Load Upload and Image libraries
+						$this->load->library('upload');
+						$this->load->library('image_lib');
+
+						$error_count = 0;
+						$error = '';
+
+						if( ! empty($_FILES['photo_image']['name'])) {
+							//Reset
+							$this->upload->initialize($config);
+							if ( ! $this->upload->do_upload('photo_image')) {
+								$error = $this->upload->display_errors('','');
+								$data['error'] = $error;
+								$data['page_content'] = 'admin_photos_add';
+								$error_count++;
+								break;
+							} else {
+								$data_array = $_POST;
+								$file_path = '';
+								$image_name = '';
+								
+								$data = array('upload_data' => $this->upload->data());
+
+								$file_path = $data['upload_data']['file_path'];
+								$asset_name = $data['upload_data']['file_name'];
+								//chmod($file_path . $asset_name, $this->config->item('file_chmod'));
+								
+								//Use raw name to insert into DB
+								$raw_name = $data['upload_data']['raw_name'];
+								$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
+
+								$data_array['photo_image'] = $raw_name;
+								$data_array['extension'] = $ext;
+
+								$insert_id = $this->installer_admin_model->add_photo($data_array);
+								if($insert_id != FALSE) {
+									$this->session->set_flashdata('status_message','<div class="success">Photo has been added to the gallery</div>');
+									redirect('installer-admin/photos');
+								} else {
+									$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was a problem uploading the image</p></div>');
+									redirect('installer-admin/photos');
+								}
+							}
+
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>You did not upload an image.</p></div>');
+							redirect('installer-admin/photos/add');
+						}
+	
+					}
+					break;
+				case 'update':
+					$data['photo_array'] = $this->installer_admin_model->get_photo_by_id($id);
+					$data['photo_id'] = $id;
+					if($this->form_validation->run() == FALSE) {
+						$data['page_content'] = 'admin_photos_update';
+					} else {
+						$update = $this->installer_admin_model->update_photo($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Photos has been updated successfully</div>');
+							redirect('/installer-admin/photos');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this photo. Please try again.</p></div>');
+							redirect('/installer-admin/photos');
+						}
+					}
+					break;
+
+				case 'sort':
+					$data['photos_array'] = $this->installer_admin_model->get_photos_by_dealer($data['dealer_id']);
+					$data['page_content'] = 'admin_photos_sort';
+					if($this->input->post('sort_images') == 'yes') {
+						$update = $this->installer_admin_model->update_photo_order($_POST);
+						if($update) {
+							$this->session->set_flashdata('status_message','<div class="success">Photos have been re-ordered successfully</div>');
+							redirect('/installer-admin/photos');
+						} else {
+							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error re-ordering your photos. Please try again.</p></div>');
+							redirect('/installer-admin/photos');
+						}
+					}
+					break;
+
+			}
 		}
 		$this->load->view('admin_template', $data);
 	}

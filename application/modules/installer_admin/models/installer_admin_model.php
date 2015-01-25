@@ -114,6 +114,23 @@ class Installer_admin_model extends CI_Model {
 
 	}
 
+	function get_photos_by_dealer($dealer_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		$where = array('dealer_id' => $dealer_id, 'photo_status' => 'active');
+		$this->db->where($where);
+		$this->db->order_by('sort_order ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function get_photo_by_id($photo_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		$where = array('photo_id' => $photo_id);
+		$this->db->where($where);
+		$query = $this->db->get($db_table,1);
+		return $query->result();	
+	}
+
 /***********************************************************************************************************************************
 /*		ADD FUNCTIONS
 ************************************************************************************************************************************/
@@ -641,6 +658,60 @@ class Installer_admin_model extends CI_Model {
 		} else {
 			return FALSE;
 		}
+	}
+
+	function add_photo($data_array) {
+		
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		
+		$data = array(
+			'dealer_id' => $data_array['dealer_id'],
+			'photo_title' => htmlspecialchars(strip_tags($data_array['photo_title']), ENT_QUOTES, 'UTF-8'),
+			'photo_description' => htmlspecialchars(strip_tags($data_array['photo_description']), ENT_QUOTES, 'UTF-8'),
+			'photo_image' => $data_array['photo_image'],
+			'extension' => $data_array['extension'],
+			'sort_order' => 999,
+			'photo_status' => 'active',
+			'insert_date' => current_timestamp(),
+			'modification_date' => current_timestamp()
+		);
+			
+		$added = $this->db->insert($db_table, $data);
+		if($added) {
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		} else {
+			return FALSE;
+		}
+		
+	}
+
+	function update_photo($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		$data = array(
+			'photo_title' => htmlspecialchars(strip_tags($data_array['photo_title']), ENT_QUOTES, 'UTF-8'),
+			'photo_description' => htmlspecialchars(strip_tags($data_array['photo_description']), ENT_QUOTES, 'UTF-8'),
+			'modification_date' => current_timestamp()
+		);
+			
+		$this->db->where('photo_id', $data_array['photo_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	function update_photo_order($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'photos';
+		foreach($data_array['photo_item'] as $sort_order => $photo_id) {
+			$data = array('sort_order' => $sort_order);
+			$this->db->where('photo_id', $photo_id);
+			$result = $this->db->update($db_table, $data); 
+		}
+		return TRUE;
 	}
 
 /***********************************************************************************************************************************

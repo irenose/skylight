@@ -101,6 +101,7 @@
                 	</li>
                 	<li class="main<?php if($current_section == 'homepage') { echo ' selected'; } ?>"><a href="/installer-admin/homepage" class="section">Homepage</a>
                 	<li class="main<?php if($current_section == 'about') { echo ' selected'; } ?>"><a href="/installer-admin/about" class="section">About</a>
+                	<li class="main<?php if($current_section == 'photos') { echo ' selected'; } ?>"><a href="/installer-admin/photos" class="section">Photos</a>
                 	<li class="main<?php if($current_section == 'promotion') { echo ' selected'; } ?>"><a href="/installer-admin/promotion" class="section">Promotion</a>
                 	<li class="main<?php if($current_section == 'warranty') { echo ' selected'; } ?>"><a href="/installer-admin/warranty" class="section">Warranty</a>
 					<li class="main<?php if($current_section == 'products') { echo ' selected'; } ?>"><a href="/installer-admin/products" class="section">Products</a></li>
