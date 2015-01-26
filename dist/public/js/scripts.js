@@ -167,7 +167,7 @@ ww.common = (function(){
                 clearTimeout(doit);
                 doit = setTimeout(ww.fixed_nav.reset_offset, 10);
                 doit = setTimeout(ww.paid_search.height_calc, 10);
-                //doit = setTimeout(ww.navigation.reset, 10);
+                doit = setTimeout(ww.navigation.reset, 10);
             };
         }
     };
@@ -304,11 +304,11 @@ ww.navigation = (function(){
 
         reset: function() {
 
-            if ($(window).width() < 768) { 
+            /*if ($(window).width() < 768) { 
                 ww.navigation.height_calc();
             } else {
                 settings.$nav_header.css({"height": "auto"});
-            }
+            }*/
             if ($(window).width() > 1025) { 
                 settings.$masthead_wrapper.removeClass('subnav-products--is-open');
                 settings.$nav_arrow_products.removeClass('selected');
@@ -601,7 +601,7 @@ ww.carousels = (function(){
                     // transition
                     slick_options.fade = true;
 
-                    slick_options.adaptiveHeight = true;
+                    slick_options.variableWidth = true;
 
                     // responsive
                     slick_options.responsive = [

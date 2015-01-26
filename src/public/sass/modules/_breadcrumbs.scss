@@ -5,13 +5,18 @@
     overflow: hidden;
     padding: {
         bottom: 15px;
-        left: 3%;
+        left: 2.5%;
         right: 2%;
         top: 15px;
     }
 
     .nav-breadcrumb {
         float: left;
+        margin-left: 18px;
+
+        @include bp($foundation-large) {
+            margin-left: 20px;
+        }
     }
     .breadcrumb-links {
         display: none;
