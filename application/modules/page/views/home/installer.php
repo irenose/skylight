@@ -24,10 +24,20 @@
             <h1 class="reversed upper mega-heading">Upgrade Your<br/>Home With An<br/>Upward View.</h1>
         </div>
         <div class="small-12 large-6 columns featured-images">
-            <div class="promotion-large fresh-air">
-                <h4 class="normal-weight">Solar Powered “Fresh Air” Skylight</h4>
-                <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
-            </div>
+            <?php 
+                //SHOW COMMERCIAL PROMO
+                if(count($product_category_array) == 1 && $product_category_array[0]->product_category_id == 3) {
+                    echo '<div class="promotion-large fresh-air">' . "\n";
+                        echo '<h4 class="normal-weight">Solar Powered "Fresh Air" Skylight</h4>' . "\n";
+                        echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
+                    echo '</div>' . "\n";
+                } else {
+                    echo '<div class="promotion-large fresh-air">' . "\n";
+                        echo '<h4 class="normal-weight">Solar Powered "Fresh Air" Skylight</h4>' . "\n";
+                        echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
+                    echo '</div>' . "\n";
+                }
+            ?>
         </div>
         <div class="promotions-small">
             <?php
