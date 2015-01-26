@@ -54,7 +54,6 @@
             }
             @include bp($foundation-small, $mobile-landscape) {
                 width: 80px;
-                border-left: 1px solid $color-secondary;
             }
             @include bp($foundation-large) {
                 position: relative;

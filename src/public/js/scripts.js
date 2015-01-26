@@ -575,6 +575,7 @@ ww.carousels = (function(){
                             breakpoint: 768,
                             settings: {
                                 centerMode: false,
+                                dots: true,
                                 // centerPadding: '40px',
                                 slidesToShow: 1,
                             }

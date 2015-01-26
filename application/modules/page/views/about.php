@@ -51,7 +51,7 @@
     if (isset($gallery_array) && count($gallery_array) > 0) {
 ?>
         <section class="page-row bg-grey gallery">
-            <div class="slick-carousel" data-carousel-init="auto" data-carousel-type="photo-gallery" data-slides-to-show="4">
+            <div class="slick-carousel" data-carousel-init="auto" data-carousel-type="photo-gallery" data-slides-to-show="1">
                 <?php
                     foreach($gallery_array as $photo) {
                         if($photo->photo_image != '' && file_exists($this->config->item('gallery_images_full_dir') . $photo->photo_image . '.' . $photo->extension)) {

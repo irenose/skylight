@@ -195,6 +195,10 @@
                     min-width: 40%;
                 }
             }
+            .nav-major,
+            .nav-minor {
+                vertical-align: top;
+            }
 
             @include bp($foundation-small, $foundation-large) {
                 line-height: 0;
