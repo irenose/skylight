@@ -817,9 +817,11 @@ ww.maps = (function() {
             };
             var encoded_address = $('#map').attr('data-address');
             var geocoder = new google.maps.Geocoder();
+            var ww_map;
+            var settings = {};
 
             if($('.installer').length) {
-                var settings = {
+                settings = {
                     $el: $('#map'),
                     map_options: {
                         center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
@@ -831,7 +833,7 @@ ww.maps = (function() {
                         streetViewControl: false, // pegman
                     }
                 };
-                var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+                ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
                 var infowindow = new google.maps.InfoWindow();
                 var count = 0;
                 $('.installer').each(function() {
@@ -857,7 +859,7 @@ ww.maps = (function() {
 
             } else {
 
-                var settings = {
+                settings = {
                     $el: $('#map'),
                     map_options: {
                         //center: new google.maps.LatLng(coordinates.lat, coordinates.lng),
@@ -869,7 +871,7 @@ ww.maps = (function() {
                         streetViewControl: false, // pegman
                     }
                 };
-                var ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
+                ww_map = new google.maps.Map(settings.$el.get(0), settings.map_options);
 
                 geocoder.geocode( { 'address': encoded_address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
