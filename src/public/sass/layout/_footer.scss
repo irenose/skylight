@@ -388,8 +388,8 @@
 
 .ps-footer {
 
-    @include bp($foundation-small, $foundation-med) {
-        background-color: #fff;
-        padding-bottom: 4em;
+    @include bp($foundation-small, $tablet) {
+        background-color: #eee;
+        padding-bottom: 3.75em;
     }
 }

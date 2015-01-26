@@ -601,7 +601,7 @@ ww.carousels = (function(){
                     // transition
                     slick_options.fade = true;
 
-                    slick_options.variableWidth = true;
+                    slick_options.variableHeight = true;
 
                     // responsive
                     slick_options.responsive = [

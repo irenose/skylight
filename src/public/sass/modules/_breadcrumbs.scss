@@ -10,10 +10,16 @@
         top: 15px;
     }
 
+    @include bp($foundation-small, $tablet) {
+        padding-left: 27px;
+    }
+
     .nav-breadcrumb {
         float: left;
-        margin-left: 18px;
 
+        @include bp($tablet) {
+            margin-left: 18px;
+        }
         @include bp($foundation-large) {
             margin-left: 20px;
         }
