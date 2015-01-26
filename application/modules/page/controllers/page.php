@@ -282,7 +282,7 @@ class Page extends CI_Controller {
                                     $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/repair_night' : 'paidsearch/repair';
                                     break;
                                 case 'sun-tunnel-skylight':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/sun_tunnel_night' : 'paidsearch/suntunnel';
+                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/sun_tunnel_night' : 'paidsearch/sun_tunnel';
                                     break;
                                 case 'commercial-sun-tunnel':
                                     $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/commercial_sun_tunnel_night' : 'paidsearch/commercial_sun_tunnel';
