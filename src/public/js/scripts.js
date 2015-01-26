@@ -559,6 +559,21 @@ ww.carousels = (function(){
 
                     // transition
                     slick_options.fade = true;
+
+                    slick_options.adaptiveHeight = true;
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows: false,
+                                dots: true,
+                                // centerPadding: '40px',
+                                slidesToShow: 1,
+                            }
+                        },
+                    ];
                     break;
 
                 case "product-cards":

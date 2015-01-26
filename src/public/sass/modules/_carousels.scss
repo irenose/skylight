@@ -11,9 +11,9 @@
     background: none;
 }
 
-.slick__item {
+/*.slick__item {
     margin: 20px 15px;
-}
+}*/
 
 .slick-dots {
     $d-dots: 17px;
@@ -62,11 +62,11 @@
     &.slick-active.slick-center {
         display: block;
     }
-    .slick-initialized & {
+    /*.slick-initialized & {
         img {
             width: 100%;
         }
-    }
+    }*/
 }
 
 /*-----------------------
@@ -103,7 +103,7 @@
     &.reversed {
         @include circle(44px, 44px, grey);
         &:hover {
-            background: black;
+            background: $color-primary;
 
             .icon__svg {
                 fill: $color-reversed;
@@ -131,9 +131,9 @@
 /*-----------------------
   @ALL CAROUSELS
 ------------------------*/
-[data-carousel-type] {
+/*[data-carousel-type] {
     padding-bottom: 40px;
-}
+}*/
 
 /*-----------------------
   @LOCATOR
@@ -186,5 +186,71 @@
 
     &.is-active {
         border-bottom: 3px solid $color-blue;
+    }
+}
+
+
+.my-slick-controls {
+    position: static;
+}
+.my-slick-next, .my-slick-prev {
+    background: none;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+
+    @include bp($foundation-small, $tablet) {
+        display: none !important;
+    }
+}
+.my-slick-next {
+    right: -45px;
+}
+.my-slick-prev {
+    left: -45px;
+}
+
+.slick-slide img {
+    display: inline-block;
+}
+
+.slick-initialized .slick__item img {
+    width: auto;
+}
+
+.slick-slider {
+    margin-bottom: 0;
+}
+
+.slick-dots {
+    $d-dots: 17px;
+    @extend %centered;
+    bottom: 0;
+
+    li {
+        margin: 0;
+        width: $d-dots;
+
+        button {
+            width: $d-dots;
+        }
+        button:before {
+            color: $color-grey-light;
+            font-family: sans-serif;
+            font-size: 40px;
+            opacity: 1;
+            width: $d-dots;
+
+            .reversed & {
+                color: $color-reverse-heading;
+            }
+        }
+        &.slick-active button:before {
+            color: $color-primary;
+        }
+    }
+
+    @include bp($foundation-small, $mobile-landscape) {
+        margin-bottom: .5em;
     }
 }
