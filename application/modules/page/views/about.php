@@ -19,7 +19,7 @@
         End Dealer Headline
     ----------------------------------------------*/
 ?>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt accusamus itaque deleniti iusto, doloribus eligendi et, voluptas ea. Beatae, voluptate.</p>
+        <p>We will help advise you on skylight products and installation in order to provide you with the perfect daylight solution. We take pride in quality customer service and installation so you can relax and bask in your home’s newfound daylight.</p>
         <a href="<?= $installer_base_url; ?>/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
     </header>
 </section>

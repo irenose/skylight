@@ -9,7 +9,7 @@
                     echo '<div class="small-12 medium-4 columns">' . "\n";
                         echo '<div class="discover-card-container about-teaser">' . "\n";
                             echo '<div class="discover-card">' . "\n";
-                                echo '<h4 class="reversed normal-weight">About Us Teaser</h4>' . "\n";
+                                echo '<h4 class="reversed normal-weight">About us</h4>' . "\n";
                                 echo '<a href="' . $installer_base_url . '/about" class="upper">Learn More</a>' . "\n";
                             echo '</div>' . "\n";
                         echo '</div>' . "\n";
