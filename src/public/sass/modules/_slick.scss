@@ -1,3 +1,6 @@
+.my-slick-controls {
+    position: static;
+}
 .my-slick-next, .my-slick-prev {
     background: none;
     padding: 0;
@@ -15,9 +18,13 @@
     left: -45px;
 }
 
-/*.slick-slide img {
+.slick-slide img {
     display: inline-block;
-}*/
+}
+
+.slick-initialized .slick__item img {
+    width: auto;
+}
 
 .slick-slider {
     margin-bottom: 0;
