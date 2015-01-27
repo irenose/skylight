@@ -1,4 +1,4 @@
-<section class="footer-wrapper">
+<section class="footer-wrapper<?php if(isset($current_section) && $current_section == 'paid-search') { echo ' ps-footer'; } ?>">
     <div class="footer-container">
         <div class="row footer-row footer-row--top">
             <div class="logo">

@@ -271,6 +271,7 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'promotions';
                             break;
                         case 'ps':
+                            $data['current_section'] = 'paid-search';
                             $template = 'template_ps';
                             if ($vars_size == 4 && $vars_array[4] == 'night') {
                                 $data['paid_search_page_type'] = 'night';
