@@ -73,8 +73,13 @@
         }
     }
     .slick__item {
-        padding-top:20em;
-        padding-bottom:20em;
+        padding-top:10%;
+        padding-bottom:10%;
+
+        @include bp($foundation-med) {
+            padding-top:20em;
+            padding-bottom:20em;
+        }
     }
 
     @include bp($foundation-small, $foundation-med) {
