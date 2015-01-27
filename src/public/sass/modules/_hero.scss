@@ -64,6 +64,18 @@
             }
         }
     }
+    .card--carousel {
+        @include bp($foundation-med) {
+            position:absolute;
+            top:50%;
+            left:5%;
+            margin-top:-160px;
+        }
+    }
+    .slick__item {
+        padding-top:10%;
+        padding-bottom:10%;
+    }
 
     @include bp($foundation-small, $foundation-med) {
         padding: 0;

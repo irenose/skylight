@@ -720,7 +720,7 @@ ww.carousels = (function(){
                 fade: true,
                 pauseOnHover: true,
                 slide: '.slick__item',
-                // swipe: false,
+                swipe: true,
                 // touchMove: false,
                 touchThreshold: 100, // prevents a minimal touch from temporarily hiding the slide
             });

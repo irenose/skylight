@@ -1,4 +1,15 @@
 <?php 
+    switch($product_category_array['category']->product_category_id) {
+        case 1:
+            $carousel_array = array('hero--suntunnel-1','hero--suntunnel-2');
+            break;
+        case 2:
+            $carousel_array = array('hero--residential-1','hero--residential-2','hero--residential-3');
+            break;
+        case 3:
+            $carousel_array = array('hero--commercial-1','hero--commercial-2');
+            break;
+    }
     /******************************* BREADCRUMB *************************/ 
 ?>
 <div class="bg-grey border-bottom-grey">
@@ -13,38 +24,43 @@
         Hero Image With Category Card
     ----------------------------------------------*/
 ?>
-<section class="page-row page-row--extra-tall hero hero--residential">
-	<div class="row">
-		<div class="small-12 large-6 columns">
-			<div class="card">
-                <div class="card-container">
-    				<h2><?= $product_category_array['category']->product_category_name; ?></h2>
-    				<p><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
-                </div>
-                <div class="bg-grey border-top-grey category-scroll-bar">
+<section>
+    <div class="row hero">
+        <div class="slick">
+            <?php 
+                foreach($carousel_array as $key => $value) {
+                    echo '<div class="page-row slick__item ' . $value . '"></div>';
+                }
+            ?>
+        </div>
+        <div class="card card--carousel">
+            <div class="card-container">
+                <h2><?= $product_category_array['category']->product_category_name; ?></h2>
+                <p><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
+            </div>
+            <div class="bg-grey border-top-grey category-scroll-bar">
+                <?php
+                    /*---------------------------------------------
+                        Link To First Product Row
+                    ----------------------------------------------*/
+                    if( count($product_category_array['subcategory_array']) > 0) {
+                        echo '<a href="#' . url_title($product_category_array['subcategory_array'][0]->subcategory_name, 'dash', TRUE) . '" data-btn-scroll>';
+                    ?>
+                        <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
+                            <i class="icon icon-chevron--down--reversed">
+                                <svg class="icon__svg">
+                                    <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chevron--down--reversed"></use>
+                                </svg>
+                            </i>
+                        </div>
+                        <span class="upper no-underline category-scroll-link">View <?= $product_category_array['category']->product_category_name;?></span>
                     <?php
-                        /*---------------------------------------------
-                            Link To First Product Row
-                        ----------------------------------------------*/
-                        if( count($product_category_array['subcategory_array']) > 0) {
-                            echo '<a href="#' . url_title($product_category_array['subcategory_array'][0]->subcategory_name, 'dash', TRUE) . '" data-btn-scroll>';
-                        ?>
-                            <div class="category-scroll-button" id="category-scroll-button" data-category-scroll>
-                                <i class="icon icon-chevron--down--reversed">
-                                    <svg class="icon__svg">
-                                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-chevron--down--reversed"></use>
-                                    </svg>
-                                </i>
-                            </div>
-                            <span class="upper no-underline category-scroll-link">View <?= $product_category_array['category']->product_category_name;?></span>
-                        <?php
-                            echo '</a>';
-                            }
-                        ?>
-                </div>
-			</div>
-		</div>
-	</div>
+                        echo '</a>';
+                        }
+                    ?>
+            </div>
+        </div>
+    </div>
 </section>
 <?php
     /*---------------------------------------------

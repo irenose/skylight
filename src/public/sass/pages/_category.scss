@@ -59,10 +59,34 @@
 /*-----------------------
   @RESIDENTIAL SKYLIGHTS
 ------------------------*/
-.hero--residential {
-    background-image: url('../images/categories/residential-hero.jpg');
-
-    @include bp($foundation-med, $foundation-large) {
-        background-position: 0% 50%;
-    }
+.hero--residential-1 {
+    background-image: url('../images/carousels/residential-products-hero-kitchen.jpg');
+}
+.hero--residential-2 {
+    background-image: url('../images/carousels/residential-products-hero-bathroom.jpg');
+}
+.hero--residential-3 {
+    background-image: url('../images/carousels/residential-products-hero-bedroom.jpg');
+}
+.hero--suntunnel-1 {
+    background-image: url('../images/carousels/sun-tunnel-products-hero-hallway.jpg');
+}
+.hero--suntunnel-2 {
+    background-image: url('../images/carousels/sun-tunnel-products-hero-entrance.jpg');
+}
+.hero--commercial-1 {
+    background-image: url('../images/carousels/commercial-products-hero-classroom.jpg');
+}
+.hero--commercial-2 {
+    background-image: url('../images/carousels/commercial-products-hero-garage.jpg');
+}
+.hero--residential-1,
+.hero--residential-2,
+.hero--residential-3,
+.hero--suntunnel-1,
+.hero--suntunnel-2,
+.hero--commercial-1,
+.hero--commercial-2 {
+    background-position: 0% 50%;
+    background-size:cover;
 }
