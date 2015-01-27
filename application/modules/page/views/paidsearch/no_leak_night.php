@@ -49,14 +49,20 @@
                 <li>Works on cloudy days and with indirect light</li>
                 <li>Comes with the No Leak Promise &ndash; 10-year installation warranty, 20 years on glass, 10 years on the skylight and 5 years on blinds and controls</li>
                 <li>Add light control with factory installed blinds, or choose from more than 100 special order blinds</li>
-                <li>Feature Clean, Quiet and Safe glass with Neat&reg; glass technology</li>
-                    <ul class="ps-list">
-                        <li>Clean: the Neat&reg; glass coating keeps skylights virtually spotless</li>
-                        <li>Quiet: reduce unwanted outside noise</li>
-                        <li>Safe: VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
-
-                    </ul>
                 <li>Rain sensor that automatically closes skylight</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="page-row short-top snug-bottom ps-section clean-quite-safe">
+    <div class="row">
+        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+            <img src="<?=asset_url('images/ps/water-droplets.jpg')?>" alt>
+            <h4 class="normal-weight underlined color-primary">Clean, Quiet and Safe glass</h4>
+            <ul class="ps-list">
+                <li><span class="bold">Clean:</span> the Neat&reg; glass coating keeps skylights virtually spotless</li>
+                <li><span class="bold">Quiet:</span> reduce unwanted outside noise</li>
+                <li><span class="bold">Safe:</span> VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
             </ul>
         </div>
     </div>

@@ -15,13 +15,38 @@
         </div>
     </div>
 </section>
+<section class="page-row short-top snug-bottom product-statement">
+    <div class="row">
+        <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h4 class="normal-weight no-image">Upgrading your skylight can make a major impact in your home's energy efficiency and appearance.</h4>
+            <a class="ps-cta">
+                <div class="phone">
+                    <i class="icon icon-phone">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
+                        </svg>
+                    </i>
+                </div>
+                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="page-row short-top snug-bottom ps-section energy-performance">
+    <div class="row">
+        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+            <img src="<?=asset_url('images/ps/glass.jpg')?>" alt>
+            <ul class="ps-list">
+                <li>Current VELUX models come with a dual paned, LoE3 coated glass, improving the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual pane clear glass</li>
+                <li>Energy performance is even greater with current VELUX skylights over acrylic bubble skylights</li>
+            </ul>
+        </div>
+    </div>
+</section>
 <section class="page-row short-top snug-bottom ps-section benefits">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
-            <h4 class="normal-weight underlined color-primary">Upgrading your skylight can make a major impact in your home's energy efficiency and appearance.  </h4>
             <ul class="ps-list">
-                <li>Current VELUX models come with a dual paned, LoE3 coated glass, improving the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual pane clear glass</li>
-				<li>Energy performance is even greater with current VELUX skylights over acrylic bubble skylights</li>
 				<li>Newest VELUX models feature Clean, Quiet and Safe glass with Neat® glass technology</li>
 				<ul class="ps-list">
 					<li>Clean: the Neat&reg; glass coating keeps skylights virtually spotless</li>

@@ -202,13 +202,13 @@
         width: 100%;
 
         .brand {
+            @extend %no-underline;
             display: inline-block;
 
             .site-title {
                 @extend %color-primary;
                 @extend %h2;
                 @extend %upper;
-                @extend %no-underline;
                 margin-bottom: 0;
                 padding: 10px 0 10px;
             }
