@@ -233,21 +233,24 @@ class Page extends CI_Controller {
                             );
 
                             $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
                             if ($this->input->post('phone') == '') {
-                                $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
+                                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean');
                             }
                             $this->form_validation->set_rules('city', 'City', 'trim|xss_clean');
                             $this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
-                            $this->form_validation->set_rules('zip', 'Zip', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('zip', 'Zip', 'trim|xss_clean');
                             $this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
                             $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
                             $this->form_validation->set_rules('receive_more_info', 'Receive More Info', 'trim|xss_clean');
                             if ($this->form_validation->run() == FALSE) {
                                 $data['page_view'] = 'contact';
                             } else {
+                                $check_fields = array('name','phone','email','comments');
                                 $spam_count = check_spam_count($_POST, $check_fields);
                                 if ($spam_count == 0) {
                                     $insert_id = $this->page_model->add_contact($_POST);
+                                    _a($_POST);
                                 } else {
                                     //Send Spam Emails
                                 }

@@ -1,4 +1,7 @@
 <?php 
+    /*---------------------------------------------
+        Carousel Photos
+    ----------------------------------------------*/
     switch($product_category_array['category']->product_category_id) {
         case 1:
             $carousel_array = array('hero--suntunnel-1','hero--suntunnel-2');

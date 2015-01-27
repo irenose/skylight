@@ -423,13 +423,13 @@ class Page_model extends CI_Model {
 		} else {
 			$receive_more_info = 'no';
 		}
+
 		$data = array(
 		   'dealer_id' => $data_array['dealer_id'],
-		   'contact_type' => $type,
+		   'contact_type' => 'full',
 		   'name' => $data_array['name'],
 		   'email' => $data_array['email'],
 		   'phone' => $data_array['phone'],
-		   'address' => $data_array['address'],
 		   'city' => $data_array['city'],
 		   'state' => $data_array['state'],
 		   'zip' => $data_array['zip'],
@@ -444,20 +444,19 @@ class Page_model extends CI_Model {
 		if($added) {
 			$insert_id = $this->db->insert_id();
 			if($receive_more_info == 'yes') {
-				/*
-				require_once($_SERVER['DOCUMENT_ROOT'] . '/_assets/classes/CMBase.php');
-				$api_key = 'cac210444b070af4de6684c651a8093f';
-				$client_id = null;
-				$campaign_id = null;
-				$list_id = '353de6d98fbde21b3a552cef7e98da1d';
-				
-				$subscribe_email = $data_array['email'];
-				$name = $data_array['name'];
-				$custom_fields = array('formSource' => $form_source);
-				$cm = new CampaignMonitor( $api_key, $client_id, $campaign_id, $list_id );
-				$result = $cm->subscriberAddWithCustomFields($subscribe_email, $name, $custom_fields);
-				*/
-				
+				require_once($_SERVER['DOCUMENT_ROOT'] . '/application/libraries/csrest_subscribers.php');
+				$wrap = new CS_REST_Subscribers('353de6d98fbde21b3a552cef7e98da1d', 'cac210444b070af4de6684c651a8093f');
+				$result = $wrap->add(array(
+					'EmailAddress' => $data_array['email'],
+					'Name' => $data_array['name'],
+					'Resubscribe' => true,
+					'CustomFields' => array(
+	            		array(
+	                		'Key' => 'formSource',
+	                		'Value' => $form_source
+	    				)
+					)
+				));
 			}
 			return $insert_id;
 		} else {

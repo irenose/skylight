@@ -1,4 +1,5 @@
 <form action="<?=$installer_base_url; ?>/contact#contact-form" method="post" id="contact-form" <?php if(isset($modal_form)) { echo 'data-modal-form'; } ?>>
+    <input type="hidden" name="dealer_id" value="<?=$installer_array[0]->dealer_id; ?>">
     <div class="row">
         <div class="small-12 medium-6 columns">
             <label id="label-name">Name*<?=required_text('name'); ?></label>
