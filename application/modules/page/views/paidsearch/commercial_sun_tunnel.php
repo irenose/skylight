@@ -1,7 +1,7 @@
 
 <section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
     <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Commercial SUN TUNNEL</h1>
+        <h1 class="normal-weight">Put natural light to work for you.</h1>
     </header>
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero">
