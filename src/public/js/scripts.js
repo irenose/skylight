@@ -61,6 +61,9 @@ ww.main = (function() {
             ww.maps.init();
             ww.search_maps.init();
             ww.anchors_to_options.init();
+            if($("[data-modal-form]").length) {
+                ww.contact_validation.init();
+            }
         },
     };
 })();
@@ -1051,6 +1054,65 @@ ww.anchors_to_options = (function(){
                 });
             });
         },
+    };
+})();
+
+ww.contact_validation = (function() {
+    return {
+        init: function() {
+            $('#contact-submit').on({
+                click: function(e) {
+                    e.preventDefault();
+                    var error_count = 0,
+                        $name = $('#contact-name').val(),
+                        $name_label = $('#label-name'),
+                        $phone = $('#contact-phone').val(),
+                        $phone_label = $('#label-phone'),
+                        $email_address = $('#contact-email').val(),
+                        $email_label = $('#label-email'),
+                        $subject = $('#contact-subject').val(),
+                        $subject_label = $('#label-subject'),
+                        $message = $('#contact-message').val(),
+                        $message_label = $('#label-message');
+
+                    if($name === '') {
+                        error_count++;
+                        $name_label.html('Name?* <span class="required">Required</span>');
+                    } else {
+                        $name_label.html('Name?*');
+                    }
+                    if($phone === '' && ! ww.contact_validation.validate_email($email_address)) {
+                        error_count++;
+                        $phone_label.html('Phone* <span class="required">Required</span>');
+                    } else {
+                        $phone_label.html('Phone*');
+                    }
+                    if($subject === '') {
+                        $subject_label.html('What Can We Help You With?*<span class="required">Required</span>');
+                        error_count++;
+                    } else {
+                        $subject_label.html('What Can We Help You With?*');
+                    }
+                    if($message === '') {
+                        $message_label.html('Message* <span class="required">Required</span>');
+                        error_count++;
+                    } else {
+                        $message_label.html('Message*');
+                    }
+                    if(error_count === 0) {
+                        $('#contact-form').submit();
+                    } else {
+                        
+                    }
+                }
+            });
+
+        },
+
+        validate_email: function(email_address) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email_address);
+        }
     };
 })();
 

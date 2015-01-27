@@ -88,7 +88,11 @@
     </div>
     <?=$this->load->view('partials/_footer');?>
     <!-- FOOTER -->
-    <?=$this->load->view('partials/_modal');?>
+    <?php
+        if( isset($current_section) && $current_section != 'contact') {
+            echo $this->load->view('partials/_modal');
+        }
+    ?>
     <div class="is-hidden">
         <?=$this->load->view('partials/_svg-icon-loader');?>
     </div>

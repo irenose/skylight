@@ -241,6 +241,7 @@ class Page extends CI_Controller {
                             $this->form_validation->set_rules('zip', 'Zip', 'trim|required|xss_clean');
                             $this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
                             $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('receive_more_info', 'Receive More Info', 'trim|xss_clean');
                             if ($this->form_validation->run() == FALSE) {
                                 $data['page_view'] = 'contact';
                             } else {
