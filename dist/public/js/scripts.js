@@ -539,12 +539,16 @@ ww.carousels = (function(){
         },
         nodes: {
             controls: '<div class="my-slick-controls"></div>',
-        }
+        },
+        $slick: $(".slick")
     };
 
     return {
         init: function() {
             this.register_handlers();
+            if (s.$slick.length) {
+                this.category_carousel();
+            }
         },
 
         // carousels available on page load
@@ -706,6 +710,21 @@ ww.carousels = (function(){
                 $carousel.append(s.nodes[types[i]]);
             }
         },
+
+        category_carousel: function() {
+            var $slick_api = s.$slick.slick({
+                // autoplay: true,
+                arrows: false,
+                dots: true,
+                draggable: false,
+                fade: true,
+                pauseOnHover: true,
+                slide: '.slick__item',
+                // swipe: false,
+                // touchMove: false,
+                touchThreshold: 100, // prevents a minimal touch from temporarily hiding the slide
+            });
+        }
     };
 })();
 
