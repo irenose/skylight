@@ -599,6 +599,9 @@ ww.carousels = (function(){
                     slick_options.nextArrow = s.arrows.nextArrow_reversed;
                     slick_options.prevArrow = s.arrows.prevArrow_reversed;
 
+                    // draggable
+                    slick_options.draggable = true;
+
                     // dots
                     slick_options.dots = false;
 
@@ -608,6 +611,7 @@ ww.carousels = (function(){
                     // transition
                     slick_options.fade = true;
 
+                    // adaptive height
                     slick_options.adaptiveHeight = true;
 
                     // responsive

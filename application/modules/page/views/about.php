@@ -28,14 +28,16 @@
     /******************************* ABOUT INSTALLER COPY *************************/
     if ($installer_array[0]->about_dealer_text != '') {
 ?>
-        <section class="page-row about-dealer intro-statement intro-statement--squeezed">
+        <section class="page-row about-dealer centered">
             <?php
                 if ($about_dealer_image != '') {
-                    echo '<div class="about-dealer-image"><div class="about-dealer-image--container" style="background-image: url(' . $about_dealer_image . ');"></div></div>';
+                    echo '<div class="polaroid about-dealer-image"><img src="' . $about_dealer_image . '" alt></div>';
                 }
             ?>
-            <h2 class="about-dealer-title upper normal-weight">Our Company</h2>
-            <p class="about-dealer-text"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
+            <header class="intro-statement intro-statement--squeezed">
+                <h2 class="about-dealer-title upper normal-weight">Our Company</h2>
+                <p class="about-dealer-text"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
+            </header>
         </section>
 <?php
     /*---------------------------------------------

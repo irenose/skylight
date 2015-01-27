@@ -204,6 +204,15 @@
         .brand {
             display: inline-block;
 
+            .site-title {
+                @extend %color-primary;
+                @extend %h2;
+                @extend %upper;
+                @extend %no-underline;
+                margin-bottom: 0;
+                padding: 10px 0 10px;
+            }
+
             img {
                 max-height: 120px;;
                 max-width: 225px;
