@@ -355,6 +355,7 @@
         }
     }
     .logo {
+        @extend %upper;
         display: none;
         margin-right: 5%;
         padding-right: 4%;

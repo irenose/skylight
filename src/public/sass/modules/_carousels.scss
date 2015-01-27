@@ -11,9 +11,13 @@
     background: none;
 }
 
-/*.slick__item {
-    margin: 20px 15px;
-}*/
+.slick-slider {
+    margin-bottom: 0;
+}
+
+/*-----------------------
+  @DOTS
+------------------------*/
 
 .slick-dots {
     $d-dots: 17px;
@@ -40,6 +44,7 @@
         }
         &.slick-active button:before {
             color: $color-primary;
+            opacity: 1;
         }
     }
 
@@ -66,36 +71,53 @@
     &.slick-active.slick-center {
         display: block;
     }
-    /*.slick-initialized & {
+    .slick-initialized & {
         img {
-            width: 100%;
+            width: auto;
         }
-    }*/
+    }
+}
+
+/*.slick__item {
+    margin: 20px 15px;
+}*/
+
+.slick-slide img {
+    display: inline-block;
 }
 
 /*-----------------------
   @ARROWS
 ------------------------*/
+
+.my-slick-controls {
+    position: static;
+}
+
 .my-slick-prev,
 .my-slick-next {
     @extend %centered;
     @extend %inline-block;
-    height: 44px;
+    height: $icon;
     line-height: 1;
     padding: 16px 0 14px;
     position: absolute;
-    top: 0;
-    width: 44px;
+    top: 50%;
+    width: $icon;
 
     .icon {
         height: 14px;
         width: 14px;
     }
+
+    @include bp($foundation-small, $tablet) {
+        display: none !important;
+    }
 }
 
 .my-slick-prev,
 .my-slick-next {
-    @include circle(44px, 44px, transparent);
+    @include circle($icon, $icon, transparent);
     &:hover {
         background: transparent;
 
@@ -105,30 +127,38 @@
     }
 
     &.reversed {
-        @include circle(44px, 44px, grey);
+        @include circle($icon, $icon, $color-primary);
         &:hover {
-            background: $color-primary;
+            background: $color-red-hover;
+        }
 
-            .icon__svg {
-                fill: $color-reversed;
-            }
+        .icon__svg {
+            fill: $color-reverse-heading;
         }
     }
 }
 
 .my-slick-prev {
-    left: 0;
+    left: -66px;
 
     .icon {
         margin-left: -2px;
     }
+
+    @include bp($my-very-large) {
+        left: -5%;
+    }
 }
 
 .my-slick-next {
-    right: 0;
+    right: -66px;
 
     .icon {
         margin-right: -2px;
+    }
+
+    @include bp($my-very-large) {
+        right: -5%;
     }
 }
 
@@ -198,37 +228,4 @@
     &.is-active {
         border-bottom: 3px solid $color-blue;
     }
-}
-
-
-.my-slick-controls {
-    position: static;
-}
-.my-slick-next, .my-slick-prev {
-    background: none;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-
-    @include bp($foundation-small, $tablet) {
-        display: none !important;
-    }
-}
-.my-slick-next {
-    right: -45px;
-}
-.my-slick-prev {
-    left: -45px;
-}
-
-.slick-slide img {
-    display: inline-block;
-}
-
-.slick-initialized .slick__item img {
-    width: auto;
-}
-
-.slick-slider {
-    margin-bottom: 0;
 }
