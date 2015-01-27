@@ -94,7 +94,7 @@ class Page_model extends CI_Model {
 			return '<img src="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $installer_array[0]->dealer_logo . '.' . $installer_array[0]->extension . '" alt="' . $installer_array[0]->name . '">';
 
 		} else {
-			return $installer_array[0]->name;
+			return '<div class="site-title">' . $installer_array[0]->name . '</div>';
 		}
 	}
 
