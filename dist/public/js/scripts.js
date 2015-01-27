@@ -878,6 +878,8 @@ ww.maps = (function() {
             var geocoder = new google.maps.Geocoder();
             var ww_map;
             var settings = {};
+            // custom marker
+            var ww_image = "/assets/images/icon-pin-map.png";
 
             if($('.installer').length) {
                 settings = {
@@ -903,7 +905,8 @@ ww.maps = (function() {
                         if (status == google.maps.GeocoderStatus.OK) {
                             ww_marker = new google.maps.Marker({
                                 map: ww_map,
-                                position: results[0].geometry.location
+                                position: results[0].geometry.location,
+                                icon: ww_image
                             });
 
                         }
@@ -937,7 +940,8 @@ ww.maps = (function() {
                         ww_map.setCenter(results[0].geometry.location);
                         ww_marker = new google.maps.Marker({
                             map: ww_map,
-                            position: results[0].geometry.location
+                            position: results[0].geometry.location,
+                            icon: ww_image
                         });
 
                     } else {
@@ -945,7 +949,8 @@ ww.maps = (function() {
                         // set marker
                         ww_marker = new google.maps.Marker({
                             map: ww_map,
-                            position: settings.map_options.center
+                            position: settings.map_options.center,
+                            icon: ww_image
                         });
                     }
                 });

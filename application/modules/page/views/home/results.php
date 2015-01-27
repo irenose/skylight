@@ -62,7 +62,7 @@
 		                            <div class="card shadowed">
 		                                <div class="installer" data-coordinates='{"lat":<?=$installer->latitude?>, "lng":<?=$installer->longitude?>}' data-address="<?=urlencode($installer->address . ' ' . $installer->city . ' ' . $installer->state . ' ' . $installer->zip)?>">
 		                                    <div class="card__body">
-		                                        <img src="<?=asset_url('images/icon-pin--fancy.png')?>" class="icon-pin--fancy" aria-hidden="true">
+		                                        <img src="<?=asset_url('images/icon-pin-map.png')?>" class="icon-pin--fancy" aria-hidden="true">
 		                                        <h3 class="installer__name">
 		                                            <?=$installer->name?>
 		                                        </h3>
