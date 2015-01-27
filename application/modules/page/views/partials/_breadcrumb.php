@@ -1,4 +1,4 @@
-<div class="breadcrumb">
+<div class="breadcrumb-container">
     <nav class="nav-breadcrumb">
     	<?php
             /*-------------------------------------------------------

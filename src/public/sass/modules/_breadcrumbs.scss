@@ -1,53 +1,56 @@
 .breadcrumb {
-    color: $color-grey-light;
     display: none;
-    font-size: .75em;
-    overflow: hidden;
-    padding: {
-        bottom: 15px;
-        left: 2.5%;
-        right: 2%;
-        top: 15px;
-    }
 
-    @include bp($foundation-small, $tablet) {
-        padding-left: 27px;
-    }
-
-    .nav-breadcrumb {
-        float: left;
-
-        @include bp($tablet) {
-            margin-left: 18px;
-        }
-        @include bp($foundation-large) {
-            margin-left: 20px;
-        }
-    }
-    .breadcrumb-links {
-        display: none;
-        float: right;
-        top: 4px;
-
-        a:nth-child(2) {
-            margin-left: 15px;
+    .breadcrumb-container {
+        color: $color-grey-light;
+        font-size: .75em;
+        overflow: hidden;
+        padding: {
+            bottom: 15px;
+            left: 2.5%;
+            right: 2%;
+            top: 15px;
         }
 
-        .dotted {
-            border-bottom: 1px dotted;
+        @include bp($foundation-small, $tablet) {
+            padding-left: 27px;
         }
 
-        @include bp($foundation-large) {
-            display: block;
-        }
-    }
+        .nav-breadcrumb {
+            float: left;
 
-    a {
-        font-family: $font-family-default;
-        line-height: 2;
-    }
-    a:hover {
-        text-decoration: none;
+            @include bp($tablet) {
+                margin-left: 18px;
+            }
+            @include bp($foundation-large) {
+                margin-left: 20px;
+            }
+        }
+        .breadcrumb-links {
+            display: none;
+            float: right;
+            top: 4px;
+
+            a:nth-child(2) {
+                margin-left: 15px;
+            }
+
+            .dotted {
+                border-bottom: 1px dotted;
+            }
+
+            @include bp($foundation-large) {
+                display: block;
+            }
+        }
+
+        a {
+            font-family: $font-family-default;
+            line-height: 2;
+        }
+        a:hover {
+            text-decoration: none;
+        }
     }
 
     @include bp($foundation-med) {

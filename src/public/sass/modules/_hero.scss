@@ -7,6 +7,15 @@
         padding-bottom: 4em;
         width: 360px;
 
+        .card-container {
+
+            @include bp($foundation-small, $foundation-med) {
+                padding: {
+                    bottom: 0;
+                    top: 0;
+                }
+            }
+        }
         .category-scroll-bar {
             bottom: 0;
             position: absolute;
@@ -48,13 +57,17 @@
 
         @include bp($foundation-small, $foundation-med) {
             background: $color-grey-light-bg;
-            padding: 8% 10% 8%;
+            padding: 1.5em 10% 5em;
             width: 100%;
         }
         @include bp($foundation-med) {
             background-clip: padding-box;
             border: 10px solid rgba(245,245,245,.6);
+            left: 5%;
+            margin-top: -160px;
+            position: absolute;
             text-align: left;
+            top: 50%;
         }
         @include bp($my-very-large) {
             width: 420px;
@@ -62,14 +75,6 @@
             p {
                 font-size: .875em;
             }
-        }
-    }
-    .card--carousel {
-        @include bp($foundation-med) {
-            position:absolute;
-            top:50%;
-            left:5%;
-            margin-top:-160px;
         }
     }
     .slick__item {

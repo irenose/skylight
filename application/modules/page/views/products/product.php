@@ -1,7 +1,7 @@
 <?php
     /******************************* BREADCRUMB *************************/
 ?>
-<div class="bg-grey border-bottom-grey">
+<div class="bg-grey border-bottom-grey breadcrumb">
 	<?=$this->load->view('partials/_breadcrumb')?>
 </div>
 <section class="page-row product-detail">
