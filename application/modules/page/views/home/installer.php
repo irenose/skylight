@@ -28,12 +28,11 @@
                 //SHOW COMMERCIAL PROMO
                 if(count($product_category_array) == 1 && $product_category_array[0]->product_category_id == 3) {
                     echo '<div class="promotion-large commercial-promo">' . "\n";
-                        echo '<h4 class="normal-weight">Solar Powered "Fresh Air" Skylight</h4>' . "\n";
-                        echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
+                        echo '<h4 class="normal-weight reversed">Commercial Promo Headline</h4>' . "\n";
                     echo '</div>' . "\n";
                 } else {
                     echo '<div class="promotion-large residential-promo">' . "\n";
-                        echo '<h4 class="normal-weight">Solar Powered "Fresh Air" Skylight</h4>' . "\n";
+                        echo '<h4 class="normal-weight reversed">Solar Powered "Fresh Air" Skylight</h4>' . "\n";
                         echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
                     echo '</div>' . "\n";
                 }

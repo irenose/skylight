@@ -171,7 +171,7 @@
 }
 
 .residential-promo {
-    background-image: url('../images/welcome/promotion-wide.jpg');
+    background-image: url('../images/welcome/residential-promo-wide.jpg');
     padding: 8% 10% 33%;
 
     @include bp($foundation-small, $mobile-landscape) {
@@ -183,7 +183,43 @@
 
     }
     @include bp($foundation-large) {
-        background-image: url('../images/welcome/promotion.jpg');
+        background-image: url('../images/welcome/residential-promo.jpg');
+        margin-bottom: 10px;
+        padding: 15% 0 89%;
+
+        h4 {
+            margin: 0 auto 10px;
+            width: 360px;
+        }
+    }
+    @include bp(1100px) {
+        padding-bottom: 87%;
+    }
+    @include bp(1200px) {
+        padding-bottom: 85%;
+    }
+    @include bp($my-large) {
+        padding-bottom: 82%;
+    }
+    @include bp($my-very-large) {
+        padding-bottom: 88%;
+    }
+}
+
+.commercial-promo {
+    background-image: url('../images/welcome/commercial-promo-wide.jpg');
+    padding: 8% 10% 33%;
+
+    @include bp($foundation-small, $mobile-landscape) {
+        padding: 10% 0 50%;
+
+        h4 {
+            font-size: 1em;
+        }
+
+    }
+    @include bp($foundation-large) {
+        background-image: url('../images/welcome/commercial-promo.jpg');
         margin-bottom: 10px;
         padding: 15% 0 89%;
 
