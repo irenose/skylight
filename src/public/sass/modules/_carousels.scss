@@ -171,6 +171,13 @@
         width: 100%;
         z-index: 10;
 
+        .my-slick-next {
+            right: 0;
+        }
+        .my-slick-prev {
+            left: 0;
+        }
+
         @include bp($tablet) {
             // width: 50%;
         }

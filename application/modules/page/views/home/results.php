@@ -102,3 +102,5 @@
 		    </div>
     <?php } ?>
 </section>
+
+<?=$this->load->view('partials/_footer--search.php');?>

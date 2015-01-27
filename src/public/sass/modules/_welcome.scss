@@ -54,7 +54,7 @@
     background-size: cover;
 }
 
-.featured-images {
+.promotions-large {
 
     @include bp($foundation-small, $foundation-large) {
         padding: 0;
@@ -150,12 +150,15 @@
     }
 
     @include bp($foundation-small, $foundation-med) {
-        background-size: 135%;
+        background-position: 100% 60%;
         padding: 27% 4% 50%;
 
         h1 {
             font-size: 2.25em;
         }
+    }
+    @include bp($foundation-large) {
+        background-position: 85% 50%;
     }
     @include bp($my-large) {
         padding: 14% 15% 23.5%;
@@ -167,7 +170,7 @@
     }
 }
 
-.fresh-air {
+.residential-promo {
     background-image: url('../images/welcome/promotion-wide.jpg');
     padding: 8% 10% 33%;
 
@@ -204,7 +207,7 @@
 }
 
 .schedule-consult {
-    background-image: url('../images/welcome/cta-wide.jpg');
+    background-image: url('../images/welcome/schedule-consultation-wide.jpg');
     padding: {
         bottom: 15%;
         left: 10%;
@@ -212,11 +215,19 @@
         top: 10%;
     }
 
+    &.one-promotion {
+        background-image: url('../images/welcome/schedule-consultation-wide.jpg')
+    }
+
     p {
         margin-bottom: 10px;
     }
 
     @include bp($foundation-large) {
-        background-image: url('../images/welcome/cta.jpg');
+        background-image: url('../images/welcome/schedule-consultation-narrow.jpg');
+
+        &.one-promotion {
+            background-image: url('../images/welcome/schedule-consultation-narrow.jpg')
+        }
     }
 }

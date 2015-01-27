@@ -12,6 +12,7 @@
 // normalize included in gulp build
 @import "base/elements";
 
+@import "layout/footer--search";
 @import "layout/footer";
 @import "layout/header";
 @import "layout/nav-header";
@@ -28,7 +29,6 @@
 @import "modules/contact-modal";
 @import "modules/discover-more";
 @import "modules/forms";
-@import "modules/gallery";
 @import "modules/hero";
 @import "modules/hooks";
 @import "modules/icons";
@@ -53,5 +53,6 @@
 @import "pages/product-detail";
 @import "pages/products";
 @import "pages/promotions";
-@import "pages/why-skylights";
+@import "pages/search";
 @import "pages/styleguide";
+@import "pages/why-skylights";

@@ -68,7 +68,6 @@
     }
     /******************************* OPTIONAL TESTIMONIALS *************************/
 ?>
-<section>
 <a name="testimonials"></a>
 <?php
     /*---------------------------------------------
@@ -77,7 +76,7 @@
 ?>
     <?php
         if (isset($testimonials_array) && count($testimonials_array) > 0) {
-            echo '<section class="page-row border-top-grey"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
+            echo '<section class="page-row"><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
             foreach($testimonials_array as $testimonial) {
                 echo '<p>"' . filter_page_content($testimonial->testimonial_copy) . '"</p>';
             }
@@ -89,7 +88,6 @@
         End Testimonails
     ----------------------------------------------*/
 ?>
-</section>
 
 <?php
     /******************************* STATIC ABOUT VELUX *************************/

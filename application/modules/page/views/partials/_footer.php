@@ -54,7 +54,7 @@
                         </svg>
                     </i>
                 </a>
-                <a href="https://facebook.com/VELUXAmerica" target="_blank" class="social__link">
+                <a href="http://www.houzz.com/pro/velux/velux" target="_blank" class="social__link">
                     <i class="icon icon-tie-fighter">
                         <svg class="icon__svg">
                             <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-tie-fighter"></use>

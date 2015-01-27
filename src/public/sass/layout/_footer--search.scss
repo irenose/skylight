@@ -1,0 +1,136 @@
+.footer-container {
+
+}
+
+.footer-row--search {
+    margin: 0 auto;
+    max-width: 1300px;
+    width: 100%;
+}
+
+.footer-section {
+    float: left;
+    min-height: 240px;
+    padding: 5% 2%;
+
+    * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    @include bp($tablet) {
+        min-height: 190px;
+    }
+    @include bp($foundation-large) {
+        min-height: 200px;
+    }
+    @include bp($my-large) {
+        min-height: 240px;
+    }
+}
+
+.footer-section--left {
+    width: 70%;
+
+    .logo {
+        width: 105px;
+
+        @include bp($tablet, $foundation-large) {
+            width: 90px;
+        }
+        @include bp($my-large) {
+            width: 115px;
+        }
+    }
+
+    .five-star {
+        margin: {
+            left: 1em;
+            right: 1em;
+        }
+
+        @include bp($my-large) {
+            margin: {
+                left: 2em;
+                right: 2em;
+            }
+        }
+
+        .icon-five-star {
+            height: 90px;
+            width: 90px;
+
+            @include bp($tablet, $foundation-large) {
+                height: 85px;
+                width: 85px;
+            }
+            @include bp($my-large) {
+                height: 100px;
+                width: 100px;
+            }
+        }
+    }
+    .footer-text {
+        font-size: .875em;
+        width: 100%;
+
+        @include bp($tablet, $foundation-large) {
+            width: 60%;
+        }
+        @include bp($foundation-large) {
+            max-width: 460px;
+        }
+        @include bp($my-large) {
+            max-width: 480px;
+        }
+    }
+
+    @include bp($tablet) {
+        width: 80%;
+    }
+    @include bp($my-large) {
+        width: 66.66667%;
+    }
+}
+
+.footer-section--right {
+    width: 100%;
+
+    .social {
+
+        .icon {
+            height: 18px;
+            margin: 0 .25em;
+            width: 18px;
+
+            @include bp($foundation-small, $foundation-med) {
+                height: 20px;
+                width: 20px;
+            }
+        }
+        .social__link:hover {
+            @extend %no-underline;
+        }
+    }
+    .velux-link {
+        display: block;
+        font-size: .875em;
+        margin-bottom: 1em;
+
+        &:hover {
+            @extend %no-underline;
+        }
+    }
+
+    @include bp($tablet) {
+        border-left: 1px solid $color-secondary;
+        width: auto;
+    }
+    @include bp($my-large) {
+        width: 33.33333%;
+    }
+}
+
+.footer-wrapper {
+    
+}

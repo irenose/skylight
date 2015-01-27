@@ -96,6 +96,12 @@
                 &:hover {
                     @extend %no-underline;
                 }
+                &:last-child {
+
+                    @include bp($foundation-small, $tablet) {
+                        margin-bottom: 5px;
+                    }
+                }
                 
                 @include bp($mobile-landscape, $tablet) {
                     padding-left: 1em;

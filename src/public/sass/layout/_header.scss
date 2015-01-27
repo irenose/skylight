@@ -39,23 +39,18 @@
             }
         }
         &--phone {
-            border: {
-                left: 1px solid $color-secondary;
-                right: 1px solid $color-secondary;
-            }
             position: absolute;
-            right: 80px;
+            right: 0;
             top: 0;
 
-            @include bp($foundation-small, $tablet) {
-                border-left: 0;
-                border-right: 0;
-                right: 0;
-            }
             @include bp($foundation-small, $mobile-landscape) {
                 width: 80px;
             }
             @include bp($foundation-large) {
+                border: {
+                    left: 1px solid $color-secondary;
+                    right: 1px solid $color-secondary;
+                }
                 position: relative;
                 right: 0;
             }
@@ -77,10 +72,8 @@
         color: $color-primary;
         display: block;
         height: $masthead-mobile;
-        right: 0;
         padding: 0;
         position: absolute;
-        top: 0;
         width: 80px;
 
         .navbar-icon-open {
@@ -104,6 +97,10 @@
         }
         @include bp($foundation-med) {
             height: $masthead-height;
+        }
+        @include bp($tablet, $foundation-large) {
+            border-right: 1px solid $color-secondary;
+            right: 150px;
         }
         @include bp($foundation-large) {
             float: right;
