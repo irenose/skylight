@@ -510,13 +510,25 @@ function get_data_array($type) {
 	return $data_array;
 }
 
-function Email_Send($recipient, $from, $subject, $message) {
+function Email_Send($recipient, $from, $subject, $message, $options = array()) {
 
 	if (defined('ENVIRONMENT') && ENVIRONMENT == 'development') {
 		require_once $_SERVER['DOCUMENT_ROOT'] . '/application/libraries/Mandrill.php';
 		$CI = get_instance();
 
 		$mandrill = new Mandrill($CI->config->item('mandrill_api_key'));
+		$headers_array = array();
+
+		if( array_key_exists('reply_to', $options)) {
+			$reply_address = $options['reply_to'];
+		} else {
+			$reply_address = $from;
+		}
+		$headers_array['Reply-To'] = $reply_address;
+		if( array_key_exists('cc', $options)) {
+			$headers_array['Cc'] = $options['cc'];
+		}
+
 		$message = array (
 	        'text' => $message,
 	        'subject' => $subject,
@@ -527,13 +539,21 @@ function Email_Send($recipient, $from, $subject, $message) {
 	                'email' => $recipient
 	            )
 	        ),
-	        'headers' => array('Reply-To' => $from)
+	        'headers' => $headers_array
 	    );
 	    $result = $mandrill->messages->send($message);
 	    return TRUE;
 
 	} else {
 		$headers = 'From: ' . $from . "\r\n";
+		if(count($options) > 0) {
+			if( array_key_exists('cc', $options)) {
+				$headers .= 'Cc: ' . $options['cc'] . "\r\n";
+			}
+			if( array_key_exists('reply_to', $options)) {
+				$headers .= 'Reply-To: ' . $options['reply_to'] . "\r\n";
+			}
+		}
 		//$headers .= 'Bcc: dev@wrayward.com' . "\r\n";
 		mail($recipient, $subject, $message, $headers);
 		return TRUE;

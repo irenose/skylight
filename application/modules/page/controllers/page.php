@@ -244,18 +244,49 @@ class Page extends CI_Controller {
                             $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
                             $this->form_validation->set_rules('receive_more_info', 'Receive More Info', 'trim|xss_clean');
                             if ($this->form_validation->run() == FALSE) {
-                                $data['page_view'] = 'contact';
+                                $data['page_view'] = 'contact/index';
                             } else {
                                 $check_fields = array('name','phone','email','comments');
                                 $spam_count = check_spam_count($_POST, $check_fields);
                                 if ($spam_count == 0) {
                                     $insert_id = $this->page_model->add_contact($_POST);
-                                    _a($_POST);
+
+                                    if($insert_id != FALSE) {
+                                        $data['form_status'] = 'success';
+
+                                        //SEND EMAIL
+                                        $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
+                                        $from = $this->config->item('global_email_from');
+                                        $options = array();
+
+                                        if(trim($this->input->post('email')) != '') {
+                                            $options['reply_to'] = $this->input->post('email');
+                                        }
+                                        if(trim($data['installer_array'][0]->cc_email) != '') {
+                                            $options['cc'] = trim($data['installer_array'][0]->cc_email);
+                                        }
+                                        $subject = 'Contact Request from your VELUX Skylight Microsite';
+
+                                        $message = "Name: " . $this->input->post('name') . "\n";
+                                        $message .= "Phone: " . $this->input->post('phone') . "\n";
+                                        $message .= "E-mail: " . $this->input->post('email') . "\n";
+                                        $message .= "Address: " . $this->input->post('address') . "\n";
+                                        $message .= "City: " . $this->input->post('city') . "\n";
+                                        $message .= "State: " . $this->input->post('state') . "\n";
+                                        $message .= "ZIP: " . $this->input->post('zip') . "\n";
+                                        $message .= "Subject: " . $this->input->post('subject') . "\n\n";
+                                        $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
+
+                                        Email_Send($recipient, $from, $subject, $message, $options);
+                                    } else {
+                                        $data['form_status'] = 'error';
+                                    }
+
                                 } else {
                                     //Send Spam Emails
+                                    $data['form_status'] = 'success';
                                 }
-                                _a($_POST);
-                                exit;
+                                $data['page_view'] = 'contact/thanks';
                             }
                             break;
                         case 'promotions':
@@ -306,6 +337,7 @@ class Page extends CI_Controller {
                                     break;
                             }
                             $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                            $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
                             if ($this->input->post('phone') == '') {
                                 $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
                             }
@@ -319,6 +351,28 @@ class Page extends CI_Controller {
                                     $insert_id = $this->page_model->add_paid_search_contact($_POST);
                                     if ($insert_id != FALSE) {
                                         $data['form_status'] = 'success';
+
+                                        //SEND EMAIL
+                                        $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
+                                        $from = $this->config->item('global_email_from');
+                                        $options = array();
+
+                                        if(trim($this->input->post('email')) != '') {
+                                            $options['reply_to'] = $this->input->post('email');
+                                        }
+                                        if(trim($data['installer_array'][0]->cc_email) != '') {
+                                            $options['cc'] = trim($data['installer_array'][0]->cc_email);
+                                        }
+                                        $subject = 'Paid Search Contact Request from your VELUX Skylight Microsite';
+                                        $message = "The following paid search request has been sent via your microsite:\n\n";
+                                        $message .= "Name: " . $this->input->post('name') . "\n";
+                                        $message .= "Phone: " . $this->input->post('phone') . "\n";
+                                        $message .= "E-mail: " . $this->input->post('email') . "\n\n";
+                                        $message .= "Paid Search URL: " . $this->input->post('ps_url') . "\n\n";
+                                        $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
+
+                                        Email_Send($recipient, $from, $subject, $message, $options);
+
                                     } else {
                                         $data['form_status'] = 'error';
                                     }
