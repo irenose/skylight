@@ -1134,6 +1134,46 @@ ww.contact_validation = (function() {
                     }
                 }
             });
+            
+            $('#paid-search-submit').on({
+                click: function(e) {
+                    e.preventDefault();
+                    console.log('here');
+                    var error_count = 0,
+                        $name = $('#paid-search-name').val(),
+                        $name_label = $('#ps-name'),
+                        $phone = $('#paid-search-phone').val(),
+                        $phone_label = $('#ps-phone'),
+                        $email_address = $('#paid-search-email').val(),
+                        $email_label = $('#ps-email'),
+                        $message = $('#paid-search-message').val(),
+                        $message_label = $('#ps-message');
+
+                    if($name === '') {
+                        error_count++;
+                        $name_label.html('Name?* <span class="required">Required</span>');
+                    } else {
+                        $name_label.html('Name?*');
+                    }
+                    if($phone === '' && ! ww.contact_validation.validate_email($email_address)) {
+                        error_count++;
+                        $phone_label.html('Phone* <span class="required">Required</span>');
+                    } else {
+                        $phone_label.html('Phone*');
+                    }
+                    if($message === '') {
+                        $message_label.html('Message* <span class="required">Required</span>');
+                        error_count++;
+                    } else {
+                        $message_label.html('Message*');
+                    }
+                    if(error_count === 0) {
+                        $('#paid-search-form').submit();
+                    } else {
+                        
+                    }
+                }
+            });
 
         },
 

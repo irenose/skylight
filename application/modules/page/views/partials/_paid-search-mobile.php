@@ -10,7 +10,10 @@
                     <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-x"></use>
                 </svg>
             </i>
-            <?=$this->load->view('partials/_paid-search-form');?>
+            <?php
+                $data['modal_form'] = TRUE;
+                $this->load->view('partials/_paid-search-form',$data);
+            ?>
         </div>
     </div>
 </div>
