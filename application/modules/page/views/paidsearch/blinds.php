@@ -4,9 +4,7 @@
         <h1 class="normal-weight">Bring a little control and some more style to your skylit world.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero">
-            <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
-        </div>
+        <div class="small-12 medium-8 columns ps-hero skylight-blinds"></div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
                 /******************************* LOAD FORM *************************/
@@ -15,27 +13,72 @@
         </div>
     </div>
 </section>
-<section class="page-row snug-bottom product-statement">
+<section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
-        <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
+        <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
             <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in variety of stylish designs to help reflect your home's personality.</h4>
-            <h4 class="normal-weight">Solar powered blinds are eligible for the 30% Federal tax credit.</h4>
-            <img src="<?=asset_url('images/ps/skylight.png')?>" alt>
+            <img src="<?=asset_url('images/ps/blinds.png')?>" class="big-blinds" alt>
+            <a class="ps-cta">
+                <div class="phone">
+                    <i class="icon icon-phone">
+                        <svg class="icon__svg">
+                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
+                        </svg>
+                    </i>
+                </div>
+                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
+            </a>
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom ps-section benefits">
+<section class="page-row short-top snug-bottom ps-section tax-credit tax-credit--short">
+    <div class="row">
+        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+            <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
+            <h4>Solar powered blinds are eligible for a 30% Federal tax credit.</h4>
+        </div>
+    </div>
+</section>
+<section class="page-row short-top snug-bottom ps-section blind-examples">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
-            <h4 class="normal-weight underlined color-primary">There are more than 100 styles of blinds available to choose from: </h4>
-            <ul class="ps-list">
-                <li><strong>Room darkening &ndash; double pleated blinds:</strong> Solar powered or manually operated, these blinds feature blackout cloth with a honeycomb structure that are energy efficient and have a sleek design</li>
-                <li><strong>Light filtering &ndash; single pleat blinds:</strong> Solar powered or manually operated, these blinds let a soft light enter the room and come in 15 color options</li>
-				<li><strong>Blackout blinds &ndash; flat:</strong> Solar powered or manually operated, ideal for bedroom applications and come in more than 20 colors and patterns</li>
-				<li><strong>Light filtering blinds &ndash; flat:</strong> Solar powered or manually operated, offers both protection and good looks with 15 colors and patterns to choose from</li>
-				<li><strong>Venetian blinds:</strong> Manually operated and available in eight colors, lets you control the direction of incoming light</li>
-            </ul>
-            <p>If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special order designer blinds. Special order blinds will ship separately.  </p>
+            <p>There are more than 100 styles of blinds available to choose from:</p>
+            <div class="blinds-container">
+                <div class="row">
+                    <img src="<?=asset_url('images/ps/blinds/darkening.png')?>" alt>
+                    <div class="blind-example">
+                        <strong>Room darkening &ndash; double pleated blinds:</strong> Solar powered or manually operated, these blinds feature blackout cloth with a honeycomb structure that are energy efficient and have a sleek design
+                    </div>
+                </div>
+                <div class="row">
+                    <img src="<?=asset_url('images/ps/blinds/filtering-pleat.png')?>" alt>
+                    <div class="blind-example">
+                        <strong>Light filtering &ndash; single pleat blinds:</strong> Solar powered or manually operated, these blinds let a soft light enter the room and come in 15 color options
+                    </div>
+                </div>
+				<div class="row">
+                    <img src="<?=asset_url('images/ps/blinds/blackout.png')?>" alt>
+                    <div class="blind-example">
+                        <strong>Blackout blinds &ndash; flat:</strong> Solar powered or manually operated, ideal for bedroom applications and come in more than 20 colors and patterns
+                    </div>
+                </div>
+				<div class="row">
+                    <img src="<?=asset_url('images/ps/blinds/filtering-flat.png')?>" alt>
+                    <div class="blind-example">
+                        <strong>Light filtering blinds &ndash; flat:</strong> Solar powered or manually operated, offers both protection and good looks with 15 colors and patterns to choose from
+                    </div>
+                </div>
+				<div class="row">
+                    <img src="<?=asset_url('images/ps/blinds/venetian.png')?>" alt>
+                    <div class="blind-example">
+                        <strong>Venetian blinds:</strong> Manually operated and available in eight colors, lets you control the direction of incoming light
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="blind-example">If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special order designer blinds. Special order blinds will ship separately.
+                    </div>
+                </div>
+            </div>
             <a class="ps-cta">
                 <div class="phone">
                     <i class="icon icon-phone">

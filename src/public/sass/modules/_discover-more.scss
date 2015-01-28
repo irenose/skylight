@@ -59,30 +59,33 @@
 /*-----------------------
   @INDIVIDUAL PROMOTIONS
 ------------------------*/
-.about-teaser {
-    background-image: url('../images/discover-more/about-us-teaser.jpg');
+.discover-more-container {
+    
+    .about-teaser {
+        background-image: url('../images/discover-more/about-us-teaser.jpg');
 
-    .discover-card {
-        @extend %vc;
+        .discover-card {
+            @extend %vc;
+        }
+
+        @include bp($foundation-small, $foundation-med) {
+            background-image: url('../images/discover-more/about-us-teaser-wide.jpg');
+        }
     }
 
-    @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/discover-more/about-us-teaser-wide.jpg');
+    .skylight-planner {
+        background-image: url('../images/discover-more/skylight-planner.jpg');
+
+        @include bp($foundation-small, $foundation-med) {
+            background-image: url('../images/discover-more/skylight-planner-wide.jpg');
+        }
     }
-}
 
-.skylight-planner {
-    background-image: url('../images/discover-more/skylight-planner.jpg');
+    .tax-credit {
+        background-image: url('../images/discover-more/tax-credit.jpg');
 
-    @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/discover-more/skylight-planner-wide.jpg');
-    }
-}
-
-.tax-credit {
-    background-image: url('../images/discover-more/tax-credit.jpg');
-
-    @include bp($foundation-small, $foundation-med) {
-        background-image: url('../images/discover-more/tax-credit-wide.jpg');
+        @include bp($foundation-small, $foundation-med) {
+            background-image: url('../images/discover-more/tax-credit-wide.jpg');
+        }
     }
 }
