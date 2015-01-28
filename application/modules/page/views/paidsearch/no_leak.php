@@ -18,7 +18,7 @@
 <section class="page-row short-top snug-bottom product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
-            <h4 class="normal-weight">The revolutionary No Leak Solar Powered "Fresh Air" skylight is eligible for a 30% Federal tax credit, saving eligible homeowners an average of $850 on product and installation. </h4>
+            <h4 class="normal-weight">The revolutionary No Leak Solar Powered "Fresh Air" skylight is eligible for a 30% Federal tax credit, saving eligible homeowners an average of $850 on product and installation.</h4>
             <img src="<?=asset_url('images/ps/skylight.png')?>" alt>
         </div>
     </div>
@@ -33,13 +33,6 @@
                 <li>Comes with the No Leak Promise – 10-year installation warranty, 20 years on glass, 10 years on the skylight and 5 years on blinds and controls</li>
                 <li>Add light control with factory installed blinds, or choose from more than 100 special order blinds</li>
                 <li>Remote control lets you open and close skylights and blinds with the touch of a button</li>
-                <li>Feature Clean, Quiet and Safe glass with Neat&reg; glass technology</li>
-                    <ul class="ps-list">
-                        <li>Clean: the Neat&reg; glass coating keeps skylights virtually spotless</li>
-                        <li>Quiet: reduce unwanted outside noise</li>
-                        <li>Safe: VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
-
-                    </ul>
                 <li>Rain sensor that automatically closes skylight</li>
             </ul>
             <a class="ps-cta">
@@ -52,6 +45,19 @@
                 </div>
                 <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
             </a>
+        </div>
+    </div>
+</section>
+<section class="page-row short-top snug-bottom ps-section clean-quite-safe">
+    <div class="row">
+        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+            <img src="<?=asset_url('images/ps/water-droplets.jpg')?>" alt>
+            <h4 class="normal-weight underlined color-primary">Clean, Quiet and Safe glass</h4>
+            <ul class="ps-list">
+                <li><span class="bold">Clean:</span> the Neat&reg; glass coating keeps skylights virtually spotless</li>
+                <li><span class="bold">Quiet:</span> reduce unwanted outside noise</li>
+                <li><span class="bold">Safe:</span> VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
+            </ul>
         </div>
     </div>
 </section>

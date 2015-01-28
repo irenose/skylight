@@ -27,12 +27,13 @@
 .short-top {
     padding-top: 6%;
 
-    @include bp($my-large) {
+    @include bp($foundation-large) {
         padding-top: 4%;
     }
 }
 .ps-section {
 
+    .incentive,
     img,
     i {
 
@@ -342,12 +343,20 @@
     .statement {
         padding-bottom: 1em;
 
+        &.cta-padding {
+            padding-bottom: 6em;
+        }
+
         h4 {
             color: $color-default;
             line-height: 1.75;
 
             @include bp($tablet) {
                 padding-right: 35%;
+
+                &.no-image {
+                    padding-right: 0;
+                }
             }
         }
         img {
@@ -462,7 +471,7 @@
 
 
 /*-----------------------
-  @INDIVIDUAL-SECTIONS
+  @GENERIC SECTIONS
 ------------------------*/
 .why-velux {
 
@@ -488,6 +497,24 @@
     }
 }
 
+/*-----------------------
+  @NO LEAK
+------------------------*/
+.clean-quite-safe {
+
+    img {
+        border-radius: 100%;
+        float: left;
+        width: 25%;
+    }
+
+    h4,
+    ul {
+        @include bp($foundation-med) {
+            padding-left: 33%;
+        }
+    }
+}
 .complete-system {
 
     h4 {
@@ -504,14 +531,32 @@
         }
     }
 }
-
 .installation-methods {
+
+    img {
+        float: left;
+        width: 25%;
+    }
+
+    h4,
+    p {
+        @include bp($foundation-med) {
+            padding-left: 33%;
+        }
+    }
+}
+
+/*-----------------------
+  @REPLACEMENT
+------------------------*/
+.energy-performance {
 
     img {
         float: right;
         width: 25%;
     }
-    p {
+
+    ul {
         @include bp($foundation-med) {
             padding-right: 33%;
         }
