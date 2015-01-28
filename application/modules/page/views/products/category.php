@@ -29,7 +29,7 @@
 ?>
 <section>
     <div class="row hero">
-        <div class="slick">
+        <div class="slick slick__category">
             <?php 
                 foreach($carousel_array as $key => $value) {
                     echo '<div class="page-row slick__item ' . $value . '"></div>';

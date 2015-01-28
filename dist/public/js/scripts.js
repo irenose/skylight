@@ -544,7 +544,7 @@ ww.carousels = (function(){
     return {
         init: function() {
             this.register_handlers();
-            if (s.$slick.length) {
+            if ($('.slick__category').length) {
                 this.category_carousel();
             }
         },
