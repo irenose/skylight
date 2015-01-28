@@ -61,9 +61,7 @@ ww.main = (function() {
             ww.maps.init();
             ww.search_maps.init();
             ww.anchors_to_options.init();
-            if($("[data-modal-form]").length) {
-                ww.contact_validation.init();
-            }
+            ww.contact_validation.init();
         },
     };
 })();
@@ -1088,6 +1086,17 @@ ww.anchors_to_options = (function(){
 ww.contact_validation = (function() {
     return {
         init: function() {
+            if($("[data-modal-form]").length) {
+                if($('#paid-search-submit').length) {
+                    this.validate_paid_search();
+                }
+                if($('#contact-submit').length) {
+                    this.validate_contact();
+                }
+            }
+        },
+
+        validate_contact: function() {
             $('#contact-submit').on({
                 click: function(e) {
                     e.preventDefault();
@@ -1105,9 +1114,9 @@ ww.contact_validation = (function() {
 
                     if($name === '') {
                         error_count++;
-                        $name_label.html('Name?* <span class="required">Required</span>');
+                        $name_label.html('Name* <span class="required">Required</span>');
                     } else {
-                        $name_label.html('Name?*');
+                        $name_label.html('Name*');
                     }
                     if($phone === '' && ! ww.contact_validation.validate_email($email_address)) {
                         error_count++;
@@ -1134,11 +1143,12 @@ ww.contact_validation = (function() {
                     }
                 }
             });
-            
-            $('#paid-search-submit').on({
+        },
+
+        validate_paid_search: function() {
+            $('#paid-search-submit-mobile').on({
                 click: function(e) {
                     e.preventDefault();
-                    console.log('here');
                     var error_count = 0,
                         $name = $('#paid-search-name').val(),
                         $name_label = $('#ps-name'),
@@ -1146,14 +1156,14 @@ ww.contact_validation = (function() {
                         $phone_label = $('#ps-phone'),
                         $email_address = $('#paid-search-email').val(),
                         $email_label = $('#ps-email'),
-                        $message = $('#paid-search-message').val(),
-                        $message_label = $('#ps-message');
+                        $message = $('#paid-search-comments').val(),
+                        $message_label = $('#ps-comments');
 
                     if($name === '') {
                         error_count++;
-                        $name_label.html('Name?* <span class="required">Required</span>');
+                        $name_label.html('Name* <span class="required">Required</span>');
                     } else {
-                        $name_label.html('Name?*');
+                        $name_label.html('Name*');
                     }
                     if($phone === '' && ! ww.contact_validation.validate_email($email_address)) {
                         error_count++;
@@ -1168,13 +1178,12 @@ ww.contact_validation = (function() {
                         $message_label.html('Message*');
                     }
                     if(error_count === 0) {
-                        $('#paid-search-form').submit();
+                        $('#paid-search-form-mobile').submit();
                     } else {
                         
                     }
                 }
             });
-
         },
 
         validate_email: function(email_address) {
