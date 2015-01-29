@@ -749,7 +749,6 @@ ww.carousels = (function(){
             var $slick_api = $carousel.slick(slick_options);
 
             var my_timer = window.setTimeout(function() {
-console.log('working');
                 ww.carousels.equal_heights($carousel);
             }, 500);
         },

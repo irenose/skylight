@@ -14,7 +14,9 @@
                     'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
-                    'image' => 'new.jpg', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
+                    'image' => 'streamlined-profile.png',
+                    'title' => 'Streamlined Profile',
+                    'copy' => 'The streamlined exterior profile of VELUX fixed skylights does not obstruct the roofline.'
                 ),
 
             );
@@ -41,9 +43,9 @@
         case 'electric-fresh-air':
             $card_content_array = array(
                 array(
-                    'image' => 'new.jpg',
+                    'image' => 'touch-remote.png',
                     'title' => 'Intelligent Touch Remote Control',
-                    'copy' => 'With the touch-sensitive screen and easy understood icons, programming skylights has become simpler than ever.'
+                    'copy' => 'With the touch-sensitive screen and easily understood icons, programming skylights has become simpler than ever.'
                 ),
                 array(
                     'image' => 'water-droplets.jpg',
@@ -71,9 +73,9 @@
                     'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
-                    'image' => 'new.jpg',
+                    'image' => 'manual-control.png',
                     'title' => 'Convenient Manual Control',
-                    'copy' => 'A control rod can be used for out-of-reach applications. An optional crank handle is available for in-reach applications.'
+                    'copy' => 'A control rod can be used when skylights are out of reach. An optional crank handle is available for in-reach applications.'
                 ),
 
             );
@@ -81,7 +83,7 @@
         case 'solar-fresh-air':
             $card_content_array = array(
                 array(
-                    'image' => 'new.jpg',
+                    'image' => 'touch-remote.png',
                     'title' => 'Intelligent Touch Remote Control',
                     'copy' => 'With the touch-sensitive screen and easy understood icons, programming skylights has become simpler than ever.'
                 ),
