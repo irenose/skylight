@@ -693,10 +693,10 @@ ww.carousels = (function(){
                     // responsive
                     slick_options.responsive = [
                         {
-                            breakpoint: 850,
+                            breakpoint: 768,
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
                                 slidesToShow: 1,
                             }
                         },
@@ -724,7 +724,8 @@ ww.carousels = (function(){
                             breakpoint: 850,
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
+                                slidesToScroll: 3,
                                 slidesToShow: 3,
                             }
                         },
@@ -732,7 +733,8 @@ ww.carousels = (function(){
                             breakpoint: 1200, // my-large
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
+                                slidesToScroll: 5,
                                 slidesToShow: 5,
                             }
                         },
@@ -766,12 +768,12 @@ ww.carousels = (function(){
                 //If carousel is product-cards, adjust the height of the product-card as well
                 if($carousel.data("carousel-type") == 'product-cards') {
                     // Get an array of all element heights
-                    var cardHeights = $carousel.find('.slick__item > .product-card').map(function() {
+                    var cardHeights = $carousel.find('.slick__item > .product-card-wrapper').map(function() {
                         return $(this).height();
                     }).get();
 
                     var cardMaxHeight = Math.max.apply(null, cardHeights);
-                    $carousel.find('.slick__item > .product-card').height(maxHeight);
+                    $carousel.find('.slick__item > .product-card').height(maxHeight - 20);
                 }
 
                 $carousel.attr("data-equal-heights", "done");

@@ -9,7 +9,7 @@
     .product-description {
 
         .product-description--text {
-            margin-bottom: 1.5em;
+            margin-bottom: 1.75em;
 
             ul {
                 margin-bottom: 0;
@@ -150,26 +150,16 @@
 
 .product-cards {
     @extend %centered;
-    padding-bottom: 3%;
 
     .product-card-wrapper {
-        padding: 2% 3%;
-
-        @include bp($mobile-landscape, $foundation-med) {
-            padding: 2% 4%;
-        }
-        @include bp($foundation-med, $tablet) {
-            padding: 1% 5% 2%;
-        }
-         @include bp($tablet) {
-            padding: 5% 3%;
-        }
+        margin: 20px 15px;
+        overflow: visible;
+        padding: 0;
     }
     .product-card {
         background: #fff;
         box-shadow: 0px 4px 0px 0px rgba(225,225,225,1);
-        padding: 8%;
-        top: -10px;
+        padding: 6% 8% 0;
 
         .img-wrapper {
             display: block;
@@ -178,7 +168,7 @@
         }
 
         h3 {
-            margin-bottom: 6%;
+            margin-bottom: 1em;
         }
         img {
             border-radius: 100%;
@@ -188,7 +178,7 @@
         p {
             color: $color-default-light;
             // height: 7.5em;
-            margin: 0;
+            margin: 0 0 2em;
 
             @include bp($tablet) {
                 // height: 10.5em;
@@ -216,13 +206,13 @@
             margin: 0 auto;
             max-width: 340px;
         }
-        @include bp($tablet) {
+        /* @include bp($tablet) {
             &:nth-child(1) {
                 margin-left: 0;
             }
-        }
+        } */
         @include bp($foundation-large) {
-            padding: 10%;
+            padding: 7% 10% 0;
         }
     }
     .slick-slider {
@@ -234,6 +224,11 @@
 }
 
 .blinds {
+    background-image: url('../images/backgrounds/blinds-bg.jpg');
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+
     .columns {
         @include bp($foundation-small, $tablet) {
             width: 100%;
@@ -258,11 +253,6 @@
         background-size: 110%;
         padding-bottom: 400px;
     }
-
-    background-image: url('../images/backgrounds/blinds-bg.jpg');
-    background-position: 0% 50%;
-    background-repeat: no-repeat;
-    background-size: 50% 100%;
 }
 
 .no-leak {

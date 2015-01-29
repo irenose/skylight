@@ -40,13 +40,13 @@
             <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
 			<?php
 				echo '<h1>' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
-				echo '<p>' . filter_page_content($product_info_array[0]->product_description) . '</p>' . "\n";
+				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
 			?>
 			<a href="' . $installer_base_url . '/contact" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}" class="btn">Learn More</a>
 		</div>
 	</div>
 </section>
-<section class="page-row" style="background:#000;">
+<section class="page-row blinds-carousel">
     <header class="centered">
         <h2 class="reversed text-shadow upper">
             Types of skylight blinds
@@ -82,10 +82,10 @@
         $my_swatches[] = $swatches[$key];
     }
 ?>
-<section class="page-row">
-    <header class="centered">
+<section class="page-row snug-bottom swatch-carousel">
+    <header class="header-statement header-statement--squeezed centered">
         <h2 class="upper">
-            Reflect your home's personality and style
+            <span class="br">Reflect your home's</span> personality and style
         </h2>
         <p>
             Regardless of which VELUX skylight model you select, you'll receive a choice of eight different factory installed blinds, or choose from more than 80 special order blinds.

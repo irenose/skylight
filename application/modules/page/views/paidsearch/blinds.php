@@ -31,7 +31,7 @@
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom ps-section tax-credit tax-credit--short">
+<section class="page-row short-top snug-bottom ps-section tax-credit-row tax-credit--short">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
