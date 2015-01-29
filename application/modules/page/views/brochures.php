@@ -4,7 +4,7 @@
         <p>We offer easy to understand downloads to help you choose the skylight that's perfect for you.</p>
     </header>
 </section>
-<section class="page-row border-top-grey brochures">
+<section class="page-row brochures">
     <?php
         if( isset($brochures_array) && count($brochures_array) > 0) {
             $count = 0;

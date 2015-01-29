@@ -1,4 +1,5 @@
 .installer-welcome-wrapper {
+    @extend %bg-gradient;
     padding-top: 4%;
 
     @include bp($foundation-small, $tablet) {

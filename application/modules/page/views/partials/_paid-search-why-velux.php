@@ -6,7 +6,7 @@
             <ul class="ps-list">
                 <li>VELUX is a leader of innovation and is also the preferred skylight brand for American contractors, according to every national survey of building professionals.</li>
                 <li>VELUX holds more than 300 patents in roof window and skylight designs.</li>
-                <li><?=$installer_array[0]->name;?>  has gone through extensive training to become a VELUX certified 5-star skylight specialist.</li>
+                <li><?=$installer_array[0]->name;?>  has gone through extensive training to become a VELUX certified 5-Star Skylight Specialist.</li>
             </ul>
         </div>
     </div>

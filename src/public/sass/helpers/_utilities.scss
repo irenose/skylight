@@ -340,6 +340,16 @@ a.cta-text {
     background-color: $color-grey-dark;
 }
 
+%bg-gradient {
+    background-image: url('../images/backgrounds/products-bg.jpg');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-gradient {
+    @extend %bg-gradient;
+}
+
 /*-----------------------
   @SHADOWS
 ------------------------*/
