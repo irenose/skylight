@@ -40,7 +40,7 @@
             <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
 			<?php
 				echo '<h1>' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
-				echo '<div>' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
+				echo '<p>' . filter_page_content($product_info_array[0]->product_description) . '</p>' . "\n";
 			?>
 			<a href="' . $installer_base_url . '/contact" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}" class="btn">Learn More</a>
 		</div>
