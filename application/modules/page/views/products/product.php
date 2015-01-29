@@ -49,13 +49,9 @@
 
 <?php
     /******************************* PRODUCT CARDS *************************/
-    $product_cards_category_array = array(4,5,6,7,8,17);
+    $product_cards_category_array = array(6,7,8,17);
     if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
     	switch($product_info_array[0]->primary_category_id) {
-    		case 4:
-    		case 5:
-    			$data['display_group'] = 'sun-tunnel';
-    			break;
     		case 6:
     			$data['display_group'] = 'electric-fresh-air';
     			break;
