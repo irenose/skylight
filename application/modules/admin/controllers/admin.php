@@ -2154,12 +2154,22 @@ class Admin extends CI_Controller {
 			2 => 'residential-skylights',
 			3 => 'commercial-skylights'
 		);
-		$xml = '<Categories>' . "\n";
+		$xml = '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+		$xml .= '<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/ProductFeed/5.1" name="veluxskylightspecialist" incremental="false" extractDate="2011-10-18T12:00:00.000000">' . "\n";
+
+		$xml .= '<Brands>' . "\n";
+	        $xml .= "\t" . '<Brand>' . "\n";
+	            $xml .= "\t\t" . '<ExternalId>VELUX-SS</ExternalId>' . "\n";
+	            $xml .= "\t\t" . '<Name>VELUX Skylight Specialist</Name>' . "\n";
+	        $xml .= "\t" . '</Brand>' . "\n";
+	    $xml .= '</Brands>' . "\n";
+
+		$xml .= '<Categories>' . "\n";
 		foreach($cats as $cat) {
 			$xml .= "\t" . '<Category>' . "\n";
 			$xml .= "\t\t" . '<ExternalId>prod-cat-' . $cat->product_category_id . '</ExternalId>' . "\n";
 			if($cat->primary_category_id != 0) {
-				$xml .= "\t\t" . '<ParentExternalId>' . $cat->primary_category_id . '</ParentExternalId>' . "\n";
+				$xml .= "\t\t" . '<ParentExternalId>prod-cat-' . $cat->primary_category_id . '</ParentExternalId>' . "\n";
 			}
             $xml .= "\t\t" . '<Name>' . str_replace('&trade;','',$cat->product_category_name) . '</Name>' . "\n";
             if($cat->primary_category_id != 0) {
@@ -2177,7 +2187,7 @@ class Admin extends CI_Controller {
 	        $xml .= "\t\t" . '<ExternalId>prod-' . $prod->product_id . '</ExternalId>' . "\n";
 	        $xml .= "\t\t" . '<Name>' . $prod->product_name . '</Name>' . "\n";
 
-	        $xml .= "\t\t" . '<Description>' . strip_tags($prod->product_description) . '</Description>' . "\n";
+	        $xml .= "\t\t" . '<Description>' . htmlspecialchars(strip_tags($prod->product_description)) . '</Description>' . "\n";
 	        $xml .= "\t\t" . '<BrandExternalId>VELUX-SS</BrandExternalId>' . "\n";
 	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
 	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
@@ -2193,6 +2203,7 @@ class Admin extends CI_Controller {
 	        $xml .= "\t" . '</Product>' . "\n";
 	    }
 	    $xml .= '</Products>' . "\n";
+	    $xml .= '</Feed>' . "\n";
 	    echo $xml;
 	    exit;
 	}
