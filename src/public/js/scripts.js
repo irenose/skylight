@@ -662,6 +662,17 @@ ww.carousels = (function(){
                 // Set each height to the max height
                 $carousel.find('.slick__item').height(maxHeight);
 
+                //If carousel is product-cards, adjust the height of the product-card as well
+                if($carousel.data("carousel-type") == 'product-cards') {
+                    // Get an array of all element heights
+                    var cardHeights = $carousel.find('.slick__item > .product-card').map(function() {
+                        return $(this).height();
+                    }).get();
+
+                    var cardMaxHeight = Math.max.apply(null, cardHeights);
+                    $carousel.find('.slick__item > .product-card').height(maxHeight);
+                }
+
                 $carousel.attr("data-equal-heights", "done");
             }
         },
