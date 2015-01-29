@@ -46,9 +46,9 @@
 		</div>
 	</div>
 </section>
-<section class="page-row snug-bottom underlap product-cards">
+<section class="page-row" style="background:#000;">
     <header class="centered">
-        <h2 class="reversed text-shadow">
+        <h2 class="reversed text-shadow upper">
             Types of skylight blinds
         </h2>
     </header>
@@ -71,6 +71,42 @@
         </li>
         <?php endforeach; ?>
     </ul>
+</section>
+
+<?php
+    $swatches = $this->blinds->get_swatches(array('categorized' => false));
+    $my_swatches = array();
+    $swatch_keys = array_rand($swatches, 20);
+
+    foreach ($swatch_keys as $key) {
+        $my_swatches[] = $swatches[$key];
+    }
+?>
+<section class="page-row">
+    <header class="centered">
+        <h2 class="upper">
+            Reflect your home's personality and style
+        </h2>
+        <p class="squeezed-3">
+            Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home.
+        </p>
+    </header>
+    <div class="push-top--half push-bottom--half">
+        <ul class="slick" data-carousel-init="auto" data-carousel-type="swatches" data-slides-to-show="7" style="max-height: 250px;">
+            <?php foreach ($my_swatches as $_file): ?>
+            <?php $label = $this->blinds->format_swatch_label($_file); ?>
+            <li class="centered slick__item">
+                <img src="<?=asset_url('images/blinds/swatches/'.$_file)?>" alt="">
+                <span class="swatch-number">
+                    <?=$label['number']?>
+                </span>
+                <span class="swatch-name">
+                    <?=$label['name']?>
+                </span>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </section>
 
 <?php

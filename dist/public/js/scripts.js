@@ -708,6 +708,36 @@ ww.carousels = (function(){
                         },
                     ];
                     break;
+                    
+                case "swatches":
+                    // dots
+                    slick_options.arrows = false;
+                    slick_options.dots = true;
+
+                    // to show
+                    slick_options.slidesToShow = $carousel.data("slides-to-show");
+                    slick_options.slidesToScroll = $carousel.data("slides-to-show");
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 850,
+                            settings: {
+                                centerMode: false,
+                                centerPadding: '40px',
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 1200, // my-large
+                            settings: {
+                                centerMode: false,
+                                centerPadding: '40px',
+                                slidesToShow: 5,
+                            }
+                        },
+                    ];
+                    break;
             }
 
             this.do_carousel($carousel, slick_options);
