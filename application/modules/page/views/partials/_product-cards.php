@@ -5,16 +5,16 @@
             $card_content_array = array(
                 array(
                     'image' => 'water-droplets.jpg',
-                    'title' => 'Clean, Quiet &#38;<br>Safe Glass',
-                    'copy' => 'All Solar Powered "Fresh Air" skylights come standard with Clean, Quiet &#38; Safe glass.'
+                    'title' => 'Clean, Quiet &amp; Safe Glass',
+                    'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
                     'image' => 'pick-and-click.jpg',
-                    'title' => 'Easy Pick&#38;Click&#153;<br>Blind Installations',
-                    'copy' => 'A sunscreen accessory tray for standard site-built curbs allows for installation of VELUX Pick&#38;Click!&#153; blinds.'
+                    'title' => 'Pick&amp;Click&trade;',
+                    'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
-                    'image' => 'new.jpg', 'title' => 'Flexible installations', 'copy' => 'The elimination of the drywall groove in this series allows for greater installation flexibility and more positioning options when replacing existing skylights.'
+                    'image' => 'new.jpg', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
                 ),
 
             );
@@ -43,17 +43,17 @@
                 array(
                     'image' => 'new.jpg',
                     'title' => 'Intelligent Touch Remote Control',
-                    'copy' => 'Solar Powered "Fresh Air" skylights can easily replace a fixed or manual skylight easily because no wiring is required.'
+                    'copy' => 'With the touch-sensitive screen and easy understood icons, programming skylights has become simpler than ever.'
                 ),
                 array(
                     'image' => 'water-droplets.jpg',
-                    'title' => 'Clean, Quiet &#38;<br>Safe Glass',
-                    'copy' => 'All Solar Powered "Fresh Air" skylights come standard with Clean, Quiet &#38; Safe glass.'
+                    'title' => 'Clean, Quiet &amp; Safe Glass',
+                    'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
                     'image' => 'pick-and-click.jpg',
                     'title' => 'Rain Sensor',
-                    'copy' => 'A sunscreen accessory tray for standard site-built curbs allows for installation of VELUX Pick&Click!&trade; blinds'
+                    'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),
 
             );
@@ -62,18 +62,18 @@
             $card_content_array = array(
                 array(
                     'image' => 'water-droplets.jpg',
-                    'title' => 'Clean, Quiet &#38;<br>Safe Glass',
-                    'copy' => 'All Solar Powered "Fresh Air" skylights come standard with Clean, Quiet &#38; Safe glass.'
+                    'title' => 'Clean, Quiet &amp; Safe Glass',
+                    'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
                     'image' => 'pick-and-click.jpg',
-                    'title' => 'Easy Pick&#38;Click&#153;<br>Blind Installations',
-                    'copy' => 'A sunscreen accessory tray for standard site-built curbs allows for installation of VELUX Pick&#38;Click!&#153; blinds.'
+                    'title' => 'Pick&amp;Click&trade;',
+                    'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
                     'image' => 'new.jpg',
                     'title' => 'Convenient Manual Control',
-                    'copy' => 'A control rod can be used when skylights are out of reach. An optional crank handle is available for in-reach applications.'
+                    'copy' => 'A control rod can be used for out-of-reach applications. An optional crank handle is available for in-reach applications.'
                 ),
 
             );
@@ -83,17 +83,17 @@
                 array(
                     'image' => 'new.jpg',
                     'title' => 'Intelligent Touch Remote Control',
-                    'copy' => 'Solar Powered "Fresh Air" skylights can easily replace a fixed or manual skylight easily because no wiring is required.'
+                    'copy' => 'With the touch-sensitive screen and easy understood icons, programming skylights has become simpler than ever.'
                 ),
                 array(
                     'image' => 'water-droplets.jpg',
-                    'title' => 'Clean, Quiet &#38;<br>Safe Glass',
-                    'copy' => 'All Solar Powered "Fresh Air" skylights come standard with Clean, Quiet &#38; Safe glass.'
+                    'title' => 'Clean, Quiet &amp; Safe Glass',
+                    'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
                     'image' => 'pick-and-click.jpg',
                     'title' => 'Rain Sensor',
-                    'copy' => 'A sunscreen accessory tray for standard site-built curbs allows for installation of VELUX Pick&Click!&trade; blinds'
+                    'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),
 
             );
