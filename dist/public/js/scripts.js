@@ -305,12 +305,12 @@ ww.navigation = (function(){
 
         reset: function() {
 
-            /*if ($(window).width() < 768) { 
+            /*if ($(window).width() < 768) {
                 ww.navigation.height_calc();
             } else {
                 settings.$nav_header.css({"height": "auto"});
             }*/
-            if ($(window).width() > 1025) { 
+            if ($(window).width() > 1025) {
                 settings.$masthead_wrapper.removeClass('subnav-products--is-open');
                 settings.$nav_arrow_products.removeClass('selected');
             }
@@ -708,7 +708,7 @@ ww.carousels = (function(){
                         },
                     ];
                     break;
-                    
+
                 case "swatches":
                     // dots
                     slick_options.arrows = false;
@@ -748,7 +748,10 @@ ww.carousels = (function(){
         do_carousel: function($carousel, slick_options) {
             var $slick_api = $carousel.slick(slick_options);
 
-            this.equal_heights($carousel);
+            var my_timer = window.setTimeout(function() {
+console.log('working');
+                ww.carousels.equal_heights($carousel);
+            }, 500);
         },
 
         equal_heights: function($carousel) {
@@ -1253,7 +1256,7 @@ ww.contact_validation = (function() {
                     if(error_count === 0) {
                         $('#contact-form').submit();
                     } else {
-                        
+
                     }
                 }
             });
@@ -1294,7 +1297,7 @@ ww.contact_validation = (function() {
                     if(error_count === 0) {
                         $('#paid-search-form-mobile').submit();
                     } else {
-                        
+
                     }
                 }
             });
