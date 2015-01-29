@@ -20,13 +20,15 @@
     }
 
     .slick-slider {
-        padding: 2em 0 1.5em;
+        padding: .5em 0 2em;
 
         .slick__item {
             margin: 20px 15px;
             // padding: 0 1.5%;
 
             .card {
+                max-width: 350px;
+                margin: 0 auto;
                 padding: 3% 5% 6%;
 
                 .img-wrapper {
@@ -48,6 +50,9 @@
                     }
                 }
 
+                @include bp(0, $tablet) {
+                    max-width: 420px;
+                }
                 @include bp(850px) {
                     padding: 5%;
                 }

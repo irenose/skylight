@@ -28,7 +28,7 @@
     /******************************* ABOUT INSTALLER COPY *************************/
     if ($installer_array[0]->about_dealer_text != '') {
 ?>
-        <section class="page-row about-dealer centered">
+        <section class="page-row centered about-dealer">
             <?php
                 if ($about_dealer_image != '') {
                     echo '<div class="polaroid about-dealer-image"><img src="' . $about_dealer_image . '" alt></div>';

@@ -59,9 +59,9 @@
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom ps-section tax-credit">
+<section class="page-row short-top snug-bottom ps-section tax-credit-row">
     <div class="row">
-        <div class="small-12 medium-8 columns full-tablet">
+        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
             <ul class="ps-list">
                 <li>Upgrade to the No Leak Solar Powered "Fresh Air" skylight and you may be eligible for a 30% Federal tax credit on product and installation</li>

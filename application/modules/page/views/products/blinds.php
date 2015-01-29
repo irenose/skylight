@@ -82,7 +82,7 @@
         $my_swatches[] = $swatches[$key];
     }
 ?>
-<section class="page-row swatch-carousel">
+<section class="page-row snug-bottom swatch-carousel">
     <header class="header-statement header-statement--squeezed centered">
         <h2 class="upper">
             <span class="br">Reflect your home's</span> personality and style
