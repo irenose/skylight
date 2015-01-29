@@ -514,6 +514,10 @@
         &.skylight-blinds {
             background-image: url('../images/ps/blinds-hero.jpg');
         }
+        &.sun-tunnel {
+            background-image: url('../images/ps/sun-tunnel-hero.jpg');
+            background-position: 40% 50%;
+        }
         &.vss-no-leak {
             background-image: url('../images/categories/residential-hero.jpg');
             background-position: 80% 50%;
@@ -884,6 +888,75 @@
         @include bp($foundation-med) {
             margin-top: 0;
             padding-left: 33%;
+        }
+    }
+}
+
+/*-----------------------
+  @SUN-TUNNEL
+------------------------*/
+.sun-tunnel-statement {
+
+    .statement h4 {
+        
+        @include bp($foundation-med) {
+            padding-right: 30%;
+        }
+    }
+    .statement {
+
+        @include bp($foundation-med) {
+            padding-bottom: 6em;
+        }
+    }
+    img {
+        position: absolute;
+        right: 0;
+        top: .5em;
+        width: 30%;
+    }
+    ul {
+        margin-top: 2em;
+        
+        @include bp($foundation-med) {
+            padding-right: 35%;
+        }
+    }
+    & .statement.cta-padding {
+        padding-bottom: 8em;
+    }
+}
+
+.diffuser {
+
+    img {
+        float: left;
+        max-width: 200px;
+        width: 25%;
+    }
+
+    p {
+        margin-bottom: 0;
+
+        @include bp($foundation-med) {
+            margin-top: 9%;
+            padding-left: 33%;
+        }
+    }
+}
+
+.why-velux-2.right-side {
+
+    img {
+        float: right;
+        margin-right: 2em;
+        margin-top: 2.75em;
+    }
+    ul {
+        @include bp($foundation-med) {
+            margin-top: 1em;
+            padding-left: 1.125em;
+            padding-right: 33%;
         }
     }
 }

@@ -58,7 +58,7 @@
 <section class="page-row short-top snug-bottom ps-section tcr-model">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
-            <img src="<?=asset_url('images/ps/sun-tunnel.png')?>" alt>
+            <img src="<?=asset_url('images/ps/tcr-sun-tunnel.png')?>" alt>
             <p><strong>Features of the TCR model include:</strong></p>
             <ul class="ps-list">
                 <li>Clear dome for maximum visible light transmission</li>
@@ -71,7 +71,7 @@
 </section>
 <section class="page-row short-top snug-bottom ps-section why-velux-2">
     <div class="row">
-        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+        <div class="small-12 medium-8 columns full-tablet">
             <img src="<?=asset_url('images/velux-logo.png')?>" alt>
             <ul class="ps-list">
                 <li>VELUX is a leader of innovation and is also the preferred skylight brand for American contractors, according to every national survey of building professionals.</li>

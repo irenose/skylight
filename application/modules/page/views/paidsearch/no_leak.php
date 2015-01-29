@@ -74,7 +74,7 @@
 </section>
 <section class="page-row short-top snug-bottom ps-section installation-methods">
     <div class="row">
-        <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
+        <div class="small-12 medium-8 columns full-tablet cta-padding">
             <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
             <h4 class="normal-weight underlined color-primary">Skylight Installation Methods</h4>
             <p>Skylights are installed using a variety of different installation methods that vary based on geographic location, however VELUX has developed products that make the installation process as easy as possible. The three most common installation methods are: deck mounted, curb mounted and self-flashed. Contact us today to schedule an appointment.</p>
