@@ -79,45 +79,51 @@
 
 <?php
 	}
+    if($product_info_array[0]->product_category_id == 2) {
     /******************************* TAX CREDITS *************************/
 ?>
-<section class="page-row page-row--extra-tall replacing">
-    <div class="row">
-        <div class="small-12 medium-6 columns reversed first">
-            <h2 class="upper normal-weight">Take advantage of a 30% federal tax credit</h2>
-            <p>The Solar Powered "Fresh Air" Skylight is the greatest value for your money, especially when you take advantage of the 30% federal tax credit. This tax credit is applicable on the skylight and installation of your Solar Powered "Fresh Air" Skylight. You could save an average of $850 with federal tax credit eligibility.</p>
-        </div>
-        <div class="small-12 medium-6 columns centered last">
-            <div class="incentives">
-                <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
-                <div class="incentive"><span class="big">$100</span><br>average savings<br>to solar from<br>fixed</div>
-                <div class="incentive"><span class="big">$340</span><br>savings with<br>solar over<br>manual</div>
+        <section class="page-row page-row--extra-tall replacing">
+            <div class="row">
+                <div class="small-12 medium-6 columns reversed first">
+                    <h2 class="upper normal-weight">Take advantage of a 30% federal tax credit</h2>
+                    <p>The Solar Powered "Fresh Air" Skylight is the greatest value for your money, especially when you take advantage of the 30% federal tax credit. This tax credit is applicable on the skylight and installation of your Solar Powered "Fresh Air" Skylight. You could save an average of $850 with federal tax credit eligibility.</p>
+                </div>
+                <div class="small-12 medium-6 columns centered last">
+                    <div class="incentives">
+                        <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
+                        <div class="incentive"><span class="big">$100</span><br>average savings<br>to solar from<br>fixed</div>
+                        <div class="incentive"><span class="big">$340</span><br>savings with<br>solar over<br>manual</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
+        <?php
+            /******************************* SOLAR TAX CREDIT *************************/
+        ?>
+        <section class="page-row page-row--tall blinds">
+        	<div class="row">
+        		<div class="small-12 medium-5 medium-push-7 columns">
+        			<h2 class="upper normal-weight">Add Solar Blinds for An Additional Tax Credit</h2>
+        			<p>Add VELUX solar blinds – also powered by a small PV solar panel – and receive another 30 percent tax credit on product and installation. In addition to savings, solar blinds give you control over the light and improve your skylight's energy performance.</p>
+        			<a href="#" class="btn">More On Blinds</a>
+        		</div>
+        	</div>
+        </section>
 
 <?php
-    /******************************* TAX CREDITS *************************/
-?>
-<section class="page-row page-row--tall blinds">
-	<div class="row">
-		<div class="small-12 medium-5 medium-push-7 columns">
-			<h2 class="upper normal-weight">Add Solar Blinds for An Additional Tax Credit</h2>
-			<p>Add VELUX solar blinds – also powered by a small PV solar panel – and receive another 30 percent tax credit on product and installation. In addition to savings, solar blinds give you control over the light and improve your skylight's energy performance.</p>
-			<a href="#" class="btn">More On Blinds</a>
-		</div>
-	</div>
-</section>
-
-<?php
+    }
     /******************************* NO LEAK *************************/
+    if($product_info_array[0]->product_category_id == 2 || $product_info_array[0]->product_category_id == 1) {
 ?>
-<section class="page-row page-row--tall centered reversed no-leak">
-	<header class="header-statement header-statement--squeezed">
-		<?=$this->load->view('partials/_svg-icon-no-leak.php');?>
-        <h2 class="upper normal-weight">The Velux No Leak Skylight Gives You Peace of Mind</h2>
-        <p class="reversed">As the world leader in roof windows and skylights, we stand behind our products with a promise of lasting service and quality. We do offer the VELUX 20/10/5 years limited product warranty for specific product coverage issues. If you have concerns about your VELUX products that may require a warranty claim, the warranty brochure includes specific steps for you to follow that will help VELUX better assist you.</p>
-        <a class="btn" href="<?=$installer_base_url?>/warranty">Learn More</a>
-	</header>
-</section>
+        <section class="page-row page-row--tall centered reversed no-leak">
+        	<header class="header-statement header-statement--squeezed">
+        		<?=$this->load->view('partials/_svg-icon-no-leak.php');?>
+                <h2 class="upper normal-weight">The Velux No Leak Skylight Gives You Peace of Mind</h2>
+                <p class="reversed">As the world leader in roof windows and skylights, we stand behind our products with a promise of lasting service and quality. We do offer the VELUX 20/10/5 years limited product warranty for specific product coverage issues. If you have concerns about your VELUX products that may require a warranty claim, the warranty brochure includes specific steps for you to follow that will help VELUX better assist you.</p>
+                <a class="btn" href="<?=$installer_base_url?>/warranty">Learn More</a>
+        	</header>
+        </section>
+<?php
+    }
+?>
