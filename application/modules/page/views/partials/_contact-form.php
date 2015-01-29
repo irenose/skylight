@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="small-12 medium-6 columns">
-            <label id="label-subject">What Can We Help You With?*<?=required_text('subject'); ?></label>
+            <label id="label-subject">What can we help you with?*<?=required_text('subject'); ?></label>
             <select name="subject" class="selectric" id="contact-subject">
                 <option value="">Please choose one</option>
                 <option value="General Information"<?= set_select('subject', 'General Information'); ?>>General Information</option>
@@ -57,7 +57,7 @@
             <label id="label-message">Message*<?=required_text('comments'); ?></label>
             <textarea name="comments" id="contact-comments" class="<?=form_textarea_error('comments'); ?> full-width"><?=set_value('comments');?></textarea>
 
-            <label class="updates"><input type="checkbox" name="receive_more_info" value="yes" <?= set_checkbox('receive_more_info','yes'); ?> /> Yes, I would like to receive updates</label>
+            <label class="updates"><input type="checkbox" name="receive_more_info" value="yes" <?= set_checkbox('receive_more_info','yes'); ?> /> Yes, I would like to receive VELUX updates</label>
         </div>
     </div>
 
