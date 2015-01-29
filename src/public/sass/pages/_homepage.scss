@@ -40,16 +40,6 @@
     }
 }
 
-/*-----------------------
-  @SHADOWS
-------------------------*/
-%shadowed {
-    box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.3);
-}
-.shadowed {
-    @extend %shadowed;
-}
-
 [data-carousel-type="locator"] .slick__item {
     margin: 20px 15px;
 }
@@ -62,11 +52,14 @@
 
     .card {
         @extend %clearfix;
-        font-size: .875em;
         background: #fff;
 
         [data-equal-heights] & {
             height: 100%;
+        }
+
+        @include bp($mobile-landscape) {
+            font-size: .875em;
         }
     }
 

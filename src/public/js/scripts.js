@@ -652,10 +652,10 @@ ww.carousels = (function(){
                     // responsive
                     slick_options.responsive = [
                         {
-                            breakpoint: 850,
+                            breakpoint: 768,
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
                                 slidesToShow: 1,
                             }
                         },
@@ -683,7 +683,8 @@ ww.carousels = (function(){
                             breakpoint: 850,
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
+                                slidesToScroll: 3,
                                 slidesToShow: 3,
                             }
                         },
@@ -691,7 +692,8 @@ ww.carousels = (function(){
                             breakpoint: 1200, // my-large
                             settings: {
                                 centerMode: false,
-                                centerPadding: '40px',
+                                // centerPadding: '40px',
+                                slidesToScroll: 5,
                                 slidesToShow: 5,
                             }
                         },

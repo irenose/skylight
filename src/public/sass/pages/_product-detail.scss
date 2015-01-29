@@ -9,7 +9,7 @@
     .product-description {
 
         .product-description--text {
-            margin-bottom: 1.5em;
+            margin-bottom: 1.75em;
 
             ul {
                 margin-bottom: 0;
@@ -234,6 +234,11 @@
 }
 
 .blinds {
+    background-image: url('../images/backgrounds/blinds-bg.jpg');
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+
     .columns {
         @include bp($foundation-small, $tablet) {
             width: 100%;
@@ -258,11 +263,6 @@
         background-size: 110%;
         padding-bottom: 400px;
     }
-
-    background-image: url('../images/backgrounds/blinds-bg.jpg');
-    background-position: 0% 50%;
-    background-repeat: no-repeat;
-    background-size: 50% 100%;
 }
 
 .no-leak {

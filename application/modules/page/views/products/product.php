@@ -37,7 +37,7 @@
             </div>
 		</div>
 		<div class="small-12 medium-7 columns product-description">
-            <span class="product-category"><?=$product_info_array[0]->product_subcategory_name?></span>
+            <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
 			<?php
 				echo '<h1>' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
 				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
