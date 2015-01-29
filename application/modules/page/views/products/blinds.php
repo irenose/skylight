@@ -87,8 +87,8 @@
         <h2 class="upper">
             Reflect your home's personality and style
         </h2>
-        <p class="squeezed-3">
-            Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home.
+        <p>
+            Regardless of which VELUX skylight model you select, you'll receive a choice of eight different factory installed blinds, or choose from more than 80 special order blinds.
         </p>
     </header>
     <div class="push-top--half push-bottom--half">

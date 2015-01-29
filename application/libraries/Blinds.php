@@ -73,7 +73,7 @@ class Blinds
             'light-filtering-single' => array(
                 'heading' => 'Light filtering – single pleat blinds',
                 'img' => array(
-                    'src' => asset_url('images/blinds/filtering.jpg'),
+                    'src' => asset_url('images/blinds/light-filtering-single.jpg'),
                     'alt' => 'filtering blinds',
                 ),
                 'text' => 'Diffuses the light to reduce glare and improves energy performance by up to 39 percent.',
@@ -100,7 +100,7 @@ class Blinds
 			'light-filtering-flat' => array(
                 'heading' => 'Light filtering blinds – flat',
                 'img' => array(
-                    'src' => asset_url('images/blinds/filtering.jpg'),
+                    'src' => asset_url('images/blinds/light-filtering-flat.jpg'),
                     'alt' => 'filtering blinds',
                 ),
                 'text' => 'Diffuses the light to reduce glare and improves energy performance by up to 39 percent.',
@@ -127,7 +127,7 @@ class Blinds
             'darkening-blinds' => array(
                 'heading' => 'Room darkening - double pleated blinds',
                 'img' => array(
-                    'src' => asset_url('images/blinds/blackout.jpg'),
+                    'src' => asset_url('images/blinds/room-darkening.jpg'),
                     'alt' => 'darkening blinds',
                 ),
                 'text' => 'Adjustable, so you can direct the light in any direction. Can block up to 74 percent of the light and improve energy performance by up to 34 percent.',
