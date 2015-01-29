@@ -256,6 +256,14 @@ a.cta-text {
 /*-----------------------
   @PADDING
 ------------------------*/
+
+.push-bottom--half {
+    padding-bottom: 5%;
+}
+.push-top--half {
+    padding-top: 5%;
+}
+
 %snug-top {
     margin-top: 0 !important;
     padding-top: 0 !important;

@@ -143,30 +143,51 @@
 ------------------------*/
 .upgrade {
     background-image: url('../images/welcome/hero.jpg');
-    padding: 18% 10% 26%;
+    padding: 25% 10% 45%;
 
     h1 {
+        margin: 0 auto;
         text-shadow: 1px 1px 3px rgba(50,50,50,1);
     }
 
-    @include bp($foundation-small, $foundation-med) {
-        background-position: 100% 60%;
-        padding: 27% 4% 50%;
+    @include bp($foundation-small, $my-small) {
+        background-position: 60% 50%;
+        padding: 27% 4% 55%;
 
         h1 {
             font-size: 2.25em;
         }
     }
-    @include bp($foundation-large) {
-        background-position: 85% 50%;
-    }
-    @include bp($my-large) {
-        padding: 14% 15% 23.5%;
-        width: 66%;
+    @include bp($my-small, $foundation-med) {
+        padding: 27% 4% 50%;
 
         h1 {
-            max-width: 560px;
+            font-size: 2.5em;
+            max-width: 530px;
         }
+    }
+    @include bp($tablet) {
+        padding: 27% 10% 40%;
+
+        h1 {
+            max-width: 760px;
+        }
+    }
+    @include bp($foundation-large, $my-large) {
+        background-position: 88% 50%;
+        padding: 13% 0 24.5%;
+
+        h1 {
+            width: 260px;
+        }
+    }
+    @include bp($my-large) {
+        padding: 13% 15% 24.5%;
+        width: 66%;
+
+        /* h1 {
+            max-width: 700px;
+        } */
     }
 }
 
@@ -185,7 +206,7 @@
     @include bp($foundation-large) {
         background-image: url('../images/welcome/residential-promo.jpg');
         margin-bottom: 10px;
-        padding: 15% 0 89%;
+        padding: 15% 0 100%;
 
         h4 {
             margin: 0 auto 10px;
@@ -193,16 +214,16 @@
         }
     }
     @include bp(1100px) {
-        padding-bottom: 87%;
+        padding-bottom: 97%;
     }
     @include bp(1200px) {
-        padding-bottom: 85%;
+        padding-bottom: 94%;
     }
     @include bp($my-large) {
-        padding-bottom: 82%;
+        padding-bottom: 88%;
     }
     @include bp($my-very-large) {
-        padding-bottom: 88%;
+        padding-bottom: 94%;
     }
 }
 

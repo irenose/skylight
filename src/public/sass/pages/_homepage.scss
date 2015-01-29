@@ -1,0 +1,124 @@
+[data-equal-heights] .card {
+    height: 100%;
+}
+
+.bg-zircon {
+    background-color: $color-zircon;
+}
+
+.bringing-daylight {
+
+}
+
+.fancy-search {
+    color: $color-default;
+
+    input::placeholder {
+        color: $color-default !important;
+    }
+}
+
+.hero-search {
+    background-image: url('../images/categories/residential-hero.jpg');
+    padding: {
+        bottom: 35%;
+        top: 20%;
+    }
+
+    h1 {
+        text-shadow: 1px 1px 3px #323232;
+    }
+
+    @include bp(0, $foundation-med) {
+        background-position: 35% 50%;
+    }
+    @include bp($foundation-med, $foundation-large) {
+        background-position: 0 50%;
+    }
+    @include bp($tablet) {
+        padding-bottom: 25%;
+    }
+}
+
+/*-----------------------
+  @SHADOWS
+------------------------*/
+%shadowed {
+    box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.3);
+}
+.shadowed {
+    @extend %shadowed;
+}
+
+[data-carousel-type="locator"] .slick__item {
+    margin: 20px 15px;
+}
+
+.installer__link {
+    margin-bottom: 2em;
+}
+
+.slick__item {
+
+    .card {
+        @extend %clearfix;
+        font-size: .875em;
+        background: #fff;
+
+        [data-equal-heights] & {
+            height: 100%;
+        }
+    }
+
+    .card__header,
+    .card__body,
+    .card__footer {
+        padding: ($row-padding-vertical / 2) $row-padding-horizontal;
+
+        @include bp($foundation-large) {
+            padding: $padding-card;
+        }
+    }
+
+    // just for result cards
+    .card__footer {
+        padding-top: 0;
+    }
+
+    .card__body {
+        padding-bottom: $row-padding-vertical / 1.5;
+
+        .card__body__text {
+            font-size: .9em;
+        }
+        > .card__body__text p:first-child {
+            margin-top: 0;
+        }
+        .card__body__link {
+            @extend %font-display;
+            font-size: .75em;
+        }
+    }
+
+    .card__header {
+        @extend %border-bottom;
+
+        .card__heading {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .card__footer {
+        @extend %border-top;
+    }
+
+    .card figure {
+        display: block;
+
+        .card__figure img {
+            border: 10px solid #fff;
+            width: 100%;
+        }
+    }
+}

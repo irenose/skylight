@@ -3,9 +3,9 @@
     @extend %centered;
     background: $color-zircon;
 
-    @include bp(0, $my-switch-nav) {
+    /* @include bp(0, $foundation-large) {
         padding: 20px 0;
-    }
+    } */
     &.filters {
         background: $color-whitesmoke-dark;
     }

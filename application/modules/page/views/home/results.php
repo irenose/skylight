@@ -54,7 +54,7 @@
 		        </div>
 		        <div class="tabs-content">
 		            <div id="map" class="tabs-content__item" data-lat="<?=$installer_search_array[0]->latitude?>" data-long="<?=$installer_search_array[0]->longitude?>"><!-- map inserted here --></div>
-		            <div id="list" class="push-top--half tabs-content__item">
+		            <div id="list" class="push-top--half push-bottom--half tabs-content__item">
 		                <div class="constrained">
 		                    <ul class="slick" data-carousel-type="locator" data-equal-heights aria-labelledby="hank">
 		                        <?php foreach ($installer_search_array as $installer): ?>

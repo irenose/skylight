@@ -110,9 +110,9 @@
         width: 14px;
     }
 
-    @include bp($foundation-small, $tablet) {
+    /* @include bp($foundation-small, $tablet) {
         display: none !important;
-    }
+    } */
 }
 
 .my-slick-prev,

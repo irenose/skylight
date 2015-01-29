@@ -150,7 +150,7 @@
             padding: 2% 4%;
         }
         @include bp($foundation-med, $tablet) {
-            padding: 1% 5%;
+            padding: 1% 5% 2%;
         }
          @include bp($tablet) {
             padding: 5% 3%;
