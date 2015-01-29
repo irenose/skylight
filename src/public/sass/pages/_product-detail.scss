@@ -1,5 +1,5 @@
 .product-detail {
-    font-family: $font-family-display;
+    // font-family: $font-family-display;
 
     .columns {
         @include bp($foundation-small, $tablet) {
@@ -8,8 +8,16 @@
     }
     .product-description {
 
+        .product-description--text {
+            margin-bottom: 1.5em;
+
+            ul {
+                margin-bottom: 0;
+            }
+        }
         .product-category {
             color: $color-primary;
+            font-family: $font-family-display;
             margin: 0 auto .5em;
             padding: 0;
 
@@ -104,6 +112,9 @@
             width: 100%;
         }
     }
+    .ps-list {
+        margin-bottom: 
+    }
 
     div {
         line-height: 1.75;
@@ -142,6 +153,7 @@
 
 .product-cards {
     @extend %centered;
+    padding-bottom: 3%;
 
     .product-card-wrapper {
         padding: 2% 3%;
@@ -160,9 +172,12 @@
         background: #fff;
         box-shadow: 0px 4px 0px 0px rgba(225,225,225,1);
         padding: 8%;
+        top: -10px;
 
         .img-wrapper {
-            padding: 2%;
+            display: block;
+            overflow: hidden;
+            padding: 10%;
         }
 
         h3 {
@@ -170,19 +185,19 @@
         }
         img {
             border-radius: 100%;
-            margin-bottom: 14%;
+            margin-bottom: 4%;
             width: 100%;
         }
         p {
             color: $color-default-light;
-            height: 7.5em;
+            // height: 7.5em;
             margin: 0;
 
             @include bp($tablet) {
-                height: 10.5em;
+                // height: 10.5em;
             }
             @include bp($foundation-large) {
-                height: 7.5em;
+                // height: 7.5em;
                 padding: 0 2%;
             }
             @include bp($my-large) {
@@ -190,9 +205,15 @@
             }
         }
 
-        @include bp($foundation-small, $foundation-med) {
+        @include bp(0, $foundation-med) {
             margin: 0 auto;
             max-width: 350px;
+        }
+        @include bp($my-small, $foundation-med) {
+            padding: {
+                left: 12%;
+                right: 12%;
+            }
         }
         @include bp($foundation-med, $tablet) {
             margin: 0 auto;
@@ -205,6 +226,12 @@
         }
         @include bp($foundation-large) {
             padding: 10%;
+        }
+    }
+    .slick-slider {
+
+        @include bp(0, $tablet) {
+            padding-bottom: 3em;
         }
     }
 }

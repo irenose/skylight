@@ -37,10 +37,10 @@
             </div>
 		</div>
 		<div class="small-12 medium-7 columns product-description">
-            <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
+            <span class="product-category"><?=$product_info_array[0]->product_subcategory_name?></span>
 			<?php
 				echo '<h1>' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
-				echo '<p>' . filter_page_content($product_info_array[0]->product_description) . '</p>' . "\n";
+				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
 			?>
 			<a href="' . $installer_base_url . '/contact" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}" class="btn">Learn More</a>
 		</div>
