@@ -678,6 +678,36 @@ ww.carousels = (function(){
                         },
                     ];
                     break;
+
+                case "benefits":
+                    // infinite
+                    slick_options.infinite = false;
+
+                    // dots
+                    slick_options.arrows = false;
+                    slick_options.dots = true;
+
+                    // to show
+                    slick_options.slidesToShow = $carousel.data("slides-to-show");
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 850,
+                            settings: {
+                                centerMode: false,
+                                centerPadding: '40px',
+                                slidesToShow: 1,
+                            }
+                        },
+                        {
+                            breakpoint: 1450,
+                            settings: {
+                                slidesToShow: 3,
+                            }
+                        },
+                    ];
+                    break;
             }
 
             this.do_carousel($carousel, slick_options);

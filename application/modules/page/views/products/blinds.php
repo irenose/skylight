@@ -46,72 +46,31 @@
 		</div>
 	</div>
 </section>
-
-<?php
-    /******************************* PRODUCT CARDS *************************/
-    $product_cards_category_array = array(4,5,6,7,8,17);
-    if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
-    	switch($product_info_array[0]->primary_category_id) {
-    		case 4:
-    		case 5:
-    			$data['display_group'] = 'sun-tunnel';
-    			break;
-    		case 6:
-    			$data['display_group'] = 'electric-fresh-air';
-    			break;
-    		case 7:
-    			$data['display_group'] = 'manual-fresh-air';
-    			break;
-    		case 8:
-    			$data['display_group'] = 'fixed';
-    			break;
-    		case 17:
-    			$data['display_group'] = 'solar-fresh-air';
-    			break;
-
-    	}
-?>
-		<section class="bg-grey top-shadow product-cards">
-		    <div class="constrained">
-                <div data-carousel-init="auto" data-carousel-type="product-cards" data-slides-to-show="3" data-equal-heights>
-    				<?php
-    					echo $this->load->view('partials/_product-cards',$data);
-    				?>
+<section class="page-row snug-bottom underlap product-cards">
+    <header class="centered">
+        <h2 class="reversed text-shadow">
+            Types of skylight blinds
+        </h2>
+    </header>
+    <ul class="slick" data-carousel-init="auto" data-carousel-type="benefits" data-slides-to-show="4" data-equal-heights>
+        <?php foreach ($blinds_array as $value): ?>
+        <li class="slick__item">
+            <div class="card shadowed">
+                <div class="card__body">
+                    <span class="img-wrapper">
+                        <img src="<?=$value['img']['src']?>" alt="<?=$value['img']['alt']?>">
+                    </span>
+                    <h3>
+                        <?=$value['heading']?>
+                    </h3>
+                    <p>
+                        <?=$value['text']?>
+                    </p>
                 </div>
-		    </div>
-		</section>
-
-<?php
-	}
-    /******************************* TAX CREDITS *************************/
-?>
-<section class="page-row page-row--extra-tall replacing">
-    <div class="row">
-        <div class="small-12 medium-6 columns reversed first">
-            <h2 class="upper normal-weight">Take advantage of a 30% federal tax credit</h2>
-            <p>The Solar Powered "Fresh Air" Skylight is the greatest value for your money, especially when you take advantage of the 30% federal tax credit. This tax credit is applicable on the skylight and installation of your Solar Powered "Fresh Air" Skylight. You could save an average of $850 with federal tax credit eligibility.</p>
-        </div>
-        <div class="small-12 medium-6 columns centered last">
-            <div class="incentives">
-                <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
-                <div class="incentive"><span class="big">$100</span><br>average savings<br>to solar from<br>fixed</div>
-                <div class="incentive"><span class="big">$340</span><br>savings with<br>solar over<br>manual</div>
             </div>
-        </div>
-    </div>
-</section>
-
-<?php
-    /******************************* TAX CREDITS *************************/
-?>
-<section class="page-row page-row--tall blinds">
-	<div class="row">
-		<div class="small-12 medium-5 medium-push-7 columns">
-			<h2 class="upper normal-weight">Add Solar Blinds for An Additional Tax Credit</h2>
-			<p>Add VELUX solar blinds – also powered by a small PV solar panel – and receive another 30 percent tax credit on product and installation. In addition to savings, solar blinds give you control over the light and improve your skylight's energy performance.</p>
-			<a href="#" class="btn">More On Blinds</a>
-		</div>
-	</div>
+        </li>
+        <?php endforeach; ?>
+    </ul>
 </section>
 
 <?php

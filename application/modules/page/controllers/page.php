@@ -157,7 +157,14 @@ class Page extends CI_Controller {
                                             $product_name = ($data['product_info_array'][0]->model_number != '') ? $product_name . ' (' . $data['product_info_array'][0]->model_number . ')' : $product_name;
                                             $data['selected_contact_product'] = $product_name;
 
-                                            $data['page_view'] = 'products/product';
+                                            if($vars_array[3] == 'blinds') {
+                                                $this->load->library('blinds');
+                                                $data['blinds_array'] = $this->blinds->get_blinds();
+                                                $data['page_view'] = 'products/blinds';
+                                            } else {
+                                                $data['page_view'] = 'products/product';
+                                            }
+
                                         } else {
                                             redirect($data['installer_base_url'] . '/products');
                                         }
