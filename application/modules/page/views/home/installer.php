@@ -20,47 +20,49 @@
         <h1 class="normal-weight"><?= filter_custom_tags('city', $installer_array[0]->dealer_homepage_headline, $installer_array[0]->city); ?></h1>
     </header>
     <div class="row installer-welcome">
-        <div class="small-12 large-6 columns welcome-hero upgrade">
+        <div class="welcome-hero upgrade">
             <h1 class="reversed upper mega-heading">Add beauty with daylight and fresh air</h1>
         </div>
-        <div class="small-12 large-6 columns promotions-large">
-            <?php 
-                //SHOW COMMERCIAL PROMO
-                if(count($product_category_array) == 1 && $product_category_array[0]->product_category_id == 3) {
-                    echo '<div class="promotion-large commercial-promo">' . "\n";
-                        echo '<h4 class="normal-weight reversed">Create Clean, Comfortable, Bright Work Spaces With VELUX SUN TUNNEL&trade; Skylights.</h4>' . "\n";
-                    echo '</div>' . "\n";
-                } else {
-                    echo '<div class="promotion-large residential-promo">' . "\n";
-                        echo '<h4 class="normal-weight">Add daylight and fresh air for less with the Solar Powered "Fresh Air" skylight</h4>' . "\n";
-                        echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
-                    echo '</div>' . "\n";
-                }
-            ?>
-        </div>
-        <div class="promotions-small">
-            <?php
-                if($installer_array[0]->promotion_status == 'active' && trim($installer_array[0]->promotion_headline) != '') {
-                    echo '<div class="promotion-small reversed dealer-promo">' . "\n";
-                        echo '<h3 class="normal-weight">' . trim($installer_array[0]->promotion_headline) . '</h3>' . "\n";
-                        if(trim($installer_array[0]->promotion_callout_copy) != '') {
-                            echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
-                        }
-                        if(trim($installer_array[0]->promotion_page_copy) != '') {
-                            echo ' <a href="' . $installer_base_url . '/promotions" class="cta-text">Learn More</a>' . "\n";
-                        }
-                    echo ' </div>' . "\n";
-                    echo '<div class="promotion-small cta schedule-consult">' . "\n";
-                        echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
-                    echo '</div>' . "\n";
-                } else {
-                    echo '<div class="promotion-small one-promotion cta schedule-consult">' . "\n";
-                        echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
-                    echo '</div>' . "\n";
-                }
-            ?>
+        <div class="welcome-promotions">
+            <div class="promotions-large">
+                <?php 
+                    //SHOW COMMERCIAL PROMO
+                    if(count($product_category_array) == 1 && $product_category_array[0]->product_category_id == 3) {
+                        echo '<div class="promotion-large commercial-promo">' . "\n";
+                            echo '<h4 class="normal-weight reversed">Create Clean, Comfortable, Bright Work Spaces With VELUX SUN TUNNEL&trade; Skylights.</h4>' . "\n";
+                        echo '</div>' . "\n";
+                    } else {
+                        echo '<div class="promotion-large residential-promo">' . "\n";
+                            echo '<h4 class="normal-weight">Add daylight and fresh air for less with the Solar Powered "Fresh Air" skylight</h4>' . "\n";
+                            echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
+                        echo '</div>' . "\n";
+                    }
+                ?>
+            </div>
+            <div class="promotions-small">
+                <?php
+                    if($installer_array[0]->promotion_status == 'active' && trim($installer_array[0]->promotion_headline) != '') {
+                        echo '<div class="promotion-small reversed dealer-promo">' . "\n";
+                            echo '<h3 class="normal-weight">' . trim($installer_array[0]->promotion_headline) . '</h3>' . "\n";
+                            if(trim($installer_array[0]->promotion_callout_copy) != '') {
+                                echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
+                            }
+                            if(trim($installer_array[0]->promotion_page_copy) != '') {
+                                echo ' <a href="' . $installer_base_url . '/promotions" class="cta-text">Learn More</a>' . "\n";
+                            }
+                        echo ' </div>' . "\n";
+                        echo '<div class="promotion-small cta schedule-consult">' . "\n";
+                            echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
+                            echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '</div>' . "\n";
+                    } else {
+                        echo '<div class="promotion-small one-promotion cta schedule-consult">' . "\n";
+                            echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
+                            echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '</div>' . "\n";
+                    }
+                ?>
+            </div>
         </div>
     </div>
 </section>

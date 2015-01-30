@@ -47,95 +47,158 @@
     a:hover {
         @extend %no-underline;
     }
+
+    & > div {
+        vertical-align: top;
+    }
+
+    @include bp($foundation-large) {
+        height: 680px;
+    }
+    @include bp($my-large) {
+        height: 700px;
+    }
+    @include bp($my-very-large) {
+        height: 740px;
+    }
 }
 
 .welcome-hero {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.promotions-large {
-
-    @include bp($foundation-small, $foundation-large) {
-        padding: 0;
-    }
-    @include bp($my-large) {
-        width: 33%;
-    }
-}
-
-.promotion-large {
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-top: 8px solid $color-reverse-heading;
     float: left;
     width: 100%;
 
-    .incentive {
-        position: absolute;
-        left: 8%;
-        top: 33%;
-
-        @include bp($foundation-small, $mobile-landscape) {
-            height: 100px;
-            width: 100px;
-        }
-    }
-
-    h4 {
-        margin-bottom: 5px;
-    }
-
     @include bp($foundation-large) {
-        border-top: 0;
+        display: inline-block;
+        float: none;
+        height: 100%;
+        width: 48%;
+    }
+    @include bp($my-large) {
+        width: 64%
     }
 }
 
-.promotions-small {
-    width: 100%;
+.welcome-promotions {
 
-    .cta {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-        @include bp($foundation-large) {
-            margin-left: 4%;
-        }
-
-    }
-    .dealer-promo {
-        background-color: $color-blue;
-        padding: 5%;
-    }
-    .promotion-small {
-        border-top: 8px solid $color-reverse-heading;
+    .promotions-large {
         float: left;
         width: 100%;
 
+        .promotion-large {
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-top: 8px solid $color-reverse-heading;
+            width: 100%;
+
+            .incentive {
+                position: absolute;
+                left: 8%;
+                top: 33%;
+
+                @include bp(0, $mobile-landscape) {
+                    height: 100px;
+                    width: 100px;
+                }
+                @include bp($mobile-landscape, $my-very-large) {
+                    height: 130px;
+                    width: 130px;
+                }
+            }
+
+            @include bp($foundation-large) {
+                border-top: 0;
+                height: 100%;
+            }
+        }
+
         @include bp($foundation-large) {
-            border-top: 0;
-            height: 220px;
-            width: 48%;
+            height: 440px;
+            width: 100%;
+        }
+        @include bp($my-large) {
+            height: 460px;
+        }
+        @include bp($my-very-large) {
+            height: 480px;
         }
     }
-    .one-promotion {
-        margin-left: 0 !important;
-        width: 100% !important;
+
+    .promotions-small {
+        float: left;
+        width: 100%;
+
+        .cta {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        .dealer-promo {
+            background-color: $color-blue;
+            padding: 10% 5%;
+
+            h3 {
+                margin-bottom: 1em;
+            }
+
+            @include bp($foundation-large) {
+                padding-bottom: 0;
+            }
+        }
+        .promotion-small {
+            border-top: 8px solid $color-reverse-heading;
+            float: left;
+            width: 100%;
+
+            &:nth-child(2) {
+
+                @include bp($foundation-large) {
+                    margin-left: 4%;
+                }
+                @include bp($my-large) {
+                    margin-left: 5%;
+                }
+            }
+            @include bp($foundation-large) {
+                border-top: 0;
+                height: 100%;
+                width: 48%;
+            }
+            @include bp($my-large) {
+                width: 47.5%;
+            }
+        }
+        .one-promotion {
+            margin-left: 0 !important;
+            width: 100% !important;
+        }
+
+        @include bp($foundation-large) {
+            margin-top: 20px;
+            height: 220px;
+            width: 100%;
+        }
+        @include bp($my-very-large) {
+            height: 230px;
+            margin-top: 30px;
+        }
     }
 
     @include bp($foundation-large) {
-        bottom: 0;
-        padding: 0 .9375rem;
-        position: absolute;
-        right: 0;
-        width: 50%;
+        display: inline-block;
+        float: none;
+        height: 100%;
+        margin-left: 20px;
+        width: 48%;
     }
     @include bp($my-large) {
-        right: 1%;
-        width: 33%;
+        width: 31%
+    }
+    @include bp($my-very-large) {
+        margin-left: 30px;
     }
 }
 
@@ -144,136 +207,109 @@
 ------------------------*/
 .upgrade {
     background-image: url('../images/welcome/hero.jpg');
-    padding: 25% 10% 45%;
+    background-position: 60% 50%;
+    padding: 35% 4% 62%;
 
     h1 {
+        font-size: 2.5em;
         margin: 0 auto;
+        max-width: 380px;
         text-shadow: 1px 1px 3px rgba(50,50,50,1);
-    }
 
-    @include bp($foundation-small, $my-small) {
-        background-position: 60% 50%;
-        padding: 27% 4% 55%;
-
-        h1 {
-            font-size: 2.25em;
+        @include bp($mobile-landscape) {
+            max-width: 420px;
+        }
+        @include bp($foundation-med) {
+            font-size: 3em;
+            max-width: 500px;
+        }
+        @include bp($foundation-large) {
+            max-width: 260px;
+        }
+        @include bp($my-large) {
+            max-width: 540px;
         }
     }
-    @include bp($my-small, $foundation-med) {
-        padding: 27% 4% 50%;
 
-        h1 {
-            font-size: 2.5em;
-            max-width: 530px;
-        }
+    @include bp(400px) {
+        padding: 37% 4% 57%;
+    }
+    @include bp($foundation-med) {
+        background-position: 50% 50%;
+        padding: 25% 10% 45%;
     }
     @include bp($tablet) {
-        padding: 27% 10% 40%;
-
-        h1 {
-            max-width: 760px;
-        }
+        padding: 25% 10% 40%;
     }
-    @include bp($foundation-large, $my-large) {
-        background-position: 88% 50%;
-        padding: 13% 0 24.5%;
-
-        h1 {
-            width: 260px;
-        }
+    @include bp($foundation-large) {
+        background-position: 89% 50%;
+        padding: 13% 0 0;
+    }
+    @include bp(1100px) {
+        background-position: 95% 50%;
+    }
+    @include bp(1200px) {
+        background-position: 100% 50%;
     }
     @include bp($my-large) {
-        padding: 13% 15% 24.5%;
-        width: 66%;
-
-        /* h1 {
-            max-width: 700px;
-        } */
+        background-position: 50% 50%;
+        padding-top: 220px;
     }
 }
 
 .residential-promo {
     background-image: url('../images/welcome/residential-promo-wide.jpg');
-    padding: 8% 10% 33%;
+    background-position: 50% 0;
+    padding: 8% 10% 54%;
 
-    @include bp($foundation-small, $mobile-landscape) {
-        padding: 10% 0 50%;
+    h4 {
+        margin: 0 auto;
 
-        h4 {
+        @include bp($foundation-small, $mobile-landscape) {
             font-size: 1em;
         }
+        @include bp($foundation-med) {
+            max-width: 500px;
+        }
+    }
 
+    @include bp($tablet) {
+        padding-bottom: 40%;
     }
     @include bp($foundation-large) {
         background-image: url('../images/welcome/residential-promo.jpg');
-        margin-bottom: 10px;
-        padding: 15% 0 100%;
-
-        h4 {
-            margin: 0 auto 10px;
-            width: 360px;
-        }
-    }
-    @include bp(1100px) {
-        padding-bottom: 97%;
-    }
-    @include bp(1200px) {
-        padding-bottom: 94%;
-    }
-    @include bp($my-large) {
-        padding-bottom: 88%;
-    }
-    @include bp($my-very-large) {
-        padding-bottom: 94%;
+        background-position: 50% 50%;
+        padding: 12% 10% 0;
     }
 }
 
 .commercial-promo {
     background-image: url('../images/welcome/commercial-promo-wide.jpg');
-    padding: 25% 10% 20%;
+    background-position: 50% 0;
+    padding: 33% 10% 30%;
+    // padding: 25% 10% 20%;
 
     h4 {
-        font-size: 1.25em;
+        font-size: 1.5em;
         line-height: 1.5;
         margin: 0 auto;
         max-width: 450px;
         text-shadow: 1px 1px 4px rgba(20,20,20,1);
+
+        @include bp($foundation-large) {
+            max-width: 350px;
+        }
+        @include bp($my-very-large) {
+            max-width: 380px;
+        }
     }
 
-    @include bp($foundation-small, $mobile-landscape) {
-        padding: 40% 10% 40%;
-
-        /* h4 {
-            font-size: 1em;
-        } */
-
+    @include bp($foundation-med) {
+        padding: 26% 10% 23%;
     }
     @include bp($foundation-large) {
         background-image: url('../images/welcome/commercial-promo.jpg');
-        margin-bottom: 10px;
-        padding: 12% 0 92%;
-
-        h4 {
-            width: 360px;
-        }
-    }
-    @include bp(1100px) {
-        padding-bottom: 89%;
-    }
-    @include bp(1200px) {
-        padding-bottom: 87%;
-    }
-    @include bp($my-large) {
-        padding-bottom: 75%;
-    }
-    @include bp(1450px) {
-        padding-bottom: 78%;
-    }
-    @include bp($my-very-large) {
-        padding-bottom: 75%;
-    }
-    @include bp(1750px) {
-        padding-bottom: 77%;
+        padding: 30% 10% 0;
     }
 }
 
@@ -291,11 +327,13 @@
     }
 
     p {
-        margin-bottom: 10px;
+        margin-bottom: 1em;
+        margin-top: 0;
     }
 
     @include bp($foundation-large) {
         background-image: url('../images/welcome/schedule-consultation-narrow.jpg');
+        padding-bottom: 0;
 
         &.one-promotion {
             background-image: url('../images/welcome/schedule-consultation-narrow.jpg')
