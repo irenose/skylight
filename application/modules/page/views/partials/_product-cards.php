@@ -85,7 +85,7 @@
         echo '<div class="slick__item product-card-wrapper small-12 medium-4 columns">' . "\n";
             echo '<div class="product-card">' . "\n";
                 echo '<span class="img-wrapper"><img src="' . asset_url('images/cards/' . $value['image']) . '" alt></span>';
-                echo '<h3>' . $value['title'] . '</h3>' . "\n";
+                echo '<h3 class="normal-weight">' . $value['title'] . '</h3>' . "\n";
                 echo '<p>' . $value['copy'] . '</p>' . "\n";
             echo '</div>' . "\n";
         echo '</div>' . "\n";

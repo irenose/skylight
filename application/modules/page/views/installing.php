@@ -38,7 +38,7 @@
 ?>
 <section class="page-row bg-grey border-top-grey skylight-orientation" id="skylight-orientation">
     <header class="header-statement header-statement--squeezed">
-        <h2 class="upper normal-weight">Skylight Orientation and Utility Savings</h2>
+        <h2 class="upper normal-weight"><span class="br">Skylight Orientation </span>and Utility Savings</h2>
         <p>Before your installer gets to work, they will determine the best location for skylights in your home. Orientation on your roof will affect how much light comes through your skylight and the role it will play in improving your home’s energy efficiency.</p>
     </header>
 </section>
@@ -51,7 +51,7 @@
                         <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass"></use>
                     </svg>
                 </i>
-                <h3>Northern Exposure</h3>
+                <h3 class="normal-weight">Northern Exposure</h3>
                 <p>Homes in warmer climates can reduce lighting costs by maximizing natural lighting provided by skylights installed on a roof with a northern exposure.</p>
             </div>
         </div>
@@ -62,7 +62,7 @@
                         <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass"></use>
                     </svg>
                 </i>
-                <h3>Southern Exposure</h3>
+                <h3 class="normal-weight">Southern Exposure</h3>
                 <p>Studies show that homes located in cooler climates can reduce heating costs in the winter and lighting costs during warmer months with skylights installed on a roof with a southern exposure.</p>
             </div>
         </div>
@@ -86,7 +86,7 @@
             </div>
     </div>
     <header class="header-statement header-statement--squeezed">
-        <h2 class="upper">Improve Home Efficiency</h2>
+        <h2 class="upper normal-weight">Improve Home Efficiency</h2>
         <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat<sup>&reg;</sup> glass technology.</p>
     </header>
 </section>

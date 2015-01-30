@@ -16,18 +16,21 @@
 
         header {
             background: $color-grey-light-bg;
-            margin-left: -10%;
+            margin-left: -5%;
             padding: {
                 bottom: 20px;
                 top: 40px;
             }
             position: absolute;
             top: 0;
-            width: 110%;
 
             h1 {
                 font-weight: normal;
                 text-transform: none;
+            }
+
+            @include bp(0, $foundation-small) {
+                width: 100%;
             }
         }
     }

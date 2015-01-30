@@ -38,7 +38,7 @@
         </div>
         <div class="card card--carousel">
             <div class="card-container">
-                <h2><?= $product_category_array['category']->product_category_name; ?></h2>
+                <h2 class="normal-weight"><?= $product_category_array['category']->product_category_name; ?></h2>
                 <p><?= filter_page_content($product_category_array['category']->product_category_description); ?></p>
             </div>
             <div class="bg-grey border-top-grey category-scroll-bar">
