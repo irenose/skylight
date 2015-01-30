@@ -21,7 +21,7 @@
     </header>
     <div class="row installer-welcome">
         <div class="small-12 large-6 columns welcome-hero upgrade">
-            <h1 class="reversed upper mega-heading">Add beauty with daylight and fresh air to any space</h1>
+            <h1 class="reversed upper mega-heading">Add beauty with daylight and fresh air</h1>
         </div>
         <div class="small-12 large-6 columns promotions-large">
             <?php 
