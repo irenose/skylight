@@ -10,8 +10,8 @@
                 ),
                 array(
                     'image' => 'pick-click.jpg',
-                    'title' => 'Pick&amp;Click&trade;',
-                    'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
+                    'title' => 'Pick&amp;Click!&trade;',
+                    'copy' => 'The innovative Pick&amp;Click!&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
                     'image' => 'sleek-appearance.png', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
@@ -48,8 +48,8 @@
                 ),
                 array(
                     'image' => 'pick-click.jpg',
-                    'title' => 'Pick&amp;Click&trade;',
-                    'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
+                    'title' => 'Pick&amp;Click!&trade;',
+                    'copy' => 'The innovative Pick&amp;Click!&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
                     'image' => 'manual-control.png',

@@ -1,7 +1,7 @@
 
 <section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
     <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">New, innovative VELUX VSS skylights bring you fresh air, daylight and a tax credit.</h1>
+        <h1 class="normal-weight">New, innovative VELUX skylights bring you fresh air, daylight and a tax credit.</h1>
     </header>
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero vss-no-leak">
