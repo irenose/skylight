@@ -46,7 +46,7 @@
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
             <img src="<?=asset_url('images/ps/tcr-sun-tunnel.png')?>" alt>
             <p><strong>Features of the TCR model include:</strong></p>
-            <ul class="ps-list">
+            <ul class="ps-list" style="margin-bottom:30px;">
                 <li>Clear dome for maximum visible light transmission</li>
 				<li>22" nominal curb mounted flashing for flat roofs, flashing clearance 31"x31"</li>
 				<li>34" rigid top elbow, 30&deg; offset</li>
