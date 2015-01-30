@@ -1,4 +1,4 @@
-<?php if(defined('ENVIRONMENT') && (ENVIRONMENT == 'staging' || ENVIRONMENT == 'production')) { ?>
+<?php if(defined('ENVIRONMENT') && ENVIRONMENT == 'production') { ?>
 
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WFLML9"
