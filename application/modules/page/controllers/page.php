@@ -321,83 +321,90 @@ class Page extends CI_Controller {
                         case 'ps':
                             $data['current_section'] = 'paid-search';
                             $template = 'template_ps';
-                            if ($vars_size == 4 && $vars_array[4] == 'night') {
-                                $data['paid_search_page_type'] = 'night';
-                            }
-                            switch($vars_array[3]) {
-                                case 'no-leak-skylight':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/no_leak_night' : 'paidsearch/no_leak';
-                                    break;
-                                case 'energy-efficiency':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/efficiency_night' : 'paidsearch/efficiency';
-                                    break;
-                                case 'skylight-repair':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/repair_night' : 'paidsearch/repair';
-                                    break;
-                                case 'sun-tunnel-skylight':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/sun_tunnel_night' : 'paidsearch/sun_tunnel';
-                                    break;
-                                case 'commercial-sun-tunnel':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/commercial_sun_tunnel_night' : 'paidsearch/commercial_sun_tunnel';
-                                    break;
-                                case 'skylight-replacement':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/replacement_night' : 'paidsearch/replacement';
-                                    break;
-                                case 'skylight-blinds':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/blinds_night' : 'paidsearch/blinds';
-                                    break;
-                                case 'hail-damage':
-                                    $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/hail_night' : 'paidsearch/hail';
-                                    break;
-                                default:
-                                    redirect($data['installer_base_url']);
-                                    break;
-                            }
-                            $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
-                            $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
-                            if ($this->input->post('phone') == '') {
-                                $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
-                            }
-                            $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
-                            if ($this->form_validation->run() == FALSE) {
-                                $data['page_view'] = $page_view;
-                            } else {
-                                $check_fields = array('name','phone','email','comments');
-                                $spam_count = check_spam_count($_POST, $check_fields, 'confirm_email');
-                                if ($spam_count == 0) {
-                                    $insert_id = $this->page_model->add_paid_search_contact($_POST);
-                                    if ($insert_id != FALSE) {
-                                        $data['form_status'] = 'success';
-
-                                        //SEND EMAIL
-                                        $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
-                                        $from = $this->config->item('global_email_from');
-                                        $options = array();
-
-                                        if(trim($this->input->post('email')) != '') {
-                                            $options['reply_to'] = $this->input->post('email');
-                                        }
-                                        if(trim($data['installer_array'][0]->cc_email) != '') {
-                                            $options['cc'] = trim($data['installer_array'][0]->cc_email);
-                                        }
-                                        $subject = 'Paid Search Contact Request from your VELUX Skylight Microsite';
-                                        $message = "The following paid search request has been sent via your microsite:\n\n";
-                                        $message .= "Name: " . $this->input->post('name') . "\n";
-                                        $message .= "Phone: " . $this->input->post('phone') . "\n";
-                                        $message .= "E-mail: " . $this->input->post('email') . "\n\n";
-                                        $message .= "Paid Search URL: " . $this->input->post('ps_url') . "\n\n";
-                                        $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
-
-                                        Email_Send($recipient, $from, $subject, $message, $options);
-
-                                    } else {
-                                        $data['form_status'] = 'error';
-                                    }
-                                } else {
-                                    //GENERATE SPAM EMAIL
-                                    $data['form_status'] = 'success';
-                                }
+                            //THANKS PAGE
+                            if ($vars_size == 4 && $vars_array[4] == 'thanks') {
                                 $data['page_view'] = 'paidsearch/thanks';
+                            } else {
+                                if ($vars_size == 4 && $vars_array[4] == 'night') {
+                                    $data['paid_search_page_type'] = 'night';
+                                }
+                                switch($vars_array[3]) {
+                                    case 'no-leak-skylight':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/no_leak_night' : 'paidsearch/no_leak';
+                                        break;
+                                    case 'energy-efficiency':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/efficiency_night' : 'paidsearch/efficiency';
+                                        break;
+                                    case 'skylight-repair':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/repair_night' : 'paidsearch/repair';
+                                        break;
+                                    case 'sun-tunnel-skylight':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/sun_tunnel_night' : 'paidsearch/sun_tunnel';
+                                        break;
+                                    case 'commercial-sun-tunnel':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/commercial_sun_tunnel_night' : 'paidsearch/commercial_sun_tunnel';
+                                        break;
+                                    case 'skylight-replacement':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/replacement_night' : 'paidsearch/replacement';
+                                        break;
+                                    case 'skylight-blinds':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/blinds_night' : 'paidsearch/blinds';
+                                        break;
+                                    case 'hail-damage':
+                                        $page_view = ($data['paid_search_page_type'] == 'night') ? 'paidsearch/hail_night' : 'paidsearch/hail';
+                                        break;
+                                    default:
+                                        redirect($data['installer_base_url']);
+                                        break;
+                                }
+                                $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                                $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
+                                if ($this->input->post('phone') == '') {
+                                    $this->form_validation->set_rules('email', 'Password Confirm', 'trim|required|valid_email|xss_clean');
+                                }
+                                $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
+                                if ($this->form_validation->run() == FALSE) {
+                                    $data['page_view'] = $page_view;
+                                } else {
+                                    $check_fields = array('name','phone','email','comments');
+                                    $spam_count = check_spam_count($_POST, $check_fields, 'confirm_email');
+                                    if ($spam_count == 0) {
+                                        $insert_id = $this->page_model->add_paid_search_contact($_POST);
+                                        if ($insert_id != FALSE) {
+                                            $data['form_status'] = 'success';
+
+                                            //SEND EMAIL
+                                            $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
+                                            $from = $this->config->item('global_email_from');
+                                            $options = array();
+
+                                            if(trim($this->input->post('email')) != '') {
+                                                $options['reply_to'] = $this->input->post('email');
+                                            }
+                                            if(trim($data['installer_array'][0]->cc_email) != '') {
+                                                $options['cc'] = trim($data['installer_array'][0]->cc_email);
+                                            }
+                                            $subject = 'Paid Search Contact Request from your VELUX Skylight Microsite';
+                                            $message = "The following paid search request has been sent via your microsite:\n\n";
+                                            $message .= "Name: " . $this->input->post('name') . "\n";
+                                            $message .= "Phone: " . $this->input->post('phone') . "\n";
+                                            $message .= "E-mail: " . $this->input->post('email') . "\n\n";
+                                            $message .= "Paid Search URL: " . $this->input->post('ps_url') . "\n\n";
+                                            $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
+
+                                            Email_Send($recipient, $from, $subject, $message, $options);
+                                            redirect($data['installer_base_url'] . '/ps/' . $vars_array[3] . '/thanks');
+
+                                        } else {
+                                            $data['form_status'] = 'error';
+                                            redirect($data['installer_base_url'] . '/ps/' . $vars_array[3] . '/thanks?error=yes');
+                                        }
+                                    } else {
+                                        //GENERATE SPAM EMAIL
+                                        $data['form_status'] = 'success';
+                                        redirect($data['installer_base_url'] . '/ps/' . $vars_array[3] . '/thanks');
+                                    }
+                                }
                             }
                             break;
                         default:
