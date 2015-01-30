@@ -17,16 +17,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
             <h4 class="normal-weight no-image">All VELUX commercial SUN TUNNEL&trade; skylights provide a cost-effective method to pass natural daylight through the roof to help light the interior and reduce energy loads. They also improve the occupant's performance, mood and comfort.</h4>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>
