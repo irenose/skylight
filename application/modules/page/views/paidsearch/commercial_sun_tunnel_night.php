@@ -69,21 +69,4 @@
         </div>
     </div>
 </section>
-<section class="page-row short-top snug-bottom ps-section why-velux-2">
-    <div class="row">
-        <div class="small-12 medium-8 columns full-tablet">
-            <img src="<?=asset_url('images/velux-logo.png')?>" alt>
-            <ul class="ps-list">
-                <li>VELUX is a leader of innovation and is also the preferred skylight brand for American contractors, according to every national survey of building professionals.</li>
-                <li>VELUX holds more than 300 patents in roof window and skylight design.</li>
-                <li>
-                <?php
-                    /*---------------------------------------------
-                        Dealer Name
-                    ----------------------------------------------*/
-                    echo $installer_array[0]->name;
-                ?> has gone through extensive training to become a VELUX certified 5-star skylight specialist.</li>
-            </ul>
-        </div>
-    </div>
-</section>
+<?= $this->load->view('partials/_paid-search-why-velux') ?>
