@@ -52,12 +52,12 @@
                     echo ' </div>' . "\n";
                     echo '<div class="promotion-small cta schedule-consult">' . "\n";
                         echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
                     echo '</div>' . "\n";
                 } else {
                     echo '<div class="promotion-small one-promotion cta schedule-consult">' . "\n";
                         echo '<p class="reversed font-display">Schedule A Consultation</p>' . "\n";
-                        echo '<a href="<?= $installer_base_url; ?>/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
+                        echo '<a href="' . $installer_base_url . '/contact/#contact-form" class="cta-text" data-modal-open data-ajax-vars=\'{"view":"partials/_modal-content", "content-type":"contact"}\'>Learn More</a>' . "\n";
                     echo '</div>' . "\n";
                 }
             ?>
