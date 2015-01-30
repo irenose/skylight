@@ -4,12 +4,12 @@
         case 'fixed':
             $card_content_array = array(
                 array(
-                    'image' => 'water-droplets.jpg',
+                    'image' => 'clean-quite-safe.png',
                     'title' => 'Clean, Quiet &amp; Safe Glass',
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-click.jpg',
+                    'image' => 'pick-click.png',
                     'title' => 'Pick&amp;Click!&trade;',
                     'copy' => 'The innovative Pick&amp;Click!&trade; brackets make blinds installation fast and easy.'
                 ),
@@ -27,12 +27,12 @@
                     'copy' => 'With the touch-sensitive screen and easily understood icons, programming skylights has become simpler than ever.'
                 ),
                 array(
-                    'image' => 'water-droplets.jpg',
+                    'image' => 'clean-quite-safe.png',
                     'title' => 'Clean, Quiet &amp; Safe Glass',
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'rain-sensor.jpg',
+                    'image' => 'rain-sensor.png',
                     'title' => 'Rain Sensor',
                     'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),
@@ -42,12 +42,12 @@
         case 'manual-fresh-air':
             $card_content_array = array(
                 array(
-                    'image' => 'water-droplets.jpg',
+                    'image' => 'clean-quite-safe.png',
                     'title' => 'Clean, Quiet &amp; Safe Glass',
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-click.jpg',
+                    'image' => 'pick-click.png',
                     'title' => 'Pick&amp;Click!&trade;',
                     'copy' => 'The innovative Pick&amp;Click!&trade; brackets make blinds installation fast and easy.'
                 ),
@@ -67,12 +67,12 @@
                     'copy' => 'With the touch-sensitive screen and easy understood icons, programming skylights has become simpler than ever.'
                 ),
                 array(
-                    'image' => 'water-droplets.jpg',
+                    'image' => 'clean-quite-safe.png',
                     'title' => 'Clean, Quiet &amp; Safe Glass',
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'rain-sensor.jpg',
+                    'image' => 'rain-sensor.png',
                     'title' => 'Rain Sensor',
                     'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),

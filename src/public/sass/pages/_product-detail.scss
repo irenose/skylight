@@ -171,20 +171,14 @@
             margin-bottom: 1em;
         }
         img {
-            border-radius: 100%;
             margin-bottom: 4%;
             width: 100%;
         }
         p {
             color: $color-default-light;
-            // height: 7.5em;
             margin: 0 0 2em;
 
-            @include bp($tablet) {
-                // height: 10.5em;
-            }
             @include bp($foundation-large) {
-                // height: 7.5em;
                 padding: 0 2%;
             }
             @include bp($my-large) {
@@ -206,11 +200,6 @@
             margin: 0 auto;
             max-width: 340px;
         }
-        /* @include bp($tablet) {
-            &:nth-child(1) {
-                margin-left: 0;
-            }
-        } */
         @include bp($foundation-large) {
             padding: 7% 10% 0;
         }
