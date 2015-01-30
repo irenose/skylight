@@ -803,7 +803,7 @@
         width: 125px;
     }
 
-    h4 {
+    .statement h4 {
         @include bp($foundation-med) {
             padding-left: 9.5em;
         }
