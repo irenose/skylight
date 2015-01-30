@@ -55,5 +55,8 @@
         </div>
     </div>
 </section>
-<?= $this->load->view('partials/_paid-search-why-velux') ?>
-<?= $this->load->view('partials/_paid-search-no-leak') ?>
+<?php
+    $data['add_why_border'] = TRUE;
+    echo $this->load->view('partials/_paid-search-why-velux', $data);
+    echo $this->load->view('partials/_paid-search-no-leak');
+?>

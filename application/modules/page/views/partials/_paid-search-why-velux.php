@@ -1,6 +1,9 @@
+<?php
+    $add_border_class = isset($add_why_border) ? ' border-bottom-grey' : '';
+?>
 <section class="page-row short-top snug-bottom ps-section why-velux">
     <div class="row">
-        <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
+        <div class="small-12 medium-8 columns full-tablet<?=$add_border_class?>">
             <h4 class="normal-weight underlined color-primary">Why VELUX</h4>
             <img src="<?=asset_url('images/velux-logo.png')?>" alt>
             <ul class="ps-list">
