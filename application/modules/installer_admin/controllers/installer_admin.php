@@ -222,7 +222,7 @@ class Installer_admin extends CI_Controller {
 					if($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_account_update';
 					} else {
-						$config['upload_path'] = './dealer_assets/dealer_logos/';
+						$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'dealer-logos/';
 						$config['allowed_types'] = 'gif|jpg|png';
 						$config['max_size']	= '2000';
 						$config['max_width']  = '1024';
@@ -340,7 +340,7 @@ class Installer_admin extends CI_Controller {
 					if($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_account_about';
 					} else {
-						$config['upload_path'] = './dealer_assets/about_images/';
+						$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'about-images/';
 						$config['allowed_types'] = 'gif|jpg|png';
 						$config['max_size']	= '2000';
 						$config['max_width']  = '1024';
@@ -513,7 +513,7 @@ class Installer_admin extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_about';
 		} else {
-			$config['upload_path'] = './dealer_assets/about_images/';
+			$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'about-images/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '2000';
 			$config['max_width']  = '1024';
