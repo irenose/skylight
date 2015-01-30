@@ -54,8 +54,9 @@
 </section>
 <?php
     $data['add_why_border'] = TRUE;
+    $data['add_leak_border'] = TRUE;
     echo $this->load->view('partials/_paid-search-why-velux', $data);
-    echo $this->load->view('partials/_paid-search-no-leak');
+    echo $this->load->view('partials/_paid-search-no-leak',$data);
 ?>
 <section class="page-row short-top snug-bottom ps-section complete-system">
     <div class="row">
