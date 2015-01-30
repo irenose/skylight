@@ -73,17 +73,12 @@ class Installer_admin extends CI_Controller {
 				$temp_password = $this->admin_model->forgot_reset_password($_POST);
 				$to_email = $this->input->post('username');
 				if($temp_password) {
-					//send email with reset link
-					$this->load->library('email');
-					
-					//Auto Response to contactor
-					$this->email->from($this->config->item('global_email_from'),$this->config->item('global_email_name'));
-					$this->email->to($to_email);
-					$this->email->subject('Forgotten Password Reset');
+					$recipient = $to_email;
+					$from = $this->config->item('global_email_from');
+					$subject = 'Forgotten Password Reset';
 					$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
-					
-					$this->email->message($message);
-					$this->email->send();
+
+					Email_Send($recipient, $from, $subject, $message);
 					
 					$this->session->set_flashdata('status_message','<div class="success">Password has been reset successfully. Please check your email.</div>');
 					redirect('/installer-admin/password');
