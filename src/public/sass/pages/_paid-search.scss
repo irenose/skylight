@@ -264,7 +264,7 @@
         margin-right: .975rem;
         position: absolute;
         right: 5%;
-        top: 25%;
+        top: 3.5em;
         width: 27.5%;
         z-index: 1;
 
@@ -351,6 +351,7 @@
             display: none;
         }
         @include bp($my-large) {
+            top: 4.5em;
             width: 27.85%;
         }
         @include bp($my-very-large) {
