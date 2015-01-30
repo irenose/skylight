@@ -106,7 +106,7 @@
         		<div class="small-12 medium-5 medium-push-7 columns">
         			<h2 class="upper normal-weight">Add Solar Blinds for An Additional Tax Credit</h2>
         			<p>Add VELUX solar blinds – also powered by a small PV solar panel – and receive another 30 percent tax credit on product and installation. In addition to savings, solar blinds give you control over the light and improve your skylight's energy performance.</p>
-        			<a href="#" class="btn">More On Blinds</a>
+        			<a href="<?=$installer_base_url?>/products/blinds" class="btn">More On Blinds</a>
         		</div>
         	</div>
         </section>
