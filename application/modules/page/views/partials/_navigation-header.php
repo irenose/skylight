@@ -17,7 +17,7 @@
                     }
                     echo '</nav></div></div>';
                 } else {
-                    echo '<a href="' . $installer_base_url . '/products/category/' . $product_categories_nav_array[0]->product_category_url . '" class="nav-header__link first subnav-trigger' . $products_active . '">Products</a>';
+                    echo '<a href="' . $installer_base_url . '/products/category/' . $product_categories_nav_array[0]->product_category_url . '" class="nav-header__link first' . $products_active . '">Products</a>';
                 }
             }
             $why_active = $current_section == 'why-skylights' ? ' is-active' : '';
