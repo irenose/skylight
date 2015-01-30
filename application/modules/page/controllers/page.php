@@ -275,14 +275,14 @@ class Page extends CI_Controller {
                                             }
                                             $subject = 'Contact Request from your VELUX Skylight Microsite';
 
-                                            $message = "Name: " . $this->input->post('name') . "\n";
-                                            $message .= "Phone: " . $this->input->post('phone') . "\n";
-                                            $message .= "E-mail: " . $this->input->post('email') . "\n";
-                                            $message .= "Address: " . $this->input->post('address') . "\n";
-                                            $message .= "City: " . $this->input->post('city') . "\n";
-                                            $message .= "State: " . $this->input->post('state') . "\n";
-                                            $message .= "ZIP: " . $this->input->post('zip') . "\n";
-                                            $message .= "Subject: " . $this->input->post('subject') . "\n\n";
+                                            $message = "Name:\n" . $this->input->post('name') . "\n\n";
+                                            $message .= "Phone:\n " . $this->input->post('phone') . "\n\n";
+                                            $message .= "E-mail:\n " . $this->input->post('email') . "\n\n";
+                                            $message .= "Address:\n " . $this->input->post('address') . "\n\n";
+                                            $message .= "City:\n " . $this->input->post('city') . "\n\n";
+                                            $message .= "State:\n " . $this->input->post('state') . "\n\n";
+                                            $message .= "ZIP:\n " . $this->input->post('zip') . "\n\n\n";
+                                            $message .= "Subject:\n " . $this->input->post('subject') . "\n\n";
                                             $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
 
                                             Email_Send($recipient, $from, $subject, $message, $options);
@@ -386,11 +386,11 @@ class Page extends CI_Controller {
                                             }
                                             $subject = 'Paid Search Contact Request from your VELUX Skylight Microsite';
                                             $message = "The following paid search request has been sent via your microsite:\n\n";
-                                            $message .= "Name: " . $this->input->post('name') . "\n";
-                                            $message .= "Phone: " . $this->input->post('phone') . "\n";
-                                            $message .= "E-mail: " . $this->input->post('email') . "\n\n";
-                                            $message .= "Paid Search URL: " . $this->input->post('ps_url') . "\n\n";
-                                            $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
+                                            $message .= "Name:\n" . $this->input->post('name') . "\n\n";
+                                            $message .= "Phone:\n" . $this->input->post('phone') . "\n\n";
+                                            $message .= "E-mail:\n" . $this->input->post('email') . "\n\n";
+                                            $message .= "Paid Search URL:\n" . $this->input->post('ps_url') . "\n\n";
+                                            $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n\n";
 
                                             Email_Send($recipient, $from, $subject, $message, $options);
                                             redirect($data['installer_base_url'] . '/ps/' . $vars_array[3] . '/thanks');
