@@ -24,16 +24,7 @@
                 <li>Low profile, flat glass SUN TUNNEL skylight models have a sleek appearance for an integrated look with your roofline.</li>
                 <li>Pitched SUN TUNNEL skylights are optimal for capturing light from all angles. </li>
             </ul>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>
@@ -49,7 +40,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding">
             <img src="<?=asset_url('images/velux-logo.png')?>" alt>
-            <strong>Why Velux</strong>
+            <strong>Why VELUX</strong>
             <ul class="ps-list">
                 <li>VELUX is a leader of innovation and is also the preferred skylight brand for American contractors, according to every national survey of building professionals.</li>
                 <li>VELUX holds more than 300 patents in roof window and skylight design.</li>
@@ -61,16 +52,7 @@
                     echo $installer_array[0]->name;
                 ?> has gone through extensive training to become a VELUX certified 5-star skylight specialist.</li>
             </ul>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>

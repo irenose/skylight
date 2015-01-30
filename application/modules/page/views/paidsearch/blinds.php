@@ -18,16 +18,7 @@
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
             <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in variety of stylish designs to help reflect your home's personality.</h4>
             <img src="<?=asset_url('images/ps/blinds.png')?>" class="big-blinds" alt>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>
@@ -79,16 +70,7 @@
                     </div>
                 </div>
             </div>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>

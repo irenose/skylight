@@ -35,16 +35,7 @@
                 <li>Remote control lets you open and close skylights and blinds with the touch of a button</li>
                 <li>Rain sensor that automatically closes skylight</li>
             </ul>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>
@@ -78,16 +69,7 @@
             <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
             <h4 class="normal-weight underlined color-primary">Skylight Installation Methods</h4>
             <p>Skylights are installed using a variety of different installation methods that vary based on geographic location; however, VELUX has developed products that make the installation process as easy as possible. The three most common installation methods are: deck-mounted, curb-mounted and self-flashed. Contact us today to schedule an appointment.</p>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>

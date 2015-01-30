@@ -54,7 +54,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet">
             <img src="<?=asset_url('images/velux-logo.png')?>" alt>
-            <strong>Why Velux</strong>
+            <strong>Why VELUX</strong>
             <ul class="ps-list">
                 <li>VELUX is a leader of innovation and is also the preferred skylight brand for American contractors, according to every national survey of building professionals.</li>
                 <li>VELUX holds more than 300 patents in roof window and skylight design.</li>

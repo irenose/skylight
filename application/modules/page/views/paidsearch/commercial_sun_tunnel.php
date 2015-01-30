@@ -61,16 +61,7 @@
 				<li>34" rigid top elbow, 30&deg; offset</li>
 				<li>9" tall round-to-square adapter box for 2'x2' grid ceilings (other ceiling options available)</li>
             </ul>
-            <a class="ps-cta">
-                <div class="phone">
-                    <i class="icon icon-phone">
-                        <svg class="icon__svg">
-                            <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-phone"></use>
-                        </svg>
-                    </i>
-                </div>
-                <div class="cta">Call today for a free consultation<span class="number"><?= $installer_array[0]->phone1 ?></span></div>
-            </a>
+            <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
     </div>
 </section>
