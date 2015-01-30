@@ -1,4 +1,4 @@
-<a class="ps-cta">
+<a class="ps-cta" href="tel:<?= $installer_array[0]->phone1 ?>">
     <div class="phone">
         <i class="icon icon-phone">
             <svg class="icon__svg">
