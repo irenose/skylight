@@ -63,6 +63,7 @@
   visibility: hidden;
 }
 .ps-welcome-wrapper {
+    @extend %bg-gradient;
     padding-top: 4%;
 
     .intro-statement {
