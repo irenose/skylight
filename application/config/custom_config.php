@@ -68,6 +68,8 @@ $config['dealer_assets_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-upload
 $config['brochure_assets_dir'] = '/content-uploads/brochure-images/';
 $config['brochure_assets_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/brochure-images/';
 
+$config['contact_reports_full_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/content-uploads/contact-reports/';
+
 /*-----------------------
   @Upload Paths
 ------------------------*/
@@ -77,7 +79,7 @@ $config['content_documents_upload_path'] = './content-uploads/content-documents/
 $config['product_images_upload_path'] = './content-uploads/product-images/';
 $config['promotion_files_upload_path'] = './content-uploads/promotion-files/';
 $config['resources_upload_path'] = './content-uploads/resources/';
-$config['dealer_assets_upload_path'] = './content-uploads/resources/';
+$config['dealer_assets_upload_path'] = './content-uploads/dealer-assets/';
 
 /*-----------------------
   @Mandrill

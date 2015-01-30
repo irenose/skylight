@@ -222,7 +222,7 @@ class Installer_admin extends CI_Controller {
 					if($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_account_update';
 					} else {
-						$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'dealer-logos/';
+						$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'dealer-logos/';
 						$config['allowed_types'] = 'gif|jpg|png';
 						$config['max_size']	= '2000';
 						$config['max_width']  = '1024';
@@ -340,7 +340,7 @@ class Installer_admin extends CI_Controller {
 					if($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_account_about';
 					} else {
-						$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'about-images/';
+						$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'about-images/';
 						$config['allowed_types'] = 'gif|jpg|png';
 						$config['max_size']	= '2000';
 						$config['max_width']  = '1024';
@@ -513,7 +513,7 @@ class Installer_admin extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_about';
 		} else {
-			$config['upload_path'] = $this->config->item('dealer_assets_full_dir') . 'about-images/';
+			$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'about-images/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '2000';
 			$config['max_width']  = '1024';
@@ -953,7 +953,7 @@ class Installer_admin extends CI_Controller {
 			$report_file = $this->installer_admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'), $this->input->post('dealer_id'));
 			if($report_file !== FALSE) {
 				$this->load->helper('download');
-				$data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/reports/' . $report_file);
+				$data = file_get_contents($this->config->item('contact_reports_full_dir') . $report_file);
 				$name = $report_file;
 				force_download($name, $data);
 			} else {
