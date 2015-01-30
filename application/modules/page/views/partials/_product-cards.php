@@ -9,31 +9,12 @@
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-and-click.jpg',
+                    'image' => 'pick-click.jpg',
                     'title' => 'Pick&amp;Click&trade;',
                     'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
-                    'image' => 'streamlined-profile.png', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
-                ),
-
-            );
-            break;
-        case 'sun-tunnel':
-            $card_content_array = array(
-                array(
-                    'image' => 'new.jpg',
-                    'title' => 'Optically engineered',
-                    'copy' => 'Designed to capture light through a high-impact dome on the roof and send it through a highly reflective tunnel, transmitting a pure natural light with no color shift. '),
-                array(
-                    'image' => 'water-droplets.jpg',
-                    'title' => 'Pivoting tunnel system',
-                    'copy' => 'The adjustable pitch adapter makes tunnel installation easier and enables more light to be captures.'
-                ),
-                array(
-                    'image' => 'pick-and-click.jpg',
-                    'title' => 'Flexi Loc&trade; system',
-                    'copy' => 'A tunnel connection system that reduces tunnel installation time in half and highly reflective tunnels that deliver the highest quality daylight into the space below.'
+                    'image' => 'sleek-appearance.png', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
                 ),
 
             );
@@ -51,7 +32,7 @@
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-and-click.jpg',
+                    'image' => 'rain-sensor.jpg',
                     'title' => 'Rain Sensor',
                     'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),
@@ -66,7 +47,7 @@
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-and-click.jpg',
+                    'image' => 'pick-click.jpg',
                     'title' => 'Pick&amp;Click&trade;',
                     'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
@@ -91,7 +72,7 @@
                     'copy' => 'Keeps skylights virtually spotless, reduces unwanted outside noise and made for out-of-reach applications.'
                 ),
                 array(
-                    'image' => 'pick-and-click.jpg',
+                    'image' => 'rain-sensor.jpg',
                     'title' => 'Rain Sensor',
                     'copy' => 'At the first sign of rain the skylight will close automatically.'
                 ),
