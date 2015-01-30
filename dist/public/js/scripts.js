@@ -748,9 +748,18 @@ ww.carousels = (function(){
         do_carousel: function($carousel, slick_options) {
             var $slick_api = $carousel.slick(slick_options);
 
-            var my_timer = window.setTimeout(function() {
+            if ($carousel.is("[data-equal-heights]")) {
+
+                $('.slick__item').imagesLoaded( function() {
+                    ww.carousels.equal_heights($carousel);
+                });
+
+                
+            }
+
+            /*var my_timer = window.setTimeout(function() {
                 ww.carousels.equal_heights($carousel);
-            }, 500);
+            }, 500);*/
         },
 
         equal_heights: function($carousel) {

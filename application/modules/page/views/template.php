@@ -106,6 +106,7 @@
     }
     </script>
     <?=get_additional_scripts('js', $additional_js)?>
+    <script src="<?=site_url('bower_components/imagesloaded/imagesloaded.pkgd.min.js')?>"></script>
     <script src="<?=asset_url('js/scripts.min.js')?>"></script>
 
     <!-- LiveReload (development only) -->
