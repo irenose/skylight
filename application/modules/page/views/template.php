@@ -76,7 +76,7 @@
     <![endif]-->
 </head>
 <body>
-    <?= $this->load->view('partials/_google-analtyics')?>
+    <?= $this->load->view('partials/_google-analytics')?>
     <!-- HEADER -->
     <div class="page">
         <?=$this->load->view('partials/_masthead');?>
