@@ -1,7 +1,7 @@
 <section class="page-row bg-grey promotions">
     <header class="intro-statement intro-statement--squeezed">
         <?php
-            if(isset($form_status) && $form_status == 'success') {
+            if(!isset($_GET['error'])) {
                 echo '<h1>Thank you for your request.</h1>';
                 echo '<p>We will be in touch shortly.</p>';
             } else {

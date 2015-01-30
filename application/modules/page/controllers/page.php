@@ -232,68 +232,78 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'brochures';
                             break;
                         case 'contact':
-                            $data['current_section'] = 'contact';
-                            $data['meta_array'] = array(
-                                'title' => 'Contact',
-                                'description' => '',
-                                'keywords' => ''
-                            );
+                            if($vars_size == 2) {
+                                $data['current_section'] = 'contact';
+                                $data['meta_array'] = array(
+                                    'title' => 'Contact',
+                                    'description' => '',
+                                    'keywords' => ''
+                                );
 
-                            $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
-                            $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
-                            if ($this->input->post('phone') == '') {
-                                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean');
-                            }
-                            $this->form_validation->set_rules('city', 'City', 'trim|xss_clean');
-                            $this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
-                            $this->form_validation->set_rules('zip', 'Zip', 'trim|xss_clean');
-                            $this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
-                            $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
-                            $this->form_validation->set_rules('receive_more_info', 'Receive More Info', 'trim|xss_clean');
-                            if ($this->form_validation->run() == FALSE) {
-                                $data['page_view'] = 'contact/index';
-                            } else {
-                                $check_fields = array('name','phone','email','comments');
-                                $spam_count = check_spam_count($_POST, $check_fields);
-                                if ($spam_count == 0) {
-                                    $insert_id = $this->page_model->add_contact($_POST);
-
-                                    if($insert_id != FALSE) {
-                                        $data['form_status'] = 'success';
-
-                                        //SEND EMAIL
-                                        $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
-                                        $from = $this->config->item('global_email_from');
-                                        $options = array();
-
-                                        if(trim($this->input->post('email')) != '') {
-                                            $options['reply_to'] = $this->input->post('email');
-                                        }
-                                        if(trim($data['installer_array'][0]->cc_email) != '') {
-                                            $options['cc'] = trim($data['installer_array'][0]->cc_email);
-                                        }
-                                        $subject = 'Contact Request from your VELUX Skylight Microsite';
-
-                                        $message = "Name: " . $this->input->post('name') . "\n";
-                                        $message .= "Phone: " . $this->input->post('phone') . "\n";
-                                        $message .= "E-mail: " . $this->input->post('email') . "\n";
-                                        $message .= "Address: " . $this->input->post('address') . "\n";
-                                        $message .= "City: " . $this->input->post('city') . "\n";
-                                        $message .= "State: " . $this->input->post('state') . "\n";
-                                        $message .= "ZIP: " . $this->input->post('zip') . "\n";
-                                        $message .= "Subject: " . $this->input->post('subject') . "\n\n";
-                                        $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
-
-                                        Email_Send($recipient, $from, $subject, $message, $options);
-                                    } else {
-                                        $data['form_status'] = 'error';
-                                    }
-
-                                } else {
-                                    //Send Spam Emails
-                                    $data['form_status'] = 'success';
+                                $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
+                                $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
+                                if ($this->input->post('phone') == '') {
+                                    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean');
                                 }
-                                $data['page_view'] = 'contact/thanks';
+                                $this->form_validation->set_rules('city', 'City', 'trim|xss_clean');
+                                $this->form_validation->set_rules('state', 'State', 'trim|xss_clean');
+                                $this->form_validation->set_rules('zip', 'Zip', 'trim|xss_clean');
+                                $this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
+                                $this->form_validation->set_rules('comments', 'Comments', 'trim|required|xss_clean');
+                                $this->form_validation->set_rules('receive_more_info', 'Receive More Info', 'trim|xss_clean');
+                                if ($this->form_validation->run() == FALSE) {
+                                    $data['page_view'] = 'contact/index';
+                                } else {
+                                    $check_fields = array('name','phone','email','comments');
+                                    $spam_count = check_spam_count($_POST, $check_fields);
+                                    if ($spam_count == 0) {
+                                        $insert_id = $this->page_model->add_contact($_POST);
+
+                                        if($insert_id != FALSE) {
+                                            $data['form_status'] = 'success';
+
+                                            //SEND EMAIL
+                                            $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
+                                            $from = $this->config->item('global_email_from');
+                                            $options = array();
+
+                                            if(trim($this->input->post('email')) != '') {
+                                                $options['reply_to'] = $this->input->post('email');
+                                            }
+                                            if(trim($data['installer_array'][0]->cc_email) != '') {
+                                                $options['cc'] = trim($data['installer_array'][0]->cc_email);
+                                            }
+                                            $subject = 'Contact Request from your VELUX Skylight Microsite';
+
+                                            $message = "Name: " . $this->input->post('name') . "\n";
+                                            $message .= "Phone: " . $this->input->post('phone') . "\n";
+                                            $message .= "E-mail: " . $this->input->post('email') . "\n";
+                                            $message .= "Address: " . $this->input->post('address') . "\n";
+                                            $message .= "City: " . $this->input->post('city') . "\n";
+                                            $message .= "State: " . $this->input->post('state') . "\n";
+                                            $message .= "ZIP: " . $this->input->post('zip') . "\n";
+                                            $message .= "Subject: " . $this->input->post('subject') . "\n\n";
+                                            $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
+
+                                            Email_Send($recipient, $from, $subject, $message, $options);
+                                            redirect($data['installer_base_url'] . '/contact/thanks');
+                                        } else {
+                                            $data['form_status'] = 'error';
+                                            redirect($data['installer_base_url'] . '/contact/thanks?error=yes');
+                                        }
+
+                                    } else {
+                                        //Send Spam Emails
+                                        $data['form_status'] = 'success';
+                                        redirect($data['installer_base_url'] . '/contact/thanks');
+                                    }
+                                }
+                            } else {
+                                switch($vars_array[3]) {
+                                    case 'thanks':
+                                        $data['page_view'] = 'contact/thanks';
+                                        break;
+                                }
                             }
                             break;
                         case 'promotions':
