@@ -49,7 +49,7 @@
 </div>
 <!-- End Help Dialogue Window -->
 
-<div id="global">
+<div id="global" class="velux_admin">
 	<div id="logo">
     	<a href="/admin/home">
         	<?php
