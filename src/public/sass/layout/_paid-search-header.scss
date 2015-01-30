@@ -148,6 +148,15 @@
             display: inline-block;
             height: 100%;
 
+            &:hover {
+                @extend %no-underline;
+            }
+            div {
+                @extend %vc;
+                @extend %upper;
+                font-size: 1.5em;
+            }
+
             img {
                 @extend %vc;
                 max-height: 200px;
@@ -183,6 +192,13 @@
         .brand {
             display: inline-block;
 
+            &:hover {
+                @extend %no-underline;
+            }
+            div {
+                @extend %upper;
+                font-size: 1.5em;
+            }
             img {
                 max-height: 200px;
                 max-width: 200px;
