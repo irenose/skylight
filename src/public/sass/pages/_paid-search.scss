@@ -35,6 +35,14 @@
 
     .columns {
 
+        &.medium-8 {
+
+            @include bp(1024px) {
+                margin-right: 3%;
+                width: 63.66667%;
+            }
+        }
+
         @include bp($mobile-landscape) {
             padding-left: .25em;
         }
@@ -49,7 +57,7 @@
     }
 }
 #ps-form-anchor {
-  display: block;
+  display: none;
   height: 170px;
   margin-top: -170px;
   visibility: hidden;
@@ -87,7 +95,7 @@
                 background-position: 90% 50%;
                 width: 100%;
             }
-            @include bp($tablet, $foundation-large) {
+            @include bp($tablet, 1024px) {
                 background-position: 50% 50%;
                 width: 60%;
             }
@@ -177,7 +185,7 @@
             @include bp($foundation-small, $tablet) {
                 display: none;
             }
-            @include bp($tablet, $foundation-large) {
+            @include bp($tablet, 1024px) {
                 width: 40%;
             }
         }
@@ -220,7 +228,7 @@
             @include bp($foundation-small, $tablet) {
                 display: none;
             }
-            @include bp($tablet, $foundation-large) {
+            @include bp($tablet, 1024px) {
                 width: 40%;
             }
         }
@@ -339,7 +347,7 @@
             }
         }
 
-        @include bp($foundation-small, $foundation-large) {
+        @include bp($foundation-small, 1024px) {
             display: none;
         }
         @include bp($my-large) {
@@ -370,41 +378,61 @@
         }
         img.skylight,
         img.big-blinds {
+            display: block;
 
             @include bp($tablet) {
                 margin-top: 0;
                 position: absolute;
                 right: -30px;
-                top: -50px;
                 width: 250px;
             }
             @include bp($foundation-large) {
                 right: -20px;
-                top: -30px;
                 width: 220px;
             }
             @include bp($my-large) {
                 right: -5px;
-                top: -60px;
                 width: 260px;
             }
             @include bp($my-very-large) {
                 right: -15px;
-                top: -80px;
                 width: 300px;
             }
         }
         img.big-blinds {
             display: block;
             margin: 2em auto 1em;
+
+            @include bp($tablet) {
+                top: -50px;
+            }
+            @include bp($foundation-large) {
+                top: -30px;
+            }
+            @include bp($my-large) {
+                top: -60px;
+            }
+            @include bp($my-very-large) {
+                top: -80px;
+            }
         }
         img.skylight {
             bottom: -2em;
-            display: block;
-            margin: 0 auto;
-            margin-top: -1em;
-            position: relative;
+            margin: -1em auto 0;
             width: 200px;
+
+            @include bp($tablet) {
+                top: -30px;
+            }
+            @include bp($foundation-large) {
+                top: -20px;
+            }
+            @include bp($my-large) {
+                top: -40px;
+            }
+            @include bp($my-very-large) {
+                top: -20px;
+            }
         }
     }
 }
@@ -412,6 +440,10 @@
 .ps-list {
     list-style: none;
     padding-left: 1.125em;
+
+    .ps-list--margin {
+        margin-bottom: 65px;
+    }
 
     li {
         margin-bottom: 1em;
