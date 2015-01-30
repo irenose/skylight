@@ -419,20 +419,22 @@
         }
         img.skylight {
             bottom: -2em;
-            margin: -1em auto 0;
+            margin: 0 auto;
+            position: relative;
             width: 200px;
 
             @include bp($tablet) {
+                position: absolute;
                 top: -30px;
             }
             @include bp($foundation-large) {
-                top: -20px;
+                top: -5px;
             }
             @include bp($my-large) {
-                top: -40px;
+                top: -20px;
             }
             @include bp($my-very-large) {
-                top: -20px;
+                top: -10px;
             }
         }
     }
