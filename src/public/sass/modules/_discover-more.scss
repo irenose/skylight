@@ -64,10 +64,6 @@
     .about-teaser {
         background-image: url('../images/discover-more/about-us-teaser.jpg');
 
-        .discover-card {
-            @extend %vc;
-        }
-
         @include bp($foundation-small, $foundation-med) {
             background-image: url('../images/discover-more/about-us-teaser-wide.jpg');
         }
