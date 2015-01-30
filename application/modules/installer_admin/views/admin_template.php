@@ -70,6 +70,9 @@
 		if($_SESSION['uid'] != '' && $_SESSION['uid'] != '99999') { 
 			echo '<span class="welcome_messaging"><a href="/installer-admin/profile/update-password/' . $_SESSION['uid'] . '">Change Password</a></span> | ';
 		}
+		if( isset($_SESSION['super_admin']) && $_SESSION['super_admin'] == 'yes') {
+			echo '<span class="welcome_messaging"><a href="/admin">VELUX Global Admin</a></span> | ';
+		}
 	?>
 	<span class="welcome_messaging"><a href="<?php echo $logout_link; ?>" class="logout">log out</a></span>
 </div>
