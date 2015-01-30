@@ -14,9 +14,7 @@
                     'copy' => 'The innovative Pick&amp;Click&trade; brackets make blinds installation fast and easy.'
                 ),
                 array(
-                    'image' => 'streamlined-profile.png',
-                    'title' => 'Streamlined Profile',
-                    'copy' => 'The streamlined exterior profile of VELUX fixed skylights does not obstruct the roofline.'
+                    'image' => 'streamlined-profile.png', 'title' => 'Sleek appearance', 'copy' => 'The streamlined exterior profile does not obstruct the roofline.'
                 ),
 
             );
@@ -75,7 +73,7 @@
                 array(
                     'image' => 'manual-control.png',
                     'title' => 'Convenient Manual Control',
-                    'copy' => 'A control rod can be used when skylights are out of reach. An optional crank handle is available for in-reach applications.'
+                    'copy' => 'A control rod can be used for out-of-reach applications. An optional crank handle is available for in-reach applications.'
                 ),
 
             );
