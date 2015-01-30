@@ -91,7 +91,7 @@
 	    		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
 	    		echo '<section class="page-row page-row--category border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
 		    		echo '<header class="header-statement">' . "\n";
-						echo '<h2 class="upper">' . $subcategory->subcategory_name . '</h2>' . "\n";
+						echo '<h2 class="upper normal-weight">' . $subcategory->subcategory_name . '</h2>' . "\n";
 					echo '</header>' . "\n";
 					echo '<div class="row product-row">' . "\n";
 						$count = 0;

@@ -31,7 +31,7 @@
                             if( ! isset($hide_learn_more_links) || $hide_learn_more_links == FALSE) {
                                 echo '</a>' . "\n";
                             }
-                            echo '<h4>' . $category->product_category_name . '</h4>' . "\n";
+                            echo '<h4 class="normal-weight">' . $category->product_category_name . '</h4>' . "\n";
                             echo '<p>' . filter_page_content($category->product_category_teaser) . '</p>' . "\n";
                             if( ! isset($hide_learn_more_links) || $hide_learn_more_links == FALSE) {
                                 echo '<a class="btn" href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">Learn More</a>';
