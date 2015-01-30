@@ -714,6 +714,54 @@ class Installer_admin_model extends CI_Model {
 		return TRUE;
 	}
 
+	/****************************
+		Update About Us Copy
+	********************************/
+	function update_about_copy($data_array,  $has_image = FALSE) {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		
+		$about_text = strip_tags(trim($data_array['about_dealer_text']));
+		if($about_text == '' || $about_text == '<br>' || $about_text == '<br />') {
+			$about_text = '';
+		}
+		
+		$about_headline = trim($data_array['about_dealer_headline']);
+		if($about_headline == '' || $about_headline == '<br>' || $about_headline == '<br />') {
+			$about_headline = '';
+		}
+		
+		if($has_image == TRUE) {
+			$data = array(
+				'about_dealer_text' => $about_text,
+				'about_dealer_headline' => $about_headline,
+				'about_image' => $data_array['about_image'],
+				'about_extension' => $data_array['about_extension'],
+				'modification_date' => current_timestamp()
+			);
+		} else {
+			$data = array(
+				'about_dealer_text' => $about_text,
+				'about_dealer_headline' => $about_headline,
+				'modification_date' => current_timestamp()
+			);
+		}
+		
+		if( isset($data_array['process_meta']) && $data_array['process_meta'] == 'yes') {
+			$data['about_meta_title'] = $data_array['meta_title'];
+			$data['about_meta_keywords'] = $data_array['meta_keywords'];
+			$data['about_meta_description'] = $data_array['meta_description'];
+		}
+		
+		$this->db->where('dealer_id', $data_array['dealer_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 /***********************************************************************************************************************************
 /*		DELETE FUNCTIONS
 ************************************************************************************************************************************/
@@ -723,11 +771,11 @@ class Installer_admin_model extends CI_Model {
 		$dealer_array = $this->get_dealer_by_id($data_array['dealer_id']);
 		if(count($dealer_array) > 0) {
 			
-			$deleted = @unlink($_SERVER['DOCUMENT_ROOT'] . '/dealer_assets/dealer_logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension);
+			$deleted = @unlink($this->config->item('dealer_assets_full_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension);
 			
 			if($deleted) {
 		
-				$db_table = $this->config->item('db_table_prefix') . 'ss_dealers';
+				$db_table = $this->config->item('db_table_prefix') . 'dealers';
 				$data = array(
 					'dealer_logo' => '',
 					'extension' => '',
@@ -755,11 +803,11 @@ class Installer_admin_model extends CI_Model {
 		$dealer_array = $this->get_dealer_by_id($data_array['dealer_id']);
 		if(count($dealer_array) > 0) {
 			
-			$deleted = @unlink($_SERVER['DOCUMENT_ROOT'] . '/dealer_assets/about_images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension);
+			$deleted = @unlink($this->config->item('dealer_assets_full_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension);
 			
 			if($deleted) {
 		
-				$db_table = $this->config->item('db_table_prefix') . 'ss_dealers';
+				$db_table = $this->config->item('db_table_prefix') . 'dealers';
 				$data = array(
 					'about_image' => '',
 					'about_extension' => '',

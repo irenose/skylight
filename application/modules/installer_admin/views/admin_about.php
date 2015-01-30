@@ -15,7 +15,7 @@
 		echo $this->session->flashdata('status_message');
 	?>
 </div>
-<?php echo form_open_multipart('/installer-admin/about/' . $_SESSION['dealer_id']); ?>
+<?php echo form_open_multipart('/installer-admin/about'); ?>
 	<input type="hidden" name="dealer_id" value="<?php echo $_SESSION['dealer_id']; ?>" />
 
 	<div id="action_form_wrapper">
@@ -42,8 +42,8 @@
 			    <?php
 					$random = rand(100,999);
 					if(trim($dealer_array[0]->about_image) != '') {
-						echo '&nbsp;&nbsp;Current Image: <a class="lightbox" href="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '">' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '</a>';
-						echo '<br /><a href="/installer-admin/account/delete-image/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Image</a>';
+						echo '&nbsp;&nbsp;Current Image: <a href="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '" target="_blank">' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '</a>';
+						echo '<br><br><a href="/installer-admin/about/delete-image/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Image</a>';
 					}
 				?>
 
