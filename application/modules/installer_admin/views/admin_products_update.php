@@ -41,10 +41,11 @@
                     echo '<h2>' . $cur_category . '</h2>' . "\n";
                     echo '<table class="list_table" cellpadding="0" cellspacing="0" border="0">' . "\n";
                     echo '<tr>' . "\n";
-                    echo '<td width="10%" class="table_header"><span class="table_header_text">SHOW</span></td>' . "\n";
-                    echo '<td width="15%" class="table_header"><span class="table_header_text">IMAGE</span></td>' . "\n";
-                    echo '<td width="40%" class="table_header"><span class="table_header_text">NAME</span></td>' . "\n";
-                    echo '<td class="table_header"><span class="table_header_text">FEATURED</span></td>' . "\n";
+                    echo '<td width="10%" class="table_header"><span class="table_header_text">Show</span></td>' . "\n";
+                    echo '<td width="15%" class="table_header"><span class="table_header_text">Image</span></td>' . "\n";
+                    echo '<td width="30%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
+                    echo '<td width="10%" class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
+                    echo '<td class="table_header"><span class="table_header_text">Featured</span></td>' . "\n";
                     echo '</tr>';
                     foreach($products_array as $product) {
                         if($product->product_category_name != $cur_category) {
@@ -54,10 +55,11 @@
                             $bg_color = 'white';
                             echo '<table class="list_table" cellpadding="0" cellspacing="0" border="0">' . "\n";
                             echo '<tr>' . "\n";
-                            echo '<td width="10%" class="table_header"><span class="table_header_text">SHOW</span></td>' . "\n";
-                            echo '<td width="15%" class="table_header"><span class="table_header_text">IMAGE</span></td>' . "\n";
-                            echo '<td width="40%" class="table_header"><span class="table_header_text">NAME</span></td>' . "\n";
-                            echo '<td class="table_header"><span class="table_header_text">FEATURED</span></td>' . "\n";
+                            echo '<td width="10%" class="table_header"><span class="table_header_text">Show</span></td>' . "\n";
+                            echo '<td width="15%" class="table_header"><span class="table_header_text">Image</span></td>' . "\n";
+                            echo '<td width="30%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
+                            echo '<td width="10%" class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
+                            echo '<td class="table_header"><span class="table_header_text">Featured</span></td>' . "\n";
                             echo '</tr>';
                         }
                         $bg_color = $bg_color == 'white' ? 'gray' : 'white';
@@ -70,7 +72,8 @@
                         echo '<tr class="' . $bg_color . '">' . "\n";
                         echo '<td width="10%" class="td_border"><input type="checkbox" name="products[]" value="' . $product->product_id . '"' . $checked . '></td>' . "\n";
                         echo '<td width="15%" class="td_border"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" border="0" style="width:75px;"></td>' . "\n";
-                        echo '<td width="40%" class="td_border">' . $product->product_name . '</td>' . "\n";
+                        echo '<td width="30%" class="td_border">' . $product->product_name . '</td>' . "\n";
+                        echo '<td width="10%" class="td_border">' . $product->model_number . '</td>' . "\n";
                         
                         $radio_checked = '';
                         switch($product_category_id) {

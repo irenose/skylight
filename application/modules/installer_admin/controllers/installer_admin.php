@@ -241,7 +241,6 @@ class Installer_admin extends CI_Controller {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
 								$data['page_content'] = 'admin_account_update';
-								break;
 							} else {
 								$file_path = '';
 								$image_name = '';

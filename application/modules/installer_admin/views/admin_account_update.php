@@ -154,7 +154,7 @@
                 <input type="file" name="userfile" />
                 <?php
             		if(trim($dealer_array[0]->dealer_logo) != '') {
-            			echo '&nbsp;&nbsp;Current Logo: <a class="lightbox" href="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '">' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '</a>';
+            			echo '&nbsp;&nbsp;Current Logo: <a href="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '" target="_blank">' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '</a>';
             			echo '<br><br><a href="/installer-admin/account/delete-logo/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Logo</a>';
             		}
             	?>
