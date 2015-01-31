@@ -77,7 +77,7 @@
 		                                        </div>
 		                                    </div>
 		                                    <footer class="no-border card__footer">
-		                                        <a href="<?=base_url() . $installer->dealer_url?>" class="btn installer__link" target="_blank">
+		                                        <a href="<?=base_url() . $installer->dealer_url?>" class="btn installer__link">
 		                                            Visit Site
 		                                        </a><br>
 		                                        <?php
