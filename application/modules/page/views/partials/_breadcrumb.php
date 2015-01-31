@@ -22,7 +22,7 @@
         if($show_breadcrumb_modal) {
     ?>
             <div class="breadcrumb-links">
-                <a href=<?php echo '"' . $installer_base_url . '/contact/#contact-form"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule a Consultation</a>
+                <a href=<?php echo '"' . $installer_base_url . '/contact#contact-form"'?> data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule a Consultation</a>
             </div>
     <?php
         }
