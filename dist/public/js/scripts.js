@@ -809,6 +809,8 @@ ww.carousels = (function(){
                 swipe: true,
                 // touchMove: false,
                 touchThreshold: 100, // prevents a minimal touch from temporarily hiding the slide
+                autoplay: true,
+                autoplaySpeed: 4000
             });
         }
     };
