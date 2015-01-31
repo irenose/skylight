@@ -1,5 +1,5 @@
 <div class="ps-mobile-wrapper">
-    <div class="ps-bar">
+    <div class="ps-bar<?php if(isset($paid_search_page_type) && $paid_search_page_type != 'night') { echo ' ps-bar-day"'; } ?>">
         <span class="reversed">Get In Touch With Us</span>
         <span class="icon-plus">+</span>
     </div>

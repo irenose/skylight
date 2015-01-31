@@ -1,3 +1,10 @@
+.body-ps-night {
+    .ps-bar {
+        @include bp($tablet-landscape) {
+            display: none !important;
+        }
+    }
+}
 .ps-mobile-wrapper {
     bottom: 0;
     left: 0;
@@ -26,8 +33,14 @@
             vertical-align: middle;
         }
 
-        @include bp($tablet) {
+        @include bp($tablet-landscape) {
             display: none !important;
+        }
+
+        &.ps-bar-day {
+            @include bp($tablet) {
+                display: none !important;
+            }
         }
     }
 
