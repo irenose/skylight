@@ -330,3 +330,7 @@ select {
 textarea {
     @extend %general-input;
 }
+
+img {
+    border:none;
+}
