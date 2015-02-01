@@ -65,22 +65,24 @@
                 margin: 0;
                 padding: 5px;
                 width: 48%;
-                vertical-align: middle;
+                vertical-align: top;
+                height:170px;
 
                 .icon-no-leak {
-                    height: 75%;
+                    height: 128px;
                     line-height: 0;
                     margin: 0 auto;
-                    vertical-align: middle;
-                    width: 75%;
+                    vertical-align: top;
+                    width: 122px;
                 }
                 .incentive {
-                    height: 8em;
-                    width: 8em;
+                    height: 128px;
+                    width: 128px;
+                    padding-top:30px;
+                    font-size:1em;
 
                     @include bp($mobile-landscape) {
-                        height: 9em;
-                        width: 9em;
+                        font-size:.875em;
                     }
                 }
             }
