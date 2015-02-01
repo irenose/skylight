@@ -298,6 +298,10 @@
         min-height: 90px;
         width: 100%;
 
+        a, a:visited {
+            color: $color-grey;
+        }
+
         .dealer-info {
             display: inline-block;
             width: 100%;

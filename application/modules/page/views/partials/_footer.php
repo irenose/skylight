@@ -10,7 +10,7 @@
                 <?php
                     if($show_installer_header_footer) {
                         //SHOW INSTALLER SPECIFIC CONTENT
-                        echo '<div class="dealer-info"><div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '</div><div class="numbers">Phone: ' . $installer_array[0]->phone1;
+                        echo '<div class="dealer-info"><div class="address"><span class="dealer-info__header">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '</div><div class="numbers">Phone: <a href="tel:' . $installer_array[0]->phone1 . '">' . $installer_array[0]->phone1 . '</a>';
 
                         if($installer_array[0]->fax != '') {
                             echo '<br>Fax: ' . $installer_array[0]->fax;
