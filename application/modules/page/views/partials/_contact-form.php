@@ -1,3 +1,10 @@
+<?php
+    if( isset($modal_form) && $modal_form === TRUE) {
+        $contact_id = ' id="contact-submit"';
+    } else {
+        $contact_id = '';
+    }
+?>
 <form action="<?=$installer_base_url; ?>/contact#contact-form" method="post" id="contact-form" <?php if(isset($modal_form)) { echo 'data-modal-form'; } ?>>
     <input type="hidden" name="dealer_id" value="<?=$installer_array[0]->dealer_id; ?>">
     <div class="row">
@@ -54,12 +61,12 @@
                 ?>
             </select>
 
-            <label id="label-message">Message*<?=required_text('comments'); ?></label>
+            <label id="label-comments">Message*<?=required_text('comments'); ?></label>
             <textarea name="comments" id="contact-comments" class="<?=form_textarea_error('comments'); ?> full-width"><?=set_value('comments');?></textarea>
 
             <label class="updates"><input type="checkbox" name="receive_more_info" value="yes" <?= set_checkbox('receive_more_info','yes'); ?> /> Yes, I would like to receive VELUX updates</label>
         </div>
     </div>
 
-    <input type="submit" value="Contact Us" id="contact-submit" />
+    <input type="submit" value="Contact Us"<?=$contact_id?> />
 </form>

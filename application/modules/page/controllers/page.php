@@ -301,6 +301,22 @@ class Page extends CI_Controller {
                                 }
                             } else {
                                 switch($vars_array[3]) {
+                                    case 'product':
+                                        if($vars_size != 4) {
+                                            redirect($data['installer_base_url'] . '/contact');
+                                        } else {
+                                            $product_url = $vars_array[4];
+                                            $product_array = $this->page_model->get_product_by_url($product_url);
+                                            if(count($product_array) > 0) {
+                                                $product_name = ascii_to_entities($product_array[0]->product_name);
+                                                $product_name = $product_array[0]->model_number != '' ? $product_name . ' (' . $product_array[0]->model_number . ')' : $product_name;
+                                                $data['selected_contact_product'] = $product_name;
+                                                $data['page_view'] = 'contact/index';
+                                            } else {
+                                                redirect($data['installer_base_url'] . '/contact');
+                                            }
+                                        }
+                                        break;
                                     case 'thanks':
                                         $data['page_view'] = 'contact/thanks';
                                         break;

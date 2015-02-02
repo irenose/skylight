@@ -1195,8 +1195,8 @@ ww.contact_validation = (function() {
                         $email_label = $('#label-email'),
                         $subject = $('#contact-subject').val(),
                         $subject_label = $('#label-subject'),
-                        $message = $('#contact-message').val(),
-                        $message_label = $('#label-message');
+                        $message = $('#contact-comments').val(),
+                        $message_label = $('#label-comments');
 
                     if($name === '') {
                         error_count++;
