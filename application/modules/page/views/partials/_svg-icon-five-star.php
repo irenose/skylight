@@ -1,4 +1,4 @@
-<i class="icon icon-five-star">
+<i class="icon icon-five-star" data-inline-svg-fallback="<?=asset_url('images/sprites/sprite.svg.icon-five-star.png')?>">
     <svg id="icon-five-star" viewBox="-205 297 200 200">
     <path id="Cool_Grey_10M" fill="#807F83" d="M-105.002,308.05c-49.157,0-89.009,39.857-89.009,89.022
         c0,49.153,39.852,89.004,89.009,89.004c49.155,0,89.008-39.851,89.008-89.004C-15.994,347.907-55.847,308.05-105.002,308.05z

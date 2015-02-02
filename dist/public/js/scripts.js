@@ -96,6 +96,7 @@ ww.main = (function() {
             ww.custom_forms.init();
             ww.carousels.init();
             ww.fixed_nav.init();
+            ww.inline_svg_fallback.init();
             ww.conditional_modals.init();
             ww.paid_search.init();
             ww.scrollto.init();
@@ -190,6 +191,25 @@ ww.window_events = (function() {
                 ww.simple_tabs.init();
             }
         },
+    };
+})();
+
+/*-----------------------
+  @INLINE SVG FALLBACK
+------------------------*/
+ww.inline_svg_fallback = (function(){
+    return {
+        init: function() {
+            if ( ! Modernizr.inlinesvg) {
+                var $el;
+
+                $("[data-inline-svg-fallback]").each(function() {
+                    $el = $(this);
+                    $img = $("<img src='"+$el.data("inline-svg-fallback")+"'>");
+                    $el.html($img);
+                });
+            }
+        }
     };
 })();
 
@@ -754,7 +774,7 @@ ww.carousels = (function(){
                     ww.carousels.equal_heights($carousel);
                 });
 
-                
+
             }
 
             /*var my_timer = window.setTimeout(function() {
