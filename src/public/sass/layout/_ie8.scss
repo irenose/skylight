@@ -31,4 +31,13 @@
             } 
         }
     }
+
+    .hero {
+        .card {
+            z-index:0;
+        }
+        .slick {
+            z-index:0;
+        }
+    }
 }
