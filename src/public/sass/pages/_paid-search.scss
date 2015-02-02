@@ -227,7 +227,9 @@
             }
 
             @include bp($foundation-small, $tablet) {
-                display: none;
+                width:100%;
+                padding:0;
+                height:auto;
             }
             @include bp($tablet, 1024px) {
                 width: 40%;
