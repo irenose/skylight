@@ -1,16 +1,3 @@
-<!-- <?php 
-	/******************************* OUR PRODUCTS SECTION *************************/ 
-?>
-<section>
-	<h2>Our Products</h2>
-	<?php
-		//SHOW PRODUCT CATEGORIES THAT DEALER OFFERS
-		foreach($product_category_array as $category) {
-			echo '<a href="' . $installer_base_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br>';
-		}
-?> -->
-
-
 <?php
 	/******************************* STATIC WELCOME AREA *************************/ 
 ?>
