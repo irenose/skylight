@@ -26,8 +26,15 @@
     </div>
     <?php
     	if(count($installer_search_array) == 0) {
-    		$data['cta_type'] = 'long';
-    		echo $this->load->view('partials/_find-installer', $data);
+    		echo '<div class="page-row">';
+	    		echo '<div class="cta-find-installer">';
+	        		echo '<header class="centered">';
+	        			echo '<p class="squeezed-3 cta__text">Unfortunately, there were no installers that matched your search criteria</p>';
+	        			echo '<a class="cta upper" href="/">Try Again</a>';
+	        		echo '</header>';
+	        	echo '</div>';
+        	echo '</div>';
+    		//echo $this->load->view('partials/_find-installer', $data);
     	} else {
     ?>
 		    <script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
