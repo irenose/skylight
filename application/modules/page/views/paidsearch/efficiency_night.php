@@ -11,7 +11,7 @@
             <div class="welcome-list">
                 <div class="row">
                     <div class="small-12 columns">
-                        <h4>Skylight innovation and energy efficiency go hand-in-hand.</h4>
+                        <h4>Skylight innovation and energy efficiency go hand in hand.</h4>
                         <div class="form-grey-border"></div>
                         <ul class="ps-list">
                             <li>More than 90% of VELUX products are ENERGY STAR&reg; qualified </li>
@@ -37,7 +37,7 @@
             <h4 class="normal-weight no-image">Replacing old skylights with VELUX skylights makes your home more energy efficient. </h4>
             <ul class="ps-list">
                 <li>Most VELUX skylights are ENERGY STAR&reg; certified in all climate regions in the United States</li>
-                <li>VELUX skylights come standard with energy-efficient, LoE3, Argon-gas-injected, dual-pane glazing that helps keep your home warm in the winter and cool in the summer</li>
+                <li>VELUX skylights come standard with energy-efficient, LoE3, argon-gas-injected, dual-pane glazing that helps keep your home warm in the winter and cool in the summer</li>
                 <li>Select a "Fresh Air" model and help cool your home during the spring and fall while reducing the load on your air conditioner</li>
                 <li>Add blinds for light control and improve your skylight's energy performance more than 34%</li>
             </ul>
@@ -49,7 +49,7 @@
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
             <ul class="ps-list">
-                <li>Install a No Leak Solar Powered "Fresh Air" skylight and you may be eligible for a 30% Federal tax credit on product and installation</li>
+                <li>Install a No Leak Solar Powered "Fresh Air" skylight, and you may be eligible for a 30% Federal tax credit on product and installation</li>
             </ul>
         </div>
     </div>

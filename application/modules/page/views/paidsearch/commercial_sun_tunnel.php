@@ -37,7 +37,7 @@
 <section class="page-row short-top snug-bottom ps-section design-text">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
-            <p>VELUX commercial SUN TUNNEL skylights are designed for commercial flat roof or low sloped applications, ideal for schools and retail spaces with suspended ceilings, interior spaces that require a longer light shaft or projects that require a cost effective daylight solution without a view.</p>
+            <p>VELUX commercial SUN TUNNEL skylights are designed for commercial flat roofs, or low-sloped applications, ideal for schools and retail spaces with suspended ceilings, interior spaces that require a longer light shaft or projects that require a cost-effective daylight solution without a view.</p>
         </div>
     </div>
 </section>

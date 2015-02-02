@@ -14,7 +14,7 @@
                         <ul class="ps-list">
                             <li>More than 100 styles of blinds available to choose from</li>
                             <li>Solar powered blinds are eligible for the 30% Federal tax credit</li>
-                            <li>Blinds can soften of completely block the daylight entering your room</li>
+                            <li>Blinds can soften or completely block the daylight entering your room</li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
-            <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in variety of stylish designs to help reflect your home's personality.</h4>
+            <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in a variety of stylish designs to help reflect your home's personality.</h4>
             <img src="<?=asset_url('images/ps/blinds.png')?>" class="big-blinds" alt>
         </div>
     </div>
@@ -52,7 +52,7 @@
                 <div class="row">
                     <img src="<?=asset_url('images/ps/blinds/darkening.png')?>" alt>
                     <div class="blind-example">
-                        <strong>Room darkening &ndash; double pleated blinds:</strong> Solar powered or manually operated, these blinds feature blackout cloth with a honeycomb structure that are energy efficient and have a sleek design
+                        <strong>Room darkening &ndash; double pleated blinds:</strong> Solar powered or manually operated, these blinds feature blackout cloth with a honeycomb structure that are energy-efficient and have a sleek design
                     </div>
                 </div>
                 <div class="row">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="blind-example">If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special order designer blinds. Special order blinds will ship separately.
+                    <div class="blind-example">If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special-order designer blinds. Special-order blinds will ship separately.
                     </div>
                 </div>
             </div>

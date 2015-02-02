@@ -30,7 +30,7 @@
             <ul class="ps-list">
                 <li>Solar operated and requires no wiring</li>
                 <li>Works on cloudy days and with indirect light</li>
-                <li>Comes with the No Leak Promise &mdash; 10-year installation warranty, 20 years on glass, 10 years on the skylight and 5 years on blinds and controls</li>
+                <li>Comes with the No Leak Promise&mdash;10-year installation warranty, 20 years on glass, 10 years on the skylight and 5 years on blinds and controls</li>
                 <li>Add light control with factory-installed blinds, or choose from more than 100 special-order blinds</li>
                 <li>Remote control lets you open and close skylights and blinds with the touch of a button</li>
                 <li>Rain sensor that automatically closes skylight</li>

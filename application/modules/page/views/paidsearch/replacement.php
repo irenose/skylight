@@ -26,7 +26,7 @@
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <img src="<?=asset_url('images/ps/glass.jpg')?>" alt>
             <ul class="ps-list">
-                <li>Current VELUX models come with a dual paned, LoE3 coated glass, improving the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual pane clear glass</li>
+                <li>Current VELUX models come with a dual-paned, LoE3-coated glass, improving the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-pane clear glass</li>
                 <li>Energy performance is even greater with current VELUX skylights over acrylic bubble skylights</li>
             </ul>
         </div>
@@ -40,7 +40,7 @@
 			<ul class="ps-list">
 				<li><span class="bold">Clean:</span> the Neat&reg; glass coating keeps skylights virtually spotless</li>
                 <li><span class="bold">Quiet:</span> reduce unwanted outside noise</li>
-                <li><span class="bold">Safe:</span> VELUX recommends, and building codes require, laminated glass for out of reach applications</li>
+                <li><span class="bold">Safe:</span> VELUX recommends, and building codes require, laminated glass for out-of-reach applications</li>
 			</ul>
         </div>
     </div>
@@ -62,7 +62,7 @@
             <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
             <p>If you're reroofing, VELUX recommends replacing your skylights:</p>
             <ul class="ps-list">
-                <li>Most cost efficient time, as the roofer will be on the roof already to complete the job – no separate visit</li>
+                <li>Most cost-efficient time, as the roofer will be on the roof already to complete the job&mdash;no separate visit</li>
 				<li>Synchronizes roof and skylight warranties</li>
 				<li>Assurance that roofing material will match</li>
             </ul>

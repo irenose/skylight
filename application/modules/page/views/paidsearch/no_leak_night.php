@@ -17,7 +17,7 @@
                             <li>With a 30% federal tax credit, eligible homeowners could receive an average of $850 back on product and installation</li>
                             <li>Solar  operated and requires no wiring</li>
                             <li>Works on cloudy days and with indirect light</li>
-                            <li>Comes with the No Leak Warranty &ndash; 10-year installation warranty, 20 years on glass</li>
+                            <li>Comes with the No Leak Warranty&mdash;10-year installation warranty, 20 years on glass</li>
                         </ul>
                     </div>
                 </div>
