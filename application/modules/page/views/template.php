@@ -8,7 +8,8 @@
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en" itemscope itemtype="http://schema.org/Article"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en" itemscope itemtype="http://schema.org/Article"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en" itemscope itemtype="http://schema.org/Article"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Article"> <!--<![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en" itemscope itemtype="http://schema.org/Article"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Article"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -109,8 +110,5 @@
     <?=get_additional_scripts('js', $additional_js)?>
     <script src="<?=site_url('bower_components/imagesloaded/imagesloaded.pkgd.min.js')?>"></script>
     <script src="<?=asset_url('js/scripts.min.js')?>"></script>
-
-    <!-- LiveReload (development only) -->
-    <?=get_livereload()?>
 </body>
 </html>

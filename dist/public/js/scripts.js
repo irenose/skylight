@@ -200,14 +200,16 @@ ww.window_events = (function() {
 ww.inline_svg_fallback = (function(){
     return {
         init: function() {
-            if ( ! Modernizr.inlinesvg) {
-                var $el;
+            if (typeof Modernizr !== 'undefined') {
+                if ( ! Modernizr.inlinesvg) {
+                    var $el;
 
-                $("[data-inline-svg-fallback]").each(function() {
-                    $el = $(this);
-                    $img = $("<img src='"+$el.data("inline-svg-fallback")+"'>");
-                    $el.html($img);
-                });
+                    $("[data-inline-svg-fallback]").each(function() {
+                        $el = $(this);
+                        $img = $("<img src='"+$el.data("inline-svg-fallback")+"'>");
+                        $el.html($img);
+                    });
+                }
             }
         }
     };

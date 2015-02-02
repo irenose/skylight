@@ -82,3 +82,18 @@
         }
     }
 }
+.ie9 {
+    .hero {
+        .card {
+            z-index:0;
+        }
+        .slick {
+            z-index:0;
+        }
+    }
+    .gallery {
+        .slick-carousel {
+            z-index:0;
+        }
+    }
+}
