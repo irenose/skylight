@@ -45,6 +45,17 @@
         }
     }
 
+    #ps-form {
+        @include bp($tablet) {
+            float:right;
+            width:38%;
+        }
+        @include bp($foundation-large) {
+            float:right;
+            width:32%;
+        }
+    }
+
     .hero {
         .card {
             z-index:0;
