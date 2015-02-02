@@ -5,6 +5,13 @@
         }
     }
 
+    .fancy-search input[type=search] {
+        padding:12px 0;
+        height:54px;
+        font-size:14px;
+        line-height:28px;
+    }
+
     form {
         .columns {
             padding-left:15px;
