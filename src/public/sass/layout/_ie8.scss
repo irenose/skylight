@@ -12,6 +12,12 @@
         line-height:28px;
     }
 
+    .dealer-promo {
+        @include bp($foundation-large) {
+            margin-right:4%;
+        }
+    }
+
     form {
         .columns {
             padding-left:15px;
