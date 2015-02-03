@@ -81,6 +81,18 @@
             width:300px;
         }
     }
+
+    .icon-play {
+       border: 0;
+
+       &:after {
+           display: none;
+       }
+       &:before {
+           background-color: transparent !important;
+           background-image: url('/assets/images/play-icon.png');
+       }
+   }
 }
 .ie9 {
     .hero {
