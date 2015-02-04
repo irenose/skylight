@@ -157,18 +157,17 @@
                     padding-left:5%;
                 }
                 @include bp($foundation-large) {
-                    margin-right: 5%;
-                    min-width: 40%;
-                    width:50%;
+                    margin-right: 4%;
+                    width:40%;
                     padding-left:0;
                 }
                 @include bp($my-large) {
                     margin-right: 6%;
-                    min-width: 30%;
+                    width: 30%;
                 }
                 @include bp($my-very-large) {
                     margin-right: 7%;
-                    min-width: 33%;
+                    width: 35%;
                 }
                 a:last-child {
                     margin-right: 0;
