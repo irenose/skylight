@@ -74,16 +74,16 @@
     }
     .btn[type="submit"] {
         @extend %centered;
-        height: 55px;
+        height: 51px;
         padding: 0;
         position: absolute;
         right: 3px;
         top: 3px;
-        width: 55px;
+        width: 51px;
 
         @include bp($tablet) {
-            height: 60px;
-            width: 60px;
+            height: 55px;
+            width: 55px;
         }
     }
     .icon-search--reversed {

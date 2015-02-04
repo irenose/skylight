@@ -93,6 +93,30 @@
            background-image: url('/assets/images/play-icon.png');
        }
    }
+
+   .blinds-carousel {
+        background:$color-grey-light-bg;
+
+        h2 {
+            color:$color-default !important;
+        }
+   }
+
+   .replacing {
+        background-position: center bottom;
+        .incentives {
+            display:none;
+        }
+        
+        @include bp($tablet) {
+            padding-top:150px;
+            padding-bottom:150px;
+
+            .incentives {
+                display:block;
+            }
+        }
+   }
 }
 .ie9 {
     .hero {

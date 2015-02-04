@@ -32,6 +32,10 @@
             border: none;
             padding: ($padding-card / 2) ($padding-card / 2) $padding-card;
         }
+        .installer-product-category-links {
+            display:none;
+        }
+
     }
     img.icon-pin--fancy {
         @extend %block;

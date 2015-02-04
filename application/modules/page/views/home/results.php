@@ -18,7 +18,7 @@
         <header class="centered">
             <h2 class="locator__heading">
                 There are <span class="color-primary"><?=count($installer_search_array);?></span> Installers near <?=$search_zip_code?>
-                <a href="<?=site_url()?>" class="locator__heading__link">
+                <a href="<?=site_url()?>#installer-search" class="locator__heading__link">
                     Change Location
                 </a>
             </h2>
@@ -87,16 +87,18 @@
 		                                        <a href="<?=base_url() . $installer->dealer_url?>" class="btn installer__link">
 		                                            Visit Site
 		                                        </a><br>
-		                                        <?php
-		                                        	$categories_array = $this->page_model->get_product_categories($installer->dealer_id, 'active');
-													if(count($categories_array) > 0) {
-														echo 'We offer the following products<br>';
-														foreach($categories_array as $category) {
-															echo '<a href="' . base_url() . $installer->dealer_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br />';
-														}
+		                                        <div class="installer-product-category-links">
+			                                        <?php
+			                                        	$categories_array = $this->page_model->get_product_categories($installer->dealer_id, 'active');
+														if(count($categories_array) > 0) {
+															echo 'We offer the following products<br>';
+															foreach($categories_array as $category) {
+																echo '<a href="' . base_url() . $installer->dealer_url . '/products/category/' . $category->product_category_url . '">' . $category->product_category_name . '</a><br />';
+															}
 
-													}
-												?>
+														}
+													?>
+												</div>
 		                                    </footer>
 		                                </div>
 		                            </div>

@@ -18,7 +18,7 @@
 	</header>
 </section>
 
-<section class="page-row page-row--tall reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
+<section id="installer-search" class="page-row page-row--tall reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
 <?php
 	$data['cta_type'] = 'long';
     echo $this->load->view('partials/_find-installer', $data);
