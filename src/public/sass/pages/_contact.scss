@@ -67,3 +67,8 @@
         display:block;
     }
 }
+.mobile-map-it {
+    @include bp($tablet) {
+        display:none;
+    }
+}

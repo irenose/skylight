@@ -37,11 +37,13 @@
     /*---------------------------------------------
         Validation & Address
     ----------------------------------------------*/
+    $encoded_address = $installer_array[0]->address . '+' . $installer_array[0]->city . ',' . $installer_array[0]->state . '+' . $installer_array[0]->zip;
 ?>
     <div class="row">
         <div class="small-12 large-4 large-push-7 large-offset-1 columns dealer-info--contact">
             <?php 
                 echo '<span class="font-display dealer-title">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
+                echo '<div class="mobile-map-it"><a href="http://maps.google.com/maps?q=' . $encoded_address . '" target="_blank" class="cta-text">Map It</a></div>';
             ?>
         </div>
 
@@ -65,8 +67,5 @@
 </section>
 <section id="contact-map">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
-    <?php
-        $encoded_address = $installer_array[0]->address . '+' . $installer_array[0]->city . ',' . $installer_array[0]->state . '+' . $installer_array[0]->zip;
-    ?>
     <div id="map" data-lat="<?=$installer_array[0]->latitude; ?>" data-long="<?=$installer_array[0]->longitude; ?>" data-address="<?=$encoded_address; ?>"></div>
 </section>
