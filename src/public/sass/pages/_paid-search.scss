@@ -88,9 +88,6 @@
                 position: absolute;
                 top: 15%;
             }
-            .energy-star-icon {
-                width: 6em;
-            }
 
             @include bp($foundation-small, $tablet) {
                 background-position: 90% 50%;
@@ -801,7 +798,6 @@
 
     img {
         float: left;
-        width: 125px;
     }
 
     .statement h4 {
