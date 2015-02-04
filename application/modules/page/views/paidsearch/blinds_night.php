@@ -12,7 +12,7 @@
                         <h4>Control daylight and add style with blinds. </h4>
                         <div class="form-grey-border"></div>
                         <ul class="ps-list">
-                            <li>More than 100 styles of blinds available to choose from</li>
+                            <li>More than 65 styles of blinds available to choose from</li>
                             <li>Solar powered blinds are eligible for the 30% Federal tax credit</li>
                             <li>Blinds can soften or completely block the daylight entering your room</li>
                         </ul>
@@ -47,7 +47,7 @@
 <section class="page-row short-top snug-bottom ps-section blind-examples">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
-            <p>There are more than 100 styles of blinds available to choose from:</p>
+            <p>There are more than 65 styles of blinds available to choose from:</p>
             <div class="blinds-container">
                 <div class="row">
                     <img src="<?=asset_url('images/ps/blinds/darkening.png')?>" alt>
@@ -58,7 +58,7 @@
                 <div class="row">
                     <img src="<?=asset_url('images/ps/blinds/filtering-pleat.png')?>" alt>
                     <div class="blind-example">
-                        <strong>Light filtering &ndash; single pleat blinds:</strong> Solar powered or manually operated, these blinds let a soft light enter the room and come in 15 color options
+                        <strong>Light filtering &ndash; single pleated blinds:</strong> Solar powered or manually operated, these blinds let a soft light enter the room and come in 15 color options
                     </div>
                 </div>
                 <div class="row">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="blind-example">If you order blinds with your skylight, choose from ten factory-installed blinds or choose from nearly 100 special-order designer blinds. Special-order blinds will ship separately.
+                    <div class="blind-example">If you order blinds with your skylight, choose from ten factory-installed blinds or choose from 65 special-order designer blinds. Special-order blinds will ship separately.
                     </div>
                 </div>
             </div>

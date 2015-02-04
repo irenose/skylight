@@ -41,6 +41,7 @@
 
 .footer-section--left {
     width: 100%;
+    text-align:center;
 
     .logo {
         width: 105px;
@@ -67,15 +68,15 @@
         }
 
         .icon-five-star {
-            height: 90px;
+            height: 143px;
             width: 90px;
 
             @include bp($tablet, $foundation-large) {
-                height: 85px;
+                height: 135px;
                 width: 85px;
             }
             @include bp($my-large) {
-                height: 100px;
+                height: 159px;
                 width: 100px;
             }
         }
@@ -91,10 +92,14 @@
         @include bp($foundation-med, $tablet) {
             display: block;
             width: 60%;
+            margin-left:auto;
+            margin-right:auto;
         }
         @include bp($tablet, $foundation-large) {
             margin-top: 0;
             width: 60%;
+            margin-left:0;
+            margin-right:0;
         }
         @include bp($foundation-large) {
             margin-top: 0;
@@ -107,6 +112,7 @@
 
     @include bp($tablet) {
         width: 80%;
+        text-align:left;
     }
     @include bp(800px, $foundation-large) {
         padding-left: 6%;
@@ -121,6 +127,7 @@
 
 .footer-section--right {
     width: 100%;
+    text-align:center;
 
     .social {
 
@@ -159,6 +166,7 @@
     @include bp($tablet) {
         border-left: 1px solid $color-secondary;
         width: auto;
+        text-align:left;
     }
     @include bp($my-large) {
         width: auto;

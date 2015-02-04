@@ -20,7 +20,7 @@
                         echo '</div>' . "\n";
                     } else {
                         echo '<div class="promotion-large residential-promo">' . "\n";
-                            echo '<h4 class="normal-weight">Add daylight and fresh air for less with the Solar Powered "Fresh Air" skylight</h4>' . "\n";
+                            echo '<h4 class="normal-weight">Add daylight and fresh air for less with the Solar Powered "Fresh Air" Skylight</h4>' . "\n";
                             echo '<div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>' . "\n";
                         echo '</div>' . "\n";
                     }

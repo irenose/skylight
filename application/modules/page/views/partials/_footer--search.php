@@ -3,9 +3,6 @@
         <div class="row footer-row--search">
             <div class="footer-section footer-section--left">
                 <div class="test-container">
-                <div class="logo">
-                    <img src="<?=asset_url('images/velux-logo.png')?>" alt>
-                </div>
                 <div class="five-star">
                     <?=$this->load->view('partials/_svg-icon-five-star.php');?>
                 </div>
@@ -14,7 +11,7 @@
             </div>
             <div class="footer-section footer-section--right">
                 <div class="velux-link">
-                    <a href="http://www.veluxusa.com/" target="_blank">veluxUSA.com</a>
+                    <a href="http://www.veluxusa.com/" target="_blank">VELUXUSA.com</a>
                 </div>
                 <div class="social">
                     <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">

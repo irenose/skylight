@@ -33,7 +33,7 @@ class Blinds
                 ),
             ),
             'light-filtering-single' => array(
-                'heading' => 'Light filtering – single pleat blinds',
+                'heading' => 'Light filtering – single pleated blinds',
                 'img' => array(
                     'src' => asset_url('images/blinds/light-filtering-single.jpg'),
                     'alt' => 'filtering blinds',
