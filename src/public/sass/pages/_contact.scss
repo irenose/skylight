@@ -60,3 +60,10 @@
 .dealer-info--contact {
     margin-top: 1em;
 }
+
+#contact-map {
+    display:none;
+    @include bp($tablet) {
+        display:block;
+    }
+}

@@ -146,7 +146,8 @@
 
                 @include bp($foundation-small, $foundation-large) {
                     line-height: 2.125;
-                    width: 60%;
+                    width: 75%;
+                    padding-left:5%;
                 }
                 @include bp($foundation-med, $tablet) {
                     width: 50%;

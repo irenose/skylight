@@ -31,7 +31,7 @@
             <div class="five-star five-star--bottom">
                 <?=$this->load->view('partials/_svg-icon-five-star.php');?>
             </div>
-            <div class="copyright"><span>&#169; Copyright <?php echo date("Y") ?></span></div>
+            <div class="copyright"><span>&copy; Copyright <?php echo date("Y") ?></span></div>
             <div class="social">
                 <a href="https://twitter.com/VELUXAmerica" target="_blank" class="social__link">
                     <i class="icon icon-twitter">

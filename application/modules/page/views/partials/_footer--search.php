@@ -2,12 +2,10 @@
     <div class="footer-container border-top-grey">
         <div class="row footer-row--search">
             <div class="footer-section footer-section--left">
-                <div class="test-container">
                 <div class="five-star">
                     <?=$this->load->view('partials/_svg-icon-five-star.php');?>
                 </div>
                 <div class="footer-text">To ensure our products are installed correctly and you receive the highest standard of service, we have a factory-trained nationwide network of certified 5-Star Skylight Specialists.</div>
-                </div>
             </div>
             <div class="footer-section footer-section--right">
                 <div class="velux-link">
