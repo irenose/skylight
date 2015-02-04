@@ -1,6 +1,7 @@
 %btn {
     @extend %button;
-
+    -webkit-appearance: none;
+    
     &:hover {
         text-decoration: none;
     }
