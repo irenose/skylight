@@ -146,15 +146,21 @@
 
                 @include bp($foundation-small, $foundation-large) {
                     line-height: 2.125;
-                    width: 75%;
+                    width: 60%;
+                }
+                @include bp($foundation-med) {
+                    width: 50%;
                     padding-left:5%;
                 }
-                @include bp($foundation-med, $tablet) {
-                    width: 50%;
+                @include bp($tablet) {
+                    width: 75%;
+                    padding-left:5%;
                 }
                 @include bp($foundation-large) {
                     margin-right: 5%;
                     min-width: 40%;
+                    width:50%;
+                    padding-left:0;
                 }
                 @include bp($my-large) {
                     margin-right: 6%;
@@ -300,6 +306,7 @@
         line-height: 2;
         min-height: 90px;
         padding-right:100px;
+        width:100%;
 
         a, a:visited {
             color: $color-grey;
