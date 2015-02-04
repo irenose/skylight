@@ -59,7 +59,7 @@
             <div class="centered-half centered-half--squeezed last">
                 <i class="icon icon-compass icon-compass--south" aria-hidden="true">
                     <svg class="icon__svg">
-                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass"></use>
+                        <use xlink:href="<?=asset_url('images/sprites/sprite.svg')?>#icon-compass--south"></use>
                     </svg>
                 </i>
                 <h3 class="normal-weight">Southern Exposure</h3>
