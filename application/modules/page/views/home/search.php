@@ -1,11 +1,3 @@
-<!--<h1>Skylight Specialist Main Page</h1>
-<form action="" method="post">
-	<input type="hidden" name="installer_search" value="yes">
-	<label>Zip Code</label>
-	<input type="text" name="zip">
-	<input type="submit" value="Find Installers">
-</form>
--->
 <section class="page-row page-row--extra-tall hero hero-search">
 	<header class="intro-statement">
 		<h1 class="reversed upper mega-heading normal-weight">Bring the benefits of daylight home</h1>
