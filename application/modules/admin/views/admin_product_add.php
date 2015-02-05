@@ -55,40 +55,18 @@
             <label for="product_description">Product Description<?php echo required_text('product_description'); ?></label>
             <textarea name="product_description" class="textarea_text MCE" id="custom_textarea"><?php echo set_value('product_description'); ?></textarea>
             
-            <label for="green_friendly_flag">Green Friendly?<?php echo required_text('green_friendly_flag'); ?></label>
-            <select name="green_friendly_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <option value="yes"<?php echo set_select('green_friendly_flag','yes'); ?>>Yes</option>
-                <option value="no"<?php echo set_select('green_friendly_flag','no'); ?>>No</option>
-            </select>
-            
             <label for="no_leak_flag">No Leak?<?php echo required_text('no_leak_flag'); ?></label>
             <select name="no_leak_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
                 <option value="yes"<?php echo set_select('no_leak_flag','yes'); ?>>Yes</option>
-                <option value="no"<?php echo set_select('no_leak_flag','no'); ?>>No</option>
+                <option value="no"<?php echo set_select('no_leak_flag','no', TRUE); ?>>No</option>
             </select>
             
             <label for="tax_credit">Tax Credit?<?php echo required_text('tax_credit'); ?></label>
             <select name="tax_credit" class="input_dropdown_sort">
-                <option value="">Please choose</option>
                 <option value="yes"<?php echo set_select('tax_credit','yes'); ?>>Yes</option>
-                <option value="no"<?php echo set_select('tax_credit','no'); ?>>No</option>
+                <option value="no"<?php echo set_select('tax_credit','no', TRUE); ?>>No</option>
             </select>
             
-            <label for="energy_star">Energy Star?<?php echo required_text('energy_star'); ?></label>
-            <select name="energy_star" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <option value="yes"<?php echo set_select('energy_star','yes'); ?>>Yes</option>
-                <option value="no"<?php echo set_select('energy_star','no'); ?>>No</option>
-            </select>
-
-            <label for="remote_flag">Remote Callout?<?php echo required_text('remote_flag'); ?></label>
-            <select name="remote_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <option value="yes"<?php echo set_select('remote_flag','yes'); ?>>Yes</option>
-                <option value="no"<?php echo set_select('remote_flag','no'); ?>>No</option>
-            </select>
 
             <div class="form_spacer"></div>
 

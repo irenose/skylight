@@ -43,6 +43,9 @@
             <label for="product_name" class="form_float_left">Product Name<?php echo required_text('product_name'); ?></label>
             <input type="text" name="product_name" id="product_name" class="input_text" value="<?php echo set_value('product_name', $product_array[0]->product_name); ?>" />
 
+            <label for="product_url">Product URL<?php echo required_text('product_url'); ?></label>
+            <input type="text" class="input_text" name="product_url" value="<?php echo set_value('product_url', $product_array[0]->product_url); ?>" />
+
             <label for="product_name_short">Product Name - Short<?php echo required_text('product_name_short'); ?></label>
             <input type="text" class="input_text" name="product_name_short" value="<?php echo set_value('product_name_short', $product_array[0]->product_name_short); ?>" />
             
@@ -87,21 +90,9 @@
 
             <label for="product_description">Product Description<?php echo required_text('product_description'); ?></label>
             <textarea name="product_description" class="textarea_text MCE" id="custom_textarea"><?php echo set_value('product_description', $product_array[0]->product_description); ?></textarea>
-    
-            <label for="green_friendly_flag">Green Friendly?<?php echo required_text('green_friendly_flag'); ?></label>
-            <select name="green_friendly_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <?php 
-        			$yes_selected = $product_array[0]->green_friendly_flag == 'yes' ? TRUE : FALSE;
-        			$no_selected = $product_array[0]->green_friendly_flag == 'no' ? TRUE : FALSE;
-                ?>
-                <option value="yes"<?php echo set_select('green_friendly_flag','yes',$yes_selected); ?>>Yes</option>
-                <option value="no"<?php echo set_select('green_friendly_flag','no',$no_selected); ?>>No</option>
-            </select>
             
             <label for="no_leak_flag">No Leak?<?php echo required_text('no_leak_flag'); ?></label>
             <select name="no_leak_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
                 <?php 
         			$yes_selected = $product_array[0]->no_leak_flag == 'yes' ? TRUE : FALSE;
         			$no_selected = $product_array[0]->no_leak_flag == 'no' ? TRUE : FALSE;
@@ -112,7 +103,6 @@
             
             <label for="tax_credit">Tax Credit?<?php echo required_text('tax_credit'); ?></label>
             <select name="tax_credit" class="input_dropdown_sort">
-                <option value="">Please choose</option>
                 <?php 
         			$yes_selected = $product_array[0]->tax_credit == 'yes' ? TRUE : FALSE;
         			$no_selected = $product_array[0]->tax_credit == 'no' ? TRUE : FALSE;
@@ -120,45 +110,21 @@
                 <option value="yes"<?php echo set_select('tax_credit','yes',$yes_selected); ?>>Yes</option>
                 <option value="no"<?php echo set_select('tax_credit','no',$no_selected); ?>>No</option>
             </select>
-            
-            <label for="energy_star">Energy Star?<?php echo required_text('energy_star'); ?></label>
-            <select name="energy_star" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <?php 
-        			$yes_selected = $product_array[0]->energy_star == 'yes' ? TRUE : FALSE;
-        			$no_selected = $product_array[0]->energy_star == 'no' ? TRUE : FALSE;
-                ?>
-                <option value="yes"<?php echo set_select('energy_star','yes',$yes_selected); ?>>Yes</option>
-                <option value="no"<?php echo set_select('energy_star','no',$no_selected); ?>>No</option>
-            </select>
+ 
 
-            <label for="remote">Remote Callout?<?php echo required_text('remote_flag'); ?></label>
-            <select name="remote_flag" class="input_dropdown_sort">
-                <option value="">Please choose</option>
-                <?php 
-                    $yes_selected = $product_array[0]->remote_flag == 'yes' ? TRUE : FALSE;
-                    $no_selected = $product_array[0]->remote_flag == 'no' ? TRUE : FALSE;
-                ?>
-                <option value="yes"<?php echo set_select('remote_flag','yes',$yes_selected); ?>>Yes</option>
-                <option value="no"<?php echo set_select('remote_flag','no',$no_selected); ?>>No</option>
-            </select>
+            <div class="form_spacer"></div>
 
-            <label for="product_image">Product Image</label>
-            <input type="file" name="product_image" />
-            <?php
-        		if(trim($product_array[0]->product_image) != '') {
-        			echo '&nbsp;&nbsp;Current Product Image: <a class="lightbox" href="/product_images/' . $product_array[0]->product_image . '_th.' . $product_array[0]->extension . '?rand=' . $random . '">' . $product_array[0]->product_image . '.' . $product_array[0]->extension . '</a>';
-        		}
-        	?>
-            <br /><br />
-            
-            <label for="lifestyle_image">Lifestyle Image</label>
-            <input type="file" name="lifestyle_image" />
-            <?php
-        		if(trim($product_array[0]->lifestyle_image) != '') {
-        			echo '&nbsp;&nbsp;Current Lifestyle Image: <a class="lightbox" href="/product_images/' . $product_array[0]->lifestyle_image . '_lg.' . $product_array[0]->lifestyle_extension . '?rand=' . $random . '">' . $product_array[0]->lifestyle_image . '.' . $product_array[0]->lifestyle_extension . '</a>';
-        		}
-        	?>
+            <div class="padded_block padded_block_gray">
+
+                <label for="product_image">Product Image</label>
+                <input type="file" name="product_image" />
+                <br><br>
+                <?php
+            		if(trim($product_array[0]->product_image) != '') {
+            			echo '<img src="' . $this->config->item('product_images_dir') . $product_array[0]->product_image . '.' . $product_array[0]->extension . '?rand=' . $random . '" style="height:100px;">';
+            		}
+            	?>
+            </div>
 
             <div class="form_spacer"></div>
 

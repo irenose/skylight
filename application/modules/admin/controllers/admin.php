@@ -1265,6 +1265,7 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('admin_template', $data);
 	}
+
 /****************************************************************************************************************************************
 /*	PRODUCTS
 /****************************************************************************************************************************************/
@@ -1283,25 +1284,19 @@ class Admin extends CI_Controller {
 			$data['page_content'] = 'admin_product_list';
 		} else {
 			
-			$data['product_category_array'] = $this->admin_model->get_product_categories();	
+			$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|xss_clean');
+			$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('product_description', 'Product Description', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('product_category_id', 'Product Category', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('primary_category_id', 'Product Sub-Category', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('no_leak_flag', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('tax_credit', '', 'trim|xss_clean');
+
+			$data['product_category_array'] = $this->admin_model->get_product_categories();
+
 			switch($action) {
 				case 'add':
-					$data['show_openwysiwyg'] = TRUE;
-					$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|required|xss_clean');
-					//$this->form_validation->set_rules('product_teaser', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('product_description', 'Product Description', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('product_category_id', 'Product Category', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('primary_category_id', 'Product Sub-Category', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('green_friendly_flag', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('no_leak_flag', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('tax_credit', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('energy_star', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('remote_flag', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_product_add';
 					} else {
@@ -1316,34 +1311,8 @@ class Admin extends CI_Controller {
 					}
 					break;
 				case 'update':
-					$data['show_openwysiwyg'] = TRUE;
-					$config['upload_path'] = './product_images/';
-					$config['allowed_types'] = 'gif|jpg|png';
-					$config['max_size']	= '500';
-					$config['max_width']  = '1024';
-					$config['max_height']  = '768';
-					$config['overwrite'] = TRUE;
-					
-					//Load Upload and Image libraries
-					$this->load->library('upload');
-					$this->load->library('image_lib');
-					
-					$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|required|xss_clean');
-					//$this->form_validation->set_rules('product_teaser', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('product_description', 'Product Description', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('product_category_id', 'Product Category', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('primary_category_id', 'Product Sub-Category', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('green_friendly_flag', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('no_leak_flag', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('tax_credit', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('energy_star', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('remote_flag', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('product_status', 'Product Status', 'required|trim|xss_clean');
-					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('meta_description', '', 'trim|xss_clean');
+					$this->form_validation->set_rules('product_url', 'Product URL', 'required|trim|xss_clean');
 					$data['product_array'] = $this->admin_model->get_product_by_id($product_id);
 					$data['product_id'] = $product_id;
 					if ($this->form_validation->run() == FALSE) {
@@ -1352,89 +1321,60 @@ class Admin extends CI_Controller {
 						
 						//rename post array so we can add values to it for image
 						$data_array = $_POST;
-						$has_product_image = FALSE;
-						$has_lifestyle_image = FALSE;
+						$uploaded_product_image = FALSE;
 						
-						if( ! empty($_FILES['product_image']['name']) || ! empty($_FILES['lifestyle_image']['name'])) {
-							
-							// Upload Product Image
-							if( ! empty($_FILES['product_image']['name'])) {
-								
-								$has_product_image = TRUE;
-								
-								$error = '';
-								//Initialize
-								$this->upload->initialize($config);
-							
-								if ( ! $this->upload->do_upload('product_image')) {
-									$error = $this->upload->display_errors('','');
-									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
-									$data['page_content'] = 'admin_product_update';
-									break;
-								} else {
-									$file_path = '';
-									$image_name = '';
-									
-									$data = array('upload_data' => $this->upload->data());
-									$file_path = $data['upload_data']['file_path'];
-									$image_name = $data['upload_data']['file_name'];
-									
-									//Create re-sized thumbnail, then delete original image
-									//create_product_image($file_path, $image_name, 376, '', TRUE, '_lg', 'product_' . $product_id);
-									create_product_image($file_path, $image_name, 100, 120, TRUE, '_th', 'product_' . $product_id);
-									unlink($file_path . $image_name);
-									
-									//Use raw name to insert into DB
-									$raw_name = 'product_' . $product_id;
-									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-									
-									
-									//Add RSS Image data to post array
-									$data_array['product_image'] = $raw_name;
-									$data_array['extension'] = $ext;
-								}
+						if( ! empty($_FILES['product_image']['name'])) {
+
+							$config['upload_path'] = $this->config->item('product_images_upload_path');
+							$config['allowed_types'] = 'gif|jpg|png';
+							$config['max_size']	= '500';
+							$config['max_width']  = '1024';
+							$config['max_height']  = '768';
+							$config['overwrite'] = TRUE;
+
+							$filename_base = url_title($this->input->post('product_name'), 'dash', TRUE);
+							if(trim($this->input->post('model_number')) != '') {
+								$filename_base .= '-' . strtolower(trim($this->input->post('model_number')));
 							}
+							$extension = get_file_extension($_FILES['product_image']['name']);
+							$config['file_name'] = $filename_base . '.' . $extension;
 							
-							// Upload Product Image
-							if( ! empty($_FILES['lifestyle_image']['name'])) {
-								
-								$has_lifestyle_image = TRUE;
-								
-								$error = '';
-								//Initialize
-								$this->upload->initialize($config);
+							//Load Upload and Image libraries
+							$this->load->library('upload');
+							$this->load->library('image_lib');
 							
-								if ( ! $this->upload->do_upload('lifestyle_image')) {
-									$error = $this->upload->display_errors('','');
-									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
-									$data['page_content'] = 'admin_product_update';
-									break;
-								} else {
-									$file_path = '';
-									$image_name = '';
-									
-									$data = array('upload_data' => $this->upload->data());
-									$file_path = $data['upload_data']['file_path'];
-									$image_name = $data['upload_data']['file_name'];
-									
-									//Create re-sized thumbnail, then delete original image
-									create_product_image($file_path, $image_name, 376, 440, TRUE, '_lg', 'lifestyle_' . $product_id);
-									create_product_image($file_path, $image_name, 180, 211, TRUE, '_th', 'lifestyle_' . $product_id);
-									unlink($file_path . $image_name);
-									
-									//Use raw name to insert into DB
-									$raw_name = 'lifestyle_' . $product_id;
-									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-									
-									
-									//Add RSS Image data to post array
-									$data_array['lifestyle_image'] = $raw_name;
-									$data_array['lifestyle_extension'] = $ext;
-								}
+							$error = '';
+							//Initialize
+							$this->upload->initialize($config);
+						
+							if ( ! $this->upload->do_upload('product_image')) {
+								$error = $this->upload->display_errors('','');
+								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
+								$data['page_content'] = 'admin_product_update';
+
+							} else {
+
+								$file_path = '';
+								$image_name = '';
+								
+								$data = array('upload_data' => $this->upload->data());
+								$file_path = $data['upload_data']['file_path'];
+								$image_name = $data['upload_data']['file_name'];
+								
+								//Use raw name to insert into DB
+								$raw_name = $filename_base;
+								$ext = get_file_extension($data['upload_data']['file_ext']);
+								
+								
+								//Add RSS Image data to post array
+								$data_array['product_image'] = $raw_name;
+								$data_array['extension'] = $ext;
+
+								$uploaded_product_image = TRUE;
 							}
 						}
 								
-						$update = $this->admin_model->update_product($data_array, $has_product_image, $has_lifestyle_image);
+						$update = $this->admin_model->update_product($data_array, $uploaded_product_image);
 						if($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Product has been updated successfully</div>');
 							redirect('admin/products/update/' . $product_id);

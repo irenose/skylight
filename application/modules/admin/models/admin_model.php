@@ -1059,20 +1059,25 @@ class Admin_model extends CI_Model {
 	function add_product($data_array) {
 		
 		$db_table = $this->config->item('db_table_prefix') . 'products';
+
+		$product_url = url_title($data_array['product_name'], 'dash', TRUE);
+		if(trim($data_array['model_number']) != '') {
+			$product_url .= '-' . trim($data_array['model_number']);
+		}
 		
 		$data = array(
 			'product_name' => $data_array['product_name'],
+			'product_url' => $product_url,
 			'product_name_short' => $data_array['product_name_short'],
-			//'product_teaser' => $data_array['product_teaser'],
 			'model_number' => $data_array['model_number'],
 			'product_description' => $data_array['product_description'],
 			'product_category_id' => $data_array['product_category_id'],
 			'primary_category_id' => $data_array['primary_category_id'],
-			'green_friendly_flag' => $data_array['green_friendly_flag'],
+			'green_friendly_flag' => 'no',
 			'no_leak_flag' => $data_array['no_leak_flag'],
 			'tax_credit' => $data_array['tax_credit'],
-			'energy_star' => $data_array['energy_star'],
-			'remote_flag' => $data_array['remote_flag'],
+			'energy_star' => 'no',
+			'remote_flag' => 'no',
 			'product_status' => 'inactive',
 			'meta_title' => $data_array['meta_title'],
 			'meta_description' => $data_array['meta_description'],
@@ -1791,23 +1796,25 @@ class Admin_model extends CI_Model {
 		
 	}
 
-	function update_product($data_array, $has_product_image = FALSE, $has_lifestyle_image = FALSE) {
+	function update_product($data_array, $uploaded_product_image = FALSE) {
 		
 		$db_table = $this->config->item('db_table_prefix') . 'products';
+
+		$product_url = url_title($data_array['product_url'], 'dash', TRUE);
 		
 		$data = array(
 			'product_name' => $data_array['product_name'],
+			'product_url' => $product_url,
 			'product_name_short' => $data_array['product_name_short'],
-			//'product_teaser' => $data_array['product_teaser'],
 			'model_number' => $data_array['model_number'],
 			'product_description' => $data_array['product_description'],
 			'product_category_id' => $data_array['product_category_id'],
 			'primary_category_id' => $data_array['primary_category_id'],
-			'green_friendly_flag' => $data_array['green_friendly_flag'],
+			'green_friendly_flag' => 'no',
 			'no_leak_flag' => $data_array['no_leak_flag'],
 			'tax_credit' => $data_array['tax_credit'],
-			'energy_star' => $data_array['energy_star'],
-			'remote_flag' => $data_array['remote_flag'],
+			'energy_star' => 'no',
+			'remote_flag' => 'no',
 			'product_status' => $data_array['product_status'],
 			'meta_title' => $data_array['meta_title'],
 			'meta_description' => $data_array['meta_description'],
@@ -1816,16 +1823,11 @@ class Admin_model extends CI_Model {
 			'modification_date' => current_timestamp()
 		);
 		
-		if($has_product_image) {
+		if($uploaded_product_image) {
 			$data['product_image'] = $data_array['product_image'];
 			$data['extension'] = $data_array['extension'];
 		}
 		
-		if($has_lifestyle_image) {
-			$data['lifestyle_image'] = $data_array['lifestyle_image'];
-			$data['lifestyle_extension'] = $data_array['lifestyle_extension'];
-		}
-			
 		$this->db->where('product_id', $data_array['product_id']);
 		$result = $this->db->update($db_table, $data); 
 		

@@ -818,3 +818,15 @@ if ( ! function_exists('check_spam_count')) {
         return $spam_count;
     }
 }
+
+/**
+ * Return the extension of a filename
+ *
+ * @param  str $filename
+ * @return str extension
+ */
+if ( ! function_exists('get_file_extension')) {
+	function get_file_extension($filename) {
+		return substr($filename, strrpos($filename, '.') + 1);
+	}
+}	
