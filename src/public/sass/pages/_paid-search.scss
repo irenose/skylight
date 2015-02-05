@@ -579,7 +579,7 @@
 
     .icon-no-leak {
         float: left;
-        height: 110px;
+        height: 117px;
         margin-bottom: 2em;
         margin-right: 4em;
         width: 110px;
@@ -664,6 +664,11 @@
 
     .cta-padding {
         padding-bottom: 5em;
+    }
+    .full-tablet {
+        @include bp($foundation-med) {
+            padding-bottom: 3em;
+        }
     }
     .incentive {
         float: right;

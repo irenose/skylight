@@ -16,7 +16,7 @@
 <section>
     <div class="page-row reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
         <header class="centered">
-            <h2 class="locator__heading">
+            <h2 class="locator__heading normal-weight">
                 There are <span class="color-primary"><?=count($installer_search_array);?></span> Installers near <?=$search_zip_code?>
                 <a href="<?=site_url()?>#installer-search" class="locator__heading__link">
                     Change Location
@@ -70,7 +70,7 @@
 		                                <div class="installer" data-coordinates='{"lat":<?=$installer->latitude?>, "lng":<?=$installer->longitude?>}' data-address="<?=urlencode($installer->address . ' ' . $installer->city . ' ' . $installer->state . ' ' . $installer->zip)?>">
 		                                    <div class="card__body">
 		                                        <img src="<?=asset_url('images/icon-pin-map.png')?>" class="icon-pin--fancy" aria-hidden="true">
-		                                        <h3 class="installer__name">
+		                                        <h3 class="installer__name normal-weight">
 		                                            <?=$installer->name?>
 		                                        </h3>
 		                                        <div class="installer__rating">
