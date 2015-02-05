@@ -60,6 +60,10 @@
             right: 1em;
         }
 
+        @include bp($tablet) {
+            margin-right:2em;
+        }
+
         @include bp($my-large) {
             margin: {
                 left: 2em;
@@ -158,13 +162,16 @@
                 @extend %no-underline;
             }
         }
+
+        @include bp($tablet) {
+            margin-top:2em;
+        }
     }
 
     @include bp($foundation-small, $tablet) {
         border-top: 1px solid $color-secondary;
     }
     @include bp($tablet) {
-        border-left: 1px solid $color-secondary;
         width: auto;
         text-align:left;
     }
