@@ -53,7 +53,7 @@
             </table>
    
             <label for="product_description">Product Description<?php echo required_text('product_description'); ?></label>
-            <textarea name="product_description" class="textarea_text" id="custom_textarea"><?php echo set_value('product_description'); ?></textarea>
+            <textarea name="product_description" class="textarea_text MCE" id="custom_textarea"><?php echo set_value('product_description'); ?></textarea>
             
             <label for="green_friendly_flag">Green Friendly?<?php echo required_text('green_friendly_flag'); ?></label>
             <select name="green_friendly_flag" class="input_dropdown_sort">

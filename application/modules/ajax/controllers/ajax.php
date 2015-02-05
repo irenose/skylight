@@ -52,6 +52,32 @@ class Ajax extends CI_Controller {
 			}
 		}
 	}
+
+	function dropdown() {
+		$action = $_POST['action'];
+		
+		switch($action) {
+				
+			case 'get_subcategories':
+				$page_id = $_POST['page_id'];
+				$selected_category_id = $_POST['selected_category_id'];
+				$page_array = $this->nav_model->get_subnavigation_dropdown($selected_category_id, $page_id);
+				echo '<option value="">Choose a sub-category</option>' . "\n";
+				foreach($page_array as $row) {
+					echo '<option value="' . $row->page_id . '">' . $row->page_title . '</option>' . "\n";
+				}
+				break;
+				
+			case 'get_product_subcategories':
+				$selected_category_id = $_POST['selected_category_id'];
+				$cat_array = $this->admin_model->get_product_subcategories($selected_category_id);
+				echo '<option value="">Choose a sub-category</option>' . "\n";
+				foreach($cat_array as $row) {
+					echo '<option value="' . $row->product_category_id . '">' . $row->product_category_name . '</option>' . "\n";
+				}
+				break;
+		}
+	}
 }
 
 /* End of file ajax.php */
