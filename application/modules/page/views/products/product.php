@@ -42,7 +42,10 @@
 				echo '<h1 class="normal-weight">' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
 				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
 			?>
-			<a href="<?=$installer_base_url?>/contact/product/<?=$product_info_array[0]->product_url?>" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}" class="btn">Learn More</a>
+
+            <?php if( !isset($hide_learn_more) || $hide_learn_more == FALSE) { ?>
+			     <a href="<?=$installer_base_url?>/contact/product/<?=$product_info_array[0]->product_url?>" data-modal-open data-ajax-vars="{\'view\':\'partials/_modal-content\', \'content-type\':\'contact\'}" class="btn">Learn More</a>
+            <?php } ?>
 		</div>
 	</div>
 </section>

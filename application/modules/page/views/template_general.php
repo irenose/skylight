@@ -28,10 +28,6 @@
         --------------------------------*/
     ?>
 
-    <!-- Google Authorship and Publisher Markup --> 
-    <link rel="author" href=" https://plus.google.com/[Google+_Profile]/posts"/>
-    <link rel="publisher" href="https://plus.google.com/[Google+_Page_Profile]"/>
-
     <!-- Schema.org markup for Google+ --> 
     <meta itemprop="name" content="The Name or Title Here"> 
     <meta itemprop="description" content="This is the page description"> 

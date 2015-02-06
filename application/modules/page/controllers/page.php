@@ -84,14 +84,46 @@ class Page extends CI_Controller {
                     //INSTALLER HOMEPAGE
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
-                    $data['meta_array'] = array(
-                        'title' => 'Skylights -SUN TUNNEL skylights - installation - repair',
-                        'description' => '',
-                        'keywords' => ''
-                    );
+                    $data['meta_array'] = $this->meta->get_meta('homepage');
                     $data['page_view'] = 'home/installer';
                 } else {
                     switch($vars_array[2]) {
+                        /*-------------------------------------
+                            301 redirects for old product URLs
+                        -------------------------------------*/
+                        case 'product':
+                            if($vars_size != 4) {
+                                redirect($data['installer_base_url'] . '/products');
+                            } else {
+                                $product_id = $vars_array[3];
+                                $product_array = $this->page_model->get_product_by_id($product_id);
+                                if(count($product_array) > 0) {
+                                    $redirect_url = '/products/' . $product_array[0]->product_url;
+                                    redirect($data['installer_base_url'] . $redirect_url, 'location', 301);
+                                } else {
+                                    redirect($data['installer_base_url'] . '/products', 'location', 301);
+                                }
+                            }
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for old product category URLs
+                        -----------------------------------------------*/
+                        case 'product-category':
+                            if($vars_size != 4) {
+                                redirect($data['installer_base_url'] . '/products');
+                            } else {
+                                $product_category_id = $vars_array[3];
+                                $product_category_array = $this->page_model->get_product_category_by_id($product_category_id);
+                                if(count($product_category_array) > 0) {
+                                    $redirect_url = '/products/category/' . $product_category_array[0]->product_category_url;
+                                    redirect($data['installer_base_url'] . $redirect_url, 'location', 301);
+                                } else {
+                                    redirect($data['installer_base_url'] . '/products', 'location', 301);
+                                }
+                            }
+                            break;
+
                         case 'products':
                             $data['current_section'] = 'products';
                             if ($vars_size == 2) {
@@ -103,11 +135,7 @@ class Page extends CI_Controller {
                                     redirect($data['installer_base_url'] . '/products/category/' . $data['product_category_array'][0]->product_category_url);
                                 }
                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . 'products');
-                                $data['meta_array'] = array(
-                                    'title' => 'Products | Residentail - commercial | VELUX ' . $data['installer_region'],
-                                    'description' => '',
-                                    'keywords' => ''
-                                );
+                                $data['meta_array'] = $this->meta->get_meta('products',$data['installer_region']);
                                 $data['page_view'] = 'products/index';
                             } else {
                                 switch($vars_array[3]) {
@@ -115,11 +143,7 @@ class Page extends CI_Controller {
                                         if ($vars_size == 4) {
                                             $data['product_category_array'] = $this->page_model->get_category_products($data['installer_array'][0]->dealer_id, $vars_array[4], 'active');
                                             if ( count($data['product_category_array']) > 0) {
-                                                $data['meta_array'] = array(
-                                                    'title' => $data['product_category_array']['category']->product_category_name . ' | VELUX ' . $data['installer_region'],
-                                                    'description' => '',
-                                                    'keywords' => ''
-                                                );
+                                                $data['meta_array'] = $this->meta->get_meta('product-category', $data['installer_region'], $data['product_category_array']['category']->product_category_name);
                                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                                 $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
 
@@ -144,11 +168,7 @@ class Page extends CI_Controller {
                                         $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
                                         if (count($data['product_info_array']) > 0) {
                                             $data['product_info_array'][0]->product_subcategory_name = $this->page_model->get_category_name_by_id($data['product_info_array'][0]->primary_category_id);
-                                            $data['meta_array'] = array(
-                                                'title' => $data['product_info_array'][0]->product_name . ' | VELUX ' . $data['installer_region'],
-                                                'description' => '',
-                                                'keywords' => ''
-                                            );
+                                            $data['meta_array'] = $this->meta->get_meta('product',  $data['installer_region'], $data['product_info_array'][0]->product_name);
                                             $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                             $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_category_name, 'url' => $data['installer_base_url'] . '/products/category/' . $data['product_info_array'][0]->product_category_url);
                                             $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_name, 'url' => '');
@@ -173,22 +193,16 @@ class Page extends CI_Controller {
                                 }
                             }
                             break;
+
                         case 'why-skylights':
                             $data['current_section'] = 'why-skylights';
-                            $data['meta_array'] = array(
-                                'title' => 'Why Skylights? | VELUX ' . $data['installer_region'],
-                                'description' => '',
-                                'keywords' => ''
-                            );
+                            $data['meta_array'] = $this->meta->get_meta('why-skylights', $data['installer_region']);
                             $data['page_view'] = 'why_skylights';
                             break;
+
                         case 'installing':
                             $data['current_section'] = 'installing';
-                            $data['meta_array'] = array(
-                                'title' => 'Installing | Skylight installation | VELUX ' . $data['installer_region'],
-                                'description' => '',
-                                'keywords' => ''
-                            );
+                            $data['meta_array'] = $this->meta->get_meta('installing', $data['installer_region']);
                             $data['secondary_nav_array'] = array(
                                 array('label' => 'Overview', 'anchor' => '#overview'),
                                 array('label' => 'What to Expect', 'anchor' => '#what-to-expect'),
@@ -199,47 +213,35 @@ class Page extends CI_Controller {
                             );
                             $data['page_view'] = 'installing';
                             break;
+
                         case 'about':
                             $data['current_section'] = 'about';
                             $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id);
                             $data['gallery_array'] = $this->page_model->get_photos_by_dealer($data['installer_array'][0]->dealer_id);
-                            $data['meta_array'] = array(
-                                'title' => $data['installer_array'][0]->name . ' | About | VELUX ' . $data['installer_region'],
-                                'description' => 'Find a local VELUX certified 5-Star Skylight Specialist. Our installers carry the complete line of VELUX skylights, SUN TUNNEL skylights and accessories.',
-                                'keywords' => 'VELUX, Skylight, Sun Tunnel Skylights, 5-Star Specialist, Green Lighting, Residential Skylights, Commercial Skylights, Deck Mounted Skylights, Curb Mounted Skylights, Pitched Skylight, Skylight Repair, No Leak Promise'
-                            );
+                            $data['meta_array'] = $this->meta->get_meta('about', $data['installer_region'], $data['installer_array'][0]->name);
                             $data['about_dealer_image'] = $this->page_model->get_dealer_about_image($data['installer_array']);
                             $data['page_view'] = 'about';
                             break;
+
                         case 'warranty':
                             $data['current_section'] = 'warranty';
                             $data['warranty_array'] = $this->page_model->get_warranty($data['installer_array'][0]->dealer_id);
                             $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
-                            $data['meta_array'] = array(
-                                'title' => 'Warranty | VELUX Warranty | VELUX ' . $data['installer_region'],
-                                'description' => 'Our VELUX daylighting solutions will keep you dry and comfortable, year after year.',
-                                'keywords' => 'VELUX, Skylight, Sun Tunnel Skylights, 5-Star Specialist, Green Lighting, Residential Skylights, Commercial Skylights, Deck Mounted Skylights, Curb Mounted Skylights, Pitched Skylight, Skylight Repair, No Leak Promise'
-                            );
+                            $data['meta_array'] = $this->meta->get_meta('warranty', $data['installer_region']);
                             $data['page_view'] = 'warranty';
                             break;
+
                         case 'brochures':
                             $data['current_section'] = 'brochures';
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
-                            $data['meta_array'] = array(
-                                'title' => 'Library | VELUX Information | VELUX ' . $data['installer_region'],
-                                'description' => '',
-                                'keywords' => ''
-                            );
+                            $data['meta_array'] = $this->meta->get_meta('brochures', $data['installer_region']);
                             $data['page_view'] = 'brochures';
                             break;
+
                         case 'contact':
                             if($vars_size == 2) {
                                 $data['current_section'] = 'contact';
-                                $data['meta_array'] = array(
-                                    'title' => 'Contact Us | Call or Email | VELUX ' . $data['installer_region'],
-                                    'description' => 'Whether it\'s more convenient to call us, email us, or send us a letter, your questions and comments are very important to us.',
-                                    'keywords' => 'VELUX, Skylight, Sun Tunnel Skylights, 5-Star Specialist, Green Lighting, Residential Skylights, Commercial Skylights, Deck Mounted Skylights, Curb Mounted Skylights, Pitched Skylight, Skylight Repair, No Leak Promise'
-                                );
+                                $data['meta_array'] = $this->meta->get_meta('contact', $data['installer_region']);
 
                                 $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
                                 $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
@@ -448,6 +450,7 @@ class Page extends CI_Controller {
                     redirect('');
                 } else {
                     if ($vars_size == 2) {
+                        $data['meta_array'] = $this->meta->get_meta('catalog-products');
                         $data['product_category_array'] = $this->page_model->get_bv_product_categories();
                         $data['page_view'] = 'products/index';
                     } else {
@@ -456,11 +459,7 @@ class Page extends CI_Controller {
                                 if ($vars_size == 4) {
                                     $data['product_category_array'] = $this->page_model->get_bv_category_products($vars_array[4]);
                                     if ( count($data['product_category_array']) > 0) {
-                                        $data['meta_array'] = array(
-                                            'title' => $data['product_category_array']['category']->product_category_name,
-                                            'description' => '',
-                                            'keywords' => ''
-                                        );
+                                        $data['meta_array'] = $this->meta->get_meta('catalog-category', FALSE, $data['product_category_array']['category']->product_category_name);
                                         $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                         $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
 
@@ -488,11 +487,7 @@ class Page extends CI_Controller {
                                 $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
                                 if (count($data['product_info_array']) > 0) {
                                     $data['product_info_array'][0]->product_subcategory_name = $this->page_model->get_category_name_by_id($data['product_info_array'][0]->primary_category_id);
-                                    $data['meta_array'] = array(
-                                        'title' => $data['product_info_array'][0]->product_name,
-                                        'description' => '',
-                                        'keywords' => ''
-                                    );
+                                    $data['meta_array'] = $this->meta->get_meta('catalog-product', FALSE, $data['product_info_array'][0]->product_name);
                                     $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                     $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_category_name, 'url' => $data['installer_base_url'] . '/products/category/' . $data['product_info_array'][0]->product_category_url);
                                     $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_name, 'url' => '');
@@ -501,8 +496,15 @@ class Page extends CI_Controller {
                                     $product_name = ascii_to_entities($data['product_info_array'][0]->product_name);
                                     $product_name = ($data['product_info_array'][0]->model_number != '') ? $product_name . ' (' . $data['product_info_array'][0]->model_number . ')' : $product_name;
                                     $data['selected_contact_product'] = $product_name;
+                                    $data['hide_learn_more'] = TRUE;
 
-                                    $data['page_view'] = 'products/product';
+                                    if($vars_array[3] == 'blinds') {
+                                        $this->load->library('blinds');
+                                        $data['blinds_array'] = $this->blinds->get_blinds();
+                                        $data['page_view'] = 'products/blinds';
+                                    } else {
+                                        $data['page_view'] = 'products/product';
+                                    }
                                 } else {
                                     redirect('');
                                 }
@@ -524,11 +526,7 @@ class Page extends CI_Controller {
             $template = 'template_general';
             $data['canonical_url'] = base_url();
             $data['category_url'] = 'home';
-            $data['meta_array'] = array(
-                'title' => 'VELUX 5-Star Specialist | Skylights -Sun Tunnels - Installation',
-                'description' => 'Find a local VELUX certified 5-Star Skylight Specialist. Our installers carry the complete line of VELUX skylights, SUN TUNNEL skylights and accessories.',
-                'keywords' => 'VELUX, Skylight, Sun Tunnel Skylights, 5-Star Specialist, Green Lighting, Residential Skylights, Commercial Skylights, Deck Mounted Skylights, Curb Mounted Skylights, Pitched Skylight, Skylight Repair, No Leak Promise'
-            );
+            $data['meta_array'] = $this->meta->get_meta('global');
             $data['show_installer_header_footer'] = FALSE;
             $data['product_category_array'] = $this->page_model->get_bv_product_categories();
 

@@ -193,6 +193,14 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_product_category_by_id($product_category_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
+		$where = array('product_category_id' => $product_category_id, 'product_category_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table,1);
+		return $query->result();
+	}
+
 	function get_category_products($dealer_id, $product_category_url, $status = 'active') {
 		$category_products_array = array();
 
@@ -283,6 +291,14 @@ class Page_model extends CI_Model {
 		$this->db->select($this->config->item('db_table_prefix') . 'products.*, ' . $this->config->item('db_table_prefix') . 'product_categories.product_category_name AS product_category_name, ' . $this->config->item('db_table_prefix') . 'product_categories.product_category_url AS product_category_url', FALSE);
 		$this->db->join($this->config->item('db_table_prefix') . 'product_categories', $this->config->item('db_table_prefix') . 'product_categories.product_category_id = ' . $this->config->item('db_table_prefix') . 'products.product_category_id', 'inner');
 		$where = array($this->config->item('db_table_prefix') . 'products.product_url' => $product_url, $this->config->item('db_table_prefix') . 'products.product_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table,1);
+		return $query->result();
+	}
+
+	function get_product_by_id($product_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'products';
+		$where = array('product_id' => $product_id, 'product_status' => 'active');
 		$this->db->where($where);
 		$query = $this->db->get($db_table,1);
 		return $query->result();
