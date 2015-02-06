@@ -84,7 +84,7 @@ class Page extends CI_Controller {
                     //INSTALLER HOMEPAGE
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
-                    $data['meta_array'] = $this->meta->get_meta('homepage');
+                    $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
                     $data['page_view'] = 'home/installer';
                 } else {
                     switch($vars_array[2]) {
@@ -143,9 +143,11 @@ class Page extends CI_Controller {
                                         if ($vars_size == 4) {
                                             $data['product_category_array'] = $this->page_model->get_category_products($data['installer_array'][0]->dealer_id, $vars_array[4], 'active');
                                             if ( count($data['product_category_array']) > 0) {
-                                                $data['meta_array'] = $this->meta->get_meta('product-category', $data['installer_region'], $data['product_category_array']['category']->product_category_name);
+                                                $data['meta_array'] = $this->meta->get_meta('product-category', $data['installer_region'], $data['product_category_array']['category']->product_category_name, $data['product_category_array']['category']->product_category_id);
                                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                                 $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
+
+                                                $data['canonical_url'] = base_url() . 'catalog/products/category/' . $vars_array[4];
 
                                                 //Only show anchors if more than 1 subcategory
                                                 if (count($data['product_category_array']['subcategory_array']) > 1) {
@@ -178,6 +180,8 @@ class Page extends CI_Controller {
                                             $product_name = ($data['product_info_array'][0]->model_number != '') ? $product_name . ' (' . $data['product_info_array'][0]->model_number . ')' : $product_name;
                                             $data['selected_contact_product'] = $product_name;
 
+                                            $data['canonical_url'] = base_url() . 'catalog/product/' . $vars_array[3];
+
                                             if($vars_array[3] == 'blinds') {
                                                 $this->load->library('blinds');
                                                 $data['blinds_array'] = $this->blinds->get_blinds();
@@ -197,20 +201,14 @@ class Page extends CI_Controller {
                         case 'why-skylights':
                             $data['current_section'] = 'why-skylights';
                             $data['meta_array'] = $this->meta->get_meta('why-skylights', $data['installer_region']);
+                            $data['canonical_url'] = $data['installer_base_url'] . '/why-skylights';
                             $data['page_view'] = 'why_skylights';
                             break;
 
                         case 'installing':
                             $data['current_section'] = 'installing';
                             $data['meta_array'] = $this->meta->get_meta('installing', $data['installer_region']);
-                            $data['secondary_nav_array'] = array(
-                                array('label' => 'Overview', 'anchor' => '#overview'),
-                                array('label' => 'What to Expect', 'anchor' => '#what-to-expect'),
-                                array('label' => 'Skylight Orientation', 'anchor' => '#skylight-orientation'),
-                                array('label' => 'Energy Efficiency', 'anchor' => '#energy-efficiency'),
-                                array('label' => 'Federal Tax Credits', 'anchor' => '#tax-credits'),
-                                array('label' => 'Discover More', 'anchor' => '#discover-more'),
-                            );
+                            $data['canonical_url'] = $data['installer_base_url'] . '/installing';
                             $data['page_view'] = 'installing';
                             break;
 
@@ -220,6 +218,7 @@ class Page extends CI_Controller {
                             $data['gallery_array'] = $this->page_model->get_photos_by_dealer($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = $this->meta->get_meta('about', $data['installer_region'], $data['installer_array'][0]->name);
                             $data['about_dealer_image'] = $this->page_model->get_dealer_about_image($data['installer_array']);
+                            $data['canonical_url'] = $data['installer_base_url'] . '/about';
                             $data['page_view'] = 'about';
                             break;
 
@@ -228,6 +227,7 @@ class Page extends CI_Controller {
                             $data['warranty_array'] = $this->page_model->get_warranty($data['installer_array'][0]->dealer_id);
                             $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                             $data['meta_array'] = $this->meta->get_meta('warranty', $data['installer_region']);
+                            $data['canonical_url'] = $data['installer_base_url'] . '/warranty';
                             $data['page_view'] = 'warranty';
                             break;
 
@@ -235,6 +235,7 @@ class Page extends CI_Controller {
                             $data['current_section'] = 'brochures';
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = $this->meta->get_meta('brochures', $data['installer_region']);
+                            $data['canonical_url'] = $data['installer_base_url'] . '/brochures';
                             $data['page_view'] = 'brochures';
                             break;
 
@@ -242,6 +243,7 @@ class Page extends CI_Controller {
                             if($vars_size == 2) {
                                 $data['current_section'] = 'contact';
                                 $data['meta_array'] = $this->meta->get_meta('contact', $data['installer_region']);
+                                $data['canonical_url'] = $data['installer_base_url'] . '/contact';
 
                                 $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
                                 $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
@@ -330,11 +332,6 @@ class Page extends CI_Controller {
                             if ($data['installer_array'][0]->promotion_page_copy == '') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
-                            $data['meta_array'] = array(
-                                'title' => 'Promotions',
-                                'description' => '',
-                                'keywords' => ''
-                            );
                             $data['page_view'] = 'promotions';
                             break;
                         case 'ps':
@@ -463,6 +460,8 @@ class Page extends CI_Controller {
                                         $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                         $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
 
+                                        $data['canonical_url'] = base_url() . 'catalog/products/category/' . $vars_array[4];
+
                                         //Only show anchors if more than 1 subcategory
                                         if (count($data['product_category_array']['subcategory_array']) > 1) {
                                             foreach($data['product_category_array']['subcategory_array'] as $subcategory) {
@@ -491,6 +490,8 @@ class Page extends CI_Controller {
                                     $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . '/products');
                                     $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_category_name, 'url' => $data['installer_base_url'] . '/products/category/' . $data['product_info_array'][0]->product_category_url);
                                     $data['breadcrumbs_array'][] = array('label' => $data['product_info_array'][0]->product_name, 'url' => '');
+
+                                    $data['canonical_url'] = base_url() . 'catalog/products/' . $vars_array[3];
 
                                     //Set selected product for pre-populating contact form
                                     $product_name = ascii_to_entities($data['product_info_array'][0]->product_name);

@@ -18,7 +18,7 @@ $config['404_header'] = 'We\'re sorry, but the page you\'re looking for can\'t b
 $config['404_message'] = 'Below is the site map for our website. When you find what you\'re looking for, simply click on the link.';
 
 $config['default_meta_array'] = array(
-	'title' => 'Welcome',
+	'title' => 'VELUX 5-Star Specialist | Skylights -Sun Tunnels - Installation',
 	'description' => '',
 	'keywords' => ''
 );
