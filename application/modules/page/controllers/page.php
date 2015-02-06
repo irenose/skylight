@@ -49,6 +49,14 @@ class Page extends CI_Controller {
         $data['show_breadcrumb_modal'] = TRUE;
         $data['canonical_url'] = substr(base_url(),0, strrpos(base_url(),"/"));
 
+        //Define social media params
+        $data['social_meta_array'] = array(
+            'title' => '',
+            'description' => '',
+            'url' => '',
+            'image' => '',
+        );
+
         if ($vars_size > 0) {
             $installer_url = $vars_array[1];
             $data['installer_url'] = $installer_url;
@@ -82,6 +90,15 @@ class Page extends CI_Controller {
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
                     $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
+
+                    //Define social media params
+                    $data['social_meta_array'] = array(
+                        'title' => $data['meta_array']['title'],
+                        'description' => $data['meta_array']['description'],
+                        'url' => $data['canonical_url'],
+                        'image' => site_url('assets/images/welcome/hero.jpg'),
+                    );
+
                     $data['page_view'] = 'home/installer';
 
                 } else {
@@ -200,6 +217,14 @@ class Page extends CI_Controller {
                                 }
                                 $data['breadcrumbs_array'][] = array('label' => 'Our Products', 'url' => $data['installer_base_url'] . 'products');
                                 $data['meta_array'] = $this->meta->get_meta('products',$data['installer_region']);
+                                //Define social media params
+                                $data['social_meta_array'] = array(
+                                    'title' => $data['meta_array']['title'],
+                                    'description' => $data['meta_array']['description'],
+                                    'url' => $data['canonical_url'],
+                                    'image' => site_url('assets/images/categories/residential-skylights.jpg'),
+                                );
+
                                 $data['page_view'] = 'products/index';
                             } else {
                                 switch($vars_array[3]) {
@@ -212,6 +237,25 @@ class Page extends CI_Controller {
                                                 $data['breadcrumbs_array'][] = array('label' => $data['product_category_array']['category']->product_category_name, 'url' => '');
 
                                                 $data['canonical_url'] = base_url() . 'catalog/products/category/' . $vars_array[4];
+
+                                                //Define social media params
+                                                switch($data['product_category_array']['category']->product_category_id) {
+                                                    case 1:
+                                                        $social_image = 'assets/images/carousels/sun-tunnel-products-hero-hallway.jpg';
+                                                        break;
+                                                    case 2:
+                                                        $social_image = 'assets/images/carousels/residential-products-hero-kitchen.jpg';
+                                                        break;
+                                                    case 3:
+                                                        $social_image = 'assets/images/carousels/commercial-products-hero-classroom.jpg';
+                                                        break;
+                                                }
+                                                $data['social_meta_array'] = array(
+                                                    'title' => $data['meta_array']['title'],
+                                                    'description' => $data['meta_array']['description'],
+                                                    'url' => $data['canonical_url'],
+                                                    'image' => site_url($social_image),
+                                                );
 
                                                 //Only show anchors if more than 1 subcategory
                                                 if (count($data['product_category_array']['subcategory_array']) > 1) {
@@ -246,6 +290,16 @@ class Page extends CI_Controller {
 
                                             $data['canonical_url'] = base_url() . 'catalog/product/' . $vars_array[3];
 
+                                            //Define social media params
+                                            $social_image = $data['product_info_array'][0]->product_image . '.' . $data['product_info_array'][0]->extension;
+                                            $data['social_meta_array'] = array(
+                                                'title' => $data['meta_array']['title'],
+                                                'description' => $data['meta_array']['description'],
+                                                'url' => $data['canonical_url'],
+                                                'image' => site_url('content-uploads/product-images/' . $social_image),
+                                            );
+
+
                                             if($vars_array[3] == 'blinds') {
                                                 $this->load->library('blinds');
                                                 $data['blinds_array'] = $this->blinds->get_blinds();
@@ -266,6 +320,13 @@ class Page extends CI_Controller {
                             $data['current_section'] = 'why-skylights';
                             $data['meta_array'] = $this->meta->get_meta('why-skylights', $data['installer_region']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/why-skylights';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'why_skylights';
                             break;
 
@@ -273,6 +334,13 @@ class Page extends CI_Controller {
                             $data['current_section'] = 'installing';
                             $data['meta_array'] = $this->meta->get_meta('installing', $data['installer_region']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/installing';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'installing';
                             break;
 
@@ -283,6 +351,13 @@ class Page extends CI_Controller {
                             $data['meta_array'] = $this->meta->get_meta('about', $data['installer_region'], $data['installer_array'][0]->name);
                             $data['about_dealer_image'] = $this->page_model->get_dealer_about_image($data['installer_array']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/about';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'about';
                             break;
 
@@ -292,6 +367,13 @@ class Page extends CI_Controller {
                             $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
                             $data['meta_array'] = $this->meta->get_meta('warranty', $data['installer_region']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/warranty';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'warranty';
                             break;
 
@@ -300,6 +382,13 @@ class Page extends CI_Controller {
                             $data['brochures_array'] = $this->page_model->get_literature($data['installer_array'][0]->dealer_id);
                             $data['meta_array'] = $this->meta->get_meta('brochures', $data['installer_region']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/brochures';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'brochures';
                             break;
 
@@ -308,6 +397,13 @@ class Page extends CI_Controller {
                                 $data['current_section'] = 'contact';
                                 $data['meta_array'] = $this->meta->get_meta('contact', $data['installer_region']);
                                 $data['canonical_url'] = $data['installer_base_url'] . '/contact';
+                                //Define social media params
+                                $data['social_meta_array'] = array(
+                                    'title' => $data['meta_array']['title'],
+                                    'description' => $data['meta_array']['description'],
+                                    'url' => $data['canonical_url'],
+                                    'image' => site_url('assets/images/welcome/hero.jpg'),
+                                );
 
                                 $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
                                 $this->form_validation->set_rules('phone', 'Phone', 'trim|xss_clean');
@@ -396,11 +492,26 @@ class Page extends CI_Controller {
                             if ($data['installer_array'][0]->promotion_page_copy == '') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
                             $data['page_view'] = 'promotions';
                             break;
                         case 'ps':
                             $data['current_section'] = 'paid-search';
                             $template = 'template_ps';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
+
                             //THANKS PAGE
                             if ($vars_size == 4 && $vars_array[4] == 'thanks') {
                                 $data['page_view'] = 'paidsearch/thanks';
@@ -618,6 +729,14 @@ class Page extends CI_Controller {
             $data['meta_array'] = $this->meta->get_meta('global');
             $data['show_installer_header_footer'] = FALSE;
             $data['product_category_array'] = $this->page_model->get_bv_product_categories();
+
+            //Define social media params
+            $data['social_meta_array'] = array(
+                'title' => $data['meta_array']['title'],
+                'description' => $data['meta_array']['description'],
+                'url' => $data['canonical_url'],
+                'image' => site_url('assets/images/categories/residential-hero.jpg'),
+            );
 
             if ($this->input->post('installer_search') == 'yes') {
                 $data['used_search_form'] = TRUE;
