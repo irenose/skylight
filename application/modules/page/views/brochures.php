@@ -22,7 +22,8 @@
                     echo '</div>' . "\n";
                     echo '<h4 class="brochure__title normal-weight">' . $brochure->name . '</h4>' . "\n";
                     if( file_exists($this->config->item('resources_full_dir') . $brochure->filename . '.' . $brochure->extension)) {
-                        echo '<a href="' . $this->config->item('resources_dir') . $brochure->filename . '.' . $brochure->extension . '" class="cta-text" target="_blank">Download</a>';
+                        $tag_manager_link = "'eventCategory': 'Downloads - Brochures',  'eventAction': 'Click',  'eventLabel': " . $brochure->name . ",  'event': 'Downloads'";
+                        echo '<a href="' . $this->config->item('resources_dir') . $brochure->filename . '.' . $brochure->extension . '" class="cta-text" target="_blank" onclick="dataLayer.push({' . $tag_manager_link . '});">Download</a>';
                     }
                 echo '</div>' . "\n";
             }

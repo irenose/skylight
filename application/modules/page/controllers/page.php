@@ -83,6 +83,7 @@ class Page extends CI_Controller {
                     $data['testimonials_array'] = $this->page_model->get_testimonials_by_dealer($data['installer_array'][0]->dealer_id,1);
                     $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
                     $data['page_view'] = 'home/installer';
+
                 } else {
                     switch($vars_array[2]) {
                         /*-------------------------------------
@@ -172,7 +173,6 @@ class Page extends CI_Controller {
                                         break;
                                 }
                             }
-                            redirect($data['installer_base_url'] . '/brochures', 'location', 301);
                             break;
 
                         /*-----------------------------------------------
