@@ -47,6 +47,7 @@ class Page extends CI_Controller {
         $data['dealer_logo_display'] = '';
         $data['paid_search_page_type'] = 'day';
         $data['show_breadcrumb_modal'] = TRUE;
+        $data['canonical_url'] = substr(base_url(),0, strrpos(base_url(),"/"));
 
         if ($vars_size > 0) {
             $installer_url = $vars_array[1];
@@ -54,32 +55,28 @@ class Page extends CI_Controller {
             $data['current_section'] = ''; // set default
             $data['installer_array'] = $this->page_model->get_installer_array($installer_url);
 
-            //REDIRECT TO MAIN SEARCH IF INSTALLER URL INVALID
-            if (count($data['installer_array']) == 0 && $installer_url != 'catalog') {
-                redirect('');
-            }
-
-            //GET DEFAULT DEALER DISPLAY DATA
-            if ($installer_url != 'catalog') {
-                if ( !isset($_COOKIE['installer_url']) ) {
-                    $domain = $_SERVER['SERVER_NAME'];
-                    setcookie('installer_url', $installer_url, time()+3600, '/', $domain);
-                } else {
-                    unset($_COOKIE['installer_url']);
-                    $domain = $_SERVER['SERVER_NAME'];
-                    setcookie('installer_url', $installer_url, time()+3600, '/', $domain);
-                }
-                //UPDATE WITH INSTALLER URL ADDED
-                $data['installer_base_url'] = base_url() . $installer_url;
-                $data['canonical_url'] = base_url() . $installer_url;
-                $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
-                $data['breadcrumbs_array'][] = array('label' => 'Home', 'url' => $data['installer_base_url']);
-                $data['contact_products_array'] = $this->page_model->get_contact_product_list($data['installer_array'][0]->dealer_id);
-                $data['dealer_logo_display'] = $this->page_model->get_dealer_logo($data['installer_array']);
-                $data['installer_region'] = $data['installer_array'][0]->region != '' ? $data['installer_array'][0]->region : $data['installer_array'][0]->city;
-            }
-
             if (count($data['installer_array']) > 0) {
+
+                //GET DEFAULT DEALER DISPLAY DATA
+                if ($installer_url != 'catalog') {
+                    if ( !isset($_COOKIE['installer_url']) ) {
+                        $domain = $_SERVER['SERVER_NAME'];
+                        setcookie('installer_url', $installer_url, time()+3600, '/', $domain);
+                    } else {
+                        unset($_COOKIE['installer_url']);
+                        $domain = $_SERVER['SERVER_NAME'];
+                        setcookie('installer_url', $installer_url, time()+3600, '/', $domain);
+                    }
+                    //UPDATE WITH INSTALLER URL ADDED
+                    $data['installer_base_url'] = base_url() . $installer_url;
+                    $data['canonical_url'] = base_url() . $installer_url;
+                    $data['product_categories_nav_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
+                    $data['breadcrumbs_array'][] = array('label' => 'Home', 'url' => $data['installer_base_url']);
+                    $data['contact_products_array'] = $this->page_model->get_contact_product_list($data['installer_array'][0]->dealer_id);
+                    $data['dealer_logo_display'] = $this->page_model->get_dealer_logo($data['installer_array']);
+                    $data['installer_region'] = $data['installer_array'][0]->region != '' ? $data['installer_array'][0]->region : $data['installer_array'][0]->city;
+                }
+
                 if ($vars_size == 1) {
                     //INSTALLER HOMEPAGE
                     $data['product_category_array'] = $this->page_model->get_product_categories($data['installer_array'][0]->dealer_id, 'active');
@@ -582,9 +579,34 @@ class Page extends CI_Controller {
                 }
 
             } else {
-                //INSTALLER DOESN'T EXIST
-                echo 'No Dealer';
-                exit;
+                /*-----------------------
+                    Not an Active URL
+                    Check if former installer
+                ------------------------*/
+                $data['former_installer'] = FALSE;
+                $data['bad_installer_url'] = TRUE;
+                $data['show_map_results'] = FALSE;
+                $data['show_installer_header_footer'] = FALSE;
+                $template = 'template_general';
+                $data['used_search_form'] = FALSE;
+
+                $former_installer_array = $this->page_model->get_former_installer($data['installer_url']);
+
+                if(count($former_installer_array) > 0) {
+                    $data['former_installer'] = TRUE;
+                    $data['search_zip_code'] = htmlentities($former_installer_array[0]->zip, ENT_QUOTES, "UTF-8");
+                    $installer_zip = $former_installer_array[0]->zip;
+                    $data['installer_search_array'] = $this->page_model->get_closest_installers($installer_zip);
+                    if(count($data['installer_search_array']) > 0) {
+                        $data['show_map_results'] = TRUE;
+                    }
+                    $data['page_view'] = 'home/results';
+                } else {
+                    $data['search_zip_code'] = '';
+                    $data['installer_search_array'] = array();
+                }
+
+                $data['page_view'] = 'home/results';
             }
         } else {
             /*-----------------------
@@ -592,15 +614,18 @@ class Page extends CI_Controller {
                 Search for Installer
             ------------------------*/
             $template = 'template_general';
-            $data['canonical_url'] = base_url();
             $data['category_url'] = 'home';
             $data['meta_array'] = $this->meta->get_meta('global');
             $data['show_installer_header_footer'] = FALSE;
             $data['product_category_array'] = $this->page_model->get_bv_product_categories();
 
             if ($this->input->post('installer_search') == 'yes') {
+                $data['used_search_form'] = TRUE;
                 $data['search_zip_code'] = htmlentities($this->input->post('zip'),ENT_QUOTES, "UTF-8");
                 $data['installer_search_array'] = $this->page_model->get_closest_installers($data['search_zip_code']);
+                if(count($data['installer_search_array']) > 0) {
+                    $data['show_map_results'] = TRUE;
+                }
                 $data['page_view'] = 'home/results';
             } else {
                 $data['page_view'] = 'home/search';

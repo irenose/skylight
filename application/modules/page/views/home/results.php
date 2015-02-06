@@ -1,42 +1,39 @@
-<?php
-	/*
-	if( isset($installer_search_array) && count($installer_search_array) > 0) {
-		$total_results_label = count($installer_search_array) == 1 ? 'is 1 installer' : 'are ' . count($installer_search_array) . ' installers';
-		echo '<h2>There ' . $total_results_label . ' near ' . $search_zip_code . '</h2>';
+<?php if( isset($used_search_form) && $used_search_form == TRUE && count($installer_search_array) == 0) { ?>
+	<section id="installer-search" class="page-row page-row--tall reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
+		<?php
+			$data['cta_type'] = 'long';
+	    	$data['no_results_message'] = TRUE;
+	    	echo $this->load->view('partials/_find-installer', $data);
+		?>
+	</section>
+<?php } else if( isset($bad_installer_url) && $bad_installer_url == TRUE) { ?>
+	<section id="installer-search" class="page-row page-row--tall reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
+		<?php
+			$data['cta_type'] = 'long';
+			$data['bad_installer_message'] = TRUE;
+			if(isset($former_installer) && $former_installer == TRUE) {
+				$data['former_installer_message'] = TRUE;
+			}
+		    echo $this->load->view('partials/_find-installer', $data);
+		?>
+	</section>
+<?php } ?>
 
-		foreach($installer_search_array as $installer) {
-			echo $installer->name . '<br>' . $installer->address . '<br>' . $installer->city . ', ' . $installer->state . ' ' . $installer->zip . '<br>';
-			echo '<a href="' . base_url() . $installer->dealer_url . '">View Microsite</a><br><br>';
-		}
-	} else {
-		echo 'There are no installers in your area.';
-	}
-	*/
-?>
-<section>
-    <div class="page-row reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
-        <header class="centered">
-            <h2 class="locator__heading normal-weight">
-                There are <span class="color-primary"><?=count($installer_search_array);?></span> Installers near <?=$search_zip_code?>
-                <a href="<?=site_url()?>#installer-search" class="locator__heading__link">
-                    Change Location
-                </a>
-            </h2>
-        </header>
-    </div>
-    <?php
-    	if(count($installer_search_array) == 0) {
-    		echo '<div class="page-row">';
-	    		echo '<div class="cta-find-installer">';
-	        		echo '<header class="centered">';
-	        			echo '<p class="squeezed-3 cta__text">Unfortunately, there were no installers that matched your search criteria</p>';
-	        			echo '<a class="cta upper" href="/">Try Again</a>';
-	        		echo '</header>';
-	        	echo '</div>';
-        	echo '</div>';
-    		//echo $this->load->view('partials/_find-installer', $data);
-    	} else {
-    ?>
+	<section>
+		<?php if( isset($used_search_form) && $used_search_form == TRUE && count($installer_search_array) > 0) { ?>
+		    <div class="page-row reversed" data-wallpaper='{"file":"us-map", "ext":"png"}'>
+		        <header class="centered">
+		            <h2 class="locator__heading normal-weight">
+		                There are <span class="color-primary"><?=count($installer_search_array);?></span> Installers near <?=$search_zip_code?>
+		                <a href="/" class="locator__heading__link">
+		                    Change Location
+		                </a>
+		            </h2>
+		        </header>
+		    </div>
+		<?php } ?>
+
+		<?php if(isset($show_map_results) && $show_map_results == TRUE) { ?>
 		    <script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
 		    <div class="bg-zircon" data-module="tabs">
 		        <div class="thin-strip reversed">
@@ -109,7 +106,7 @@
 		            </div>
 		        </div>
 		    </div>
-    <?php } ?>
+		<?php } ?>
 </section>
 
 <?=$this->load->view('partials/_footer--search.php');?>

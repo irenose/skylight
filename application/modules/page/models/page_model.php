@@ -65,6 +65,15 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function get_former_installer($dealer_url) {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$where = "dealer_url = '$dealer_url' AND (dealer_status = 'inactive' OR dealer_status = 'delete' OR site_status = 'inactive')";
+		//$where = array('dealer_url' => $dealer_url, 'dealer_status' => $dealer_status, 'site_status' => 'active');
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+
 	function get_dealer_by_id($dealer_id, $dealer_status = 'active') {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$where = array('dealer_id' => $dealer_id, 'dealer_status' => $dealer_status, 'site_status' => 'active');

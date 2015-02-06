@@ -42,7 +42,21 @@
                 <span class="br">When why turns to how,</span> contact an installer.
             </h2>
             <p class="squeezed-3 cta__text">
-                So you’ve decided which room in your home needs a skylight. Now you need to find somebody to install it. Enter your zip code below to find the closest installers.
+                <?php
+                    if( isset($bad_installer_message) && $bad_installer_message == TRUE) {
+                        if( isset($former_installer_message) && $former_installer_message == TRUE) {
+                            echo 'We are unable to find the installer you are looking for. Check out the search results below or enter your zip code to find the closest installers.';
+                        } else {
+                            echo 'We are unable to find the installer you are looking for. Enter your zip code below to find the closest installers.';
+                        }
+                    } else {
+                        if( isset($no_results_message) && $no_results_message == TRUE) {
+                            echo 'Unfortunately, there were no installers that matched your search criteria';
+                        } else {
+                            echo 'So you\'ve decided which room in your home needs a skylight. Now you need to find somebody to install it. Enter your zip code below to find the closest installers.';
+                        }
+                    }
+                ?>
             </p>
         </header>
         <form action="" method="post" class="centered">
