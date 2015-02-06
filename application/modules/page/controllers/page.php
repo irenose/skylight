@@ -38,6 +38,14 @@ class Page extends CI_Controller {
         // Enter url_page_names into array if they require a different view file or custom functionality
         $custom_page_array = array();
 
+        $data['hidden_dealers_array'] = array('demo');
+        $data['hidden_page_array'] = array(
+            'promotions',
+            'why-skylights',
+            'installing',
+            'brochures'
+        );
+
         //Define site vars
         $data['show_installer_header_footer'] = TRUE;
         $data['installer_base_url'] = base_url();

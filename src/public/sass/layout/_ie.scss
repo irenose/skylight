@@ -121,6 +121,9 @@
    .nav-footer__container {
         text-align:center !important;
    }
+   .slick-dots {
+        z-index:900;
+   }
 }
 .ie9 {
     .hero {
