@@ -92,9 +92,9 @@ class Page extends CI_Controller {
                             301 redirects for old product URLs
                         -------------------------------------*/
                         case 'product':
-                            if($vars_size != 4) {
-                                redirect($data['installer_base_url'] . '/products');
-                            } else {
+                            if($vars_size == 3 && $vars_array[3] == 'blinds') {
+                                redirect($data['installer_base_url'] . '/products/blinds');
+                            } else if($vars_size == 4) {
                                 $product_id = $vars_array[3];
                                 $product_array = $this->page_model->get_product_by_id($product_id);
                                 if(count($product_array) > 0) {
@@ -103,6 +103,8 @@ class Page extends CI_Controller {
                                 } else {
                                     redirect($data['installer_base_url'] . '/products', 'location', 301);
                                 }
+                            } else {
+                                redirect($data['installer_base_url'] . '/products');
                             }
                             break;
 
@@ -122,6 +124,71 @@ class Page extends CI_Controller {
                                     redirect($data['installer_base_url'] . '/products', 'location', 301);
                                 }
                             }
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for reviews
+                        -----------------------------------------------*/
+                        case 'reviews':
+                            redirect($data['installer_base_url'] . '/about#testimonials', 'location', 301);
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for replacement
+                        -----------------------------------------------*/
+                        case 'replacement':
+                            redirect($data['installer_base_url'] . '/installing', 'location', 301);
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for about-us
+                        -----------------------------------------------*/
+                        case 'about-us':
+                            redirect($data['installer_base_url'] . '/about', 'location', 301);
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for literature
+                        -----------------------------------------------*/
+                        case 'literature':
+                            redirect($data['installer_base_url'] . '/brochures', 'location', 301);
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for literature
+                        -----------------------------------------------*/
+                        case 'daylight-inspiration':
+                            if($vars_size == 2) {
+                                redirect($data['installer_base_url'] . '/why-skylights', 'location', 301);
+                            } else {
+                                switch($vars_array[3]) {
+                                    case 'photo-gallery':
+                                    case 'remodeling':
+                                        redirect($data['installer_base_url'], 'location', 301);
+                                        break;
+                                    case 'benefits-of-daylight':
+                                    case 'going-green':
+                                        redirect($data['installer_base_url'] . '/why-skylights', 'location', 301);
+                                        break;
+                                    case 'about-velux':
+                                        redirect($data['installer_base_url'] . '/about', 'location', 301);
+                                        break;
+                                }
+                            }
+                            redirect($data['installer_base_url'] . '/brochures', 'location', 301);
+                            break;
+
+                        /*-----------------------------------------------
+                            301 redirects for literature
+                        -----------------------------------------------*/
+                        case 'skylight-planner':
+                            //redirect($data['installer_base_url'], 'location', 301);
+                            $data['display_saved_image'] = FALSE;
+                            if(count($vars_array) == 5) {
+                                $data['display_saved_image'] = TRUE;
+                                $data['image_var'] = $vars_array[5];
+                            }
+                            $data['page_view'] = 'skylight_planner';
                             break;
 
                         case 'products':

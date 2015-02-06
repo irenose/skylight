@@ -99,6 +99,7 @@
     @extend %centered;
     @extend %inline-block;
     height: $icon;
+    cursor:pointer;
     line-height: 1;
     padding: 16px 0 14px;
     position: absolute;
