@@ -6,6 +6,7 @@
 	$this->session->set_userdata('change_password', $user_array['change_password']);
 	$this->session->set_userdata('super_admin', $user_array['super_admin']);
 	$this->session->set_userdata('redirected_from', $user_array['redirected_from']);
+	$this->session->set_userdata('dealer_id', $user_array['dealer_id']);
 	
 	$_SESSION['admin_username'] = $user_array['admin_username'];
 	$_SESSION['uid'] = $user_array['uid'];
@@ -14,6 +15,7 @@
 	$_SESSION['change_password'] = $user_array['change_password'];
 	$_SESSION['super_admin'] = $user_array['super_admin'];
 	$_SESSION['redirected_from'] = $user_array['redirected_from'];
+	$_SESSION['dealer_id'] = $user_array['dealer_id'];
 
 	if($user_array['permission_level'] < 2) {
 		redirect('/admin/home');

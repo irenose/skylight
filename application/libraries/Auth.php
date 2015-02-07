@@ -39,7 +39,8 @@ class Auth {
 				'first_name' => 'Wray Ward Admin',
 				'change_password' => 'no',
 				'redirected_from' => $redirected_from,
-				'super_admin' => 'yes'				
+				'super_admin' => 'yes',
+				'dealer_id' => 0			
 			);
 			return $user_array;
 
@@ -65,7 +66,8 @@ class Auth {
 							'first_name' =>  $user_array[0]->first_name,
 							'change_password' => $user_array[0]->change_password,
 							'redirected_from' => $redirected_from,
-							'super_admin' => $super_admin		
+							'super_admin' => $super_admin,	
+							'dealer_id' => $user_array[0]->dealer_id
 						); 
 						return $new_user_array;
 					} else {
@@ -80,7 +82,7 @@ class Auth {
 								exit;
 							}
 						}
-						
+
 						$super_admin = 'no';
 						$new_user_array = array(
 							'admin_username' => $username,
@@ -89,7 +91,8 @@ class Auth {
 							'first_name' =>  $user_array[0]->first_name,
 							'change_password' => $user_array[0]->change_password,
 							'redirected_from' => $redirected_from,
-							'super_admin' => $super_admin		
+							'super_admin' => $super_admin,
+							'dealer_id' => $user_array[0]->dealer_id		
 						); 
 						return $new_user_array;
 					}
@@ -130,7 +133,8 @@ class Auth {
 								'change_password' => $user_array[0]->change_password,
 								'redirected_from' => $redirected_from,
 								'super_admin' => $super_admin,
-								'active_sites' => $active_sites_array		
+								'active_sites' => $active_sites_array,
+								'dealer_id' => ''		
 							);
 							return $new_user_array;
 						}
