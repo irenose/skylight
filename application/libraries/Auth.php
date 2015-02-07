@@ -55,32 +55,44 @@ class Auth {
 					$user_array = $query->result();
 					// Our user exists, set session.
 
-					if($verify_dealer === TRUE) {
-						$db_table = $this->CI->config->item('db_table_prefix') . 'dealers';
-						$where = array('dealer_id' => $user_array[0]->dealer_id, 'dealer_status' => 'active');
-						$this->CI->db->where($where);
-						$dealer_query = $this->CI->db->get($db_table);
-						if($dealer_query->num_rows() == 0) {
-							return FALSE;
-							exit;
-						}
-					}
-
+					//Super-admin. Bypass "verification of active sites"
 					if( $user_array[0]->permission_level < 2) {
 						$super_admin = 'yes';
+						$new_user_array = array(
+							'admin_username' => $username,
+							'uid' => $user_array[0]->user_id,
+							'permission_level' => $user_array[0]->permission_level,
+							'first_name' =>  $user_array[0]->first_name,
+							'change_password' => $user_array[0]->change_password,
+							'redirected_from' => $redirected_from,
+							'super_admin' => $super_admin		
+						); 
+						return $new_user_array;
 					} else {
+
+						if($verify_dealer === TRUE) {
+							$db_table = $this->CI->config->item('db_table_prefix') . 'dealers';
+							$where = array('dealer_id' => $user_array[0]->dealer_id, 'dealer_status' => 'active');
+							$this->CI->db->where($where);
+							$dealer_query = $this->CI->db->get($db_table);
+							if($dealer_query->num_rows() == 0) {
+								return FALSE;
+								exit;
+							}
+						}
+						
 						$super_admin = 'no';
+						$new_user_array = array(
+							'admin_username' => $username,
+							'uid' => $user_array[0]->user_id,
+							'permission_level' => $user_array[0]->permission_level,
+							'first_name' =>  $user_array[0]->first_name,
+							'change_password' => $user_array[0]->change_password,
+							'redirected_from' => $redirected_from,
+							'super_admin' => $super_admin		
+						); 
+						return $new_user_array;
 					}
-					$new_user_array = array(
-						'admin_username' => $username,
-						'uid' => $user_array[0]->user_id,
-						'permission_level' => $user_array[0]->permission_level,
-						'first_name' =>  $user_array[0]->first_name,
-						'change_password' => $user_array[0]->change_password,
-						'redirected_from' => $redirected_from,
-						'super_admin' => $super_admin		
-					); 
-					return $new_user_array;
 					
 				} else if($query->num_rows() > 1) {
 
