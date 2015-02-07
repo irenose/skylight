@@ -154,6 +154,36 @@ class Installer_admin extends CI_Controller {
 	}
 
 /*****************************************************************************************************************************************
+/*	PROFILE Page
+/*	Controls the updating of ones password for the admin section when they are already logged in
+/*	Note: This is different that the Forgotten Password Reset/Retrieval as well as the ADMIN USER reset password
+/****************************************************************************************************************************************/
+
+	function profile($action, $user_id) {
+		$this->auth->restrict(FALSE, '3');
+		
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[password_confirm]');
+		$this->form_validation->set_rules('password_confirm', 'Password Confirm', 'trim|required|xss_clean');
+		$data['user_id'] = $user_id;
+		$data['user_data_array'] = $this->installer_admin_model->get_user_by_id($user_id);
+		
+		if ($this->form_validation->run() == FALSE) {
+			$data['page_title'] = 'Users - Update Password';
+			$data['page_content'] = 'admin_profile_password';
+		} else {
+			$update = $this->admin_model->update_user_password($_POST);
+			if($update) {
+				$this->session->set_flashdata('status_message','<div class="success">Password has been updated successfully</div>');
+				redirect('/installer-admin/profile/update-password/' . $user_id);
+			} else {
+				$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this user. Please try again.</p></div>');
+				redirect('/installer-admin/profile/update-password/' . $user_id);
+			}
+		}
+		$this->load->view('admin_template', $data);
+	}
+
+/*****************************************************************************************************************************************
 /*	SITE STATUS
 /****************************************************************************************************************************************/	
 	function status($action) {

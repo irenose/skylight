@@ -131,6 +131,39 @@ class Installer_admin_model extends CI_Model {
 		return $query->result();	
 	}
 
+	function get_user_by_id($user_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		
+		$where = array('user_id' => $user_id);
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		return $query->result();
+	}
+	
+	function get_user_by_email($email, $limit = 1) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		
+		$where = array('username' => $email);
+		$this->db->where($where);
+		if($limit == 'all') {
+			$query = $this->db->get($db_table);
+		} else {
+			$query = $this->db->get($db_table, 1);
+		}
+		return $query->result();
+	}
+	
+	function get_user_email($user_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		$this->db->select('username');
+		$where = array('user_id' => $user_id);
+		$this->db->where($where);
+		$query = $this->db->get($db_table, 1);
+		foreach($query->result() as $row) {
+			return $row->username;
+		}
+	}
+
 /***********************************************************************************************************************************
 /*		ADD FUNCTIONS
 ************************************************************************************************************************************/
