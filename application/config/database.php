@@ -80,9 +80,9 @@ if (defined('ENVIRONMENT'))
 $active_record = TRUE;
 
 $db['production']['hostname'] = 'localhost';
-$db['production']['username'] = '';
-$db['production']['password'] = '';
-$db['production']['database'] = '';
+$db['production']['username'] = 'skylightspec';
+$db['production']['password'] = 's%yH#x7Kp2';
+$db['production']['database'] = 'skylightspecialist';
 $db['production']['dbdriver'] = 'mysql';
 $db['production']['dbprefix'] = '';
 $db['production']['pconnect'] = TRUE;
