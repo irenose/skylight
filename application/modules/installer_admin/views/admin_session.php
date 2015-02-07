@@ -14,12 +14,24 @@
 	$_SESSION['change_password'] = $user_array['change_password'];
 	$_SESSION['super_admin'] = $user_array['super_admin'];
 	$_SESSION['redirected_from'] = $user_array['redirected_from'];
-	
-	if($user_array['change_password'] == 'yes') {
-		redirect('/admin/password/update/' . $user_array['uid']);
-	} else if($user_array['redirected_from'] != '') {
-		$_SESSION['redirected_from'] = '';
-		redirect($user_array['redirected_from']);
-	} else {
+
+	if($user_array['permission_level'] < 2) {
 		redirect('/admin/home');
+	} else {
+		if(array_key_exists('active_sites', $user_array)) {
+			$data['active_sites_array'] = $user_array['active_sites'];
+			$data['page_content'] = 'admin_login_choose';
+			$this->load->view('admin_template', $data);
+
+		} else {
+		
+			if($user_array['change_password'] == 'yes') {
+				redirect('/installer-admin/password/update/' . $user_array['uid']);
+			} else if($user_array['redirected_from'] != '') {
+				$_SESSION['redirected_from'] = '';
+				redirect($user_array['redirected_from']);
+			} else {
+				redirect('/installer-admin/home');
+			}
+		}
 	}

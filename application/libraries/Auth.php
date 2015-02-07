@@ -11,7 +11,7 @@ class Auth {
 		$this->CI->load->helper('url');
 	}
 
-	function process_login($login = NULL, $admin_session = FALSE, $redirected_from = '') {
+	function process_login($login = NULL, $verify_dealer = FALSE, $redirected_from = '') {
 		// A few safety checks
 		// Our array has to be set
 		if(!isset($login)) {
@@ -32,27 +32,15 @@ class Auth {
 		
 		//Check to see if Wray Ward Admin User
 		if($username == 'gparish@wrayward.com' && $password == 'toast') {
-			if($admin_session) {
-				$user_array = array(
-					'admin_username' => 'gparish@wrayward.com',
-					'uid' => '99999',
-					'permission_level' => '0',
-					'first_name' => 'Wray Ward Admin',
-					'change_password' => 'no',
-					'redirected_from' => $redirected_from,
-					'super_admin' => 'yes'				
-				);
-
-			} else {
-				$user_array = array(
-					'username' => 'gparish@wrayward.com',
-					'uid' => '99999',
-					'permission_level' => '0',
-					'first_name' => 'Wray Ward Admin',
-					'change_password' => 'no',
-					'redirected_from' => $redirected_from,			
-				);
-			}
+			$user_array = array(
+				'admin_username' => 'gparish@wrayward.com',
+				'uid' => '99999',
+				'permission_level' => '0',
+				'first_name' => 'Wray Ward Admin',
+				'change_password' => 'no',
+				'redirected_from' => $redirected_from,
+				'super_admin' => 'yes'				
+			);
 			return $user_array;
 
 		} else {
@@ -67,33 +55,74 @@ class Auth {
 					$user_array = $query->result();
 					// Our user exists, set session.
 
-					if($admin_session) {
-						if( $user_array[0]->permission_level < 2) {
-							$super_admin = 'yes';
-						} else {
-							$super_admin = 'no';
+					if($verify_dealer === TRUE) {
+						$db_table = $this->CI->config->item('db_table_prefix') . 'dealers';
+						$where = array('dealer_id' => $user_array[0]->dealer_id, 'dealer_status' => 'active');
+						$this->CI->db->where($where);
+						$dealer_query = $this->CI->db->get($db_table);
+						if($dealer_query->num_rows() == 0) {
+							return FALSE;
+							exit;
 						}
-						$new_user_array = array(
-							'admin_username' => $username,
-							'uid' => $user_array[0]->user_id,
-							'permission_level' => $user_array[0]->permission_level,
-							'first_name' =>  $user_array[0]->first_name,
-							'change_password' => $user_array[0]->change_password,
-							'redirected_from' => $redirected_from,
-							'super_admin' => $super_admin		
-						);
-					} else {
-						$new_user_array = array(
-							'username' => $username,
-							'uid' => $user_array[0]->user_id,
-							'permission_level' => $user_array[0]->permission_level,
-							'first_name' =>  $user_array[0]->first_name,
-							'change_password' => $user_array[0]->change_password,
-							'redirected_from' => $redirected_from	
-						);
 					}
+
+					if( $user_array[0]->permission_level < 2) {
+						$super_admin = 'yes';
+					} else {
+						$super_admin = 'no';
+					}
+					$new_user_array = array(
+						'admin_username' => $username,
+						'uid' => $user_array[0]->user_id,
+						'permission_level' => $user_array[0]->permission_level,
+						'first_name' =>  $user_array[0]->first_name,
+						'change_password' => $user_array[0]->change_password,
+						'redirected_from' => $redirected_from,
+						'super_admin' => $super_admin		
+					); 
 					return $new_user_array;
 					
+				} else if($query->num_rows() > 1) {
+
+					$user_array = $query->result();
+
+					//Installer has multiple sites
+					$active_sites_array = array();
+
+					if($verify_dealer === TRUE) {
+						foreach($user_array as $user) {
+							$db_table = $this->CI->config->item('db_table_prefix') . 'dealers';
+							$where = array('dealer_id' => $user->dealer_id, 'dealer_status' => 'active');
+							$this->CI->db->where($where);
+							$dealer_query = $this->CI->db->get($db_table);
+							if($dealer_query->num_rows() > 0) {
+								$dealer = $dealer_query->result();
+								$active_sites_array[] = array('dealer_id' => $user->dealer_id, 'name' => $dealer[0]->name, 'city' => $dealer[0]->city);
+							}
+						}
+
+						if(count($active_sites_array) == 0) {
+							return FALSE;
+						} else {
+
+							if( $user_array[0]->permission_level < 2) {
+								$super_admin = 'yes';
+							} else {
+								$super_admin = 'no';
+							}
+							$new_user_array = array(
+								'admin_username' => $username,
+								'uid' => $user_array[0]->user_id,
+								'permission_level' => $user_array[0]->permission_level,
+								'first_name' =>  $user_array[0]->first_name,
+								'change_password' => $user_array[0]->change_password,
+								'redirected_from' => $redirected_from,
+								'super_admin' => $super_admin,
+								'active_sites' => $active_sites_array		
+							);
+							return $new_user_array;
+						}
+					}
 				} else {
 					// No existing user.
 					return FALSE;

@@ -39,7 +39,7 @@ class Admin extends CI_Controller {
 			{
 				$username = htmlspecialchars($this->input->post('username'), ENT_QUOTES, 'UTF-8');
 				$login = array($username, $this->input->post('password'));
-				$data['user_array'] = $this->auth->process_login($login, TRUE, $data['redirected_from']);
+				$data['user_array'] = $this->auth->process_login($login, FALSE, $data['redirected_from']);
 				if($data['user_array'] != FALSE) {
 					$this->load->view('admin_session', $data);
 				} else {
