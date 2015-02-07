@@ -11,7 +11,7 @@ $config['admin_results_per_page'] = 20;
 /********************************************************************
 SALT IS ADDED TO PASSWORDS FOR THE HASH ON THE ADMIN INSTALLATION. YOU CAN CHANGE IT HERE DURING INSTALLATION, BUT IF YOU CHANGE IT AT ANY OTHER POINT, IT WILL INVALIDATE ANY PREVIOUS PASSWORDS
 ***********************************************************************/
-/* DO NOT CHANGE ONCE SET!!  */  $config['salt'] = '@D8j77sadf^9021x&&10s3kxP!^db$';  //DO NOT CHANGE ONCE SET!!
+/* DO NOT CHANGE ONCE SET!!  */  $config['salt'] = '@D8j3kxP!$';  //DO NOT CHANGE ONCE SET!!
 /******* DID I MENTION NOT TO CHANGE THE SALT ONCE ITS SET?? *******************************/
 
 $config['404_header'] = 'We\'re sorry, but the page you\'re looking for can\'t be found.';
