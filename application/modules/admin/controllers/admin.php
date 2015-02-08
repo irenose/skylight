@@ -1385,7 +1385,7 @@ class Admin extends CI_Controller {
 					if($delete) {
 						/************************ UPDATE SITEMAP ******************************/
 						$this->admin_model->generate_sitemap();
-						
+
 						$this->session->set_flashdata('status_message','<div class="success">Your product has been deleted successfully.</div>');
 						redirect('admin/products');
 					}  else {
