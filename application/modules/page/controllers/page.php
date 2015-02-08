@@ -513,6 +513,7 @@ class Page extends CI_Controller {
                         case 'ps':
                             $data['current_section'] = 'paid-search';
                             $template = 'template_ps';
+                            $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
                             //Define social media params
                             $data['social_meta_array'] = array(
                                 'title' => $data['meta_array']['title'],

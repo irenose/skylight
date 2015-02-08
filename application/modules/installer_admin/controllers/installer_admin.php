@@ -864,7 +864,8 @@ class Installer_admin extends CI_Controller {
 		if($action == NULL) {
 			$data['page_content'] = 'admin_contact';
 		} else {
-			$report_file = $this->installer_admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'), $this->input->post('dealer_id'));
+			$this->load->model('admin/admin_model');
+			$report_file = $this->admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'), $this->input->post('dealer_id'));
 			if($report_file !== FALSE) {
 				$this->load->helper('download');
 				$data = file_get_contents($this->config->item('contact_reports_full_dir') . $report_file);

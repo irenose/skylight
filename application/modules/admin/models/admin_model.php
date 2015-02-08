@@ -58,9 +58,13 @@ class Admin_model extends CI_Model {
 		CONTACT MODULE FUNCTIONS
 ***********************************************************************************************************************************/
 
-	function get_contact_requests($start_date, $end_date) {
+	function get_contact_requests($start_date, $end_date, $dealer_id = FALSE) {
 		$db_table = $this->config->item('db_table_prefix') . 'contact';
-		$where = array('insert_date >=' => $start_date, 'insert_date <=' => $end_date);
+		if($dealer_id != FALSE) {
+			$where = array('insert_date >=' => $start_date, 'insert_date <=' => $end_date, 'dealer_id' => $dealer_id);
+		} else {
+			$where = array('insert_date >=' => $start_date, 'insert_date <=' => $end_date);
+		}
 		$this->db->where($where);
 		$this->db->order_by('insert_date ASC');
 		$query = $this->db->get($db_table);
@@ -2407,6 +2411,48 @@ class Admin_model extends CI_Model {
 			return false;
 		}	
 		
+	}
+
+	function run_contact_report($start_date = '', $end_date = '', $dealer_id = FALSE) {
+
+		if(strlen($start_date) != 10) {
+			$formatted_start_date = date('Y-m-d',time()) . ' 00:00:00';
+		} else {
+			$formatted_start_date = format_date($start_date, 'DB_FULL_START');
+
+		}
+		
+		if(strlen($end_date) != 10) {
+			$formatted_end_date = date('Y-m-d',time()) . ' 23:59:59';
+		} else {
+			$formatted_end_date = format_date($end_date, 'DB_FULL_END');
+		}
+		
+		$contact_array = $this->get_contact_requests($formatted_start_date, $formatted_end_date, $dealer_id);
+		
+		$filename = "contact-" . time() . ".txt";
+		$file = fopen($this->config->item('contact_reports_full_dir') . $filename, "w+");
+		
+		$string = "Installer\tContact Type\tName\tPhone\tEmail\tAddress\tCity\tState\tZIP\tSubject\tComments\tPaid Search URL\tPaid Search Page Type\tInsert Date\n";
+		
+		foreach($contact_array as $contact) {
+			$comments = $contact->comments;
+			$comments = str_replace("\n","",$comments);
+			$comments = str_replace("\r","",$comments);
+			
+			$dealer_array = $this->get_dealer_by_id($contact->dealer_id);
+			
+			if(count($dealer_array) > 0) {
+			
+				$string .= $dealer_array[0]->name . "\t" . $contact->contact_type . "\t" . $contact->name . "\t" . $contact->phone . "\t" . $contact->email . "\t" . $contact->address . "\t" . $contact->city . "\t" . $contact->state . "\t" . $contact->zip . "\t" . $contact->subject . "\t" . $comments . "\t" . $contact->paid_search_url . "\t" . $contact->paid_search_page_type . "\t" . $contact->insert_date . "\n";
+				
+			}
+			
+		}
+		fwrite($file,$string);
+		fclose($file);
+		return $filename;
+			
 	}
 }
 	

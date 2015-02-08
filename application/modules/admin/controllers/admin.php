@@ -1010,7 +1010,7 @@ class Admin extends CI_Controller {
 			$report_file = $this->admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'));
 			if($report_file !== FALSE) {
 				$this->load->helper('download');
-				$data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/_assets/reports/' . $report_file);
+				$data = file_get_contents($this->config->item('contact_reports_full_dir') . $report_file);
 				$name = $report_file;
 				force_download($name, $data);
 			} else {
