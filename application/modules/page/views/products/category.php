@@ -88,39 +88,41 @@
     	foreach($product_category_array['subcategory_array'] as $subcategory) {
     		//Only display if it has products
     		if(count($subcategory->subcategory_products) > 0) {
-	    		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
-	    		echo '<section class="page-row page-row--category border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
-		    		echo '<header class="header-statement">' . "\n";
-						echo '<h2 class="upper normal-weight">' . $subcategory->subcategory_name . '</h2>' . "\n";
-					echo '</header>' . "\n";
-					echo '<div class="row product-row">' . "\n";
-						$count = 0;
-						$product_count = count($subcategory->subcategory_products);
+                if($subcategory->subcategory_id != '18' || ($subcategory->subcategory_id == 18 && $installer_array[0]->sells_vms == 'yes')) {
+    	    		$section_id = url_title($subcategory->subcategory_name,'dash',TRUE);
+    	    		echo '<section class="page-row page-row--category border-top-grey product-row-container" id="' . $section_id . '">' . "\n";
+    		    		echo '<header class="header-statement">' . "\n";
+    						echo '<h2 class="upper normal-weight">' . $subcategory->subcategory_name . '</h2>' . "\n";
+    					echo '</header>' . "\n";
+    					echo '<div class="row product-row">' . "\n";
+    						$count = 0;
+    						$product_count = count($subcategory->subcategory_products);
 
-						foreach($subcategory->subcategory_products as $product) {
-							if($count % 4 == 0) {
-								echo '</div>' . "\n";
-								echo '<div class="row product-row">' . "\n";
-							}
-							$count++;
+    						foreach($subcategory->subcategory_products as $product) {
+    							if($count % 4 == 0) {
+    								echo '</div>' . "\n";
+    								echo '<div class="row product-row">' . "\n";
+    							}
+    							$count++;
 
-							/*---------------------------------------------
-						        Center last product if odd number
-						    ----------------------------------------------*/
-							/*if($count == $product_count) {
-								$last_product_class = $product_count % 2 == 0 ? '' : ' medium-push-3';
-							} else {
-								$last_product_class = '';
-							}*/
-							echo '<div class="small-12 medium-3' /*. $last_product_class */. ' columns centered">' . "\n";
-								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" alt></a>' . "\n";
-								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
-								//echo '<p>Curb mounted skylight</p>' . "\n";
-								//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";
-							echo '</div>' . "\n";
-						}
-					echo '</div>' . "\n";
-				echo '</section>' . "\n";
+    							/*---------------------------------------------
+    						        Center last product if odd number
+    						    ----------------------------------------------*/
+    							/*if($count == $product_count) {
+    								$last_product_class = $product_count % 2 == 0 ? '' : ' medium-push-3';
+    							} else {
+    								$last_product_class = '';
+    							}*/
+    							echo '<div class="small-12 medium-3' /*. $last_product_class */. ' columns centered">' . "\n";
+    								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" alt></a>' . "\n";
+    								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
+    								//echo '<p>Curb mounted skylight</p>' . "\n";
+    								//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";
+    							echo '</div>' . "\n";
+    						}
+    					echo '</div>' . "\n";
+    				echo '</section>' . "\n";
+                } //END VMS Check
 			}
     	}
     }

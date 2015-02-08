@@ -44,7 +44,7 @@
             <tr valign="top">
                 <td width="50%">
                     <label for="address">Address<?php echo required_text('address'); ?></label>
-                    <input type="text" address="address" id="address" class="input_text" value="<?php echo set_value('address'); ?>" />
+                    <input type="text" name="address" id="address" class="input_text" value="<?php echo set_value('address'); ?>" />
                 </td>
                 <td>
                     <label for="address2">Address 2<?php echo required_text('address2'); ?></label>
@@ -85,7 +85,7 @@
                 </td>
                 <td>
                     <label for="fax">Fax<?php echo required_text('fax'); ?></label>
-                    <input type="text" fax="fax" id="fax" class="input_text" value="<?php echo set_value('fax'); ?>" />
+                    <input type="text" name="fax" id="fax" class="input_text" value="<?php echo set_value('fax'); ?>" />
                 </td>
             </tr>
         </table>
@@ -102,9 +102,6 @@
 
         <label for="dealer_homepage_headline">Homepage Headline<?php echo required_text('dealer_homepage_headline'); ?></label>
         <input type="text" name="dealer_homepage_headline" id="dealer_homepage_headline" class="input_text" value="<?php echo set_value('dealer_homepage_headline', $site_default_array[0]->default_headline); ?>" />
-
-        <label for="dealer_homepage_copy">Homepage Copy<?php echo required_text('dealer_homepage_copy'); ?></label>
-        <textarea name="dealer_homepage_copy" id="dealer_homepage_copy" class="textarea_text"><?php echo set_value('dealer_homepage_copy', $site_default_array[0]->default_homepage_copy); ?></textarea>
 
         <label for="credentials">Installer Credentials<?php echo required_text('credentials'); ?></label>
         <textarea name="credentials" id="credentials" class="textarea_text"><?php echo set_value('credentials'); ?></textarea>

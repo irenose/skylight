@@ -44,6 +44,7 @@
 		if(validation_errors()) {
 			echo '<div class="error_alert">' . "\n";
     		echo '<p>You have encountered some errors on this page, please review below.</p>' . "\n";
+            echo validation_errors();
     		echo '</div>' . "\n";
 		}
 		
@@ -105,7 +106,7 @@
             <tr valign="top">
                 <td width="50%">
                     <label for="address">Address<?php echo required_text('address'); ?></label>
-                    <input type="text" address="address" id="address" class="input_text" value="<?php echo set_value('address', $dealer_array[0]->address); ?>" />
+                    <input type="text" name="address" id="address" class="input_text" value="<?php echo set_value('address', $dealer_array[0]->address); ?>" />
                 </td>
                 <td>
                     <label for="address2">Address 2<?php echo required_text('address2'); ?></label>
@@ -147,7 +148,7 @@
                 </td>
                 <td>
                     <label for="fax">Fax<?php echo required_text('fax'); ?></label>
-                    <input type="text" fax="fax" id="fax" class="input_text" value="<?php echo set_value('fax', $dealer_array[0]->fax); ?>" />
+                    <input type="text" name="fax" id="fax" class="input_text" value="<?php echo set_value('fax', $dealer_array[0]->fax); ?>" />
                 </td>
             </tr>
             <tr valign="top">
@@ -161,9 +162,6 @@
                 </td>
             </tr>
         </table>
-
-        <label for="microsite_url">Solar Microsite URL<?php echo required_text('microsite_url'); ?></label>
-        <input type="text" name="microsite_url" id="microsite_url" class="input_text" value="<?php echo set_value('microsite_url', $dealer_array[0]->microsite_url); ?>" />
 
         <label for="dealer_hours">Installer Hours<?php echo required_text('dealer_hours'); ?></label>
         <textarea name="dealer_hours" id="dealer_hours" class="textarea_text"><?php echo set_value('dealer_hours', $dealer_array[0]->dealer_hours); ?></textarea>
@@ -184,9 +182,6 @@
 
         <label for="dealer_homepage_headline">Homepage Headline<?php echo required_text('dealer_homepage_headline'); ?></label>
         <input type="text" name="dealer_homepage_headline" id="dealer_homepage_headline" class="input_text" value="<?php echo set_value('dealer_homepage_headline', $headline); ?>" />
-
-        <label for="dealer_homepage_copy">Homepage Copy<?php echo required_text('dealer_homepage_copy'); ?></label>
-        <textarea name="dealer_homepage_copy" id="dealer_homepage_copy" class="textarea_text"><?php echo set_value('dealer_homepage_copy', $homepage_copy); ?></textarea>
 
         <label for="credentials">Installer Credentials<?php echo required_text('credentials'); ?></label>
         <textarea name="credentials" id="credentials" class="textarea_text"><?php echo set_value('credentials', $dealer_array[0]->credentials); ?></textarea>

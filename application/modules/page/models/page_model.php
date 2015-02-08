@@ -232,6 +232,7 @@ class Page_model extends CI_Model {
 				$category_products_array['subcategory_array'][$subcategory_count] = (object) array(
 					'subcategory_name' => $subcategory->product_category_name,
 					'subcategory_url' => $subcategory->product_category_url,
+					'subcategory_id' => $subcategory->product_category_id,
 					'subcategory_products' => $products_array
 				);
 			}

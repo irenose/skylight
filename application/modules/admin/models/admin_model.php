@@ -801,7 +801,7 @@ class Admin_model extends CI_Model {
 			'about_dealer_headline' => $about_dealer_headline,
 			'about_dealer_text' => $about_dealer_text,
 			'dealer_homepage_headline' => $data_array['dealer_homepage_headline'],
-			'dealer_homepage_copy' => $data_array['dealer_homepage_copy'],
+			'dealer_homepage_copy' => '',
 			'credentials' => $data_array['credentials'],
 			'longitude' => $longitude,
 			'latitude' => $latitude,
@@ -1630,24 +1630,6 @@ class Admin_model extends CI_Model {
 			$website = '';
 		}
 		
-		//Format URL
-		if(trim($data_array['microsite_url']) != '') {
-			$https_pos = strpos($data_array['microsite_url'], 'https://');
-			$http_pos = strpos($data_array['microsite_url'], 'http://');
-			
-			$microsite_url = str_replace('http://','', $data_array['microsite_url']);
-			$microsite_url = str_replace('https://', '', $microsite_url);
-			
-			if($https_pos === false && $http_pos === false) {
-				$microsite_url = 'http://' . $data_array['microsite_url'];
-			} else {
-				$microsite_url = $data_array['microsite_url'];
-			}
-			
-		} else {
-			$microsite_url = '';
-		}
-		
 		if(trim($data_array['about_dealer_text']) == '' || trim($data_array['about_dealer_text']) == '<br>') {
 			$about_dealer_text = '';
 		} else {
@@ -1677,7 +1659,7 @@ class Admin_model extends CI_Model {
 				'fax' => $data_array['fax'],
 				'email' => $data_array['email'],
 				'website' => $website,
-				'microsite_url' => $microsite_url,
+				'microsite_url' => '',
 				'paid_search_extension' => $data_array['paid_search_extension'],
 				'dealer_hours' => trim($data_array['dealer_hours']),
 				'dealer_logo' => $data_array['dealer_logo'],
@@ -1685,7 +1667,7 @@ class Admin_model extends CI_Model {
 				'about_dealer_headline' => $about_dealer_headline,
 				'about_dealer_text' => $about_dealer_text,
 				'dealer_homepage_headline' => $data_array['dealer_homepage_headline'],
-				'dealer_homepage_copy' => $data_array['dealer_homepage_copy'],
+				'dealer_homepage_copy' => '',
 				'credentials' => $data_array['credentials'],
 				'longitude' => $longitude,
 				'latitude' => $latitude,
@@ -1712,12 +1694,12 @@ class Admin_model extends CI_Model {
 				'fax' => $data_array['fax'],
 				'email' => $data_array['email'],
 				'website' => $website,
-				'microsite_url' => $microsite_url,
+				'microsite_url' => '',
 				'paid_search_extension' => $data_array['paid_search_extension'],
 				'about_dealer_text' => $about_dealer_text,
 				'about_dealer_headline' => $about_dealer_headline,
 				'dealer_homepage_headline' => $data_array['dealer_homepage_headline'],
-				'dealer_homepage_copy' => $data_array['dealer_homepage_copy'],
+				'dealer_homepage_copy' => '',
 				'credentials' => $data_array['credentials'],
 				'longitude' => $longitude,
 				'latitude' => $latitude,

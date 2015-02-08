@@ -1084,31 +1084,29 @@ class Admin extends CI_Controller {
 			$data['page_content'] = 'admin_installers_list';
 		} else {
 			$data['site_default_array'] = $this->admin_model->get_site_defaults();
+			$this->form_validation->set_rules('name', 'Dealer Name', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('dealer_url', 'Dealer URL', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('contact_first_name', 'Contact First Name', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('contact_last_name', 'Contact Last Name', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('address2', '', 'xss_clean');
+			$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('state', 'State', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('zip', 'ZIP', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('region', 'Region', 'trim|xss_clean');
+			$this->form_validation->set_rules('phone1', 'Phone', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('fax', 'Fax', 'xss_clean');
+			$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|trim|xss_clean');
+			$this->form_validation->set_rules('website', '', '');
+			$this->form_validation->set_rules('about_dealer_headline', '', '');
+			$this->form_validation->set_rules('about_dealer_text', '', '');
+			$this->form_validation->set_rules('dealer_homepage_headline', '', '');
+			$this->form_validation->set_rules('credentials', '', '');
+			$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
+			$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
+
 			switch($action) {				
 				case 'add':
-					$this->form_validation->set_rules('name', 'Dealer Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('dealer_url', 'Dealer URL', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('contact_first_name', 'Contact First Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('contact_last_name', 'Contact Last Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('address2', '', '');
-					$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('state', 'State', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('zip', 'ZIP', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('region', 'Region', 'trim|xss_clean');
-					$this->form_validation->set_rules('phone1', 'Phone', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('fax', '', '');
-					$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|trim|xss_clean');
-					$this->form_validation->set_rules('website', '', '');
-					$this->form_validation->set_rules('microsite_url', '', '');
-					$this->form_validation->set_rules('about_dealer_headline', '', '');
-					$this->form_validation->set_rules('about_dealer_text', '', '');
-					$this->form_validation->set_rules('dealer_homepage_headline', '', '');
-					$this->form_validation->set_rules('dealer_homepage_copy', '', '');
-					$this->form_validation->set_rules('credentials', '', '');
-					$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
-					
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_installers_add';
 					} else {
@@ -1128,6 +1126,7 @@ class Admin extends CI_Controller {
 					}
 					break;
 				case 'update':
+
 					$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'dealer-logos/';
 					$config['allowed_types'] = 'gif|jpg|png';
 					$config['max_size']	= '500';
@@ -1140,31 +1139,8 @@ class Admin extends CI_Controller {
 					$data['default_info_array'] = $this->admin_model->get_site_defaults();
 					$data['dealer_array'] = $this->admin_model->get_dealer_by_id($dealer_id);
 					$data['dealer_id'] = $dealer_id;
-					$this->form_validation->set_rules('name', 'Dealer Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('dealer_url', 'Dealer URL', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('contact_first_name', 'Contact First Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('contact_last_name', 'Contact Last Name', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('address', 'Address', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('address2', '', '');
-					$this->form_validation->set_rules('city', 'City', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('state', 'State', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('zip', 'ZIP', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('region', 'Region', 'trim|xss_clean');
-					$this->form_validation->set_rules('phone1', 'Phone', 'trim|required|xss_clean');
-					$this->form_validation->set_rules('fax', '', '');
-					$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|trim|xss_clean');
-					$this->form_validation->set_rules('paid_search_extension','','trim|xss_clean');
-					$this->form_validation->set_rules('website', '', '');
-					$this->form_validation->set_rules('microsite_url', '', '');
-					$this->form_validation->set_rules('about_dealer_headline', '', '');
-					$this->form_validation->set_rules('about_dealer_text', '', '');
-					$this->form_validation->set_rules('dealer_homepage_headline', '', '');
-					$this->form_validation->set_rules('dealer_homepage_copy', '', '');
-					$this->form_validation->set_rules('credentials', '', '');
 					$this->form_validation->set_rules('dealer_status', 'Dealer Status', 'required|trim|xss_clean');
 					$this->form_validation->set_rules('site_status', 'Site Status', 'required|trim|xss_clean');
-					$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
 					
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_installers_update';
