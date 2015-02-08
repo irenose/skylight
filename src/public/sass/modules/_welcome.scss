@@ -142,6 +142,10 @@
 
             h3 {
                 margin-bottom: 1em;
+                @include bp($foundation-large) {
+                    font-size:1em;
+                    line-height:1.5;
+                }
             }
 
             @include bp($foundation-large) {

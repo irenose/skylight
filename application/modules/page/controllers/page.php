@@ -500,6 +500,7 @@ class Page extends CI_Controller {
                             if ($data['installer_array'][0]->promotion_page_copy == '') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
+                            $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
                             //Define social media params
                             $data['social_meta_array'] = array(
                                 'title' => $data['meta_array']['title'],

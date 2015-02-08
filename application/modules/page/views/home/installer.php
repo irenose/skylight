@@ -30,10 +30,7 @@
                 <?php
                     if($installer_array[0]->promotion_status == 'active' && trim($installer_array[0]->promotion_headline) != '') {
                         echo '<div class="promotion-small reversed dealer-promo">' . "\n";
-                            echo '<h3 class="normal-weight">' . trim($installer_array[0]->promotion_headline) . '</h3>' . "\n";
-                            if(trim($installer_array[0]->promotion_callout_copy) != '') {
-                                echo '<p>' . trim($installer_array[0]->promotion_callout_copy) . '</p>';
-                            }
+                            echo '<h3 class="normal-weight">' . word_limiter(trim($installer_array[0]->promotion_headline), 10) . '</h3>' . "\n";
                             if(trim($installer_array[0]->promotion_page_copy) != '') {
                                 echo ' <a href="' . $installer_base_url . '/promotions" class="cta-text">Learn More</a>' . "\n";
                             }

@@ -1,5 +1,6 @@
 <h1>Add Photo</h1>
-<p>Use the form below to add a photo to the gallery in your installer "About Us" section.</p>
+<p>Use the form below to add a photo to the gallery in your installer "About Us" section. The Title will not be seen on the actual website - it is just for your organization. The description is optional, but if included, will display with your photo on the website. You will still be able to add/edit the description after a file has been uploaded.</p>
+<p><em>Valid file formats are: jpg, gif or png</em></p>
 <div class="flashdata">
     <?php 
 		if(validation_errors()) {

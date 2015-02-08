@@ -39,10 +39,11 @@
 		    <div class="padded_block padded_block_gray">
 			    <label for="logo">About Us Image</label>
 			    <input type="file" name="userfile" />
+			    <br><br>
 			    <?php
 					$random = rand(100,999);
-					if(trim($dealer_array[0]->about_image) != '') {
-						echo '&nbsp;&nbsp;Current Image: <a href="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '" target="_blank">' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '</a>';
+					if(trim($dealer_array[0]->about_image) != '' && file_exists($this->config->item('dealer_assets_full_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension)) {
+						echo '<img src="' . $this->config->item('dealer_assets_dir') . 'about-images/' . $dealer_array[0]->about_image . '.' . $dealer_array[0]->about_extension . '?rand=' . $random . '" style="width:200px;">';
 						echo '<br><br><a href="/installer-admin/about/delete-image/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Image</a>';
 					}
 				?>

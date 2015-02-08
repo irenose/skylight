@@ -678,7 +678,6 @@ class Installer_admin_model extends CI_Model {
 		
 		$data = array(
 			'promotion_headline' => $data_array['promotion_headline'],
-			'promotion_callout_copy' => $data_array['promotion_callout_copy'],
 			'promotion_page_copy' => $data_array['promotion_page_copy'],
 			'promotion_status' => $data_array['promotion_status'],
 			'modification_date' => current_timestamp()

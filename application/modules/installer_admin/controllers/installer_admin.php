@@ -496,7 +496,6 @@ class Installer_admin extends CI_Controller {
 		$data['page_title'] = 'Installer Administration - Update Promotion';
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
 		$this->form_validation->set_rules('promotion_headline', 'Promotion Headline', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('promotion_callout_copy', 'Promotion Copy', 'trim|xss_clean');
 		$this->form_validation->set_rules('promotion_page_copy', 'Promotion Copy', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('promotion_status', 'Promotion Copy', 'trim|required|xss_clean');
 		
@@ -742,7 +741,7 @@ class Installer_admin extends CI_Controller {
 						$data['page_content'] = 'admin_photos_add';
 					} else {
 						$config['upload_path'] = $this->config->item('gallery_images_upload_path');
-						$config['allowed_types'] = 'gif|jpg|png';
+						$config['allowed_types'] = 'gif|jpg|jpeg|png';
 						$config['max_size']	= '2048';
 						$config['max_width']  = '3072';
 						$config['max_height']  = '2304';
