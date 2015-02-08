@@ -253,7 +253,7 @@ class Installer_admin extends CI_Controller {
 						$data['page_content'] = 'admin_account_update';
 					} else {
 						$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'dealer-logos/';
-						$config['allowed_types'] = 'gif|jpg|png';
+						$config['allowed_types'] = 'gif|jpg|png|jpeg';
 						$config['max_size']	= '2000';
 						$config['max_width']  = '1024';
 						$config['max_height']  = '768';
@@ -408,7 +408,7 @@ class Installer_admin extends CI_Controller {
 				$data['page_content'] = 'admin_about';
 			} else {
 				$config['upload_path'] = $this->config->item('dealer_assets_upload_path') . 'about-images/';
-				$config['allowed_types'] = 'gif|jpg|png';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 				$config['max_size']	= '2000';
 				$config['max_width']  = '1024';
 				$config['max_height']  = '768';
