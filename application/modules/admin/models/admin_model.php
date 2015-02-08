@@ -769,24 +769,6 @@ class Admin_model extends CI_Model {
 			$website = '';
 		}
 		
-		//Format URL
-		if(trim($data_array['microsite_url']) != '') {
-			$https_pos = strpos($data_array['microsite_url'], 'https://');
-			$http_pos = strpos($data_array['microsite_url'], 'http://');
-			
-			$microsite_url = str_replace('http://','', $data_array['microsite_url']);
-			$microsite_url = str_replace('https://', '', $microsite_url);
-			
-			if($https_pos === false && $http_pos === false) {
-				$microsite_url = 'http://' . $data_array['microsite_url'];
-			} else {
-				$microsite_url = $data_array['microsite_url'];
-			}
-			
-		} else {
-			$microsite_url = '';
-		}
-		
 		if(trim($data_array['about_dealer_text']) == '' || trim($data_array['about_dealer_text']) == '<br>') {
 			$about_dealer_text = '';
 		} else {
@@ -814,7 +796,7 @@ class Admin_model extends CI_Model {
 			'fax' => $data_array['fax'],
 			'email' => $data_array['email'],
 			'website' => $website,
-			'microsite_url' => $microsite_url,
+			'microsite_url' => '',
 			'dealer_hours' => trim($data_array['dealer_hours']),
 			'about_dealer_headline' => $about_dealer_headline,
 			'about_dealer_text' => $about_dealer_text,
@@ -871,36 +853,29 @@ class Admin_model extends CI_Model {
 				
 				
 				$added_options = $this->db->insert($db_table, $data);
+
+				$recipient = $data_array['email'];
+				$from = $this->config->item('global_email_from');
+				$subject = 'VELUX Microsite for ' . $data_array['name'];
+
+				$message = "A VELUX microsite has been set up for " . $data_array['name'] . ". Look below for all the needed information to learn about and customize your new VELUX microsite.\n\n";
 				
-				//Add Default Options
-				$default_array = $this->get_site_defaults();
-				$promotion_title = $default_array[0]->promotion_title;
-				$promotion_page_copy = $default_array[0]->promotion_page_copy;
+				$message .= "Microsite URL: www.skylightspecialist.com/" . $data_array['dealer_url'] . "\n";
+				$message .= "Assigned phone number: " . $data_array['phone1'] . "\n\n";
 				
-				$db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
-				$data = array(
-					'dealer_id' => $insert_id,
-					'promotion_id' => '21',
-					'promotion_page_copy' => $promotion_page_copy,
-					'promotion_title' => $promotion_title,
-					'promotion_status' => 'active',
-					'has_promotion_page' => 'yes',
-					'insert_date' => current_timestamp(),
-					'modification_date' => current_timestamp()			  
-				);
+				$message .= "Microsite Admin: www.skylightspecialist.com/dealer-admin\n";
+				$message .= "Username: " . $data_array['email'] . "\n";
+				$message .= "Password: " . $random_password . "\n\n";
 				
-				$add_default_promotion = $this->db->insert($db_table, $data);
+				$message .= "View the microsite training to learn how to customize your site:\n";
+				$message .= "http://www.vimeo.com/18475729\n";
+				$message .= "Password: velux\n\n";
 				
-				
-				//Add dealer to dealer meta table
-				$db_table = $this->config->item('db_table_prefix') . 'dealer_meta';
-			
-				$data = array(
-				   'dealer_id' => $insert_id,
-				   'modification_date' => current_timestamp()
-				);
-				
-				$added = $this->db->insert($db_table, $data);
+				$message .= "Note: your microsite is currently ACTIVE, which means it's live to the public.  You are encouraged to customize your site as soon as possible so it accurately reflects your business.";
+
+				$options['bcc'] = $this->config->item('site_creation_recipient');
+
+				Email_Send($recipient, $from, $subject, $message);
 				
 				
 				//Send email with login info

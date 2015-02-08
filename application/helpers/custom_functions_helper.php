@@ -528,6 +528,9 @@ function Email_Send($recipient, $from, $subject, $message, $options = array()) {
 		if( array_key_exists('cc', $options)) {
 			$headers_array['Cc'] = $options['cc'];
 		}
+		if( array_key_exists('bcc', $options)) {
+			$headers .= 'Bcc: ' . $options['bcc'] . "\r\n";
+		}
 
 		$message = array (
 	        'text' => $message,
@@ -552,6 +555,9 @@ function Email_Send($recipient, $from, $subject, $message, $options = array()) {
 			}
 			if( array_key_exists('reply_to', $options)) {
 				$headers .= 'Reply-To: ' . $options['reply_to'] . "\r\n";
+			}
+			if( array_key_exists('bcc', $options)) {
+				$headers .= 'Bcc: ' . $options['bcc'] . "\r\n";
 			}
 		}
 		//$headers .= 'Bcc: dev@wrayward.com' . "\r\n";

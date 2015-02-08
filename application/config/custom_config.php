@@ -30,10 +30,12 @@ if(defined('ENVIRONMENT') && (ENVIRONMENT == 'staging' || ENVIRONMENT == 'develo
 	//STAGING/DEVELOPMENT
 	$config['site_status_recipient'] = 'dev@wrayward.com';
 	$config['profile_updates_recipient'] = 'dev@wrayward.com';
+	$config['site_creation_recipient'] = 'dev@wrayward.com';
 } else {
 	//PRODUCTION
 	$config['site_status_recipient'] = 'stephanie@ravenelconsulting.com,jvoorhees@wrayward.com,dev@wrayward.com';
 	$config['profile_updates_recipient'] = 'chan.hoyle@VELUX.com,jvoorhees@wrayward.com,michelle@ravenelconsulting.com,stephanie@ravenelconsulting.com,bettye.booker@VELUX.com,jhalpin@wrayward.com,dev@wrayward.com';
+	$config['site_creation_recipient'] = 'chan.hoyle@VELUX.com,todd.beasley@VELUX.com,jd.massie@velux.com,lisa.demarco@VELUX.com,jvoorhees@wrayward.com,gparish@wrayward.com,michelle@ravenelconsulting.com,stephanie@ravenelconsulting.com,bettye.booker@VELUX.com,jhalpin@wrayward.com';
 
 }
 

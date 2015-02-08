@@ -88,20 +88,10 @@
                     <input type="text" fax="fax" id="fax" class="input_text" value="<?php echo set_value('fax'); ?>" />
                 </td>
             </tr>
-            <tr valign="top">
-                <td width="50%">
-                    <label for="website">Website<?php echo required_text('website'); ?></label>
-                    <input type="text" name="website" id="website" class="input_text" value="<?php echo set_value('website'); ?>" />
-                </td>
-                <td>
-                    <label for="paid_search_extension">Paid Search Extension<?php echo required_text('paid_search_extension'); ?></label>
-                    <input type="text" name="paid_search_extension" id="paid_search_extension" class="input_text" value="<?php echo set_value('paid_search_extension'); ?>" />
-                </td>
-            </tr>
         </table>
 
-        <label for="microsite_url">Solar Microsite URL<?php echo required_text('microsite_url'); ?></label>
-        <input type="text" name="microsite_url" id="microsite_url" class="input_text" value="<?php echo set_value('microsite_url'); ?>" />
+        <label for="website">Website<?php echo required_text('website'); ?></label>
+        <input type="text" name="website" id="website" class="input_text" value="<?php echo set_value('website'); ?>" />
 
         <label for="dealer_hours">Installer Hours<?php echo required_text('dealer_hours'); ?></label>
         <textarea name="dealer_hours" id="dealer_hours" class="textarea_text"><?php echo set_value('dealer_hours'); ?></textarea>
