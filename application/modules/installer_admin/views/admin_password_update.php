@@ -10,10 +10,10 @@
             <form action="/installer-admin/password/update/<?php echo $user_id; ?>" method="post" class="login_form">
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
                 <label for="password">Password<?php echo required_text('password'); ?></label>
-                <input type="text" name="password" id="password" class="input_text" value="" /><br /><br />
+                <input type="password" name="password" id="password" class="input_text" value="" /><br /><br />
 
                 <label for="password_confirm">Confirm Password<?php echo required_text('password_confirm'); ?></label>
-                <input type="text" name="password_confirm" id="password_confirm" class="input_text" value="" /><br /><br />
+                <input type="password" name="password_confirm" id="password_confirm" class="input_text" value="" /><br /><br />
 
                  <p class="login_center"><input type="submit" name="action" id="update_password" rel="update_password" value="Update Password" class="submit_btn login_submit" /></p>
                 
