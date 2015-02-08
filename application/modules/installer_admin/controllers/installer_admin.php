@@ -678,7 +678,8 @@ class Installer_admin extends CI_Controller {
 					
 				case 'update':
 					$data['product_category_id'] = $id;
-					$this->form_validation->set_rules('featured', '', '');
+					$this->form_validation->set_rules('dealer_id', '', 'required');
+					$this->form_validation->set_rules('dealer_option_id', '', 'required');
 					
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_products_update';

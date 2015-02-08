@@ -471,19 +471,10 @@ class Installer_admin_model extends CI_Model {
 			$inactive = '';
 		}
 		
-		$featured_field = $data_array['featured_field'];
-		
-		if( isset($data_array['featured']) && $data_array['featured'] != '') {
-			$featured_value = $data_array['featured'];
-		} else {
-			$featured_value = '';
-		}
-		
 		$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
 		
 		$data = array(
 			'products' => $inactive,
-			$featured_field => $featured_value,
 			'modification_date' => current_timestamp()
 		);
 		

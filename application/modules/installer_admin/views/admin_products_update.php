@@ -43,9 +43,8 @@
                     echo '<tr>' . "\n";
                     echo '<td width="10%" class="table_header"><span class="table_header_text">Show</span></td>' . "\n";
                     echo '<td width="15%" class="table_header"><span class="table_header_text">Image</span></td>' . "\n";
-                    echo '<td width="30%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
-                    echo '<td width="10%" class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
-                    echo '<td class="table_header"><span class="table_header_text">Featured</span></td>' . "\n";
+                    echo '<td width="40%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
+                    echo '<td class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
                     echo '</tr>';
                     foreach($products_array as $product) {
                         if($product->product_category_name != $cur_category) {
@@ -57,9 +56,8 @@
                             echo '<tr>' . "\n";
                             echo '<td width="10%" class="table_header"><span class="table_header_text">Show</span></td>' . "\n";
                             echo '<td width="15%" class="table_header"><span class="table_header_text">Image</span></td>' . "\n";
-                            echo '<td width="30%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
-                            echo '<td width="10%" class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
-                            echo '<td class="table_header"><span class="table_header_text">Featured</span></td>' . "\n";
+                            echo '<td width="40%" class="table_header"><span class="table_header_text">Name</span></td>' . "\n";
+                            echo '<td class="table_header"><span class="table_header_text">Model</span></td>' . "\n";
                             echo '</tr>';
                         }
                         $bg_color = $bg_color == 'white' ? 'gray' : 'white';
@@ -72,31 +70,9 @@
                         echo '<tr class="' . $bg_color . '">' . "\n";
                         echo '<td width="10%" class="td_border"><input type="checkbox" name="products[]" value="' . $product->product_id . '"' . $checked . '></td>' . "\n";
                         echo '<td width="15%" class="td_border"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" border="0" style="width:75px;"></td>' . "\n";
-                        echo '<td width="30%" class="td_border">' . $product->product_name . '</td>' . "\n";
-                        echo '<td width="10%" class="td_border">' . $product->model_number . '</td>' . "\n";
+                        echo '<td width="40%" class="td_border">' . $product->product_name . '</td>' . "\n";
+                        echo '<td class="td_border">' . $product->model_number . '</td>' . "\n";
                         
-                        $radio_checked = '';
-                        switch($product_category_id) {
-                            case 1:
-                                if($product->product_id == $options_array[0]->featured_suntunnel) {
-                                    $radio_checked = ' checked="checked"';
-                                }
-                                $featured_field = 'featured_suntunnel';
-                                break;
-                            case 2:
-                                if($product->product_id == $options_array[0]->featured_residential) {
-                                    $radio_checked = ' checked="checked"';
-                                }
-                                $featured_field = 'featured_residential';
-                                break;
-                            case 3:
-                                if($product->product_id == $options_array[0]->featured_commercial) {
-                                    $radio_checked = ' checked="checked"';
-                                }
-                                $featured_field = 'featured_commercial';
-                                break;
-                        }
-                        echo '<td class="td_border"><input type="radio" name="featured" value="' . $product->product_id . '"' . $radio_checked . '></td>' . "\n";
                         echo '</tr>' . "\n";
                         
                     }
@@ -113,7 +89,6 @@
                         }
                     }
                     echo '<input type="hidden" name="all_products_list" value="' . $all_products . '">' . "\n";
-                    echo '<input type="hidden" name="featured_field" value="' . $featured_field . '">' . "\n";
                     
                 } else {
                     echo 'There are no products';
