@@ -49,7 +49,7 @@
     echo '<b>Address</b><br />' . "\n";
     echo $dealer_array[0]->address;
 	if(trim($dealer_array[0]->address2) != '') {
-		echo trim($dealer_array[0]->address2);
+		echo ', ' . trim($dealer_array[0]->address2);
 	}
 	echo '<br />';
 	echo $dealer_array[0]->city . ', ' . $dealer_array[0]->state . ' ' . $dealer_array[0]->zip . '<br /><br />';

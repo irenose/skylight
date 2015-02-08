@@ -245,7 +245,6 @@ class Installer_admin extends CI_Controller {
 					$this->form_validation->set_rules('primary_email', 'Primary E-mail', 'valid_email|trim|xss_clean');
 					$this->form_validation->set_rules('cc_email', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('website', '', 'trim|xss_clean');
-					$this->form_validation->set_rules('microsite_url', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('credentials', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
 					

@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Update Literature</div>
 </h1>
-<p>We have provided a selection of brochures, downloadable in PDF format, for customers to learn more about VELUX products. Check the boxes next to the brochures you want your customers to be able to download from your microsite. Remember to click the blue "update literature" button at the bottom of this page to save your changes.</p>
+<p>We have provided a selection of brochures, downloadable in PDF format, for customers to learn more about VELUX products. Check the boxes next to the brochures you want your customers to be able to download from your microsite. Remember to click the "update literature" button at the bottom of this page to save your changes.</p>
 <div class="flashdata">
     <?php 
         if(validation_errors()) {

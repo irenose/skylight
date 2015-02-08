@@ -5,7 +5,8 @@
 <h1 class="clearfix">
     <div class="header_label">Update Promotion</div>
 </h1>
-<p>Use the form below to create/edit a promotion that you want to display on the site.</p>
+<p>Use the form below to create/edit a promotion that you want to display on your microsite.</p>
+<p>The promotion headline is limited to 10 words, and will be cut off after that point on the homepage (the entire contents of the headline will be displayed on the clickthrough promotion page however). If you don't want a promotion to display on your site, simply set the status to "inactive" and save your changes using the "Update Promotion" button below.</p>
 
 <div class="flashdata">
     <?php 

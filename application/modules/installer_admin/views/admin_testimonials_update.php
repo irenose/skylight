@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Update Testimonial</div>
 </h1>
-<p>You may revise your testimonial to correct misspellings or other errors in the box below. Click the blue "update testimonial" button to save your changes.</p>
+<p>You may revise your testimonial to correct misspellings or other errors in the box below. Click the "update testimonial" button to save your changes.</p>
 <div class="flashdata">
     <?php 
         if(validation_errors()) {

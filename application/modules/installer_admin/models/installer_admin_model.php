@@ -223,14 +223,6 @@ class Installer_admin_model extends CI_Model {
 			$website = '';
 		}
 		
-		//Format URL
-		if(trim($data_array['microsite_url']) != '') {
-			$microsite_url = prep_url($data_array['microsite_url']);
-			
-		} else {
-			$microsite_url = '';
-		}
-		
 		//Format cc emails as comma separated list
 		$temp_cc_email = trim($data_array['cc_email']);
 		if($temp_cc_email != '') {
@@ -313,7 +305,7 @@ class Installer_admin_model extends CI_Model {
 				'email' => $data_array['email'],
 				'dealer_hours' => trim($data_array['dealer_hours']),
 				'website' => $website,
-				'microsite_url' => $microsite_url,
+				'microsite_url' => '',
 				'dealer_logo' => $data_array['dealer_logo'],
 				'extension' => $data_array['extension'],
 				'credentials' => $data_array['credentials'],
@@ -340,7 +332,7 @@ class Installer_admin_model extends CI_Model {
 				'email' => $data_array['email'],
 				'dealer_hours' => trim($data_array['dealer_hours']),
 				'website' => $website,
-				'microsite_url' => $microsite_url,
+				'microsite_url' => '',
 				'credentials' => $data_array['credentials'],
 				'primary_email' => $data_array['primary_email'],
 				'cc_email' => $cc_email,

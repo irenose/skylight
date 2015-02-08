@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Add Testimonial</div>
 </h1>
-<p>Add your custom testimonial by typing it into the box below. The customer's name is required and the source of the testimonial (such as a publication like your local newspaper) is optional. Click the green "add testimonial" button to save your changes.</p>
+<p>Add your custom testimonial by typing it into the box below. The customer's name is required and the source of the testimonial (such as a publication like your local newspaper) is optional. Click the "add testimonial" button to save your changes.</p>
 <div class="flashdata">
     <?php 
         if(validation_errors()) {
@@ -15,7 +15,7 @@
         echo $this->session->flashdata('status_message');
     ?>
 </div>
-<?php echo form_open('installer-admin/testimonials/add'); ?>
+<?php echo form_open('/installer-admin/testimonials/add'); ?>
     <input type="hidden" name="dealer_id" value="<?php echo $dealer_id; ?>" />
 
     <div id="action_form_wrapper">

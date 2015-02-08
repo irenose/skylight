@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Update Warranty</div>
 </h1>
-<p>Your microsite will automatically display information about the warranty provided by VELUX, including a link to download a PDF of the warranty document. If you offer a warranty above and beyond the VELUX warranty, you may add information about it for display alongside the VELUX warranty information. After adding your warranty details, be sure to click the blue "update warranty" button at the bottom of this page.</p>
+<p>Your microsite will automatically display information about the warranty provided by VELUX, including a link to download a PDF of the warranty document. If you offer a warranty above and beyond the VELUX warranty, you may add information about it for display alongside the VELUX warranty information. After adding your warranty details, be sure to click the "update warranty" button at the bottom of this page.</p>
 <div class="flashdata">
     <?php 
 		if(validation_errors()) {

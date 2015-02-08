@@ -4,7 +4,7 @@
         <a href="/installer-admin/testimonials/add" class="header_action">Add Testimonial</a>
     </div>
 </h1>
-<p>Nothing boosts a potential customer's confidence than a testimonial from other customers. You may add a custom testimonial by clicking the green "add testimonial" button to the right.</p>
+<p>Nothing boosts a potential customer's confidence than a testimonial from other customers. You may add a custom testimonial by clicking the "add testimonial" button above.</p>
 <div class="flashdata">
     <?php 
         if(validation_errors()) {
@@ -34,7 +34,7 @@
             <?php
                 
                 echo '<h2>Custom Testimonials</h2>';
-                echo '<p>Update your custom testimonials by clicking the blue "update" button to the right.</p>';
+                echo '<p>Update your custom testimonials by clicking the "update" button next to each testimonial.</p>';
                 if( isset($dealer_testimonials_array) && count($dealer_testimonials_array) > 0) {
                     $bg_color = 'gray';
                        
@@ -66,9 +66,7 @@
                 
                 echo '<div class="form_spacer"> </div>';
                 echo '<h2>VELUX Testimonials</h2>';
-                echo '<p>VELUX has provided you with pre-set customer testimonials that will appear on select pages of your site. Check the boxes next to the testimonials that you want to appear on your site. Remember to click the blue "update testimonials" button to save your changes.</p>'; 
-                echo '<p>If you select more than one testimonial, the system will shuffle the testimonials so a different one appears each time that page is refreshed.
-            </p>';
+                echo '<p>VELUX has provided you with pre-set customer testimonials that will appear on select pages of your site. Check the boxes next to the testimonials that you want to appear on your site. Remember to click the "update testimonials" button at the bottom of the page to save your changes.</p>'; 
                 if( isset($velux_testimonials_array) && count($velux_testimonials_array) > 0) {
                     echo '<table class="list_table" cellpadding="0" cellspacing="0" border="0">';
                     echo '<tr>';

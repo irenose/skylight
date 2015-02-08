@@ -112,7 +112,7 @@
                 </tr>
                 <tr valign="top">
                 	<td>
-                        <label for="name">Phone</label><br />
+                        <label for="name">Phone</label>
                         <?php
         					/*
         					<input type="text" class="input_text" name="phone1" value="<?php echo set_value('phone1', $dealer_array[0]->phone1); ?>" disabled /><br />
@@ -128,17 +128,10 @@
                     </td>
                 </tr>
                 
-                <tr valign="top">
-                	<td>
-                        <label for="name">Website URL<?php echo required_text('website'); ?></label>
-                        <input type="text" class="input_text" name="website" value="<?php echo set_value('website', $dealer_array[0]->website); ?>" /><br />
-                    </td>
-                    <td>
-                    	<label for="microsite_url">Solar Microsite URL<?php echo required_text('microsite_url'); ?></label>
-                        <input type="text" class="input_text" name="microsite_url" value="<?php echo set_value('microsite_url', $dealer_array[0]->microsite_url); ?>" /><br />
-            		</td>
-                </tr>
             </table>
+
+            <label for="name">Website URL<?php echo required_text('website'); ?></label>
+            <input type="text" class="input_text" name="website" value="<?php echo set_value('website', $dealer_array[0]->website); ?>" /><br />
             
             <label for="dealer_hours">Dealer Hours<?php echo required_text('dealer_hours'); ?></label>
             <textarea name="dealer_hours" class="textarea_text"><?php echo set_value('dealer_hours', $dealer_array[0]->dealer_hours); ?></textarea>
@@ -152,9 +145,10 @@
                 
                 <label for="logo">Logo</label>
                 <input type="file" name="userfile" />
+                <br><br>
                 <?php
-            		if(trim($dealer_array[0]->dealer_logo) != '') {
-            			echo '&nbsp;&nbsp;Current Logo: <a href="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '" target="_blank">' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '</a>';
+            		if(trim($dealer_array[0]->dealer_logo) != '' && file_exists($this->config->item('dealer_assets_full_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension)) {
+            			echo '<img src="' . $this->config->item('dealer_assets_dir') . 'dealer-logos/' . $dealer_array[0]->dealer_logo . '.' . $dealer_array[0]->extension . '?rand=' . $random . '" style="width:200px;">';
             			echo '<br><br><a href="/installer-admin/account/delete-logo/' . $dealer_array[0]->dealer_id . '" style="margin-top:10px;" class="delete_confirm delete_link">Delete Logo</a>';
             		}
             	?>
