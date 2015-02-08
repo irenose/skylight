@@ -191,7 +191,8 @@ class Auth {
 		// redirect him to the login page!
 		if ( ! $logged_out && ! $this->logged_in()) {
 			//$this->CI->session->set_userdata('redirected_from', $this->CI->uri->uri_string()); // We'll use this in our redirect method.
-			redirect('admin/?redirect=' . $this->CI->uri->uri_string());
+			$url_base = $this->CI->uri->segment(1);
+			redirect($url_base . '/?redirect=' . $this->CI->uri->uri_string());
 		}
 		
 		// If a permission level is set and the user is logged in, but doesn't have a high-enough permission level, bounce them
