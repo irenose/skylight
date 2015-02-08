@@ -75,7 +75,26 @@
                 <div class="slick">
                     <div class="slick-list">
                         <div class="testimonial">
-                            <p><?=filter_page_content($testimonials_array[0]->testimonial_copy)?></p>
+                            <?php
+                                echo '<p>';
+                                echo '"' . filter_page_content($testimonials_array[0]->testimonial_copy) . '"';
+                                $line_started = FALSE;
+                                if(trim($testimonials_array[0]->testimonial_name) != '' || trim($testimonials_array[0]->testimonial_source != '')) {
+                                    echo '<span class="testimonial-name-source">' . "\n";
+                                        if(trim($testimonials_array[0]->testimonial_name) != '') {
+                                            $line_started = TRUE;
+                                            echo '<br>' . $testimonials_array[0]->testimonial_name;
+                                        }
+                                        if(trim($testimonials_array[0]->testimonial_source) != '') {
+                                            if($line_started) {
+                                                echo ', ';
+                                            }
+                                            echo $testimonials_array[0]->testimonial_source;
+                                        }
+                                    echo '</span>' . "\n";
+                                }
+                                echo  '</p>';
+                            ?>
                         </div>
                     </div>
                     <div class="testimonial-link">
