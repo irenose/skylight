@@ -1,6 +1,6 @@
-<h1><?php echo $this->config->item('admin_client_name'); ?> Administration</h1>
+<h1><?php echo $dealer_info_array[0]->name; ?> Microsite Administration</h1>
 <p>
-	Welcome to the <?php echo $this->config->item('admin_client_name'); ?> administration dashboard. Below, you will find a list of your current dealer microsites. You can click on the links below to jump to make changes to a particular dealer site, or you can use the links on the left to make changes to the microsite options.
+	Welcome to your administrator dashboard, the starting point for customizing your VELUX 5-Star Skylight Specialist microsite. Please navigate through the sections to the left to customize features on your site.
 </p>
 <div class="form_spacer"></div>
 <div class="padded_block padded_block_gray">
