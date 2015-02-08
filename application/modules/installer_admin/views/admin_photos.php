@@ -54,6 +54,6 @@
 </table>
 <?php
     } else {
-        echo '<p>There are no photos. <a href="/installer-admin/photos/add">Add one now.</a></p>';
+        echo '<p>You currently have no photos in your photo gallery. <a href="/installer-admin/photos/add">Add one now.</a></p>';
     }
 ?>
