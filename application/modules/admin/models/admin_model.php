@@ -875,43 +875,8 @@ class Admin_model extends CI_Model {
 
 				$options['bcc'] = $this->config->item('site_creation_recipient');
 
-				Email_Send($recipient, $from, $subject, $message);
-				
-				
-				//Send email with login info
-				$this->load->library('email');
-				$this->email->from($this->config->item('global_email_from'));
-				$this->email->to($data_array['email']);
-				$this->email->bcc('chan.hoyle@VELUX.com,todd.beasley@VELUX.com,jd.massie@velux.com,lisa.demarco@VELUX.com,jvoorhees@wrayward.com,gparish@wrayward.com,michelle@ravenelconsulting.com,stephanie@ravenelconsulting.com,bettye.booker@VELUX.com,jhalpin@wrayward.com');
-				//$this->email->to($data_array['email']);
-				
-
-				$this->email->subject('VELUX Microsite for ' . $data_array['name']);
-				$message = "A VELUX microsite has been set up for " . $data_array['name'] . ". Look below for all the needed information to learn about and customize your new VELUX microsite.\n\n";
-				
-				$message .= "Microsite URL: www.skylightspecialist.com/" . $data_array['dealer_url'] . "\n";
-				$message .= "Assigned phone number: " . $data_array['phone1'] . "\n\n";
-				
-				$message .= "Microsite Admin: www.skylightspecialist.com/dealer-admin\n";
-				$message .= "Username: " . $data_array['email'] . "\n";
-				$message .= "Password: " . $random_password . "\n\n";
-				
-				$message .= "View the microsite training to learn how to customize your site:\n";
-				$message .= "http://www.vimeo.com/18475729\n";
-				$message .= "Password: velux\n\n";
-				
-				$message .= "Note: your microsite is currently ACTIVE, which means it's live to the public.  You are encouraged to customize your site as soon as possible so it accurately reflects your business.";
-
-				
-				
-				
-				/*$message .= "Username: " . $data_array['email'] . "\n";
-				$message .= "Password: " . $random_password . "\n";
-				$message .= "Please log in to the admin and you will be prompted to create a new password";*/
-				
-				$this->email->message($message);
-				$this->email->send();
-				
+				Email_Send($recipient, $from, $subject, $message, $options);
+			
 				return $insert_id; //Return initial dealer_id
 				
 			} else {
