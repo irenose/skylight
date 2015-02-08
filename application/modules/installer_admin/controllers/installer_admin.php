@@ -366,7 +366,6 @@ class Installer_admin extends CI_Controller {
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
 		$data['default_info_array'] = $this->installer_admin_model->get_site_defaults();
 		$this->form_validation->set_rules('dealer_homepage_headline', 'Homepage Headline', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('dealer_homepage_copy', 'Homepage Copy', 'trim|required|xss_clean');
 		
 		//Only visible to super admins, not dealers
 		if($_SESSION['super_admin'] == 'yes') {

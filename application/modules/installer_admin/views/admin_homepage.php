@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Update Homepage Copy</div>
 </h1>
-<p>You can write your own headline and copy that will appear below the photo on your homepage. Click "reset default" to return to the headline and copy provided by VELUX.</p>
+<p>You can write your own headline that will appear above the photo on your homepage. Click "reset default" to return to the headline and copy provided by VELUX.</p>
 <p>Be sure to click the "update homepage" button at the bottom of this page to save your changes.</p>
 <p><b>NOTE:</b> <i>The bracketed terms [DEALER_CITY] and [DEALER_NAME] will automatically populate that area of text with your dealer city and company name respectively. You do not need to update these areas of text unless you want it to read differently.</i></p>
 
@@ -31,16 +31,10 @@
             <label for="name">Homepage Headline<?php echo required_text('dealer_homepage_headline'); ?></label>
             <input type="text" class="input_text" name="dealer_homepage_headline" id="dealer_homepage_headline" value="<?php echo set_value('dealer_homepage_headline', $homepage_headline); ?>" /><br>
             <a href="#" class="text_replace" data-target="dealer_homepage_headline" data-source="default_headline"  style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Headline</a>
-            
-            
-            <label for="dealer_homepage_copy">Homepage Copy<?php echo required_text('dealer_homepage_copy'); ?></label>
-            <textarea name="dealer_homepage_copy" id="dealer_homepage_copy" class="textarea_text"><?php echo set_value('dealer_homepage_copy', $homepage_copy); ?></textarea><br>
-            <a href="#" class="text_replace" data-target="dealer_homepage_copy" data-source="default_copy" style="font-weight:normal;font-size:11px;color:#ff0000;">Reset Default Homepage Copy</a>
 
             <div class="form_spacer"></div>
             
             <div id="default_headline" style="display:none;"><?php echo $default_info_array[0]->default_headline; ?></div>
-            <div id="default_copy" style="display:none;"><?php echo $default_info_array[0]->default_homepage_copy; ?></div>
             
             <?php 
         		//ONLY SUPER ADMINS CAN UPDATE META DATA.

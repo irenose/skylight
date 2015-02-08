@@ -778,6 +778,29 @@ class Installer_admin_model extends CI_Model {
 		}
 	}
 
+	function update_homepage_copy($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$data = array(
+			'dealer_homepage_headline' => htmlspecialchars(strip_tags($data_array['dealer_homepage_headline']), ENT_QUOTES, 'UTF-8'),
+			'modification_date' => current_timestamp()
+		);
+
+		if( isset($data_array['process_meta']) && $data_array['process_meta'] == 'yes') {
+			$data['home_meta_title'] = $data_array['meta_title'];
+			$data['home_meta_keywords'] = $data_array['meta_keywords'];
+			$data['home_meta_description'] = $data_array['meta_description'];
+		}
+			
+		$this->db->where('dealer_id', $data_array['dealer_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 /**********************************************************************************************************************************
 		USER MODULE UPDATE FUNCTIONS
 ***********************************************************************************************************************************/
