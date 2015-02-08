@@ -552,19 +552,20 @@ h1 a.header_action, h2 a.header_action
 }
 .login .error_alert
 {
-	color:#fff;
-	background: #ff0000;
+	color:#ff0000;
+	background: none;
 	text-align:left;
 }
 .login .success
 {
-	background-color:#fffedc;
-	color:#555757;
+	background:none;
+	color:#3ea752;
 	text-align:left;
 }
-.login_box .error_alert
+.login_box .error_alert, .login_box .success
 {
 	margin:10px 12%;
+	padding:0;
 }
 
 .error_alert p {

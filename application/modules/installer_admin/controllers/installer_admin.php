@@ -74,7 +74,7 @@ class Installer_admin extends CI_Controller {
 				$to_email = $this->input->post('username');
 				if($temp_password) {
 					if( is_array($temp_password)) {
-						$this->session->set_flashdata('status_message','<div class="error_alert">There is more than one account associated with that email. Please contact VELUX.</div>');
+						$this->session->set_flashdata('status_message','<div class="error_alert">There is more than one account associated with that email. Please contact VELUX for help in resetting your password.</div>');
 						redirect('/installer-admin/password');
 					} else {
 						$recipient = $to_email;
