@@ -543,12 +543,24 @@ h1 a.header_action, h2 a.header_action
 	width:170px;
 }
 /****************************** Error Message Handling ******************************************************************************/
-.error_alert
+.error_alert, .login .success
 {
 	background: #ff0000;
 	margin: 10px 3%;
 	padding: 5px;
 	text-align: center;
+}
+.login .error_alert
+{
+	color:#fff;
+	background: #ff0000;
+	text-align:left;
+}
+.login .success
+{
+	background-color:#fffedc;
+	color:#555757;
+	text-align:left;
 }
 .login_box .error_alert
 {

@@ -51,7 +51,7 @@
 
 <div id="global">
 	<div id="logo">
-    	<a href="/installer-admin/home">
+    	<a href="/installer-admin">
         	<?php
 				if($this->config->item('admin_client_logo') != '') {
 					echo '<img src="' . $this->config->item('admin_client_logo') . '" alt="' . $this->config->item('admin_client_name') . '" border="0" />';

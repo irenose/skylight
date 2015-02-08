@@ -70,18 +70,23 @@ class Installer_admin extends CI_Controller {
 				$this->load->view('admin_template', $data);
 				
 			} else {
-				$temp_password = $this->admin_model->forgot_reset_password($_POST);
+				$temp_password = $this->installer_admin_model->forgot_reset_password($_POST);
 				$to_email = $this->input->post('username');
 				if($temp_password) {
-					$recipient = $to_email;
-					$from = $this->config->item('global_email_from');
-					$subject = 'Forgotten Password Reset';
-					$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
+					if( is_array($temp_password)) {
+						$this->session->set_flashdata('status_message','<div class="error_alert">There is more than one account associated with that email. Please contact VELUX.</div>');
+						redirect('/installer-admin/password');
+					} else {
+						$recipient = $to_email;
+						$from = $this->config->item('global_email_from');
+						$subject = 'Forgotten Password Reset';
+						$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
 
-					Email_Send($recipient, $from, $subject, $message);
-					
-					$this->session->set_flashdata('status_message','<div class="success">Password has been reset successfully. Please check your email.</div>');
-					redirect('/installer-admin/password');
+						Email_Send($recipient, $from, $subject, $message);
+						
+						$this->session->set_flashdata('status_message','<div class="success">Password has been reset successfully. Please check your email.</div>');
+						redirect('/installer-admin/password');
+					}
 				
 				} else {
 					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error resetting this password. Verify username and try again.</p></div>');
@@ -96,13 +101,13 @@ class Installer_admin extends CI_Controller {
 					$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[password_confirm]');
 					$this->form_validation->set_rules('password_confirm', 'Password Confirm', 'trim|required|xss_clean');
 					$data['user_id'] = $user_id;
-					$data['user_data_array'] = $this->admin_model->get_user_by_id($user_id);
+					$data['user_data_array'] = $this->installer_admin_model->get_user_by_id($user_id);
 					
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_title'] = 'Users - Update Password';
 						$data['page_content'] = 'admin_password_update';
 					} else {
-						$update = $this->admin_model->update_user_password($_POST);
+						$update = $this->installer_admin_model->update_user_password($_POST);
 						if($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Password has been updated successfully</div>');
 							$this->session->set_userdata('change_password','no');

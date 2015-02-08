@@ -98,7 +98,6 @@ class Auth {
 					}
 					
 				} else if($query->num_rows() > 1) {
-
 					$user_array = $query->result();
 
 					//Installer has multiple sites
@@ -119,23 +118,41 @@ class Auth {
 						if(count($active_sites_array) == 0) {
 							return FALSE;
 						} else {
-
 							if( $user_array[0]->permission_level < 2) {
 								$super_admin = 'yes';
 							} else {
 								$super_admin = 'no';
 							}
-							$new_user_array = array(
-								'admin_username' => $username,
-								'uid' => $user_array[0]->user_id,
-								'permission_level' => $user_array[0]->permission_level,
-								'first_name' =>  $user_array[0]->first_name,
-								'change_password' => $user_array[0]->change_password,
-								'redirected_from' => $redirected_from,
-								'super_admin' => $super_admin,
-								'active_sites' => $active_sites_array,
-								'dealer_id' => ''		
-							);
+
+							//DEALER HAD MULTIPLE SITES, BUT ONLY 1 IS ACTIVE
+							//JUST RETURN NORMAL ARRAY
+							if(count($active_sites_array) == 1) {
+								$dealer_id = $active_sites_array[0]['dealer_id'];
+								$new_user_array = array(
+									'admin_username' => $username,
+									'uid' => $user_array[0]->user_id,
+									'permission_level' => $user_array[0]->permission_level,
+									'first_name' =>  $user_array[0]->first_name,
+									'change_password' => $user_array[0]->change_password,
+									'redirected_from' => $redirected_from,
+									'super_admin' => $super_admin,
+									'dealer_id' => $dealer_id		
+								);
+
+							} else {
+								//RETURN ARRAY WITH ACTIVE SITES OPTION
+								$new_user_array = array(
+									'admin_username' => $username,
+									'uid' => $user_array[0]->user_id,
+									'permission_level' => $user_array[0]->permission_level,
+									'first_name' =>  $user_array[0]->first_name,
+									'change_password' => $user_array[0]->change_password,
+									'redirected_from' => $redirected_from,
+									'super_admin' => $super_admin,
+									'active_sites' => $active_sites_array,
+									'dealer_id' => ''		
+								);
+							}
 							return $new_user_array;
 						}
 					}

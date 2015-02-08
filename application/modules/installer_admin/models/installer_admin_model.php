@@ -158,11 +158,12 @@ class Installer_admin_model extends CI_Model {
 		$this->db->select('username');
 		$where = array('user_id' => $user_id);
 		$this->db->where($where);
-		$query = $this->db->get($db_table, 1);
+		$query = $this->db->get($db_table,1);
 		foreach($query->result() as $row) {
 			return $row->username;
 		}
 	}
+	
 
 /***********************************************************************************************************************************
 /*		ADD FUNCTIONS
@@ -794,6 +795,89 @@ class Installer_admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
+
+/**********************************************************************************************************************************
+		USER MODULE UPDATE FUNCTIONS
+***********************************************************************************************************************************/
+
+	function reset_password($user_id) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		
+		$temp_password = random_string('alnum', 12);
+		$salt = $this->config->item('salt');
+		$hash_password = sha1($salt.$temp_password);
+		
+		$data = array(
+		   'password' => $hash_password,
+		   'change_password' => 'yes',
+		   'modification_date' => current_timestamp()
+		);
+		
+		$this->db->where('user_id', $user_id);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return $temp_password;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	function update_user_password($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		
+		$password = $data_array['password'];
+		$salt = $this->config->item('salt');
+		$hash_password = sha1($salt.$password);
+		
+		$data = array(
+		   'password' => $hash_password,
+		   'change_password' => 'no',
+		   'modification_date' => current_timestamp()
+		);
+		
+		$this->db->where('user_id', $data_array['user_id']);
+		$result = $this->db->update($db_table, $data); 
+		
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	function forgot_reset_password($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'users';
+		
+		$user_data_array = $this->get_user_by_email($data_array['username'],'all');
+		if(count($user_data_array) == 1) {
+			$user_id = $user_data_array[0]->user_id;
+			$temp_password = random_string('alnum', 12);
+			$salt = $this->config->item('salt');
+			$hash_password = sha1($salt.$temp_password);
+			
+			$data = array(
+			   'password' => $hash_password,
+			   'change_password' => 'yes',
+			   'modification_date' => current_timestamp()
+			);
+			$this->db->where('user_id', $user_id);
+			$result = $this->db->update($db_table, $data); 
+			
+			if($result) {
+				return $temp_password;
+			} else {
+				return FALSE;
+			}
+		
+		} else if(count($user_data_array) > 1) {
+			return array('message' => 'Mulitple Logins');
+		} else {
+			return FALSE;
+		
+		}
+	}
+
 
 /***********************************************************************************************************************************
 /*		DELETE FUNCTIONS

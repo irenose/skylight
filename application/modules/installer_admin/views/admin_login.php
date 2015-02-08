@@ -19,7 +19,7 @@
             <label for="password">Password<?php echo required_text('password'); ?></label>
             <input type="password" name="password" id="password" class="input_text" /><br /><br />
         
-            <p class="login_center"><input type="submit" class="submit_btn login_submit" name="action" id="login" value="Log In" /><br /><br /><a href="/admin/password">Forgot Password</a></p>
+            <p class="login_center"><input type="submit" class="submit_btn login_submit" name="action" id="login" value="Log In" /><br /><br /><a href="/installer-admin/password">Forgot Password</a></p>
         
             
             </form>

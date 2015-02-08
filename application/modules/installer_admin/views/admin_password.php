@@ -6,7 +6,7 @@
         	<?php 				
 				echo $this->session->flashdata('status_message');
 			?>
-			<form action="/admin/password" method="post" class="login_form">
+			<form action="/installer-admin/password" method="post" class="login_form">
                 <label for="username">Username<?php echo required_text('username'); ?></label>
                 <input type="text" name="username" id="username" class="input_text" value="<?php echo set_value('username'); ?>" /><br /><br />
 
