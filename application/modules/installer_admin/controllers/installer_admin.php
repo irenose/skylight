@@ -263,11 +263,20 @@ class Installer_admin extends CI_Controller {
 						$this->load->library('image_lib');
 						
 						if( ! empty($_FILES['userfile']['name'])) {
+
+							$current_extension = get_file_extension($_FILES['userfile']['name']);
+
 							//Has previously uploaded image, so include overwrite settings
 							if($this->input->post('current_filename_base') != '') {
-								$config['file_name'] = $this->input->post('current_filename');
+								$config['file_name'] = $this->input->post('current_filename_base') . '.' . $current_extension;
+								$config['overwrite'] = TRUE;
+							} else {
+								$current_filename_base = substr($_FILES['userfile']['name'], 0, strrpos($_FILES['userfile']['name'],'.'));
+								$config['file_name'] = $this->input->post('dealer_id') . '-' . $current_filename_base . '.' . $current_extension;
 								$config['overwrite'] = TRUE;
 							}
+
+
 							$error = '';
 							//Initialize
 							$this->upload->initialize($config);
@@ -309,10 +318,10 @@ class Installer_admin extends CI_Controller {
 								
 								$update = $this->installer_admin_model->update_profile($data_array, TRUE);
 								if($update) {
-									$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
+									$this->session->set_flashdata('status_message','<div class="success">Account information has been updated successfully</div>');
 									redirect('/installer-admin/account/update/');
 								} else {
-									$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this dealer. Please try again.</p></div>');
+									$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating your information. Please try again.</p></div>');
 									redirect('/installer-admin/account/update/');
 								}
 							}
@@ -320,10 +329,10 @@ class Installer_admin extends CI_Controller {
 							// Dealer is not trying to update or add a logo
 							$update = $this->installer_admin_model->update_profile($_POST);
 							if($update) {
-								$this->session->set_flashdata('status_message','<div class="success">Profile has been updated successfully</div>');
+								$this->session->set_flashdata('status_message','<div class="success">Account information has been updated successfully</div>');
 								redirect('/installer-admin/account/update/');
 							} else {
-								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this profile. Please try again.</p></div>');
+								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating your information. Please try again.</p></div>');
 								redirect('/installer-admin/account/update/');
 							}
 							
@@ -409,11 +418,18 @@ class Installer_admin extends CI_Controller {
 				$this->load->library('image_lib');
 				
 				if( ! empty($_FILES['userfile']['name'])) {
+					$current_extension = get_file_extension($_FILES['userfile']['name']);
+
 					//Has previously uploaded image, so include overwrite settings
 					if($this->input->post('current_filename_base') != '') {
-						$config['file_name'] = $this->input->post('current_filename');
+						$config['file_name'] = $this->input->post('current_filename_base') . '.' . $current_extension;
+						$config['overwrite'] = TRUE;
+					} else {
+						$current_filename_base = substr($_FILES['userfile']['name'], 0, strrpos($_FILES['userfile']['name'],'.'));
+						$config['file_name'] = $this->input->post('dealer_id') . '-' . $current_filename_base . '.' . $current_extension;
 						$config['overwrite'] = TRUE;
 					}
+
 					$error = '';
 					//Initialize
 					$this->upload->initialize($config);
@@ -754,14 +770,14 @@ class Installer_admin extends CI_Controller {
 						$error = '';
 
 						if( ! empty($_FILES['photo_image']['name'])) {
-							//Reset
+							$config['file_name'] = $this->input->post('dealer_id') . '-' . $_FILES['photo_image']['name'];
 							$this->upload->initialize($config);
+
 							if ( ! $this->upload->do_upload('photo_image')) {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = $error;
 								$data['page_content'] = 'admin_photos_add';
 								$error_count++;
-								break;
 							} else {
 								$data_array = $_POST;
 								$file_path = '';
