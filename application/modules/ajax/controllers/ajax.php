@@ -21,6 +21,21 @@ class Ajax extends CI_Controller {
         $this->load->view('page/' . $this->input->get('view'), $this->data);        
     }
 
+    function check_url() {
+		$test_url = @$_POST['test_url'];
+		if($test_url != '') {
+			$url_array = $this->page_model->check_url($test_url);
+			if(count($url_array) > 0) {
+				echo '<span style="color:#ff0000;font-weight:bold;">URL is already in use.</span>';
+			} else {
+				echo '<span style="color:#4cb61d;font-weight:bold;">URL is available.</span>';	
+			}
+		} else {
+			echo '<span style="color:#ff0000;font-weight:bold;">Please enter a URL</span>';	
+		}
+		
+	}
+
 	function check_email() {
 		$register_email = @$_POST['register_email'];
 		if($register_email != '') {

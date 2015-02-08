@@ -15,6 +15,14 @@ class Page_model extends CI_Model {
 		return $query->result();
 	}
 
+	function check_url($test_url) {
+		$db_table = $this->config->item('db_table_prefix') . 'dealers';
+		$where = array('dealer_url' => $test_url);
+		$this->db->where($where);
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
 /**********************************************************************************************************************************
 		SEARCH FUNCTIONS
 ***********************************************************************************************************************************/

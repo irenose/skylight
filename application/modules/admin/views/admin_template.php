@@ -148,6 +148,14 @@ $(document).ready(function() {
 		var button_value = $(this).attr('rel');
 		$('form').append('<input type="hidden" name="action_value" value="' + button_value + '" />').submit();							 							 
 	});
+
+	$('#dealer_url').blur(function() {
+		$('#url_validation').html('Checking URL...');
+		var test_url = $('#dealer_url').val();
+		$.post('/ajax/check_url', { test_url: test_url, }, function(data) {
+			$('#url_validation').html(data);
+		});
+	});
 	
 
 });
