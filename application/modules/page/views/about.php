@@ -80,7 +80,24 @@
         if (isset($testimonials_array) && count($testimonials_array) > 0) {
             echo '<section class="page-row"><header class="intro-statement intro-statement--squeezed"><h2 class="about-dealer-title upper normal-weight">Testimonials</h2></header><div class="testimonial-carousel header-statement"><div class="slick"><div class="slick-list"><div class="testimonial">';
             foreach($testimonials_array as $testimonial) {
-                echo '<p>"' . filter_page_content($testimonial->testimonial_copy) . '"</p>';
+                echo '<p>';
+                echo '"' . filter_page_content($testimonial->testimonial_copy) . '"';
+                $line_started = FALSE;
+                if(trim($testimonial->testimonial_name) != '' || trim($testimonial->testimonial_source != '')) {
+                    echo '<span class="testimonial-name-source">' . "\n";
+                        if(trim($testimonial->testimonial_name) != '') {
+                            $line_started = TRUE;
+                            echo '<br>' . $testimonial->testimonial_name;
+                        }
+                        if(trim($testimonial->testimonial_source) != '') {
+                            if($line_started) {
+                                echo ', ';
+                            }
+                            echo $testimonial->testimonial_source;
+                        }
+                    echo '</span>' . "\n";
+                }
+                echo  '</p>';
             }
             echo '</div></div></div></div></section>';
         }
