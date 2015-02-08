@@ -497,7 +497,7 @@ class Page extends CI_Controller {
                             break;
                         case 'promotions':
                             $data['current_section'] = 'promotions';
-                            if ($data['installer_array'][0]->promotion_page_copy == '') {
+                            if ($data['installer_array'][0]->promotion_page_copy == '' || $data['installer_array'][0]->promotion_status == 'inactive') {
                                 redirect('/' . $data['installer_array'][0]->dealer_url);
                             }
                             $data['meta_array'] = $this->meta->get_meta('homepage', $data['installer_region'], $data['installer_array'][0]->name);
