@@ -33,7 +33,7 @@
 ?> 
     <section class="page-row installer-warranty">
         <h2 class="upper normal-weight"><?= $installer_array[0]->name; ?> Warranty</h2>
-        <p class="text-columns-2 installer-warranty"><?= filter_page_content($warranty_array[0]->dealer_warranty); ?></p>
+        <p class="installer-warranty"><?= filter_page_content(nl2br($warranty_array[0]->dealer_warranty)); ?></p>
     </section> 
 <?php
     /*---------------------------------------------
