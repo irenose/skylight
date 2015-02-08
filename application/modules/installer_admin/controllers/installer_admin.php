@@ -206,7 +206,8 @@ class Installer_admin extends CI_Controller {
 		}
 		if($update) {
 			/************************ UPDATE SITEMAP ******************************/
-			//$this->installer_admin_model->generate_sitemap();
+			$this->load->model('admin/admin_model');
+			$this->admin_model->generate_sitemap();
 			
 			$this->session->set_flashdata('status_message','<div class="success">' . $status . '</div>');
 			redirect('/installer-admin/home/');

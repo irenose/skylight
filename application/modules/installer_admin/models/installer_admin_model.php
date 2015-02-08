@@ -938,60 +938,6 @@ class Installer_admin_model extends CI_Model {
 		}
 	}
 	
-/***********************************************************************************************************************************
-/*		AUTO GENERATION FUNCTIONS
-************************************************************************************************************************************/	
-	
-	function generate_sitemap() {
-		
-		$xml_file = 'sitemap.xml';
-		$base_url = base_url();
-		
-		$output =  '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
-		
-		$output .= '<url>' . "\n";
-		$output .= '<loc>' . substr($base_url,0,strlen($base_url) - 1) . '</loc>' . "\n";
-		$output .= '<changefreq>weekly</changefreq>' . "\n";
-		$output .= '</url>' . "\n";
-		
-		$site_array = $this->get_dealer_site_list();
-		foreach($site_array as $site) {
-			if($site->dealer_status == 'active' && $site->site_status == 'active' && $site->dealer_id != '6') {
-				$output .= '<url>' . "\n";
-				$output .= '<loc>' . $base_url . $site->dealer_url . '</loc>' . "\n";
-				$output .= '<changefreq>weekly</changefreq>' . "\n";
-				$output .= '</url>' . "\n";
-				
-				$output .= '<url>' . "\n";
-				$output .= '<loc>' . $base_url . $site->dealer_url . '/about-us</loc>' . "\n";
-				$output .= '<changefreq>weekly</changefreq>' . "\n";
-				$output .= '</url>' . "\n";
-				
-				$output .= '<url>' . "\n";
-				$output .= '<loc>' . $base_url . $site->dealer_url . '/warranty</loc>' . "\n";
-				$output .= '<changefreq>weekly</changefreq>' . "\n";
-				$output .= '</url>' . "\n";
-			}
-		}
-		
-		$output .= '</urlset>';
-		
-		$file = $_SERVER['DOCUMENT_ROOT'] . "/" . $xml_file;
-		$handle = fopen($file, "w+");
-		$xml = fwrite($handle,$output);
-		fclose($handle);
-		
-		if($xml) {
-			return true;
-		} else {
-			return false;
-		}	
-		
-		
-		
-	}
-	
 }
 	
 /* End of file installer_admin_model.php */

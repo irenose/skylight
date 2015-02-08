@@ -1367,6 +1367,9 @@ class Admin extends CI_Controller {
 								
 						$update = $this->admin_model->update_product($data_array, $uploaded_product_image);
 						if($update) {
+							/************************ UPDATE SITEMAP ******************************/
+							$this->admin_model->generate_sitemap();
+
 							$this->session->set_flashdata('status_message','<div class="success">Product has been updated successfully</div>');
 							redirect('admin/products/update/' . $product_id);
 						} else {
@@ -1380,6 +1383,9 @@ class Admin extends CI_Controller {
 					$data_array = array('product_id' => $product_id);
 					$delete = $this->admin_model->delete_product($data_array);
 					if($delete) {
+						/************************ UPDATE SITEMAP ******************************/
+						$this->admin_model->generate_sitemap();
+						
 						$this->session->set_flashdata('status_message','<div class="success">Your product has been deleted successfully.</div>');
 						redirect('admin/products');
 					}  else {

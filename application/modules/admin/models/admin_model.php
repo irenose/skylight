@@ -408,7 +408,7 @@ class Admin_model extends CI_Model {
 	function get_products_by_category($product_category_id, $status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'products';
 		
-		$this->db->select('ss_products.product_id AS product_id, ss_product_categories.product_category_name AS product_category_name, ss_product_categories.sort_order AS product_category_sort, ss_products.sort_order AS product_sort, ss_products.product_name AS product_name, ss_products.product_status AS product_status, ss_products.primary_category_id AS primary_category_id, ss_products.secondary_category_id AS secondary_category_id, ss_products.product_category_id AS product_category_id, ss_products.model_number AS model_number, ss_products.lifestyle_image AS lifestyle_image, ss_products.lifestyle_extension AS lifestyle_extension', FALSE);
+		$this->db->select('ss_products.product_id AS product_id, ss_product_categories.product_category_name AS product_category_name, ss_product_categories.sort_order AS product_category_sort, ss_products.sort_order AS product_sort, ss_products.product_name AS product_name, ss_products.product_status AS product_status, ss_products.primary_category_id AS primary_category_id, ss_products.secondary_category_id AS secondary_category_id, ss_products.product_category_id AS product_category_id, ss_products.model_number AS model_number, ss_products.lifestyle_image AS lifestyle_image, ss_products.lifestyle_extension AS lifestyle_extension, ss_products.product_url AS product_url', FALSE);
 		$this->db->join('ss_product_categories', 'ss_product_categories.product_category_id = ss_products.primary_category_id', 'inner');
 		if($status != NULL) {
 			$where = "ss_products.product_status='$status' AND ss_product_categories.product_category_status='$status' AND ss_products.product_category_id='$product_category_id'";
@@ -2338,8 +2338,76 @@ class Admin_model extends CI_Model {
 		return $query->result();
 	}
 
+/***********************************************************************************************************************************
+/*		AUTO GENERATION FUNCTIONS
+************************************************************************************************************************************/	
+	
+	function generate_sitemap() {
+		$xml_file = 'sitemap.xml';
+		$base_url = base_url();
+		
+		$output =  '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
+		
+		$output .= '<url>' . "\n";
+		$output .= '<loc>' . substr($base_url,0,strlen($base_url) - 1) . '</loc>' . "\n";
+		$output .= '<changefreq>weekly</changefreq>' . "\n";
+		$output .= '</url>' . "\n";
 
+		$product_category_array = $this->get_product_categories('active');
+		foreach($product_category_array as $product_category) {
+			$output .= '<url>' . "\n";
+			$output .= '<loc>' . $base_url . 'catalog/products/category/' . $product_category->product_category_url . '</loc>' . "\n";
+			$output .= '<changefreq>weekly</changefreq>' . "\n";
+			$output .= '</url>' . "\n";
+			$products_array = $this->admin_model->get_products_by_category($product_category->product_category_id, 'active');
+			foreach($products_array as $product) {
+				$output .= '<url>' . "\n";
+				$output .= '<loc>' . $base_url . 'catalog/product/' . $product->product_url . '</loc>' . "\n";
+				$output .= '<changefreq>weekly</changefreq>' . "\n";
+				$output .= '</url>' . "\n";
+			}
+		}
+		
+		$site_array = $this->get_dealer_site_list();
+		foreach($site_array as $site) {
+			if($site->dealer_status == 'active' && $site->site_status == 'active' && $site->dealer_id != '6') {
+				$output .= '<url>' . "\n";
+				$output .= '<loc>' . $base_url . $site->dealer_url . '</loc>' . "\n";
+				$output .= '<changefreq>weekly</changefreq>' . "\n";
+				$output .= '</url>' . "\n";
+				
+				$output .= '<url>' . "\n";
+				$output .= '<loc>' . $base_url . $site->dealer_url . '/about</loc>' . "\n";
+				$output .= '<changefreq>weekly</changefreq>' . "\n";
+				$output .= '</url>' . "\n";
+				
+				$output .= '<url>' . "\n";
+				$output .= '<loc>' . $base_url . $site->dealer_url . '/warranty</loc>' . "\n";
+				$output .= '<changefreq>weekly</changefreq>' . "\n";
+				$output .= '</url>' . "\n";
 
+				$output .= '<url>' . "\n";
+				$output .= '<loc>' . $base_url . $site->dealer_url . '/contact</loc>' . "\n";
+				$output .= '<changefreq>weekly</changefreq>' . "\n";
+				$output .= '</url>' . "\n";
+			}
+		}
+		
+		$output .= '</urlset>';
+		
+		$file = $_SERVER['DOCUMENT_ROOT'] . "/" . $xml_file;
+		$handle = fopen($file, "w+");
+		$xml = fwrite($handle,$output);
+		fclose($handle);
+		
+		if($xml) {
+			return true;
+		} else {
+			return false;
+		}	
+		
+	}
 }
 	
 /* End of file admin_model.php */
