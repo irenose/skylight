@@ -197,8 +197,12 @@ class Auth {
 		
 		// If a permission level is set and the user is logged in, but doesn't have a high-enough permission level, bounce them
 		if($permission_level != NULL) {
-			if($this->logged_in() && $this->CI->session->userdata('permission_level') > $permission_level) {
-				redirect('admin/home');
+			if($this->logged_in() && $_SESSION['permission_level'] > $permission_level) {
+				if($_SESSION['permission_level'] <= 2) {
+					redirect('/admin/home');
+				} else {
+					redirect('/installer-admin/home');
+				}
 			}
 		}
 	}
