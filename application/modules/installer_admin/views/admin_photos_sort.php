@@ -1,5 +1,5 @@
 <h1>Sort Photos</h1>
-<p>Use the form below to order the photos as they are seen on your site.</p>
+<p>Drag the photos below into the order that you want them to display in the gallery on your microsite. When you are done, make sure to click "update sort" at the bottom of the page to save your changes.</p>
 <div class="flashdata">
     <?php 
 		if(validation_errors()) {
