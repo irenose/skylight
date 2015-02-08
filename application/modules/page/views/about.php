@@ -37,6 +37,12 @@
             <header class="intro-statement intro-statement--squeezed">
                 <h2 class="about-dealer-title upper normal-weight">Our Company</h2>
                 <p class="about-dealer-text"><?= filter_page_content($installer_array[0]->about_dealer_text); ?></p>
+                <?php
+                    if(trim($installer_array[0]->credentials) != '') {
+                        echo '<h3 class="normal-weight credentials-title">Our Credentials</h3>' . "\n";
+                        echo '<p>' . filter_page_content(nl2br(trim($installer_array[0]->credentials))) . '</p>' . "\n";
+                    }
+                ?>
             </header>
         </section>
 <?php
