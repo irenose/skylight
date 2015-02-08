@@ -7,7 +7,7 @@
             ?>
             <p class="login_copy"><strong>Username:</strong> <?php echo $user_data_array[0]->username; ?></p>
 
-            <form action="/admin/password/update/<?php echo $user_id; ?>" method="post" class="login_form">
+            <form action="/installer-admin/password/update/<?php echo $user_id; ?>" method="post" class="login_form">
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
                 <label for="password">Password<?php echo required_text('password'); ?></label>
                 <input type="text" name="password" id="password" class="input_text" value="" /><br /><br />

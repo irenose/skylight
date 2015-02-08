@@ -877,5 +877,5 @@ class Installer_admin extends CI_Controller {
 	
 }
 
-/* End of file admin.php */
-/* Location: ./system/application/modules/dealer_admin/controllers/dealer_admin.php */
+/* End of file installer_admin.php */
+/* Location: ./system/application/modules/installer_admin/controllers/installer_admin.php */

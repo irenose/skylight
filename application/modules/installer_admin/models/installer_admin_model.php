@@ -1003,5 +1003,5 @@ class Installer_admin_model extends CI_Model {
 	
 }
 	
-/* End of file dealer_admin_model.php */
-/* Location: ./system/application/modules/dealer_admin/models/dealer_admin_model.php */
+/* End of file installer_admin_model.php */
+/* Location: ./system/application/modules/installer_admin/models/installer_admin_model.php */

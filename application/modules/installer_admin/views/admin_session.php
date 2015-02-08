@@ -17,6 +17,7 @@
 	$_SESSION['redirected_from'] = $user_array['redirected_from'];
 	$_SESSION['dealer_id'] = $user_array['dealer_id'];
 
+	//REDIRECT SUPER ADMINS TO VELUX GLOBAL ADMIN
 	if($user_array['permission_level'] < 2) {
 		redirect('/admin/home');
 	} else {

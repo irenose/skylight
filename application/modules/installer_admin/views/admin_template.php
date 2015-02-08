@@ -186,11 +186,8 @@ tinyMCE.init({
 		height:"350",
 
         // Example content CSS (should be your site CSS)
-        content_css : "/src/installer-admin/assets/css/tinymce.css?" + new Date().getTime(),
+        content_css : "/src/dadmin/assets/css/tinymce.css?" + new Date().getTime(),
 		
-        external_image_list_url : "/installer-admin/image_list"
-
-
 });
 
 </script>
