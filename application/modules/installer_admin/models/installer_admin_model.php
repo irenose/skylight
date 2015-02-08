@@ -576,7 +576,7 @@ class Installer_admin_model extends CI_Model {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		
 		$data = array(
-			'dealer_warranty' => $data_array['dealer_warranty'],
+			'dealer_warranty' => strip_tags($data_array['dealer_warranty']),
 			'modification_date' => current_timestamp()
 		);
 			
@@ -647,7 +647,7 @@ class Installer_admin_model extends CI_Model {
 		
 		$data = array(
 			'dealer_id' => $data_array['dealer_id'],
-			'testimonial_copy' => $data_array['testimonial_copy'],
+			'testimonial_copy' => strip_tags($data_array['testimonial_copy']),
 			'testimonial_name' => $data_array['testimonial_name'],
 			'testimonial_source' => $data_array['testimonial_source'],
 			'modified_by' => $_SESSION['admin_username'],
@@ -669,8 +669,8 @@ class Installer_admin_model extends CI_Model {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		
 		$data = array(
-			'promotion_headline' => $data_array['promotion_headline'],
-			'promotion_page_copy' => $data_array['promotion_page_copy'],
+			'promotion_headline' => strip_tags($data_array['promotion_headline']),
+			'promotion_page_copy' => strip_tags($data_array['promotion_page_copy']),
 			'promotion_status' => $data_array['promotion_status'],
 			'modification_date' => current_timestamp()
 		);
@@ -757,16 +757,16 @@ class Installer_admin_model extends CI_Model {
 		
 		if($has_image == TRUE) {
 			$data = array(
-				'about_dealer_text' => $about_text,
-				'about_dealer_headline' => $about_headline,
+				'about_dealer_text' => strip_tags($about_text),
+				'about_dealer_headline' => strip_tags($about_headline),
 				'about_image' => $data_array['about_image'],
 				'about_extension' => $data_array['about_extension'],
 				'modification_date' => current_timestamp()
 			);
 		} else {
 			$data = array(
-				'about_dealer_text' => $about_text,
-				'about_dealer_headline' => $about_headline,
+				'about_dealer_text' => strip_tags($about_text),
+				'about_dealer_headline' => strip_tags($about_headline),
 				'modification_date' => current_timestamp()
 			);
 		}
