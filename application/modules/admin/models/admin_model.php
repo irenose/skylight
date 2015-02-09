@@ -863,7 +863,7 @@ class Admin_model extends CI_Model {
 				$message .= "Microsite URL: www.skylightspecialist.com/" . $data_array['dealer_url'] . "\n";
 				$message .= "Assigned phone number: " . $data_array['phone1'] . "\n\n";
 				
-				$message .= "Microsite Admin: www.skylightspecialist.com/dealer-admin\n";
+				$message .= "Microsite Admin: www.skylightspecialist.com/installer-admin\n";
 				$message .= "Username: " . $data_array['email'] . "\n";
 				$message .= "Password: " . $random_password . "\n\n";
 				
