@@ -80,7 +80,7 @@ class Installer_admin extends CI_Controller {
 						$recipient = $to_email;
 						$from = $this->config->item('global_email_from');
 						$subject = 'Forgotten Password Reset';
-						$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
+						$message = "Your 5-Star Skylight Specialist microsite password has been reset to the following: " . $temp_password . ". Please log in to the installer admin and you will be prompted to create a new password.";
 
 						Email_Send($recipient, $from, $subject, $message);
 						
