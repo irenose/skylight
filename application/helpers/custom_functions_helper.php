@@ -816,6 +816,12 @@ if ( ! function_exists('check_spam_count')) {
         		$spam_count++;
         	}
         }
+
+        if(array_key_exists('phone', $check_fields)) {
+        	if($check_fields['phone'] == '123456') {
+        		$spam_count++;
+        	}
+        }
         if($honeypot_field) {
         	if($post_array[$honeypot_field] != '') {
         		$spam_count++;
