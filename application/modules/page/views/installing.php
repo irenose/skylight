@@ -28,7 +28,7 @@
         </div>
         <div class="small-12 medium-5 medium-offset-1 columns reversed what-to-expect">
             <h2 class="upper normal-weight">What Should You Expect During Installation?</h2>
-            <p>A new skylight installation typically takes four to five hours per skylight and happens in two phases: rooftop and interior. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
+            <p>A new skylight installation happens in two phases: rooftop and interior. Depending on the circumstances such as roof pitch, interior light shaft depth and shape and weather, installations can take between a half day and three days. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
         </div>
     </div>
 </section>
