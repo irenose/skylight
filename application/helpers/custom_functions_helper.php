@@ -817,8 +817,8 @@ if ( ! function_exists('check_spam_count')) {
         	}
         }
 
-        if(array_key_exists('phone', $check_fields)) {
-        	if($check_fields['phone'] == '123456') {
+        if(array_key_exists('phone', $post_array)) {
+        	if($post_array['phone'] == '123456') {
         		$spam_count++;
         	}
         }

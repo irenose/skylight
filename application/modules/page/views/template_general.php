@@ -18,11 +18,6 @@
     <meta name="description" content="<?php echo $meta_description; ?>">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-    <?php
-        if(in_array($url_page_name, $hidden_page_array) || in_array($installer_url, $hidden_dealers_array)) {
-            echo '<meta name="robots" content="noindex,nofollow">' . "\n";
-        }
-    ?>
     <?=$this->load->view('partials/_favicons');?>
     <link rel="canonical" href="<?php echo $canonical_url; ?>" />
     <?=$this->load->view('partials/_social-meta');?>
