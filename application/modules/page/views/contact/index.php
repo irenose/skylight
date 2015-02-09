@@ -43,6 +43,10 @@
         <div class="small-12 large-4 large-push-7 large-offset-1 columns dealer-info--contact">
             <?php 
                 echo '<span class="font-display dealer-title">' . $installer_array[0]->name . '</span><br>' . $installer_array[0]->address . '<br>' . $installer_array[0]->city . ', ' . $installer_array[0]->state . ' ' . $installer_array[0]->zip . '<br>';
+                if($installer_array[0]->website != '') {
+                    $website = prep_url($installer_array[0]->website);
+                    echo '<a href="' . $website . '" target="_blank">' . $website . '</a><br><br>';
+                }
                 echo '<div class="mobile-map-it"><a href="http://maps.google.com/maps?q=' . $encoded_address . '" target="_blank" class="cta-text">Map It</a></div>';
             ?>
         </div>

@@ -565,10 +565,6 @@ ww.carousels = (function(){
             switch (carousel_type) {
 
                 case "photo-gallery":
-
-// speed: 500,
-// cssEase: 'linear'
-
                     // nodes
                     ww.carousels.insert_nodes($carousel, ['controls']);
 
@@ -727,20 +723,20 @@ ww.carousels = (function(){
         },
 
         do_carousel: function($carousel, slick_options) {
+            //For Photo Gallery, add function to update caption
+            if( $carousel.data("carousel-type") == 'photo-gallery') {
+                slick_options.onAfterChange = function() {
+                    ww.carousels.show_caption();
+                };
+            }
+
             var $slick_api = $carousel.slick(slick_options);
 
             if ($carousel.is("[data-equal-heights]")) {
-
                 $('.slick__item').imagesLoaded( function() {
                     ww.carousels.equal_heights($carousel);
                 });
-
-
             }
-
-            /*var my_timer = window.setTimeout(function() {
-                ww.carousels.equal_heights($carousel);
-            }, 500);*/
         },
 
         equal_heights: function($carousel) {
@@ -793,6 +789,14 @@ ww.carousels = (function(){
                 autoplay: true,
                 autoplaySpeed: 4000
             });
+        },
+        show_caption: function() {
+            var caption = $('.slick-active').find('img').attr('data-caption');
+            if(caption !== '') {
+                $('#gallery-caption').removeClass('caption-empty').html('<p>' + caption + '</p>');
+            } else {
+                $('#gallery-caption').addClass('caption-empty').html('');
+            }
         }
     };
 })();
