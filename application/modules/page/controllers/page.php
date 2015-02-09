@@ -469,6 +469,22 @@ class Page extends CI_Controller {
                                     } else {
                                         //Send Spam Emails
                                         $data['form_status'] = 'success';
+                                        //SEND EMAIL
+                                        $recipient = 'dev@wrayward.com';
+                                        $from = $this->config->item('global_email_from');
+                                        $options = array();
+                                        $subject = 'Spam Contact Request from your VELUX Skylight Microsite';
+                                        $message = "Dealer URL:\n" . $data['installer_array'][0]->dealer_url . "\n\n";
+
+                                        $message .= "Name:\n" . $this->input->post('name') . "\n\n";
+                                        $message .= "Phone:\n " . $this->input->post('phone') . "\n\n";
+                                        $message .= "E-mail:\n " . $this->input->post('email') . "\n\n";
+                                        $message .= "Address:\n " . $this->input->post('address') . "\n\n";
+                                        $message .= "City:\n " . $this->input->post('city') . "\n\n";
+                                        $message .= "State:\n " . $this->input->post('state') . "\n\n";
+                                        $message .= "ZIP:\n " . $this->input->post('zip') . "\n\n\n";
+                                        $message .= "Subject:\n " . $this->input->post('subject') . "\n\n";
+                                        $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
                                         redirect($data['installer_base_url'] . '/contact/thanks');
                                     }
                                 }
