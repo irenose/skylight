@@ -448,7 +448,6 @@ class Page extends CI_Controller {
                                                 $options['cc'] = trim($data['installer_array'][0]->cc_email);
                                             }
                                             $subject = 'Contact Request from your VELUX Skylight Microsite';
-
                                             $message = "Name:\n" . $this->input->post('name') . "\n\n";
                                             $message .= "Phone:\n " . $this->input->post('phone') . "\n\n";
                                             $message .= "E-mail:\n " . $this->input->post('email') . "\n\n";
@@ -457,9 +456,9 @@ class Page extends CI_Controller {
                                             $message .= "ZIP:\n " . $this->input->post('zip') . "\n\n\n";
                                             $message .= "Subject:\n " . $this->input->post('subject') . "\n\n";
                                             $message .= "Comments:\n" . strip_tags($this->input->post('comments')) . "\n";
-
                                             Email_Send($recipient, $from, $subject, $message, $options);
                                             redirect($data['installer_base_url'] . '/contact/thanks');
+
                                         } else {
                                             $data['form_status'] = 'error';
                                             redirect($data['installer_base_url'] . '/contact/thanks?error=yes');
@@ -475,7 +474,6 @@ class Page extends CI_Controller {
                                         $options = array();
                                         $subject = 'Spam Contact Request from your VELUX Skylight Microsite';
                                         $message = "Dealer URL:\n" . $data['installer_array'][0]->dealer_url . "\n\n";
-
                                         $message .= "Name:\n" . $this->input->post('name') . "\n\n";
                                         $message .= "Phone:\n " . $this->input->post('phone') . "\n\n";
                                         $message .= "E-mail:\n " . $this->input->post('email') . "\n\n";
@@ -596,7 +594,6 @@ class Page extends CI_Controller {
                                             $recipient = (trim($data['installer_array'][0]->primary_email) != '') ? $data['installer_array'][0]->primary_email : $data['installer_array'][0]->email;
                                             $from = $this->config->item('global_email_from');
                                             $options = array();
-
                                             if(trim($this->input->post('email')) != '') {
                                                 $options['reply_to'] = $this->input->post('email');
                                             }
@@ -629,7 +626,6 @@ class Page extends CI_Controller {
                                         $subject = 'Spam Paid Search Contact Request from your VELUX Skylight Microsite';
                                         $message = "Dealer URL:\n" . $data['installer_array'][0]->dealer_url . "\n\n";
                                         $message .= "Paid Search URL:\n" . $this->input->post('ps_url') . "\n\n";
-
                                         $message .= "Name:\n" . $this->input->post('name') . "\n\n";
                                         $message .= "Phone:\n " . $this->input->post('phone') . "\n\n";
                                         $message .= "E-mail:\n " . $this->input->post('email') . "\n\n";
