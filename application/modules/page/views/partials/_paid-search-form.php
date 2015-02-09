@@ -29,7 +29,7 @@
             <label<?php if(isset($modal_form)) { echo ' id="ps-email"'; } ?>>Email Address*<?=required_text('email'); ?></label>
             <input type="text" name="email"<?php if(isset($modal_form)) { echo ' id="paid-search-email"'; } ?> class="<?=error_class('email'); ?> full-width" value="<?=set_value('email');?>" />
             
-            <div class="confirm_email">
+            <div class="confirm-email">
                 <label>Confirm Email Address</label>
                 <input type="text" name="confirm_email" class="input-text full-width" value="" />
             </div>

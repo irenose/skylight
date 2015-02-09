@@ -18,6 +18,11 @@
             <label id="label-email">Email Address*<?=required_text('email'); ?></label>
             <input type="text" name="email" id="contact-email" class="<?=error_class('email'); ?> full-width" value="<?=set_value('email');?>" />
 
+            <div class="confirm-email">
+                <label id="label-confirm-email">Confirm Email Address*</label>
+                <input type="text" name="confirm_email" id="contact-confirm-email" class="input-text full-width" value="" />
+            </div>
+
             <label>City</label>
             <input type="text" name="city" id="contact-city" class="full-width" />
 

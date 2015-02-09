@@ -429,7 +429,7 @@ class Page extends CI_Controller {
                                     $data['page_view'] = 'contact/index';
                                 } else {
                                     $check_fields = array('name','phone','email','comments');
-                                    $spam_count = check_spam_count($_POST, $check_fields);
+                                    $spam_count = check_spam_count($_POST, $check_fields, 'confirm_email');
                                     if ($spam_count == 0) {
                                         $insert_id = $this->page_model->add_contact($_POST);
 
