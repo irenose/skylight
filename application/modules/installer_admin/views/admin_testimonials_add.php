@@ -1,7 +1,7 @@
 <h1 class="clearfix">
     <div class="header_label">Add Testimonial</div>
 </h1>
-<p>Add your custom testimonial by typing it into the box below. The customer's name is required and the source of the testimonial (such as a publication like your local newspaper) is optional. Click the "add testimonial" button to save your changes.</p>
+<p>Add your custom testimonial by typing it into the box below. The customer's name is required and the source of the testimonial (such as a publication like your local newspaper) is optional. Please do not include quotation marks at the beginning and end of the testimonial, as they will be added automatically. Click the "add testimonial" button to save your changes. </p>
 <div class="flashdata">
     <?php 
         if(validation_errors()) {
