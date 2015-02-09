@@ -3,7 +3,7 @@
         <div class="row footer-row--search">
             <div class="footer-section footer-section--left">
                 <div class="five-star">
-                    <?=$this->load->view('partials/_svg-icon-five-star.php');?>
+                    <a href="<?=base_url()?>legal" target="_blank"><?=$this->load->view('partials/_svg-icon-five-star.php');?></a>
                 </div>
                 <div class="footer-text">To ensure our products are installed correctly and you receive the highest standard of service, we have a factory-trained nationwide network of certified 5-Star Skylight Specialists.</div>
             </div>

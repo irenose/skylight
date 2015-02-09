@@ -43,7 +43,8 @@ class Page extends CI_Controller {
             'promotions',
             'why-skylights',
             'installing',
-            'brochures'
+            'brochures',
+            'legal'
         );
 
         //Define site vars
@@ -608,6 +609,7 @@ class Page extends CI_Controller {
                                 }
                             }
                             break;
+
                         default:
                             redirect('');
                             break;
@@ -699,6 +701,20 @@ class Page extends CI_Controller {
                     }
                 }
 
+            } else if($vars_array[1] == 'legal') {
+                $template = 'template_general';
+                $data['show_installer_header_footer'] = FALSE;
+                $data['current_section'] = 'legal';
+                $data['meta_array'] = $this->meta->get_meta('global');
+                $data['canonical_url'] = $data['installer_base_url'] . '/legal';
+                //Define social media params
+                $data['social_meta_array'] = array(
+                    'title' => $data['meta_array']['title'],
+                    'description' => $data['meta_array']['description'],
+                    'url' => $data['canonical_url'],
+                    'image' => site_url('assets/images/welcome/hero.jpg'),
+                );
+                $data['page_view'] = 'legal';
             } else {
                 /*-----------------------
                     Not an Active URL

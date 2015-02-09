@@ -24,12 +24,12 @@
                 ?>
             </div>
             <div class="five-star five-star--top">
-                <?=$this->load->view('partials/_svg-icon-five-star.php');?>
+                <a href="<?=base_url()?>legal" target="_blank"><?=$this->load->view('partials/_svg-icon-five-star.php');?></a>
             </div>
         </div>
         <div class="row footer-row footer-row--bottom">
             <div class="five-star five-star--bottom">
-                <?=$this->load->view('partials/_svg-icon-five-star.php');?>
+                <a href="<?=base_url()?>legal" target="_blank"><?=$this->load->view('partials/_svg-icon-five-star.php');?></a>
             </div>
             <div class="copyright"><span>&copy; Copyright <?php echo date("Y") ?></span></div>
             <div class="social">
