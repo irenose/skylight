@@ -79,6 +79,26 @@
 
             );
             break;
+        case 'instant-light-shaft':
+            $card_content_array = array(
+                array(
+                    'image' => 'prefabricated-kit.png',
+                    'title' => 'Prefabricated Kit',
+                    'copy' => 'The prefabrication kit includes all necessary parts for a quick and easy shaft installation.'
+                ),
+                array(
+                    'image' => 'easy-completion.png',
+                    'title' => 'Easy Completion',
+                    'copy' => 'Simple click installation ensures accurate, airtight completion.'
+                ),
+                array(
+                    'image' => 'quick-installations.png',
+                    'title' => 'Quick Installations',
+                    'copy' => 'Allows for quicker installation than standard sheet rock. '
+                ),
+
+            );
+            break;
     }
 
     foreach($card_content_array as $key => $value) {

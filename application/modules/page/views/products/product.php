@@ -53,22 +53,27 @@
 <?php
     /******************************* PRODUCT CARDS *************************/
     $product_cards_category_array = array(6,7,8,17);
-    if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array)) {
-    	switch($product_info_array[0]->primary_category_id) {
-    		case 6:
-    			$data['display_group'] = 'electric-fresh-air';
-    			break;
-    		case 7:
-    			$data['display_group'] = 'manual-fresh-air';
-    			break;
-    		case 8:
-    			$data['display_group'] = 'fixed';
-    			break;
-    		case 17:
-    			$data['display_group'] = 'solar-fresh-air';
-    			break;
+    if (in_array($product_info_array[0]->primary_category_id, $product_cards_category_array) || $product_info_array[0]->product_id == 37) {
 
-    	}
+        if($product_info_array[0]->product_id == 37) {
+            $data['display_group'] = 'instant-light-shaft';
+        } else {
+        	switch($product_info_array[0]->primary_category_id) {
+        		case 6:
+        			$data['display_group'] = 'electric-fresh-air';
+        			break;
+        		case 7:
+        			$data['display_group'] = 'manual-fresh-air';
+        			break;
+        		case 8:
+        			$data['display_group'] = 'fixed';
+        			break;
+        		case 17:
+        			$data['display_group'] = 'solar-fresh-air';
+        			break;
+
+        	}
+        }
 ?>
 		<section class="page-row bg-grey top-shadow product-cards">
 		    <div class="constrained">
