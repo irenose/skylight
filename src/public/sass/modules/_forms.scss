@@ -60,13 +60,13 @@
         border: none;
         float: left;
         font-size: 13px;
-        height: 51px;
+        height: 50px;
         // padding: 4px 0 0;
         width: 85%;
 
         @include bp($tablet) {
             font-size: 14px;
-            height: 55px;
+            height: 54px;
         }
         &:focus {
             outline: none;
