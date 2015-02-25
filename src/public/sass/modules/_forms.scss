@@ -47,7 +47,7 @@
     margin: auto;
     max-width: 500px;
     overflow: hidden;
-    padding: 3px 15px;
+    padding: 3px 20px;
 
     @include bp($tablet) {
         border: 10px solid #505253;
@@ -60,13 +60,12 @@
         border: none;
         float: left;
         font-size: 13px;
-        height: 50px;
-        // padding: 4px 0 0;
+        height: 49px;
         width: 85%;
 
         @include bp($tablet) {
             font-size: 14px;
-            height: 54px;
+            height: 53px;
         }
         &:focus {
             outline: none;
