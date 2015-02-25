@@ -53,7 +53,7 @@
         border: 10px solid #505253;
         border-radius: 10px;
     }
-    input[type="search"] {
+    .fancy-search--bar {
         @extend %bold;
         @extend %font-display;
         @extend %upper;

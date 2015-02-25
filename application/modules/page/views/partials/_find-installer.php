@@ -65,7 +65,7 @@
             </label>
             <div class="fancy-search">
                 <input type="hidden" name="installer_search" value="yes">
-                <input type="search" name="zip" placeholder="ex: 90210">
+                <input class="fancy-search--bar" type="search" name="zip" placeholder="ex: 90210">
                 <button type="submit" class="btn" title="Search!">
                     <i class="icon icon-search--reversed">
                         <svg class="icon__svg">
