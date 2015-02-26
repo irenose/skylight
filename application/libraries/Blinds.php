@@ -19,7 +19,7 @@ class Blinds
                     'src' => asset_url('images/blinds/room-darkening.jpg'),
                     'alt' => 'darkening blinds',
                 ),
-                'text' => 'Adjustable, so you can direct the light in any direction. Can block up to 74 percent of the light and improve energy performance by up to 34 percent.',
+                'text' => 'Blackout cloth with honeycomb structure. Energy efficient aluminum coating inside improves the insulation effect. Sleek design and easy installation.',
                 'rooms' => array(),
                 'energy_pct' => null,
                 'swatches' => array(
@@ -38,7 +38,7 @@ class Blinds
                     'src' => asset_url('images/blinds/light-filtering-single.jpg'),
                     'alt' => 'filtering blinds',
                 ),
-                'text' => 'Diffuses the light to reduce glare and improves energy performance by up to 39 percent.',
+                'text' => 'Colorful light effects softens incoming light to reduce glare. Sleek design and easy installation.',
                 'rooms' => array(),
                 'energy_pct' => '39',
                 'swatches' => array(
