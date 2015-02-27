@@ -164,13 +164,13 @@
             width: 100%;
 
             .number {
-                margin-right:2em;
+                // margin-right:2em;
                 @include bp($foundation-small, $mobile-landscape) {
                     display: none;
                 }
-                @include bp($tablet) {
+                /* @include bp($tablet) {
                     margin-right:0;
-                }
+                } */
             }
         }
     }
