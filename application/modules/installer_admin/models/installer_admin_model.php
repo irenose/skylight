@@ -951,6 +951,39 @@ class Installer_admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
+
+	function delete_photo($data_array) {
+		$photo_array = $this->get_photo_by_id($data_array['photo_id']);
+		if(count($photo_array) > 0) {
+			$deleted = @unlink($this->config->item('gallery_images_full_dir') . $photo_array[0]->photo_image . '.' . $photo_array[0]->extension);
+			if($deleted) {
+				$db_table = $this->config->item('db_table_prefix') . 'photos';
+				$this->db->where('photo_id', $data_array['photo_id']);
+				$result = $this->db->delete($db_table); 
+				if($result) {
+					return TRUE;
+				} else {
+					return FALSE;
+				}
+			} else {
+				return FALSE;
+			}
+
+		} else {
+			return FALSE;
+		}
+	}
+
+	function delete_testimonial($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
+		$this->db->where('testimonial_id', $data_array['testimonial_id']);
+		$result = $this->db->delete($db_table); 
+		if($result) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
 	
 }
 	

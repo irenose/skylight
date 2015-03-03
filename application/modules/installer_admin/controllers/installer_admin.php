@@ -845,6 +845,18 @@ class Installer_admin extends CI_Controller {
 					}
 					break;
 
+				case 'delete':
+					$data_array = array('photo_id' => $id);
+					$delete = $this->installer_admin_model->delete_photo($data_array);
+					if($delete) {
+						$this->session->set_flashdata('status_message','<div class="success">Your photo has been deleted successfully.</div>');
+						redirect('/installer-admin/photos');
+					}  else {
+						$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error deleting this photo. Please try again.</p></div>');
+						redirect('/installer-admin/photos');
+					}
+					break;
+
 			}
 		}
 		$this->load->view('admin_template', $data);

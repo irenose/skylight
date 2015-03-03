@@ -868,7 +868,7 @@ class Admin_model extends CI_Model {
 				$message .= "Password: " . $random_password . "\n\n";
 				
 				$message .= "View the microsite training to learn how to customize your site:\n";
-				$message .= "http://www.vimeo.com/18475729\n";
+				$message .= "https://vimeo.com/121060790\n";
 				$message .= "Password: velux\n\n";
 				
 				$message .= "Note: your microsite is currently ACTIVE, which means it's live to the public.  You are encouraged to customize your site as soon as possible so it accurately reflects your business.";
