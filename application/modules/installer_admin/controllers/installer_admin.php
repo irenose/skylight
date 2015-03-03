@@ -533,7 +533,7 @@ class Installer_admin extends CI_Controller {
 		$data['current_section'] = 'warranty';
 		$data['page_title'] = 'Installer Administration - Update Warranty';
 		$data['dealer_array'] = $this->installer_admin_model->get_dealer_by_id($_SESSION['dealer_id']);
-		$this->form_validation->set_rules('dealer_warranty', 'Warranty', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('dealer_warranty', 'Warranty', 'trim|xss_clean');
 		
 		if($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_warranty';
