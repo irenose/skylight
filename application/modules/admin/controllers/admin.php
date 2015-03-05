@@ -1675,31 +1675,39 @@ class Admin extends CI_Controller {
 /****************************************************************************************************************************************/
 
 	function bazaarvoice() {
+
+		$feed_name = 'veluxskylightspecialist';
+		$brand_id = 'VELUX-SS';
+		$brand_name = 'VELUX Skylight Specialist';
+
 		$cats = $this->admin_model->get_bazaarvoice_categories();
 		$prods = $this->admin_model->get_bazaarvoice_products();
+
 		$parent_url = array(
 			1 => 'sun-tunnel-skylights',
 			2 => 'residential-skylights',
 			3 => 'commercial-skylights'
 		);
 		$xml = '<?xml version="1.0" encoding="utf-8"?>' . "\n";
-		$xml .= '<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/ProductFeed/5.1" name="veluxskylightspecialist" incremental="false" extractDate="2011-10-18T12:00:00.000000">' . "\n";
+		$xml .= '<Feed xmlns="http://www.bazaarvoice.com/xs/PRR/ProductFeed/5.6" name="' . $feed_name . '" incremental="false" extractDate="2011-10-18T12:00:00.000000">' . "\n";
 
 		$xml .= '<Brands>' . "\n";
 	        $xml .= "\t" . '<Brand>' . "\n";
-	            $xml .= "\t\t" . '<ExternalId>VELUX-SS</ExternalId>' . "\n";
-	            $xml .= "\t\t" . '<Name>VELUX Skylight Specialist</Name>' . "\n";
+	            $xml .= "\t\t" . '<ExternalId>' . $feed_name . '</ExternalId>' . "\n";
+	            $xml .= "\t\t" . '<Name>' . $brand_name . '</Name>' . "\n";
 	        $xml .= "\t" . '</Brand>' . "\n";
 	    $xml .= '</Brands>' . "\n";
 
 		$xml .= '<Categories>' . "\n";
 		foreach($cats as $cat) {
+			$category_name = str_replace('&trade;','',$cat->product_category_name);
+			$category_name = str_replace('Fixed','Daylight',$category_name);
 			$xml .= "\t" . '<Category>' . "\n";
 			$xml .= "\t\t" . '<ExternalId>prod-cat-' . $cat->product_category_id . '</ExternalId>' . "\n";
 			if($cat->primary_category_id != 0) {
 				$xml .= "\t\t" . '<ParentExternalId>prod-cat-' . $cat->primary_category_id . '</ParentExternalId>' . "\n";
 			}
-            $xml .= "\t\t" . '<Name>' . str_replace('&trade;','',$cat->product_category_name) . '</Name>' . "\n";
+            $xml .= "\t\t" . '<Name>' . $category_name . '</Name>' . "\n";
             if($cat->primary_category_id != 0) {
             	$xml .= "\t\t" . '<CategoryPageUrl>' . base_url() . 'catalog/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             } else {
@@ -1715,25 +1723,77 @@ class Admin extends CI_Controller {
 	        $xml .= "\t\t" . '<ExternalId>prod-' . $prod->product_id . '</ExternalId>' . "\n";
 	        $xml .= "\t\t" . '<Name>' . $prod->product_name . '</Name>' . "\n";
 
-	        $xml .= "\t\t" . '<Description>' . htmlspecialchars(strip_tags($prod->product_description)) . '</Description>' . "\n";
-	        $xml .= "\t\t" . '<BrandExternalId>VELUX-SS</BrandExternalId>' . "\n";
+	        $xml .= "\t\t" . '<Description>' . htmlspecialchars(strip_tags($prod->bz_description)) . '</Description>' . "\n";
+	        $xml .= "\t\t" . '<BrandExternalId>' . $brand_id . '</BrandExternalId>' . "\n";
 	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
 	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
-	        $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
+	        $xml .= "\t\t" . '<ImageUrl>' . base_url() . 'content-uploads/product-images/' . $prod->product_image . '.' . $prod->extension . '</ImageUrl>' . "\n";
 	        if($prod->model_number != '') {
 		        $xml .= "\t\t" . '<ModelNumbers>' . "\n";
 		            $xml .= "\t\t\t" . '<ModelNumber>' . str_replace('Model ', '', $prod->model_number) . '</ModelNumber>' . "\n";
 		        $xml .= "\t\t" . '</ModelNumbers>' . "\n";
 		    }
-	        $xml .= "\t\t" . '<UPCs>' . "\n";
-	            $xml .= "\t\t\t" . '<UPC> </UPC>' . "\n";
-	        $xml .= "\t\t" . '</UPCs>' . "\n";
+
+	        $mpn = "\t\t" . '<ManufacturerPartNumbers>' . "\n";
+		    $ean = "\t\t" . '<EANs>' . "\n";
+		    $product_data_array = $this->admin_model->get_product_data_by_id($prod->product_id);
+		    foreach($product_data_array as $data) {
+		    	$mpn .= "\t\t\t" . '<ManufacturerPartNumber>' . $data->mpn . '</ManufacturerPartNumber>' . "\n";
+		    	$ean .= "\t\t\t" . '<EAN>' . $data->ean . '</EAN>' . "\n";
+		    }
+		    $mpn .= "\t\t" . '</ManufacturerPartNumbers>' . "\n";
+		    $ean .= "\t\t" . '</EANs>' . "\n";
+
+	        $xml .= $mpn;
+	        $xml .= $ean;
 	        $xml .= "\t" . '</Product>' . "\n";
 	    }
 	    $xml .= '</Products>' . "\n";
 	    $xml .= '</Feed>' . "\n";
 	    echo $xml;
 	    exit;
+	}
+
+	function import_bz($file) {
+		ini_set("auto_detect_line_endings", true);
+		$key_map = array(
+			1 => 'mpn',
+			2 => 'name',
+			3 => 'ean'
+		);
+		$row = 1;
+		$file = $_SERVER['DOCUMENT_ROOT'] . '/bz/' . $file . '.csv';
+		$prods_array = array();
+
+		$fp = fopen($file, 'r');
+		$sub_count = 0;
+		while ( !feof($fp) ) {
+			$line = fgets($fp, 2048);
+			$data = str_getcsv($line, ",");
+			$key_count = 0;
+			for($c = 0; $c < count($data); $c++) {
+				if($data[$c] != '') {
+					$key_count++;
+					$prods_array[$sub_count][$key_map[$key_count]] = $data[$c];
+					if($key_count == 3) {
+	        			$sub_count++;
+	        		}
+					echo $data[$c];
+				}
+			}
+		}
+
+		foreach($prods_array as $key => $value) {
+			$db_table = 'bz_product_data';
+			$data = array(
+				'product_id' => '6',
+				'mpn' => $value['mpn'],
+				'ean' => $value['ean'],
+				'insert_date' => current_timestamp()
+			);
+			
+			$added = $this->db->insert($db_table, $data);
+		}
 	}
 	
 /*****************************************************************************************************************************************

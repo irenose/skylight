@@ -2257,9 +2257,18 @@ class Admin_model extends CI_Model {
 
 	function get_bazaarvoice_products() {
 		$db_table = $this->config->item('db_table_prefix') . 'products';
-		$where = array('product_status' => 'active', 'product_id !=' => '25', 'product_id !=' => '26');
+		$where = array('product_status' => 'active', 'bz_description !=' => '');
 		$this->db->where($where);
 		$this->db->order_by('primary_category_id ASC');
+		$query = $this->db->get($db_table);
+		return $query->result();
+	}
+
+	function get_product_data_by_id($product_id) {
+		$db_table = 'bz_product_data';
+		$where = array('product_id' => $product_id);
+		$this->db->where($where);
+		$this->db->order_by('bz_id ASC');
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
