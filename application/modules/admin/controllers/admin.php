@@ -1679,6 +1679,7 @@ class Admin extends CI_Controller {
 		$feed_name = 'veluxskylightspecialist';
 		$brand_id = 'VELUX-SS';
 		$brand_name = 'VELUX Skylight Specialist';
+		$site_url = 'http://www.skylightspecialist.com/';
 
 		$cats = $this->admin_model->get_bazaarvoice_categories();
 		$prods = $this->admin_model->get_bazaarvoice_products();
@@ -1709,11 +1710,11 @@ class Admin extends CI_Controller {
 			}
             $xml .= "\t\t" . '<Name>' . $category_name . '</Name>' . "\n";
             if($cat->primary_category_id != 0) {
-            	$xml .= "\t\t" . '<CategoryPageUrl>' . base_url() . 'catalog/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            	$xml .= "\t\t" . '<CategoryPageUrl>' . $site_url . 'catalog/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             } else {
-            	$xml .= "\t\t" . '<CategoryPageUrl>' . base_url() .  'catalog/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
+            	$xml .= "\t\t" . '<CategoryPageUrl>' . $site_url .  'catalog/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             }
-            $xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
+            //$xml .= "\t\t" . '<ImageUrl> </ImageUrl>' . "\n";
             $xml .= "\t" . '</Category>' . "\n";
 		}
 		$xml .= '</Categories>' . "\n";
@@ -1726,8 +1727,8 @@ class Admin extends CI_Controller {
 	        $xml .= "\t\t" . '<Description>' . htmlspecialchars(strip_tags($prod->bz_description)) . '</Description>' . "\n";
 	        $xml .= "\t\t" . '<BrandExternalId>' . $brand_id . '</BrandExternalId>' . "\n";
 	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
-	        $xml .= "\t\t" . '<ProductPageUrl>' . base_url() . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
-	        $xml .= "\t\t" . '<ImageUrl>' . base_url() . 'content-uploads/product-images/' . $prod->product_image . '.' . $prod->extension . '</ImageUrl>' . "\n";
+	        $xml .= "\t\t" . '<ProductPageUrl>' . $site_url . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
+	        $xml .= "\t\t" . '<ImageUrl>' . $site_url . 'content-uploads/product-images/' . $prod->product_image . '.' . $prod->extension . '</ImageUrl>' . "\n";
 	        if($prod->model_number != '') {
 		        $xml .= "\t\t" . '<ModelNumbers>' . "\n";
 		            $xml .= "\t\t\t" . '<ModelNumber>' . str_replace('Model ', '', $prod->model_number) . '</ModelNumber>' . "\n";
@@ -1786,7 +1787,7 @@ class Admin extends CI_Controller {
 		foreach($prods_array as $key => $value) {
 			$db_table = 'bz_product_data';
 			$data = array(
-				'product_id' => '6',
+				'product_id' => '7',
 				'mpn' => $value['mpn'],
 				'ean' => $value['ean'],
 				'insert_date' => current_timestamp()

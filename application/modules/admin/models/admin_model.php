@@ -2298,7 +2298,7 @@ class Admin_model extends CI_Model {
 			$products_array = $this->admin_model->get_products_by_category($product_category->product_category_id, 'active');
 			foreach($products_array as $product) {
 				$output .= '<url>' . "\n";
-				$output .= '<loc>' . $base_url . 'catalog/product/' . $product->product_url . '</loc>' . "\n";
+				$output .= '<loc>' . $base_url . 'catalog/products/' . $product->product_url . '</loc>' . "\n";
 				$output .= '<changefreq>weekly</changefreq>' . "\n";
 				$output .= '</url>' . "\n";
 			}
