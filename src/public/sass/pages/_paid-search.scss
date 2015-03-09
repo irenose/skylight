@@ -102,7 +102,7 @@
                 background-position: 90% 50%;
                 width: 100%;
             }
-            @include bp($tablet, 1024px) {
+            @include bp($tablet, $foundation-large) {
                 background-position: 50% 50%;
                 width: 100%;
             }
