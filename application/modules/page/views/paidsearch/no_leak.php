@@ -26,7 +26,7 @@
 <section class="page-row short-top snug-bottom ps-section benefits">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey">
-            <h4 class="normal-weight underlined color-primary">Benefits</h4>
+            <h4 class="normal-weight">Benefits</h4>
             <ul class="ps-list">
                 <li>Solar operated and requires no wiring</li>
                 <li>Works on cloudy days and with indirect light</li>
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <img src="<?=asset_url('images/ps/water-droplets.jpg')?>" alt>
-            <h4 class="normal-weight underlined color-primary">Clean, Quiet and Safe glass</h4>
+            <h4 class="normal-weight">Clean, Quiet and Safe glass</h4>
             <ul class="ps-list">
                 <li><span class="bold">Clean:</span> the Neat&reg; glass coating keeps skylights virtually spotless</li>
                 <li><span class="bold">Quiet:</span> reduce unwanted outside noise</li>
@@ -62,7 +62,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey">
             <img src="<?=asset_url('images/ps/complete-system.jpg')?>" alt>
-            <h4 class="normal-weight underlined color-primary">The Complete VELUX System</h4>
+            <h4 class="normal-weight">The Complete VELUX System</h4>
             <p>Whether it's skylights, roof windows, or all the accessories that go with them, you'll find everything you need to right here.</p>
         </div>
     </div>
@@ -71,7 +71,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding">
             <img src="<?=asset_url('images/ps/installation-methods.png')?>" alt>
-            <h4 class="normal-weight underlined color-primary">Skylight Installation Methods</h4>
+            <h4 class="normal-weight">Skylight Installation Methods</h4>
             <p>Skylights are installed using a variety of different installation methods that vary based on geographic location; however, VELUX has developed products that make the installation process as easy as possible. The three most common installation methods are: deck-mounted, curb-mounted and self-flashed. Contact us today to schedule an appointment.</p>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>

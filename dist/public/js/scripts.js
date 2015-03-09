@@ -104,6 +104,9 @@ ww.main = (function() {
             ww.search_maps.init();
             ww.anchors_to_options.init();
             ww.contact_validation.init();
+            if($('#ps-form').length) {
+                ww.fixed_ps_form.init();
+            }
         },
     };
 })();
@@ -966,7 +969,7 @@ ww.paid_search = (function() {
         },
 
         open_form: function() {
-            s.$plus.on("click", function(e) {
+            s.$bar.on("click", function(e) {
                 s.$form_wrapper.css({"height":ww_globals.$win.outerHeight()});
                 s.$wrapper.addClass('form--is-open');
                 e.preventDefault();
@@ -1343,6 +1346,69 @@ ww.contact_validation = (function() {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email_address);
         }
+    };
+})();
+
+/*-----------------------
+  @FIXED PS FORM
+------------------------*/
+ww.fixed_ps_form = (function() {
+    var s = {
+        $win: $(window),
+        $body: $('body'),
+        $main: $('main'),
+        $fixed_el: $('#ps-form'),
+        $offset_el: $('.ps-welcome'),
+        $footer: $('.ps-footer'),
+        $masthead: $('.ps-masthead'),
+        $hero: $('.ps-hero'),
+        width: null,
+        height: null,
+        top: null,
+        footer_height: null,
+        bottom: null,
+        eloffset: null,
+        right: null,
+    };
+
+    return {
+        init: function() {
+            s.$win.scroll(function() {
+                // wait until the first scroll to calculate offset
+                // otherwise font loading throws off calculation
+                if (s.eloffset === null) {
+                    s.eloffset = s.$offset_el.offset().top - s.$masthead.outerHeight();
+                    s.width = s.$fixed_el.outerWidth();
+                    s.height = s.$fixed_el.outerHeight();
+                    s.top = s.$masthead.outerHeight() + 20;
+                    s.footer_height = s.$footer.outerHeight();
+                    s.bottom = $(document).height() - s.footer_height;
+                    if(s.$win.width() - 1800 > 0) {
+                        //Half the difference and add padding
+                        s.right = ((s.$win.width() - 1800) / 2) + parseInt($('.page-row--snug').css('padding-right'),10);
+                    } else {
+                        s.right = $('.page-row--snug').css('padding-right');
+                    }
+                    s.$fixed_el.css({right: s.right});
+                }
+
+                if (s.eloffset < s.$win.scrollTop()) {
+                    var bottom = s.$main.outerHeight() - ( s.$fixed_el.outerHeight() + 140);
+                    if(bottom < s.$win.scrollTop()) {
+                        s.$fixed_el.removeClass('is-fixed').css({ top: (bottom - 240) + 'px',  right: '0'});
+                    } else {
+                        // enter fixed mode
+                        s.$fixed_el.addClass('is-fixed').css({ top: s.top + 'px', width: s.width + 'px', height: s.height, right: s.right});
+                    }
+                } else {
+                    s.$fixed_el.removeClass('is-fixed').css({ top: '0',  right: '0'});
+                }
+            });
+        },
+
+        reset_offset: function() {
+            s.eloffset = s.$offset_el.outerHeight();
+        },
     };
 })();
 

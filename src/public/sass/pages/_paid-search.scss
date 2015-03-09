@@ -11,6 +11,7 @@
 
     h4 {
         margin-bottom: .75em;
+        color:$color-default;
     }
 
     @include bp($foundation-med, $foundation-large) {
@@ -73,6 +74,14 @@
             margin-bottom: 0;
         }
     }
+    .intro-statement--squeezed {
+        padding-left:0;
+        padding-right:0;
+        @include bp($foundation-med, $tablet) {
+            padding-left:10%;
+            padding-right:10%;
+        }
+    }
     .ps-welcome {
         height: 310px;
 
@@ -95,11 +104,18 @@
             }
             @include bp($tablet, 1024px) {
                 background-position: 50% 50%;
-                width: 60%;
+                width: 100%;
             }
         }
         .ps-form {
-            height: 100%;
+            //height: 100%;
+            position: absolute;
+            top:0;
+            right:0;
+            z-index:1;
+            &.is-fixed {
+                position:fixed;
+            }
 
             form {
                 background: $color-grey-dark;
@@ -180,7 +196,7 @@
                 }
             }
 
-            @include bp($foundation-small, $tablet) {
+            @include bp($foundation-small, $foundation-large) {
                 display: none;
             }
             @include bp($tablet, 1024px) {
