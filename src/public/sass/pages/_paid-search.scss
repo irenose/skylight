@@ -83,7 +83,7 @@
         }
     }
     .ps-welcome {
-        height: 310px;
+        //height: 310px;
 
         .ps-hero {
             background-position: 50% 50%;
@@ -250,19 +250,19 @@
         }
 
         @include bp($mobile-landscape) {
-            height: 350px;
+            //height: 350px;
         }
         @include bp($foundation-med) {
-            height: 420px;
+            //height: 420px;
         }
         @include bp($tablet) {
-            height: 580px;
+            //height: 580px;
         }
         @include bp($foundation-large) {
-            height: 680px;
+            //height: 680px;
         }
         @include bp($my-very-large) {
-            height: 730px;
+            //height: 730px;
         }
     }
 
@@ -542,6 +542,8 @@
 
     .ps-hero {
 
+        /*
+
         &.commercial-st {
             background-image: url('../images/carousels/commercial-products-hero-garage.jpg');
         }
@@ -572,6 +574,8 @@
             background-image: url('../images/categories/residential-hero.jpg');
             background-position: 80% 50%;
         }
+        
+        */
     }
 }
 

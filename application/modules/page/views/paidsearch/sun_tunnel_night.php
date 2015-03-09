@@ -4,7 +4,9 @@
         <h1 class="normal-weight">The quick, easy way to bring natural light to any space.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero sun-tunnel"></div>
+        <div class="small-12 medium-8 columns ps-hero sun-tunnel">
+            <img src="<?=site_url('assets/images/ps/hero/sun-tunnel-skylight.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns welcome-list-wrapper">
             <div class="welcome-list">
                 <div class="row">

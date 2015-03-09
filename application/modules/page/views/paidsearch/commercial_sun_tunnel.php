@@ -4,7 +4,9 @@
         <h1 class="normal-weight">Put natural light to work for you.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero commercial-st"></div>
+        <div class="small-12 medium-8 columns ps-hero commercial-st">
+            <img src="<?=site_url('assets/images/ps/hero/commercial-sun-tunnel.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
                 /******************************* LOAD FORM *************************/

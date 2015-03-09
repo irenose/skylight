@@ -4,7 +4,9 @@
         <h1 class="normal-weight">Recover from the storm with brand new innovative VELUX skylights.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero hail-damage"></div>
+        <div class="small-12 medium-8 columns ps-hero hail-damage">
+            <img src="<?=site_url('assets/images/ps/hero/hail-damage.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
                 /******************************* LOAD FORM *************************/

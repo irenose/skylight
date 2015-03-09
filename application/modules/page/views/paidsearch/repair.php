@@ -4,7 +4,9 @@
         <h1 class="normal-weight">The best way to repair old skylights is with new VELUX skylights.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero repair"></div>
+        <div class="small-12 medium-8 columns ps-hero repair">
+            <img src="<?=site_url('assets/images/ps/hero/skylight-repair.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
                 /******************************* LOAD FORM *************************/

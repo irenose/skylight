@@ -4,7 +4,9 @@
         <h1 class="normal-weight">The difference between older skylights and newer VELUX skylights is night and day.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero replacement"></div>
+        <div class="small-12 medium-8 columns ps-hero replacement">
+            <img src="<?=site_url('assets/images/ps/hero/skylight-replacement.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns welcome-list-wrapper">
             <div class="welcome-list">
                 <div class="row">

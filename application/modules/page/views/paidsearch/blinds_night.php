@@ -4,7 +4,9 @@
         <h1 class="normal-weight">Bring a little control and some more style to your skylit world.</h1>
     </header>
     <div class="row ps-welcome">
-        <div class="small-12 medium-8 columns ps-hero skylight-blinds"></div>
+        <div class="small-12 medium-8 columns ps-hero skylight-blinds">
+            <img src="<?=site_url('assets/images/ps/hero/skylight-blinds.jpg')?>">
+        </div>
         <div class="small-12 medium-4 columns welcome-list-wrapper">
             <div class="welcome-list">
                 <div class="row">

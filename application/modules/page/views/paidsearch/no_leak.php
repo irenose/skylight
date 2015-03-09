@@ -5,7 +5,7 @@
     </header>
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero vss-no-leak">
-            <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
+            <img src="<?=site_url('assets/images/ps/hero/no-leak-skylight.jpg')?>">
         </div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
             <?php 
