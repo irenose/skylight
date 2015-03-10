@@ -89,4 +89,14 @@ $config['dealer_assets_upload_path'] = './content-uploads/dealer-assets/';
 ------------------------*/
 $config['mandrill_api_key'] = 'a2VX1IxxdKP5Ku5cGa0KsA';
 
+/*-----------------------
+  @Bazaarvoice
+  http://knowledge.bazaarvoice.com/wp-content/conversations/en_US/KB/#Code_integration/JS_auth_code.htm
+------------------------*/
+if(defined('ENVIRONMENT') && (ENVIRONMENT == 'staging' || ENVIRONMENT == 'development')) {
+	$config['bazaarvoice_js_link'] = '//display-stg.ugc.bazaarvoice.com/static/veluxskylightspecialist/en_US/bvapi.js';
+} else {
+	$config['bazaarvoice_js_link'] = '//display.ugc.bazaarvoice.com/static/veluxskylightspecialist/en_US/bvapi.js';
+}
+
 ?>

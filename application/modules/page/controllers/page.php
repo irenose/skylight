@@ -57,6 +57,7 @@ class Page extends CI_Controller {
         $data['paid_search_page_type'] = 'day';
         $data['show_breadcrumb_modal'] = TRUE;
         $data['canonical_url'] = substr(base_url(),0, strrpos(base_url(),"/"));
+        $data['display_bazaarvoice'] = FALSE;
 
         //Define social media params
         $data['social_meta_array'] = array(
@@ -284,6 +285,7 @@ class Page extends CI_Controller {
                                         }
                                         break;
                                     default:
+                                        $data['display_bazaarvoice'] = TRUE;
                                         $data['product_info_array'] = $this->page_model->get_product_by_url($vars_array[3]);
                                         if (count($data['product_info_array']) > 0) {
                                             $data['product_info_array'][0]->product_subcategory_name = $this->page_model->get_category_name_by_id($data['product_info_array'][0]->primary_category_id);
@@ -744,6 +746,10 @@ class Page extends CI_Controller {
                     'image' => site_url('assets/images/welcome/hero.jpg'),
                 );
                 $data['page_view'] = 'legal';
+
+            } else if($vars_array[1] == 'bz-container') {
+                echo $this->load->view('partials/_bz-container');
+                exit;
             } else {
                 /*-----------------------
                     Not an Active URL

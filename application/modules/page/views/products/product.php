@@ -134,4 +134,8 @@
         </section>
 <?php
     }
+    if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
+        $data['product'] = $product_info_array[0];
+        echo $this->load->view('partials/_bz-product-reviews', $data);
+    }
 ?>
