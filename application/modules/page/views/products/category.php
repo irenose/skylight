@@ -33,7 +33,7 @@ if( count( $product_category_array['subcategory_array']) > 0) :
 ?>
 
         'productId-prod-<?=$product->product_id?>' : {
-            url : '<?=$product->product_url?>',
+            url : '<?=$installer_base_url?>/products/<?=$product->product_url?>',
             containerId : 'BVRRInlineRating-prod-<?=$product->product_id?>'
         },
 <?php 
@@ -149,9 +149,9 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     							echo '<div class="small-12 medium-3' /*. $last_product_class */. ' columns centered">' . "\n";
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" alt></a>' . "\n";
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
-    								//echo '<p>Curb mounted skylight</p>' . "\n";
-    								//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";
-                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '"></div>';
+
+                                    //Bazaarvoice Container
+                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '" class="centered" style="background:#000;"></div>';
     							echo '</div>' . "\n";
     						}
     					echo '</div>' . "\n";
