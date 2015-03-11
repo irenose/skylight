@@ -240,6 +240,7 @@ class Page extends CI_Controller {
                                 switch($vars_array[3]) {
                                     case 'category':
                                         if ($vars_size == 4) {
+                                            $data['display_bazaarvoice'] = TRUE;
                                             $data['product_category_array'] = $this->page_model->get_category_products($data['installer_array'][0]->dealer_id, $vars_array[4], 'active');
                                             if ( count($data['product_category_array']) > 0) {
                                                 $data['meta_array'] = $this->meta->get_meta('product-category', $data['installer_region'], $data['product_category_array']['category']->product_category_name, $data['product_category_array']['category']->product_category_id);

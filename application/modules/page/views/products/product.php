@@ -140,7 +140,7 @@
 <?php
     }
     if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        echo '<section class="page-row page-row--tall blinds">' . "\n";
+        echo '<section class="page-row page-row--tall">' . "\n";
             echo '<div class="row">' . "\n";
                 echo '<div class="small-12 medium-5 medium-push-7 columns">' . "\n";
                     $data['product'] = $product_info_array[0];

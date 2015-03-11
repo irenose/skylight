@@ -1,4 +1,9 @@
 <?php 
+    //Load Bazaarvoice JS
+    if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
+        echo $this->load->view('partials/_bz-javascript-init');
+    }
+
     /*---------------------------------------------
         Carousel Photos
     ----------------------------------------------*/
@@ -14,7 +19,35 @@
             break;
     }
     /******************************* BREADCRUMB *************************/ 
+
+if( count( $product_category_array['subcategory_array']) > 0) :
 ?>
+<script>
+    $BV.ui( 'rr', 'inline_ratings', {
+        productIds : {
+<?php
+        $count = 0;
+        foreach($product_category_array['subcategory_array'] as $subcategory) :
+            foreach($subcategory->subcategory_products as $product) :
+                $count++;
+?>
+
+        'productId-prod-<?=$product->product_id?>' : {
+            url : '<?=$product->product_url?>',
+            containerId : 'BVRRInlineRating-prod-<?=$product->product_id?>'
+        },
+<?php 
+            endforeach;
+        endforeach;
+?>
+
+        },
+    });
+</script>
+<?php
+    endif;
+?>
+
 <div class="bg-grey border-bottom-grey breadcrumb">
 	<?=$this->load->view('partials/_breadcrumb')?>
 </div>
@@ -118,6 +151,7 @@
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
     								//echo '<p>Curb mounted skylight</p>' . "\n";
     								//echo '<img src="' . asset_url('images/stars.png') . '" alt>' . "\n";
+                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '"></div>';
     							echo '</div>' . "\n";
     						}
     					echo '</div>' . "\n";
