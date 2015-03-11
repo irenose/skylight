@@ -142,7 +142,7 @@
     if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
         echo '<section class="page-row page-row--tall">' . "\n";
             echo '<div class="row">' . "\n";
-                echo '<div class="small-12 medium-5 medium-push-7 columns">' . "\n";
+                echo '<div class="small-12">' . "\n";
                     $data['product'] = $product_info_array[0];
                     echo $this->load->view('partials/_bz-product-reviews', $data);
                 echo '</div>' . "\n";
