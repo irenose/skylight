@@ -1,7 +1,7 @@
 <?php
     //Load Bazaarvoice JS
     if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        echo $this->load->view('partials/_bz_javascript-init');
+        echo $this->load->view('partials/_bz-javascript-init');
     }
 
     /******************************* BREADCRUMB *************************/
