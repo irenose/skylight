@@ -1,4 +1,9 @@
 <?php
+    //Load Bazaarvoice JS
+    if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
+        echo $this->load->view('partials/_bz_javascript-init');
+    }
+
     /******************************* BREADCRUMB *************************/
 ?>
 <div class="bg-grey border-bottom-grey breadcrumb">
@@ -135,7 +140,13 @@
 <?php
     }
     if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        $data['product'] = $product_info_array[0];
-        echo $this->load->view('partials/_bz-product-reviews', $data);
+        echo '<section class="page-row page-row--tall blinds">' . "\n";
+            echo '<div class="row">' . "\n";
+                echo '<div class="small-12 medium-5 medium-push-7 columns">' . "\n";
+                    $data['product'] = $product_info_array[0];
+                    echo $this->load->view('partials/_bz-product-reviews', $data);
+                echo '</div>' . "\n";
+            echo '</div>' . "\n";
+        echo '</section>' . "\n";
     }
 ?>

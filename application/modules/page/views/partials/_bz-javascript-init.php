@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<?=$this->config->item('bazaarvoice_js_link')?>"></script>
