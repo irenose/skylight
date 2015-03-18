@@ -1,6 +1,6 @@
 <?php 
 	$bazaar_product_id = 'prod-' . $product->product_id; 
-	require('bvseosdk.php');
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/application/libraries/Bvseosdk.php';
     $bv = new BV(array(
 	    'deployment_zone_id' => 'Main_Site-en_US',
 	    'product_id' => $bazaar_product_id,
