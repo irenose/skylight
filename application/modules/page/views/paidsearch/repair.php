@@ -1,8 +1,5 @@
 
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">The best way to repair old skylights is with new VELUX skylights.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero repair">
             <img src="<?=site_url('assets/images/ps/hero/skylight-repair.jpg')?>">
@@ -18,6 +15,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h2 class="ps-welcome-header">The best way to repair old skylights is with new VELUX skylights.</h2>
             <h4 class="normal-weight no-image">If your old skylight has seen better days, look no further than VELUX skylights. Old skylights let in a lot more than light, including rain, summer heat and harmful UV rays. Upgrading your skylight can make a major impact in your home's energy efficiency and appearance.</h4>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>

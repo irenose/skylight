@@ -1,8 +1,5 @@
 
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">The difference between older skylights and newer VELUX skylights is night and day.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero replacement">
             <img src="<?=site_url('assets/images/ps/hero/skylight-replacement.jpg')?>">
@@ -18,6 +15,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h2 class="ps-welcome-header">The difference between older skylights and newer VELUX skylights is night and day.</h2>
             <h4 class="normal-weight no-image">Upgrading your skylight can make a major impact in your home's energy efficiency and appearance.</h4>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
