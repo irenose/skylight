@@ -145,6 +145,7 @@
             echo '<div class="row">' . "\n";
                 echo '<div class="small-12">' . "\n";
                     $data['product'] = $product_info_array[0];
+                    $data['bz_product_url'] = $canonical_url;
                     echo $this->load->view('partials/_bz-product-reviews', $data);
                 echo '</div>' . "\n";
             echo '</div>' . "\n";
