@@ -105,7 +105,6 @@ ww.main = (function() {
             ww.anchors_to_options.init();
             ww.contact_validation.init();
             if($('#ps-form').length) {
-                //ww.fixed_ps_form.init();
                 ww.sticky_form.init();
             }
         },
@@ -1417,26 +1416,27 @@ ww.fixed_ps_form = (function() {
   @STICKY PS FORM
 ------------------------*/
 ww.sticky_form = (function() {
-    var s = {
-        $win: $(window),
-        $doc: $(document),
-        $mashead_el: $('.ps-masthead'),
-        $fixed_el: $('#ps-form'),
-        $offset_el: $('.ps-welcome'),
-        $footer_el: $('.ps-footer'),
-        $footer_offset_top: $('.ps-footer').offset().top,
-        $offset_top: $('.ps-welcome').offset().top,
-        eloffset: null,
-        footer_height: null,
-        form_height: null,
-        doc_height: null,
-        max_height: null,
-        masthead_height: null,
-        min_height: null
-    };
 
     return {
         init: function() {
+            var s = {
+                $win: $(window),
+                $doc: $(document),
+                $mashead_el: $('.ps-masthead'),
+                $fixed_el: $('#ps-form'),
+                $offset_el: $('.ps-welcome'),
+                $footer_el: $('.ps-footer'),
+                $footer_offset_top: $('.ps-footer').offset().top,
+                $offset_top: $('.ps-welcome').offset().top,
+                eloffset: null,
+                footer_height: null,
+                form_height: null,
+                doc_height: null,
+                max_height: null,
+                masthead_height: null,
+                min_height: null
+            };
+    
             s.$win.scroll(function() {
                 if (s.eloffset === null) {
                     footer_height = s.$footer_el.outerHeight();
