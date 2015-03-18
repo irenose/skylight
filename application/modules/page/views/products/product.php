@@ -45,6 +45,7 @@
             <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
 			<?php
 				echo '<h1 class="normal-weight">' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
+                echo '<div id="BVRRSummaryContainer"></div>';
 				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
 			?>
 

@@ -64,7 +64,8 @@ ww.main = (function() {
             ww.anchors_to_options.init();
             ww.contact_validation.init();
             if($('#ps-form').length) {
-                ww.fixed_ps_form.init();
+                //ww.fixed_ps_form.init();
+                ww.sticky_form.init();
             }
         },
     };
@@ -1370,6 +1371,53 @@ ww.fixed_ps_form = (function() {
         },
     };
 })();
+
+/*-----------------------
+  @STICKY PS FORM
+------------------------*/
+ww.sticky_form = (function() {
+    var s = {
+        $win: $(window),
+        $doc: $(document),
+        $mashead_el: $('.ps-masthead'),
+        $fixed_el: $('#ps-form'),
+        $offset_el: $('.ps-welcome'),
+        $footer_el: $('.ps-footer'),
+        $footer_offset_top: $('.ps-footer').offset().top,
+        $offset_top: $('.ps-welcome').offset().top,
+        eloffset: null,
+        footer_height: null,
+        form_height: null,
+        doc_height: null,
+        max_height: null,
+        masthead_height: null,
+        min_height: null
+    };
+
+    return {
+        init: function() {
+            s.$win.scroll(function() {
+                if (s.eloffset === null) {
+                    footer_height = s.$footer_el.outerHeight();
+                    form_height = s.$fixed_el.outerHeight();
+                    masthead_height = s.$mashead_el.outerHeight() + 40;
+                    doc_height = s.$doc.height();
+                    total_height = s.$win.scrollTop() + footer_height + form_height + masthead_height;
+                    max_height = doc_height - form_height - footer_height - masthead_height;
+                    min_height = masthead_height + form_height + 20;
+                }
+                console.log(s.$win.height() + ' ' + min_height);
+                if(s.$win.height() >= min_height) {
+                    var top = total_height > doc_height ? max_height : s.$win.scrollTop();
+                    s.$fixed_el.css({top: top + 'px'});
+                } else {
+                    s.$fixed_el.css({top: '0px'});
+                }
+            });
+        }
+    };
+})();
+
 
 /*
  * LOAD!

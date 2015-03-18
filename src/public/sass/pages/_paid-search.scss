@@ -64,8 +64,8 @@
   visibility: hidden;
 }
 .ps-welcome-wrapper {
-    @extend %bg-gradient;
-    padding-top: 4%;
+    padding-top: 1em;
+    padding-bottom:2em;
 
     .intro-statement {
         padding-bottom: 4%;
@@ -275,6 +275,19 @@
     }
 }
 .product-statement {
+    padding-top:0;
+
+    .ps-welcome-header {
+        font-size:1.125em;
+        line-height:1.75em;
+        color:$color-default;
+        margin-top:1em;
+
+        @include bp($tablet) {
+            margin-top:0;
+            padding-right:35%;
+        }
+    }
 
     .ps-form {
         margin-right: .975rem;
@@ -382,8 +395,10 @@
         }
 
         h4 {
-            color: $color-default;
+            @extend %normal-weight;
             line-height: 1.75;
+            font-size:1em;
+            color:$color-grey;
 
             @include bp($tablet) {
                 padding-right: 35%;
