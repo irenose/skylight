@@ -1,7 +1,7 @@
 <?php 
     //Load Bazaarvoice JS
     if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        echo $this->load->view('partials/_bz-javascript-init');
+        //echo $this->load->view('partials/_bz-javascript-init');
     }
 
     /*---------------------------------------------
@@ -21,6 +21,7 @@
     /******************************* BREADCRUMB *************************/ 
 
 if( count( $product_category_array['subcategory_array']) > 0) :
+    /*
 ?>
 <script>
     $BV.ui( 'rr', 'inline_ratings', {
@@ -45,6 +46,7 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     });
 </script>
 <?php
+    */
     endif;
 ?>
 
@@ -151,7 +153,7 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
 
                                     //Bazaarvoice Container
-                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '" class="bv-inline-rating"></div>';
+                                    //echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '" class="bv-inline-rating"></div>';
     							echo '</div>' . "\n";
     						}
     					echo '</div>' . "\n";

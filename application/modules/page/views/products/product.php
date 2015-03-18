@@ -1,7 +1,7 @@
 <?php
     //Load Bazaarvoice JS
     if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        echo $this->load->view('partials/_bz-javascript-init');
+        //echo $this->load->view('partials/_bz-javascript-init');
     }
 
     /******************************* BREADCRUMB *************************/
@@ -45,7 +45,7 @@
             <p class="product-category"><?=$product_info_array[0]->product_subcategory_name?></p>
 			<?php
 				echo '<h1 class="normal-weight">' . filter_page_content($product_info_array[0]->product_name) . '</h1>' . "\n";
-                echo '<div id="BVRRSummaryContainer"></div>';
+                //echo '<div id="BVRRSummaryContainer"></div>';
 				echo '<div class="product-description--text">' . filter_page_content($product_info_array[0]->product_description) . '</div>' . "\n";
 			?>
 
@@ -141,6 +141,7 @@
 <?php
     }
     if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
+        /*
         echo '<section class="page-row page-row--tall">' . "\n";
             echo '<div class="row">' . "\n";
                 echo '<div class="small-12">' . "\n";
@@ -150,5 +151,6 @@
                 echo '</div>' . "\n";
             echo '</div>' . "\n";
         echo '</section>' . "\n";
+        */
     }
 ?>
