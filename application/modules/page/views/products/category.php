@@ -151,7 +151,7 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
 
                                     //Bazaarvoice Container
-                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '"></div>';
+                                    echo '<div id="BVRRInlineRating-prod-' . $product->product_id . '" class="bv-inline-rating"></div>';
     							echo '</div>' . "\n";
     						}
     					echo '</div>' . "\n";
