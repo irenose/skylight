@@ -1,7 +1,7 @@
 <?php
     //Load Bazaarvoice JS
     if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        //echo $this->load->view('partials/_bz-javascript-init');
+        echo $this->load->view('partials/_bz-javascript-init');
     }
 
     /******************************* BREADCRUMB *************************/
@@ -130,7 +130,7 @@
 <?php
     }
     if( isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
-        /*
+        
         echo '<section class="page-row page-row--tall">' . "\n";
             echo '<div class="row">' . "\n";
                 echo '<div class="small-12">' . "\n";
@@ -140,6 +140,6 @@
                 echo '</div>' . "\n";
             echo '</div>' . "\n";
         echo '</section>' . "\n";
-        */
+        
     }
 ?>
