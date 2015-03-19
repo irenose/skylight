@@ -15,17 +15,6 @@
 			<?php
 				echo '<img src="' . $this->config->item('product_images_dir') . $product_info_array[0]->product_image . '.' . $product_info_array[0]->extension . '" class="product-image" alt="' . $product_info_array[0]->product_name . '">';
 			?>
-			<?php
-				/*
-					HIDING FOR NOW 1-20-15
-		            <div class="product-icon-wrapper">
-		                <ul class="product-icons">
-		                    <li><img src="<?=asset_url('images/cards/new.jpg')?>" alt></li>
-		                    <li><img src="<?=asset_url('images/cards/water-droplets.jpg')?>" alt></li>
-		                </ul>
-		            </div>
-            	*/
-           	?>
             <div class="product-accreditations-wrapper">
                 <ul class="product-accreditations">
                 	<?php

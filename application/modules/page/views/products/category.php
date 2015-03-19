@@ -139,15 +139,6 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     								echo '<div class="row product-row">' . "\n";
     							}
     							$count++;
-
-    							/*---------------------------------------------
-    						        Center last product if odd number
-    						    ----------------------------------------------*/
-    							/*if($count == $product_count) {
-    								$last_product_class = $product_count % 2 == 0 ? '' : ' medium-push-3';
-    							} else {
-    								$last_product_class = '';
-    							}*/
     							echo '<div class="small-12 medium-3' /*. $last_product_class */. ' columns centered">' . "\n";
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-image"><img src="' . $this->config->item('product_images_dir') . $product->product_image . '.' . $product->extension . '" alt></a>' . "\n";
     								echo '<a href="' . $installer_base_url . '/products/' . $product->product_url . '" class="product-title">' . $product->product_name . '</a>' . "\n";
