@@ -38,5 +38,5 @@
             <textarea name="comments"<?php if(isset($modal_form)) { echo ' id="paid-search-comments"'; } ?> class="<?=form_textarea_error('comments'); ?> full-width"><?=set_value('comments');?></textarea>
         </div>
     </div>
-    <input type="submit" value="Contact Us" id="<?=$submit_id;?>" />
+    <input type="submit" value="Contact Us Now" id="<?=$submit_id;?>" />
 </form>
