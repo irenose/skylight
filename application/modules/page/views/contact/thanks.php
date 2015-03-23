@@ -11,3 +11,9 @@
         ?>
     </header>
 </section>
+<?=$this->load->view('partials/_bz-javascript-init')?>
+<script type="text/javascript">
+   $BV.SI.trackTransactionPageView({
+
+   });
+</script>
