@@ -285,7 +285,12 @@
 
         @include bp($tablet) {
             margin-top:0;
-            padding-right:35%;
+        }
+
+        &.ps-welcome-header-padded {
+            @include bp($tablet) {
+                padding-right:35%;
+            }
         }
     }
 
@@ -436,16 +441,16 @@
             margin: 2em auto 1em;
 
             @include bp($tablet) {
-                top: -50px;
+                top: -20px;
             }
             @include bp($foundation-large) {
-                top: -30px;
+                top: 0px;
             }
             @include bp($my-large) {
-                top: -60px;
+                top: 0px;
             }
             @include bp($my-very-large) {
-                top: -80px;
+                top: 0px;
             }
         }
         img.skylight {
@@ -456,7 +461,7 @@
 
             @include bp($tablet) {
                 position: absolute;
-                top: -30px;
+                top: -10px;
             }
             @include bp($foundation-large) {
                 top: -5px;
@@ -985,7 +990,7 @@
     img {
         position: absolute;
         right: 0;
-        top: .5em;
+        top: 6em;
         width: 30%;
     }
     ul {

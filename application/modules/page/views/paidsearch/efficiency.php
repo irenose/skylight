@@ -2,7 +2,7 @@
 <section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero efficiency">
-            <img src="<?=site_url('assets/images/ps/hero/no-leak-skylight.jpg')?>">
+            <img src="<?=site_url('assets/images/ps/hero/energy-efficiency.jpg')?>">
             <div class="energy-star-icon"><img src="<?=asset_url('images/ps/energy-star.jpg')?>" alt></div>
         </div>
         <div class="small-12 medium-4 columns ps-form" id="ps-form">
