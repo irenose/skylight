@@ -750,12 +750,18 @@
 .blue-skylight {
 
     &.cta-padding.statement {
+        padding-bottom:6em;
 
-        @include bp($foundation-med) {
-            padding-bottom: 2.5em;
+        @include bp(880px) {
+            padding-bottom:3.5em;
         }
-        @include bp($tablet) {
-            padding-bottom: 2em;
+
+        @include bp($foundation-large) {
+            padding-bottom:5em;
+        }
+
+        @include bp(1400px) {
+            padding-bottom:4em;
         }
     }
 
@@ -769,11 +775,15 @@
         display: none;
         float: right;
         position: relative;
-        top: -1.5em;
+        top: 1.5em;
         width: 25%;
 
         @include bp($foundation-med) {
             display: block;
+        }
+
+        @include bp($tablet) {
+            top:0;
         }
     }
 }
