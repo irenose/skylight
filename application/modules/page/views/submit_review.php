@@ -1,11 +1,11 @@
 <?=$this->load->view('partials/_bz-javascript-init')?>
 <script>
-	$BV.ui('rr', 'submit_generic', {});
+    $BV.ui('rr', 'submit_generic', {});
 
-	function submit_review() {
+    function submit_review() {
        $BV.ui('rr', 'submit_generic', {});
     }
-    
+
 </script>
 <section class="page-row bg-grey promotions">
     <header class="intro-statement intro-statement--squeezed">

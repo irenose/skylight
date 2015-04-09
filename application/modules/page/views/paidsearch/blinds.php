@@ -1,8 +1,5 @@
 
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Bring a little control and some more style to your skylit world.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero skylight-blinds">
             <img src="<?=site_url('assets/images/ps/hero/skylight-blinds.jpg')?>">
@@ -18,6 +15,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h2 class="ps-welcome-header ps-welcome-header-padded">Bring a little control and some more style to your skylit world.</h2>
             <h4 class="normal-weight">Blinds add the ultimate functionality to skylights by giving you control over the amount of light they bring into your home. Not to mention, they come in a variety of stylish designs to help reflect your home's personality.</h4>
             <img src="<?=asset_url('images/ps/blinds.png')?>" class="big-blinds" alt>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>

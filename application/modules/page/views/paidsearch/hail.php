@@ -1,8 +1,5 @@
 
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Recover from the storm with brand new innovative VELUX skylights.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero hail-damage">
             <img src="<?=site_url('assets/images/ps/hero/hail-damage.jpg')?>">
@@ -19,6 +16,7 @@
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement blue-skylight">
             <img src="<?=asset_url('images/ps/blue-skylight.png')?>" alt>
+            <h2 class="ps-welcome-header">Recover from the storm with brand new innovative VELUX skylights.</h2>
             <h4 class="normal-weight">Did the recent storm burst your bubble? Look no further for a revolutionary skylight replacement.</h4>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>

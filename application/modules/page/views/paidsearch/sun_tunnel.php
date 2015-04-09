@@ -1,8 +1,4 @@
-
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">The quick, easy way to bring natural light to any space.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero sun-tunnel">
             <img src="<?=site_url('assets/images/ps/hero/sun-tunnel-skylight.jpg')?>">
@@ -18,6 +14,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement sun-tunnel-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h2 class="ps-welcome-header">A VELUX SUN TUNNEL&trade; skylight is the quick, easy way to bring natural light to any space.</h2>
             <h4 class="normal-weight">If you have a small space that needs natural light and not a sky view, a SUN TUNNEL&trade; skylight is perfect.</h4>
             <img src="<?=asset_url('images/ps/sun-tunnel.png')?>" alt>
             <ul class="ps-list">

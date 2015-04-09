@@ -14,7 +14,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet border-bottom-grey statement">
-            <h2 class="ps-welcome-header">New, innovative VELUX skylights bring you fresh air, daylight and a tax credit.</h2>
+            <h2 class="ps-welcome-header ps-welcome-header-padded">New, innovative VELUX skylights bring you fresh air, daylight and a tax credit.</h2>
             <h4 class="normal-weight">The revolutionary No Leak Solar Powered "Fresh Air" skylight is eligible for a 30% federal tax credit, saving eligible homeowners an average of $850 on product and installation.</h4>
             <img src="<?=asset_url('images/ps/skylight.png')?>" class="skylight" alt>
         </div>

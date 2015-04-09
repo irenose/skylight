@@ -1,8 +1,5 @@
 
-<section class="page-row page-row--snug bg-grey ps-welcome-wrapper">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Put natural light to work for you.</h1>
-    </header>
+<section class="page-row page-row--snug ps-welcome-wrapper">
     <div class="row ps-welcome">
         <div class="small-12 medium-8 columns ps-hero commercial-st">
             <img src="<?=site_url('assets/images/ps/hero/commercial-sun-tunnel.jpg')?>">
@@ -18,6 +15,7 @@
 <section class="page-row short-top snug-bottom ps-section product-statement">
     <div class="row">
         <div class="small-12 medium-8 columns full-tablet cta-padding border-bottom-grey statement">
+            <h2 class="ps-welcome-header">Put natural light to work for you.</h2>
             <h4 class="normal-weight no-image">All VELUX commercial SUN TUNNEL&trade; skylights provide a cost-effective method to pass natural daylight through the roof to help light the interior and reduce energy loads. They also improve the occupant's performance, mood and comfort.</h4>
             <?= $this->load->view('partials/_paid-search-call-cta') ?>
         </div>
