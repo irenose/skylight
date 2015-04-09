@@ -1,4 +1,4 @@
-<?php 
+<?php
     //Load Bazaarvoice JS
     if(isset($display_bazaarvoice) && $display_bazaarvoice === TRUE) {
         echo $this->load->view('partials/_bz-javascript-init');
@@ -18,42 +18,31 @@
             $carousel_array = array('hero--commercial-1','hero--commercial-2');
             break;
     }
-    /******************************* BREADCRUMB *************************/ 
+    /******************************* BREADCRUMB *************************/
 
-if( count( $product_category_array['subcategory_array']) > 0) :
-?>
-<script>
-    $BV.ui( 'rr', 'inline_ratings', {
-        productIds : {
-<?php
-        $count = 0;
-        foreach($product_category_array['subcategory_array'] as $subcategory) :
-            foreach($subcategory->subcategory_products as $product) :
-                $count++;
-?>
-
-        'productId-prod-<?=$product->product_id?>' : {
-            url : '<?=$installer_base_url?>/products/<?=$product->product_url?>',
-            containerId : 'BVRRInlineRating-prod-<?=$product->product_id?>'
-        },
-<?php 
-            endforeach;
-        endforeach;
-?>
-
-        },
-    });
-</script>
-<?php
-    endif;
-?>
+if (count($product_category_array['subcategory_array']) > 0): ?>
+    <script>
+        $BV.ui('rr', 'inline_ratings', {
+            productIds: {
+                <?php foreach($product_category_array['subcategory_array'] as $subcategory): ?>
+                <?php foreach($subcategory->subcategory_products as $product): ?>
+                    'prod-<?=$product->product_id?>': {
+                        'url': '<?=$installer_base_url?>/products/<?=$product->product_url?>',
+                        'containerId': 'BVRRInlineRating-prod-<?=$product->product_id?>',
+                    },
+                <?php endforeach; ?>
+                <?php endforeach; ?>
+            },
+        });
+    </script>
+<?php endif; ?>
 
 <div class="bg-grey border-bottom-grey breadcrumb">
 	<?=$this->load->view('partials/_breadcrumb')?>
 </div>
 
-<?php 
-    /******************************* STATIC CATEGORY HERO WITH CARD *************************/ 
+<?php
+    /******************************* STATIC CATEGORY HERO WITH CARD *************************/
 ?>
 <?php
     /*---------------------------------------------
@@ -63,7 +52,7 @@ if( count( $product_category_array['subcategory_array']) > 0) :
 <section>
     <div class="row hero">
         <div class="slick slick__category">
-            <?php 
+            <?php
                 foreach($carousel_array as $key => $value) {
                     echo '<div class="page-row slick__item ' . $value . '"></div>';
                 }
@@ -104,14 +93,14 @@ if( count( $product_category_array['subcategory_array']) > 0) :
     ----------------------------------------------*/
 ?>
 
-<?php 
-    /******************************* SECONDARY NAV *************************/ 
+<?php
+    /******************************* SECONDARY NAV *************************/
     //Removed 1/16/2015
     //echo $this->load->view('partials/_navigation-secondary');
 ?>
 
-<?php 
-    /******************************* PRODUCT ROWS *************************/ 
+<?php
+    /******************************* PRODUCT ROWS *************************/
 ?>
 <?php
     /*---------------------------------------------
