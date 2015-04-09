@@ -751,6 +751,23 @@ class Page extends CI_Controller {
             } else if($vars_array[1] == 'bz-container') {
                 echo $this->load->view('partials/_bz-container');
                 exit;
+            } else if($vars_array[1] == 'bz-container') {
+                echo $this->load->view('partials/_bz-container');
+                exit;
+            } else if($vars_array[1] == 'submit-review') {
+                $template = 'template_general';
+                $data['show_installer_header_footer'] = FALSE;
+                $data['current_section'] = 'reviews';
+                $data['meta_array'] = $this->meta->get_meta('global');
+                $data['canonical_url'] = $data['installer_base_url'] . 'legal';
+                //Define social media params
+                $data['social_meta_array'] = array(
+                    'title' => '',
+                    'description' => '',
+                    'url' => '',
+                    'image' => site_url('assets/images/welcome/hero.jpg'),
+                );
+                $data['page_view'] = 'submit_review';
             } else {
                 /*-----------------------
                     Not an Active URL
