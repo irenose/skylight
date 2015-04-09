@@ -1447,7 +1447,6 @@ ww.sticky_form = (function() {
                     max_height = doc_height - form_height - footer_height - masthead_height;
                     min_height = masthead_height + form_height + 20;
                 }
-                console.log(s.$win.height() + ' ' + min_height);
                 if(s.$win.height() >= min_height) {
                     var top = total_height > doc_height ? max_height : s.$win.scrollTop();
                     s.$fixed_el.css({top: top + 'px'});
