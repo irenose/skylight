@@ -37,10 +37,22 @@
         
         <label for="username" class="form_float_left">E-mail Address<?php echo required_text('username'); ?></label>
         <input type="text" name="username" id="username" class="input_text" value="<?php echo set_value('username', $user_data_array[0]->username); ?>" />
-        
-        
-        
-        <input type="hidden" name="permission_level" value="1" />
+
+        <label for="section" class="form_float_left">Set the Access Level</label><br />
+        <div class="dropdown_area_block">
+            <select name="permission_level" id="permission_level" class="<?php echo dropdown_error_class('permission_level'); ?>">
+                <option value="">Please Choose</option>
+                <?php
+                    if( isset($permission_array) && count($permission_array) > 0) {
+                        foreach($permission_array as $key => $value) {
+                            $selected = $user_data_array[0]->permission_level == $key ? TRUE : FALSE;
+                            echo '<option value="' . $key . '"' . set_select('permission_level', $key, $selected) . '>' . $value . '</option>';
+                        }
+                        
+                    } 
+                ?>
+            </select>
+        </div>
 
         <label for="user_status">Status<?php echo required_text('user_status'); ?></label>
         <select name="user_status" id="user_status_dropdown" class="input_dropdown">

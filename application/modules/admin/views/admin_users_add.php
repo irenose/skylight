@@ -29,8 +29,6 @@
             <label for="password" class="form_float_left">Password<?php echo required_text('password'); ?></label>
             <input type="password" name="password" id="password" class="input_text" value="<?php echo set_value('password'); ?>" />
             
-            <?php
-                /*
         
             <label for="section" class="form_float_left">Set the Access Level</label><br />
             <div class="dropdown_area_block">
@@ -46,8 +44,7 @@
                     ?>
                 </select>
             </div>
-             */
-             ?>
+
             <input type="hidden" name="permission_level" value="1" />
 
             <div class="action_form_submit_cancel clearfix">
