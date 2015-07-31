@@ -30,7 +30,7 @@
             <input type="password" name="password" id="password" class="input_text" value="<?php echo set_value('password'); ?>" />
             
         
-            <label for="section" class="form_float_left">Set the Access Level</label><br />
+            <label for="section" class="form_float_left">Set the Access Level</label>
             <div class="dropdown_area_block">
                 <select name="permission_level" id="permission_level" class="<?php echo dropdown_error_class('permission_level'); ?>">
                     <option value="">Please Choose</option>
