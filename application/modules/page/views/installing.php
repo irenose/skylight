@@ -9,12 +9,50 @@
 <?php 
     /******************************* INTRO COPY *************************/ 
 ?>
-<section class="page-row bg-grey" id="overview">
-    <header class="intro-statement intro-statement--squeezed">
-        <h1 class="normal-weight">Installing Skylights</h1>
-        <p>Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.</p>
-        <a href="<?= $installer_base_url; ?>/contact#contact-form" class="cta-text" data-modal-open data-ajax-vars='{"view":"partials/_modal-content", "content-type":"contact"}'>Schedule A Consultation</a>
-    </header>
+
+<?php
+$data['secondary_nav_links'] = array(
+    'return' => null,
+    'main' => array(
+        0 => array(
+            'title' => 'What to Expect',
+            'anchor-name' => 'what-to-expect',
+        ),
+        1 => array(
+            'title' => 'Skylight Orientation',
+            'anchor-name' => 'skylight-orientation',
+        ),
+        2 => array(
+            'title' => 'Ceiling Style',
+            'anchor-name' => 'ceiling-style',
+        ),
+        3 => array(
+            'title' => 'Mounting',
+            'anchor-name' => 'mounting',
+        ),
+        4 => array(
+            'title' => 'Warranty',
+            'anchor-name' => 'warranty',
+        ),
+    ),
+);
+?>
+<?=$this->load->view('partials/_navigation-secondary', $data)?>
+
+<section>
+    <div class="page-row centered">
+        <header>
+            <h1 class="alpha">
+                Installation<br>is a breeze.
+            </h1>
+            <p class="squeezed-3">
+                Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.
+            </p>
+        </header>
+        <a href="#<?=$data['secondary_nav_links']['main'][0]['anchor-name']?>" class="btn-scroll btn-scroll--bisect" title="Scroll" data-btn-scroll>
+            <?=use_svg(array('classes' => 'icon icon-chevron--down--reversed', 'svg-node' => 'icon-chevron--down--reversed', 'aria-hidden' => 'true'))?>
+        </a>
+    </div>
 </section>
 
 <?php 
@@ -29,6 +67,36 @@
         <div class="small-12 medium-5 medium-offset-1 columns reversed what-to-expect">
             <h2 class="upper normal-weight">What Should You Expect During Installation?</h2>
             <p>A skylight installation happens in two phases: rooftop and interior. Depending on the circumstances such as roof pitch, interior light shaft depth and shape and weather, installations can take between a half day and three days. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
+        </div>
+    </div>
+</section>
+
+<?php 
+    /******************************* It takes about a half day *************************/ 
+?>
+<section>
+    <div class="page-row bg-whitesmoke-dark">
+        <div class="row">
+            <div class="small-12 medium-6 columns">
+                <p>
+                    It takes about a half day per skylight to complete the interior portion of the installation, which includes drywall and painting. The type of ceiling in your home – vaulted or flat – will also affect the amount of time it takes to complete the interior portion of the installation.
+                </p>
+                <p>
+                    Flat ceilings require more drywall work than vaulted ceilings. If you have a flat ceiling, your installer will use drywall to build a shaft from the skylight to direct the daylight into the room. Your installer will paint the light shaft to match the surrounding ceiling area.
+                </p>
+                <p>
+                    Installers will make every effort to protect your home’s interior from dust and other installation debris. Often they will construct a curtain of plastic sheeting around the space in your ceiling where the skylight will be installed to contain dust.
+                </p>
+                <a href="<?=site_url('resources/locator')?>" class="btn" onclick="google_track_installers()">
+                    <?=use_svg(array('classes' => 'icon icon-text icon-text--left icon-pin--reversed', 'svg-node' => 'icon-pin--reversed', 'aria-hidden' => 'true'))?>
+                    Find an Installer
+                </a>
+            </div>
+            <div class="small-12 medium-4 medium-offset-1 end columns">
+                <figure class="centered mobile-hide polaroid polaroid--round">
+                    <img src="<?=asset_url('images/395x395/nailing-roof.jpg')?>" alt="installing a skylight" class="polaroid__item">
+                </figure>
+            </div>
         </div>
     </div>
 </section>
@@ -70,42 +138,106 @@
 </section>
 
 <?php 
-    /******************************* ENERGY EFFICIENCY *************************/ 
+    /******************************* SKYLIGHTS & YOUR CEILING STYLE *************************/ 
 ?>
-<section class="page-row border-top-grey centered" id="energy-efficiency">
-    <div class="row statement-images--installing">
-            <div class="small-12 medium-5 medium-push-1 columns text-right">
-                <div class="statement-image-container polaroid--round old">
-                    <img src="<?=asset_url('images/old.jpg')?>" class="statement-image" alt>
-                </div>
+<section>
+    <div class="page-row underlap" data-wallpaper='{"file":"clouds", "ext":"jpg"}'>
+        <header>
+            <div class="centered">
+                <h2 class="beta reversed text-shadow">
+                    Skylights &amp; Your Ceiling Style
+                </h2>
+                <p class="squeezed-3 color-montana">
+                    Your skylight installer is the best person to evaluate your home’s daylighting needs. They can recommend where skylights should be installed, so you can reap maximum benefit from the natural light and fresh air they provide. Skylights can be installed in flat or vaulted ceilings.
+                </p>
+                <a href="<?=site_url('resources/locator')?>" class="btn" onclick="google_track_installers()">
+                    <?=use_svg(array('classes' => 'icon icon-text icon-text--left icon-pin--reversed', 'svg-node' => 'icon-pin--reversed', 'aria-hidden' => 'true'))?>
+                    Find an Installer
+                </a>
             </div>
-            <div class="small-12 medium-5 medium-pull-1 columns text-left">
-                <div class="statement-image-container polaroid--round new">
-                    <img src="<?=asset_url('images/new.jpg')?>" class="statement-image" alt>
-                </div>
-            </div>
+        </header>
+        <div class="push-top--half constrained">
+            <ul class="slick" data-carousel-init="auto" data-carousel-type="ceiling-types" data-slides-to-show="2" data-equal-heights>
+                <li class="slick__item ceiling-style__item">
+                    <div class="card shadowed">
+                        <figure>
+                            <div class="card__figure">
+                                <img src="<?=asset_url('images/510x385/apples-and-wine.jpg')?>" alt="a room with a flat ceiling">
+                            </div>
+                            <figcaption>
+                                <div class="card__body">
+                                    <h3 class="gamma">
+                                        Flat Ceilings
+                                    </h3>
+                                    <p>
+                                        For flat ceilings, your installer will build a shaft or light well using drywall to connect your skylight from the roof through the attic space to the room below. Shafts can take a variety of shapes and sizes, which will affect the way daylight is delivered to the room.
+                                    </p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+                <li class="slick__item ceiling-style__item">
+                    <div class="card shadowed">
+                        <figure>
+                            <div class="card__figure">
+                                <img src="<?=asset_url('images/510x385/adjusting-the-thermostat.jpg')?>" alt="a room with a vaulted ceiling">
+                            </div>
+                            <figcaption>
+                                <div class="card__body">
+                                    <h3 class="gamma">
+                                        Vaulted Ceilings
+                                    </h3>
+                                    <p>
+                                        For vaulted ceilings, your installer will not need to build a light shaft, but will complete a small amount of interior drywall work in your ceiling.
+                                    </p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <header class="header-statement header-statement--squeezed">
-        <h2 class="upper normal-weight">Improve Home Efficiency</h2>
-        <p>Our current skylight models come standard with dual-paned LoE3 coated glass, which improves the energy performance rating by 35 percent over skylights from the early 1990s constructed with dual-paned clear glass. And if you have acrylic bubble skylights on your home, the energy performance gain is even greater. Our newest models also feature Clean, Quiet and Safe glass with Neat<sup>&reg;</sup> glass technology.</p>
-    </header>
 </section>
 
 <?php 
-    /******************************* TAX CREDITS *************************/ 
+    /******************************* WHICH SKYLIGHT INSTALLATION IS RIGHT FOR YOU? *************************/ 
 ?>
-<section class="page-row page-row--extra-tall replacing" id="tax-credits">
-    <div class="row">
-        <div class="small-12 medium-6 columns reversed first">
-            <h2 class="upper normal-weight">When Should You Replace An Older Skylight? A Federal Tax Credit Says “Now.”</h2>
-            <p>VELUX skylights make saving energy a breeze. Not only will they help you save on heating and cooling, but you’ll also be eligible for a substantial tax credit when you replace or add a VELUX Solar Powered Skylight.</p>
-        </div>
-        <div class="small-12 medium-6 columns centered last">
-            <div class="incentives">
-                <div class="incentive"><span class="big">30%</span><br>Federal Tax<br>Credit</div>
-                <div class="incentive"><span class="big">$100</span><br>average savings<br>to solar from<br>fixed</div>
-                <div class="incentive"><span class="big">$340</span><br>savings with<br>solar over<br>manual</div>
+
+<section>
+    <div class="page-row bg-zircon">
+        <header class="centered">
+            <h2 class="beta">
+                <span class="br">Which skylight installation</span> is right for you?
+            </h2>
+            <p class="squeezed-2">
+                <em>
+                    VELUX "Fresh Air" and fixed skylights come in both deck mounted and curb mounted styles. Your skylight installer is the best person to decide which style works for your home.
+                </em>
+            </p>
+        </header>
+        <div class="constrained vs">
+            <div class="vs__item first">
+                <h3 class="gamma vs__heading">
+                    Deck Mounted
+                </h3>
+                <p>
+                    The skylight’s deck seal is nailed directly to your roof deck for a low profile, energy-efficient installation. Deck mounted skylights are best for roofs with a pitch between 14 and 85 degrees.
+                </p>
             </div>
+            <span class="vs__symbol">
+                VS.
+            </span>
+            <div class="vs__item last">
+                <h3 class="gamma vs__heading">
+                    Curb Mounted
+                </h3>
+                <p>
+                    The skylight’s deck seal is nailed directly to your roof deck for a low profile, energy-efficient installation. Deck mounted skylights are best for roofs with a pitch between 14 and 85 degrees.
+                </p>
+            </div>
+            <div class="vs__caret"></div>
         </div>
     </div>
 </section>

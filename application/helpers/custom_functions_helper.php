@@ -106,6 +106,35 @@ function format_date($date, $method) {
 	return $formatted_date;
 }
 
+/**
+ * Build an icon that contains an svg pulled from an external sprite sheet
+ * ex: <i><svg><use></use></svg></i>
+ *
+ * @param  array $args set icon classes, define the svg node, and set aria-hidden
+ * @return str   $output the generated icon
+ */
+if ( ! function_exists('use_svg')) {
+    function use_svg($args) {
+        // input
+        $classes = isset($args['classes']) ? $args['classes'] : '';
+        $svg_node = isset($args['svg-node']) ? $args['svg-node'] : '';
+        $aria_hidden = isset($args['aria-hidden']) ? $args['aria-hidden'] : 'false';
+
+        // output
+        $output = '';
+
+        // build
+        $output = '<i class="' . $classes . '" aria-hidden="' . $aria_hidden . '">';
+        $output .= '<svg class="icon__svg">';
+        $output .= '<use xlink:href="' . asset_url('images/sprites/sprite.svg') . '#' . $svg_node . '"></use>';
+        $output .= '</svg>';
+        $output .= '</i>';
+
+        return $output;
+    }
+}
+
+
 /**************************************************************************************************
 /*		Returns a timestamp in MySQL timestamp format (good for insert and modification date fields)
 /**************************************************************************************************/
