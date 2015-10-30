@@ -8,6 +8,7 @@
 
 @import "../../../bower_components/foundation/scss/foundation/components/grid";
 @import "layout/grid";
+@import "webfonts/_stylesheet";
 
 // normalize included in gulp build
 @import "base/elements";
@@ -58,3 +59,4 @@
 @import "pages/promotions";
 @import "pages/styleguide";
 @import "pages/why-skylights";
+@import "modules/vs";

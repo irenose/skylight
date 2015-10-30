@@ -13,6 +13,12 @@ $row-padding-horizontal: 5%;
 $row-padding-vertical: 10%;
 $padding-card: 30px;
 
+// button dimensions
+$d-icon: 44px;
+$d-icon-play: 66px;
+$d-btn-scroll: 40px;
+$d-btn-square: 72px;
+
 // breakpoints
 $mobile-portrait: 320px;
 $mobile-landscape: 480px;
@@ -21,12 +27,18 @@ $tablet: 768px;
 $switch-nav-large: 1250px;
 $my-large: 1300px;
 $my-very-large: 1600px;
+$my-switch-nav: 63.75em;
 $max: $page-max-width;
 $foundation-small: 0px !default; // foundation
 $foundation-med: 642px !default; // foundation
 $foundation-large: 1026px !default; // foundation
 $modal-is-enabled: $foundation-large;
 $tablet-landscape: 1024px;
+
+//*(CHECK ME!)
+$my-medium: 43.75 em; // 700 / 16
+$foundation-medium: 641px !default; // foundation
+
 
 // colors
 $color-default: #383d3f;
@@ -53,6 +65,7 @@ $color-paid-search: #737475;
 $color-social-icons: #5f6c71;
 $color-text-light: #f0f0f0;
 $overlay: $color-footer-bg;
+$colot-paragraph-grey: #6e7375;
 
 // new colors
 // whites
@@ -76,6 +89,8 @@ $color-cod-grey-dark: #272b2c;
 // typography
 $font-family-default: 'Helvetica', sans-serif;
 $font-family-display: 'Montserrat', sans-serif;
+$font-family-display-regular: 'montserratregular', sans-serif;
+$font-family-display-light: 'montserratlight', sans-serif;
 
 $font-size-default: 1em;
 $line-height-default: 1.5;

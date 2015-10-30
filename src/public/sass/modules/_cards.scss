@@ -18,3 +18,74 @@
         margin-bottom: 0;
     }
 }
+
+.card--transparent {
+    background-color: transparent;
+}
+
+.card__header,
+.card__body,
+.card__footer {
+    padding: $row-padding-horizontal;
+
+    @include bp($my-medium) {
+        padding: $padding-card;
+    }
+
+    .feed__item & {
+        @include bp(0, $my-medium) {
+            padding: 3% $row-padding-horizontal * 1.5 0;
+        }
+    }
+}
+
+.card__body {
+    padding-bottom: $row-padding-vertical / 1.5;
+
+    .card__body__text {
+        font-size: .9em;
+    }
+    > .card__body__text p:first-child {
+        margin-top: 0;
+    }
+    .benefits-list__item & {
+        padding-right: 38px;
+        padding-bottom: $row-padding-vertical * 1.5;
+        padding-left: 38px;
+    }
+}
+
+.card__header {
+    padding-top: $row-padding-vertical / 1.5;
+    padding-bottom: 0;
+
+    .card__heading {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.card__footer {
+    @extend %border-top;
+}
+
+.card figure {
+    display: block;
+}
+.card__figure img {
+    border: 10px solid #fff;
+    width: 100%;
+}
+.no-inlinesvg .card__figure .icon-play img {
+    border: none;
+}
+
+.card__body__heading {
+    &.gamma {
+        @include bp(0, $my-medium) {
+            font-size: .85em;
+        }
+    }
+}
+
+

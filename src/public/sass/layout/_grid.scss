@@ -17,3 +17,38 @@
         padding-right: 0;
     }
 }
+
+
+.row--half {
+    float: left;
+    width: 50%;
+}
+
+.small-12 {
+    &.column,
+    &.columns {
+        @include bp(0, $foundation-large) {
+            // padding-right: 0;
+            // padding-left: 0;
+        }
+    }
+}
+
+// adding vertical padding between rows
+[class*="small-12"][class*="medium"] + [class*="small-12"][class*="medium"] {
+    @include bp(0, $foundation-medium) {
+        padding-top: $row-padding-vertical / 2;
+    }
+}
+
+[class*="small-12"][class*="medium"][class*="large"] + [class*="small-12"][class*="medium"][class*="large"] {
+    @include bp($foundation-medium, $foundation-large) {
+        padding-top: 0;
+    }
+}
+
+[class*="small-12"][class*="large"] + [class*="small-12"][class*="large"] {
+    @include bp(0, $foundation-large) {
+        padding-top: $row-padding-vertical;
+    }
+}

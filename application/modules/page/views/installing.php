@@ -58,23 +58,13 @@ $data['secondary_nav_links'] = array(
 <?php 
     /******************************* WHAT TO EXPECT *************************/ 
 ?>
-<!--<a name="what-to-expect"></a>-->
-<section class="page-row page-row--tall border-top-grey installing" id="what-to-expect">
-    <div class="row">
-        <div class="small-12 medium-6 columns centered video">
-            <?=$this->load->view('partials/_video')?>
-        </div>
-        <div class="small-12 medium-5 medium-offset-1 columns reversed what-to-expect">
-            <h2 class="upper normal-weight">What Should You Expect During Installation?</h2>
-            <p>A skylight installation happens in two phases: rooftop and interior. Depending on the circumstances such as roof pitch, interior light shaft depth and shape and weather, installations can take between a half day and three days. The rooftop portion of the installation includes cutting the hole and fastening the skylight to the roof with the three layers of protection found in VELUX No Leak Skylights.</p>
-        </div>
-    </div>
-</section>
+<a name="<?=$data['secondary_nav_links']['main'][0]['anchor-name']?>"></a>
+<?=$this->load->view('partials/_cta-what-to-expect')?>
 
 <?php 
     /******************************* It takes about a half day *************************/ 
 ?>
-<section>
+<section class="find-installers">
     <div class="page-row bg-whitesmoke-dark">
         <div class="row">
             <div class="small-12 medium-6 columns">
@@ -92,7 +82,7 @@ $data['secondary_nav_links'] = array(
                     Find an Installer
                 </a>
             </div>
-            <div class="small-12 medium-4 medium-offset-1 end columns">
+            <div class="small-12 medium-5 medium-offset-1 end columns">
                 <figure class="centered mobile-hide polaroid polaroid--round">
                     <img src="<?=asset_url('images/395x395/nailing-roof.jpg')?>" alt="installing a skylight" class="polaroid__item">
                 </figure>
@@ -140,6 +130,7 @@ $data['secondary_nav_links'] = array(
 <?php 
     /******************************* SKYLIGHTS & YOUR CEILING STYLE *************************/ 
 ?>
+<a name="<?=$data['secondary_nav_links']['main'][2]['anchor-name']?>"></a>
 <section>
     <div class="page-row underlap" data-wallpaper='{"file":"clouds", "ext":"jpg"}'>
         <header>
@@ -255,7 +246,7 @@ $data['secondary_nav_links'] = array(
         <div class="small-12 medium-6 medium-pull-6 columns first reversed">
             <h2 class="upper normal-weight">After Installation</h2>
             <p>Once your skylight is installed, rest assured that VELUX skylights are backed by a 10-year warranty on product and installation. So, sit back, relax and enjoy the view.</p>
-            <a class="btn" href="<?=$installer_base_url?>/warranty">Learn More</a>
+            <a class="btn" href="<?=$installer_base_url?>/warranty">Download</a>
         </div>
     </div>
 </section>

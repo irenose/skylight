@@ -34,6 +34,29 @@
     }
 }
 
+/*-----------------------
+  @BUTTON SCROLL
+------------------------*/
+.btn-scroll {
+    @include circle($d-btn-scroll, $d-btn-scroll, $color-primary);
+    @extend %centered;
+    line-height: 13px;
+
+    .icon {
+        height: 12px;
+        position: relative;
+        top: 15px;
+        width: 12px;
+    }
+}
+
+.btn-scroll--bisect {
+    bottom: -($d-btn-scroll / 2);
+    left: 50%;
+    margin-left: -($d-btn-scroll / 2);
+    position: absolute;
+    z-index: 1;
+}
 
 /*-----------------------
   @BUTTON PLAY
@@ -59,3 +82,4 @@
     position: absolute;
     top: 50%;
 }
+

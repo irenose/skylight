@@ -384,9 +384,64 @@ a.cta-text {
     @extend %text-shadow;
 }
 
+%underlap {
+    box-shadow: inset 0px 4px 7px 0px rgba(50, 50, 50, 0.30);
+}
+.underlap {
+    @extend %underlap;
+}
+
+.underlap--overlayed:after {
+    @extend %underlap;
+    content: '';
+    display: block;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 /*-----------------------
   @IMAGES
 ------------------------*/
 .product-image {
     display: block;
+}
+
+/*-----------------------
+  @PAGE ROWS
+------------------------*/
+%page-row {
+    @extend %block;
+    @extend %clearfix;
+    padding: $row-padding-vertical $row-padding-horizontal;
+
+}
+.page-row {
+    @extend %page-row;
+
+    @include bp($my-medium) {
+        padding-top: $row-padding-vertical / 2;
+        padding-bottom: $row-padding-vertical / 2;
+    }
+    @include bp($my-switch-nav) {
+        margin: auto;
+        padding-right: $row-padding-horizontal * 3;
+        padding-left: $row-padding-horizontal * 3;
+    }
+    @include bp($max) {
+        padding-right: $row-padding-horizontal * 4;
+        padding-left: $row-padding-horizontal * 4;
+    }
+}
+
+.page-row--tall {
+    @extend %page-row;
+
+    @include bp($my-medium) {
+        padding-top: $row-padding-vertical;
+        padding-bottom: $row-padding-vertical;
+    }
 }

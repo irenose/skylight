@@ -730,6 +730,34 @@ ww.carousels = (function(){
                     ];
                     break;
 
+
+                case "ceiling-types":
+                    // infinite
+                    slick_options.infinite = false;
+
+                    // swipe
+                    slick_options.swipe = true;
+
+                    // dots
+                    slick_options.arrows = false;
+                    slick_options.dots = true;
+
+                    // to show
+                    slick_options.slidesToShow = $carousel.data("slides-to-show");
+
+                    // responsive
+                    slick_options.responsive = [
+                        {
+                            breakpoint: 850,
+                            settings: {
+                                centerMode: false,
+                                centerPadding: '40px',
+                                slidesToShow: 1,
+                            }
+                        },
+                    ];
+                    break;
+
                 case "swatches":
                     // dots
                     slick_options.arrows = false;

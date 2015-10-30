@@ -91,6 +91,7 @@ gulp.task('clear', function (done) {
 gulp.task('styles:ours', function() {
     return gulp.src(
         [
+            'webfonts/stylesheet.css', // this has to come first!
             config.path_normalize,
             'bower_components/jquery-icheck/skins/flat/flat.css',
             'bower_components/jquery-selectric/dist/selectric.css',

@@ -1,0 +1,100 @@
+$vs-border-width: 3px;
+
+.vs {
+    @extend %centered;
+    @extend %clearfix;
+
+    @include bp($foundation-medium) {
+        background: #fff;
+        border: $vs-border-width solid black;
+        margin-top: $row-padding-vertical / 2;
+        padding: ($row-padding-vertical / 2) ($row-padding-vertical / 2);
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.vs__item {
+    @include bp($foundation-medium) {
+        width: 40%;
+
+        &.first {
+            float: left;
+        }
+        &.last {
+            float: right;
+        }
+    }
+}
+
+.vs__heading {
+    color: $color-primary;
+}
+
+// the VS thing
+.vs__symbol {
+    @include circle(70px, 70px);
+    border: $vs-border-width solid black;
+    left: 50%;
+    line-height: 68px;
+    margin-top: -35px;
+    margin-left: -35px;
+    position: absolute;
+    top: 50%;
+
+    @include bp(0, $foundation-medium) {
+        display: none;
+    }
+  
+    &:before,
+    &:after {
+        content: '·······';
+        display: block;
+        font-size: 20px;
+        height: 1px;
+        left: 40px;
+        letter-spacing: 2px;
+        position: absolute;
+        transform: rotate(90deg);
+        width: 50px;
+    }
+    &:before {
+        top: -45px;
+    }
+    &:after {
+        bottom: -45px;
+    }
+    
+}
+
+// the caret
+.vs__caret {
+    $d: 18px;
+    $d-int: $d - $vs-border-width;
+
+    left: 50%;
+    position: absolute;
+    top: 0;
+
+    @include bp(0, $foundation-medium) {
+        display: none;
+    }
+    &:before,
+    &:after {
+        content: '';
+        left: 50%;
+        position: absolute;
+    }
+    &:before {
+        @include triangle('north', $d, black, false);
+        margin-left: -$d;
+        top: -$d;
+    }
+    &:after {
+        @include triangle('north', $d-int, white, false);
+        margin-left: -$d-int;
+        top: -$d-int + 1px;
+    }
+}
