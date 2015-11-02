@@ -28,6 +28,7 @@
 
                 $why_active = $current_section == 'why-skylights' ? ' is-active' : '';
                 $installing_active = $current_section == 'installing' ? ' is-active' : '';
+                $replacing_active = $current_section == 'replacing' ? ' is-active' : '';
                 $about_active = $current_section == 'about' ? ' is-active' : '';
                 $warranty_active = $current_section == 'warranty' ? ' is-active' : '';
                 $brochures_active = $current_section == 'brochures' ? ' is-active' : '';
@@ -35,6 +36,7 @@
 
                 echo '<a href="' . $installer_base_url . '/why-skylights" class="nav-header__link' . $why_active . '">Why Skylights</a>';
                 echo '<a href="' . $installer_base_url . '/installing" class="nav-header__link last' . $installing_active . '">Installing</a>';
+                echo '<a href="' . $installer_base_url . '/replacing" class="nav-header__link last' . $replacing_active . '">Replacing</a>';
             echo '</nav>' . "\n";
             echo '<nav class="nav-minor">' . "\n";
                 echo '<a href="' . $installer_base_url . '/about" class="nav-header__link first' . $about_active . '">About</a>';

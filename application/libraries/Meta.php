@@ -98,6 +98,15 @@ class Meta
                     'description' => '',
                     'keywords' => ''
                 );
+
+                break;
+            case 'replacing':
+                $meta_array = array(
+                    'title' => 'replacing | Skylight replacement | VELUX ' . $region,
+                    'description' => '',
+                    'keywords' => ''
+                );
+
                 break;
             case 'about':
                 $meta_array = array(
@@ -133,7 +142,7 @@ class Meta
     }
 
     public function get_all() {
-        $sections = array('global','homepage','products','category','product','why-skylights','installing', 'about', 'warranty','brochures','contact');
+        $sections = array('global','homepage','products','category','product','why-skylights','installing', 'replacing', 'about', 'warranty','brochures','contact');
         $total_array = array();
         foreach($sections as $key => $value) {
             if($value == 'category') {

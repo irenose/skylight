@@ -19,3 +19,18 @@
         background-size: 150%;
     }
 }
+
+[data-wallpaper*="blinds"] {
+    background-color: $color-page;
+
+    @include bp(0, $foundation-large) {
+        background-image: none !important;
+    }
+    @include bp($foundation-large) {
+        background-position: left center;
+        background-size: 50% 100%;
+    }
+    @include bp($max) {
+        background-size: 48% 135%;
+    }
+}

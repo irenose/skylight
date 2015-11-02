@@ -41,6 +41,19 @@
     margin-left: 5px;
 }
 
+.icon-no-leak {
+    height: 107px;
+    width: 107px;
+}
+#icon-no-leak {
+    #text {
+        fill: #fff;
+    }
+    #bg {
+        fill: $color-primary;
+    }
+}
+
 /*-----------------------
   @MENU
 ------------------------*/

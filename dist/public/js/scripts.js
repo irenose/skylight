@@ -104,9 +104,6 @@ ww.main = (function() {
             ww.search_maps.init();
             ww.anchors_to_options.init();
             ww.contact_validation.init();
-            if ($("[data-scrollspy]").length) {
-            ww.scrollspy.init();
-            }
             if($('#ps-form').length) {
                 ww.sticky_form.init();
             }
@@ -1197,11 +1194,11 @@ ww.search_maps = (function() {
   required: http://demos.flesler.com/jquery/scrollTo/
   optional: https://github.com/gdsmith/jquery.easing
 ------------------------*/
+var apples = "";
 ww.scrollto = (function() {
     var s = {
         $trigger: $("[data-btn-scroll]"),
-        scroll_rate: 400,
-        $masthead: $(".masthead").outerHeight(),
+        scroll_rate: 200,
         my_offset: 0,
     };
 
@@ -1210,73 +1207,12 @@ ww.scrollto = (function() {
             s.$trigger.on("click", function(e){
                 e.preventDefault();
                 hash = $(this).attr("href").replace("#", "");
-                $scroll_target = $("[id='"+hash+"']");
-                s.my_offset = s.$masthead;
+                $scroll_target = $("[name='"+hash+"']");
 
                 $.scrollTo($scroll_target, s.scroll_rate, {
                     offset: -s.my_offset,
                 });
             });
-        },
-    };
-})();
-
-
-/*-----------------------
-  @SCROLLSPY
-
-  Good buddies with FIXED NAV
-  Adapted from http://jsfiddle.net/mekwall/up4nu/
-------------------------*/
-ww.scrollspy = (function() {
-    return {
-        init: function() {
-            var lastId,
-                $fixed_el = $("[data-scrollspy]"),
-                nav_height = $fixed_el.outerHeight(),
-                $menu_links = $fixed_el.find("a[data-btn-scroll]"),
-                $scroll_markers = $menu_links.map(function() {
-                    var href = $(this).attr("href").replace("#", ""),
-                        item = $("[name='"+href+"']");
-
-                    if (item.length) {
-                        return item;
-                    }
-                });
-
-            // Bind click handler to menu items
-            $menu_links.on("click", (function(e) {
-                e.preventDefault();
-                ww.scrollspy.set_active($(this));
-            }));
-
-            // Bind to scroll
-            $(window).scroll(function() {
-                // Get container scroll position
-                var fromTop = $(this).scrollTop() + nav_height + 30; // the extra offset makes sure the correct item is indicated
-
-                // Get id of current scroll item
-                var cur = $scroll_markers.map(function() {
-                    if ($(this).offset().top < fromTop) {
-                        return this;
-                    }
-                });
-
-                // Get the id of the current element
-                // We're using the name attribute instead of id
-                cur = cur[cur.length - 1];
-                var id = cur && cur.length ? cur[0].name : "";
-
-                if (lastId !== id) {
-                    lastId = id;
-                    // Set/remove active class
-                    ww.scrollspy.set_active($menu_links.filter("[href=#"+id+"]"));
-                }
-            });
-        },
-
-        set_active: function($link) {
-            $link.addClass("is-active").siblings().removeClass("is-active");
         },
     };
 })();

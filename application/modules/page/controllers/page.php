@@ -342,7 +342,21 @@ class Page extends CI_Controller {
                             $data['page_view'] = 'why_skylights';
                             break;
 
-                        case 'installing':
+                        case 'replacing':
+                            $data['current_section'] = 'replacing';
+                            $data['meta_array'] = $this->meta->get_meta('replacing', $data['installer_region']);
+                            $data['canonical_url'] = $data['installer_base_url'] . '/replacing';
+                            //Define social media params
+                            $data['social_meta_array'] = array(
+                                'title' => $data['meta_array']['title'],
+                                'description' => $data['meta_array']['description'],
+                                'url' => $data['canonical_url'],
+                                'image' => site_url('assets/images/welcome/hero.jpg'),
+                            );
+                            $data['page_view'] = 'replacing';
+                            break;
+
+                            case 'installing':
                             $data['current_section'] = 'installing';
                             $data['meta_array'] = $this->meta->get_meta('installing', $data['installer_region']);
                             $data['canonical_url'] = $data['installer_base_url'] . '/installing';

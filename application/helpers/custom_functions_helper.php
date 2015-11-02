@@ -106,6 +106,49 @@ function format_date($date, $method) {
 	return $formatted_date;
 }
 
+
+/**
+ * Build an icon that contains an inline svg and provides the path to a fallback png
+ * data-inline-svg-fallback is handled in scripts.js
+ *
+ * @param  array $args define the filename of the svg - classes and aria-hidden are optional
+ * @return str   $output the generated icon
+ */
+if ( ! function_exists('inline_svg')) {
+    function inline_svg($args) {
+        // input
+        $filename = $args['filename']; // required
+        $classes = isset($args['classes']) ? $args['classes'] : '';
+        $aria_hidden = isset($args['aria-hidden']) ? $args['aria-hidden'] : 'false';
+
+        // output
+        $output = '';
+
+        $asset_path = asset_url('images/sprites') . '/';
+        $dir_path = FCPATH . '/dist/public/images/sprites/';
+
+        $svg_asset_path = $asset_path . $filename . '.svg';
+        $fallback_asset_path = $asset_path . 'sprite.svg.' . $filename . '.png';
+
+        $svg_dir_path = $dir_path . $filename . '.svg';
+        $fallback_dir_path = $dir_path . 'sprite.svg.' . $filename . '.png';
+
+        $the_svg = null;
+        if (file_exists($svg_dir_path) && file_exists($fallback_dir_path)) {
+            $the_svg = curl_get($svg_asset_path);
+        } else {
+            return false;
+        }
+
+        // build
+        $output = '<i class="icon ' . $filename . ' ' . $classes . '" data-inline-svg-fallback="' . $fallback_asset_path . '" aria-hidden="' . $aria_hidden . '">';
+        $output .= $the_svg;
+        $output .= '</i>';
+
+        return $output;
+    }
+}
+
 /**
  * Build an icon that contains an svg pulled from an external sprite sheet
  * ex: <i><svg><use></use></svg></i>

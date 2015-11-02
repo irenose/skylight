@@ -264,6 +264,20 @@ a.cta-text {
     padding-top: 5%;
 }
 
+
+// pull
+%pull-top {
+    margin-top: -$row-padding-vertical;
+    position: relative;
+    z-index: 1;
+}
+.pull-top {
+    @extend %pull-top;
+    @include bp(0, $foundation-medium) {
+        margin-top: -$row-padding-vertical * 2;
+    }
+}
+
 %snug-top {
     margin-top: 0 !important;
     padding-top: 0 !important;
