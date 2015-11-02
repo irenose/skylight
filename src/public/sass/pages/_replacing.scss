@@ -1,0 +1,54 @@
+.bg-house-at-dusk {
+
+	&{
+
+	}
+
+    background-image: url('../images/house-at-dusk-clouds.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include bp($my-large) {
+        background-image: url('../images/1800x900/house-at-dusk.jpg');
+    }
+
+
+    @media only screen and (min-width: 75em){
+		.bg-house-at-dusk {
+			background-image: url(../images/1800x900/house-at-dusk.jpg);
+		}
+    }
+}
+
+
+.page-row.bg-house-at-dusk{
+	.push-bottom, .push-bottom--half {
+		padding-bottom: 10%;
+	}
+}
+
+.reversed p.squeezed-3 {
+    color: #dfdfdf;
+}
+
+
+@media only screen and (min-width: 43.75em){
+	.page-row.bg-house-at-dusk{
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+}
+
+@media only screen and (min-width: 63.75em){
+	.page-row.bg-house-at-dusk{
+	    padding-right: 15%;
+	    padding-left: 15%;
+	}
+}
+
+@media only screen and (max-width: 685px){
+	.pull-top.improve-old-new{
+		    margin-top: -15%;
+	}
+}

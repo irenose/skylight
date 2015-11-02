@@ -1,0 +1,90 @@
+.atomic {
+    @extend %centered;
+    @extend %clearfix;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include bp(0, $foundation-medium) {
+        margin-bottom: 5%;
+    }
+    @include bp($foundation-medium) {
+        width: 90%;
+    }
+    @include bp($foundation-large) {
+        width: 80%;
+    }
+}
+
+.atomic__item {
+    float: left;
+    width: 50%;
+
+
+    figure{
+        margin: 0;
+    }
+
+    .polaroid:after{
+        height:0%;
+    }
+
+    @include bp($foundation-medium) {
+        display: inline-block;
+        float: none;
+        width: 40%;
+    }
+    @include bp(0, $foundation-large) {
+        &.first {
+            padding-right: 5%;
+        }
+        &.last {
+            padding-left: 5%;
+        }
+    }
+    @include bp($foundation-large) {
+        width: 30%;
+    }
+
+    .polaroid--round .polaroid__item {
+        max-width: 292px; // image width
+
+        @include bp(0, $foundation-large) {
+            border-width: 3px;
+        }
+    }
+}
+
+.atomic__caption {
+    @extend %bold;
+    @extend %upper;
+    @include circle(60px, 60px);
+    background: #fff; // fallback
+    background: linear-gradient(to bottom, #fcfcfc 0%,#f0f0f0 100%);
+    border: 3px solid #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    color: $color-silver;
+    font-size: .8em;
+    line-height: 60px;
+    position: absolute;
+    z-index: 10;
+
+    .first & {
+        bottom: 0;
+        right: -8%;
+
+        @include bp($foundation-medium) {
+            bottom: 5%;
+            right: 5%;
+        }
+    }
+    .last & {
+        bottom: 0;
+        left: -8%;
+
+        @include bp($foundation-medium) {
+            bottom: auto;
+            left: 5%;
+            top: 5%;
+        }
+    }
+}

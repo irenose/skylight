@@ -1,0 +1,147 @@
+.info-boxes {
+    @extend %centered;
+    @extend %clearfix;
+    margin-top: $row-padding-vertical / 2;
+    margin-right: -$row-padding-vertical; // to eliminate column padding
+    margin-left: -$row-padding-vertical; // to eliminate column padding
+
+    @include bp($foundation-medium) {
+        margin-top: $row-padding-vertical;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .asterisk {
+        color: $color-gainsboro;
+        font-size: .7em;
+        font-weight: normal;
+        line-height: 1.4;
+        vertical-align: text-top;
+    }
+    .card & {
+        margin: 0;
+    }
+    [data-equal-heights="done"] & {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+}
+
+.info-boxes__item {
+    padding: 20px 20px 15px;
+
+    @include bp(0, $foundation-medium) {
+        border-top: 1px solid $color-gainsboro;
+        padding-right: $row-padding-vertical;
+        padding-left: $row-padding-vertical;
+    }
+    @include bp($foundation-medium) {
+        border-top: 1px solid $color-gainsboro;
+        border-right: 1px solid $color-gainsboro;
+        float: left;
+        height: 90px;
+        padding-bottom: 10px;
+        text-align: center;
+
+        &:first-child {
+            border-left: 1px solid $color-gainsboro;
+        }
+    }
+    &.rooms .icon {
+        height: 30px;
+        margin-top: 5px;
+        width: 30px;
+    }
+
+    .reversed & {
+        border-color: $color-trout;
+    }
+    .card & {
+        /*
+        put these lines back when performace ratings are available
+
+        background: $color-whitesmoke;
+        border-right: none;
+        border-left: none;
+        float: left;
+        width: 50%;
+
+        &:first-child {
+            border-right: 1px solid $color-gainsboro;
+        }
+        */
+        background: $color-whitesmoke;
+        float: none;
+    }
+    .bg-house-at-dusk & {
+        border-color: #314f73;
+    }
+    .bv-summary-margin {
+        margin-top: 7px;
+    }
+}
+
+.info-boxes__item__heading {
+    @extend %block;
+    margin: -.4em 0 0;
+
+    @include bp(0, $foundation-medium) {
+        float: left;
+        font-size: 2em;
+        width: 100px;
+    }
+    .reversed & {
+        color: $color-gainsboro;
+    }
+}
+
+.info-boxes__item__note {
+    @extend %block;
+    @extend %font-display-light;
+    font-size: 12px;
+
+    // when it's on top
+    &:first-child {
+        @extend %bold;
+        @extend %upper;
+    }
+
+    // when it's below
+    .info-boxes__item__heading + & {
+        line-height: 1.2;
+        padding: 0 10px;
+    }
+
+    .reversed & {
+        color: $color-gainsboro;
+    }
+    .performance-rating & {
+        color: $color-silver;
+        font-size: 11px;
+        font-weight: normal;
+        line-height: 1.2;
+        text-transform: none;
+    }
+}
+
+.info-boxes__caption {
+    @extend %block;
+    color: $color-gainsboro;
+    font-size: .8em;
+    padding: 30px 0 0 20px;
+
+    @include bp(0, $foundation-medium) {
+        border-top: 1px solid $color-gainsboro;
+        border-bottom: 1px solid $color-gainsboro;
+        padding-right: $row-padding-vertical;
+        padding-bottom: $row-padding-vertical;
+        padding-left: $row-padding-vertical;
+    }
+    @include bp($foundation-medium) {
+        float: left;
+    }
+    .reversed & {
+        border-color: $color-trout;
+    }
+}
