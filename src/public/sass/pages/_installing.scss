@@ -255,19 +255,6 @@
 }
 
 
-.alpha{
-
-    text-transform: capitalize;
-    font-family: $font-family-display-regular;
-    letter-spacing: .5px;
-
-    @media only screen and (min-width: 43.75em){
-        font-size: 3em;
-        line-height: 1.2;
-    }
-}
-
-
 header{
     p.squeezed-3 {
         color: $colot-paragraph-grey;
