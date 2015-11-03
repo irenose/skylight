@@ -31,11 +31,13 @@
 .info-boxes__item {
     padding: 20px 20px 15px;
 
+
     @include bp(0, $foundation-medium) {
         border-top: 1px solid $color-gainsboro;
         padding-right: $row-padding-vertical;
         padding-left: $row-padding-vertical;
     }
+
     @include bp($foundation-medium) {
         border-top: 1px solid $color-gainsboro;
         border-right: 1px solid $color-gainsboro;

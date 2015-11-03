@@ -200,6 +200,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 10% 20%;
 
     .brochure {
         text-align: right;
@@ -246,6 +247,10 @@
             left: 10%;
             right: 10%;
         }
+    }
+
+    @media only screen and (min-width:1400px){
+         padding: 10% 22% 10% 30%;
     }
 }
 

@@ -34,3 +34,10 @@
         background-size: 48% 135%;
     }
 }
+
+[data-wallpaper*="solar-skylight-on-roof"] {
+    @media only screen and (max-width: 1025px)  {
+       background-size: initial;
+       background-position: 0;
+    }
+}

@@ -8,9 +8,7 @@
                 <p>
                     Add VELUX solar blinds – also powered by a small PV solar panel – and receive another 30 percent tax credit on product and installation. In addition to savings, solar blinds give you control over the light and improve your skylight's energy performance.
                 </p>
-                <a href="<?=site_url('choosing/blinds')?>" class="btn">
-                    More on Blinds
-                </a>
+    
             </div>
         </div>
     </div>

@@ -26,7 +26,8 @@
         <?php
             // don't show button if on Installing overview
             $link = site_url('installing');
-            if (current_url() != $link):
+            //if (current_url() != $link):
+            if (current_url() == $link):
         ?>
             <a href="<?=$link?>" class="btn">
                 Learn More
