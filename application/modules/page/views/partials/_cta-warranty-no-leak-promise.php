@@ -2,7 +2,7 @@
     <div class="page-row page-row--tall reversed" data-wallpaper='{"file":"water-beads", "ext":"jpg"}'>
         <header>
             <div class="centered">
-                <?=inline_svg(array('filename' => 'icon-no-leak'))?>
+                <?=$this->load->view('partials/_svg-icon-no-leak.php');?>
                 <br><br>
                 <h2 class="beta">
                     <span class="br">The VELUX No Leak Skylight</span> Gives You Peace of Mind
