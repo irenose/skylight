@@ -15,7 +15,7 @@ $data['secondary_nav_links'] = array(
     'return' => null,
     'main' => array(
         0 => array(
-            'title' => 'What to Expect',
+            'title' => 'What to It takes ',
             'anchor-name' => 'what-to-expect',
         ),
         1 => array(
@@ -77,10 +77,7 @@ $data['secondary_nav_links'] = array(
                 <p>
                     Installers will make every effort to protect your home’s interior from dust and other installation debris. Often they will construct a curtain of plastic sheeting around the space in your ceiling where the skylight will be installed to contain dust.
                 </p>
-                <a href="<?=site_url('resources/locator')?>" class="btn" onclick="google_track_installers()">
-                    <?=use_svg(array('classes' => 'icon icon-text icon-text--left icon-pin--reversed', 'svg-node' => 'icon-pin--reversed', 'aria-hidden' => 'true'))?>
-                    Find an Installer
-                </a>
+               
             </div>
             <div class="small-12 medium-5 medium-offset-1 end columns">
                 <figure class="centered mobile-hide polaroid polaroid--round">
@@ -141,10 +138,7 @@ $data['secondary_nav_links'] = array(
                 <p class="squeezed-3 color-montana">
                     Your skylight installer is the best person to evaluate your home’s daylighting needs. They can recommend where skylights should be installed, so you can reap maximum benefit from the natural light and fresh air they provide. Skylights can be installed in flat or vaulted ceilings.
                 </p>
-                <a href="<?=site_url('resources/locator')?>" class="btn" onclick="google_track_installers()">
-                    <?=use_svg(array('classes' => 'icon icon-text icon-text--left icon-pin--reversed', 'svg-node' => 'icon-pin--reversed', 'aria-hidden' => 'true'))?>
-                    Find an Installer
-                </a>
+            
             </div>
         </header>
         <div class="push-top--half constrained">
