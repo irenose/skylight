@@ -124,10 +124,7 @@
                 <p>
                     VELUX No Leak Solar Powered “Fresh Air” Skylights qualify for a 30% federal tax credit on product and installation. If you have an older fixed skylight, upgrade to a Solar Powered “Fresh Air” Skylight and bring fresh air as well as natural light into your home for an average of just $100 more than a standard fixed skylight after tax credit eligibility. Available through Dec. 31, 2016, this tax credit is a direct debit of the taxpayer’s total tax liability. If you’re considering a replacement Manual “fresh Air” Skylight, you could upgrade to the Solar Powered “Fresh Air” Skylight and save about $140 after tax credit eligibility.
                 </p>
-                <a href="<?=site_url('resources/locator')?>" class="btn" onclick="google_track_installers()">
-                    <?=use_svg(array('classes' => 'icon icon-text icon-text--left icon-pin--reversed', 'svg-node' => 'icon-pin--reversed', 'aria-hidden' => 'true'))?>
-                    Find an Installer
-                </a>
+                
             </div>
         </div>
         <div class="row">
