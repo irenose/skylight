@@ -26,7 +26,7 @@
                         echo '<div class="discover-card-container tax-credit">' . "\n";
                             echo '<div class="discover-card">' . "\n";
                                 echo '<h4 class="reversed normal-weight">Use a federal tax credit to replace your old skylight</h4>' . "\n";
-                                echo '<a href="' . $installer_base_url . '/installing#tax-credits" class="upper">Learn More</a>' . "\n";
+                                echo '<a href="' . $installer_base_url . '/replacing#tax-credit-savings" class="upper">Learn More</a>' . "\n";
                             echo '</div>' . "\n";
                         echo '</div>' . "\n";
                     echo '</div>' . "\n";

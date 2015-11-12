@@ -26,8 +26,7 @@
     <?=$this->load->view('partials/_favicons');?>
     <link rel="canonical" href="<?php echo $canonical_url; ?>" />
     <?=$this->load->view('partials/_social-meta');?>
-
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    
     <link rel="stylesheet" href="<?=asset_url('css/styles.min.css')?>">
     <?=get_additional_scripts('css', $additional_css)?>
 
