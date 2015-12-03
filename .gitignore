@@ -1,3 +1,4 @@
 node_modules/**
 documentation/**
 bz/**
+.DS_Store
