@@ -41,7 +41,7 @@
         <header>
             <div class="centered">
                 <h1 class="alpha">
-                    <span class="br">When should you</span> replace a skylight?
+                    <span class="br">When Should You</span> Replace a Skylight?   
                 </h1>
                 <p class="squeezed-3">
                     We recommend replacing your skylights when you reroof. It’s the most cost-efficient way, and it allows you to synchronize your roof and skylight warranties.

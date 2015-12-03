@@ -131,13 +131,13 @@
                     color: $color-reverse;
 
                     @include bp($foundation-large) {
-                        margin-right: 6%;
+                        margin-right: 4%;
                     }
                     @include bp($my-large) {
-                        margin-right: 14%;
+                        margin-right: 10%;
                     }
                     @include bp($my-very-large) {
-                        margin-right: 15%;
+                        margin-right: 10%;
                     }
                 }
                 a:last-child {
@@ -157,17 +157,17 @@
                     padding-left:5%;
                 }
                 @include bp($foundation-large) {
-                    margin-right: 4%;
-                    width:40%;
+                    margin-right: 0%;
+                    width:55%;
                     padding-left:0;
                 }
                 @include bp($my-large) {
                     margin-right: 6%;
-                    width: 30%;
+                    width: 45%;
                 }
                 @include bp($my-very-large) {
-                    margin-right: 7%;
-                    width: 35%;
+                    margin-right: 0%;
+                    width: 55%;
                 }
                 a:last-child {
                     margin-right: 0;
@@ -186,7 +186,7 @@
                         margin-right: 11%;
                     }
                     @include bp($my-very-large) {
-                        margin-right: 12%;
+                        margin-right: 10%;
                     }
                 }
 

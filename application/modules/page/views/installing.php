@@ -43,7 +43,7 @@ $data['secondary_nav_links'] = array(
     <div class="page-row centered">
         <header>
             <h1 class="alpha">
-                Installation<br>is a breeze.
+                Installation Is<br> a Breeze.
             </h1>
             <p class="squeezed-3">
                 Come up on the roof with us, and see why VELUX skylights are the most dependable skylights you can have in your home.
