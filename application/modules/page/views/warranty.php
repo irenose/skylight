@@ -2,7 +2,7 @@
     /******************************* INTRO COPY *************************/ 
 ?>
 <section class="page-row bg-grey intro-statement intro-statement--squeezed">
-    <h1 class="normal-weight">Warranty</h1>
+    <h1 class="alpha">Warranty</h1>
     <p>We believe the best warranty is the one you never have to use; therefore, we build quality into every product. However, if you should have an issue, please reference the warranty information below. </p>
 </section>
 
