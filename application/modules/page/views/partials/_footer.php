@@ -68,8 +68,8 @@
                     echo '<div class="nav-footer"><div class="nav-footer__container"><nav class="nav-major"><a href="' . $installer_base_url . '/products">Products</a>';
                     //echo '<a href="' . $installer_base_url . '/gallery">Gallery</a>';
                     echo '<a href="' . $installer_base_url . '/why-skylights">Why Skylights</a>';
-                    echo '<a href="' . $installer_base_url . '/replacing">Replacing</a>';
-                    echo '<a href="' . $installer_base_url . '/installing">Installing</a></nav>';
+                    echo '<a href="' . $installer_base_url . '/installing">Installing</a>';
+                    echo '<a href="' . $installer_base_url . '/replacing">Replacing</a></nav>';
                     echo '<nav class="nav-minor"><a href="' . $installer_base_url . '/about">About</a>';
                     echo '<a href="' . $installer_base_url . '/warranty">Warranty</a>';
                     echo '<a href="' . $installer_base_url . '/brochures">Brochures</a>';
