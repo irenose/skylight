@@ -35,14 +35,14 @@ body { margin: 0; font-size: 13px; line-height: 1.231; }
 
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
-/* 
+/*
  * These selection declarations have to be separate
  * No text-shadow: twitter.com/miketaylr/status/12228805301
  * Also: hot pink!
  */
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::-moz-selection { background: #c5c5c5; color: #fff; text-shadow: none; }
+::selection { background: #c5c5c5; color: #fff; text-shadow: none; }
 
 
 /* =============================================================================
@@ -114,7 +114,7 @@ nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
 img { border: 0; -ms-interpolation-mode: bicubic; }
 
 /*
- * Correct overflow displayed oddly in IE9 
+ * Correct overflow displayed oddly in IE9
  */
 
 svg:not(:root) {
@@ -136,9 +136,9 @@ figure { margin: 0; }
 form { margin: 0; }
 fieldset { border: 0; margin: 0; padding: 0; }
 
-/* 
- * 1. Correct color not inheriting in IE6/7/8/9 
- * 2. Correct alignment displayed oddly in IE6/7 
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
  */
 
 legend { border: 0; *margin-left: -7px; padding: 0; }
@@ -175,9 +175,9 @@ button, input[type="button"], input[type="reset"], input[type="submit"] { cursor
 input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
 input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 
-/* 
+/*
  * Remove inner padding and border in FF3/4
- * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ 
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  */
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
@@ -210,7 +210,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* =============================================================================
    Primary styles
-   Author: 
+   Author:
    ========================================================================== */
 
 
@@ -221,7 +221,7 @@ body
 	margin:0;
 	padding:0;
 	text-align:center;
-	height:100%; 
+	height:100%;
 	background:#fff;
 }
 html { filter:expression(document.execCommand("BackgroundImageCache",false,true)); } /* IE Background Flicker */
@@ -305,9 +305,9 @@ p
 }
 
 /****************************************************
-		
+
 		#global
-		
+
 *****************************************************/
 
 #welcome_logout
@@ -364,13 +364,13 @@ p
 }
 
 /****************************************************
-		
+
 		#container
-		
+
 *****************************************************/
 
-#nav 
-{ 
+#nav
+{
 	width:165px;
 	float:left;
 	margin-left:-165px;
@@ -835,7 +835,7 @@ a.cancel_button, a.cancel_button:visited
 }
 .list_table td.td_border_image
 {
-	background:center left no-repeat;	
+	background:center left no-repeat;
 	padding-left:45px;
 }
 
@@ -864,7 +864,7 @@ a.delete_confirm, a.delete_confirm:visited, a.delete_confirm_image, a.delete_con
 	background:none;
 	border:none;
 }
-	
+
 
 a.list_action:hover, a.header_action:hover, .view_all a:hover
 {
@@ -875,7 +875,7 @@ a.list_action:hover, a.header_action:hover, .view_all a:hover
 	background-image: -ms-linear-gradient(top, #cccccc, #eeeeee);
 	background-image: -o-linear-gradient(top, #cccccc, #eeeeee);
 	background-image: linear-gradient(top, #cccccc, #eeeeee);
-	
+
 }
 a.delete_confirm:hover, a.delete_confirm_image:hover
 {
@@ -1018,7 +1018,7 @@ a.manual_upload_file_selected
 
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 959px) {
-	 
+
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
@@ -1073,7 +1073,7 @@ a.manual_upload_file_selected
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
 
-/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
@@ -1085,7 +1085,7 @@ a.manual_upload_file_selected
    Print styles.
    Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
- 
+
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
   a, a:visited { color: #444 !important; text-decoration: underline; }

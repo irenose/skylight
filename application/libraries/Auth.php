@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Auth {
 
@@ -17,30 +17,30 @@ class Auth {
 		if(!isset($login)) {
 			return FALSE;
 		}
-			
+
 		//Our array has to have 2 values
 		//No more, no less!
 		if(count($login) != 2) {
 			return FALSE;
 		}
-			
+
 		$username = $login[0];
 		$password = $login[1];
-		
+
 		$salt = $this->CI->config->item('salt');
 		$hash_password = sha1($salt.$password);
-		
+
 		//Check to see if Wray Ward Admin User
-		if($username == 'gparish@wrayward.com' && $password == 'toast') {
+		if($username == 'dev@wrayward.com' && $password == 'xq+64G*B&Z]8aHT7@N4h') {
 			$user_array = array(
-				'admin_username' => 'gparish@wrayward.com',
+				'admin_username' => 'dev@wrayward.com',
 				'uid' => '99999',
 				'permission_level' => '0',
 				'first_name' => 'Wray Ward Admin',
 				'change_password' => 'no',
 				'redirected_from' => $redirected_from,
 				'super_admin' => 'yes',
-				'dealer_id' => 0			
+				'dealer_id' => 0
 			);
 			return $user_array;
 
@@ -51,7 +51,7 @@ class Auth {
 				$this->CI->db->where('password', $hash_password);
 				$this->CI->db->where('user_status', 'active');
 				$query = $this->CI->db->get($this->CI->config->item('db_table_prefix') . 'users');
-				
+
 				if ($query->num_rows() == 1) {
 					$user_array = $query->result();
 					// Our user exists, set session.
@@ -66,9 +66,9 @@ class Auth {
 							'first_name' =>  $user_array[0]->first_name,
 							'change_password' => $user_array[0]->change_password,
 							'redirected_from' => $redirected_from,
-							'super_admin' => $super_admin,	
+							'super_admin' => $super_admin,
 							'dealer_id' => $user_array[0]->dealer_id
-						); 
+						);
 						return $new_user_array;
 					} else {
 
@@ -92,11 +92,11 @@ class Auth {
 							'change_password' => $user_array[0]->change_password,
 							'redirected_from' => $redirected_from,
 							'super_admin' => $super_admin,
-							'dealer_id' => $user_array[0]->dealer_id		
-						); 
+							'dealer_id' => $user_array[0]->dealer_id
+						);
 						return $new_user_array;
 					}
-					
+
 				} else if($query->num_rows() > 1) {
 					$user_array = $query->result();
 
@@ -136,7 +136,7 @@ class Auth {
 									'change_password' => $user_array[0]->change_password,
 									'redirected_from' => $redirected_from,
 									'super_admin' => $super_admin,
-									'dealer_id' => $dealer_id		
+									'dealer_id' => $dealer_id
 								);
 
 							} else {
@@ -150,7 +150,7 @@ class Auth {
 									'redirected_from' => $redirected_from,
 									'super_admin' => $super_admin,
 									'active_sites' => $active_sites_array,
-									'dealer_id' => ''		
+									'dealer_id' => ''
 								);
 							}
 							return $new_user_array;
@@ -165,7 +165,7 @@ class Auth {
 			}
 		}
 	}
-	
+
 	/**
 	 *
 	 * This function restricts users from certain pages.
@@ -174,18 +174,18 @@ class Auth {
 	 * @access	public
 	 * @param	boolean	wether the page is viewable when logged in
 	 * @return	void
-	 */	
+	 */
 	function restrict($logged_out = FALSE, $permission_level = NULL) {
 		//redirect('admin');
 
-	
+
 		// If the user is logged in and he's trying to access a page
 		// he's not allowed to see when logged in,
 		// redirect him to the index!
 		if ($logged_out && $this->logged_in()) {
 			redirect('admin');
 		}
-		
+
 		// If the user isn' logged in and he's trying to access a page
 		// he's not allowed to see when logged out,
 		// redirect him to the login page!
@@ -194,7 +194,7 @@ class Auth {
 			$url_base = $this->CI->uri->segment(1);
 			redirect($url_base . '/?redirect=' . $this->CI->uri->uri_string());
 		}
-		
+
 		// If a permission level is set and the user is logged in, but doesn't have a high-enough permission level, bounce them
 		if($permission_level != NULL) {
 			if($this->logged_in() && $_SESSION['permission_level'] > $permission_level) {
@@ -206,14 +206,14 @@ class Auth {
 			}
 		}
 	}
-	
+
 	/**
 	 *
 	 * Checks if a user is logged in
 	 *
 	 * @access	public
 	 * @return	boolean
-	 */	
+	 */
 	function logged_in() {
 		if( array_key_exists('admin_username',$_SESSION)) {
 			return TRUE;
@@ -222,16 +222,16 @@ class Auth {
 		}
 	}
 
-	
+
 	function redirect() {
 		if ($this->CI->session->userdata('redirected_from') == FALSE) {
 			redirect('admin/home');
 		} else {
 			redirect($this->CI->session->userdata('redirected_from'));
 		}
-		
+
 	}
-	
+
 	function logout() {
 		$this->CI->session->sess_destroy();
 		return TRUE;
