@@ -1,6 +1,6 @@
 <section class="page-row bg-grey">
     <header class="intro-statement intro-statement--snug">
-        <h1 class="alpha">Brochures</h1>
+        <h1 class="normal-weight">Brochures</h1>
         <p>We offer easy to understand downloads to help you choose the skylight that's perfect for you.</p>
     </header>
 </section>

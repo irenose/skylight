@@ -41,8 +41,8 @@ $data['secondary_nav_links'] = array(
 
 <section>
     <div class="page-row centered">
-        <header>
-            <h1 class="alpha">
+        <header class="intro-statement intro-statement--squeezed">
+            <h1 class="normal-weight">
                 Installation Is<br> a Breeze.
             </h1>
             <p class="squeezed-3">
