@@ -3,7 +3,7 @@
 ?>
 <section class="page-row products">
     <header class="intro-statement intro-statement--squeezed">
-        <h1 class="alpha">Our Products</h1>
+        <h1 class="normal-weight">Our Products</h1>
         <p>Want to let more light and fresh air into your home? You’re in the right place.</p>
     </header>
 

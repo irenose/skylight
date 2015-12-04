@@ -2,13 +2,13 @@
     /******************************* INTRO COPY *************************/
 ?>
 <section class="page-row bg-grey">
-    <header class="intro-statement">
+    <header class="intro-statement intro-statement--squeezed">
 <?php
     /*---------------------------------------------
         Dealer Headline
     ----------------------------------------------*/
 ?>
-        <h1 class="alpha">
+        <h1 class="normal-weight">
             <?php
                 $headline = $installer_array[0]->about_dealer_headline != '' ? $installer_array[0]->about_dealer_headline : 'About Us';
                 echo $headline;

@@ -38,9 +38,9 @@
 
 <section>
     <div class="page-row">
-        <header>
+         <header class="intro-statement intro-statement--squeezed">
             <div class="centered">
-                <h1 class="alpha">
+                <h1 class="normal-weight">
                     <span class="br">When Should You</span> Replace a Skylight?   
                 </h1>
                 <p class="squeezed-3">
