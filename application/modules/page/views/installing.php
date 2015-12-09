@@ -132,6 +132,10 @@ $data['secondary_nav_links'] = array(
     <div class="page-row underlap" data-wallpaper='{"file":"clouds", "ext":"jpg"}'>
         <header>
             <div class="centered">
+                <div class="push-bottom--half constrained">
+                   <a name="<?=$data['secondary_nav_links']['main'][0]['anchor-name']?>"></a> <?=$this->load->view('partials/_cta-valuted-vs-flat')?>
+                </div>
+
                 <h2 class="beta reversed text-shadow">
                     Skylights &amp; Your Ceiling Style
                 </h2>
@@ -141,48 +145,6 @@ $data['secondary_nav_links'] = array(
             
             </div>
         </header>
-        <div class="push-top--half constrained">
-            <ul class="slick" data-carousel-init="auto" data-carousel-type="ceiling-types" data-slides-to-show="2" data-equal-heights>
-                <li class="slick__item ceiling-style__item">
-                    <div class="card shadowed">
-                        <figure>
-                            <div class="card__figure">
-                                <img src="<?=asset_url('images/510x385/apples-and-wine.jpg')?>" alt="a room with a flat ceiling">
-                            </div>
-                            <figcaption>
-                                <div class="card__body">
-                                    <h3 class="gamma">
-                                        Flat Ceilings
-                                    </h3>
-                                    <p>
-                                        For flat ceilings, your installer will build a shaft or light well using drywall to connect your skylight from the roof through the attic space to the room below. Shafts can take a variety of shapes and sizes, which will affect the way daylight is delivered to the room.
-                                    </p>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </li>
-                <li class="slick__item ceiling-style__item">
-                    <div class="card shadowed">
-                        <figure>
-                            <div class="card__figure">
-                                <img src="<?=asset_url('images/510x385/adjusting-the-thermostat.jpg')?>" alt="a room with a vaulted ceiling">
-                            </div>
-                            <figcaption>
-                                <div class="card__body">
-                                    <h3 class="gamma">
-                                        Vaulted Ceilings
-                                    </h3>
-                                    <p>
-                                        For vaulted ceilings, your installer will not need to build a light shaft, but will complete a small amount of interior drywall work in your ceiling.
-                                    </p>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </li>
-            </ul>
-        </div>
     </div>
 </section>
 
