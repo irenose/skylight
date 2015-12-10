@@ -2171,22 +2171,21 @@ class Admin_model extends CI_Model {
 
 
 	function delete_literature($data_array) {
-		$db_table = $this->config->item('db_table_prefix') . 'literature';
+        $db_table = $this->config->item('db_table_prefix') . 'literature';
+        $brochure_array = $this->get_literature_by_id($data_array['literature_id']);
 
-		$brochure_array = $this->get_literature_by_id($data_array['literature_id']);
 		if (count($brochure_array) > 0) {
-
 			$dir = $this->config->item('resources_full_dir');
-			$thumb_dir = $this->config->item('promotion_files_full_dir') . 'thumbs/';
+			$thumb_dir = $this->config->item('brochure_assets_full_dir');
 
 			$thumb_delete = @unlink($thumb_dir . $brochure_array[0]->thumbnail . '.' . $brochure_array[0]->thumbnail_extension);
 			$brochure_delete = @unlink($dir . $brochure_array[0]->filename . '.' . $brochure_array[0]->extension);
 
 			if ($brochure_delete && $thumb_delete) {
-
-				$this->db->where('literature_id',$data_array['literature_id']);
+                $this->db->where('literature_id', $data_array['literature_id']);
 				$result = $this->db->delete($db_table);
-				if ($result) {
+
+                if ($result) {
 					return TRUE;
 				} else {
 					return FALSE;
