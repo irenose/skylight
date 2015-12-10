@@ -13,24 +13,24 @@ class Admin extends CI_Controller {
 		$this->load->model('page/page_model');
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 	}
-	
+
 /*****************************************************************************************************************************************
 /*	LOGIN Page
 *****************************************************************************************************************************************/
 	function index() {
 
-		if(isset($_SESSION['uid']) && $_SESSION['uid'] != '') { 
+		if (isset($_SESSION['uid']) && $_SESSION['uid'] != '') {
 			redirect('admin/home');
 		}
 
 		$data['page_title'] = 'Administration Login';
 		$data['hide_navigation'] = TRUE;
-		
+
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|valid_email|xss_clean');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
 		$data['redirected_from'] = ($this->input->get('redirect') != '') ? $this->input->get('redirect') : '';
-		
+
 		if ($this->form_validation->run() == FALSE) {
 			$data['page_content'] = 'admin_login';
 			$this->load->view('admin_template', $data);
@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
 				$username = htmlspecialchars($this->input->post('username'), ENT_QUOTES, 'UTF-8');
 				$login = array($username, $this->input->post('password'));
 				$data['user_array'] = $this->auth->process_login($login, FALSE, $data['redirected_from']);
-				if($data['user_array'] != FALSE) {
+				if ($data['user_array'] != FALSE) {
 					$this->load->view('admin_session', $data);
 				} else {
 					$data['error'] = 'Login failed, please try again';
@@ -50,8 +50,8 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
-	
-	
+
+
 /*****************************************************************************************************************************************
 /*	PASSWORD REQUEST Page
 /*	This controls the requesting of a forgotten password from the login page
@@ -62,55 +62,55 @@ class Admin extends CI_Controller {
 	function password($action = NULL, $user_id = NULL) {
 		$data['page_title'] = 'Administration Password Request';
 		$data['hide_navigation'] = TRUE;
-		
-		if($action == NULL) {
-		
+
+		if ($action == NULL) {
+
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|valid_email|xss_clean');
-			
+
 			if ($this->form_validation->run() == FALSE) {
 				$data['page_content'] = 'admin_password';
 				$this->load->view('admin_template', $data);
-				
+
 			} else {
 				$temp_password = $this->admin_model->forgot_reset_password($_POST);
 				$to_email = $this->input->post('username');
-				if($temp_password) {
+				if ($temp_password) {
 					//send email with reset link
 					$this->load->library('email');
-					
+
 					//Auto Response to contactor
 					$this->email->from($this->config->item('global_email_from'),$this->config->item('global_email_name'));
 					$this->email->to($to_email);
 					$this->email->subject('Forgotten Password Reset');
 					$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
-					
+
 					$this->email->message($message);
 					$this->email->send();
-					
+
 					$this->session->set_flashdata('status_message','<div class="success">Password has been reset successfully. Please check your email.</div>');
 					redirect('admin/password');
-				
+
 				} else {
 					$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error resetting this password. Verify username and try again.</p></div>');
 					redirect('admin/password');
 				}
 			}
 		} else {
-			
-			switch($action) {
-			
+
+			switch ($action) {
+
 				case 'update':
 					$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[password_confirm]');
 					$this->form_validation->set_rules('password_confirm', 'Password Confirm', 'trim|required|xss_clean');
 					$data['user_id'] = $user_id;
 					$data['user_data_array'] = $this->admin_model->get_user_by_id($user_id);
-					
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_title'] = 'Users - Update Password';
 						$data['page_content'] = 'admin_password_update';
 					} else {
 						$update = $this->admin_model->update_user_password($_POST);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Password has been updated successfully</div>');
 							$this->session->set_userdata('change_password','no');
 							redirect('admin/profile/update-password/' . $user_id);
@@ -122,10 +122,10 @@ class Admin extends CI_Controller {
 					$this->load->view('admin_template', $data);
 					break;
 			}
-		
+
 		}
 	}
-	
+
 /*****************************************************************************************************************************************
 /*	HOME Page
 /****************************************************************************************************************************************/
@@ -146,18 +146,18 @@ class Admin extends CI_Controller {
 
 	function profile($action, $user_id) {
 		$this->auth->restrict(FALSE, '1');
-		
+
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirm', 'trim|required|xss_clean');
 		$data['user_id'] = $user_id;
 		$data['user_data_array'] = $this->admin_model->get_user_by_id($user_id);
-		
+
 		if ($this->form_validation->run() == FALSE) {
 			$data['page_title'] = 'Users - Update Password';
 			$data['page_content'] = 'admin_profile_password';
 		} else {
 			$update = $this->admin_model->update_user_password($_POST);
-			if($update) {
+			if ($update) {
 				$this->session->set_flashdata('status_message','<div class="success">Password has been updated successfully</div>');
 				redirect('admin/profile/update-password/' . $user_id);
 			} else {
@@ -168,12 +168,12 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_template', $data);
 	}
 
-	
+
 /*****************************************************************************************************************************************
 /*	USERS Page
 /*	Controls the add/edit/delete/permissions for users
 /*	@ Restricted to only SUPER ADMIN and ADMIN level users
-/*	Note: This has its own version of a password reset for any user, which is different from 
+/*	Note: This has its own version of a password reset for any user, which is different from
 /*	the general forgot and update password methods of password() and profile($password)
 /****************************************************************************************************************************************/
 
@@ -184,17 +184,17 @@ class Admin extends CI_Controller {
 			1 => 'Admin',
 			3 => 'General User'
 		);
-		
-		if($action == NULL) {
+
+		if ($action == NULL) {
 			$data['page_title'] = 'Users';
 			$user_listing_array = $this->admin_model->get_all_users();
 			$data['user_listing_array'] = $user_listing_array;
 			$data['page_content'] = 'admin_users_list';
-		
+
 		} else {
-		
-			switch($action) {
-				
+
+			switch ($action) {
+
 				case 'add':
 					$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|xss_clean');
@@ -206,7 +206,7 @@ class Admin extends CI_Controller {
 						$data['page_content'] = 'admin_users_add';
 					} else {
 						$insert_id = $this->admin_model->add_user($_POST);
-						if($insert_id != FALSE) {
+						if ($insert_id != FALSE) {
 							$this->session->set_flashdata('status_message','<div class="success">User has been added successfully</div>');
 							redirect('admin/users');
 						} else {
@@ -215,7 +215,7 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'update':
 					$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|xss_clean');
@@ -229,7 +229,7 @@ class Admin extends CI_Controller {
 						$data['page_content'] = 'admin_users_update';
 					} else {
 						$update = $this->admin_model->update_user($_POST);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">User has been updated successfully</div>');
 							redirect('admin/users/update/' . $user_id);
 						} else {
@@ -238,43 +238,43 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'reset-password':
-					if($user_id == NULL) {
+					if ($user_id == NULL) {
 						redirect('/admin/users');
 					} else {
 
 						$temp_password = $this->admin_model->reset_password($user_id);
 						$user_email = $this->admin_model->get_user_email($user_id);
-						if($temp_password) {
+						if ($temp_password) {
 							//send email with reset link
 							$this->load->library('email');
-							
+
 							//Auto Response to contactor
 							$this->email->from($this->config->item('global_email_from'),$this->config->item('global_email_name'));
 							$this->email->to($user_email);
 							//$this->email->bcc('dev@wrayward.com');
 							$this->email->subject('Password Reset');
 							$message = "Your password has been reset to the following: " . $temp_password . ". Please log in to the admin and you will be prompted to create a new password";
-							
+
 							$this->email->message($message);
 							$this->email->send();
-							
+
 							$this->session->set_flashdata('status_message','<div class="success">Password has been reset successfully</div>');
 							redirect('admin/users/update/' . $user_id);
-						
+
 						} else {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error resetting this password. Please try again.</p></div>');
 							redirect('admin/users/update/' . $user_id);
 						}
 					}
 					break;
-					
+
 				case 'delete':
 
 					$data_array = array('user_id' => $user_id);
 					$delete = $this->admin_model->delete_user($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">User has been deleted successfully.</div>');
 						redirect('admin/users');
 					}  else {
@@ -282,8 +282,8 @@ class Admin extends CI_Controller {
 						redirect('admin/users');
 					}
 					break;
-					
-				
+
+
 			}
 		}
 		$this->load->view('admin_template', $data);
@@ -296,10 +296,10 @@ class Admin extends CI_Controller {
 	function pages($action = NULL, $page_id = NULL, $page_type = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'pages';
-		
-		if($action == NULL) {
+
+		if ($action == NULL) {
 			$data['page_title'] = 'Pages';
-			if($this->input->post('page_status') != FALSE && $this->input->post('page_status') != '') {
+			if ($this->input->post('page_status') != FALSE && $this->input->post('page_status') != '') {
 				$page_status = $this->input->post('page_status');
 				$data['page_status'] = $page_status;
 			} else {
@@ -312,9 +312,9 @@ class Admin extends CI_Controller {
 			$data['page_content'] = 'admin_pages_list';
 		} else {
 			$data['document_dropdown_array'] = $this->admin_model->get_document_dropdown();
-			
-			switch($action) {
-				
+
+			switch ($action) {
+
 				case 'add':
 					$this->form_validation->set_rules('page_title', 'Page Title', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('page_url', 'Page URL', 'trim|xss_clean');
@@ -325,16 +325,16 @@ class Admin extends CI_Controller {
 					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('meta_keywords', 'trim|xss_clean', '');
 					$this->form_validation->set_rules('secondary_category_id', '', '');
-	
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_title'] = 'Add Page';
-						
+
 						//Primary Nav Array for Section Dropdown
 						$data['primary_nav_array'] = $this->admin_model->get_primary_nav_array('active');
 						$data['page_content'] = 'admin_pages_add';
 					} else {
 						$insert_id = $this->admin_model->add_page($_POST);
-						if($insert_id != FALSE) {
+						if ($insert_id != FALSE) {
 							$this->session->set_flashdata('status_message','<div class="success">Your page has been added. You may click to <a href="">view the live page</a></div>');
 							//$this->sitemap->generate();
 							redirect('admin/pages/edit/' . $insert_id);
@@ -344,7 +344,7 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'update':
 					$this->form_validation->set_rules('page_title', 'Page Title', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('page_url', 'Page URL', 'trim|xss_clean');
@@ -356,10 +356,10 @@ class Admin extends CI_Controller {
 					$this->form_validation->set_rules('meta_title', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('meta_keywords', '', 'trim|xss_clean');
 					$this->form_validation->set_rules('secondary_category_id', '', '');
-					
+
 					$children_array = $this->admin_model->get_page_childen($page_id);
 					$data['page_url_string'] = $this->admin_model->get_url_path($page_id);
-					
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_id'] = $page_id;
 						$data['page_data_array'] = $this->admin_model->get_page_data_array($page_id);
@@ -371,11 +371,11 @@ class Admin extends CI_Controller {
 					} else {
 						$data_array = $_POST;
 						$update = $this->admin_model->update_page($data_array);
-						if($update) {
+						if ($update) {
 							//Check to see if page is inactive, and if it has children pages, de-activate them
-							if($this->input->post('page_status') == 'inactive' && count($children_array) > 0) {
+							if ($this->input->post('page_status') == 'inactive' && count($children_array) > 0) {
 								$update2 = $this->admin_model->deactivate_children($children_array);
-								if($update2) {
+								if ($update2) {
 									$this->session->set_flashdata('status_message','<div class="success">Your page has been updated.</div>');
 									//$this->sitemap->generate();
 									redirect('admin/pages/update/' . $page_id);
@@ -386,23 +386,23 @@ class Admin extends CI_Controller {
 							//Page has no children, and update was successful, redirect
 							} else {
 								//If page is set to inactive, just say it was updated
-								if($this->input->post('page_status') == 'inactive') {
+								if ($this->input->post('page_status') == 'inactive') {
 									$this->session->set_flashdata('status_message','<div class="success">Your page has been updated.</div>');
 								} else {
 									$live_url = $this->admin_model->get_url_path($page_id);
 									$this->session->set_flashdata('status_message','<div class="success">Your page has been <span class="save_publish">saved and published</span>.</div>');
 								}
 								//$this->sitemap->generate();
-								redirect('admin/pages/update/' . $page_id);	
+								redirect('admin/pages/update/' . $page_id);
 							}
 						}  else {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this page. Please try again.</p></div>');
 							redirect('admin/pages/update/' . $page_id);
 						}
-						
+
 					}
 					break;
-					
+
 				case 'add-draft':
 					$data['page_id'] = $page_id;
 					$this->form_validation->set_rules('page_title', 'Page Title', 'trim|required|xss_clean');
@@ -414,7 +414,7 @@ class Admin extends CI_Controller {
 						$data['page_content'] = 'admin_pages_add_draft';
 					} else {
 						$update = $this->admin_model->update_draft($_POST);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Your page has been <span class="save_draft">saved as a draft</span>. You may click to <a href="/preview/view/' . $page_id . '" target="_blank">preview the page</a></div>');
 							//$this->sitemap->generate();
 							redirect('admin/pages/update-draft/' . $page_id);
@@ -423,9 +423,9 @@ class Admin extends CI_Controller {
 							redirect('admin/pages/add-draft/' . $page_id);
 						}
 					}
-					
+
 					break;
-					
+
 				case 'update-draft':
 					$data['page_id'] = $page_id;
 					$this->form_validation->set_rules('page_title', 'Page Title', 'trim|required|xss_clean');
@@ -436,10 +436,10 @@ class Admin extends CI_Controller {
 						$data['page_title'] = 'Update Draft';
 						$data['page_content'] = 'admin_pages_update_draft';
 					} else {
-						switch($this->input->post('action_value')) {
+						switch ($this->input->post('action_value')) {
 							case 'save_draft':
 								$update = $this->admin_model->update_draft($_POST);
-								if($update) {
+								if ($update) {
 									$this->session->set_flashdata('status_message','<div class="success">Your page has been <span class="save_draft">saved as a draft</span>. You may click to <a href="/preview/view/' . $page_id . '" target="_blank">preview the page</a></div>');
 									$this->sitemap->generate();
 									redirect('admin/pages/update-draft/' . $page_id);
@@ -450,7 +450,7 @@ class Admin extends CI_Controller {
 								break;
 							case 'publish':
 								$update = $this->admin_model->update_draft_to_live($_POST);
-								if($update) {
+								if ($update) {
 									$live_url = $this->admin_model->get_url_path($page_id);
 									$this->session->set_flashdata('status_message','<div class="success">Your page has been <span class="save_publish">saved and published</span>. You may click to <a href="' . $live_url . '" target="_blank">view the live page</a></div>');
 									//$this->sitemap->generate();
@@ -462,13 +462,13 @@ class Admin extends CI_Controller {
 								break;
 						}
 					}
-					
+
 					break;
-					
+
 				case 'delete':
 					$data_array = array('page_id' => $page_id);
 					$delete = $this->admin_model->delete_page($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your page has been deleted successfully.</div>');
 						$this->sitemap->generate();
 						redirect('admin/pages/');
@@ -477,13 +477,13 @@ class Admin extends CI_Controller {
 						redirect('admin/pages/');
 					}
 					break;
-					
+
 				case 'reorder-sections':
 					$data['page_title'] = 'Pages - Re-order Sections';
 					$data['primary_nav_array'] = $this->admin_model->get_primary_nav_array();
-					if($this->input->post('form_submitted') == 'yes') {
+					if ($this->input->post('form_submitted') == 'yes') {
 						$update = $this->admin_model->update_section_order($_POST);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Your sections have been re-ordered successfully</div>');
 							$this->sitemap->generate();
 							redirect('admin/pages/reorder-sections');
@@ -494,10 +494,10 @@ class Admin extends CI_Controller {
 					}
 					$data['page_content'] = 'admin_reorder_sections';
 					break;
-					
+
 				case 'reorder-pages':
 					//Show Choose Section Pages
-					if($page_id == NULL) {
+					if ($page_id == NULL) {
 						$data['page_title'] = 'Pages - Re-order Pages';
 						$data['primary_nav_array'] = $this->admin_model->get_primary_nav_array();
 						$data['footer_nav_array'] = $this->admin_model->get_footer_nav_array();
@@ -506,17 +506,17 @@ class Admin extends CI_Controller {
 						$data['page_id'] = $page_id;
 						$data['page_type'] = $page_type;
 						$data['page_title'] = 'Pages - Re-order Pages';
-						if($page_type == 'footer') {
+						if ($page_type == 'footer') {
 							$nav_items_array = $this->admin_model->get_footer_nav_array();
-						} else if($page_type == 'primary') {
+						} else if ($page_type == 'primary') {
 							$nav_items_array = $this->admin_model->get_secondary_nav_array($page_id);
 						} else {
-							$nav_items_array = $this->admin_model->get_third_nav_array($page_id);	
+							$nav_items_array = $this->admin_model->get_third_nav_array($page_id);
 						}
 						$data['nav_items_array'] = $nav_items_array;
-						if($this->input->post('form_submitted') == 'yes') {
+						if ($this->input->post('form_submitted') == 'yes') {
 							$update = $this->admin_model->update_section_order($_POST);
-							if($update) {
+							if ($update) {
 								$this->session->set_flashdata('status_message','<div class="success">Your sections have been re-ordered successfully</div>');
 								$this->sitemap->generate();
 								redirect('admin/pages/reorder-pages/' . $page_id . '/' . $page_type);
@@ -554,7 +554,7 @@ class Admin extends CI_Controller {
 		$config['next_tag_open'] = '<span class="next_page">';
 		$config['next_tag_close'] = '</span>';
 
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Uploads - Images';
 			$data['image_list_array'] = $this->admin_model->get_image_list(0, $this->config->item('admin_results_per_page'));
 			$this->load->library('pagination');
@@ -562,37 +562,37 @@ class Admin extends CI_Controller {
 			$data['page_links'] = $this->pagination->create_links();
 			$data['page_content'] = 'admin_images_list';
 		} else {
-			switch($action) {
+			switch ($action) {
 				case 'page':
-					if($image_id == NULL || $image_id == '') {
+					if ($image_id == NULL || $image_id == '') {
 						$page_number = 0;
 					} else {
 						$page_number = $image_id;
 					}
 					$data['page_title'] = 'Uploads - Images';
 					$data['image_list_array'] = $this->admin_model->get_image_list($page_number, $this->config->item('admin_results_per_page'));
-					
+
 					$this->load->library('pagination');
 					$this->pagination->initialize($config);
 					$data['page_links'] = $this->pagination->create_links();
 					$data['page_content'] = 'admin_images_list';
 					break;
-					
+
 				case 'add':
 					$config['upload_path'] = './content-uploads/content-images/';
 					$config['allowed_types'] = 'gif|jpg|png';
 					$config['max_size']	= '500';
 					$config['max_width']  = '1024';
 					$config['max_height']  = '768';
-					
+
 					//Load Upload and Image libraries
 					$this->load->library('upload');
 					$this->load->library('image_lib');
-					
+
 					$this->form_validation->set_rules('userfile1', '', '');
 					$this->form_validation->set_rules('image_title1', 'Image Title 1', 'trim|required|xss_clean');
-					
-					if($this->form_validation->run() == FALSE) {
+
+					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_title'] = 'Uploads - Upload Images';
 						$data['page_content'] = 'admin_images_add';
@@ -601,128 +601,128 @@ class Admin extends CI_Controller {
 						$error_count = 0;
 						$error = '';
 
-						for($i = 1; $i <= 3; $i++) {
+						for ($i = 1; $i <= 3; $i++) {
 							$userfile = 'userfile' . $i;
 							$image_title_input = 'image_title' . $i;
-							if( ! empty($_FILES[$userfile]['name'])) {
-								
+							if ( ! empty($_FILES[$userfile]['name'])) {
+
 								//Reset
 								$this->upload->initialize($config);
-								
+
 								if ( ! $this->upload->do_upload($userfile)) {
 									$error = $this->upload->display_errors('','');
 									$data['error'] = $error;
 									$data['page_content'] = 'admin_images_add';
 									$error_count++;
 									break;
-									
+
 								} else {
-									
+
 									$file_path = '';
 									$image_name = '';
-									
+
 									$data = array('upload_data' => $this->upload->data());
 
 									$image_title = $_POST[$image_title_input];
 									$file_path = $data['upload_data']['file_path'];
 									$image_name = $data['upload_data']['file_name'];
-									
+
 									//Use raw name to insert into DB
 									$raw_name = $data['upload_data']['raw_name'];
 									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
 
 									$data_array = array('image_name' => $image_title, 'image_file' => $raw_name, 'extension' => $ext);
 									$insert_id = $this->admin_model->add_content_image($data_array);
-									if($insert_id != FALSE) {
+									if ($insert_id != FALSE) {
 										$count++;
 									} else {
 										$error_count++;
 									}
 								}
 							}
-							
-							
+
+
 						}
-						if($count > 0 && $error_count == 0) {
+						if ($count > 0 && $error_count == 0) {
 							$this->session->set_flashdata('status_message','<div class="success">Images have been added</div>');
 							redirect('admin/images');
-						} else if($count > 0 && $error_count > 0) {
+						} else if ($count > 0 && $error_count > 0) {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>One or more files may have not been uploaded</p></div>');
 							redirect('admin/images');
 						} else {
-							if($count == 0 && $error == '') {
+							if ($count == 0 && $error == '') {
 								$error = 'You did not select any files.';
 							}
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>' . $error . ' No files were uploaded</p></div>');
 							redirect('admin/images/add');
 						}
-						
+
 					}
 					break;
-					
+
 				case 'update':
 					$data['page_title'] = 'Uploads - Update Image';
 					$data['image_id'] = $image_id;
 					$data['image_array'] = $this->admin_model->get_image_by_id($image_id);
-					
+
 					$this->form_validation->set_rules('image_name', 'Document Title', 'trim|required|xss_clean');
-					if($this->form_validation->run() == FALSE) {
+					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_content'] = 'admin_images_update';
 					} else {
-						
+
 						$count = 0;
 						$error_count = 0;
 						$error = '';
 						$image_id = $this->input->post('image_id');
-						
+
 						//Upload file if it exists
-						if( ! empty($_FILES['userfile']['name'])) {
+						if ( ! empty($_FILES['userfile']['name'])) {
 							$config['upload_path'] = './content-uploads/content-images/';
 							$config['allowed_types'] = 'gif|jpg|png';
 							$config['max_size']	= '500';
 							$config['max_width']  = '1024';
 							$config['max_height']  = '768';
-							
+
 							//Load Upload and Image libraries
 							$this->load->library('upload');
-							
+
 							//If they selected Overwrite option, assign the new file name
-							if($this->input->post('confirm_overwrite') == 'yes') {
+							if ($this->input->post('confirm_overwrite') == 'yes') {
 								$config['file_name'] = $this->input->post('current_filename_base');
 								$config['overwrite'] = TRUE;
 							}
-							
+
 							//Initialize
 							$this->upload->initialize($config);
-							
+
 							if ( ! $this->upload->do_upload()) {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
 								$data['page_content'] = 'admin_images_update';
 								$error_count++;
 								break;
-								
+
 							} else {
-								
+
 								$file_path = '';
 								$document_name = '';
-								
+
 								$data = array('upload_data' => $this->upload->data());
 
 								$image_title = $this->input->post('image_name');
 								$file_path = $data['upload_data']['file_path'];
 								$image_name = $data['upload_data']['file_name'];
-								
+
 								//Use raw name to insert into DB
 								$raw_name = $data['upload_data']['raw_name'];
 								$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-								
+
 								$data_array = array('image_name' => $image_title, 'image_file' => $raw_name, 'extension' => $ext, 'image_id' => $image_id);
-								
-								
-								$update = $this->admin_model->update_image($data_array, TRUE);	
-								if($update) {
+
+
+								$update = $this->admin_model->update_image($data_array, TRUE);
+								if ($update) {
 									$this->session->set_flashdata('status_message','<div class="success">Your image has been updated</div>');
 									redirect('admin/images/update/' . $image_id);
 								} else {
@@ -730,11 +730,11 @@ class Admin extends CI_Controller {
 									redirect('admin/images/update/' . $image_id);
 								}
 							}
-							
+
 						} else {
-							
-							$update = $this->admin_model->update_image($_POST);	
-							if($update) {
+
+							$update = $this->admin_model->update_image($_POST);
+							if ($update) {
 								$this->session->set_flashdata('status_message','<div class="success">Your image has been updated</div>');
 								redirect('admin/images/update/' . $image_id);
 							} else {
@@ -744,11 +744,11 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'delete':
 					$data_array = array('image_id' => $image_id);
 					$delete = $this->admin_model->delete_image($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your image has been deleted successfully.</div>');
 						redirect('admin/images');
 					}  else {
@@ -784,7 +784,7 @@ class Admin extends CI_Controller {
 		$config['next_tag_open'] = '<span class="next_page">';
 		$config['next_tag_close'] = '</span>';
 
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Uploads - Documents';
 			$data['document_list_array'] = $this->admin_model->get_document_list(0,$this->config->item('admin_results_per_page'));
 
@@ -793,36 +793,36 @@ class Admin extends CI_Controller {
 			$data['page_links'] = $this->pagination->create_links();
 			$data['page_content'] = 'admin_documents_list';
 		} else {
-				
-			switch($action) {
-					
+
+			switch ($action) {
+
 				case 'page':
-					if($document_id == NULL || $document_id == '') {
+					if ($document_id == NULL || $document_id == '') {
 						$page_number = 0;
 					} else {
 						$page_number = $document_id;
 					}
 					$data['document_list_array'] = $this->admin_model->get_document_list($page_number, $this->config->item('admin_results_per_page'));
-					
+
 					$this->load->library('pagination');
 					$this->pagination->initialize($config);
 					$data['page_links'] = $this->pagination->create_links();
 					$data['page_title'] = 'Uploads - Documents';
 					$data['page_content'] = 'admin_documents_list';
 					break;
-					
+
 				case 'add':
 					$config['upload_path'] = './content-uploads/content-documents/';
 					$config['allowed_types'] = 'xls|doc|docx|pdf';
 					$config['max_size']	= '1024';
-					
+
 					//Load Upload and Image libraries
 					$this->load->library('upload');
-					
+
 					$this->form_validation->set_rules('userfile1', '', '');
 					$this->form_validation->set_rules('document_name1', 'Document Title 1', 'trim|required|xss_clean');
-					
-					if($this->form_validation->run() == FALSE) {
+
+					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_title'] = 'Uploads - Upload Documents';
 						$data['page_content'] = 'admin_documents_add';
@@ -831,130 +831,130 @@ class Admin extends CI_Controller {
 						$error_count = 0;
 						$error = '';
 
-						for($i = 1; $i <= 3; $i++) {
+						for ($i = 1; $i <= 3; $i++) {
 							$userfile = 'userfile' . $i;
 							$document_title_input = 'document_name' . $i;
-							if( ! empty($_FILES[$userfile]['name'])) {
-								
+							if ( ! empty($_FILES[$userfile]['name'])) {
+
 								//Reset
 								$this->upload->initialize($config);
-								
+
 								if ( ! $this->upload->do_upload($userfile)) {
 									$error = $this->upload->display_errors('','');
 									$data['error'] = $error;
 									$data['page_content'] = 'admin_documents_add';
 									$error_count++;
 									break;
-									
+
 								} else {
-									
+
 									$file_path = '';
 									$document_name = '';
-									
+
 									$data = array('upload_data' => $this->upload->data());
 
 									$document_title = $_POST[$document_title_input];
 									$file_path = $data['upload_data']['file_path'];
 									$document_name = $data['upload_data']['file_name'];
-									
+
 									//Use raw name to insert into DB
 									$raw_name = $data['upload_data']['raw_name'];
 									$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-									
+
 									$data_array = array('document_name' => $document_title, 'document_file' => $raw_name, 'extension' => $ext);
 									$insert_id = $this->admin_model->add_content_document($data_array);
-									if($insert_id != FALSE) {
+									if ($insert_id != FALSE) {
 										$count++;
 									} else {
 										$error_count++;
 									}
 								}
 							}
-							
-							
+
+
 						}
-						if($count > 0 && $error_count == 0) {
+						if ($count > 0 && $error_count == 0) {
 							$this->session->set_flashdata('status_message','<div class="success">Documents have been added</div>');
 							redirect('admin/documents');
-						} else if($count > 0 && $error_count > 0) {
+						} else if ($count > 0 && $error_count > 0) {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>One or more files may have not been uploaded</p></div>');
 							redirect('admin/documents');
 						} else {
-							if($count == 0 && $error == '') {
+							if ($count == 0 && $error == '') {
 								$error = 'You did not select any files.';
 							}
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>' . $error . ' No files were uploaded</p></div>');
 							redirect('admin/documents/add');
 						}
-						
+
 					}
-					
+
 					$data['page_title'] = 'Uploads - Upload Documents';
 					$data['page_content'] = 'admin_documents_add';
 					break;
-					
+
 				case 'update':
 					$data['page_title'] = 'Uploads - Update Document';
 					$data['document_id'] = $document_id;
 					$data['document_array'] = $this->admin_model->get_document_by_id($document_id);
-					
+
 					$this->form_validation->set_rules('document_name', 'Document Title', 'trim|required|xss_clean');
-					
-					if($this->form_validation->run() == FALSE) {
+
+					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_content'] = 'admin_documents_update';
-					
+
 					} else {
 						$count = 0;
 						$error_count = 0;
 						$error = '';
 						$document_id = $this->input->post('document_id');
-						
+
 						//Upload file if it exists
-						if( ! empty($_FILES['userfile']['name'])) {
+						if ( ! empty($_FILES['userfile']['name'])) {
 							$config['upload_path'] = './content-uploads/content-documents/';
 							$config['allowed_types'] = 'xls|doc|docx|pdf';
 							$config['max_size']	= '1024';
-							
+
 							//Load Upload and Image libraries
 							$this->load->library('upload');
-							
+
 							//If they selected Overwrite option, assign the new file name
-							if($this->input->post('confirm_overwrite') == 'yes') {
+							if ($this->input->post('confirm_overwrite') == 'yes') {
 								$config['file_name'] = $this->input->post('current_filename_base');
 								$config['overwrite'] = TRUE;
 							}
-							
+
 							//Initialize
 							$this->upload->initialize($config);
-							
+
 							if ( ! $this->upload->do_upload()) {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
 								$data['page_content'] = 'admin_documents_update';
 								$error_count++;
 								break;
-								
+
 							} else {
-								
+
 								$file_path = '';
 								$document_name = '';
-								
+
 								$data = array('upload_data' => $this->upload->data());
 
 								$document_title = $this->input->post('document_name');
 								$file_path = $data['upload_data']['file_path'];
 								$document_name = $data['upload_data']['file_name'];
-								
+
 								//Use raw name to insert into DB
 								$raw_name = $data['upload_data']['raw_name'];
 								$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-								
+
 								$data_array = array('document_name' => $document_title, 'document_file' => $raw_name, 'extension' => $ext, 'document_id' => $document_id);
-								
-								
-								$update = $this->admin_model->update_document($data_array, TRUE);	
-								if($update) {
+
+
+								$update = $this->admin_model->update_document($data_array, TRUE);
+								if ($update) {
 									$this->session->set_flashdata('status_message','<div class="success">Your file has been updated</div>');
 									redirect('admin/documents/update/' . $document_id);
 								} else {
@@ -962,11 +962,11 @@ class Admin extends CI_Controller {
 									redirect('admin/documents/update/' . $document_id);
 								}
 							}
-							
+
 						} else {
-							
-							$update = $this->admin_model->update_document($_POST);	
-							if($update) {
+
+							$update = $this->admin_model->update_document($_POST);
+							if ($update) {
 								$this->session->set_flashdata('status_message','<div class="success">Your file has been updated</div>');
 								redirect('admin/documents/update/' . $document_id);
 							} else {
@@ -974,16 +974,16 @@ class Admin extends CI_Controller {
 								redirect('admin/documents/update/' . $document_id);
 							}
 						}
-						
-						
+
+
 					}
 
 					break;
-					
+
 				case 'delete':
 					$data_array = array('document_id' => $document_id);
 					$delete = $this->admin_model->delete_document($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your document has been deleted successfully.</div>');
 						redirect('admin/documents');
 					}  else {
@@ -994,21 +994,21 @@ class Admin extends CI_Controller {
 			}
 		}
 		$this->load->view('admin_template', $data);
-	}	
+	}
 
 /*****************************************************************************************************************************************
 /*	CONTACT Page
-/*	
-/****************************************************************************************************************************************/	
+/*
+/****************************************************************************************************************************************/
 	function contact($action = NULL, $id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'contact';
-		
-		if($action == NULL) {
+
+		if ($action == NULL) {
 			$data['page_content'] = 'admin_contact';
 		} else {
 			$report_file = $this->admin_model->run_contact_report($this->input->post('start_date'), $this->input->post('end_date'));
-			if($report_file !== FALSE) {
+			if ($report_file !== FALSE) {
 				$this->load->helper('download');
 				$data = file_get_contents($this->config->item('contact_reports_full_dir') . $report_file);
 				$name = $report_file;
@@ -1020,28 +1020,28 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('admin_template', $data);
 	}
-	
+
 /************************************************************************************************************************************************************
 									BEGIN CUSTOM MODULES
-																
+
 ***********************************************************************************************************************************************************/
 
 	function updates($action = NULL, $update_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'updates';
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Updates';
 			$data['update_array'] = $this->admin_model->get_site_updates();
 			$data['page_content'] = 'admin_updates_list';
 		} else {
-			switch($action) {
+			switch ($action) {
 				case 'add':
 					$this->form_validation->set_rules('update_text', 'Update Text', 'trim|required|xss_clean');
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_updates_add';
 					} else {
 						$insert_id = $this->admin_model->add_site_update($_POST);
-						if($insert_id != FALSE) {
+						if ($insert_id != FALSE) {
 							$this->session->set_flashdata('status_message','<div class="success">Site Update has been added successfully</div>');
 							redirect('admin/updates');
 						} else {
@@ -1053,7 +1053,7 @@ class Admin extends CI_Controller {
 				case 'delete':
 					$data_array = array('update_id' => $update_id);
 					$delete = $this->admin_model->delete_site_update($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your update has been deleted successfully.</div>');
 						redirect('admin/updates/');
 					}  else {
@@ -1072,13 +1072,13 @@ class Admin extends CI_Controller {
 	function installers($action = NULL, $dealer_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'installers';
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Installers';
-			if($this->input->post('dealer_status') != '') {
+			if ($this->input->post('dealer_status') != '') {
 				$data['dealer_listing_array'] = $this->admin_model->get_dealer_list(0,$this->config->item('per_page'),$this->input->post('dealer_status'));
 				$data['dealer_status'] = $this->input->post('dealer_status');
 			} else {
-				$data['dealer_listing_array'] = $this->admin_model->get_dealer_list(0,$this->config->item('per_page'));	
+				$data['dealer_listing_array'] = $this->admin_model->get_dealer_list(0,$this->config->item('per_page'));
 				$data['dealer_status'] = '';
 			}
 			$data['page_content'] = 'admin_installers_list';
@@ -1105,24 +1105,24 @@ class Admin extends CI_Controller {
 			$this->form_validation->set_rules('dealer_hours', '', 'trim|xss_clean');
 			$this->form_validation->set_rules('sells_vms', '', 'trim|xss_clean');
 
-			switch($action) {				
+			switch ($action) {
 				case 'add':
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_installers_add';
 					} else {
 						$insert_id = $this->admin_model->add_dealer_site($_POST);
-						if($insert_id != FALSE) {
-							
+						if ($insert_id != FALSE) {
+
 							/************************ UPDATE SITEMAP ******************************/
 							$this->admin_model->generate_sitemap();
-							
+
 							$this->session->set_flashdata('status_message','<div class="success">Installer Site has been added successfully</div>');
 							redirect('admin/installers');
 						} else {
 							$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error adding this installer site. Please try again.</p></div>');
 							redirect('admin/installers');
 						}
-						
+
 					}
 					break;
 				case 'update':
@@ -1132,7 +1132,7 @@ class Admin extends CI_Controller {
 					$config['max_size']	= '500';
 					$config['max_width']  = '1024';
 					$config['max_height']  = '768';
-					
+
 					//Load Upload and Image libraries
 					$this->load->library('upload');
 					$this->load->library('image_lib');
@@ -1141,20 +1141,20 @@ class Admin extends CI_Controller {
 					$data['dealer_id'] = $dealer_id;
 					$this->form_validation->set_rules('dealer_status', 'Dealer Status', 'required|trim|xss_clean');
 					$this->form_validation->set_rules('site_status', 'Site Status', 'required|trim|xss_clean');
-					
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_installers_update';
 					} else {
-						if( ! empty($_FILES['userfile']['name'])) {
+						if ( ! empty($_FILES['userfile']['name'])) {
 							//Has previously uploaded image, so include overwrite settings
-							if($this->input->post('current_filename_base') != '') {
+							if ($this->input->post('current_filename_base') != '') {
 								$config['file_name'] = $this->input->post('current_filename');
 								$config['overwrite'] = TRUE;
 							}
 							$error = '';
 							//Initialize
 							$this->upload->initialize($config);
-							
+
 							if ( ! $this->upload->do_upload()) {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
@@ -1163,31 +1163,31 @@ class Admin extends CI_Controller {
 							} else {
 								$file_path = '';
 								$image_name = '';
-								
+
 								$data = array('upload_data' => $this->upload->data());
 								$file_path = $data['upload_data']['file_path'];
 								$image_name = $data['upload_data']['file_name'];
-								
+
 								//Use raw name to insert into DB
 								$raw_name = $data['upload_data']['raw_name'];
 								$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
-								
+
 								//Create re-sized thumbnail, then delete original image
 								//create_image($file_path, $image_name, 63, 43, TRUE, '_th');
 								//unlink($file_path . $image_name);
-								
+
 								//rename post array so we can add values to it for image
 								$data_array = $_POST;
-								
+
 								//Add RSS Image data to post array
 								$data_array['dealer_logo'] = $raw_name;
 								$data_array['extension'] = $ext;
-								
+
 								$update = $this->admin_model->update_dealer($data_array, TRUE);
-								if($update) {
+								if ($update) {
 									/************************ UPDATE SITEMAP ******************************/
 									$this->admin_model->generate_sitemap();
-									
+
 									$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
 									redirect('admin/installers/update/' . $dealer_id);
 								} else {
@@ -1198,26 +1198,26 @@ class Admin extends CI_Controller {
 						} else {
 							// Dealer is not trying to update or add a logo
 							$update = $this->admin_model->update_dealer($_POST);
-							if($update) {
-								
+							if ($update) {
+
 								/************************ UPDATE SITEMAP ******************************/
 								$this->admin_model->generate_sitemap();
-							
+
 								$this->session->set_flashdata('status_message','<div class="success">Dealer has been updated successfully</div>');
 								redirect('admin/installers/update/' . $dealer_id);
 							} else {
 								$this->session->set_flashdata('status_message','<div class="error_alert"><p>There was an error updating this dealer. Please try again.</p></div>');
 								redirect('admin/installers/update/' . $dealer_id);
 							}
-							
+
 						}
 					}
 					break;
-					
+
 				case 'delete':
-					if($dealer_id != NULL) {
+					if ($dealer_id != NULL) {
 						$deleted = $this->admin_model->delete_dealer($dealer_id);
-						if($deleted) {
+						if ($deleted) {
 							$this->session->set_flashdata('status_message','<div class="success">Installer has been deleted successfully</div>');
 							redirect('admin/installers');
 						} else {
@@ -1225,7 +1225,7 @@ class Admin extends CI_Controller {
 							redirect('admin/installers');
 						}
 					} else {
-						redirect('admin/installers');	
+						redirect('admin/installers');
 					}
 					break;
 			}
@@ -1239,18 +1239,18 @@ class Admin extends CI_Controller {
 	function products($action = NULL, $product_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'products';
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Products';
-			if($this->input->post('product_status') != '') {
+			if ($this->input->post('product_status') != '') {
 				$data['product_category_array'] = $this->admin_model->get_product_categories($this->input->post('product_status'));
 				$data['product_status'] = $this->input->post('product_status');
 			} else {
-				$data['product_category_array'] = $this->admin_model->get_product_categories();	
+				$data['product_category_array'] = $this->admin_model->get_product_categories();
 				$data['product_status'] = '';
 			}
 			$data['page_content'] = 'admin_product_list';
 		} else {
-			
+
 			$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('product_name_short', 'Product Name - Short', 'trim|xss_clean');
 			$this->form_validation->set_rules('model_number', '', 'trim|xss_clean');
@@ -1262,13 +1262,13 @@ class Admin extends CI_Controller {
 
 			$data['product_category_array'] = $this->admin_model->get_product_categories();
 
-			switch($action) {
+			switch ($action) {
 				case 'add':
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_product_add';
 					} else {
 						$insert_id = $this->admin_model->add_product($_POST);
-						if($insert_id != FALSE) {
+						if ($insert_id != FALSE) {
 							$this->session->set_flashdata('status_message','<div class="success">Product has been added successfully</div>');
 							redirect('admin/products');
 						} else {
@@ -1285,12 +1285,12 @@ class Admin extends CI_Controller {
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_product_update';
 					} else {
-						
+
 						//rename post array so we can add values to it for image
 						$data_array = $_POST;
 						$uploaded_product_image = FALSE;
-						
-						if( ! empty($_FILES['product_image']['name'])) {
+
+						if ( ! empty($_FILES['product_image']['name'])) {
 
 							$config['upload_path'] = $this->config->item('product_images_upload_path');
 							$config['allowed_types'] = 'gif|jpg|png';
@@ -1300,20 +1300,20 @@ class Admin extends CI_Controller {
 							$config['overwrite'] = TRUE;
 
 							$filename_base = url_title($this->input->post('product_name'), 'dash', TRUE);
-							if(trim($this->input->post('model_number')) != '') {
+							if (trim($this->input->post('model_number')) != '') {
 								$filename_base .= '-' . strtolower(trim($this->input->post('model_number')));
 							}
 							$extension = get_file_extension($_FILES['product_image']['name']);
 							$config['file_name'] = $filename_base . '.' . $extension;
-							
+
 							//Load Upload and Image libraries
 							$this->load->library('upload');
 							$this->load->library('image_lib');
-							
+
 							$error = '';
 							//Initialize
 							$this->upload->initialize($config);
-						
+
 							if ( ! $this->upload->do_upload('product_image')) {
 								$error = $this->upload->display_errors('','');
 								$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
@@ -1323,16 +1323,16 @@ class Admin extends CI_Controller {
 
 								$file_path = '';
 								$image_name = '';
-								
+
 								$data = array('upload_data' => $this->upload->data());
 								$file_path = $data['upload_data']['file_path'];
 								$image_name = $data['upload_data']['file_name'];
-								
+
 								//Use raw name to insert into DB
 								$raw_name = $filename_base;
 								$ext = get_file_extension($data['upload_data']['file_ext']);
-								
-								
+
+
 								//Add RSS Image data to post array
 								$data_array['product_image'] = $raw_name;
 								$data_array['extension'] = $ext;
@@ -1340,9 +1340,9 @@ class Admin extends CI_Controller {
 								$uploaded_product_image = TRUE;
 							}
 						}
-								
+
 						$update = $this->admin_model->update_product($data_array, $uploaded_product_image);
-						if($update) {
+						if ($update) {
 							/************************ UPDATE SITEMAP ******************************/
 							$this->admin_model->generate_sitemap();
 
@@ -1354,11 +1354,11 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'delete':
 					$data_array = array('product_id' => $product_id);
 					$delete = $this->admin_model->delete_product($data_array);
-					if($delete) {
+					if ($delete) {
 						/************************ UPDATE SITEMAP ******************************/
 						$this->admin_model->generate_sitemap();
 
@@ -1369,21 +1369,21 @@ class Admin extends CI_Controller {
 						redirect('admin/products');
 					}
 					break;
-				
+
 			}
 		}
-		
+
 		$this->load->view('admin_template', $data);
 	}
 
-	
+
 /****************************************************************************************************************************************
 /*	TESTIMONIALS
 /****************************************************************************************************************************************/
 	function testimonials($action = NULL, $testimonial_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'testimonials';
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Testimonials';
 			$data['testimonials_array'] = $this->admin_model->get_testimonials();
 			$data['page_content'] = 'admin_testimonials_list';
@@ -1391,15 +1391,15 @@ class Admin extends CI_Controller {
 			$this->form_validation->set_rules('testimonial_copy', 'Testimonial Copy', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('testimonial_name', 'Name', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('testimonial_source', '', 'trim|xss_clean');
-			switch($action) {
-				
+			switch ($action) {
+
 				case 'add':
-				
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['page_content'] = 'admin_testimonials_add';
 					} else {
 						$insert_id = $this->admin_model->add_testimonial($_POST);
-						if($insert_id != FALSE) {
+						if ($insert_id != FALSE) {
 							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been added successfully</div>');
 							redirect('admin/testimonials');
 						} else {
@@ -1415,7 +1415,7 @@ class Admin extends CI_Controller {
 						$data['page_content'] = 'admin_testimonials_update';
 					} else {
 						$update = $this->admin_model->update_testimonial($_POST);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Testimonial has been updated successfully</div>');
 							redirect('admin/testimonials/update/' . $testimonial_id);
 						} else {
@@ -1424,11 +1424,11 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'delete':
 					$data_array = array('testimonial_id' => $testimonial_id);
 					$delete = $this->admin_model->delete_testimonial($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your testimonial has been deleted successfully.</div>');
 						redirect('admin/testimonials/');
 					}  else {
@@ -1436,48 +1436,48 @@ class Admin extends CI_Controller {
 						redirect('admin/testimonials/');
 					}
 					break;
-				
+
 			}
 		}
-		
+
 		$this->load->view('admin_template', $data);
 	}
-	
-	
+
+
 /****************************************************************************************************************************************
 /*	LITERATURE
 /****************************************************************************************************************************************/
 	function literature($action = NULL, $literature_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'literature';
-		if($action == NULL) {
+		if ($action == NULL) {
 			$data['page_title'] = 'Literature';
 			$data['literature_array'] = $this->admin_model->get_literature();
 			$data['page_content'] = 'admin_literature_list';
 		} else {
-			switch($action) {
-				
+			switch ($action) {
+
 				case 'add':
 					$this->load->library('upload');
-					
+
 					$config['upload_path'] = './downloads/';
 					$config['max_size']	= '20000';
 					$config['overwrite'] = FALSE;
-					
+
 					$this->upload->initialize($config);
-					
+
 					$this->form_validation->set_rules('filename', '', '');
 					$this->form_validation->set_rules('name', 'Brochure Name', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('description', 'Brochure Description', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('analytics_url', 'Analytics URL', 'trim|required|xss_clean');
 
-					if($this->form_validation->run() == FALSE) {
+					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_content'] = 'admin_literature_add';
 					} else {
 						$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
 						$this->upload->initialize($config);
-						
+
 						if ( ! $this->upload->do_upload('filename')) {
 							$error = $this->upload->display_errors('','');
 							$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
@@ -1485,26 +1485,26 @@ class Admin extends CI_Controller {
 							break;
 						} else {
 							$file_path = '';
-							
+
 							$data = array('upload_data' => $this->upload->data());
 							$file_path = $data['upload_data']['file_path'];
 							$file_name = $data['upload_data']['file_name'];
 							$raw_name = $data['upload_data']['raw_name'];
 							$ext = substr($data['upload_data']['file_ext'], strrpos($data['upload_data']['file_ext'],'.')+1);
 							$full_extension = $data['upload_data']['file_ext'];
-							
+
 							$file_prefix = url_title($this->input->post('name'),'underscore', TRUE);
 							rename($file_path . $file_name, $file_path . $file_prefix . $full_extension);
-							
+
 							$data_array = $_POST;
 
 							$data_array['filename'] = $file_prefix;
 							$data_array['extension'] = $ext;
 							$data_array['thumbnail'] = '';
 							$data_array['thumbnail_extension'] = '';
-							
+
 							// Upload Flash file if present
-							if( ! empty($_FILES['thumbnail']['name'])) {
+							if ( ! empty($_FILES['thumbnail']['name'])) {
 								$config['allowed_types'] = 'gif|jpg|jpeg|png';
 								$config['upload_path'] = './downloads/thumbs/';
 								$this->upload->initialize($config);
@@ -1514,7 +1514,7 @@ class Admin extends CI_Controller {
 									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
 									$data['page_content'] = 'admin_literature_add';
 									break;
-									
+
 								} else {
 									$data = array('thumb_data' => $this->upload->data());
 									$thumb_file_name = $data['thumb_data']['file_name'];
@@ -1526,11 +1526,11 @@ class Admin extends CI_Controller {
 									$data_array['thumbnail'] = $file_prefix;
 									$data_array['thumbnail_extension'] = $ext;
 								}
-								
+
 							}
-							
+
 							$insert_id = $this->admin_model->add_literature($data_array);
-							if($insert_id != FALSE) {
+							if ($insert_id != FALSE) {
 								$this->session->set_flashdata('status_message','<div class="success">Brochure has been added successfully</div>');
 								redirect('admin/literature');
 							} else {
@@ -1540,43 +1540,43 @@ class Admin extends CI_Controller {
 						}
 					}
 					break;
-					
+
 				case 'update':
 					$this->load->library('upload');
 					$data['literature_id'] = $literature_id;
 					$data['literature_array'] = $this->admin_model->get_literature_by_id($literature_id);
-					
+
 					$this->form_validation->set_rules('name', 'Brochure Name', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('description', 'Brochure Description', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('literature_status', 'Brochure Status', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('analytics_url', 'Analytics URL', 'trim|required|xss_clean');
-					
+
 					if ($this->form_validation->run() == FALSE) {
 						$data['error'] = '';
 						$data['page_content'] = 'admin_literature_update';
 					} else {
-						
+
 						//rename post array so we can add values to it for image
 						$data_array = $_POST;
 						$file_prefix = $this->input->post('file_prefix');
 						$has_thumbnail = FALSE;
 						$has_brochure = FALSE;
-						
-						if( ! empty($_FILES['filename']['name']) || ! empty($_FILES['thumbnail']['name'])) {
+
+						if ( ! empty($_FILES['filename']['name']) || ! empty($_FILES['thumbnail']['name'])) {
 
 							// Upload Large File
-							if( ! empty($_FILES['filename']['name'])) {
+							if ( ! empty($_FILES['filename']['name'])) {
 								$config['overwrite'] = TRUE;
 								$config['upload_path'] = './downloads/';
 								$config['max_size']	= '20000';
 								$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
-								
+
 								$has_brochure = TRUE;
-								
+
 								$error = '';
 								//Initialize
 								$this->upload->initialize($config);
-							
+
 								if ( ! $this->upload->do_upload('filename')) {
 
 									$error = $this->upload->display_errors('','');
@@ -1586,7 +1586,7 @@ class Admin extends CI_Controller {
 								} else {
 									$file_path = '';
 									$image_name = '';
-									
+
 									$data = array('upload_data' => $this->upload->data());
 									$file_path = $data['upload_data']['file_path'];
 									$file_name = $data['upload_data']['file_name'];
@@ -1598,22 +1598,22 @@ class Admin extends CI_Controller {
 									$data_array['filename'] = $file_prefix;
 									$data_array['extension'] = $ext;
 								}
-								
+
 							}
-							
+
 							// Upload Product Image
-							if( ! empty($_FILES['thumbnail']['name'])) {
+							if ( ! empty($_FILES['thumbnail']['name'])) {
 								$config['overwrite'] = TRUE;
 								$config['upload_path'] = './downloads/thumbs/';
 								$config['max_size']	= '2000';
 								$config['allowed_types'] = 'gif|jpg|jpeg|png';
-								
+
 								$has_thumbnail = TRUE;
-								
+
 								$error = '';
 								//Initialize
 								$this->upload->initialize($config);
-							
+
 								if ( ! $this->upload->do_upload('thumbnail')) {
 									$error = $this->upload->display_errors('','');
 									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
@@ -1622,7 +1622,7 @@ class Admin extends CI_Controller {
 								} else {
 									$file_path = '';
 									$image_name = '';
-									
+
 									$data = array('upload_data' => $this->upload->data());
 									$file_path = $data['upload_data']['file_path'];
 									$file_name = $data['upload_data']['file_name'];
@@ -1634,12 +1634,12 @@ class Admin extends CI_Controller {
 									$data_array['thumbnail'] = $file_prefix;
 									$data_array['thumbnail_extension'] = $ext;
 								}
-								
+
 							}
 						}
 
 						$update = $this->admin_model->update_literature($data_array, $has_brochure, $has_thumbnail);
-						if($update) {
+						if ($update) {
 							$this->session->set_flashdata('status_message','<div class="success">Brochure has been updated successfully</div>');
 							redirect('admin/literature/update/' . $literature_id);
 						} else {
@@ -1648,13 +1648,13 @@ class Admin extends CI_Controller {
 						}
 					}
 
-					
+
 					break;
-					
+
 				case 'delete':
 					$data_array = array('literature_id' => $literature_id);
 					$delete = $this->admin_model->delete_literature($data_array);
-					if($delete) {
+					if ($delete) {
 						$this->session->set_flashdata('status_message','<div class="success">Your brochure has been deleted successfully.</div>');
 						redirect('admin/literature/');
 					}  else {
@@ -1662,11 +1662,11 @@ class Admin extends CI_Controller {
 						redirect('admin/literature/');
 					}
 					break;
-				
+
 			}
-			
+
 		}
-		
+
 		$this->load->view('admin_template', $data);
 	}
 
@@ -1700,16 +1700,16 @@ class Admin extends CI_Controller {
 	    $xml .= '</Brands>' . "\n";
 
 		$xml .= '<Categories>' . "\n";
-		foreach($cats as $cat) {
+		foreach ($cats as $cat) {
 			$category_name = str_replace('&trade;','',$cat->product_category_name);
 			$category_name = str_replace('Fixed','Daylight',$category_name);
 			$xml .= "\t" . '<Category>' . "\n";
 			$xml .= "\t\t" . '<ExternalId>prod-cat-' . $cat->product_category_id . '</ExternalId>' . "\n";
-			if($cat->primary_category_id != 0) {
+			if ($cat->primary_category_id != 0) {
 				$xml .= "\t\t" . '<ParentExternalId>prod-cat-' . $cat->primary_category_id . '</ParentExternalId>' . "\n";
 			}
             $xml .= "\t\t" . '<Name>' . $category_name . '</Name>' . "\n";
-            if($cat->primary_category_id != 0) {
+            if ($cat->primary_category_id != 0) {
             	$xml .= "\t\t" . '<CategoryPageUrl>' . $site_url . 'catalog/products/category/' . $parent_url[$cat->primary_category_id] . '#' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
             } else {
             	$xml .= "\t\t" . '<CategoryPageUrl>' . $site_url .  'catalog/products/category/' . $cat->product_category_url . '</CategoryPageUrl>' . "\n";
@@ -1719,7 +1719,7 @@ class Admin extends CI_Controller {
 		}
 		$xml .= '</Categories>' . "\n";
 		$xml .= '<Products>' . "\n";
-	    foreach($prods as $prod) {
+	    foreach ($prods as $prod) {
 	        $xml .= "\t" . '<Product>' . "\n";
 	        $xml .= "\t\t" . '<ExternalId>prod-' . $prod->product_id . '</ExternalId>' . "\n";
 	        $xml .= "\t\t" . '<Name>' . $prod->product_name . '</Name>' . "\n";
@@ -1729,7 +1729,7 @@ class Admin extends CI_Controller {
 	        $xml .= "\t\t" . '<CategoryExternalId>prod-cat-' . $prod->primary_category_id . '</CategoryExternalId>' . "\n";
 	        $xml .= "\t\t" . '<ProductPageUrl>' . $site_url . 'catalog/products/' . $prod->product_url . '</ProductPageUrl>' . "\n";
 	        $xml .= "\t\t" . '<ImageUrl>' . $site_url . 'content-uploads/product-images/' . $prod->product_image . '.' . $prod->extension . '</ImageUrl>' . "\n";
-	        if($prod->model_number != '') {
+	        if ($prod->model_number != '') {
 		        $xml .= "\t\t" . '<ModelNumbers>' . "\n";
 		            $xml .= "\t\t\t" . '<ModelNumber>' . str_replace('Model ', '', $prod->model_number) . '</ModelNumber>' . "\n";
 		        $xml .= "\t\t" . '</ModelNumbers>' . "\n";
@@ -1738,7 +1738,7 @@ class Admin extends CI_Controller {
 	        $mpn = "\t\t" . '<ManufacturerPartNumbers>' . "\n";
 		    $ean = "\t\t" . '<EANs>' . "\n";
 		    $product_data_array = $this->admin_model->get_product_data_by_id($prod->product_id);
-		    foreach($product_data_array as $data) {
+		    foreach ($product_data_array as $data) {
 		    	$mpn .= "\t\t\t" . '<ManufacturerPartNumber>' . $data->mpn . '</ManufacturerPartNumber>' . "\n";
 		    	$ean .= "\t\t\t" . '<EAN>' . $data->ean . '</EAN>' . "\n";
 		    }
@@ -1768,15 +1768,15 @@ class Admin extends CI_Controller {
 
 		$fp = fopen($file, 'r');
 		$sub_count = 0;
-		while ( !feof($fp) ) {
+		while ( ! feof($fp) ) {
 			$line = fgets($fp, 2048);
 			$data = str_getcsv($line, ",");
 			$key_count = 0;
-			for($c = 0; $c < count($data); $c++) {
-				if($data[$c] != '') {
+			for ($c = 0; $c < count($data); $c++) {
+				if ($data[$c] != '') {
 					$key_count++;
 					$prods_array[$sub_count][$key_map[$key_count]] = $data[$c];
-					if($key_count == 3) {
+					if ($key_count == 3) {
 	        			$sub_count++;
 	        		}
 					echo $data[$c];
@@ -1784,7 +1784,7 @@ class Admin extends CI_Controller {
 			}
 		}
 
-		foreach($prods_array as $key => $value) {
+		foreach ($prods_array as $key => $value) {
 			$db_table = 'bz_product_data';
 			$data = array(
 				'product_id' => '7',
@@ -1792,22 +1792,22 @@ class Admin extends CI_Controller {
 				'ean' => $value['ean'],
 				'insert_date' => current_timestamp()
 			);
-			
+
 			$added = $this->db->insert($db_table, $data);
 		}
 	}
-	
+
 /*****************************************************************************************************************************************
 /*	LOGOUT Page
 /*	Destroy the logged in session and redirect to login page
-/****************************************************************************************************************************************/	
+/****************************************************************************************************************************************/
 	function logout() {
 		$this->session->sess_destroy();
 		session_destroy();
 		redirect('admin');
 	}
-	
-	
+
+
 }
 
 /* End of file admin.php */
