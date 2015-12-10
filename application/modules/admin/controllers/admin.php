@@ -1450,23 +1450,17 @@ class Admin extends CI_Controller {
 	function literature($action = NULL, $literature_id = NULL) {
 		$this->auth->restrict(FALSE, '1');
 		$data['current_section'] = 'literature';
+
 		if ($action == NULL) {
 			$data['page_title'] = 'Literature';
 			$data['literature_array'] = $this->admin_model->get_literature();
 			$data['page_content'] = 'admin_literature_list';
 		} else {
 			switch ($action) {
-
 				case 'add':
-					$this->load->library('upload');
-
-					$config['upload_path'] = './downloads/';
-					$config['max_size']	= '20000';
-					$config['overwrite'] = FALSE;
-
-					$this->upload->initialize($config);
-
-					$this->form_validation->set_rules('filename', '', '');
+                    if (empty($_FILES['filename']['name'])) {
+                        $this->form_validation->set_rules('filename', 'Document', 'required');
+                    }
 					$this->form_validation->set_rules('name', 'Brochure Name', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('description', 'Brochure Description', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('analytics_url', 'Analytics URL', 'trim|required|xss_clean');
@@ -1475,8 +1469,14 @@ class Admin extends CI_Controller {
 						$data['error'] = '';
 						$data['page_content'] = 'admin_literature_add';
 					} else {
+                        $this->load->library('upload');
+
+                        $config['upload_path'] = $this->config->item('resources_full_dir');
+                        $config['max_size'] = '30000';
+                        $config['overwrite'] = FALSE;
 						$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
-						$this->upload->initialize($config);
+
+                        $this->upload->initialize($config);
 
 						if ( ! $this->upload->do_upload('filename')) {
 							$error = $this->upload->display_errors('','');
@@ -1506,15 +1506,15 @@ class Admin extends CI_Controller {
 							// Upload Flash file if present
 							if ( ! empty($_FILES['thumbnail']['name'])) {
 								$config['allowed_types'] = 'gif|jpg|jpeg|png';
-								$config['upload_path'] = './downloads/thumbs/';
+								$config['upload_path'] = $this->config->item('brochure_assets_full_dir');
 								$this->upload->initialize($config);
-								if ( ! $this->upload->do_upload('thumbnail')) {
+
+                                if ( ! $this->upload->do_upload('thumbnail')) {
 									@unlink($file_path . $file_prefix . $full_extension);
 									$error = $this->upload->display_errors('','');
 									$data['error'] = '<div class="error_alert"><p>' . $error . '</p></div>';
 									$data['page_content'] = 'admin_literature_add';
 									break;
-
 								} else {
 									$data = array('thumb_data' => $this->upload->data());
 									$thumb_file_name = $data['thumb_data']['file_name'];
@@ -1526,7 +1526,6 @@ class Admin extends CI_Controller {
 									$data_array['thumbnail'] = $file_prefix;
 									$data_array['thumbnail_extension'] = $ext;
 								}
-
 							}
 
 							$insert_id = $this->admin_model->add_literature($data_array);
@@ -1567,8 +1566,8 @@ class Admin extends CI_Controller {
 							// Upload Large File
 							if ( ! empty($_FILES['filename']['name'])) {
 								$config['overwrite'] = TRUE;
-								$config['upload_path'] = './downloads/';
-								$config['max_size']	= '20000';
+								$config['upload_path'] = $this->config->item('resources_full_dir');
+								$config['max_size']	= '30000';
 								$config['allowed_types'] = 'pdf|xls|doc|docx|xlsx';
 
 								$has_brochure = TRUE;
@@ -1604,7 +1603,7 @@ class Admin extends CI_Controller {
 							// Upload Product Image
 							if ( ! empty($_FILES['thumbnail']['name'])) {
 								$config['overwrite'] = TRUE;
-								$config['upload_path'] = './downloads/thumbs/';
+								$config['upload_path'] = $this->config->item('brochure_assets_full_dir');
 								$config['max_size']	= '2000';
 								$config['allowed_types'] = 'gif|jpg|jpeg|png';
 
