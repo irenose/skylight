@@ -103,7 +103,7 @@ $db['staging']['database'] = 'wwdev';
 $db['development'] = $db['production'];
 $db['development']['username'] = 'root';
 $db['development']['password'] = 'root';
-$db['development']['database'] = 'skylightspecialist_beta';
+$db['development']['database'] = 'skylightspecialist.com';
 $db['development']['db_debug'] = TRUE;
 
 /* End of file database.php */
