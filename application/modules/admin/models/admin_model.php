@@ -6,7 +6,7 @@ class Admin_model extends CI_Model {
 	{
 		parent::__construct();
 	}
-	
+
 /***********************************************************************************************************************************
 /*		GET FUNCTIONS
 ************************************************************************************************************************************/
@@ -14,7 +14,7 @@ class Admin_model extends CI_Model {
 /**********************************************************************************************************************************
 		USERS MODULE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function get_all_users($user_status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
 		if($user_status != NULL) {
@@ -24,25 +24,25 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_user_by_id($user_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$where = array('user_id' => $user_id);
 		$this->db->where($where);
 		$query = $this->db->get($db_table, 1);
 		return $query->result();
 	}
-	
+
 	function get_user_by_email($email) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$where = array('username' => $email);
 		$this->db->where($where);
 		$query = $this->db->get($db_table, 1);
 		return $query->result();
 	}
-	
+
 	function get_user_email($user_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
 		$this->db->select('username');
@@ -87,7 +87,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_secondary_nav_array($primary_category_id, $page_status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		if($page_status == NULL) {
@@ -100,7 +100,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_third_nav_array($secondary_category_id, $page_status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		if($page_status == NULL) {
@@ -111,7 +111,7 @@ class Admin_model extends CI_Model {
 		$this->db->where($where);
 		$this->db->order_by('sort_order ASC');
 		$query = $this->db->get($db_table);
-		
+
 		return $query->result();
 	}
 	function get_footer_nav_array($page_status = NULL) {
@@ -126,7 +126,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_global_page_array($page_status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		if($page_status == NULL) {
@@ -139,7 +139,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_page_data_array($page_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		$where = array('page_id' => $page_id);
@@ -147,7 +147,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_page_childen($page_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		$this->db->where('primary_category_id',$page_id);
@@ -155,7 +155,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_subnavigation_dropdown($category_id, $page_id = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		if($page_id === NULL) {
@@ -175,13 +175,13 @@ class Admin_model extends CI_Model {
 		}
 		return $query->result();
 	}
-	
+
 	function get_url_path($page_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		$this->db->where('page_id', $page_id);
 		$query = $this->db->get($db_table,1);
 		$page_data_array = $query->result();
-		
+
 		if($page_data_array[0]->primary_category == 'yes') {
 			return '/' . $page_data_array[0]->page_url;
 		} else if($page_data_array[0]->page_location == 'footer' || $page_data_array[0]->page_location == 'global') {
@@ -191,22 +191,22 @@ class Admin_model extends CI_Model {
 			$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 			$this->db->where('page_id', $page_data_array[0]->primary_category_id);
 			$query = $this->db->get($db_table,1);
-			$primary_data_array = $query->result();	
+			$primary_data_array = $query->result();
 			$url = '/' . $primary_data_array[0]->page_url;
-			
+
 			//Add secondary category page url
 			if($page_data_array[0]->secondary_category_id != 0) {
 				$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 				$this->db->where('page_id', $page_data_array[0]->secondary_category_id);
 				$query = $this->db->get($db_table,1);
-				$secondary_data_array = $query->result();	
+				$secondary_data_array = $query->result();
 				$url .= '/' . $secondary_data_array[0]->page_url;
-				
+
 			}
-			
+
 			$url .= '/' . $page_data_array[0]->page_url;
 			return $url;
-			
+
 		}
 	}
 
@@ -232,14 +232,14 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table, $per_page, $lower_limit);
 		return $query->result();
 	}
-	
+
 	function get_document_by_id($document_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
 		$this->db->where('document_id',$document_id);
 		$query = $this->db->get($db_table, 1);
 		return $query->result();
 	}
-	
+
 	function get_document_dropdown() {
 		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
 		$this->db->where('document_status','active');
@@ -276,14 +276,14 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table, $per_page, $lower_limit);
 		return $query->result();
 	}
-	
+
 	function get_image_by_id($image_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_images';
 		$this->db->where('image_id',$document_id);
 		$query = $this->db->get($db_table, 1);
 		return $query->result();
 	}
-	
+
 
 	function get_total_image_count() {
 		$db_table = $this->config->item('db_table_prefix') . 'content_images';
@@ -345,14 +345,14 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table, 1);
 		return $query->result();
 	}
-	
+
 	function get_dealer_site_list() {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$this->db->order_by('name ASC');
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_dealer_by_id($dealer_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$this->db->where('dealer_id',$dealer_id);
@@ -374,15 +374,15 @@ class Admin_model extends CI_Model {
 		if($status != NULL) {
 			$this->db->where('dealer_status',$status);
 		} else {
-			$this->db->where('dealer_status !=','delete');	
+			$this->db->where('dealer_status !=','delete');
 		}
 		$this->db->order_by('name ASC');
 		$query = $this->db->get($db_table, $per_page, $lower_limit);
-		return $query->result();	
+		return $query->result();
 	}
-	
-	
-	
+
+
+
 	function get_product_categories($status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
 		if($status != NULL) {
@@ -395,7 +395,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_product_subcategories($primary_category_id, $status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'product_categories';
 		if($status != NULL) {
@@ -408,10 +408,10 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_products_by_category($product_category_id, $status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'products';
-		
+
 		$this->db->select('ss_products.product_id AS product_id, ss_product_categories.product_category_name AS product_category_name, ss_product_categories.sort_order AS product_category_sort, ss_products.sort_order AS product_sort, ss_products.product_name AS product_name, ss_products.product_status AS product_status, ss_products.primary_category_id AS primary_category_id, ss_products.secondary_category_id AS secondary_category_id, ss_products.product_category_id AS product_category_id, ss_products.model_number AS model_number, ss_products.lifestyle_image AS lifestyle_image, ss_products.lifestyle_extension AS lifestyle_extension, ss_products.product_url AS product_url', FALSE);
 		$this->db->join('ss_product_categories', 'ss_product_categories.product_category_id = ss_products.primary_category_id', 'inner');
 		if($status != NULL) {
@@ -427,7 +427,7 @@ class Admin_model extends CI_Model {
 		return $query->result();
 
 	}
-	
+
 	function get_product_by_id($product_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'products';
 		$where = array('product_id' => $product_id);
@@ -435,7 +435,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_galleries($status = 'active') {
 		$db_table = $this->config->item('db_table_prefix') . 'galleries';
 		$where = array('gallery_status' => $status);
@@ -444,7 +444,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_gallery_by_id($gallery_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'galleries';
 		$where = array('gallery_id' => $gallery_id);
@@ -452,7 +452,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_gallery_image_count($gallery_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
 		$where = array('gallery_id' => $gallery_id, 'dealer_id' => '0');
@@ -460,20 +460,20 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result_array();
 	}
-	
+
 	function get_images_by_gallery($gallery_id, $dealer_id = 0, $status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
 		if($status != NULL) {
 			$where = array('gallery_id' => $gallery_id, 'image_status' => $status, 'dealer_id' => '0');
 		} else {
-			$where = array('gallery_id' => $gallery_id, 'dealer_id' => '0');	
+			$where = array('gallery_id' => $gallery_id, 'dealer_id' => '0');
 		}
 		$this->db->where($where);
 		$this->db->order_by('sort_order ASC');
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_gallery_image_by_id($gallery_image_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
 		$where = array('gallery_image_id' => $gallery_image_id);
@@ -481,7 +481,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_testimonials($status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
 		if($status != NULL) {
@@ -495,7 +495,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_testimonial_by_id($testimonial_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
 		$where = array('testimonial_id' => $testimonial_id);
@@ -503,7 +503,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_review_by_id($review_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'reviews';
 		$where = array('review_id' => $review_id);
@@ -511,7 +511,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_promotions($status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'promotions';
 		if($status != NULL) {
@@ -522,14 +522,14 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_dealer_promotions($promotion_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
 		$this->db->where('promotion_id', $promotion_id);
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_promotion_by_id($promotion_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'promotions';
 		$where = array('promotion_id' => $promotion_id);
@@ -537,7 +537,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_literature($status = NULL) {
 		$db_table = $this->config->item('db_table_prefix') . 'literature';
 		if($status != NULL) {
@@ -548,7 +548,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table);
 		return $query->result();
 	}
-	
+
 	function get_literature_by_id($literature_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'literature';
 		$where = array('literature_id' => $literature_id);
@@ -556,17 +556,17 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get($db_table,1);
 		return $query->result();
 	}
-	
+
 	function get_site_updates() {
 		$db_table = $this->config->item('db_table_prefix') . 'updates';
 		$this->db->order_by('insert_date DESC');
 		$query = $this->db->get($db_table);
-		return $query->result();	
+		return $query->result();
 	}
 
 
 
-	
+
 /**********************************************************************************************************************************
 		ADD FUNCTIONS
 ***********************************************************************************************************************************/
@@ -574,15 +574,15 @@ class Admin_model extends CI_Model {
 /**********************************************************************************************************************************
 		USERS MODULE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function add_user($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		//Create a hash
 		$password = $data_array['password'];
 		$salt = $this->config->item('salt');
 		$hash_password = sha1($salt.$password);
-		
+
 		$data = array(
 		   'first_name' => $data_array['first_name'],
 		   'last_name' => $data_array['last_name'],
@@ -594,7 +594,7 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -607,14 +607,14 @@ class Admin_model extends CI_Model {
 /**********************************************************************************************************************************
 		PAGES MODULE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function add_page($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		if($data_array['page_content'] == '<br>' || $data_array['page_content'] == '<br />') {
 			$data_array['page_content'] = '';
 		}
-		
+
 		switch($data_array['primary_category_id']) {
 			//New Section
 			case 'main':
@@ -637,7 +637,7 @@ class Admin_model extends CI_Model {
 				$page_location = 'global';
 				$primary_category = 'no';
 				break;
-				
+
 			default:
 				$primary_category_id = $data_array['primary_category_id'];
 				if($data_array['secondary_category_id'] == '' || $data_array['secondary_category_id'] == NULL) {
@@ -649,11 +649,11 @@ class Admin_model extends CI_Model {
 				$primary_category = 'no';
 				break;
 		}
-		
+
 		$page_content = $data_array['page_content'];
 		$publish_status = $data_array['page_status'] == 'active' ? 'yes' : 'no';
 		$page_url = $data_array['page_url'] != '' ? url_title($data_array['page_url'], 'dash', TRUE) : url_title($data_array['page_title'], 'dash', TRUE);
-		
+
 		$data = array(
 		   'page_title' => ascii_to_entities($data_array['page_title']),
 		   'page_url' => $page_url,
@@ -674,7 +674,7 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -690,7 +690,7 @@ class Admin_model extends CI_Model {
 
 	function add_content_image($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_images';
-		
+
 		$data = array(
 		   'image_name' => $data_array['image_name'],
 		   'image_file' => $data_array['image_file'],
@@ -700,32 +700,7 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
-		$added = $this->db->insert($db_table, $data);
-		if($added) {
-			$insert_id = $this->db->insert_id();
-			return $insert_id;
-		} else {
-			return FALSE;
-		}
-	}
-	
-/**********************************************************************************************************************************
-		DOCUMENTS MODULE FUNCTIONS
-***********************************************************************************************************************************/
-	function add_content_document($data_array) {
-		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
-		
-		$data = array(
-		   'document_name' => $data_array['document_name'],
-		   'document_file' => $data_array['document_file'],
-		   'extension' => $data_array['extension'],
-		   'document_status' => 'active',
-		   'modified_by' => $_SESSION['admin_username'],
-		   'insert_date' => current_timestamp(),
-		   'modification_date' => current_timestamp()
-		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -735,7 +710,32 @@ class Admin_model extends CI_Model {
 		}
 	}
 
-	
+/**********************************************************************************************************************************
+		DOCUMENTS MODULE FUNCTIONS
+***********************************************************************************************************************************/
+	function add_content_document($data_array) {
+		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
+
+		$data = array(
+		   'document_name' => $data_array['document_name'],
+		   'document_file' => $data_array['document_file'],
+		   'extension' => $data_array['extension'],
+		   'document_status' => 'active',
+		   'modified_by' => $_SESSION['admin_username'],
+		   'insert_date' => current_timestamp(),
+		   'modification_date' => current_timestamp()
+		);
+
+		$added = $this->db->insert($db_table, $data);
+		if($added) {
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		} else {
+			return FALSE;
+		}
+	}
+
+
 /**********************************************************************************************************************************
 		CUSTOM ADD FUNCTIONS
 ***********************************************************************************************************************************/
@@ -743,44 +743,44 @@ class Admin_model extends CI_Model {
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$latitude = NULL;
 		$longitude = NULL;
-		
+
 		//Get Coordinates
 		$coordinates_array = $this->page_model->get_coordinates($data_array['zip']);
 		if(count($coordinates_array) > 0) {
 			$latitude = $coordinates_array[0]->latitude;
 			$longitude = $coordinates_array[0]->longitude;
 		}
-		
+
 		//Format URL
 		if(trim($data_array['website']) != '') {
 			$https_pos = strpos($data_array['website'], 'https://');
 			$http_pos = strpos($data_array['website'], 'http://');
-			
+
 			$website = str_replace('http://','', $data_array['website']);
 			$website = str_replace('https://', '', $website);
-			
+
 			if($https_pos === false && $http_pos === false) {
 				$website = 'http://' . $data_array['website'];
 			} else {
 				$website = $data_array['website'];
 			}
-			
+
 		} else {
 			$website = '';
 		}
-		
+
 		if(trim($data_array['about_dealer_text']) == '' || trim($data_array['about_dealer_text']) == '<br>') {
 			$about_dealer_text = '';
 		} else {
 			$about_dealer_text = trim($data_array['about_dealer_text']);
 		}
-		
+
 		if(trim($data_array['about_dealer_headline']) == '' || trim($data_array['about_dealer_headline']) == '<br>') {
 			$about_dealer_headline = '';
 		} else {
 			$about_dealer_headline = trim($data_array['about_dealer_headline']);
 		}
-		
+
 		$data = array(
 			'name' => $data_array['name'],
 			'dealer_url' => $data_array['dealer_url'],
@@ -810,22 +810,22 @@ class Admin_model extends CI_Model {
 			'sells_vms' => $data_array['sells_vms'],
 			'insert_date' => current_timestamp(),
 		    'modification_date' => current_timestamp()
-					  
+
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
-			
+
 			$insert_id = $this->db->insert_id();
-			
+
 			$db_table = $this->config->item('db_table_prefix') . 'users';
-			
+
 			//Create Default Admin User for new site
 			$this->load->helper('string');
 			$random_password = random_string('alnum',10);
 			$salt = $this->config->item('salt');
 			$hash_password = sha1($salt.$random_password);
-			
+
 			$data = array(
 			   'first_name' => $data_array['contact_first_name'],
 			   'last_name' => $data_array['contact_last_name'],
@@ -839,10 +839,10 @@ class Admin_model extends CI_Model {
 			   'insert_date' => current_timestamp(),
 			   'modification_date' => current_timestamp()
 			);
-			
+
 			$user_created = $this->db->insert($db_table, $data);
 			if($user_created) {
-				
+
 				//Create Dealer Options Entry
 				$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
 				$data = array(
@@ -850,8 +850,8 @@ class Admin_model extends CI_Model {
 				   'insert_date' => current_timestamp(),
 				   'modification_date' => current_timestamp()
 				);
-				
-				
+
+
 				$added_options = $this->db->insert($db_table, $data);
 
 				$recipient = $data_array['email'];
@@ -859,26 +859,26 @@ class Admin_model extends CI_Model {
 				$subject = 'VELUX Microsite for ' . $data_array['name'];
 
 				$message = "A VELUX microsite has been set up for " . $data_array['name'] . ". Look below for all the needed information to learn about and customize your new VELUX microsite.\n\n";
-				
+
 				$message .= "Microsite URL: www.skylightspecialist.com/" . $data_array['dealer_url'] . "\n";
 				$message .= "Assigned phone number: " . $data_array['phone1'] . "\n\n";
-				
+
 				$message .= "Microsite Admin: www.skylightspecialist.com/installer-admin\n";
 				$message .= "Username: " . $data_array['email'] . "\n";
 				$message .= "Password: " . $random_password . "\n\n";
-				
+
 				$message .= "View the microsite training to learn how to customize your site:\n";
 				$message .= "https://vimeo.com/121060790\n";
 				$message .= "Password: velux\n\n";
-				
+
 				$message .= "Note: your microsite is currently ACTIVE, which means it's live to the public.  You are encouraged to customize your site as soon as possible so it accurately reflects your business.";
 
 				$options['bcc'] = $this->config->item('site_creation_recipient');
 
 				Email_Send($recipient, $from, $subject, $message, $options);
-			
+
 				return $insert_id; //Return initial dealer_id
-				
+
 			} else {
 				return FALSE;
 			}
@@ -889,11 +889,11 @@ class Admin_model extends CI_Model {
 	}
 
 	function add_default_promotion($dealer_id) {
-		
+
 		$default_array = $this->get_site_defaults();
 		$promotion_title = $default_array[0]->promotion_title;
 		$promotion_page_copy = $default_array[0]->promotion_page_copy;
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
 		$data = array(
 			'dealer_id' => $dealer_id,
@@ -903,22 +903,22 @@ class Admin_model extends CI_Model {
 			'promotion_status' => 'active',
 			'has_promotion_page' => 'yes',
 			'insert_date' => current_timestamp(),
-			'modification_date' => current_timestamp()			  
+			'modification_date' => current_timestamp()
 		);
-		
+
 		$add = $this->db->insert($db_table, $data);
 	}
 
 	function add_dealer_options($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
-			
+
+
 		//Create Default Admin User for new site
 		$this->load->helper('string');
 		$random_password = random_string('alnum',10);
 		$salt = $this->config->item('salt');
 		$hash_password = sha1($salt.$random_password);
-		
+
 		$data = array(
 		   'first_name' => $data_array->contact_first_name,
 		   'last_name' => $data_array->contact_last_name,
@@ -932,10 +932,10 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$user_created = $this->db->insert($db_table, $data);
 		if($user_created) {
-			
+
 			//Create Dealer Options Entry
 			$db_table = $this->config->item('db_table_prefix') . 'dealer_options';
 			$data = array(
@@ -943,10 +943,10 @@ class Admin_model extends CI_Model {
 			   'insert_date' => current_timestamp(),
 			   'modification_date' => current_timestamp()
 			);
-			
-			
+
+
 			$added_options = $this->db->insert($db_table, $data);
-			
+
 			$this->load->library('email');
 			//Auto Response to contactor
 			$this->email->from($this->config->item('global_email_from'));
@@ -958,57 +958,57 @@ class Admin_model extends CI_Model {
 			$message .= "Username: " . $data_array->email . "\n";
 			$message .= "Password: " . $random_password . "\n";
 			$message .= "Please log in to the admin and you will be prompted to create a new password";
-			
+
 			$this->email->message($message);
 			$this->email->send();
-			
+
 			return $random_password; //Return initial dealer_id
-			
+
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function update_coordinates($data_array) {
-		
+
 		$latitude = NULL;
 		$longitude = NULL;
-		
+
 		//Get Coordinates
 		$coordinates_array = $this->page_model->get_coordinates($data_array->zip);
 		if(count($coordinates_array) > 0) {
 			$latitude = $coordinates_array[0]->latitude;
 			$longitude = $coordinates_array[0]->longitude;
 		}
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
-		
+
 		$data = array(
 			'latitude' => $latitude,
 			'longitude' => $longitude
 		);
-		
+
 		$this->db->where('dealer_id', $data_array->dealer_id);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
-		
+
+
 	}
 
 	function add_product($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'products';
 
 		$product_url = url_title($data_array['product_name'], 'dash', TRUE);
 		if(trim($data_array['model_number']) != '') {
 			$product_url .= '-' . trim($data_array['model_number']);
 		}
-		
+
 		$data = array(
 			'product_name' => $data_array['product_name'],
 			'product_url' => $product_url,
@@ -1030,7 +1030,7 @@ class Admin_model extends CI_Model {
 			'insert_date' => current_timestamp(),
 			'modification_date' => current_timestamp()
 		);
-			
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1038,17 +1038,17 @@ class Admin_model extends CI_Model {
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 /************************
 /*	ADD TESTIMONIAL
-/*	
-************************/	
+/*
+************************/
 	function add_testimonial($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
-		
+
 		$data = array(
 			'dealer_id' => $data_array['dealer_id'],
 			'testimonial_copy' => $data_array['testimonial_copy'],
@@ -1059,7 +1059,7 @@ class Admin_model extends CI_Model {
 			'insert_date' => current_timestamp(),
 			'modification_date' => current_timestamp()
 		);
-			
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1067,12 +1067,12 @@ class Admin_model extends CI_Model {
 		} else {
 			return FALSE;
 		}
-		
+
 	}
 
 	function add_gallery_image($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
-		
+
 		$data = array(
 		   'image_title' => $data_array['image_title'],
 		   'image_description' => $data_array['image_description'],
@@ -1085,7 +1085,7 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1097,13 +1097,13 @@ class Admin_model extends CI_Model {
 
 	function add_promotion($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'promotions';
-		
+
 		if( isset($data_array['default_option']) && $data_array['default_option'] == 'yes') {
 			$default_option = 'yes';
 		} else {
-			$default_option = 'no';	
+			$default_option = 'no';
 		}
-		
+
 		$data = array(
 		   'promotion_title' => $data_array['promotion_title'],
 		   'promotion_file' => $data_array['promotion_file'],
@@ -1118,7 +1118,7 @@ class Admin_model extends CI_Model {
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1127,23 +1127,24 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	function add_literature($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'literature';
-		
+
 		$data = array(
+           'literature_category_id' => 0, // who knows if this column is even required in the database? nobody! fun!
 		   'name' => $data_array['name'],
 		   'description' => $data_array['description'],
+           'thumbnail' => $data_array['thumbnail'],
+           'thumbnail_extension' => $data_array['thumbnail_extension'],
 		   'filename' => $data_array['filename'],
 		   'extension' => $data_array['extension'],
-		   'thumbnail' => $data_array['thumbnail'],
-		   'thumbnail_extension' => $data_array['thumbnail_extension'],
 		   'analytics_url' => $data_array['analytics_url'],
 		   'literature_status' => 'inactive',
 		   'insert_date' => current_timestamp(),
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1154,15 +1155,15 @@ class Admin_model extends CI_Model {
 	}
 
 	function add_site_update($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'updates';
-		
+
 		$data = array(
 			'update_text' => $data_array['update_text'],
 			'insert_date' => current_timestamp(),
 			'modification_date' => current_timestamp()
 		);
-			
+
 		$added = $this->db->insert($db_table, $data);
 		if($added) {
 			$insert_id = $this->db->insert_id();
@@ -1170,22 +1171,22 @@ class Admin_model extends CI_Model {
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 
 
 /**************************************************************************************************************************************
 /*		UPDATE FUNCTIONS
-**************************************************************************************************************************************/	
+**************************************************************************************************************************************/
 
-	
+
 /**********************************************************************************************************************************
 		USER MODULE UPDATE FUNCTIONS
 ***********************************************************************************************************************************/
 	function update_user($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$data = array(
 		   'first_name' => $data_array['first_name'],
 		   'last_name' => $data_array['last_name'],
@@ -1194,91 +1195,91 @@ class Admin_model extends CI_Model {
 		   'user_status' => $data_array['user_status'],
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$this->db->where('user_id', $data_array['user_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function reset_password($user_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$temp_password = random_string('alnum', 12);
 		$salt = $this->config->item('salt');
 		$hash_password = sha1($salt.$temp_password);
-		
+
 		$data = array(
 		   'password' => $hash_password,
 		   'change_password' => 'yes',
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$this->db->where('user_id', $user_id);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return $temp_password;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function update_user_password($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$password = $data_array['password'];
 		$salt = $this->config->item('salt');
 		$hash_password = sha1($salt.$password);
-		
+
 		$data = array(
 		   'password' => $hash_password,
 		   'change_password' => 'no',
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$this->db->where('user_id', $data_array['user_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function forgot_reset_password($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
-		
+
 		$user_data_array = $this->get_user_by_email($data_array['username']);
 		if(count($user_data_array) > 0) {
 			$user_id = $user_data_array[0]->user_id;
 			$temp_password = random_string('alnum', 12);
 			$salt = $this->config->item('salt');
 			$hash_password = sha1($salt.$temp_password);
-			
+
 			$data = array(
 			   'password' => $hash_password,
 			   'change_password' => 'yes',
 			   'modification_date' => current_timestamp()
 			);
 			$this->db->where('user_id', $user_id);
-			$result = $this->db->update($db_table, $data); 
-			
+			$result = $this->db->update($db_table, $data);
+
 			if($result) {
 				return $temp_password;
 			} else {
 				return FALSE;
 			}
-		
+
 		} else {
-			
+
 			return FALSE;
-		
+
 		}
 	}
 
@@ -1291,11 +1292,11 @@ class Admin_model extends CI_Model {
 	/***********************************************************/
 	function update_initial_draft($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		if($data_array['page_content'] == '<br>' || $data_array['page_content'] == '<br />') {
 			$data_array['page_content'] = '';
 		}
-		
+
 		switch($data_array['primary_category_id']) {
 			//New Section
 			case 'main':
@@ -1318,7 +1319,7 @@ class Admin_model extends CI_Model {
 				$page_location = 'global';
 				$primary_category = 'no';
 				break;
-				
+
 			default:
 				$primary_category_id = $data_array['primary_category_id'];
 				if($data_array['secondary_category_id'] == '' || $data_array['secondary_category_id'] == NULL) {
@@ -1330,9 +1331,9 @@ class Admin_model extends CI_Model {
 				$primary_category = 'no';
 				break;
 		}
-		
+
 		$page_content = $data_array['page_content'];
-		
+
 		$data = array(
 		   'page_title' => '',
 		   'page_draft_title' => $data_array['page_title'],
@@ -1353,26 +1354,26 @@ class Admin_model extends CI_Model {
 		   'modified_by' => $_SESSION['admin_username'],
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$this->db->where('page_id', $data_array['page_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
-		
+
+
 	}
-	
+
 	function update_page($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		if($data_array['page_content'] == '<br>' || $data_array['page_content'] == '<br />') {
 			$data_array['page_content'] = '';
 		}
-		
+
 		switch($data_array['primary_category_id']) {
 			//New Section
 			case 'main':
@@ -1395,7 +1396,7 @@ class Admin_model extends CI_Model {
 				$page_location = 'global';
 				$primary_category = 'no';
 				break;
-				
+
 			default:
 				$primary_category_id = $data_array['primary_category_id'];
 				if($data_array['secondary_category_id'] == '' || $data_array['secondary_category_id'] == NULL) {
@@ -1407,11 +1408,11 @@ class Admin_model extends CI_Model {
 				$primary_category = 'no';
 				break;
 		}
-		
+
 		$page_content = $data_array['page_content'];
 		$publish_status = $data_array['page_status'] == 'active' ? 'yes' : 'no';
 		$page_url = $data_array['page_url'] != '' ? url_title($data_array['page_url'], 'dash', TRUE) : url_title($data_array['page_title'], 'dash', TRUE);
-		
+
 		$data = array(
 		   'page_title' => ascii_to_entities($data_array['page_title']),
 		   'page_draft_title' => '',
@@ -1434,24 +1435,24 @@ class Admin_model extends CI_Model {
 		);
 
 		$this->db->where('page_id', $data_array['page_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($this->db->affected_rows() == 1) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function update_draft($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		if($data_array['page_content'] == '<br>' || $data_array['page_content'] == '<br />') {
 			$data_array['page_content'] = '';
 		}
-		
+
 		$page_content = $data_array['page_content'];
-		
+
 		$data = array(
 		   'page_draft_title' => $data_array['page_title'],
 		   'page_draft_headline' => $data_array['page_headline'],
@@ -1461,32 +1462,32 @@ class Admin_model extends CI_Model {
 		);
 
 		$this->db->where('page_id', $data_array['page_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($this->db->affected_rows() == 1) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
-		
+
+
 	}
-	
+
 	/**********************************************
 	/* SUBSTITUTES THE LIVE CONTENT WITH THE DRAFT ITEM, PUSHING CHANGES LIVE
 	/*********************************************/
 	function update_draft_to_live($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		if($data_array['page_content'] == '<br>' || $data_array['page_content'] == '<br />') {
 			$data_array['page_content'] = '';
 		}
-		
+
 		$page_content = $data_array['page_content'];
-		
+
 		$data = array(
-		   'page_title' => $data_array['page_title'],	
+		   'page_title' => $data_array['page_title'],
 		   'page_draft_title' => '',
 		   'page_headline' => $data_array['page_headline'],
 		   'page_draft_headline' => '',
@@ -1497,35 +1498,35 @@ class Admin_model extends CI_Model {
 		);
 
 		$this->db->where('page_id', $data_array['page_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($this->db->affected_rows() == 1) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 	function update_section_order($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		foreach($data_array['nav_item'] as $sort_order => $page_id) {
 			$data = array('sort_order' => $sort_order);
 			$this->db->where('page_id', $page_id);
-			$result = $this->db->update($db_table, $data); 
+			$result = $this->db->update($db_table, $data);
 		}
-		
+
 		return TRUE;
 	}
-	
+
 	function deactivate_children($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
 		foreach($data_array as $page) {
 			$data = array('page_status' => 'inactive');
 			$this->db->where('page_id', $page->page_id);
-			$result = $this->db->update($db_table, $data); 
+			$result = $this->db->update($db_table, $data);
 		}
-		
+
 		return TRUE;
 	}
 
@@ -1535,7 +1536,7 @@ class Admin_model extends CI_Model {
 
 	function update_document($data_array, $update_filename = FALSE) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
-		
+
 		if($update_filename == TRUE) {
 			$data = array(
 			   'document_name' => $data_array['document_name'],
@@ -1551,10 +1552,10 @@ class Admin_model extends CI_Model {
 			   'modification_date' => current_timestamp()
 			);
 		}
-		
+
 		$this->db->where('document_id', $data_array['document_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($this->db->affected_rows() == 1) {
 			return TRUE;
 		} else {
@@ -1565,10 +1566,10 @@ class Admin_model extends CI_Model {
 /**********************************************************************************************************************************
 		IMAGES MODULE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function update_image($data_array, $update_filename = FALSE) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_images';
-		
+
 		if($update_filename == TRUE) {
 			$data = array(
 			   'image_name' => $data_array['image_name'],
@@ -1584,10 +1585,10 @@ class Admin_model extends CI_Model {
 			   'modification_date' => current_timestamp()
 			);
 		}
-		
+
 		$this->db->where('image_id', $data_array['image_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($this->db->affected_rows() == 1) {
 			return TRUE;
 		} else {
@@ -1600,50 +1601,50 @@ class Admin_model extends CI_Model {
 ***********************************************************************************************************************************/
 
 	function update_dealer($data_array, $has_image = FALSE) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'dealers';
 		$latitude = NULL;
 		$longitude = NULL;
-		
+
 		//Get Coordinates
 		$coordinates_array = $this->page_model->get_coordinates($data_array['zip']);
 		if(count($coordinates_array) > 0) {
 			$latitude = $coordinates_array[0]->latitude;
 			$longitude = $coordinates_array[0]->longitude;
 		}
-		
+
 		//Format URL
 		if(trim($data_array['website']) != '') {
 			$https_pos = strpos($data_array['website'], 'https://');
 			$http_pos = strpos($data_array['website'], 'http://');
-			
+
 			$website = str_replace('http://','', $data_array['website']);
 			$website = str_replace('https://','', $website);
-			
+
 			if($https_pos === false && $http_pos === false) {
 				$website = 'http://' . $data_array['website'];
 			} else {
 				$website = $data_array['website'];
 			}
-			
+
 		} else {
 			$website = '';
 		}
-		
+
 		if(trim($data_array['about_dealer_text']) == '' || trim($data_array['about_dealer_text']) == '<br>') {
 			$about_dealer_text = '';
 		} else {
 			$about_dealer_text = trim($data_array['about_dealer_text']);
 		}
-		
+
 		if(trim($data_array['about_dealer_headline']) == '' || trim($data_array['about_dealer_headline']) == '<br>') {
 			$about_dealer_headline = '';
 		} else {
 			$about_dealer_headline = trim($data_array['about_dealer_headline']);
 		}
-		
+
 		if($has_image) {
-		
+
 			$data = array(
 				'name' => $data_array['name'],
 				'dealer_url' => $data_array['dealer_url'],
@@ -1677,7 +1678,7 @@ class Admin_model extends CI_Model {
 				'insert_date' => current_timestamp(),
 				'modification_date' => current_timestamp()
 			);
-			
+
 		} else {
 			$data = array(
 				'name' => $data_array['name'],
@@ -1710,24 +1711,24 @@ class Admin_model extends CI_Model {
 				'modification_date' => current_timestamp()
 			);
 		}
-		
+
 		$this->db->where('dealer_id', $data_array['dealer_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
+
 	}
 
 	function update_product($data_array, $uploaded_product_image = FALSE) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'products';
 
 		$product_url = url_title($data_array['product_url'], 'dash', TRUE);
-		
+
 		$data = array(
 			'product_name' => $data_array['product_name'],
 			'product_url' => $product_url,
@@ -1748,55 +1749,55 @@ class Admin_model extends CI_Model {
 			'modified_by' => $this->session->userdata('admin_username'),
 			'modification_date' => current_timestamp()
 		);
-		
+
 		if($uploaded_product_image) {
 			$data['product_image'] = $data_array['product_image'];
 			$data['extension'] = $data_array['extension'];
 		}
-		
+
 		$this->db->where('product_id', $data_array['product_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 	function update_gallery_images($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
-		
+
 		$image_count = $data_array['gallery_image_count'];
 		for($i = 1; $i <= $image_count; $i++) {
 			$image_title = 'image_title' . $i;
 			$image_description = 'image_description' . $i;
 			$gallery_image_id = 'gallery_image_id' . $i;
-			
+
 			$data = array(
 				'image_title' => $data_array[$image_title],
 				'image_description' => $data_array[$image_description],
 				'modification_date' => current_timestamp()
 			);
 			$this->db->where('gallery_image_id', $data_array[$gallery_image_id]);
-			$result = $this->db->update($db_table, $data); 	
-				
+			$result = $this->db->update($db_table, $data);
+
 		}
-		
+
 		foreach($data_array['image_item'] as $sort_order => $gallery_image_id) {
 			$data = array('sort_order' => $sort_order);
 			$this->db->where('gallery_image_id', $gallery_image_id);
-			$result = $this->db->update($db_table, $data); 
+			$result = $this->db->update($db_table, $data);
 		}
-		
+
 		return TRUE;
 	}
 
 	function update_testimonial($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
-		
+
 		$data = array(
 			'dealer_id' => $data_array['dealer_id'],
 			'testimonial_copy' => $data_array['testimonial_copy'],
@@ -1806,44 +1807,44 @@ class Admin_model extends CI_Model {
 			'modified_by' => $this->session->userdata('admin_username'),
 			'modification_date' => current_timestamp()
 		);
-			
+
 		$this->db->where('testimonial_id', $data_array['testimonial_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	function update_review($data_array) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'reviews';
-		
+
 		$data = array(
 			'review' => $data_array['review'],
 			'review_status' => $data_array['review_status'],
 			'modification_date' => current_timestamp()
 		);
-			
+
 		$this->db->where('review_id', $data_array['review_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
 	}
-	
+
 	/****************************
 		Update Literature
 	********************************/
 	function update_literature($data_array, $has_brochure = FALSE, $has_thumbnail = FALSE) {
-		
+
 		$db_table = $this->config->item('db_table_prefix') . 'literature';
-		
+
 		$data = array(
 			'name' => $data_array['name'],
 			'description' => $data_array['description'],
@@ -1851,40 +1852,40 @@ class Admin_model extends CI_Model {
 			'literature_status' => $data_array['literature_status'],
 			'modification_date' => current_timestamp()
 		);
-		
+
 		if($has_brochure) {
 			$data['filename'] = $data_array['filename'];
 			$data['extension'] = $data_array['extension'];
 		}
-		
+
 		if($has_thumbnail) {
 			$data['thumbnail'] = $data_array['thumbnail'];
 			$data['thumbnail_extension'] = $data_array['thumbnail_extension'];
 		}
-			
+
 		$this->db->where('literature_id', $data_array['literature_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 	/**********************
 		Update Promotion
 	**********************/
 	function update_promotion($data_array, $has_image = FALSE, $has_swf = FALSE, $has_banner = FALSE) {
 		$db_table = $this->config->item('db_table_prefix') . 'promotions';
-		
+
 		if( isset($data_array['default_option']) && $data_array['default_option'] == 'yes') {
 			$default_option = 'yes';
 		} else {
-			$default_option = 'no';	
+			$default_option = 'no';
 		}
-		
+
 		$data = array(
 		   'promotion_title' => $data_array['promotion_title'],
 		   'promotion_status' => $data_array['promotion_status'],
@@ -1893,24 +1894,24 @@ class Admin_model extends CI_Model {
 		   'left_coordinate' => $data_array['left_coordinate'],
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		if($has_image) {
 			$data['promotion_file'] = $data_array['promotion_file'];
 			$data['extension'] = $data_array['extension'];
 		}
-		
+
 		if($has_swf) {
 			$data['has_flash'] = $data_array['has_flash'];
 		}
-		
+
 		if($has_banner) {
 			$data['promotion_banner'] = $data_array['promotion_banner'];
 		   	$data['banner_extension'] = $data_array['banner_extension'];
 		}
-		
+
 		$this->db->where('promotion_id', $data_array['promotion_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			if($data_array['promotion_status'] == 'inactive') {
 				//Replace all promotions that use this image with a default of Promo ID 8 (Cloud image)
@@ -1922,7 +1923,7 @@ class Admin_model extends CI_Model {
 					);
 					$sub_db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
 					$this->db->where('dealer_promotion_id', $dealer_promo->dealer_promotion_id);
-					$result = $this->db->update($sub_db_table, $data); 
+					$result = $this->db->update($sub_db_table, $data);
 				}
 			}
 			return TRUE;
@@ -1930,23 +1931,23 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	/**********************
 		Update Gallery Info
 	**********************/
 	function update_gallery_info($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'galleries';
-		
+
 		$data = array(
 		   'gallery_name' => $data_array['gallery_name'],
 		   'gallery_description' => $data_array['gallery_description'],
 		   'gallery_status' => $data_array['gallery_status'],
 		   'modification_date' => current_timestamp()
 		);
-		
+
 		$this->db->where('gallery_id', $data_array['gallery_id']);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
@@ -1956,16 +1957,16 @@ class Admin_model extends CI_Model {
 
 
 
-	
+
 
 /**************************************************************************************************************************************
 /*		DELETE FUNCTIONS
-**************************************************************************************************************************************/	
+**************************************************************************************************************************************/
 
 /**********************************************************************************************************************************
 		USER MODULE DELETE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function delete_user($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'users';
 		$this->db->where('user_id',$data_array['user_id']);
@@ -1983,11 +1984,11 @@ class Admin_model extends CI_Model {
 
 	function delete_page($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_pages';
-		
+
 		$children_array = $this->get_page_childen($data_array['page_id']);
-		
+
 		$result = $this->db->delete($db_table, array('page_id' => $data_array['page_id']));
-		
+
 		if($result) {
 			if(count($children_array) > 0) {
 				//Set children pages as global if necessary
@@ -2015,11 +2016,11 @@ class Admin_model extends CI_Model {
 		foreach($image_array as $image) {
 			$large_image = $image->image_file . '.' . $image->extension;
 			$large_image_dir = $this->config->item('content_images_full_dir');
-			
+
 			$thumb_image = $image->image_file . '_th.' . $image->extension;
 			$thumb_image_dir = $this->config->item('content_images_full_dir') . 'thumbs/';
 		}
-		
+
 		if($large_image != '') {
 			$this->db->where('image_id',$data_array['image_id']);
 			$result = $this->db->delete($db_table);
@@ -2034,17 +2035,17 @@ class Admin_model extends CI_Model {
 			} else {
 				return FALSE;
 			}
-			
+
 		} else {
 			return FALSE;
 		}
-		
+
 	}
 
 /**********************************************************************************************************************************
 		DOCUMENTS MODULE DELETE FUNCTIONS
 ***********************************************************************************************************************************/
-	
+
 	function delete_document($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'content_documents';
 		$doc_array = $this->get_document_by_id($data_array['document_id']);
@@ -2052,7 +2053,7 @@ class Admin_model extends CI_Model {
 			$doc = $doc->document_file . '.' . $doc->extension;
 			$doc_dir = $this->config->item('content_documents_full_dir');
 		}
-		
+
 		if($doc != '') {
 			$this->db->where('document_id',$data_array['document_id']);
 			$result = $this->db->delete($db_table);
@@ -2066,11 +2067,11 @@ class Admin_model extends CI_Model {
 			} else {
 				return FALSE;
 			}
-			
+
 		} else {
 			return FALSE;
 		}
-		
+
 	}
 
 /**********************************************************************************************************************************
@@ -2084,16 +2085,16 @@ class Admin_model extends CI_Model {
 			'modification_date' => current_timestamp()
 		);
 		$this->db->where('dealer_id',$dealer_id);
-		$result = $this->db->update($db_table, $data); 
-		
+		$result = $this->db->update($db_table, $data);
+
 		if($result) {
 			return TRUE;
 		} else {
 			return FALSE;
 		}
-		
+
 	}
-	
+
 	function delete_gallery_image($gallery_image_id) {
 		$db_table = $this->config->item('db_table_prefix') . 'gallery_images';
 		$this->db->where('gallery_image_id',$gallery_image_id);
@@ -2104,7 +2105,7 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	function delete_testimonial($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'testimonials';
 		$this->db->where('testimonial_id',$data_array['testimonial_id']);
@@ -2115,7 +2116,7 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	function delete_review($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'reviews';
 		$this->db->where('review_id',$data_array['review_id']);
@@ -2126,22 +2127,22 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
-	
+
+
 	function delete_promotion($promotion_id, $promotion_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'promotions';
-		
+
 		if(count($promotion_array) > 0) {
-			
+
 			$dir = $this->config->item('promotion_files_full_dir');
-			
+
 			$image_delete = @unlink($dir . $promotion_array[0]->promotion_file . '.' . $promotion_array[0]->extension);
 			if($promotion_array[0]->has_flash == 'yes') {
 				@unlink($dir . $promotion_array[0]->promotion_file . '.swf');
 			}
-			
+
 			if($image_delete) {
-				
+
 				//Replace all promotions that use this image with a default of Promo ID 8 (Cloud image)
 				$dealer_promo_array = $this->get_dealer_promotions($promotion_id);
 				foreach($dealer_promo_array as $dealer_promo) {
@@ -2151,10 +2152,10 @@ class Admin_model extends CI_Model {
 					);
 					$sub_db_table = $this->config->item('db_table_prefix') . 'dealer_promotions';
 					$this->db->where('dealer_promotion_id', $dealer_promo->dealer_promotion_id);
-					$result = $this->db->update($sub_db_table, $data); 
+					$result = $this->db->update($sub_db_table, $data);
 				}
-				
-			
+
+
 				$this->db->where('promotion_id',$promotion_id);
 				$result = $this->db->delete($db_table);
 				if($result) {
@@ -2167,22 +2168,22 @@ class Admin_model extends CI_Model {
 			}
 		}
 	}
-	
-	
+
+
 	function delete_literature($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'literature';
-		
+
 		$brochure_array = $this->get_literature_by_id($data_array['literature_id']);
 		if(count($brochure_array) > 0) {
-			
+
 			$dir = $this->config->item('resources_full_dir');
 			$thumb_dir = $this->config->item('promotion_files_full_dir') . 'thumbs/';
-			
+
 			$thumb_delete = @unlink($thumb_dir . $brochure_array[0]->thumbnail . '.' . $brochure_array[0]->thumbnail_extension);
 			$brochure_delete = @unlink($dir . $brochure_array[0]->filename . '.' . $brochure_array[0]->extension);
-			
+
 			if($brochure_delete && $thumb_delete) {
-			
+
 				$this->db->where('literature_id',$data_array['literature_id']);
 				$result = $this->db->delete($db_table);
 				if($result) {
@@ -2195,7 +2196,7 @@ class Admin_model extends CI_Model {
 			}
 		}
 	}
-	
+
 	function delete_site_update($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'updates';
 		$this->db->where('update_id',$data_array['update_id']);
@@ -2206,7 +2207,7 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	function delete_product($data_array) {
 		$db_table = $this->config->item('db_table_prefix') . 'products';
 		//Remove any dealer site that is featuring that product
@@ -2232,10 +2233,10 @@ class Admin_model extends CI_Model {
 				}
 				$sub_db_table = $this->config->item('db_table_prefix') . 'dealer_options';
 				$this->db->where('dealer_option_id', $option->dealer_option_id);
-				$result = $this->db->update($sub_db_table, $data); 
-				
+				$result = $this->db->update($sub_db_table, $data);
+
 			}
-			
+
 		}
 		$this->db->where('product_id',$data_array['product_id']);
 		$result = $this->db->delete($db_table);
@@ -2275,15 +2276,15 @@ class Admin_model extends CI_Model {
 
 /***********************************************************************************************************************************
 /*		AUTO GENERATION FUNCTIONS
-************************************************************************************************************************************/	
-	
+************************************************************************************************************************************/
+
 	function generate_sitemap() {
 		$xml_file = 'sitemap.xml';
 		$base_url = base_url();
-		
+
 		$output =  '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
-		
+
 		$output .= '<url>' . "\n";
 		$output .= '<loc>' . substr($base_url,0,strlen($base_url) - 1) . '</loc>' . "\n";
 		$output .= '<changefreq>weekly</changefreq>' . "\n";
@@ -2303,7 +2304,7 @@ class Admin_model extends CI_Model {
 				$output .= '</url>' . "\n";
 			}
 		}
-		
+
 		$site_array = $this->get_dealer_site_list();
 		foreach($site_array as $site) {
 			if($site->dealer_status == 'active' && $site->site_status == 'active' && $site->dealer_id != '6') {
@@ -2311,12 +2312,12 @@ class Admin_model extends CI_Model {
 				$output .= '<loc>' . $base_url . $site->dealer_url . '</loc>' . "\n";
 				$output .= '<changefreq>weekly</changefreq>' . "\n";
 				$output .= '</url>' . "\n";
-				
+
 				$output .= '<url>' . "\n";
 				$output .= '<loc>' . $base_url . $site->dealer_url . '/about</loc>' . "\n";
 				$output .= '<changefreq>weekly</changefreq>' . "\n";
 				$output .= '</url>' . "\n";
-				
+
 				$output .= '<url>' . "\n";
 				$output .= '<loc>' . $base_url . $site->dealer_url . '/warranty</loc>' . "\n";
 				$output .= '<changefreq>weekly</changefreq>' . "\n";
@@ -2328,20 +2329,20 @@ class Admin_model extends CI_Model {
 				$output .= '</url>' . "\n";
 			}
 		}
-		
+
 		$output .= '</urlset>';
-		
+
 		$file = $_SERVER['DOCUMENT_ROOT'] . "/" . $xml_file;
 		$handle = fopen($file, "w+");
 		$xml = fwrite($handle,$output);
 		fclose($handle);
-		
+
 		if($xml) {
 			return true;
 		} else {
 			return false;
-		}	
-		
+		}
+
 	}
 
 	function run_contact_report($start_date = '', $end_date = '', $dealer_id = FALSE) {
@@ -2352,40 +2353,40 @@ class Admin_model extends CI_Model {
 			$formatted_start_date = format_date($start_date, 'DB_FULL_START');
 
 		}
-		
+
 		if(strlen($end_date) != 10) {
 			$formatted_end_date = date('Y-m-d',time()) . ' 23:59:59';
 		} else {
 			$formatted_end_date = format_date($end_date, 'DB_FULL_END');
 		}
-		
+
 		$contact_array = $this->get_contact_requests($formatted_start_date, $formatted_end_date, $dealer_id);
-		
+
 		$filename = "contact-" . time() . ".txt";
 		$file = fopen($this->config->item('contact_reports_full_dir') . $filename, "w+");
-		
+
 		$string = "Installer\tContact Type\tName\tPhone\tEmail\tAddress\tCity\tState\tZIP\tSubject\tComments\tPaid Search URL\tPaid Search Page Type\tInsert Date\n";
-		
+
 		foreach($contact_array as $contact) {
 			$comments = $contact->comments;
 			$comments = str_replace("\n","",$comments);
 			$comments = str_replace("\r","",$comments);
-			
+
 			$dealer_array = $this->get_dealer_by_id($contact->dealer_id);
-			
+
 			if(count($dealer_array) > 0) {
-			
+
 				$string .= $dealer_array[0]->name . "\t" . $contact->contact_type . "\t" . $contact->name . "\t" . $contact->phone . "\t" . $contact->email . "\t" . $contact->address . "\t" . $contact->city . "\t" . $contact->state . "\t" . $contact->zip . "\t" . $contact->subject . "\t" . $comments . "\t" . $contact->paid_search_url . "\t" . $contact->paid_search_page_type . "\t" . $contact->insert_date . "\n";
-				
+
 			}
-			
+
 		}
 		fwrite($file,$string);
 		fclose($file);
 		return $filename;
-			
+
 	}
 }
-	
+
 /* End of file admin_model.php */
 /* Location: ./system/application/modules/admin/models/admin_model.php */
