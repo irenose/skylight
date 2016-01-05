@@ -181,7 +181,7 @@ $data['secondary_nav_links'] = array(
                     Curb Mounted
                 </h3>
                 <p>
-                    The skylight’s deck seal is nailed directly to your roof deck for a low profile, energy-efficient installation. Deck mounted skylights are best for roofs with a pitch between 14 and 85 degrees.
+                    The skylight is mounted on a wooden frame, known as a curb, that the installer builds around the opening on your roof. Curb mounted installations are ideal for flat roofs up to a pitch of 60 degrees.
                 </p>
             </div>
             <div class="vs__caret"></div>
